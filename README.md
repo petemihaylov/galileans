@@ -10,7 +10,7 @@ ___
 - Create URS
 
 ### Week 3:
- -Improve URS based on feedback
+ - Improve URS based on feedback
  - Implement software solution
 
 ### Week 4:
