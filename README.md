@@ -1,16 +1,16 @@
 [READER link](https://fhict.instructure.com/courses/9429/pages/project-part-1-waterfall?module_item_id=465109)
 ___
 ### Week 1:
-- Create a name and logo for your group
-- Interview client
-- Create and hand in project plan
+ - Create a name and logo for your group
+ - Interview client
+ - Create and hand in project plan
 
 ### Week 2:
-- Improve project plan based on feedback
-- Create URS
+ - Improve project plan based on feedback
+ - Create URS
 
 ### Week 3:
- -Improve URS based on feedback
+ - Improve URS based on feedback
  - Implement software solution
 
 ### Week 4:
