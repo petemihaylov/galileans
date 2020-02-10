@@ -1,5 +1,5 @@
 [READER link](https://fhict.instructure.com/courses/9429/pages/project-part-1-waterfall?module_item_id=465109)
-
+___
 ### Week 1:
 - Create a name and logo for your group
 - Interview client
