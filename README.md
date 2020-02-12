@@ -1,3 +1,5 @@
+<img src="https://i.ibb.co/mHbBfmw/logo.jpg" alt="logo" height="150" width="400">
+
 [READER link](https://fhict.instructure.com/courses/9429/pages/project-part-1-waterfall?module_item_id=465109)
 ___
 ### Week 1:
