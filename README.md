@@ -4,6 +4,7 @@ ___
  - Create a name and logo for your group
  - Interview client
  - Create and hand in project plan
+ - [Use cases](https://docs.google.com/document/d/1Cxb4g4zfRE31ZdzT7yt0YcJBpt7qALlJbwjKtoDhVaM/edit?usp=sharing)
 
 ### Week 2:
  - Improve project plan based on feedback
