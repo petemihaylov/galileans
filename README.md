@@ -11,6 +11,7 @@ ___
  - [Software Development Agreement](https://docs.google.com/document/d/1K06sH7sfJUeNcYoBqFFjM21NWkXqcW5qwm3JIUhfrcs/edit?usp=sharing)
 ### Week 2:
  - Improve project plan based on feedback
+ - [Gantt chart](https://docs.google.com/spreadsheets/d/1zTfiIHgceY6u0fyfXtmHuyKW9O0KNhTsiyEuiskZ330/edit?usp=sharing)
  - Create URS
 
 ### Week 3:
