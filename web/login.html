@@ -12,35 +12,57 @@
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/03cf08f72f.js" crossorigin="anonymous"></script>
- 
+
+    <!-- JQuery 3.4.1 CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+
     <link rel="stylesheet" href="./css/login-page.css">
     <title>Login</title>
 </head>
 <body>
     <main class="main">
-        <div class="login-bg"></div>
+        <div class="banner">
+          <video autoplay muted loop>
+              <source src="./css/backgroundVideo.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="overlay"></div>
+
         <div class="login-container">
-            <h3>Login</h3>
-            <form class="form-signin">
-                
-                <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                </div>
+            <form action="login.html" class="login-form">
+              <h1>Login</h1>
+              
+              <div class="txtb">
+                <input type="text">
+                <span data-placeholder="Username"></span>
+              </div>
+
+              <div class="txtb">
+                <input type="password">
+                <span data-placeholder="Password"></span>
+              </div>
+
+              <div class="logbtn-container">
+                <input type="submit" class="logbtn" value="Login">
+              </div>
+              
+              <div class="bottom-text">
+                Don't have account? <a href="#">Sign up</a>
+              </div>
   
-                <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                </div>
-  
-                <div class="custom-control custom-checkbox mb-3">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Remember password</label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
-                <hr class="my-4">
-                <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
-                <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
-              </form>
+            </form>
         </div>
     </main>
+    <script type="text/javascript">
+        $('.txtb input').on("focus", function(){
+          $(this).addClass("focus");
+        });
+
+        $('.txtb input').on("blur", function(){
+          if($(this).val() == "")
+          $(this).removeClass("focus");
+        });
+      </script>
 </body>
 </html>
