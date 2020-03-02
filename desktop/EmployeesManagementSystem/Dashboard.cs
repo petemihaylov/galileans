@@ -167,6 +167,8 @@ namespace EmployeesManagementSystem
 
         private void label6_Click(object sender, EventArgs e)
         {
+            CreateAccounts createAccount= new CreateAccounts();
+            createAccount.Show();
 
         }
 
