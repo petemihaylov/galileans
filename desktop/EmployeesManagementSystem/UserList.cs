@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace EmployeesManagementSystem
 {
-    public partial class Login : Form
+    public partial class UserList : Form
     {
-        public Login()
+        public UserList()
         {
             InitializeComponent();
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
