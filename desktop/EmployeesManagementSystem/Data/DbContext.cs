@@ -56,6 +56,7 @@ namespace EmployeesManagementSystem
             }
         }
 
+        // Create new user
         public void InsertUser(User user)
         {
             using (var command = connection.CreateCommand())
@@ -70,6 +71,20 @@ namespace EmployeesManagementSystem
             }
         }
 
+        // Delete user by email
+        public void DeleteUser(User user)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                
+                command.CommandText = @"DELETE FROM Users WHERE email = @email";        
+                
+                command.AddParameter("email", user.Email);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        // Get user by email
         public User GetUserByEmail(string email)
         {
             using (var command = connection.CreateCommand())
