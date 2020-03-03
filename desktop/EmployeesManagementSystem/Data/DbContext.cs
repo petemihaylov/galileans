@@ -21,10 +21,10 @@ namespace EmployeesManagementSystem
             var connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
             this.connection = new MySqlConnection(connectionString);
             this.connection.Open();
-
-            // Seeder or to create tables if they not exist
         }
-        
+       
+
+        // User
         public User GetUserByID(int ID)
         {
             using (var command = connection.CreateCommand())
@@ -45,6 +45,9 @@ namespace EmployeesManagementSystem
                         user.Email = (string)reader["Email"];
                         user.Password = (string)reader["Password"];
                         user.Role = (string)reader["Role"];
+                    }else
+                    {
+                        return null;
                     }
 
                     // getting the actual user
@@ -64,6 +67,38 @@ namespace EmployeesManagementSystem
                 command.AddParameter("role", user.Role);
                 command.AddParameter("password", user.Password);
                 command.ExecuteNonQuery();
+            }
+        }
+
+        public User GetUserByEmail(string email)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                // Select statement
+                command.CommandText = @"SELECT * FROM Users WHERE Email = @email";
+                command.AddParameter("email", email);
+
+                // Ececuting it 
+                using (var reader = command.ExecuteReader())
+                {
+                    User user = new User();
+                    if (reader.Read())
+                    {
+                        // Mapping the return data to the object
+                        user.ID = (int)reader["ID"];
+                        user.FullName = (string)reader["FullName"];
+                        user.Email = (string)reader["Email"];
+                        user.Password = (string)reader["Password"];
+                        user.Role = (string)reader["Role"];
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                    // getting the actual user
+                    return user;
+                }
             }
         }
     }
