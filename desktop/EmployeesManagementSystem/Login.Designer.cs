@@ -36,9 +36,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.exit = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.exit = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             this.SuspendLayout();
@@ -88,7 +88,7 @@
             this.tbEmail.Location = new System.Drawing.Point(78, 353);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(300, 22);
-            this.tbEmail.TabIndex = 13;
+            this.tbEmail.TabIndex = 1;
             // 
             // tbPassword
             // 
@@ -98,7 +98,7 @@
             this.tbPassword.Location = new System.Drawing.Point(78, 448);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(300, 22);
-            this.tbPassword.TabIndex = 12;
+            this.tbPassword.TabIndex = 2;
             this.tbPassword.UseSystemPasswordChar = true;
             // 
             // panel3
@@ -129,6 +129,20 @@
             this.panel1.Size = new System.Drawing.Size(461, 231);
             this.panel1.TabIndex = 9;
             // 
+            // exit
+            // 
+            this.exit.BackColor = System.Drawing.Color.Transparent;
+            this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
+            this.exit.Location = new System.Drawing.Point(422, 0);
+            this.exit.Name = "exit";
+            this.exit.Size = new System.Drawing.Size(39, 35);
+            this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.exit.TabIndex = 3;
+            this.exit.TabStop = false;
+            this.exit.Click += new System.EventHandler(this.exit_Click);
+            this.exit.MouseEnter += new System.EventHandler(this.exit_MouseEnter);
+            this.exit.MouseLeave += new System.EventHandler(this.exit_MouseLeave);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -151,20 +165,6 @@
             this.label4.Size = new System.Drawing.Size(130, 17);
             this.label4.TabIndex = 17;
             this.label4.Text = "You need to register ?";
-            // 
-            // exit
-            // 
-            this.exit.BackColor = System.Drawing.Color.Transparent;
-            this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
-            this.exit.Location = new System.Drawing.Point(422, 0);
-            this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(39, 35);
-            this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.exit.TabIndex = 3;
-            this.exit.TabStop = false;
-            this.exit.Click += new System.EventHandler(this.exit_Click);
-            this.exit.MouseEnter += new System.EventHandler(this.exit_MouseEnter);
-            this.exit.MouseLeave += new System.EventHandler(this.exit_MouseLeave);
             // 
             // Login
             // 
