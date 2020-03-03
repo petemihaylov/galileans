@@ -29,7 +29,7 @@ namespace EmployeesManagementSystem
             {
                 try
                 {
-                    string connectionStr = "Server=studmysql01.fhict.local;Uid=dbi391065;Database=dbi391065;Pwd=Galileans   ;";
+                    string connectionStr = "Server=studmysql01.fhict.local;Uid=dbi391065;Database=dbi391065;Pwd=Galileans;";
                     string query = $"INSERT into users(FirstName, LastName,	Email, Role, HourlyWage) values('{tbFirstName.Text}', '{tbLastName.Text}', '{tbEmail.Text}', 'employee', '{tbHourlyRate.Text}');";
                     MySqlConnection connection = new MySqlConnection(connectionStr);
                     MySqlCommand cmd = new MySqlCommand(query, connection);
