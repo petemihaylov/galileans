@@ -17,6 +17,7 @@ ___
 ### Week 3:
  - Improve URS based on feedback
  - Implement software solution
+ - Work on the project
 
 ### Week 4:
  - Implement software solution
