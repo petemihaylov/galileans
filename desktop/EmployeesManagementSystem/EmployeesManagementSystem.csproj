@@ -113,6 +113,12 @@
     <Compile Include="Complaint.Designer.cs">
       <DependentUpon>Complaint.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateAccounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateAccounts.Designer.cs">
+      <DependentUpon>CreateAccounts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\DbContext.cs" />
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
@@ -146,7 +152,10 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Shift.cs" />
+    <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -162,8 +171,17 @@
     <Compile Include="Stocks.Designer.cs">
       <DependentUpon>Stocks.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserList.Designer.cs">
+      <DependentUpon>UserList.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Complaint.resx">
       <DependentUpon>Complaint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateAccounts.resx">
+      <DependentUpon>CreateAccounts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
@@ -195,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Stocks.resx">
       <DependentUpon>Stocks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserList.resx">
+      <DependentUpon>UserList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

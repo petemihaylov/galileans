@@ -24,6 +24,7 @@ namespace EmployeesManagementSystem
 
             // Seeder or to create tables if they not exist
         }
+        
         public User GetUserByID(int ID)
         {
             using (var command = connection.CreateCommand())
@@ -40,8 +41,7 @@ namespace EmployeesManagementSystem
                     {
                         // Mapping the return data to the object
                         user.ID = (int)reader["ID"];
-                        user.FirstName = (string)reader["FirstName"];
-                        user.LastName = (string)reader["LastName"];
+                        user.FullName = (string)reader["FullName"];
                         user.Email = (string)reader["Email"];
                         user.Password = (string)reader["Password"];
                         user.Role = (string)reader["Role"];
@@ -50,17 +50,16 @@ namespace EmployeesManagementSystem
                     // getting the actual user
                     return user;
                 }
-
             }
         }
+
         public void InsertUser(User user)
         {
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = @"INSERT INTO Users (FirstName, LastName, Email, Role, Password) VALUES(@firstName, @lastName, @email, @role, @password)";
+                command.CommandText = @"INSERT INTO Users (FullName, Email, Role, Password) VALUES(@fullName, @email, @role, @password)";
 
-                command.AddParameter("firstName", user.FirstName);
-                command.AddParameter("lastName", user.LastName);
+                command.AddParameter("fullName", user.FullName);
                 command.AddParameter("email", user.Email);
                 command.AddParameter("role", user.Role);
                 command.AddParameter("password", user.Password);

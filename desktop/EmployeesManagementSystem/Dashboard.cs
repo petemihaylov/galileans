@@ -167,15 +167,12 @@ namespace EmployeesManagementSystem
 
         private void label6_Click(object sender, EventArgs e)
         {
+            CreateAccounts createAccount= new CreateAccounts();
+            createAccount.Show();
 
         }
 
         private void pictureBox10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox9_Click(object sender, EventArgs e)
         {
 
         }

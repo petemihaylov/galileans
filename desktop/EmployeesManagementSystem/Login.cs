@@ -19,7 +19,6 @@ namespace EmployeesManagementSystem
         {
             InitializeComponent();
         }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (ifNotExists(new User()))
@@ -43,16 +42,15 @@ namespace EmployeesManagementSystem
             const int rangeMin = 1000;
             const int rangeMax = 9999;
 
-             Random a = new Random();
+            Random a = new Random();
 
-             List<int> randomList = new List<int>();
-             int MyNumber = 0;
-            
-             MyNumber = a.Next(rangeMin, rangeMax);
+            List<int> randomList = new List<int>();
+            int MyNumber = 0;
 
-                if (!randomList.Contains(MyNumber))
-                    randomList.Add(MyNumber);
-         
+            MyNumber = a.Next(rangeMin, rangeMax);
+
+            if (!randomList.Contains(MyNumber))
+                randomList.Add(MyNumber);
         }
     }
 }
