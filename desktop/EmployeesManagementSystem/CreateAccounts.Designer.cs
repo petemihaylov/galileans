@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             this.createAccount = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbFirstName = new System.Windows.Forms.TextBox();
-            this.tbLastName = new System.Windows.Forms.TextBox();
+            this.tbFullName = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -64,17 +62,6 @@
             this.createAccount.UseVisualStyleBackColor = false;
             this.createAccount.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(58, 316);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 21);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "Last Name";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -82,29 +69,19 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label1.Location = new System.Drawing.Point(58, 245);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 21);
+            this.label1.Size = new System.Drawing.Size(80, 21);
             this.label1.TabIndex = 23;
-            this.label1.Text = "First Name";
+            this.label1.Text = "Full Name";
             // 
-            // tbFirstName
+            // tbFullName
             // 
-            this.tbFirstName.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tbFirstName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbFirstName.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbFirstName.Location = new System.Drawing.Point(62, 269);
-            this.tbFirstName.Name = "tbFirstName";
-            this.tbFirstName.Size = new System.Drawing.Size(300, 22);
-            this.tbFirstName.TabIndex = 1;
-            // 
-            // tbLastName
-            // 
-            this.tbLastName.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tbLastName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbLastName.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLastName.Location = new System.Drawing.Point(61, 341);
-            this.tbLastName.Name = "tbLastName";
-            this.tbLastName.Size = new System.Drawing.Size(300, 22);
-            this.tbLastName.TabIndex = 2;
+            this.tbFullName.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tbFullName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbFullName.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbFullName.Location = new System.Drawing.Point(62, 269);
+            this.tbFullName.Name = "tbFullName";
+            this.tbFullName.Size = new System.Drawing.Size(300, 22);
+            this.tbFullName.TabIndex = 1;
             // 
             // panel2
             // 
@@ -141,7 +118,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label5.Location = new System.Drawing.Point(61, 531);
+            this.label5.Location = new System.Drawing.Point(60, 461);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 21);
             this.label5.TabIndex = 32;
@@ -152,7 +129,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label6.Location = new System.Drawing.Point(59, 448);
+            this.label6.Location = new System.Drawing.Point(58, 378);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 21);
             this.label6.TabIndex = 31;
@@ -163,7 +140,7 @@
             this.tbPhone.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbPhone.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbPhone.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPhone.Location = new System.Drawing.Point(63, 472);
+            this.tbPhone.Location = new System.Drawing.Point(62, 402);
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(300, 22);
             this.tbPhone.TabIndex = 4;
@@ -174,7 +151,7 @@
             this.tbHourlyRate.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbHourlyRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbHourlyRate.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHourlyRate.Location = new System.Drawing.Point(63, 556);
+            this.tbHourlyRate.Location = new System.Drawing.Point(62, 486);
             this.tbHourlyRate.Name = "tbHourlyRate";
             this.tbHourlyRate.Size = new System.Drawing.Size(300, 22);
             this.tbHourlyRate.TabIndex = 5;
@@ -182,7 +159,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel4.Location = new System.Drawing.Point(63, 584);
+            this.panel4.Location = new System.Drawing.Point(62, 514);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(300, 1);
             this.panel4.TabIndex = 28;
@@ -190,7 +167,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel5.Location = new System.Drawing.Point(63, 500);
+            this.panel5.Location = new System.Drawing.Point(62, 430);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(300, 1);
             this.panel5.TabIndex = 27;
@@ -198,7 +175,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel3.Location = new System.Drawing.Point(62, 377);
+            this.panel3.Location = new System.Drawing.Point(61, 307);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(300, 0);
             this.panel3.TabIndex = 20;
@@ -208,7 +185,7 @@
             this.lbEmail.AutoSize = true;
             this.lbEmail.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbEmail.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lbEmail.Location = new System.Drawing.Point(57, 380);
+            this.lbEmail.Location = new System.Drawing.Point(56, 310);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(48, 21);
             this.lbEmail.TabIndex = 35;
@@ -219,7 +196,7 @@
             this.tbEmail.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbEmail.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEmail.Location = new System.Drawing.Point(61, 404);
+            this.tbEmail.Location = new System.Drawing.Point(60, 334);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(300, 22);
             this.tbEmail.TabIndex = 3;
@@ -227,7 +204,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel6.Location = new System.Drawing.Point(61, 432);
+            this.panel6.Location = new System.Drawing.Point(60, 362);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(300, 1);
             this.panel6.TabIndex = 33;
@@ -247,10 +224,8 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.createAccount);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbFirstName);
-            this.Controls.Add(this.tbLastName);
+            this.Controls.Add(this.tbFullName);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -268,10 +243,8 @@
         #endregion
 
         private System.Windows.Forms.Button createAccount;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbFirstName;
-        private System.Windows.Forms.TextBox tbLastName;
+        private System.Windows.Forms.TextBox tbFullName;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;

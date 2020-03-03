@@ -61,12 +61,14 @@ namespace EmployeesManagementSystem
         {
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = @"INSERT INTO Users (FullName, Email, Role, Password) VALUES(@fullName, @email, @role, @password)";
+                command.CommandText = @"INSERT INTO Users (FullName, Email, PhoneNumber, Password, Role, HourlyRate) VALUES(@fullName, @email, @phoneNumber, @password, @role, @hourlyRate)";
 
                 command.AddParameter("fullName", user.FullName);
                 command.AddParameter("email", user.Email);
+                command.AddParameter("phoneNumber", user.PhoneNumber);
                 command.AddParameter("role", user.Role);
                 command.AddParameter("password", user.Password);
+                command.AddParameter("hourlyRate", user.HourlyRate);
                 command.ExecuteNonQuery();
             }
         }
