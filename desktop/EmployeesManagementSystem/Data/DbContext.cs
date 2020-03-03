@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem
 {
-    class DataClass
+    class DbContext
     {
         private MySqlConnection connection;
 
-        public DataClass()
+        public DbContext()
         {
             // change the connection string in the App.config file
 
