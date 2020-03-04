@@ -130,7 +130,7 @@ namespace EmployeesManagementSystem
             }
         }
 
-        // Delete user by email
+        // Delete user by id
         public void DeleteUser(int id)
         {
             using (var command = connection.CreateCommand())
@@ -141,6 +141,7 @@ namespace EmployeesManagementSystem
             }
         }
 
+        //Delete announcements by email
         public void DeleteAnnouncemnt(int id)
         {
             using (var command = connection.CreateCommand())
@@ -183,8 +184,39 @@ namespace EmployeesManagementSystem
                 }
             }
         }
+        //Update the user details.
+        public User UpdateUserInfo()
+        {
+            using (var command = connection.CreateCommand())
+            {
+                // Select statement
+                command.CommandText = @"UPDATE users SET FullName = @fullName, Email = @email, PhoneNumber = @phoneNumber, Password = @password, Role = @role WHERE ID = @ID";
+                // Executing it 
+                using (var reader = command.ExecuteReader())
+                {
+                    User user = new User();
+                    if (reader.Read())
+                    {
+                        // Mapping the return data to the object
+                        user.ID = (int)reader["ID"];
+                        user.FullName = (string)reader["FullName"];
+                        user.Email = (string)reader["Email"];
+                        user.Password = (string)reader["Password"];
+                        user.Role = (string)reader["Role"];
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                    // getting the actual user
+                    return user;
+                }
+            }
+        }
     }
 
+    
 
     public static class CommandExtensions
     {

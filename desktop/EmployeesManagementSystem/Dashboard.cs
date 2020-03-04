@@ -49,7 +49,12 @@ namespace EmployeesManagementSystem
             if (dataGridView.CurrentCell.ColumnIndex.Equals(Details))
             {
                 // show view of current user id
-                MessageBox.Show("Details: " + dataGridView.CurrentRow.Index.ToString());
+                //MessageBox.Show("Details: " + dataGridView.CurrentRow.Index.ToString());
+                int index = dataGridView.CurrentCell.RowIndex;
+                int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
+                Details details = new Details(id);
+                details.Show();
+                this.Hide();
             }
 
             if (dataGridView.CurrentCell.ColumnIndex.Equals(Delete))
