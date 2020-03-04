@@ -56,8 +56,9 @@
             this.exit = new System.Windows.Forms.PictureBox();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.userID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.description = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -330,8 +331,9 @@
             this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.userID,
+            this.ID,
             this.date,
+            this.Employee,
             this.subject,
             this.description,
             this.Delete});
@@ -383,40 +385,49 @@
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.Width = 125;
             // 
-            // userID
+            // ID
             // 
-            this.userID.HeaderText = "userID";
-            this.userID.MinimumWidth = 6;
-            this.userID.Name = "userID";
-            this.userID.Width = 125;
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Width = 50;
             // 
             // date
             // 
             this.date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.date.HeaderText = "data";
+            this.date.HeaderText = "Date";
             this.date.MinimumWidth = 6;
             this.date.Name = "date";
+            // 
+            // Employee
+            // 
+            this.Employee.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Employee.HeaderText = "Employee";
+            this.Employee.MinimumWidth = 6;
+            this.Employee.Name = "Employee";
             // 
             // subject
             // 
             this.subject.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.subject.HeaderText = "subject";
+            this.subject.HeaderText = "Subject";
             this.subject.MinimumWidth = 6;
             this.subject.Name = "subject";
             // 
             // description
             // 
-            this.description.HeaderText = "description";
+            this.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.description.HeaderText = "Description";
             this.description.MinimumWidth = 6;
             this.description.Name = "description";
-            this.description.Width = 125;
             // 
             // Delete
             // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Delete.HeaderText = "Delete";
             this.Delete.MinimumWidth = 6;
             this.Delete.Name = "Delete";
-            this.Delete.Width = 125;
+            this.Delete.Width = 55;
             // 
             // Complaint
             // 
@@ -489,8 +500,9 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Employee;
         private System.Windows.Forms.DataGridViewTextBoxColumn subject;
         private System.Windows.Forms.DataGridViewButtonColumn description;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;

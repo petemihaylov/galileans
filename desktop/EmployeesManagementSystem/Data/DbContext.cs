@@ -23,6 +23,7 @@ namespace EmployeesManagementSystem
             this.connection.Open();
         }
 
+        //Get all cancellation announcements
         public Cancellations[] GetAnnouncements()
         {
             using (var command = connection.CreateCommand())
@@ -38,8 +39,9 @@ namespace EmployeesManagementSystem
                     {
                         // Mapping the return data to the object
                         Cancellations cancel = new Cancellations();
-                        cancel.ID = (int)reader["UserID"];
+                        cancel.ID = (int)reader["ID"];
                         cancel.Date = (string)reader["Date"];
+                        cancel.Employee = (string)reader["Employee"];
                         cancel.Subject = (string)reader["Subject"];
                         cancel.Description = (string)reader["Description"];
                         cancels.Add(cancel);    
@@ -48,6 +50,8 @@ namespace EmployeesManagementSystem
                 }
             }
         }
+
+        //get all users
         public User[] GetAllUsers()
         {
             using (var command = connection.CreateCommand())
@@ -75,6 +79,7 @@ namespace EmployeesManagementSystem
                 }
             }
         }
+
         // Create new user
         // User
         public User GetUserByID(int ID)
@@ -134,6 +139,16 @@ namespace EmployeesManagementSystem
                 command.CommandText = @"DELETE FROM Users WHERE email = @email";        
                 
                 command.AddParameter("email", user.Email);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteAnnouncemnt(Cancellations cancel)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = @"DELETE FROM shiftcancellation WHERE ID = @ID";
+                command.AddParameter("ID", cancel.ID);
                 command.ExecuteNonQuery();
             }
         }
