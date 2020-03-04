@@ -26,5 +26,11 @@ namespace EmployeesManagementSystem.Models
             this.PhoneNumber = phoneNumber;
             this.HourlyRate = hourlyRate;
         }
+
+        public string[] GetInfo()
+        {
+            string[] s = { this.FullName, this.Email, this.Role};
+            return s;
+        }
     }
 }

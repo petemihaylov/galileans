@@ -26,13 +26,21 @@ namespace EmployeesManagementSystem
             //needs to upload as the program runs in the future
             try
             {
-                Cancellations cancel = databaseContext.GetAnnouncements();
-                dataGridView.Rows.Add(cancel.GetInfo());
+                Cancellations[] cancels = databaseContext.GetAnnouncements();
+                foreach (Cancellations cancel in cancels)
+                {
+                    dataGridView.Rows.Add(cancel.GetInfo());
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

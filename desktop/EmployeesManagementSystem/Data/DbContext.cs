@@ -23,7 +23,7 @@ namespace EmployeesManagementSystem
             this.connection.Open();
         }
 
-        public Cancellations GetAnnouncements()
+        public Cancellations[] GetAnnouncements()
         {
             using (var command = connection.CreateCommand())
             {
@@ -33,24 +33,52 @@ namespace EmployeesManagementSystem
                 // Executing it 
                 using (var reader = command.ExecuteReader())
                 {
-                    Cancellations cancel = new Cancellations();
+                    List<Cancellations> cancels = new List<Cancellations>();
                     if (reader.Read())
                     {
                         // Mapping the return data to the object
+                        Cancellations cancel = new Cancellations();
                         cancel.ID = (int)reader["UserID"];
                         cancel.Date = (string)reader["Date"];
                         cancel.Subject = (string)reader["Subject"];
                         cancel.Description = (string)reader["Description"];
+                        cancels.Add(cancel);    
                     }
                     else
                     {
                         return null;
                     }
-                    return cancel;
+                    return cancels.ToArray();
                 }
             }
         }
+        public User[] GetAllUsers()
+        {
+            using (var command = connection.CreateCommand())
+            {
+                // Select statement
+                command.CommandText = @"SELECT * FROM users";
 
+                // Executing it 
+                using (var reader = command.ExecuteReader())
+                {
+                    List<User> users = new List<User>();
+                    while(reader.Read())
+                    {
+                        // Mapping the return data to the object
+                        User user = new User();
+                        user.ID = (int)reader["ID"];
+                        user.FullName = (string)reader["FullName"];
+                        user.Email = (string)reader["Email"];
+                        user.Password = (string)reader["Password"];
+                        user.Role = (string)reader["Role"];
+                        users.Add(user);
+                    }
+
+                    return users.ToArray();
+                }
+            }
+        }
         // Create new user
         // User
         public User GetUserByID(int ID)
