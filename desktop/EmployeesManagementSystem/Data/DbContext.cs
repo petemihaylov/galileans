@@ -34,7 +34,7 @@ namespace EmployeesManagementSystem
                 using (var reader = command.ExecuteReader())
                 {
                     List<Cancellations> cancels = new List<Cancellations>();
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         // Mapping the return data to the object
                         Cancellations cancel = new Cancellations();
@@ -43,10 +43,6 @@ namespace EmployeesManagementSystem
                         cancel.Subject = (string)reader["Subject"];
                         cancel.Description = (string)reader["Description"];
                         cancels.Add(cancel);    
-                    }
-                    else
-                    {
-                        return null;
                     }
                     return cancels.ToArray();
                 }

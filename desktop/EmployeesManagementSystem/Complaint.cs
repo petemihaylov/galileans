@@ -42,5 +42,14 @@ namespace EmployeesManagementSystem
         {
             this.Close();
         }
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView.CurrentCell.ColumnIndex.Equals(description))
+            {
+                // open another message box with the whole description
+                MessageBox.Show("Description: " + dataGridView.CurrentRow.ToString());
+            }
+        }
     }
 }
