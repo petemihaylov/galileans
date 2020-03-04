@@ -147,7 +147,10 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\AfternoonShift.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\EveningShift.cs" />
+    <Compile Include="Models\MorningShift.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Shift.cs" />
     <Compile Include="Models\Stock.cs" />
