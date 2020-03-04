@@ -45,10 +45,10 @@ namespace EmployeesManagementSystem
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView.CurrentCell.ColumnIndex.Equals(description))
+            if (dataGridView.CurrentCell.ColumnIndex.Equals(3) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
                 // open another message box with the whole description
-                MessageBox.Show("Description: " + dataGridView.CurrentRow.ToString());
+                MessageBox.Show("Description:" + dataGridView.CurrentCell.Value.ToString());
             }
         }
     }
