@@ -131,24 +131,22 @@ namespace EmployeesManagementSystem
         }
 
         // Delete user by email
-        public void DeleteUser(User user)
+        public void DeleteUser(int id)
         {
             using (var command = connection.CreateCommand())
             {
-                
-                command.CommandText = @"DELETE FROM Users WHERE email = @email";        
-                
-                command.AddParameter("email", user.Email);
+                command.CommandText = @"DELETE FROM Users WHERE ID = @ID";             
+                command.AddParameter("ID", id);
                 command.ExecuteNonQuery();
             }
         }
 
-        public void DeleteAnnouncemnt(Cancellations cancel)
+        public void DeleteAnnouncemnt(int id)
         {
             using (var command = connection.CreateCommand())
             {
                 command.CommandText = @"DELETE FROM shiftcancellation WHERE ID = @ID";
-                command.AddParameter("ID", cancel.ID);
+                command.AddParameter("ID", id);
                 command.ExecuteNonQuery();
             }
         }

@@ -15,6 +15,8 @@ namespace EmployeesManagementSystem
     public partial class Complaint : Form
     {
         private DbContext databaseContext = new DbContext();
+        List<int> ids = new List<int>();
+
 
         public Complaint()
         {
@@ -50,10 +52,15 @@ namespace EmployeesManagementSystem
                 // open another message box with the whole description
                 MessageBox.Show("Description:" + dataGridView.CurrentCell.Value.ToString());
             }
-            /*else if (dataGridView.CurrentCell.ColumnIndex.Equals(5) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
+            else if (dataGridView.CurrentCell.ColumnIndex.Equals(5) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
-                databaseContext.DeleteAnnouncemnt(dataGridView.);
-            }*/
+                int index = dataGridView.CurrentCell.RowIndex;
+                //MessageBox.Show(Convert.ToString(dataGridView.Rows[index].Cells[0].Value));
+                int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
+                databaseContext.DeleteAnnouncemnt(id);
+                dataGridView.Rows.Remove(dataGridView.Rows[index]);
+
+            }
 
 
         }

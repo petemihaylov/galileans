@@ -12,14 +12,20 @@ namespace EmployeesManagementSystem
 {
     public partial class Delete : Form
     {
-        public Delete()
+        private DbContext databaseContext = new DbContext();
+
+        int ID;
+        public Delete(int ID)
         {
             InitializeComponent();
+            this.ID = ID;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            //MessageBox.Show(Convert.ToString(dataGridView.Rows[index].Cells[0].Value));
+            databaseContext.DeleteUser(ID);
+            Hide();
         }
     }
 }

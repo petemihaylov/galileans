@@ -13,7 +13,6 @@ namespace EmployeesManagementSystem
         {
             InitializeComponent();
         }
-
         private void Dashboard_Load(object sender, EventArgs e)
         {
             try
@@ -45,8 +44,8 @@ namespace EmployeesManagementSystem
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int Details = 3;
-            int Delete = 4;
+            int Details = 4;
+            int Delete = 5;
             if (dataGridView.CurrentCell.ColumnIndex.Equals(Details))
             {
                 // show view of current user id
@@ -56,14 +55,18 @@ namespace EmployeesManagementSystem
             if (dataGridView.CurrentCell.ColumnIndex.Equals(Delete))
             {
                 //ask if you want to delete and proccess
-                MessageBox.Show("Delete: " + dataGridView.CurrentRow.Index.ToString());
+                int index = dataGridView.CurrentCell.RowIndex;
+                int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
+                Delete delete = new Delete(id);
+                delete.Show();
+
+               //MessageBox.Show("Delete: " + dataGridView.CurrentRow.Index.ToString());
             }
 
         }
 
 
-
-
+               
         // Hovering
         private void exit_MouseEnter(object sender, EventArgs e)
         {

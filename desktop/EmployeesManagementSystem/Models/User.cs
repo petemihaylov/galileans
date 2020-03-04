@@ -29,7 +29,7 @@ namespace EmployeesManagementSystem.Models
 
         public string[] GetInfo()
         {
-            string[] s = { this.FullName, this.Email, this.Role};
+            string[] s = { Convert.ToString(this.ID), this.FullName, this.Email, this.Role};
             return s;
         }
     }
