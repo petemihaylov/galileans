@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem.Models
 {
-    abstract class Shift
+    class EveningShift : Shift
     {
-        protected User assignedEmployee;
     }
 }

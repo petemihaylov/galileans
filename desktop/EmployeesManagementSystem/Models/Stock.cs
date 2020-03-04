@@ -19,9 +19,13 @@ namespace EmployeesManagementSystem.Models
             this.price = price;
         }
 
-        public bool BuyStock(int amount)
+        public bool SellStock(int amount)
         {
-
+            if (this.amount < amount)
+            {
+                return false;
+            }
+            this.amount = this.amount - amount;
             return true;
         }
     }
