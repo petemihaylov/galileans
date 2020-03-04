@@ -7,14 +7,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EmployeesManagementSystem.Models;
+
 
 namespace EmployeesManagementSystem
 {
     public partial class Complaint : Form
     {
+        private DbContext databaseContext = new DbContext();
+
         public Complaint()
         {
             InitializeComponent();
+        }
+
+        private void Complaint_Load(object sender, EventArgs e)
+        {
+            //needs to upload as the program runs in the future
+            try
+            {
+                Cancellations[] cancels = databaseContext.GetAnnouncements();
+                foreach (Cancellations cancel in cancels)
+                {
+                    dataGridView.Rows.Add(cancel.GetInfo());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView.CurrentCell.ColumnIndex.Equals(description))
+            {
+                // open another message box with the whole description
+                MessageBox.Show("Description: " + dataGridView.CurrentRow.ToString());
+            }
         }
     }
 }

@@ -21,12 +21,12 @@ namespace EmployeesManagementSystem
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
-
+            // TO-DO
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-
+            // TO-DO
         }
     }
 }

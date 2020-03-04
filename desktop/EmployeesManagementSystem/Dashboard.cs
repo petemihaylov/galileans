@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
 {
     public partial class Dashboard : Form
     {
+        private DbContext databaseContext = new DbContext();
+
         public Dashboard()
         {
             InitializeComponent();
@@ -13,12 +16,25 @@ namespace EmployeesManagementSystem
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                User[] users = databaseContext.GetAllUsers();
+                foreach(User user in users)
+                {
+                    dataGridView.Rows.Add(user.GetInfo());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        /*
             dataGridView.Rows.Add("John Smith", "j.smith@student.fontys.nl", "Employee");
             dataGridView.Rows.Add("Martin Ivanov", "m.ivanov@student.fontys.nl", "Manager");
             dataGridView.Rows.Add("George Lennon", "g.lennon@student.fontys.nl", "Employee");
             dataGridView.Rows.Add("Mateos Matty", "m.matty@student.fontys.nl", "Employee");
-
+            */
         }
 
         private void exit_Click(object sender, EventArgs e)
