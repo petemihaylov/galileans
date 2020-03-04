@@ -22,8 +22,36 @@ namespace EmployeesManagementSystem
             this.connection = new MySqlConnection(connectionString);
             this.connection.Open();
         }
-       
 
+        public Cancellations GetAnnouncements()
+        {
+            using (var command = connection.CreateCommand())
+            {
+                // Select statement
+                command.CommandText = @"SELECT * FROM shiftcancellation";
+
+                // Executing it 
+                using (var reader = command.ExecuteReader())
+                {
+                    Cancellations cancel = new Cancellations();
+                    if (reader.Read())
+                    {
+                        // Mapping the return data to the object
+                        cancel.ID = (int)reader["UserID"];
+                        cancel.Date = (string)reader["Date"];
+                        cancel.Subject = (string)reader["Subject"];
+                        cancel.Description = (string)reader["Description"];
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                    return cancel;
+                }
+            }
+        }
+
+        // Create new user
         // User
         public User GetUserByID(int ID)
         {
@@ -119,6 +147,7 @@ namespace EmployeesManagementSystem
             }
         }
     }
+
 
     public static class CommandExtensions
     {
