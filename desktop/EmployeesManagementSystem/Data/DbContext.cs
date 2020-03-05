@@ -1,12 +1,9 @@
-﻿using EmployeesManagementSystem.Models;
+﻿using System;
+using EmployeesManagementSystem.Models;
 using MySql.Data.MySqlClient;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem
 {
@@ -17,10 +14,24 @@ namespace EmployeesManagementSystem
         public DbContext()
         {
             // change the connection string in the App.config file
-
             var connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
             this.connection = new MySqlConnection(connectionString);
             this.connection.Open();
+        }
+
+        // Closing the existing DB connections
+        public void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (this.connection.State == ConnectionState.Open)
+                {
+                    MySqlConnection.ClearPool(connection);
+                    this.connection.Close();
+                    this.connection.Dispose();
+                }
+            }
+            //GC.SuppressFinalize(this);//Updated
         }
 
         //Get all cancellation announcements
@@ -100,6 +111,8 @@ namespace EmployeesManagementSystem
                         user.ID = (int)reader["ID"];
                         user.FullName = (string)reader["FullName"];
                         user.Email = (string)reader["Email"];
+                        user.PhoneNumber = (string)reader["PhoneNumber"];
+                        user.HourlyRate = (float)reader["HourlyRate"];
                         user.Password = (string)reader["Password"];
                         user.Role = (string)reader["Role"];
                     }else
@@ -141,8 +154,18 @@ namespace EmployeesManagementSystem
             }
         }
 
+        public void DeleteUsersWithEmail(string email)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = @"DELETE FROM Users WHERE Email = @email";
+                command.AddParameter("email", email);
+                command.ExecuteNonQuery();
+            }
+        }
+
         //Delete announcements by email
-        public void DeleteAnnouncemnt(int id)
+        public void DeleteAnnouncement(int id)
         {
             using (var command = connection.CreateCommand())
             {
@@ -161,7 +184,7 @@ namespace EmployeesManagementSystem
                 command.CommandText = @"SELECT * FROM Users WHERE Email = @email";
                 command.AddParameter("email", email);
 
-                // Ececuting it 
+                // Executing it 
                 using (var reader = command.ExecuteReader())
                 {
                     User user = new User();
@@ -172,6 +195,8 @@ namespace EmployeesManagementSystem
                         user.FullName = (string)reader["FullName"];
                         user.Email = (string)reader["Email"];
                         user.Password = (string)reader["Password"];
+                        user.HourlyRate = (float)reader["HourlyRate"];
+                        user.PhoneNumber = (string)reader["PhoneNumber"];
                         user.Role = (string)reader["Role"];
                     }
                     else
@@ -203,6 +228,8 @@ namespace EmployeesManagementSystem
                         user.Email = (string)reader["Email"];
                         user.Password = (string)reader["Password"];
                         user.Role = (string)reader["Role"];
+                        user.HourlyRate = (float)reader["HourlyRate"];
+                        user.PhoneNumber = (string)reader["PhoneNumber"];
                     }
                     else
                     {

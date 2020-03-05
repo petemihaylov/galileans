@@ -33,7 +33,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.exit = new System.Windows.Forms.PictureBox();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bntNo = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
@@ -83,6 +83,9 @@
             this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.exit.TabIndex = 2;
             this.exit.TabStop = false;
+            this.exit.Click += new System.EventHandler(this.exit_Click);
+            this.exit.MouseEnter += new System.EventHandler(this.exit_MouseEnter);
+            this.exit.MouseLeave += new System.EventHandler(this.exit_MouseLeave);
             // 
             // btnDelete
             // 
@@ -99,19 +102,20 @@
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // button2
+            // bntNo
             // 
-            this.button2.BackColor = System.Drawing.Color.Gray;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(310, 187);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(134, 28);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "No";
-            this.button2.UseVisualStyleBackColor = false;
+            this.bntNo.BackColor = System.Drawing.Color.Gray;
+            this.bntNo.FlatAppearance.BorderSize = 0;
+            this.bntNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bntNo.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntNo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bntNo.Location = new System.Drawing.Point(310, 187);
+            this.bntNo.Name = "bntNo";
+            this.bntNo.Size = new System.Drawing.Size(134, 28);
+            this.bntNo.TabIndex = 6;
+            this.bntNo.Text = "No";
+            this.bntNo.UseVisualStyleBackColor = false;
+            this.bntNo.Click += new System.EventHandler(this.bntNo_Click);
             // 
             // label2
             // 
@@ -140,7 +144,7 @@
             this.ClientSize = new System.Drawing.Size(569, 269);
             this.Controls.Add(this.pictureBox18);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bntNo);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -163,7 +167,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox exit;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bntNo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox18;
     }

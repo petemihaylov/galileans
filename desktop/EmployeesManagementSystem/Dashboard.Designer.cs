@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panelLeft = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.btn4 = new System.Windows.Forms.Panel();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -37,15 +37,15 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.btn3 = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.btn2 = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.btn1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
@@ -56,6 +56,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Details = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -66,26 +72,20 @@
             this.exit = new System.Windows.Forms.PictureBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Details = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelLeft.SuspendLayout();
-            this.panel8.SuspendLayout();
+            this.btn4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            this.panel3.SuspendLayout();
+            this.btn3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.btn2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.panel7.SuspendLayout();
+            this.btn1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -102,11 +102,11 @@
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.White;
-            this.panelLeft.Controls.Add(this.panel8);
+            this.panelLeft.Controls.Add(this.btn4);
             this.panelLeft.Controls.Add(this.panel1);
-            this.panelLeft.Controls.Add(this.panel3);
-            this.panelLeft.Controls.Add(this.panel2);
-            this.panelLeft.Controls.Add(this.panel7);
+            this.panelLeft.Controls.Add(this.btn3);
+            this.panelLeft.Controls.Add(this.btn2);
+            this.panelLeft.Controls.Add(this.btn1);
             this.panelLeft.Controls.Add(this.label5);
             this.panelLeft.Controls.Add(this.pictureBox2);
             this.panelLeft.Controls.Add(this.panelAccount);
@@ -116,20 +116,23 @@
             this.panelLeft.Size = new System.Drawing.Size(257, 827);
             this.panelLeft.TabIndex = 0;
             // 
-            // panel8
+            // btn4
             // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel8.Controls.Add(this.pictureBox13);
-            this.panel8.Controls.Add(this.pictureBox14);
-            this.panel8.Controls.Add(this.label9);
-            this.panel8.Location = new System.Drawing.Point(12, 508);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(230, 41);
-            this.panel8.TabIndex = 11;
+            this.btn4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btn4.Controls.Add(this.pictureBox13);
+            this.btn4.Controls.Add(this.pictureBox14);
+            this.btn4.Controls.Add(this.label9);
+            this.btn4.Location = new System.Drawing.Point(12, 508);
+            this.btn4.Name = "btn4";
+            this.btn4.Size = new System.Drawing.Size(230, 41);
+            this.btn4.TabIndex = 11;
+            this.btn4.Click += new System.EventHandler(this.btn4_Click);
+            this.btn4.MouseEnter += new System.EventHandler(this.btn4_MouseEnter);
+            this.btn4.MouseLeave += new System.EventHandler(this.btn4_MouseLeave);
             // 
             // pictureBox13
             // 
-            this.pictureBox13.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_shopping_cart_black_18dp;
+            this.pictureBox13.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp1;
             this.pictureBox13.Location = new System.Drawing.Point(4, 5);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(34, 32);
@@ -198,16 +201,16 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Stocks";
             // 
-            // panel3
+            // btn3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel3.Controls.Add(this.pictureBox8);
-            this.panel3.Controls.Add(this.pictureBox5);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(12, 370);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(230, 41);
-            this.panel3.TabIndex = 8;
+            this.btn3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btn3.Controls.Add(this.pictureBox8);
+            this.btn3.Controls.Add(this.pictureBox5);
+            this.btn3.Controls.Add(this.label4);
+            this.btn3.Location = new System.Drawing.Point(12, 370);
+            this.btn3.Name = "btn3";
+            this.btn3.Size = new System.Drawing.Size(230, 41);
+            this.btn3.TabIndex = 8;
             // 
             // pictureBox8
             // 
@@ -239,16 +242,16 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Departments";
             // 
-            // panel2
+            // btn2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel2.Controls.Add(this.pictureBox7);
-            this.panel2.Controls.Add(this.pictureBox4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(12, 301);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(230, 41);
-            this.panel2.TabIndex = 9;
+            this.btn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btn2.Controls.Add(this.pictureBox7);
+            this.btn2.Controls.Add(this.pictureBox4);
+            this.btn2.Controls.Add(this.label3);
+            this.btn2.Location = new System.Drawing.Point(12, 301);
+            this.btn2.Name = "btn2";
+            this.btn2.Size = new System.Drawing.Size(230, 41);
+            this.btn2.TabIndex = 9;
             // 
             // pictureBox7
             // 
@@ -280,17 +283,19 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Cancellations";
             // 
-            // panel7
+            // btn1
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel7.Controls.Add(this.label7);
-            this.panel7.Controls.Add(this.pictureBox6);
-            this.panel7.Controls.Add(this.pictureBox12);
-            this.panel7.Controls.Add(this.label8);
-            this.panel7.Location = new System.Drawing.Point(12, 231);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(230, 41);
-            this.panel7.TabIndex = 7;
+            this.btn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btn1.Controls.Add(this.label7);
+            this.btn1.Controls.Add(this.pictureBox6);
+            this.btn1.Controls.Add(this.pictureBox12);
+            this.btn1.Controls.Add(this.label8);
+            this.btn1.Location = new System.Drawing.Point(12, 231);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(230, 41);
+            this.btn1.TabIndex = 7;
+            this.btn1.MouseEnter += new System.EventHandler(this.btn1_MouseEnter);
+            this.btn1.MouseLeave += new System.EventHandler(this.btn1_MouseLeave);
             // 
             // label7
             // 
@@ -409,6 +414,57 @@
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Width = 125;
+            // 
+            // FullName
+            // 
+            this.FullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FullName.HeaderText = "Full name";
+            this.FullName.MinimumWidth = 6;
+            this.FullName.Name = "FullName";
+            this.FullName.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Email.HeaderText = "Email";
+            this.Email.MinimumWidth = 6;
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // Role
+            // 
+            this.Role.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Role.HeaderText = "Role";
+            this.Role.MinimumWidth = 6;
+            this.Role.Name = "Role";
+            this.Role.ReadOnly = true;
+            // 
+            // Details
+            // 
+            this.Details.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Details.HeaderText = "Details";
+            this.Details.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_info_black_48dp;
+            this.Details.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Details.MinimumWidth = 6;
+            this.Details.Name = "Details";
+            this.Details.Width = 57;
+            // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_delete_forever_black_48dp;
+            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Delete.MinimumWidth = 6;
+            this.Delete.Name = "Delete";
+            this.Delete.Width = 55;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
@@ -520,57 +576,6 @@
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.Width = 125;
             // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.Width = 125;
-            // 
-            // FullName
-            // 
-            this.FullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FullName.HeaderText = "Full name";
-            this.FullName.MinimumWidth = 6;
-            this.FullName.Name = "FullName";
-            this.FullName.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Email.HeaderText = "Email";
-            this.Email.MinimumWidth = 6;
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // Role
-            // 
-            this.Role.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Role.HeaderText = "Role";
-            this.Role.MinimumWidth = 6;
-            this.Role.Name = "Role";
-            this.Role.ReadOnly = true;
-            // 
-            // Details
-            // 
-            this.Details.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Details.HeaderText = "Details";
-            this.Details.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_info_black_48dp;
-            this.Details.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Details.MinimumWidth = 6;
-            this.Details.Name = "Details";
-            this.Details.Width = 57;
-            // 
-            // Delete
-            // 
-            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_delete_forever_black_48dp;
-            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Delete.MinimumWidth = 6;
-            this.Delete.Name = "Delete";
-            this.Delete.Width = 55;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -587,24 +592,24 @@
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
+            this.btn4.ResumeLayout(false);
+            this.btn4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.btn3.ResumeLayout(false);
+            this.btn3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.btn2.ResumeLayout(false);
+            this.btn2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
+            this.btn1.ResumeLayout(false);
+            this.btn1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -646,20 +651,20 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel btn3;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel btn2;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel btn1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel btn4;
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.Label label9;

@@ -12,12 +12,12 @@ namespace EmployeesManagementSystem.Models
         public int ID { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; } // should be a string ex: +359-882-89898
         public string Password { get; set; }
         public string Role { get; set; }
         public float HourlyRate { get; set; }
         public User() { }
-        public User(string fullName, string email, int phoneNumber, string password, string role, float hourlyRate)
+        public User(string fullName, string email, string phoneNumber, string password, string role, float hourlyRate)
         {
             this.FullName = fullName;
             this.Email = email;

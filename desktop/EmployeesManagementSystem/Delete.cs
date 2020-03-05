@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EmployeesManagementSystem
@@ -14,18 +8,47 @@ namespace EmployeesManagementSystem
     {
         private DbContext databaseContext = new DbContext();
 
-        int ID;
-        public Delete(int ID)
+        private int id;
+        private Dashboard dashboard;
+        public Delete(int ID, Dashboard dashboard)
         {
             InitializeComponent();
-            this.ID = ID;
+            this.id = ID;
+            this.dashboard = dashboard;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(Convert.ToString(dataGridView.Rows[index].Cells[0].Value));
-            databaseContext.DeleteUser(ID);
-            Hide();
+            this.databaseContext.DeleteUser(this.id);
+            this.dashboard.UpdateDashboard();
+            this.Close();
+        }
+
+        private void exit_Click(object sender, EventArgs e)
+        {
+
+            databaseContext.Dispose(true);
+            this.Close();
+        }
+
+        private void exit_MouseEnter(object sender, EventArgs e)
+        {
+            Color color = Color.DarkGray;
+            this.exit.BackColor = color;
+
+        }
+
+        private void exit_MouseLeave(object sender, EventArgs e)
+        {
+            Color color = Color.LightGray;
+            this.exit.BackColor = color;
+        }
+
+        private void bntNo_Click(object sender, EventArgs e)
+        {
+
+            databaseContext.Dispose(true);
+            this.Close();
         }
     }
 }

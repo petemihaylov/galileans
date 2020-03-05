@@ -57,7 +57,7 @@ namespace EmployeesManagementSystem
                 int index = dataGridView.CurrentCell.RowIndex;
                 //MessageBox.Show(Convert.ToString(dataGridView.Rows[index].Cells[0].Value));
                 int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
-                databaseContext.DeleteAnnouncemnt(id);
+                databaseContext.DeleteAnnouncement(id);
                 dataGridView.Rows.Remove(dataGridView.Rows[index]);
 
             }

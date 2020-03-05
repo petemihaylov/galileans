@@ -25,7 +25,7 @@ namespace EmployeesManagementSystem
             tbPassword.Text = user.Password;
             tbEmail.Text = user.Email;
             tbLocation.Text = "to add in db";
-            tbPhoneNumber.Text = Convert.ToString(user.PhoneNumber);
+            tbPhoneNumber.Text = user.PhoneNumber;
             cbRole.Text = user.Role;
             cbDepartment.Text = "to add in db";
         }
@@ -42,19 +42,33 @@ namespace EmployeesManagementSystem
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Noting was save or updated! Check me!");
 
+
+            databaseContext.Dispose(true);
+            this.Hide();
+            
+            // Show Dashboard
+            Dashboard dashboard = new Dashboard();
+            dashboard.Closed += (s, args) => this.Close();
+            dashboard.Show();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Dashboard dash = new Dashboard();
-            dash.Show();
+
+            databaseContext.Dispose(true);
             this.Hide();
+            // Show Dashboard
+            Dashboard dashboard = new Dashboard();
+            dashboard.Closed += (s, args) => this.Close();
+            dashboard.Show();
 
         }
 
         private void exit_Click(object sender, EventArgs e)
         {
+            databaseContext.Dispose(true);
             this.Close();
         }
     }

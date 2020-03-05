@@ -9,7 +9,6 @@ C:\Users\pepsm\Desktop\Project\s-cb-s2-cmk\desktop\EmployeesManagementSystem\obj
 C:\Users\pepsm\Desktop\Project\s-cb-s2-cmk\desktop\EmployeesManagementSystem\obj\Debug\EmployeesManagementSystem.Properties.Resources.resources
 C:\Users\pepsm\Desktop\Project\s-cb-s2-cmk\desktop\EmployeesManagementSystem\obj\Debug\EmployeesManagementSystem.Statistic.resources
 C:\Users\pepsm\Desktop\Project\s-cb-s2-cmk\desktop\EmployeesManagementSystem\obj\Debug\EmployeesManagementSystem.Stocks.resources
-C:\Users\pepsm\Desktop\Project\s-cb-s2-cmk\desktop\EmployeesManagementSystem\obj\Debug\EmployeesManagementSystem.UserList.resources
 C:\Users\pepsm\Desktop\Project\s-cb-s2-cmk\desktop\EmployeesManagementSystem\obj\Debug\EmployeesManagementSystem.csproj.GenerateResource.cache
 C:\Users\pepsm\Desktop\Project\s-cb-s2-cmk\desktop\EmployeesManagementSystem\bin\Debug\EmployeesManagementSystem.exe.config
 C:\Users\pepsm\Desktop\Project\s-cb-s2-cmk\desktop\EmployeesManagementSystem\bin\Debug\EmployeesManagementSystem.exe

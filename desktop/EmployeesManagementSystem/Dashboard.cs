@@ -23,21 +23,25 @@ namespace EmployeesManagementSystem
                     dataGridView.Rows.Add(user.GetInfo());
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                throw new Exception("Can't display info correctly");
             }
-            
-        /*
-            dataGridView.Rows.Add("John Smith", "j.smith@student.fontys.nl", "Employee");
-            dataGridView.Rows.Add("Martin Ivanov", "m.ivanov@student.fontys.nl", "Manager");
-            dataGridView.Rows.Add("George Lennon", "g.lennon@student.fontys.nl", "Employee");
-            dataGridView.Rows.Add("Mateos Matty", "m.matty@student.fontys.nl", "Employee");
-            */
         }
 
+        public void UpdateDashboard()
+        {
+                this.dataGridView.Rows.Clear();
+                User[] users = databaseContext.GetAllUsers();
+                foreach (User user in users)
+                {
+                    this.dataGridView.Rows.Add(user.GetInfo());
+                }
+        }
         private void exit_Click(object sender, EventArgs e)
         {
+
+            databaseContext.Dispose(true);
             this.Close();
         }
 
@@ -48,8 +52,6 @@ namespace EmployeesManagementSystem
             int Delete = 5;
             if (dataGridView.CurrentCell.ColumnIndex.Equals(Details))
             {
-                // show view of current user id
-                //MessageBox.Show("Details: " + dataGridView.CurrentRow.Index.ToString());
                 int index = dataGridView.CurrentCell.RowIndex;
                 int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
                 Details details = new Details(id);
@@ -62,11 +64,10 @@ namespace EmployeesManagementSystem
                 //ask if you want to delete and proccess
                 int index = dataGridView.CurrentCell.RowIndex;
                 int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
-                Delete delete = new Delete(id);
+                Delete delete = new Delete(id, this);
                 delete.Show();
 
-               //MessageBox.Show("Delete: " + dataGridView.CurrentRow.Index.ToString());
-            }
+             }
 
         }
 
@@ -85,39 +86,39 @@ namespace EmployeesManagementSystem
         private void btn1_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.DarkGray;
-            this.panel1.BackColor = color;
+            this.btn1.BackColor = color;
         }
         private void btn1_MouseLeave(object sender, EventArgs e)
         {
 
             Color color = Color.LightGray;
-            this.panel1.BackColor = color;
+            this.btn1.BackColor = color;
         }
 
         private void btn2_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.DarkGray;
-            this.panel2.BackColor = color;
+            this.btn2.BackColor = color;
         }
         private void btn2_MouseLeave(object sender, EventArgs e)
         {
 
             Color color = Color.LightGray;
-            this.panel2.BackColor = color;
+            this.btn2.BackColor = color;
         }
         
         private void btn3_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.DarkGray;
 
-            this.panel3.BackColor = color;
+            this.btn3.BackColor = color;
         }
         private void btn3_MouseLeave(object sender, EventArgs e)
         {
 
             Color color = Color.LightGray;
 
-            this.panel3.BackColor = color;
+            this.btn3.BackColor = color;
         }
         private void label5_Click(object sender, EventArgs e)
         {
@@ -191,7 +192,7 @@ namespace EmployeesManagementSystem
 
         private void label6_Click(object sender, EventArgs e)
         {
-            CreateAccounts createAccount= new CreateAccounts();
+            CreateAccounts createAccount= new CreateAccounts(this);
             createAccount.Show();
 
         }
@@ -239,6 +240,29 @@ namespace EmployeesManagementSystem
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        // hovering of btnShifts
+        private void btn4_MouseEnter(object sender, EventArgs e)
+        {
+            Color color = Color.DarkGray;
+            this.btn4.BackColor = color;
+        }
+
+        private void btn4_MouseLeave(object sender, EventArgs e)
+        {
+            Color color = Color.LightGray;
+            this.btn4.BackColor = color;
+        }
+
+        private void btn4_Click(object sender, EventArgs e)
+        {
+            databaseContext.Dispose(true);
+            this.Hide();
+            // Show Dashboard
+            Shifts shifts = new Shifts();
+            shifts.Closed += (s, args) => this.Close();
+            shifts.Show();
         }
     }
 }
