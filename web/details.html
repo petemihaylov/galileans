@@ -1,0 +1,120 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/details-page.css">
+
+    <title>Details Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row topBar">
+            <div class="col-sm-4">
+                <p class="date"><span id="dtText"></span></p>
+            </div>
+            <div class="col-sm-4">
+                <p class="nextShift">Your next shift begins in: 0d, 1hrs, 15mins</p>
+            </div>
+            <div class="col-sm-4">
+                <a href="">
+                    <p class="profile">Welcome back, Guest! <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M29.96304,0c-16.46866,0 -29.96304,13.49438 -29.96304,29.96304v56.03696v56.03696c0,16.46866 13.49438,29.96304 29.96304,29.96304h56.03696h56.03696c16.46866,0 29.96304,-13.49439 29.96304,-29.96304v-56.03696v-56.03696c0,-16.46866 -13.49439,-29.96304 -29.96304,-29.96304h-56.03696zM29.96304,13.23077h56.03696h56.03696c9.31811,0 16.73227,7.41416 16.73227,16.73227v56.03696v56.03696c0,9.31811 -7.41416,16.73227 -16.73227,16.73227h-56.03696h-56.03696c-9.31811,0 -16.73227,-7.41416 -16.73227,-16.73227v-56.03696v-56.03696c0,-9.31811 7.41416,-16.73227 16.73227,-16.73227zM33.80048,46.30769c-1.40246,0.00827 -2.81113,0.55001 -3.8762,1.61508l-8.46304,8.42428c-2.16323,2.15 -2.16323,5.64148 0,7.77825l60.63672,59.96484c1.07169,1.0717 2.49297,1.60217 3.90204,1.60217c1.40908,0 2.83035,-0.53047 3.90204,-1.60217l60.62379,-59.96484c2.16323,-2.15 2.16954,-5.63486 0.01292,-7.77825l-8.46304,-8.4372c-2.13677,-2.13015 -5.58917,-2.14245 -7.7524,-0.03876l-48.32332,47.10878l-48.32332,-47.10878c-1.07831,-1.05185 -2.47374,-1.57167 -3.8762,-1.5634z"></path></g></g></svg>
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row navMenu">
+            <div class="col-sm-4">
+                <a href="index.html"><img src="img/logo.png" width="300px"></a>
+            </div>
+            <div class="col-sm-2 menuItem">
+            </div>
+            <div class="col-sm-2 menuItem">
+                <a class="menuItem" href="index.html">Homepage</a>
+            </div>
+            <div class="col-sm-2 menuItem">
+                <a class="menuItem" href="details.html">Personal details</a>
+            </div>
+            <div class="col-sm-2 menuItem">
+                <a class="menuItem" href="payments.html">Payments</a>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <Br>
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#details">My details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#edit">Edit </a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div id="details" class="container tab-pane active"><br>
+                <h3>PERSONAL DETAILS</h3>
+                <br>
+                <p>Full Name:</p>
+                <p>Email:</p>
+                <p>Phone Number:</p>
+                <p>Hourly wage:</p>
+            </diV>
+            <div id="edit" class="container tab-pane fade"><br>
+
+                <div class="container">
+                    <h3>EDIT DETAILS</h3>
+                    <form action="#">
+                        <div class="form-group">
+                            <label for="flnm">Full Name:</label>
+                            <input type="text" class="form-control" id="usr" name="fullname">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="pwd" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="pnm">Phone Number:</label>
+                            <input type="text" class="form-control" id="usr" name="fullname">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="pwd" name="password">
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        $(document).ready(function() {
+            $(".nav-tabs a").click(function() {
+                $(this).tab('show');
+            });
+        });
+
+
+        //https://www.arclab.com/en/kb/htmlcss/display-date-time-javascript-php-ssi.html
+        var today = new Date();
+        document.getElementById('dtText').innerHTML = (("0" + today.getDate()).slice(-2)) + "/" + (("0" + (today.getMonth() + 1)).slice(-2)) + "/" + (today.getFullYear()) + " " + (("0" + today.getHours()).slice(-2)) + ":" + (("0" + today.getMinutes()).slice(-2));
+    </script>
+</body>
+
+</html>
