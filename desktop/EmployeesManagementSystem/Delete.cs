@@ -19,6 +19,7 @@ namespace EmployeesManagementSystem
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            this.databaseContext.DeleteShiftOfUser(this.id);
             this.databaseContext.DeleteUser(this.id);
             this.dashboard.UpdateDashboard();
             this.Close();

@@ -59,9 +59,9 @@
             this.createAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createAccount.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createAccount.ForeColor = System.Drawing.SystemColors.Control;
-            this.createAccount.Location = new System.Drawing.Point(135, 576);
+            this.createAccount.Location = new System.Drawing.Point(143, 609);
             this.createAccount.Name = "createAccount";
-            this.createAccount.Size = new System.Drawing.Size(157, 38);
+            this.createAccount.Size = new System.Drawing.Size(179, 38);
             this.createAccount.TabIndex = 25;
             this.createAccount.Text = "Create Account";
             this.createAccount.UseVisualStyleBackColor = false;
@@ -71,8 +71,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Location = new System.Drawing.Point(67, 250);
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(79, 266);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 21);
             this.label1.TabIndex = 23;
@@ -83,7 +83,7 @@
             this.tbFullName.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbFullName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbFullName.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbFullName.Location = new System.Drawing.Point(71, 274);
+            this.tbFullName.Location = new System.Drawing.Point(83, 290);
             this.tbFullName.Name = "tbFullName";
             this.tbFullName.Size = new System.Drawing.Size(300, 22);
             this.tbFullName.TabIndex = 1;
@@ -91,7 +91,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel2.Location = new System.Drawing.Point(71, 302);
+            this.panel2.Location = new System.Drawing.Point(83, 312);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(300, 1);
             this.panel2.TabIndex = 19;
@@ -100,8 +100,8 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label5.Location = new System.Drawing.Point(73, 455);
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label5.Location = new System.Drawing.Point(79, 467);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 21);
             this.label5.TabIndex = 32;
@@ -111,19 +111,19 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label6.Location = new System.Drawing.Point(67, 383);
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label6.Location = new System.Drawing.Point(79, 397);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 21);
+            this.label6.Size = new System.Drawing.Size(113, 21);
             this.label6.TabIndex = 31;
-            this.label6.Text = "Phone";
+            this.label6.Text = "Phone number";
             // 
             // tbPhone
             // 
             this.tbPhone.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbPhone.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbPhone.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPhone.Location = new System.Drawing.Point(71, 407);
+            this.tbPhone.Location = new System.Drawing.Point(83, 416);
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(300, 22);
             this.tbPhone.TabIndex = 3;
@@ -134,7 +134,7 @@
             this.tbHourlyRate.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbHourlyRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbHourlyRate.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHourlyRate.Location = new System.Drawing.Point(72, 477);
+            this.tbHourlyRate.Location = new System.Drawing.Point(82, 488);
             this.tbHourlyRate.Name = "tbHourlyRate";
             this.tbHourlyRate.Size = new System.Drawing.Size(300, 22);
             this.tbHourlyRate.TabIndex = 4;
@@ -142,7 +142,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel4.Location = new System.Drawing.Point(73, 505);
+            this.panel4.Location = new System.Drawing.Point(82, 512);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(300, 1);
             this.panel4.TabIndex = 28;
@@ -150,7 +150,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel5.Location = new System.Drawing.Point(71, 435);
+            this.panel5.Location = new System.Drawing.Point(83, 440);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(300, 1);
             this.panel5.TabIndex = 27;
@@ -158,7 +158,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel3.Location = new System.Drawing.Point(70, 312);
+            this.panel3.Location = new System.Drawing.Point(80, 322);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(300, 0);
             this.panel3.TabIndex = 20;
@@ -167,8 +167,8 @@
             // 
             this.lbEmail.AutoSize = true;
             this.lbEmail.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEmail.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lbEmail.Location = new System.Drawing.Point(65, 315);
+            this.lbEmail.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lbEmail.Location = new System.Drawing.Point(79, 330);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(48, 21);
             this.lbEmail.TabIndex = 35;
@@ -179,7 +179,7 @@
             this.tbEmail.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbEmail.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEmail.Location = new System.Drawing.Point(69, 339);
+            this.tbEmail.Location = new System.Drawing.Point(82, 349);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(300, 22);
             this.tbEmail.TabIndex = 2;
@@ -187,7 +187,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel6.Location = new System.Drawing.Point(69, 367);
+            this.panel6.Location = new System.Drawing.Point(83, 372);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(300, 1);
             this.panel6.TabIndex = 33;
@@ -201,7 +201,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(468, 231);
+            this.panel1.Size = new System.Drawing.Size(464, 231);
             this.panel1.TabIndex = 36;
             // 
             // exit
@@ -222,7 +222,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Calibri", 30F);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(126, 89);
+            this.label3.Location = new System.Drawing.Point(145, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(177, 61);
             this.label3.TabIndex = 0;
@@ -232,8 +232,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(73, 519);
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(78, 531);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 21);
             this.label2.TabIndex = 39;
@@ -244,7 +244,7 @@
             this.txtPassword.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(72, 541);
+            this.txtPassword.Location = new System.Drawing.Point(82, 555);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(300, 22);
             this.txtPassword.TabIndex = 37;
@@ -252,7 +252,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel7.Location = new System.Drawing.Point(73, 569);
+            this.panel7.Location = new System.Drawing.Point(83, 579);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(300, 1);
             this.panel7.TabIndex = 38;
@@ -261,7 +261,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 689);
+            this.ClientSize = new System.Drawing.Size(464, 689);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.panel7);
@@ -282,6 +282,7 @@
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CreateAccounts";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateAccounts";
             this.Load += new System.EventHandler(this.CreateAccounts_Load);
             this.panel1.ResumeLayout(false);

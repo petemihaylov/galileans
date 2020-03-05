@@ -28,7 +28,6 @@ namespace EmployeesManagementSystem
                 throw new Exception("Can't display info correctly");
             }
         }
-
         public void UpdateDashboard()
         {
                 this.dataGridView.Rows.Clear();
@@ -38,14 +37,6 @@ namespace EmployeesManagementSystem
                     this.dataGridView.Rows.Add(user.GetInfo());
                 }
         }
-        private void exit_Click(object sender, EventArgs e)
-        {
-
-            databaseContext.Dispose(true);
-            this.Close();
-        }
-
-
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int Details = 4;
@@ -72,7 +63,42 @@ namespace EmployeesManagementSystem
         }
 
 
-               
+        // Buttons
+        private void exit_Click(object sender, EventArgs e)
+        {
+            // Closing the db connection 
+            databaseContext.Dispose(true);
+            this.Close();
+            // exiting properly the application
+            if (Application.MessageLoop)
+            {
+                Application.Exit();
+            }
+
+        }
+        private void btn4_Click(object sender, EventArgs e)
+        {
+            databaseContext.Dispose(true);
+            this.Hide();
+            // Show Dashboard
+            Shifts shifts = new Shifts();
+            shifts.Closed += (s, args) => this.Close();
+            shifts.Show();
+        }
+        private void createPanel_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Opacity = 0.2;
+            CreateAccounts createAccounts = new CreateAccounts(this);
+            createAccounts.Show();
+        }
+
+        private void lbCreate_Click(object sender, EventArgs e)
+        {
+            this.Opacity = 0.2;
+            CreateAccounts createAccounts = new CreateAccounts(this);
+            createAccounts.Show();
+        }
+
         // Hovering
         private void exit_MouseEnter(object sender, EventArgs e)
         {
@@ -82,7 +108,6 @@ namespace EmployeesManagementSystem
         {
             this.exit.BackColor = Color.White;
         }
-
         private void btn1_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.DarkGray;
@@ -94,7 +119,6 @@ namespace EmployeesManagementSystem
             Color color = Color.LightGray;
             this.btn1.BackColor = color;
         }
-
         private void btn2_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.DarkGray;
@@ -105,8 +129,7 @@ namespace EmployeesManagementSystem
 
             Color color = Color.LightGray;
             this.btn2.BackColor = color;
-        }
-        
+        }      
         private void btn3_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.DarkGray;
@@ -119,150 +142,28 @@ namespace EmployeesManagementSystem
             Color color = Color.LightGray;
 
             this.btn3.BackColor = color;
-        }
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelAccount_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel6_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-            CreateAccounts createAccount= new CreateAccounts(this);
-            createAccount.Show();
-
-        }
-
-        private void pictureBox10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        // hovering of btnShifts
+        }      
         private void btn4_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.DarkGray;
             this.btn4.BackColor = color;
         }
-
         private void btn4_MouseLeave(object sender, EventArgs e)
         {
             Color color = Color.LightGray;
             this.btn4.BackColor = color;
         }
-
-        private void btn4_Click(object sender, EventArgs e)
+        private void createPanel_MouseEnter(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
-            this.Hide();
-            // Show Dashboard
-            Shifts shifts = new Shifts();
-            shifts.Closed += (s, args) => this.Close();
-            shifts.Show();
+            Color color = Color.LightGray;
+            this.createPanel.BackColor = color;
         }
+        private void createPanel_MouseLeave(object sender, EventArgs e)
+        {
+
+            Color color = Color.DarkGray;
+            this.createPanel.BackColor = color;
+        }
+
     }
 }

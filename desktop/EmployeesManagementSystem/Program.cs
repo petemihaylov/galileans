@@ -18,7 +18,8 @@ namespace EmployeesManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new Dashboard());
+            // admin@gmail.com password is: admin
+            Application.Run(new Login());
         }
     }
 }

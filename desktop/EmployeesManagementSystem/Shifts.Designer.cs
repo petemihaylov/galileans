@@ -82,6 +82,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.morningList = new System.Windows.Forms.ListBox();
+            this.afternoonList = new System.Windows.Forms.ListBox();
+            this.eveningList = new System.Windows.Forms.ListBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
@@ -388,6 +391,9 @@
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(230, 41);
             this.btn1.TabIndex = 7;
+            this.btn1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn1_MouseClick);
+            this.btn1.MouseEnter += new System.EventHandler(this.btn1_MouseEnter);
+            this.btn1.MouseLeave += new System.EventHandler(this.btn1_MouseLeave);
             // 
             // label7
             // 
@@ -675,7 +681,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(828, 381);
+            this.label13.Location = new System.Drawing.Point(831, 381);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(116, 27);
             this.label13.TabIndex = 52;
@@ -691,11 +697,59 @@
             this.label14.TabIndex = 51;
             this.label14.Text = "Morning";
             // 
+            // morningList
+            // 
+            this.morningList.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.morningList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.morningList.ColumnWidth = 100;
+            this.morningList.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.morningList.FormattingEnabled = true;
+            this.morningList.ItemHeight = 21;
+            this.morningList.Location = new System.Drawing.Point(304, 439);
+            this.morningList.Margin = new System.Windows.Forms.Padding(10);
+            this.morningList.Name = "morningList";
+            this.morningList.Size = new System.Drawing.Size(366, 336);
+            this.morningList.Sorted = true;
+            this.morningList.TabIndex = 54;
+            // 
+            // afternoonList
+            // 
+            this.afternoonList.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.afternoonList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.afternoonList.ColumnWidth = 100;
+            this.afternoonList.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.afternoonList.FormattingEnabled = true;
+            this.afternoonList.ItemHeight = 21;
+            this.afternoonList.Location = new System.Drawing.Point(707, 439);
+            this.afternoonList.Margin = new System.Windows.Forms.Padding(10);
+            this.afternoonList.Name = "afternoonList";
+            this.afternoonList.Size = new System.Drawing.Size(366, 336);
+            this.afternoonList.Sorted = true;
+            this.afternoonList.TabIndex = 55;
+            // 
+            // eveningList
+            // 
+            this.eveningList.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.eveningList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.eveningList.ColumnWidth = 100;
+            this.eveningList.Font = new System.Drawing.Font("Lucida Sans Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eveningList.FormattingEnabled = true;
+            this.eveningList.ItemHeight = 21;
+            this.eveningList.Location = new System.Drawing.Point(1110, 439);
+            this.eveningList.Margin = new System.Windows.Forms.Padding(10);
+            this.eveningList.Name = "eveningList";
+            this.eveningList.Size = new System.Drawing.Size(366, 336);
+            this.eveningList.Sorted = true;
+            this.eveningList.TabIndex = 56;
+            // 
             // Shifts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1511, 827);
+            this.Controls.Add(this.eveningList);
+            this.Controls.Add(this.afternoonList);
+            this.Controls.Add(this.morningList);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label13);
@@ -810,5 +864,8 @@
         private System.Windows.Forms.Label monthLeft;
         private System.Windows.Forms.PictureBox arrowRight;
         private System.Windows.Forms.PictureBox arrowLeft;
+        private System.Windows.Forms.ListBox morningList;
+        private System.Windows.Forms.ListBox afternoonList;
+        private System.Windows.Forms.ListBox eveningList;
     }
 }

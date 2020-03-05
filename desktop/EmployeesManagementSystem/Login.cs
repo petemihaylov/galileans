@@ -17,6 +17,8 @@ namespace EmployeesManagementSystem
             clearColor();
 
             //insert data so you can actually login
+             int adminID = databaseContext.GetUserByEmail("admin@gmail.com").ID;
+            databaseContext.DeleteShiftOfUser(adminID);
             databaseContext.DeleteUsersWithEmail("admin@gmail.com");
             databaseContext.InsertUser(new User("admin", "admin@gmail.com", "+31 6430 2303",Hashing.HashPassword("admin"),Role.Administrator.ToString(), -100));
         }

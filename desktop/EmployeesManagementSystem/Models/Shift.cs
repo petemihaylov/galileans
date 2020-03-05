@@ -8,15 +8,25 @@ namespace EmployeesManagementSystem.Models
 {
     class Shift
     {
-        protected List<User> assignedEmployees;
-        protected bool availability;
-        protected DateTime date;
-        
-        public Shift()
-        {
-            this.availability = true;
-            this.assignedEmployees = new List<User>();
-        }
+        public int ID { get; set; }
+        public int AssingedEmployeeID { get; set; }
+       
+        public bool Availability { get; set; }
 
+        public DateTime ShiftDate { get; set; }
+
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+
+        public ShiftType Type { get; set; }
+
+    }
+
+    enum ShiftType
+    {
+        MORNING,
+        AFTERNOON,
+        EVENING,
+        OTHER
     }
 }

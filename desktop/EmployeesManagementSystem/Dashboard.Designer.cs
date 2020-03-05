@@ -66,9 +66,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.createPanel = new System.Windows.Forms.Panel();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbCreate = new System.Windows.Forms.Label();
             this.exit = new System.Windows.Forms.PictureBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -94,7 +94,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            this.panel5.SuspendLayout();
+            this.createPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             this.SuspendLayout();
@@ -345,7 +345,6 @@
             this.label5.Size = new System.Drawing.Size(70, 20);
             this.label5.TabIndex = 3;
             this.label5.Text = "Settings";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // pictureBox2
             // 
@@ -356,7 +355,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // panelAccount
             // 
@@ -368,7 +366,6 @@
             this.panelAccount.Name = "panelAccount";
             this.panelAccount.Size = new System.Drawing.Size(257, 63);
             this.panelAccount.TabIndex = 0;
-            this.panelAccount.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAccount_Paint);
             // 
             // pictureBox1
             // 
@@ -379,7 +376,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -390,7 +386,6 @@
             this.label1.Size = new System.Drawing.Size(116, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Administration";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dataGridView
             // 
@@ -412,7 +407,6 @@
             this.dataGridView.Size = new System.Drawing.Size(1156, 716);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
-            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
             // ID
             // 
@@ -471,13 +465,12 @@
             this.panel4.Controls.Add(this.textBox1);
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.pictureBox10);
-            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Controls.Add(this.createPanel);
             this.panel4.Controls.Add(this.exit);
             this.panel4.Location = new System.Drawing.Point(255, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1260, 63);
             this.panel4.TabIndex = 2;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // textBox1
             // 
@@ -487,7 +480,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(349, 22);
             this.textBox1.TabIndex = 9;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // panel6
             // 
@@ -496,7 +488,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(388, 1);
             this.panel6.TabIndex = 3;
-            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
             // pictureBox10
             // 
@@ -507,19 +498,19 @@
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox10.TabIndex = 4;
             this.pictureBox10.TabStop = false;
-            this.pictureBox10.Click += new System.EventHandler(this.pictureBox10_Click);
             // 
-            // panel5
+            // createPanel
             // 
-            this.panel5.BackColor = System.Drawing.Color.Silver;
-            this.panel5.Controls.Add(this.pictureBox9);
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Location = new System.Drawing.Point(884, 12);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(182, 38);
-            this.panel5.TabIndex = 4;
-            this.panel5.Click += new System.EventHandler(this.label6_Click);
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
+            this.createPanel.BackColor = System.Drawing.Color.DarkGray;
+            this.createPanel.Controls.Add(this.pictureBox9);
+            this.createPanel.Controls.Add(this.lbCreate);
+            this.createPanel.Location = new System.Drawing.Point(884, 12);
+            this.createPanel.Name = "createPanel";
+            this.createPanel.Size = new System.Drawing.Size(182, 38);
+            this.createPanel.TabIndex = 4;
+            this.createPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.createPanel_MouseClick);
+            this.createPanel.MouseEnter += new System.EventHandler(this.createPanel_MouseEnter);
+            this.createPanel.MouseLeave += new System.EventHandler(this.createPanel_MouseLeave);
             // 
             // pictureBox9
             // 
@@ -530,18 +521,17 @@
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox9.TabIndex = 3;
             this.pictureBox9.TabStop = false;
-            this.pictureBox9.Click += new System.EventHandler(this.label6_Click);
             // 
-            // label6
+            // lbCreate
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(62, 10);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 20);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "CREATE";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.lbCreate.AutoSize = true;
+            this.lbCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCreate.Location = new System.Drawing.Point(62, 10);
+            this.lbCreate.Name = "lbCreate";
+            this.lbCreate.Size = new System.Drawing.Size(76, 20);
+            this.lbCreate.TabIndex = 3;
+            this.lbCreate.Text = "CREATE";
+            this.lbCreate.Click += new System.EventHandler(this.lbCreate_Click);
             // 
             // exit
             // 
@@ -620,8 +610,8 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.createPanel.ResumeLayout(false);
+            this.createPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
             this.ResumeLayout(false);
@@ -641,9 +631,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel createPanel;
         private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbCreate;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox textBox1;

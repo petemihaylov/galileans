@@ -42,6 +42,8 @@ namespace EmployeesManagementSystem
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            // Fields should be validated!
+
             databaseContext.UpdateUserInfo(this.ID, tbFullName.Text, tbEmail.Text, tbPassword.Text, tbPhoneNumber.Text, cbRole.Text);           
             databaseContext.Dispose(true);
             MessageBox.Show("User updated!");
@@ -55,11 +57,11 @@ namespace EmployeesManagementSystem
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void picBack_Click(object sender, EventArgs e)
         {
 
             databaseContext.Dispose(true);
-            this.Hide();
+            this.Close();
             // Show Dashboard
             Dashboard dashboard = new Dashboard();
             dashboard.Closed += (s, args) => this.Close();
@@ -71,6 +73,21 @@ namespace EmployeesManagementSystem
         {
             databaseContext.Dispose(true);
             this.Close();
+            // exiting properly the application
+            if (Application.MessageLoop)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void lbBack_Click(object sender, EventArgs e)
+        {
+            databaseContext.Dispose(true);
+            this.Close();
+            // Show Dashboard
+            Dashboard dashboard = new Dashboard();
+            dashboard.Closed += (s, args) => this.Close();
+            dashboard.Show();
         }
     }
 }

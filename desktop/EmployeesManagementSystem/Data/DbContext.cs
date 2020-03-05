@@ -31,7 +31,6 @@ namespace EmployeesManagementSystem
                     this.connection.Dispose();
                 }
             }
-            //GC.SuppressFinalize(this);//Updated
         }
 
         //Get all cancellation announcements
@@ -60,6 +59,49 @@ namespace EmployeesManagementSystem
                     return cancels.ToArray();
                 }
             }
+        }
+
+        public List<Shift> GetAllShifts()
+        {
+
+                var command = new MySqlCommand("SELECT * FROM shifts", connection);
+               
+                // Executing it 
+                using (var reader = command.ExecuteReader())
+                {
+                    List<Shift> shifts = new List<Shift>();
+                    while (reader.Read())
+                    {
+                        // Mapping the return data to the object
+
+                        Shift shift = new Shift();
+                        shift.ID = (int)reader["ID"];
+                        shift.ShiftDate = (DateTime)reader["ShiftDate"];
+
+
+                        shift.AssingedEmployeeID = (int)reader["AssingedEmployeeID"];
+                        shift.Availability = (bool)reader["Availability"];
+                        shift.StartTime= Convert.ToDateTime (((TimeSpan)reader["StartTime"]).ToString());
+                        shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
+                        shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
+
+                        shifts.Add(shift);
+                    }
+                    return shifts;
+                }
+    
+        }
+
+        private ShiftType getShiftTypeByString(string type)
+        {
+            switch (type.ToUpper())
+            {
+                case "MORNING": return ShiftType.MORNING;
+                case "AFTERNOON": return ShiftType.AFTERNOON;
+                case "EVENING": return ShiftType.EVENING;
+                default: break;
+            }
+            return ShiftType.OTHER;
         }
 
         //get all users
@@ -154,13 +196,24 @@ namespace EmployeesManagementSystem
             }
         }
 
+        // Delete shift by user id
+        public void DeleteShiftOfUser(int id)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = @"DELETE FROM Shifts WHERE AssingedEmployeeID = @ID";
+                command.AddParameter("ID", id);
+                command.ExecuteNonQuery();
+            }
+        }
+
         public void DeleteUsersWithEmail(string email)
         {
             using (var command = connection.CreateCommand())
             {
                 command.CommandText = @"DELETE FROM Users WHERE Email = @email";
                 command.AddParameter("email", email);
-                command.ExecuteNonQuery();
+                command.ExecuteNonQuery(); // check if you have deleted the shifts of this user!
             }
         }
 

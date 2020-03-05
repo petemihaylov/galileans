@@ -56,6 +56,7 @@ namespace EmployeesManagementSystem
 
                     User user = new User(fullName, email, phoneNumber, generatedPassword, Role.Employee.ToString(), hourlyRate);
                     databaseContext.InsertUser(user);
+                    dashboard.Opacity = 1;
                     dashboard.UpdateDashboard();
                     Hide();
                 }
@@ -88,6 +89,7 @@ namespace EmployeesManagementSystem
 
         private void exit_Click(object sender, EventArgs e)
         {
+            dashboard.Opacity = 1;
             databaseContext.Dispose(true);
             this.Close();
         }
