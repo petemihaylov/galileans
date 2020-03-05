@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem.Models
 {
-    abstract class Shift
+    class Shift
     {
-        protected User assignedEmployee;
+        protected List<User> assignedEmployees;
+        protected bool availability;
+        protected DateTime date;
+        
+        public Shift()
+        {
+            this.availability = true;
+            this.assignedEmployees = new List<User>();
+        }
+
     }
 }

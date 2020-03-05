@@ -142,3 +142,4 @@ C:\Users\Alex\Desktop\s-cb-s2-cmk\desktop\EmployeesManagementSystem\obj\Debug\Em
 C:\Users\Alex\Desktop\s-cb-s2-cmk\desktop\EmployeesManagementSystem\obj\Debug\EmployeesManagementSystem.csproj.CopyComplete
 C:\Users\Alex\Desktop\s-cb-s2-cmk\desktop\EmployeesManagementSystem\obj\Debug\EmployeesManagementSystem.exe
 C:\Users\Alex\Desktop\s-cb-s2-cmk\desktop\EmployeesManagementSystem\obj\Debug\EmployeesManagementSystem.pdb
+C:\Users\pepsm\Desktop\Project\s-cb-s2-cmk\desktop\EmployeesManagementSystem\obj\Debug\EmployeesManagementSystem.Shifts.resources

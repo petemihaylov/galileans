@@ -38,6 +38,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lbPhoneNumber = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.cbRole = new System.Windows.Forms.ComboBox();
             this.cbDepartment = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -55,9 +57,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.label25 = new System.Windows.Forms.Label();
+            this.dateCenter = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
+            this.monthCenter = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -73,14 +75,14 @@
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.dateLeft = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.monthLeft = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.label26 = new System.Windows.Forms.Label();
+            this.dateRight = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
+            this.monthRight = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -97,8 +99,6 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.tbEmail = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
@@ -252,6 +252,25 @@
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // tbEmail
+            // 
+            this.tbEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbEmail.Location = new System.Drawing.Point(29, 518);
+            this.tbEmail.Multiline = true;
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(349, 22);
+            this.tbEmail.TabIndex = 32;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(24, 496);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 19);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "Email:";
             // 
             // cbRole
             // 
@@ -407,9 +426,9 @@
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.groupBox3.Controls.Add(this.pictureBox16);
-            this.groupBox3.Controls.Add(this.label25);
+            this.groupBox3.Controls.Add(this.dateCenter);
             this.groupBox3.Controls.Add(this.label23);
-            this.groupBox3.Controls.Add(this.label24);
+            this.groupBox3.Controls.Add(this.monthCenter);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox3.Location = new System.Drawing.Point(409, 98);
@@ -428,15 +447,15 @@
             this.pictureBox16.TabIndex = 52;
             this.pictureBox16.TabStop = false;
             // 
-            // label25
+            // dateCenter
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(33, 18);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(53, 38);
-            this.label25.TabIndex = 50;
-            this.label25.Text = "12";
+            this.dateCenter.AutoSize = true;
+            this.dateCenter.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateCenter.Location = new System.Drawing.Point(33, 18);
+            this.dateCenter.Name = "dateCenter";
+            this.dateCenter.Size = new System.Drawing.Size(53, 38);
+            this.dateCenter.TabIndex = 50;
+            this.dateCenter.Text = "12";
             // 
             // label23
             // 
@@ -448,15 +467,15 @@
             this.label23.TabIndex = 53;
             this.label23.Text = "available";
             // 
-            // label24
+            // monthCenter
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(35, 57);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(48, 23);
-            this.label24.TabIndex = 51;
-            this.label24.Text = "FEB";
+            this.monthCenter.AutoSize = true;
+            this.monthCenter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthCenter.Location = new System.Drawing.Point(35, 57);
+            this.monthCenter.Name = "monthCenter";
+            this.monthCenter.Size = new System.Drawing.Size(48, 23);
+            this.monthCenter.TabIndex = 51;
+            this.monthCenter.Text = "FEB";
             // 
             // label8
             // 
@@ -599,9 +618,9 @@
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.groupBox2.Controls.Add(this.pictureBox15);
-            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.dateLeft);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.monthLeft);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox2.Location = new System.Drawing.Point(218, 78);
@@ -620,15 +639,15 @@
             this.pictureBox15.TabIndex = 52;
             this.pictureBox15.TabStop = false;
             // 
-            // label9
+            // dateLeft
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(33, 18);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 38);
-            this.label9.TabIndex = 50;
-            this.label9.Text = "11";
+            this.dateLeft.AutoSize = true;
+            this.dateLeft.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateLeft.Location = new System.Drawing.Point(33, 18);
+            this.dateLeft.Name = "dateLeft";
+            this.dateLeft.Size = new System.Drawing.Size(51, 38);
+            this.dateLeft.TabIndex = 50;
+            this.dateLeft.Text = "11";
             // 
             // label10
             // 
@@ -640,23 +659,23 @@
             this.label10.TabIndex = 53;
             this.label10.Text = "taken";
             // 
-            // label22
+            // monthLeft
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(35, 57);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(48, 23);
-            this.label22.TabIndex = 51;
-            this.label22.Text = "FEB";
+            this.monthLeft.AutoSize = true;
+            this.monthLeft.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthLeft.Location = new System.Drawing.Point(35, 57);
+            this.monthLeft.Name = "monthLeft";
+            this.monthLeft.Size = new System.Drawing.Size(48, 23);
+            this.monthLeft.TabIndex = 51;
+            this.monthLeft.Text = "FEB";
             // 
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.groupBox4.Controls.Add(this.pictureBox17);
-            this.groupBox4.Controls.Add(this.label26);
+            this.groupBox4.Controls.Add(this.dateRight);
             this.groupBox4.Controls.Add(this.label27);
-            this.groupBox4.Controls.Add(this.label28);
+            this.groupBox4.Controls.Add(this.monthRight);
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox4.Location = new System.Drawing.Point(600, 78);
@@ -675,15 +694,15 @@
             this.pictureBox17.TabIndex = 52;
             this.pictureBox17.TabStop = false;
             // 
-            // label26
+            // dateRight
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(33, 18);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(53, 38);
-            this.label26.TabIndex = 50;
-            this.label26.Text = "13";
+            this.dateRight.AutoSize = true;
+            this.dateRight.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateRight.Location = new System.Drawing.Point(33, 18);
+            this.dateRight.Name = "dateRight";
+            this.dateRight.Size = new System.Drawing.Size(53, 38);
+            this.dateRight.TabIndex = 50;
+            this.dateRight.Text = "13";
             // 
             // label27
             // 
@@ -695,15 +714,15 @@
             this.label27.TabIndex = 53;
             this.label27.Text = "available";
             // 
-            // label28
+            // monthRight
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(35, 57);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(48, 23);
-            this.label28.TabIndex = 51;
-            this.label28.Text = "FEB";
+            this.monthRight.AutoSize = true;
+            this.monthRight.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthRight.Location = new System.Drawing.Point(35, 57);
+            this.monthRight.Name = "monthRight";
+            this.monthRight.Size = new System.Drawing.Size(48, 23);
+            this.monthRight.TabIndex = 51;
+            this.monthRight.Text = "FEB";
             // 
             // groupBox5
             // 
@@ -883,25 +902,6 @@
             this.groupBox6.TabIndex = 55;
             this.groupBox6.TabStop = false;
             // 
-            // tbEmail
-            // 
-            this.tbEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbEmail.Location = new System.Drawing.Point(29, 518);
-            this.tbEmail.Multiline = true;
-            this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(349, 22);
-            this.tbEmail.TabIndex = 32;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(24, 496);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 19);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "Email:";
-            // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1024,19 +1024,19 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.PictureBox pictureBox16;
-        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label dateCenter;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label monthCenter;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pictureBox15;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label dateLeft;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label monthLeft;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.PictureBox pictureBox17;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label dateRight;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label monthRight;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.PictureBox pictureBox18;
         private System.Windows.Forms.Button button3;
