@@ -18,7 +18,7 @@ namespace EmployeesManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new Shifts());
+            Application.Run(new Dashboard());
         }
     }
 }

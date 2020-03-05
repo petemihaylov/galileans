@@ -42,16 +42,17 @@ namespace EmployeesManagementSystem
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Noting was save or updated! Check me!");
-
-
+            databaseContext.UpdateUserInfo(this.ID, tbFullName.Text, tbEmail.Text, tbPassword.Text, tbPhoneNumber.Text, cbRole.Text);           
             databaseContext.Dispose(true);
+            MessageBox.Show("User updated!");
+
+
             this.Hide();
-            
             // Show Dashboard
             Dashboard dashboard = new Dashboard();
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

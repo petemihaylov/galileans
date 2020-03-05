@@ -210,40 +210,23 @@ namespace EmployeesManagementSystem
             }
         }
         //Update the user details.
-        public User UpdateUserInfo()
+        public void UpdateUserInfo(int id, string fullName, string email, string password, string phoneNumber, string role)
         {
             using (var command = connection.CreateCommand())
             {
                 // Select statement
-                command.CommandText = @"UPDATE users SET FullName = @fullName, Email = @email, PhoneNumber = @phoneNumber, Password = @password, Role = @role WHERE ID = @ID";
+                command.CommandText = @"UPDATE users SET FullName = @fullname, Email = @email, PhoneNumber = @phonenumber, Password = @password, Role = @role WHERE ID = @ID";
+                command.AddParameter("ID", id);
                 // Executing it 
-                using (var reader = command.ExecuteReader())
-                {
-                    User user = new User();
-                    if (reader.Read())
-                    {
-                        // Mapping the return data to the object
-                        user.ID = (int)reader["ID"];
-                        user.FullName = (string)reader["FullName"];
-                        user.Email = (string)reader["Email"];
-                        user.Password = (string)reader["Password"];
-                        user.Role = (string)reader["Role"];
-                        user.HourlyRate = (float)reader["HourlyRate"];
-                        user.PhoneNumber = (string)reader["PhoneNumber"];
-                    }
-                    else
-                    {
-                        return null;
-                    }
-
-                    // getting the actual user
-                    return user;
-                }
+                command.Parameters.AddWithValue("@fullname", fullName);
+                command.Parameters.AddWithValue("@email", email);
+                command.Parameters.AddWithValue("@phonenumber", phoneNumber);
+                command.Parameters.AddWithValue("@password", password);
+                command.Parameters.AddWithValue("@role", role);
+                command.ExecuteNonQuery();
             }
         }
     }
-
-    
 
     public static class CommandExtensions
     {
