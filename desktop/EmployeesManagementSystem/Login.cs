@@ -17,10 +17,14 @@ namespace EmployeesManagementSystem
             clearColor();
 
             //insert data so you can actually login
-             int adminID = databaseContext.GetUserByEmail("admin@gmail.com").ID;
-            databaseContext.DeleteShiftOfUser(adminID);
-            databaseContext.DeleteUsersWithEmail("admin@gmail.com");
-            databaseContext.InsertUser(new User("admin", "admin@gmail.com", "+31 6430 2303",Hashing.HashPassword("admin"),Role.Administrator.ToString(), -100));
+            var user = databaseContext.GetUserByEmail("admin");
+            if (user != null)
+            {
+                int adminID = user.ID;
+                databaseContext.DeleteShiftOfUser(adminID);
+                databaseContext.DeleteUsersWithEmail("admin");
+            }
+            databaseContext.InsertUser(new User("admin", "admin", "+31 6430 2303",Hashing.HashPassword("admin"),Role.Administrator.ToString(), -100));
         }
 
 
@@ -30,7 +34,7 @@ namespace EmployeesManagementSystem
             clearColor();
             string email = this.tbEmail.Text;
             string password = this.tbPassword.Text;
-
+            
             // Validation with isNullOrEmpty you can pass with a single \t or space the WhiteSpace is securer
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
@@ -39,7 +43,7 @@ namespace EmployeesManagementSystem
             }
             else
             {
-                if (!IsEmailValid(email))
+                if (!IsEmailValid(email) && email != "admin")
                 {
                     // Indicates only the email
                     this.labelEmail.Text = "Email *";

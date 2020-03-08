@@ -9,7 +9,7 @@ namespace EmployeesManagementSystem.Models
     class Shift
     {
         public int ID { get; set; }
-        public int AssingedEmployeeID { get; set; }
+        public int AssignedEmployeeID { get; set; }
        
         public bool Availability { get; set; }
 
@@ -20,6 +20,16 @@ namespace EmployeesManagementSystem.Models
 
         public ShiftType Type { get; set; }
 
+        public Shift() { }
+        public Shift( int assignedEmployeeID, bool availability, DateTime shiftDate, DateTime startTime, DateTime endTime, ShiftType type)
+        {
+            AssignedEmployeeID = assignedEmployeeID;
+            Availability = availability;
+            ShiftDate = shiftDate;
+            StartTime = startTime;
+            EndTime = endTime;
+            Type = type;
+        }
     }
 
     enum ShiftType

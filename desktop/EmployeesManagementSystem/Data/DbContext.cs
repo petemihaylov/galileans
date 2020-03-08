@@ -61,11 +61,27 @@ namespace EmployeesManagementSystem
             }
         }
 
+        public void InsertShift(Shift shift)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = @"INSERT INTO Shifts (AssignedEmployeeID, Availability, ShiftDate, StartTime, EndTime, ShiftType)"+
+                " VALUES(@userId, @availability, @date, @startTime, @endTime, @shiftType)";
+
+
+                command.AddParameter("userId", shift.AssignedEmployeeID);
+                command.AddParameter("availability", shift.Availability);
+                command.AddParameter("date", shift.ShiftDate);
+                command.AddParameter("startTime", shift.StartTime);
+                command.AddParameter("endTime", shift.EndTime);
+                command.AddParameter("shiftType", shift.Type.ToString());
+                command.ExecuteNonQuery();
+            }
+        }
         public List<Shift> GetAllShifts()
         {
 
-                var command = new MySqlCommand("SELECT * FROM shifts", connection);
-               
+                var command = new MySqlCommand("SELECT * FROM shifts", connection);     
                 // Executing it 
                 using (var reader = command.ExecuteReader())
                 {
@@ -79,7 +95,7 @@ namespace EmployeesManagementSystem
                         shift.ShiftDate = (DateTime)reader["ShiftDate"];
 
 
-                        shift.AssingedEmployeeID = (int)reader["AssingedEmployeeID"];
+                        shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
                         shift.Availability = (bool)reader["Availability"];
                         shift.StartTime= Convert.ToDateTime (((TimeSpan)reader["StartTime"]).ToString());
                         shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
@@ -201,7 +217,7 @@ namespace EmployeesManagementSystem
         {
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = @"DELETE FROM Shifts WHERE AssingedEmployeeID = @ID";
+                command.CommandText = @"DELETE FROM Shifts WHERE AssignedEmployeeID = @ID";
                 command.AddParameter("ID", id);
                 command.ExecuteNonQuery();
             }
@@ -225,6 +241,52 @@ namespace EmployeesManagementSystem
                 command.CommandText = @"DELETE FROM shiftcancellation WHERE ID = @ID";
                 command.AddParameter("ID", id);
                 command.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteShiftByID(int id)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = @"DELETE FROM Shifts WHERE ID = @ID";
+                command.AddParameter("ID", id);
+                command.ExecuteNonQuery();
+            }
+        }
+        public Shift GetShiftByDate(DateTime date, DateTime startTime)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                // Select statement
+                command.CommandText = @"SELECT * FROM Shifts WHERE  ShiftDate = @shiftDate and StartTime = @startTime";
+                command.AddParameter("shiftDate", date);
+                command.AddParameter("startTime", startTime);
+
+                // Executing it 
+                using (var reader = command.ExecuteReader())
+                {
+                    Shift shift = new Shift();
+                    if (reader.Read())
+                    {
+                        // Mapping the return data to the object
+                        shift.ID = (int)reader["ID"];
+
+
+                        shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
+                        shift.Availability = (bool)reader["Availability"];
+                        shift.ShiftDate = (DateTime)reader["ShiftDate"];
+                        shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
+                        shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
+                        shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
+
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                    return shift;
+                }
             }
         }
 

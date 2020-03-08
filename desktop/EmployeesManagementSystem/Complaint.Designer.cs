@@ -62,6 +62,7 @@
             this.subject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.description = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.txDescription = new System.Windows.Forms.TextBox();
             this.panelLeft.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -341,7 +342,7 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 30;
-            this.dataGridView.Size = new System.Drawing.Size(1156, 716);
+            this.dataGridView.Size = new System.Drawing.Size(1156, 370);
             this.dataGridView.TabIndex = 7;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
@@ -417,6 +418,7 @@
             // description
             // 
             this.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.description.FillWeight = 400F;
             this.description.HeaderText = "Description";
             this.description.MinimumWidth = 6;
             this.description.Name = "description";
@@ -429,11 +431,20 @@
             this.Delete.Name = "Delete";
             this.Delete.Width = 55;
             // 
+            // txDescription
+            // 
+            this.txDescription.Location = new System.Drawing.Point(279, 478);
+            this.txDescription.Multiline = true;
+            this.txDescription.Name = "txDescription";
+            this.txDescription.Size = new System.Drawing.Size(1140, 298);
+            this.txDescription.TabIndex = 9;
+            // 
             // Complaint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1455, 816);
+            this.Controls.Add(this.txDescription);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.panel4);
@@ -467,6 +478,7 @@
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -506,5 +518,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn subject;
         private System.Windows.Forms.DataGridViewButtonColumn description;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.TextBox txDescription;
     }
 }

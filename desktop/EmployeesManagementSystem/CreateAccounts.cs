@@ -36,7 +36,9 @@ namespace EmployeesManagementSystem
                 try
                 {
                     string fullName = this.tbFullName.Text;
+                   
                     float hourlyRate = float.Parse(this.tbHourlyRate.Text); //tbHourlyRate can be -123
+                    
                     string email = this.tbEmail.Text;
                     string phoneNumber = this.tbPhone.Text;
 
@@ -64,6 +66,7 @@ namespace EmployeesManagementSystem
                 {
                     //throw new FormatException("the message should be here");
                     MessageBox.Show(ex.Message);
+
                 }
             }
 

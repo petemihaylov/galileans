@@ -501,7 +501,7 @@
             // 
             // createPanel
             // 
-            this.createPanel.BackColor = System.Drawing.Color.DarkGray;
+            this.createPanel.BackColor = System.Drawing.Color.LightGray;
             this.createPanel.Controls.Add(this.pictureBox9);
             this.createPanel.Controls.Add(this.lbCreate);
             this.createPanel.Location = new System.Drawing.Point(884, 12);

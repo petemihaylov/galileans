@@ -55,7 +55,7 @@ namespace EmployeesManagementSystem
             this.morningList.Items.Clear();
             foreach (var item in morning)
             {
-                this.morningList.Items.Add(item.StartTime.ToString("hh:mm tt") + " - " + item.EndTime.ToString("hh:mm tt") + " " + databaseContext.GetUserByID(item.AssingedEmployeeID).FullName);
+                this.morningList.Items.Add(item.StartTime.ToString("hh:mm tt") + " - " + item.EndTime.ToString("hh:mm tt") + " " + databaseContext.GetUserByID(item.AssignedEmployeeID).FullName);
             }
 
             // EVENING
@@ -63,7 +63,7 @@ namespace EmployeesManagementSystem
             this.eveningList.Items.Clear();
             foreach (var item in evening)
             {
-               this.morningList.Items.Add(item.StartTime.ToString("hh:mm tt") + " - " + item.EndTime.ToString("hh:mm tt") + " " + databaseContext.GetUserByID(item.AssingedEmployeeID).FullName);
+               this.morningList.Items.Add(item.StartTime.ToString("hh:mm tt") + " - " + item.EndTime.ToString("hh:mm tt") + " " + databaseContext.GetUserByID(item.AssignedEmployeeID).FullName);
             }
 
             // AFTERNOON
@@ -71,7 +71,7 @@ namespace EmployeesManagementSystem
             this.afternoonList.Items.Clear();
             foreach (var item in afternoon)
             {
-                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm tt") + " - " + item.EndTime.ToString("hh:mm tt") + " " + databaseContext.GetUserByID(item.AssingedEmployeeID).FullName);
+                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm tt") + " - " + item.EndTime.ToString("hh:mm tt") + " " + databaseContext.GetUserByID(item.AssignedEmployeeID).FullName);
             }
 
         }
@@ -113,7 +113,6 @@ namespace EmployeesManagementSystem
             }
             return list;
         }
-
 
         private void exit_Click(object sender, EventArgs e)
         {

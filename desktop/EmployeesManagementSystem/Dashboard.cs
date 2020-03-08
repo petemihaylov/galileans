@@ -69,6 +69,7 @@ namespace EmployeesManagementSystem
             // Closing the db connection 
             databaseContext.Dispose(true);
             this.Close();
+
             // exiting properly the application
             if (Application.MessageLoop)
             {
@@ -87,14 +88,13 @@ namespace EmployeesManagementSystem
         }
         private void createPanel_MouseClick(object sender, MouseEventArgs e)
         {
-            this.Opacity = 0.2;
+            this.Opacity = 0.6;
             CreateAccounts createAccounts = new CreateAccounts(this);
             createAccounts.Show();
         }
-
         private void lbCreate_Click(object sender, EventArgs e)
         {
-            this.Opacity = 0.2;
+            this.Opacity = 0.6;
             CreateAccounts createAccounts = new CreateAccounts(this);
             createAccounts.Show();
         }
@@ -155,15 +155,14 @@ namespace EmployeesManagementSystem
         }
         private void createPanel_MouseEnter(object sender, EventArgs e)
         {
-            Color color = Color.LightGray;
+            Color color = Color.DarkGray;
             this.createPanel.BackColor = color;
         }
         private void createPanel_MouseLeave(object sender, EventArgs e)
         {
 
-            Color color = Color.DarkGray;
+            Color color = Color.LightGray;
             this.createPanel.BackColor = color;
         }
-
     }
 }
