@@ -63,7 +63,7 @@
             this.Details = new System.Windows.Forms.DataGridViewImageColumn();
             this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchField = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.createPanel = new System.Windows.Forms.Panel();
@@ -462,7 +462,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.searchField);
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.pictureBox10);
             this.panel4.Controls.Add(this.createPanel);
@@ -472,14 +472,15 @@
             this.panel4.Size = new System.Drawing.Size(1260, 63);
             this.panel4.TabIndex = 2;
             // 
-            // textBox1
+            // searchField
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(260, 25);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(349, 22);
-            this.textBox1.TabIndex = 9;
+            this.searchField.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchField.Location = new System.Drawing.Point(260, 25);
+            this.searchField.Multiline = true;
+            this.searchField.Name = "searchField";
+            this.searchField.Size = new System.Drawing.Size(349, 22);
+            this.searchField.TabIndex = 9;
+            this.searchField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchField_KeyPress);
             // 
             // panel6
             // 
@@ -636,7 +637,7 @@
         private System.Windows.Forms.Label lbCreate;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchField;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox11;

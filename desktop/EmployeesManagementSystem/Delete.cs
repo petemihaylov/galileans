@@ -35,11 +35,13 @@ namespace EmployeesManagementSystem
         {
 
             databaseContext.Dispose(true);
+            FormState.PreviousPage.Show();
             this.Close();
         }
 
         private void back_Click(object sender, EventArgs e)
         {
+            databaseContext.Dispose(true);
             FormState.PreviousPage.Show();
             this.Hide();
             FormState.PreviousPage = this;
@@ -49,6 +51,7 @@ namespace EmployeesManagementSystem
         {
 
             databaseContext.Dispose(true);
+            FormState.PreviousPage.Show();
             this.Close();
         }
 

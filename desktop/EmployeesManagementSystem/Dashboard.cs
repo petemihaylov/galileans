@@ -1,20 +1,46 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using EmployeesManagementSystem.Models;
 using static EmployeesManagementSystem.Program;
 
 namespace EmployeesManagementSystem
 {
+
+    // Remove White Spaces
+    public static class Extensions
+    {
+        public static string RemoveWhiteSpaces(this string str)
+        {
+            return Regex.Replace(str, @"\s+|\t|\n|\r", String.Empty);
+        }
+    }
+
     public partial class Dashboard : Form
     {
         // Load a Database context
         private DbContext databaseContext = new DbContext();
-        
+
+        // Variables
+        private User[] users;
+        private DataTable table;
+
+        // Additional variables
+        private int seeder;
+
+        //  Getters and Setters
+        public User[] Users { get => users; set => users = value; }
+        public DataTable Table { get => table; set => table = value; }
+        public int Seeder { get => seeder; set => seeder = value; }
+
         // Constructor
         public Dashboard()
         {
             InitializeComponent();
+            this.Seeder = 1000;
         }
 
         // Load Dashboard
@@ -22,11 +48,10 @@ namespace EmployeesManagementSystem
         {
             try
             {
-                User[] users = databaseContext.GetAllUsers();
-                foreach(User user in users)
-                {
-                    dataGridView.Rows.Add(user.GetInfo());
-                }
+                this.Users = this.databaseContext.GetAllUsers();
+                this.Table = this.databaseContext.GetUsers();
+                
+                showInformation(this.Users);
             }
             catch (Exception)
             {
@@ -37,12 +62,52 @@ namespace EmployeesManagementSystem
         // Updata dashboard
         public void UpdateDashboard()
         {
-                this.dataGridView.Rows.Clear();
-                User[] users = databaseContext.GetAllUsers();
-                foreach (User user in users)
+            this.dataGridView.Rows.Clear();
+            this.Table = this.databaseContext.GetUsers();
+
+            User[] users = databaseContext.GetAllUsers();
+            showInformation(users);
+        }
+
+        // Search fields
+        private void searchField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        
+            // Pressed enter
+            if (e.KeyChar == (char)13)
+            {
+
+                DataView dv = this.Table.DefaultView;
+         
+                // Filter the rows
+                dv.RowFilter = string.Format("FullName Like '%{0}%'", this.searchField.Text.RemoveWhiteSpaces());
+                if (dv.ToTable().Rows.Count > 0)
                 {
-                    this.dataGridView.Rows.Add(user.GetInfo());
+                    // Get filtered Users info
+                    User[] users = databaseContext.GetAllFilteredUsers(dv.ToTable());
+                    showInformation(users);
                 }
+                else
+                {
+                    User[] users = databaseContext.GetAllUsers();
+                    showInformation(users);
+                }        
+
+            }
+                       
+        }
+
+        // Helper method
+        private void showInformation(User[] users)
+        {
+            // Clean the dataGrid
+            this.dataGridView.Rows.Clear();
+
+            foreach (User user in users)
+            {
+                this.dataGridView.Rows.Add(user.GetInfo());
+            }
+            this.searchField.Text = String.Empty;
         }
 
         // Database grid 
