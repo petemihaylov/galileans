@@ -1,0 +1,237 @@
+/* Imports */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+$deg: 60deg;
+$title-size: 30px;
+$font-size: 12px;
+$font-family: 'Montserrat', sans-serif;
+
+$white: #fff;
+$dark: #1c1c1d;
+
+$blue: #91766ad3;
+$green: #2d756de1;
+$action-color: #2b86bb;
+
+/* Defaults */ 
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body{
+    font-family: $font-family;
+	  background: linear-gradient($deg, $blue, $green); 
+	  background-size: 250% 250%;
+	  animation: gradient 12s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+h1,h2,h3{
+    font-size: $title-size;
+}
+
+.main{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @extend .text-formatting;
+    z-index: 1;
+}
+
+/* Helpers */
+.absolute-centering {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.text-formatting {
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: $font-family;
+    font-size: $font-size;
+}
+
+/* Notification container */
+.form {
+  margin-top: 4vh;
+}
+
+.notification-container {
+    margin-top: 45px;
+    position: relative;
+    background: $white;;
+    border-radius: 1%;
+    height: 80%;
+    width: 80vh;
+    padding: 2%;
+
+    .form-group{
+      margin-bottom: 2.4rem;
+
+      .form-text{
+        font-size: $font-size - 4px;
+      }
+
+      ::placeholder{
+        font-size: $font-size;
+        font-family: $font-family;
+      }
+    }
+}
+
+/* Bubble button */
+
+.sb-button{
+  display: block;
+  height: 100%;
+  animation: hue-rotate 10s linear infinite;
+}
+
+.button {
+  -webkit-font-smoothing: antialiased;
+  background-color: $dark;
+  border: none;
+  color: $white;
+  display: inline-block;
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: 100;
+  text-decoration: none;
+  user-select: none;
+  letter-spacing: 1px;
+  color: $white;
+  padding: 20px 40px;
+  text-transform: uppercase;
+  transition: all 0.1s ease-out;
+
+  &:hover {
+    background-color: $action-color;
+    color: $white;
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &--bubble {
+    position: relative;
+    z-index: 2;
+    color: white;
+    background: none;
+
+    &:hover {
+      background: none;
+    }
+
+    &:hover + .button--bubble__effect-container .circle {
+      background: darken($action-color, 20%);
+    }
+
+    &:hover + .button--bubble__effect-container .button {
+      background: darken($action-color, 20%);
+    }
+
+    &:active + .button--bubble__effect-container {
+      transform: scale(0.95);
+    }
+
+    &__container {
+      position: relative;
+      display: inline-block;
+
+      .effect-button {
+        position: absolute;
+        width: 50%;
+        height: 25%;
+        top: 50%;
+        left: 25%;
+        z-index: 1;
+        transform: translateY(-50%);
+        background: $dark;
+        transition: background 0.1s ease-out;
+      }
+    }
+  }
+}
+
+.button--bubble__effect-container {
+  position: absolute;
+  display: block;
+  width: 200%;
+  height: 400%;
+  top: -150%;
+  left: -50%;
+  -webkit-filter: url("#goo");
+  filter: url("#goo");
+  transition: all 0.1s ease-out;
+  pointer-events: none;
+
+  .circle {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 15px;
+    background: $dark;
+    transition: background 0.1s ease-out;
+
+    &.top-left {
+        top: 40%;
+        left: 27%;
+    }
+
+    &.bottom-right {
+        bottom: 40%;
+        right: 27%;
+    }
+  }
+}
+
+.goo {
+  position: absolute;
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
+
+.button--bubble__container {
+  top: 50%;
+  margin-top: -25px;
+}
+
+@keyframes hue-rotate {
+      from {
+        -webkit-filter: hue-rotate(0);
+        -moz-filter: hue-rotate(0);
+        -ms-filter: hue-rotate(0);
+        filter: hue-rotate(0);
+      }
+      to {
+        -webkit-filter: hue-rotate($deg);
+        -moz-filter: hue-rotate($deg);
+        -ms-filter: hue-rotate($deg);
+        filter: hue-rotate($deg);
+      }
+}
