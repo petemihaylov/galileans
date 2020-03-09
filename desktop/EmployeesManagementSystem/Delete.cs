@@ -43,7 +43,10 @@ namespace EmployeesManagementSystem
         {
             databaseContext.Dispose(true);
             FormState.PreviousPage.Show();
-            this.Hide();
+        
+            databaseContext.Dispose(true);
+            this.Close();
+            // this.Hide();
             FormState.PreviousPage = this;
         }
 

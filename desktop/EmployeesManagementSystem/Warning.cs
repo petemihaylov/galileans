@@ -26,7 +26,9 @@ namespace EmployeesManagementSystem
         private void back_Click(object sender, EventArgs e)
         {
             FormState.PreviousPage.Show();
-            this.Hide();
+            this.Close();
+
+            //this.Hide();
             FormState.PreviousPage = this;
         }
 
