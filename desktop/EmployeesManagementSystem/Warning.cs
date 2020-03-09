@@ -1,61 +1,42 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static EmployeesManagementSystem.Program;
 
 namespace EmployeesManagementSystem
 {
-    public partial class Delete : Form
+    public partial class Warning : Form
     {
-        private DbContext databaseContext = new DbContext();
-
         // Variables
-        private int id;
         private Dashboard dashboard;
-        
         // Constructor
-        public Delete(int ID, Dashboard dashboard)
+        public Warning(Dashboard dashboard)
         {
             InitializeComponent();
-            this.id = ID;
             this.dashboard = dashboard;
         }
 
-        // Methods
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            this.databaseContext.DeleteShiftOfUser(this.id);
-            this.databaseContext.DeleteUser(this.id);
-            this.dashboard.UpdateDashboard();
-            this.Close();
-        }
-
-        // Methods
-        private void bntNo_Click(object sender, EventArgs e)
-        {
-
-            databaseContext.Dispose(true);
-            FormState.PreviousPage.Show();
-            this.Close();
-        }
-
+        // Back button
         private void back_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             FormState.PreviousPage.Show();
             this.Hide();
             FormState.PreviousPage = this;
         }
 
+        // Exit button
         private void exit_Click(object sender, EventArgs e)
         {
-
-            databaseContext.Dispose(true);
-            FormState.PreviousPage.Show();
             this.Close();
         }
 
-        // Hovering 
+        // Hovering methods
         private void exit_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.DarkGray;

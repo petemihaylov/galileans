@@ -109,6 +109,7 @@ namespace EmployeesManagementSystem
     
         }
 
+        // Get shift type by string
         private ShiftType getShiftTypeByString(string type)
         {
             switch (type.ToUpper())
@@ -121,7 +122,7 @@ namespace EmployeesManagementSystem
             return ShiftType.OTHER;
         }
 
-        //get all users
+        // Get all users
         public User[] GetAllUsers()
         {
             using (var command = connection.CreateCommand())
@@ -148,6 +149,47 @@ namespace EmployeesManagementSystem
                     return users.ToArray();
                 }
             }
+        }
+
+        // Get user table
+        public DataTable GetUsers()
+        {
+            using (var command = connection.CreateCommand())
+            {
+                // Select statement
+                command.CommandText = @"SELECT * FROM users";
+
+                // Executing it 
+                using (var reader = command.ExecuteReader())
+                {
+                    DataTable table = new DataTable();
+
+                    if (reader.Read())
+                    {
+                        table.Load(reader);
+                    }
+
+                    return table;
+                }
+            }
+        }
+
+        // Get filtered Users
+        public User[] GetAllFilteredUsers(DataTable table)
+        {
+            List<User> users = new List<User>();
+            foreach (DataRow row in table.Rows)
+            {
+                User user = new User();
+                user.ID = (int)row["ID"];
+                user.FullName = (string)row["FullName"];
+                user.Email = (string)row["Email"];
+                user.Password = (string)row["Password"];
+                user.Role = (string)row["Role"];
+                users.Add(user);
+            }
+
+            return users.ToArray();
         }
 
         // Create new user
