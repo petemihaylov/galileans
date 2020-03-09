@@ -2,17 +2,22 @@
 using System.Drawing;
 using System.Windows.Forms;
 using EmployeesManagementSystem.Models;
+using static EmployeesManagementSystem.Program;
 
 namespace EmployeesManagementSystem
 {
     public partial class Dashboard : Form
     {
+        // Load a Database context
         private DbContext databaseContext = new DbContext();
-
+        
+        // Constructor
         public Dashboard()
         {
             InitializeComponent();
         }
+
+        // Load Dashboard
         private void Dashboard_Load(object sender, EventArgs e)
         {
             try
@@ -28,6 +33,8 @@ namespace EmployeesManagementSystem
                 throw new Exception("Can't display info correctly");
             }
         }
+
+        // Updata dashboard
         public void UpdateDashboard()
         {
                 this.dataGridView.Rows.Clear();
@@ -37,6 +44,8 @@ namespace EmployeesManagementSystem
                     this.dataGridView.Rows.Add(user.GetInfo());
                 }
         }
+
+        // Database grid 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int Details = 4;
@@ -45,20 +54,44 @@ namespace EmployeesManagementSystem
             {
                 int index = dataGridView.CurrentCell.RowIndex;
                 int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
+
+                this.Hide();
+
                 Details details = new Details(id);
                 details.Show();
-                this.Hide();
+               
             }
 
             if (dataGridView.CurrentCell.ColumnIndex.Equals(Delete))
             {
-                //ask if you want to delete and proccess
-                int index = dataGridView.CurrentCell.RowIndex;
-                int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
-                Delete delete = new Delete(id, this);
-                delete.Show();
+               
+                    
+             //ask if you want to delete and proccess
+             int index = dataGridView.CurrentCell.RowIndex;
+            
+                // Find the role
+                if (!Convert.ToString(dataGridView.Rows[index].Cells[3].Value).Contains("Administrator"))
+                {
+                    int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
+                    
+                    this.Hide();
 
-             }
+                    Delete delete = new Delete(id, this);
+                    delete.Show();
+
+                    FormState.PreviousPage = this;
+
+                }
+                else
+                {
+                    this.Hide();
+
+                    Warning warning = new Warning(this);
+                    warning.Show();
+
+                    FormState.PreviousPage = this;
+                }
+            }
 
         }
 
@@ -99,7 +132,8 @@ namespace EmployeesManagementSystem
             createAccounts.Show();
         }
 
-        // Hovering
+
+        // Hovering onn the the images
         private void exit_MouseEnter(object sender, EventArgs e)
         {
             this.exit.BackColor = Color.LightGray;

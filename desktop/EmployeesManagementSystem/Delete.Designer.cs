@@ -30,14 +30,14 @@
         {
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.back = new System.Windows.Forms.PictureBox();
             this.exit = new System.Windows.Forms.PictureBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.bntNo = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.back)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             this.SuspendLayout();
@@ -46,7 +46,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.label1);
-            this.panel4.Controls.Add(this.pictureBox1);
+            this.panel4.Controls.Add(this.back);
             this.panel4.Controls.Add(this.exit);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -64,15 +64,18 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Back";
             // 
-            // pictureBox1
+            // back
             // 
-            this.pictureBox1.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_arrow_back_ios_black_48dp;
-            this.pictureBox1.Location = new System.Drawing.Point(26, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 35);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.back.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_arrow_back_ios_black_48dp;
+            this.back.Location = new System.Drawing.Point(26, 15);
+            this.back.Name = "back";
+            this.back.Size = new System.Drawing.Size(39, 35);
+            this.back.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.back.TabIndex = 3;
+            this.back.TabStop = false;
+            this.back.Click += new System.EventHandler(this.back_Click);
+            this.back.MouseEnter += new System.EventHandler(this.back_MouseEnter);
+            this.back.MouseLeave += new System.EventHandler(this.back_MouseLeave);
             // 
             // exit
             // 
@@ -153,7 +156,7 @@
             this.Text = "Delete";
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.back)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             this.ResumeLayout(false);
@@ -165,7 +168,7 @@
 
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox back;
         private System.Windows.Forms.PictureBox exit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button bntNo;
