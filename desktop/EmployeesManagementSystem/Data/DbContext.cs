@@ -75,6 +75,7 @@ namespace EmployeesManagementSystem
                 command.AddParameter("startTime", shift.StartTime);
                 command.AddParameter("endTime", shift.EndTime);
                 command.AddParameter("shiftType", shift.Type.ToString());
+                string st = command.ToString();
                 command.ExecuteNonQuery();
             }
         }

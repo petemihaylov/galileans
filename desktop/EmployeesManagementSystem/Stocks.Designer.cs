@@ -59,6 +59,9 @@
             this.availability = new System.Windows.Forms.DataGridViewImageColumn();
             this.reload = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.createPanel = new System.Windows.Forms.Panel();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.lbCreate = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
@@ -67,9 +70,6 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.createPanel = new System.Windows.Forms.Panel();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.lbCreate = new System.Windows.Forms.Label();
             this.panelLeft.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -88,11 +88,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panel4.SuspendLayout();
+            this.createPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             this.panel7.SuspendLayout();
-            this.createPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLeft
@@ -417,6 +417,36 @@
             this.panel4.Size = new System.Drawing.Size(1260, 63);
             this.panel4.TabIndex = 5;
             // 
+            // createPanel
+            // 
+            this.createPanel.BackColor = System.Drawing.Color.DarkGray;
+            this.createPanel.Controls.Add(this.pictureBox14);
+            this.createPanel.Controls.Add(this.lbCreate);
+            this.createPanel.Location = new System.Drawing.Point(862, 18);
+            this.createPanel.Name = "createPanel";
+            this.createPanel.Size = new System.Drawing.Size(182, 38);
+            this.createPanel.TabIndex = 12;
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_shopping_cart_black_18dp;
+            this.pictureBox14.Location = new System.Drawing.Point(9, 3);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(34, 32);
+            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox14.TabIndex = 3;
+            this.pictureBox14.TabStop = false;
+            // 
+            // lbCreate
+            // 
+            this.lbCreate.AutoSize = true;
+            this.lbCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCreate.Location = new System.Drawing.Point(62, 10);
+            this.lbCreate.Name = "lbCreate";
+            this.lbCreate.Size = new System.Drawing.Size(76, 20);
+            this.lbCreate.TabIndex = 3;
+            this.lbCreate.Text = "CREATE";
+            // 
             // textBox1
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -491,36 +521,6 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // createPanel
-            // 
-            this.createPanel.BackColor = System.Drawing.Color.DarkGray;
-            this.createPanel.Controls.Add(this.pictureBox14);
-            this.createPanel.Controls.Add(this.lbCreate);
-            this.createPanel.Location = new System.Drawing.Point(862, 18);
-            this.createPanel.Name = "createPanel";
-            this.createPanel.Size = new System.Drawing.Size(182, 38);
-            this.createPanel.TabIndex = 12;
-            // 
-            // pictureBox14
-            // 
-            this.pictureBox14.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_box_black_48dp;
-            this.pictureBox14.Location = new System.Drawing.Point(9, 3);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(34, 32);
-            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox14.TabIndex = 3;
-            this.pictureBox14.TabStop = false;
-            // 
-            // lbCreate
-            // 
-            this.lbCreate.AutoSize = true;
-            this.lbCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCreate.Location = new System.Drawing.Point(62, 10);
-            this.lbCreate.Name = "lbCreate";
-            this.lbCreate.Size = new System.Drawing.Size(76, 20);
-            this.lbCreate.TabIndex = 3;
-            this.lbCreate.Text = "CREATE";
-            // 
             // Stocks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -559,12 +559,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
-            this.panel7.ResumeLayout(false);
             this.createPanel.ResumeLayout(false);
             this.createPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
+            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
