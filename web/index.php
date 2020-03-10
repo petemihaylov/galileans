@@ -129,7 +129,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="login-container">
 
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="login-form">
-              <h1><img src="/img/logo.png" alt="login" width="285" height="83"></h1>
+              <h1>Login</h1>
               
               <div class="txtb">
                 <input type="text" name="email" class="<?php echo $focus;?>"  value="<?php echo $email; ?>">
