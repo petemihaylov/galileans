@@ -9,11 +9,9 @@ namespace EmployeesManagementSystem
     {
         private DbContext databaseContext = new DbContext();
 
-        // Variables
         private int id;
         private Dashboard dashboard;
         
-        // Constructor
         public Delete(int ID, Dashboard dashboard)
         {
             InitializeComponent();
@@ -21,7 +19,6 @@ namespace EmployeesManagementSystem
             this.dashboard = dashboard;
         }
 
-        // Methods
         private void btnDelete_Click(object sender, EventArgs e)
         {
             this.databaseContext.DeleteShiftOfUser(this.id);
@@ -31,7 +28,6 @@ namespace EmployeesManagementSystem
             dashboard.Show();
         }
 
-        // Methods
         private void bntNo_Click(object sender, EventArgs e)
         {
 
@@ -39,14 +35,6 @@ namespace EmployeesManagementSystem
             this.Close();
             dashboard.Show();
         }
-
-        private void back_Click(object sender, EventArgs e)
-        {
-            databaseContext.Dispose(true);
-            this.Close();
-            dashboard.Show();
-        }
-
         private void exit_Click(object sender, EventArgs e)
         {
 
@@ -67,19 +55,6 @@ namespace EmployeesManagementSystem
         {
             Color color = Color.LightGray;
             this.exit.BackColor = color;
-        }
-
-        private void back_MouseEnter(object sender, EventArgs e)
-        {
-            Color color = Color.DarkGray;
-            this.back.BackColor = color;
-
-        }
-
-        private void back_MouseLeave(object sender, EventArgs e)
-        {
-            Color color = Color.LightGray;
-            this.back.BackColor = color;
         }
 
     }

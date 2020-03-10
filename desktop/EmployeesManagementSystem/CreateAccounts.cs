@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace EmployeesManagementSystem
 {
@@ -74,27 +75,43 @@ namespace EmployeesManagementSystem
             this.Close();
         }
 
+        // Check if an email exists
         private bool ifExists(string email)
         {
             if (databaseContext.GetUserByEmail(email) != null) return true;
             else return false;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            // TO-DO
-        }
-
-        private void CreateAccounts_Load(object sender, EventArgs e)
-        {
-            // TO-DO
-        }
-
+        // Exit button
         private void exit_Click(object sender, EventArgs e)
         {
             dashboard.Opacity = 1;
             databaseContext.Dispose(true);
             this.Close();
+        }
+
+        // Validate the emails
+        // https://docs.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format?redirectedfrom=MSDN
+        private bool IsEmailValid(string emailaddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
+        // Validate the password
+        // https://docs.microsoft.com/en-us/dotnet/api/system.web.security.validatepasswordeventargs?view=netframework-4.8
+        private bool IsPasswordValid(string password)
+        {
+            Regex rx = new Regex(@"(?=.{6,})(?=(.*\d){1,})(?=(.*\W){1,})");
+            return rx.IsMatch(password);
         }
     }
 }

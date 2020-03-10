@@ -127,7 +127,6 @@
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(300, 22);
             this.tbPhone.TabIndex = 3;
-            this.tbPhone.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // tbHourlyRate
             // 
@@ -285,7 +284,6 @@
             this.Name = "CreateAccounts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateAccounts";
-            this.Load += new System.EventHandler(this.CreateAccounts_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
