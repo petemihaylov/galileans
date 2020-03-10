@@ -9,13 +9,6 @@ namespace EmployeesManagementSystem
 {
     static class Program
     {
-        /// <summary>
-        /// Some form of state is required to remember what your last visited page was.
-        /// </summary>
-        public static class FormState
-        {
-            public static Form PreviousPage;
-        }
 
         /// <summary>
         /// The main entry point for the application.

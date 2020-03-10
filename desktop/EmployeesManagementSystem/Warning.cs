@@ -13,30 +13,27 @@ namespace EmployeesManagementSystem
 {
     public partial class Warning : Form
     {
-        // Variables
+
         private Dashboard dashboard;
-        // Constructor
+        
         public Warning(Dashboard dashboard)
         {
             InitializeComponent();
             this.dashboard = dashboard;
         }
 
-        // Back button
         private void back_Click(object sender, EventArgs e)
         {
-            FormState.PreviousPage.Show();
-            this.Hide();
-            FormState.PreviousPage = this;
-        }
-
-        // Exit button
-        private void exit_Click(object sender, EventArgs e)
-        {
+            dashboard.Show();
             this.Close();
         }
+        private void exit_Click(object sender, EventArgs e)
+        {
+            dashboard.Show();
+            this.Close();
 
-        // Hovering methods
+        }
+
         private void exit_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.DarkGray;

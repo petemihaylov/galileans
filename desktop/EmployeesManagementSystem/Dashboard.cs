@@ -10,15 +10,6 @@ using static EmployeesManagementSystem.Program;
 namespace EmployeesManagementSystem
 {
 
-    // Remove White Spaces
-    public static class Extensions
-    {
-        public static string RemoveWhiteSpaces(this string str)
-        {
-            return Regex.Replace(str, @"\s+|\t|\n|\r", String.Empty);
-        }
-    }
-
     public partial class Dashboard : Form
     {
         // Load a Database context
@@ -36,14 +27,12 @@ namespace EmployeesManagementSystem
         public DataTable Table { get => table; set => table = value; }
         public int Seeder { get => seeder; set => seeder = value; }
 
-        // Constructor
         public Dashboard()
         {
             InitializeComponent();
             this.Seeder = 1000;
         }
 
-        // Load Dashboard
         private void Dashboard_Load(object sender, EventArgs e)
         {
             try
@@ -59,7 +48,6 @@ namespace EmployeesManagementSystem
             }
         }
 
-        // Updata dashboard
         public void UpdateDashboard()
         {
             this.dataGridView.Rows.Clear();
@@ -69,7 +57,6 @@ namespace EmployeesManagementSystem
             showInformation(users);
         }
 
-        // Search fields
         private void searchField_KeyPress(object sender, KeyPressEventArgs e)
         {
         
@@ -96,8 +83,6 @@ namespace EmployeesManagementSystem
             }
                        
         }
-
-        // Helper method
         private void showInformation(User[] users)
         {
             // Clean the dataGrid
@@ -110,7 +95,6 @@ namespace EmployeesManagementSystem
             this.searchField.Text = String.Empty;
         }
 
-        // Database grid 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int Details = 4;
@@ -143,9 +127,6 @@ namespace EmployeesManagementSystem
 
                     Delete delete = new Delete(id, this);
                     delete.Show();
-
-                    FormState.PreviousPage = this;
-
                 }
                 else
                 {
@@ -154,14 +135,12 @@ namespace EmployeesManagementSystem
                     Warning warning = new Warning(this);
                     warning.Show();
 
-                    FormState.PreviousPage = this;
                 }
             }
 
         }
 
 
-        // Buttons
         private void exit_Click(object sender, EventArgs e)
         {
             // Closing the db connection 
@@ -262,6 +241,15 @@ namespace EmployeesManagementSystem
 
             Color color = Color.LightGray;
             this.createPanel.BackColor = color;
+        }
+    }
+
+    // Remove White Spaces
+    public static class Extensions
+    {
+        public static string RemoveWhiteSpaces(this string str)
+        {
+            return Regex.Replace(str, @"\s+|\t|\n|\r", String.Empty);
         }
     }
 }
