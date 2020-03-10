@@ -16,7 +16,7 @@ namespace EmployeesManagementSystem
         private DbContext databaseContext = new DbContext();
         private User user;
         private List<Shift> shifts;
-        private int id;
+
         private int addDays = 0;
 
 
@@ -25,7 +25,7 @@ namespace EmployeesManagementSystem
             InitializeComponent();
 
             this.user = databaseContext.GetUserByID(UserID);
-            this.id = UserID;
+            
             this.tbFullName.Text = user.FullName;
             this.tbPassword.Text = user.Password;
             this.tbEmail.Text = user.Email;
@@ -298,7 +298,7 @@ namespace EmployeesManagementSystem
             {
                 
                 databaseContext.InsertShift(new Shift(user.ID, false, d,
-                    new DateTime(d.Year, d.Month,d.Day,9,0,0), new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), ShiftType.MORNING, false));
+                    new DateTime(d.Year, d.Month,d.Day,9,0,0), new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), ShiftType.MORNING));
 
             }else
             {
@@ -317,7 +317,7 @@ namespace EmployeesManagementSystem
             {
 
                 databaseContext.InsertShift(new Shift(user.ID, false, d,
-                    new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), ShiftType.MORNING, false));
+                    new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), ShiftType.MORNING));
 
             }
             else
@@ -336,7 +336,7 @@ namespace EmployeesManagementSystem
             {
 
                 databaseContext.InsertShift(new Shift(user.ID, false, d,
-                    new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), new DateTime(d.Year, d.Month, d.Day, 12, 0, 0), ShiftType.MORNING, false));
+                    new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), new DateTime(d.Year, d.Month, d.Day, 12, 0, 0), ShiftType.MORNING));
 
             }
             else
@@ -356,7 +356,7 @@ namespace EmployeesManagementSystem
             {
 
                 databaseContext.InsertShift(new Shift(user.ID, false, d,
-                    new DateTime(d.Year, d.Month, d.Day, 14, 0, 0), new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), ShiftType.AFTERNOON, false));
+                    new DateTime(d.Year, d.Month, d.Day, 14, 0, 0), new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), ShiftType.AFTERNOON));
 
             }
             else
@@ -375,7 +375,7 @@ namespace EmployeesManagementSystem
             {
 
                 databaseContext.InsertShift(new Shift(user.ID, false, d,
-                    new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), ShiftType.AFTERNOON, false));
+                    new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), ShiftType.AFTERNOON));
 
             }
             else
@@ -395,7 +395,7 @@ namespace EmployeesManagementSystem
             {
 
                 databaseContext.InsertShift(new Shift(user.ID, false, d,
-                    new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), new DateTime(d.Year, d.Month, d.Day, 17, 0, 0), ShiftType.AFTERNOON, false));
+                    new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), new DateTime(d.Year, d.Month, d.Day, 17, 0, 0), ShiftType.AFTERNOON));
 
             }
             else
@@ -415,7 +415,7 @@ namespace EmployeesManagementSystem
             {
 
                 databaseContext.InsertShift(new Shift(user.ID, false, d,
-                    new DateTime(d.Year, d.Month, d.Day, 20, 0, 0), new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), ShiftType.EVENING, false));
+                    new DateTime(d.Year, d.Month, d.Day, 20, 0, 0), new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), ShiftType.EVENING));
 
             }
             else
@@ -434,7 +434,7 @@ namespace EmployeesManagementSystem
             {
 
                 databaseContext.InsertShift(new Shift(user.ID, false, d,
-                    new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), ShiftType.EVENING, false));
+                    new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), ShiftType.EVENING));
 
             }
             else
@@ -454,7 +454,7 @@ namespace EmployeesManagementSystem
             {
 
                 databaseContext.InsertShift(new Shift(user.ID, false, d,
-                    new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), new DateTime(d.Year, d.Month, d.Day, 23, 0, 0), ShiftType.EVENING, false));
+                    new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), new DateTime(d.Year, d.Month, d.Day, 23, 0, 0), ShiftType.EVENING));
 
             }
             else
@@ -472,16 +472,6 @@ namespace EmployeesManagementSystem
             DateTime now = DateTime.UtcNow.Date;
             showDate(now);
             visualizeShifts(now);
-        }
-
-        private void btnStatistics_Click(object sender, EventArgs e)
-        {
-            databaseContext.Dispose(true);
-            this.Hide();
-            // Show Selected Form
-            Statistic stat = new Statistic(id);
-            stat.Closed += (s, args) => this.Close();
-            stat.Show();
         }
     }
 }

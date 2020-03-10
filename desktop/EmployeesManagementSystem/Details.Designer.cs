@@ -61,7 +61,7 @@
             this.lbEvn_third = new System.Windows.Forms.Label();
             this.lbEvn_second = new System.Windows.Forms.Label();
             this.lbEvn_first = new System.Windows.Forms.Label();
-            this.btnStatistics = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.picEvn_first = new System.Windows.Forms.PictureBox();
             this.picEvn_second = new System.Windows.Forms.PictureBox();
@@ -487,20 +487,19 @@
             this.lbEvn_first.TabIndex = 43;
             this.lbEvn_first.Text = "20:00 - 21:00";
             // 
-            // btnStatistics
+            // button3
             // 
-            this.btnStatistics.BackColor = System.Drawing.Color.Gray;
-            this.btnStatistics.FlatAppearance.BorderSize = 0;
-            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatistics.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStatistics.ForeColor = System.Drawing.Color.White;
-            this.btnStatistics.Location = new System.Drawing.Point(1263, 725);
-            this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(188, 29);
-            this.btnStatistics.TabIndex = 25;
-            this.btnStatistics.Text = "STATISTICS";
-            this.btnStatistics.UseVisualStyleBackColor = false;
-            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
+            this.button3.BackColor = System.Drawing.Color.Gray;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(1263, 725);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(188, 29);
+            this.button3.TabIndex = 25;
+            this.button3.Text = "STATISTICS";
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // groupBox6
             // 
@@ -978,7 +977,7 @@
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.pictureBox19);
-            this.Controls.Add(this.btnStatistics);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.pictureBox18);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label12);
@@ -1069,7 +1068,7 @@
         private System.Windows.Forms.Label lbEvn_second;
         private System.Windows.Forms.Label lbEvn_first;
         private System.Windows.Forms.PictureBox pictureBox18;
-        private System.Windows.Forms.Button btnStatistics;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBox19;
         private System.Windows.Forms.ComboBox cbRole;
         private System.Windows.Forms.ComboBox cbDepartment;

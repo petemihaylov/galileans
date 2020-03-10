@@ -170,7 +170,6 @@
             this.btnStocks.Name = "btnStocks";
             this.btnStocks.Size = new System.Drawing.Size(230, 41);
             this.btnStocks.TabIndex = 10;
-            this.btnStocks.Click += new System.EventHandler(this.btnStocks_Click);
             // 
             // pictureBox3
             // 
@@ -212,7 +211,6 @@
             this.btnDepartments.Name = "btnDepartments";
             this.btnDepartments.Size = new System.Drawing.Size(230, 41);
             this.btnDepartments.TabIndex = 8;
-            this.btnDepartments.Click += new System.EventHandler(this.btnDepartments_Click);
             // 
             // pictureBox8
             // 
@@ -254,7 +252,6 @@
             this.btnCancellations.Name = "btnCancellations";
             this.btnCancellations.Size = new System.Drawing.Size(230, 41);
             this.btnCancellations.TabIndex = 9;
-            this.btnCancellations.Click += new System.EventHandler(this.btnCancellations_Click);
             // 
             // pictureBox7
             // 
