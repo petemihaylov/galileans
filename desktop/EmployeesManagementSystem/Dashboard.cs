@@ -208,5 +208,35 @@ namespace EmployeesManagementSystem
             Color color = Color.LightGray;
             this.btnShift.BackColor = color;
         }
+
+        private void btnCancellations_Click(object sender, EventArgs e)
+        {
+            databaseContext.Dispose(true);
+            this.Hide();
+            // Show Selected Form
+            Complaint cancel = new Complaint();
+            cancel.Closed += (s, args) => this.Close();
+            cancel.Show();
+        }
+
+        private void btnDepartments_Click(object sender, EventArgs e)
+        {
+            databaseContext.Dispose(true);
+            this.Hide();
+            // Show Selected Form
+            Departments dep = new Departments();
+            dep.Closed += (s, args) => this.Close();
+            dep.Show();
+        }
+
+        private void btnStocks_Click(object sender, EventArgs e)
+        {
+            databaseContext.Dispose(true);
+            this.Hide();
+            // Show Selected Form
+            Stocks stocks = new Stocks();
+            stocks.Closed += (s, args) => this.Close();
+            stocks.Show();
+        }
     }
 }

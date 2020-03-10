@@ -78,8 +78,8 @@ namespace EmployeesManagementSystem
         {
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = @"INSERT INTO Shifts (AssignedEmployeeID, Availability, ShiftDate, StartTime, EndTime, ShiftType)"+
-                " VALUES(@userId, @availability, @date, @startTime, @endTime, @shiftType)";
+                command.CommandText = @"INSERT INTO Shifts (AssignedEmployeeID, Availability, ShiftDate, StartTime, EndTime, ShiftType, Attended)"+
+                " VALUES(@userId, @availability, @date, @startTime, @endTime, @shiftType, @attended)";
 
 
                 command.AddParameter("userId", shift.AssignedEmployeeID);
@@ -88,6 +88,7 @@ namespace EmployeesManagementSystem
                 command.AddParameter("startTime", shift.StartTime);
                 command.AddParameter("endTime", shift.EndTime);
                 command.AddParameter("shiftType", shift.Type.ToString());
+                command.AddParameter("attended", shift.Attended);
                 string st = command.ToString();
                 command.ExecuteNonQuery();
             }
@@ -116,12 +117,48 @@ namespace EmployeesManagementSystem
                         shift.StartTime= Convert.ToDateTime (((TimeSpan)reader["StartTime"]).ToString());
                         shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
                         shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
+                        shift.Attended = (bool)reader["Attended"];
 
                         shifts.Add(shift);
                     }
                     return shifts;
                 }
     
+        }
+
+        //Get Attendence of Users
+        public Shift GetAttendenceByUser(int id)
+        {
+            // Conn statement
+            var command = new MySqlCommand("SELECT StartTime, EndTime, Availability, Attended FROM shifts", connection);
+
+            // Executing it 
+            using (var reader = command.ExecuteReader())
+            {
+                Shift shift = new Shift();
+                if (reader.Read())
+                {
+                    // Mapping the return data to the object
+                    shift.ID = (int)reader["ID"];
+
+
+                    shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
+                    shift.Availability = (bool)reader["Availability"];
+                    shift.ShiftDate = (DateTime)reader["ShiftDate"];
+                    shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
+                    shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
+                    shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
+
+                    shift.Attended = (bool)reader["Attended"];
+
+                }
+                else
+                {
+                    return null;
+                }
+
+                return shift;
+            }
         }
 
         // Delete shift by user id
@@ -183,6 +220,8 @@ namespace EmployeesManagementSystem
                         shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
                         shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
 
+                        shift.Attended = (bool)reader["Attended"];
+
                     }
                     else
                     {
@@ -193,12 +232,50 @@ namespace EmployeesManagementSystem
                 }
             }
         }
+        public List <Shift> GetShiftsByID(int ID)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                // Select statement
+                command.CommandText = @"SELECT * FROM Shifts WHERE AssignedEmployeeID = @ID";
+                command.AddParameter("ID", ID);
+
+                // Ececuting it 
+                using (var reader = command.ExecuteReader())
+                {
+                    List<Shift> shifts = new List<Shift>();
+                    while (reader.Read())
+                    {
+                        // Mapping the return data to the object
+
+                        Shift shift = new Shift();
+                        shift.ID = (int)reader["ID"];
+                        shift.ShiftDate = (DateTime)reader["ShiftDate"];
 
 
-/// 
-/// USERS
-/// 
-    
+                        shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
+                        shift.Availability = (bool)reader["Availability"];
+                        shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
+                        shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
+                        shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
+                        shift.Attended = (bool)reader["Attended"];
+
+                        shifts.Add(shift);
+                    }
+
+                    // getting the actual user
+                    return shifts;
+                }
+            }
+        }
+
+
+
+
+        /// 
+        /// USERS
+        /// 
+
 
         // Get all users
         public User[] GetAllUsers()
@@ -407,6 +484,7 @@ namespace EmployeesManagementSystem
             }
         }
     }
+
 
     // Helper Class / Method
     public static class CommandExtensions

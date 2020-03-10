@@ -20,8 +20,10 @@ namespace EmployeesManagementSystem.Models
 
         public ShiftType Type { get; set; }
 
+        public bool Attended { get; set; }
+
         public Shift() { }
-        public Shift( int assignedEmployeeID, bool availability, DateTime shiftDate, DateTime startTime, DateTime endTime, ShiftType type)
+        public Shift( int assignedEmployeeID, bool availability, DateTime shiftDate, DateTime startTime, DateTime endTime, ShiftType type, bool attended)
         {
             AssignedEmployeeID = assignedEmployeeID;
             Availability = availability;
@@ -29,7 +31,19 @@ namespace EmployeesManagementSystem.Models
             StartTime = startTime;
             EndTime = endTime;
             Type = type;
+            Attended = attended;
         }
+        public int GetInfo()
+        {
+            if (this.Attended)
+            {
+                TimeSpan span = this.EndTime.Subtract(this.StartTime);
+                int hrs = (int)span.TotalHours;
+                return hrs;
+            }
+            return 0;
+        }
+       
     }
 
     enum ShiftType
@@ -39,4 +53,6 @@ namespace EmployeesManagementSystem.Models
         EVENING,
         OTHER
     }
+
+
 }

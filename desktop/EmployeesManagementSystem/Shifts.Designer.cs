@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lbTime = new System.Windows.Forms.Label();
             this.exit = new System.Windows.Forms.PictureBox();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.btn4 = new System.Windows.Forms.Panel();
@@ -90,7 +91,6 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.currentTime = new System.Windows.Forms.Timer(this.components);
-            this.lbTime = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             this.panelLeft.SuspendLayout();
@@ -135,6 +135,17 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1260, 63);
             this.panel4.TabIndex = 5;
+            // 
+            // lbTime
+            // 
+            this.lbTime.AutoSize = true;
+            this.lbTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbTime.Location = new System.Drawing.Point(523, 31);
+            this.lbTime.Name = "lbTime";
+            this.lbTime.Size = new System.Drawing.Size(172, 23);
+            this.lbTime.TabIndex = 56;
+            this.lbTime.Text = "00:00:00 0/0/2020";
             // 
             // exit
             // 
@@ -785,17 +796,6 @@
             // 
             this.currentTime.Enabled = true;
             this.currentTime.Tick += new System.EventHandler(this.currentTime_Tick);
-            // 
-            // lbTime
-            // 
-            this.lbTime.AutoSize = true;
-            this.lbTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbTime.Location = new System.Drawing.Point(523, 31);
-            this.lbTime.Name = "lbTime";
-            this.lbTime.Size = new System.Drawing.Size(172, 23);
-            this.lbTime.TabIndex = 56;
-            this.lbTime.Text = "00:00:00 0/0/2020";
             // 
             // Shifts
             // 
