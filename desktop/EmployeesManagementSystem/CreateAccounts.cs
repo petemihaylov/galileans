@@ -34,37 +34,45 @@ namespace EmployeesManagementSystem
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
 
-            if (ifEmptyOrNull(tbFullName.Text, tbHourlyRate.Text, tbPhone.Text, tbEmail.Text))
+            if (ifEmptyOrNull(tbFullName.Text, tbHourlyRate.Text, tbPhone.Text, tbEmail.Text, tbPassword.Text, tbConfirmationPassword.Text))
             {
 
                 try
                 {
-                    string fullName = this.tbFullName.Text;
+                    string fullName = removeWhiteSpaces(this.tbFullName.Text);
                     float hourlyRate = float.Parse(this.tbHourlyRate.Text);
                     string email = this.tbEmail.Text;
                     string phoneNumber = this.tbPhone.Text;
+                    string password = this.tbPassword.Text;
+                    string confirmationPassword = this.tbConfirmationPassword.Text;
 
-                    if (IsEmailValid(email)) {
-                        // Validation of the email before checking if exists in the DB
-                        if (ifNotExists(email))
+                    if (isNameValid(fullName) && isEmailValid(email) && isPhoneValid(phoneNumber) && isWageValid(hourlyRate) && isPasswordValid(password) && isPasswordValid(confirmationPassword))
+                    {
+                        // Validate Password and Conrimation Password
+                        if (password.Equals(confirmationPassword))
                         {
-                           
+
+                            // Validation of the email before checking if exists in the DB
+                            if (ifNotExists(email))
+                            {
+                                // Generate the password
+                                string generatedPassword = Hashing.HashPassword(password);
+
+                                // Create new User
+                                User user = new User(fullName, email, phoneNumber, generatedPassword, Role.Employee.ToString(), hourlyRate);
+                                this.databaseContext.InsertUser(user);
+                                this.dashboard.UpdateDashboard();
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            
+                            MessageBox.Show("Passwords don't match!");
                             
                         }
                     }
-                   
 
-
-
-
-                   
-                    string generatedPassword = Hashing.HashPassword(this.tbPassword.Text);
-
-                    User user = new User(fullName, email, phoneNumber, generatedPassword, Role.Employee.ToString(), hourlyRate);
-                    databaseContext.InsertUser(user);
-                    dashboard.Opacity = 1;
-                    dashboard.UpdateDashboard();
-                    Hide();
                 }
                 catch (Exception ex) //catch(FormatException) 
                 {
@@ -73,7 +81,6 @@ namespace EmployeesManagementSystem
 
                 }
             }
-            
 
         }
 
@@ -88,37 +95,49 @@ namespace EmployeesManagementSystem
         // Additional Methods
 
         // Empty fields
-        private bool ifEmptyOrNull(string fullName, string wage, string phone, string email )
+        private bool ifEmptyOrNull(string fullName, string wage, string phone, string email, string password, string confirmationpassword )
         {
 
-            if (string.IsNullOrWhiteSpace(RemoveWhiteSpaces(tbFullName.Text))) {
+            if (string.IsNullOrWhiteSpace(removeWhiteSpaces(fullName))) {
                 MessageBox.Show("Change the Name field");
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(RemoveWhiteSpaces(tbHourlyRate.Text)))
+            if (string.IsNullOrWhiteSpace(removeWhiteSpaces(wage)))
             {
                 MessageBox.Show("Change the HourlyRate field");
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(RemoveWhiteSpaces(tbPhone.Text)))
+            if (string.IsNullOrWhiteSpace(removeWhiteSpaces(phone)))
             {
                 MessageBox.Show("Change the Phone field");
                 return false;
             }
             
-            if(string.IsNullOrWhiteSpace(RemoveWhiteSpaces(tbEmail.Text)))
+            if(string.IsNullOrWhiteSpace(removeWhiteSpaces(email)))
             {
                 MessageBox.Show("Change the Email field");
                 return false;
             }
-                
+
+            if (string.IsNullOrWhiteSpace(removeWhiteSpaces(password)))
+            {
+                MessageBox.Show("Change the Password field");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(removeWhiteSpaces(confirmationpassword)))
+            {
+                MessageBox.Show("Change the Confirmation field");
+                return false;
+            }
+
             return true;
         }
 
         // Remove the WhiteSpaces
-        private string RemoveWhiteSpaces(string text)
+        private string removeWhiteSpaces(string text)
         {
             return Regex.Replace(text, @"\s+|\t|\n|\r", String.Empty);
         }
@@ -137,7 +156,7 @@ namespace EmployeesManagementSystem
 
         // Validate the emails
         // https://docs.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format?redirectedfrom=MSDN
-        private bool IsEmailValid(string emailaddress)
+        private bool isEmailValid(string emailaddress)
         {
             try
             {
@@ -147,7 +166,7 @@ namespace EmployeesManagementSystem
             }
             catch (FormatException)
             {
-                MessageBox.Show("The Email is unvalid!");
+                MessageBox.Show("The Email is invalid!");
             }
 
             return false;
@@ -155,10 +174,59 @@ namespace EmployeesManagementSystem
 
         // Validate the password
         // https://docs.microsoft.com/en-us/dotnet/api/system.web.security.validatepasswordeventargs?view=netframework-4.8
-        private bool IsPasswordValid(string password)
+        private bool isPasswordValid(string password)
         {
             Regex rx = new Regex(@"(?=.{6,})(?=(.*\d){1,})(?=(.*\W){1,})");
-            return rx.IsMatch(password);
+            
+            if (!rx.IsMatch(password))
+            {
+                MessageBox.Show("The Password is invalid!" + 
+                    "Password must be at least 6 characters long and " +
+                    "contain at least one number and one special character.");
+                return false;
+            }
+
+            return true;
+        }
+
+        // Validate the name
+        private bool isNameValid(string name)
+        {
+            Regex rx = new Regex(@"^[A-Z][a-zA-Z]*$");
+            
+            if (!rx.IsMatch(name))
+            {
+                MessageBox.Show("The Name is invalid! Only \"A-Z\" \"a-z\" characters");
+                return false;
+            }
+
+            return true;
+        }
+        
+        // Validate the wage
+        private bool isWageValid(float wage)
+        {
+            if(wage < 0.0)
+            {
+                MessageBox.Show("The Wage is invalid! (wage > 0)");
+                return false;
+            }
+
+            return true;
+        }
+
+        // Validate the phone number
+        private bool isPhoneValid(string phone)
+        {
+            Regex rx = new Regex(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$");
+
+            if (!rx.IsMatch(phone))
+            {
+                MessageBox.Show("The Phone is invalid! (0123456789, 012-345-6789, (012)-345-6789)");
+                return false;
+            }
+
+            return true;
         }
 
     }
