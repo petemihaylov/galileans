@@ -35,26 +35,13 @@ namespace EmployeesManagementSystem
         {
 
             databaseContext.Dispose(true);
-            FormState.PreviousPage.Show();
             this.Close();
-        }
-
-        private void back_Click(object sender, EventArgs e)
-        {
-            databaseContext.Dispose(true);
-            FormState.PreviousPage.Show();
-        
-            databaseContext.Dispose(true);
-            this.Close();
-            // this.Hide();
-            FormState.PreviousPage = this;
         }
 
         private void exit_Click(object sender, EventArgs e)
         {
 
             databaseContext.Dispose(true);
-            FormState.PreviousPage.Show();
             this.Close();
         }
 
@@ -70,19 +57,6 @@ namespace EmployeesManagementSystem
         {
             Color color = Color.LightGray;
             this.exit.BackColor = color;
-        }
-
-        private void back_MouseEnter(object sender, EventArgs e)
-        {
-            Color color = Color.DarkGray;
-            this.back.BackColor = color;
-
-        }
-
-        private void back_MouseLeave(object sender, EventArgs e)
-        {
-            Color color = Color.LightGray;
-            this.back.BackColor = color;
         }
 
     }

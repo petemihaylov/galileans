@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using EmployeesManagementSystem.Models;
-using static EmployeesManagementSystem.Program;
 
 namespace EmployeesManagementSystem
 {
@@ -131,7 +129,7 @@ namespace EmployeesManagementSystem
             {
                
                     
-             //ask if you want to delete and proccess
+             // Ask if you want to delete and proccess
              int index = dataGridView.CurrentCell.RowIndex;
             
                 // Find the role
@@ -139,22 +137,15 @@ namespace EmployeesManagementSystem
                 {
                     int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
                     
-                    this.Hide();
-
                     Delete delete = new Delete(id, this);
                     delete.Show();
 
-                    FormState.PreviousPage = this;
 
                 }
                 else
                 {
-                    this.Hide();
-
                     Warning warning = new Warning(this);
                     warning.Show();
-
-                    FormState.PreviousPage = this;
                 }
             }
 

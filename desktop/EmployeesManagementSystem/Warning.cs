@@ -22,15 +22,7 @@ namespace EmployeesManagementSystem
             this.dashboard = dashboard;
         }
 
-        // Back button
-        private void back_Click(object sender, EventArgs e)
-        {
-            FormState.PreviousPage.Show();
-            this.Close();
-
-            //this.Hide();
-            FormState.PreviousPage = this;
-        }
+        
 
         // Exit button
         private void exit_Click(object sender, EventArgs e)
@@ -50,19 +42,6 @@ namespace EmployeesManagementSystem
         {
             Color color = Color.LightGray;
             this.exit.BackColor = color;
-        }
-
-        private void back_MouseEnter(object sender, EventArgs e)
-        {
-            Color color = Color.DarkGray;
-            this.back.BackColor = color;
-
-        }
-
-        private void back_MouseLeave(object sender, EventArgs e)
-        {
-            Color color = Color.LightGray;
-            this.back.BackColor = color;
         }
 
     }
