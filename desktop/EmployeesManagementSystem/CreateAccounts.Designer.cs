@@ -250,6 +250,7 @@
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(300, 25);
             this.tbPassword.TabIndex = 37;
+            this.tbPassword.UseSystemPasswordChar = true;
             // 
             // panel7
             // 

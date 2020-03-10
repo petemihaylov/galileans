@@ -127,8 +127,8 @@
             this.btnShift.Size = new System.Drawing.Size(230, 41);
             this.btnShift.TabIndex = 11;
             this.btnShift.Click += new System.EventHandler(this.btnShift_Click);
-            this.btnShift.MouseEnter += new System.EventHandler(this.btn4_MouseEnter);
-            this.btnShift.MouseLeave += new System.EventHandler(this.btn4_MouseLeave);
+            this.btnShift.MouseEnter += new System.EventHandler(this.btnShift_MouseEnter);
+            this.btnShift.MouseLeave += new System.EventHandler(this.btnShift_MouseLeave);
             // 
             // pictureBox13
             // 

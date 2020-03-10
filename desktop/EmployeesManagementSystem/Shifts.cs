@@ -55,7 +55,7 @@ namespace EmployeesManagementSystem
             this.morningList.Items.Clear();
             foreach (var item in morning)
             {
-                this.morningList.Items.Add(item.StartTime.ToString("hh:mm tt") + " - " + item.EndTime.ToString("hh:mm tt") + " " + databaseContext.GetUserByID(item.AssignedEmployeeID).FullName);
+                this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + databaseContext.GetUserByID(item.AssignedEmployeeID).FullName);
             }
 
             // EVENING
@@ -63,7 +63,7 @@ namespace EmployeesManagementSystem
             this.eveningList.Items.Clear();
             foreach (var item in evening)
             {
-               this.morningList.Items.Add(item.StartTime.ToString("hh:mm tt") + " - " + item.EndTime.ToString("hh:mm tt") + " " + databaseContext.GetUserByID(item.AssignedEmployeeID).FullName);
+               this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + databaseContext.GetUserByID(item.AssignedEmployeeID).FullName);
             }
 
             // AFTERNOON
@@ -71,7 +71,7 @@ namespace EmployeesManagementSystem
             this.afternoonList.Items.Clear();
             foreach (var item in afternoon)
             {
-                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm tt") + " - " + item.EndTime.ToString("hh:mm tt") + " " + databaseContext.GetUserByID(item.AssignedEmployeeID).FullName);
+                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + databaseContext.GetUserByID(item.AssignedEmployeeID).FullName);
             }
 
         }
@@ -167,6 +167,19 @@ namespace EmployeesManagementSystem
             Dashboard dashboard = new Dashboard();
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
+        }
+
+        private void btnToday_Click(object sender, EventArgs e)
+        {
+            addDays = 0;
+            DateTime now = DateTime.UtcNow.Date;
+            showDate(now);
+            displayShifts(now);
+        }
+
+        private void currentTime_Tick(object sender, EventArgs e)
+        {
+            this.lbTime.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt");
         }
     }
 }

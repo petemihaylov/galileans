@@ -9,55 +9,40 @@ namespace EmployeesManagementSystem
 {
     public partial class Dashboard : Form
     {
-        // Load a Database context
-        private DbContext databaseContext = new DbContext();
 
-        // Variables
         private User[] users;
         private DataTable table;
+        private DbContext databaseContext = new DbContext();
 
-        // Additional variables
-        private int seeder;
-
-        //  Getters and Setters
-        public User[] Users { get => users; set => users = value; }
-        public DataTable Table { get => table; set => table = value; }
-        public int Seeder { get => seeder; set => seeder = value; }
-
-        // Constructor
         public Dashboard()
         {
             InitializeComponent();
-            this.Seeder = 1000;
         }
 
-        // Load Dashboard
         private void Dashboard_Load(object sender, EventArgs e)
         {
             try
             {
-                this.Users = this.databaseContext.GetAllUsers();
-                this.Table = this.databaseContext.GetUsers();
+                this.users = this.databaseContext.GetAllUsers();
+                this.table = this.databaseContext.GetUsers();
                 
-                showInformation(this.Users);
+                showInformation(this.users);
             }
             catch (Exception)
             {
-                throw new Exception("Can't display info correctly");
+                throw new Exception("Can't display info correctly!");
             }
         }
 
-        // Updata dashboard
         public void UpdateDashboard()
         {
             this.dataGridView.Rows.Clear();
-            this.Table = this.databaseContext.GetUsers();
+            this.table = this.databaseContext.GetUsers();
 
             User[] users = databaseContext.GetAllUsers();
             showInformation(users);
         }
 
-        // Search fields
         private void searchField_KeyPress(object sender, KeyPressEventArgs e)
         {
         
@@ -65,13 +50,12 @@ namespace EmployeesManagementSystem
             if (e.KeyChar == (char)13)
             {
 
-                DataView dv = this.Table.DefaultView;
+                DataView dv = this.table.DefaultView;
          
                 // Filter the rows
                 dv.RowFilter = string.Format("FullName Like '%{0}%'", RemoveWhiteSpaces(this.searchField.Text));
                 if (dv.ToTable().Rows.Count > 0)
                 {
-                    // Get filtered Users info
                     User[] users = databaseContext.GetAllFilteredUsers(dv.ToTable());
                     showInformation(users);
                 }
@@ -91,7 +75,6 @@ namespace EmployeesManagementSystem
             return Regex.Replace(text, @"\s+|\t|\n|\r", String.Empty);
         }
 
-        // Helper method
         private void showInformation(User[] users)
         {
             // Clean the dataGrid
@@ -104,7 +87,6 @@ namespace EmployeesManagementSystem
             this.searchField.Text = String.Empty;
         }
 
-        // Database grid 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int Details = 4;
@@ -115,7 +97,6 @@ namespace EmployeesManagementSystem
                 int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
 
                 this.Hide();
-
                 Details details = new Details(id);
                 details.Show();
                
@@ -135,8 +116,6 @@ namespace EmployeesManagementSystem
                     
                     Delete delete = new Delete(id, this);
                     delete.Show();
-
-
                 }
                 else
                 {
@@ -148,7 +127,6 @@ namespace EmployeesManagementSystem
         }
 
 
-        // Buttons
         private void exit_Click(object sender, EventArgs e)
         {
             // Closing the db connection 
@@ -203,7 +181,6 @@ namespace EmployeesManagementSystem
         }
         private void btnEmployees_MouseLeave(object sender, EventArgs e)
         {
-
             Color color = Color.LightGray;
             this.btnEmployees.BackColor = color;
         }
@@ -214,21 +191,22 @@ namespace EmployeesManagementSystem
         }
         private void btnCreate_MouseLeave(object sender, EventArgs e)
         {
-
             Color color = Color.LightGray;
             this.btnCreate.BackColor = color;
         }      
        
-        private void btn4_MouseEnter(object sender, EventArgs e)
+        private void btnShift_MouseEnter(object sender, EventArgs e)
         {
+
             Color color = Color.DarkGray;
             this.btnShift.BackColor = color;
         }
-        private void btn4_MouseLeave(object sender, EventArgs e)
+
+        private void btnShift_MouseLeave(object sender, EventArgs e)
         {
+
             Color color = Color.LightGray;
             this.btnShift.BackColor = color;
         }
-        
     }
 }
