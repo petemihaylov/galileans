@@ -36,8 +36,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbPhone = new System.Windows.Forms.TextBox();
             this.tbHourlyRate = new System.Windows.Forms.TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbEmail = new System.Windows.Forms.Label();
             this.tbEmail = new System.Windows.Forms.TextBox();
@@ -47,7 +45,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbPassword = new System.Windows.Forms.TextBox();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.tbConfirmationPassword = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
@@ -135,26 +132,10 @@
             this.tbHourlyRate.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbHourlyRate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbHourlyRate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHourlyRate.Location = new System.Drawing.Point(82, 488);
+            this.tbHourlyRate.Location = new System.Drawing.Point(82, 490);
             this.tbHourlyRate.Name = "tbHourlyRate";
             this.tbHourlyRate.Size = new System.Drawing.Size(300, 25);
             this.tbHourlyRate.TabIndex = 4;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel4.Location = new System.Drawing.Point(82, 512);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(300, 1);
-            this.panel4.TabIndex = 28;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel5.Location = new System.Drawing.Point(83, 440);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(300, 1);
-            this.panel5.TabIndex = 27;
             // 
             // panel3
             // 
@@ -245,20 +226,12 @@
             this.tbPassword.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbPassword.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.Location = new System.Drawing.Point(82, 555);
+            this.tbPassword.Location = new System.Drawing.Point(83, 554);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(300, 25);
             this.tbPassword.TabIndex = 37;
             this.tbPassword.UseSystemPasswordChar = true;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel7.Location = new System.Drawing.Point(83, 579);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(300, 1);
-            this.panel7.TabIndex = 38;
             // 
             // label4
             // 
@@ -291,7 +264,6 @@
             this.Controls.Add(this.tbConfirmationPassword);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbPassword);
-            this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbEmail);
             this.Controls.Add(this.tbEmail);
@@ -300,8 +272,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbPhone);
             this.Controls.Add(this.tbHourlyRate);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel5);
             this.Controls.Add(this.btnCreateAccount);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbFullName);
@@ -329,8 +299,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbPhone;
         private System.Windows.Forms.TextBox tbHourlyRate;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lbEmail;
         private System.Windows.Forms.TextBox tbEmail;
@@ -340,7 +308,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbPassword;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbConfirmationPassword;
     }

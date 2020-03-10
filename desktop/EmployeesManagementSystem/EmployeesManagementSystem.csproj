@@ -374,6 +374,12 @@
   <ItemGroup>
     <None Include="Resources\icons8-sunrise-64.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\taken.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\taken1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

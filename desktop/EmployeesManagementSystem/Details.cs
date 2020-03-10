@@ -54,20 +54,26 @@ namespace EmployeesManagementSystem
                 if(item.StartTime.Hour == 9)
                 {
                     if (item.Availability) { lbMorn_first.Font = new Font("Arial", float.Parse("10.2")); picMor_first.Image = Properties.Resources.btnAdd; lbMorn_first.ForeColor = Color.Black; }
-                    else { lbMorn_first.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picMor_first.Image = Properties.Resources.btnBlock; lbMorn_first.ForeColor = Color.DimGray; }
+                    else { lbMorn_first.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picMor_first.Image = Properties.Resources.btnBlock; lbMorn_first.ForeColor = Color.DimGray;
+                        if (user.ID == item.AssignedEmployeeID) picMor_first.Image = Properties.Resources.taken1;
+                    }
                 }
 
                 if(item.StartTime.Hour == 10)
                 {
                     if (item.Availability) { lbMorn_second.Font = new Font("Arial", float.Parse("10.2")); picMor_second.Image = Properties.Resources.btnAdd; lbMorn_second.ForeColor = Color.Black; }
-                    else { lbMorn_second.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picMor_second.Image = Properties.Resources.btnBlock; lbMorn_second.ForeColor = Color.DimGray; }
+                    else { lbMorn_second.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picMor_second.Image = Properties.Resources.btnBlock; lbMorn_second.ForeColor = Color.DimGray;
+                        if (user.ID == item.AssignedEmployeeID) picMor_second.Image = Properties.Resources.taken1;
+                    }
                 }
 
                 if (item.StartTime.Hour == 11)
                 {
                     if (item.Availability) { lbMorn_third.Font = new Font("Arial", float.Parse("10.2")); picMor_third.Image = Properties.Resources.btnAdd; lbMorn_third.ForeColor = Color.Black; }
 
-                    else { lbMorn_third.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picMor_third.Image = Properties.Resources.btnBlock; lbMorn_third.ForeColor = Color.DimGray; }
+                    else { lbMorn_third.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picMor_third.Image = Properties.Resources.btnBlock; lbMorn_third.ForeColor = Color.DimGray;
+                        if (user.ID == item.AssignedEmployeeID) picMor_third.Image = Properties.Resources.taken1;
+                    }
                 }
             }
 
@@ -79,20 +85,26 @@ namespace EmployeesManagementSystem
                 if (item.StartTime.Hour == 14)
                 {
                     if (item.Availability) { lbAft_first.Font = new Font("Arial", float.Parse("10.2")); picAft_first.Image = Properties.Resources.btnAdd; lbAft_first.ForeColor = Color.Black; }
-                    else { lbAft_first.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picAft_first.Image = Properties.Resources.btnBlock; lbAft_first.ForeColor = Color.DimGray; }
+                    else { lbAft_first.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picAft_first.Image = Properties.Resources.btnBlock; lbAft_first.ForeColor = Color.DimGray;
+                        if (user.ID == item.AssignedEmployeeID) picAft_first.Image = Properties.Resources.taken1;
+                    }
                 }
 
                 if (item.StartTime.Hour == 15)
                 {
                     if (item.Availability) { lbAft_second.Font = new Font("Arial", float.Parse("10.2")); picAft_second.Image = Properties.Resources.btnAdd; lbAft_second.ForeColor = Color.Black; }
-                    else { lbAft_second.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picAft_second.Image = Properties.Resources.btnBlock; lbAft_second.ForeColor = Color.DimGray; }
+                    else { lbAft_second.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picAft_second.Image = Properties.Resources.btnBlock; lbAft_second.ForeColor = Color.DimGray;
+                        if (user.ID == item.AssignedEmployeeID) picAft_second.Image = Properties.Resources.taken1;
+                    }
                 }
 
                 if (item.StartTime.Hour == 16)
                 {
                     if (item.Availability) { lbAft_third.Font = new Font("Arial", float.Parse("10.2")); picAft_third.Image = Properties.Resources.btnAdd; lbAft_third.ForeColor = Color.Black; }
 
-                    else { lbAft_third.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picAft_third.Image = Properties.Resources.btnBlock; lbAft_third.ForeColor = Color.DimGray; }
+                    else { lbAft_third.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picAft_third.Image = Properties.Resources.btnBlock; lbAft_third.ForeColor = Color.DimGray;
+                        if (user.ID == item.AssignedEmployeeID) picAft_third.Image = Properties.Resources.taken1;
+                    }
                 }
             }
 
@@ -104,20 +116,26 @@ namespace EmployeesManagementSystem
                 if (item.StartTime.Hour == 20)
                 {
                     if (item.Availability) { lbEvn_first.Font = new Font("Arial", float.Parse("10.2")); picEvn_first.Image = Properties.Resources.btnAdd; lbEvn_first.ForeColor = Color.Black; }
-                    else { lbEvn_first.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picEvn_first.Image = Properties.Resources.btnBlock; lbEvn_first.ForeColor = Color.DimGray; }
+                    else { lbEvn_first.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picEvn_first.Image = Properties.Resources.btnBlock; lbEvn_first.ForeColor = Color.DimGray;
+                        if (user.ID == item.AssignedEmployeeID) picEvn_first.Image = Properties.Resources.taken1;
+                    }
                 }
 
                 if (item.StartTime.Hour == 21)
                 {
                     if (item.Availability) { lbEvn_second.Font = new Font("Arial", float.Parse("10.2")); picEvn_second.Image = Properties.Resources.btnAdd; lbEvn_second.ForeColor = Color.Black; }
-                    else { lbEvn_second.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picEvn_second.Image = Properties.Resources.btnBlock; lbEvn_second.ForeColor = Color.DimGray; }
+                    else { lbEvn_second.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picEvn_second.Image = Properties.Resources.btnBlock; lbEvn_second.ForeColor = Color.DimGray;
+                        if (user.ID == item.AssignedEmployeeID) picEvn_second.Image = Properties.Resources.taken1;
+                    }
                 }
 
                 if (item.StartTime.Hour == 22)
                 {
                     if (item.Availability) { lbEvn_third.Font = new Font("Arial", float.Parse("10.2")); picEvn_third.Image = Properties.Resources.btnAdd; lbEvn_third.ForeColor = Color.Black; }
 
-                    else { lbEvn_third.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picEvn_third.Image = Properties.Resources.btnBlock; lbEvn_third.ForeColor = Color.DimGray; }
+                    else { lbEvn_third.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picEvn_third.Image = Properties.Resources.btnBlock; lbEvn_third.ForeColor = Color.DimGray;
+                        if (user.ID == item.AssignedEmployeeID) picEvn_third.Image = Properties.Resources.taken1;
+                    }
                 }
             }
         }

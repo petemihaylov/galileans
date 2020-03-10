@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.settingsPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.editAccount = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnShift = new System.Windows.Forms.Panel();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
@@ -50,7 +56,7 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbSettings = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.PictureBox();
             this.panelAccount = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -73,6 +79,9 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelLeft.SuspendLayout();
+            this.settingsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.btnShift.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
@@ -102,12 +111,13 @@
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.White;
+            this.panelLeft.Controls.Add(this.settingsPanel);
             this.panelLeft.Controls.Add(this.btnShift);
             this.panelLeft.Controls.Add(this.btnStocks);
             this.panelLeft.Controls.Add(this.btnDepartments);
             this.panelLeft.Controls.Add(this.btnCancellations);
             this.panelLeft.Controls.Add(this.btnEmployees);
-            this.panelLeft.Controls.Add(this.label5);
+            this.panelLeft.Controls.Add(this.lbSettings);
             this.panelLeft.Controls.Add(this.btnSettings);
             this.panelLeft.Controls.Add(this.panelAccount);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
@@ -115,6 +125,71 @@
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(257, 827);
             this.panelLeft.TabIndex = 0;
+            // 
+            // settingsPanel
+            // 
+            this.settingsPanel.BackColor = System.Drawing.Color.White;
+            this.settingsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.settingsPanel.Controls.Add(this.panel1);
+            this.settingsPanel.Controls.Add(this.label6);
+            this.settingsPanel.Controls.Add(this.pictureBox9);
+            this.settingsPanel.Controls.Add(this.editAccount);
+            this.settingsPanel.Controls.Add(this.pictureBox2);
+            this.settingsPanel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.settingsPanel.Location = new System.Drawing.Point(43, 688);
+            this.settingsPanel.Name = "settingsPanel";
+            this.settingsPanel.Size = new System.Drawing.Size(192, 76);
+            this.settingsPanel.TabIndex = 12;
+            this.settingsPanel.Visible = false;
+            this.settingsPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.settingsPanel_MouseClick);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Location = new System.Drawing.Point(4, 35);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(180, 1);
+            this.panel1.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(49, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 18);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "LOGOUT";
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_circle_black_48dp;
+            this.pictureBox9.Location = new System.Drawing.Point(13, 5);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(30, 26);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 15;
+            this.pictureBox9.TabStop = false;
+            // 
+            // editAccount
+            // 
+            this.editAccount.AutoSize = true;
+            this.editAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAccount.Location = new System.Drawing.Point(48, 45);
+            this.editAccount.Name = "editAccount";
+            this.editAccount.Size = new System.Drawing.Size(119, 18);
+            this.editAccount.TabIndex = 14;
+            this.editAccount.Text = "EDIT ACCOUNT";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_create_black_48dp;
+            this.pictureBox2.Location = new System.Drawing.Point(12, 42);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(30, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
             // 
             // btnShift
             // 
@@ -336,15 +411,16 @@
             this.label8.Size = new System.Drawing.Size(0, 20);
             this.label8.TabIndex = 3;
             // 
-            // label5
+            // lbSettings
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(57, 779);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 20);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Settings";
+            this.lbSettings.AutoSize = true;
+            this.lbSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSettings.Location = new System.Drawing.Point(57, 779);
+            this.lbSettings.Name = "lbSettings";
+            this.lbSettings.Size = new System.Drawing.Size(70, 20);
+            this.lbSettings.TabIndex = 3;
+            this.lbSettings.Text = "Settings";
+            this.lbSettings.Click += new System.EventHandler(this.lbSettings_Click);
             // 
             // btnSettings
             // 
@@ -583,6 +659,10 @@
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
+            this.settingsPanel.ResumeLayout(false);
+            this.settingsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.btnShift.ResumeLayout(false);
             this.btnShift.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
@@ -629,7 +709,7 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox btnExit;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbSettings;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.Panel btnCreate;
@@ -665,6 +745,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Role;
         private System.Windows.Forms.DataGridViewImageColumn Details;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
+        private System.Windows.Forms.Panel settingsPanel;
+        private System.Windows.Forms.Label editAccount;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

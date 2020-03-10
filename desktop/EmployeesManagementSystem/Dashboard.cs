@@ -208,5 +208,15 @@ namespace EmployeesManagementSystem
             Color color = Color.LightGray;
             this.btnShift.BackColor = color;
         }
+
+        private void lbSettings_Click(object sender, EventArgs e)
+        {
+            this.settingsPanel.Visible = true;
+        }
+
+        private void settingsPanel_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.settingsPanel.Visible = false;
+        }
     }
 }
