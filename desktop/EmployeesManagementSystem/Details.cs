@@ -260,7 +260,6 @@ namespace EmployeesManagementSystem
         {
             databaseContext.Dispose(true);
             this.Close();
-            // exiting properly the application
             if (Application.MessageLoop)
             {
                 Application.Exit();

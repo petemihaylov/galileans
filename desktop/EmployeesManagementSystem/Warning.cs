@@ -6,7 +6,6 @@ namespace EmployeesManagementSystem
 {
     public partial class Warning : Form
     {
-
         private Dashboard dashboard;
         
         public Warning(Dashboard dashboard)
@@ -19,14 +18,12 @@ namespace EmployeesManagementSystem
         {
             dashboard.Show();
             this.Close();
-
         }
 
         private void exit_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.DarkGray;
             this.exit.BackColor = color;
-
         }
 
         private void exit_MouseLeave(object sender, EventArgs e)

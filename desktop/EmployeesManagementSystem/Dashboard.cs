@@ -9,14 +9,11 @@ namespace EmployeesManagementSystem
 {
     public partial class Dashboard : Form
     {
-        private DbContext databaseContext = new DbContext();
 
         private User[] users;
         private DataTable table;
+        private DbContext databaseContext = new DbContext();
 
-        public User[] Users { get => users; set => users = value; }
-        public DataTable Table { get => table; set => table = value; }
-        
         public Dashboard()
         {
             InitializeComponent();
@@ -26,21 +23,21 @@ namespace EmployeesManagementSystem
         {
             try
             {
-                this.Users = this.databaseContext.GetAllUsers();
-                this.Table = this.databaseContext.GetUsers();
+                this.users = this.databaseContext.GetAllUsers();
+                this.table = this.databaseContext.GetUsers();
                 
-                showInformation(this.Users);
+                showInformation(this.users);
             }
             catch (Exception)
             {
-                throw new Exception("Can't display info correctly");
+                throw new Exception("Can't display info correctly!");
             }
         }
 
         public void UpdateDashboard()
         {
             this.dataGridView.Rows.Clear();
-            this.Table = this.databaseContext.GetUsers();
+            this.table = this.databaseContext.GetUsers();
 
             User[] users = databaseContext.GetAllUsers();
             showInformation(users);
@@ -53,13 +50,12 @@ namespace EmployeesManagementSystem
             if (e.KeyChar == (char)13)
             {
 
-                DataView dv = this.Table.DefaultView;
+                DataView dv = this.table.DefaultView;
          
                 // Filter the rows
                 dv.RowFilter = string.Format("FullName Like '%{0}%'", RemoveWhiteSpaces(this.searchField.Text));
                 if (dv.ToTable().Rows.Count > 0)
                 {
-                    // Get filtered Users info
                     User[] users = databaseContext.GetAllFilteredUsers(dv.ToTable());
                     showInformation(users);
                 }
@@ -100,7 +96,6 @@ namespace EmployeesManagementSystem
                 int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
 
                 this.Hide();
-
                 Details details = new Details(id);
                 details.Show();
                
@@ -183,7 +178,6 @@ namespace EmployeesManagementSystem
         }
         private void btn1_MouseLeave(object sender, EventArgs e)
         {
-
             Color color = Color.LightGray;
             this.btn1.BackColor = color;
         }
@@ -194,21 +188,17 @@ namespace EmployeesManagementSystem
         }
         private void btn2_MouseLeave(object sender, EventArgs e)
         {
-
             Color color = Color.LightGray;
             this.btn2.BackColor = color;
         }      
         private void btn3_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.DarkGray;
-
             this.btn3.BackColor = color;
         }
         private void btn3_MouseLeave(object sender, EventArgs e)
         {
-
             Color color = Color.LightGray;
-
             this.btn3.BackColor = color;
         }      
         private void btn4_MouseEnter(object sender, EventArgs e)
@@ -228,7 +218,6 @@ namespace EmployeesManagementSystem
         }
         private void createPanel_MouseLeave(object sender, EventArgs e)
         {
-
             Color color = Color.LightGray;
             this.createPanel.BackColor = color;
         }
