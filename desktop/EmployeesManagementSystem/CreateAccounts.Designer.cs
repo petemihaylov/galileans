@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.createAccount = new System.Windows.Forms.Button();
+            this.btnCreateAccount = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbFullName = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -43,29 +43,29 @@
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.exit = new System.Windows.Forms.PictureBox();
+            this.btnExit = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
             this.SuspendLayout();
             // 
-            // createAccount
+            // btnCreateAccount
             // 
-            this.createAccount.BackColor = System.Drawing.Color.LightSlateGray;
-            this.createAccount.FlatAppearance.BorderSize = 0;
-            this.createAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createAccount.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createAccount.ForeColor = System.Drawing.SystemColors.Control;
-            this.createAccount.Location = new System.Drawing.Point(143, 609);
-            this.createAccount.Name = "createAccount";
-            this.createAccount.Size = new System.Drawing.Size(179, 38);
-            this.createAccount.TabIndex = 25;
-            this.createAccount.Text = "Create Account";
-            this.createAccount.UseVisualStyleBackColor = false;
-            this.createAccount.Click += new System.EventHandler(this.button1_Click);
+            this.btnCreateAccount.BackColor = System.Drawing.Color.LightSlateGray;
+            this.btnCreateAccount.FlatAppearance.BorderSize = 0;
+            this.btnCreateAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateAccount.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateAccount.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCreateAccount.Location = new System.Drawing.Point(143, 609);
+            this.btnCreateAccount.Name = "btnCreateAccount";
+            this.btnCreateAccount.Size = new System.Drawing.Size(179, 38);
+            this.btnCreateAccount.TabIndex = 25;
+            this.btnCreateAccount.Text = "Create Account";
+            this.btnCreateAccount.UseVisualStyleBackColor = false;
+            this.btnCreateAccount.Click += new System.EventHandler(this.btnCreateAccount_Click);
             // 
             // label1
             // 
@@ -195,7 +195,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panel1.BackgroundImage = global::EmployeesManagementSystem.Properties.Resources.login_bg;
-            this.panel1.Controls.Add(this.exit);
+            this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -203,17 +203,17 @@
             this.panel1.Size = new System.Drawing.Size(464, 231);
             this.panel1.TabIndex = 36;
             // 
-            // exit
+            // btnExit
             // 
-            this.exit.BackColor = System.Drawing.Color.Transparent;
-            this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
-            this.exit.Location = new System.Drawing.Point(422, 0);
-            this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(39, 35);
-            this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.exit.TabIndex = 3;
-            this.exit.TabStop = false;
-            this.exit.Click += new System.EventHandler(this.exit_Click);
+            this.btnExit.BackColor = System.Drawing.Color.Transparent;
+            this.btnExit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
+            this.btnExit.Location = new System.Drawing.Point(422, 0);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(39, 35);
+            this.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnExit.TabIndex = 3;
+            this.btnExit.TabStop = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label3
             // 
@@ -238,16 +238,15 @@
             this.label2.TabIndex = 39;
             this.label2.Text = "Password";
             // 
-            // txtPassword
+            // tbPassword
             // 
-            this.txtPassword.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(82, 555);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(300, 22);
-            this.txtPassword.TabIndex = 37;
+            this.tbPassword.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbPassword.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPassword.Location = new System.Drawing.Point(82, 555);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(300, 22);
+            this.tbPassword.TabIndex = 37;
             // 
             // panel7
             // 
@@ -263,7 +262,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 689);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbEmail);
@@ -275,7 +274,7 @@
             this.Controls.Add(this.tbHourlyRate);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.createAccount);
+            this.Controls.Add(this.btnCreateAccount);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbFullName);
             this.Controls.Add(this.panel3);
@@ -286,7 +285,7 @@
             this.Text = "CreateAccounts";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,7 +293,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button createAccount;
+        private System.Windows.Forms.Button btnCreateAccount;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbFullName;
         private System.Windows.Forms.Panel panel2;
@@ -309,10 +308,10 @@
         private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox exit;
+        private System.Windows.Forms.PictureBox btnExit;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Panel panel7;
     }
 }

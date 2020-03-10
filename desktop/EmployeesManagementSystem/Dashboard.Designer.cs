@@ -29,29 +29,29 @@
         private void InitializeComponent()
         {
             this.panelLeft = new System.Windows.Forms.Panel();
-            this.btn4 = new System.Windows.Forms.Panel();
+            this.btnShift = new System.Windows.Forms.Panel();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnStocks = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn3 = new System.Windows.Forms.Panel();
+            this.btnDepartments = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btn2 = new System.Windows.Forms.Panel();
+            this.btnCancellations = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn1 = new System.Windows.Forms.Panel();
+            this.btnEmployees = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnSettings = new System.Windows.Forms.PictureBox();
             this.panelAccount = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -66,49 +66,49 @@
             this.searchField = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.createPanel = new System.Windows.Forms.Panel();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.btnCreate = new System.Windows.Forms.Panel();
+            this.pictureCreate = new System.Windows.Forms.PictureBox();
             this.lbCreate = new System.Windows.Forms.Label();
-            this.exit = new System.Windows.Forms.PictureBox();
+            this.btnExit = new System.Windows.Forms.PictureBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelLeft.SuspendLayout();
-            this.btn4.SuspendLayout();
+            this.btnShift.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.btnStocks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            this.btn3.SuspendLayout();
+            this.btnDepartments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.btn2.SuspendLayout();
+            this.btnCancellations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.btn1.SuspendLayout();
+            this.btnEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).BeginInit();
             this.panelAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            this.createPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
+            this.btnCreate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCreate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.White;
-            this.panelLeft.Controls.Add(this.btn4);
-            this.panelLeft.Controls.Add(this.panel1);
-            this.panelLeft.Controls.Add(this.btn3);
-            this.panelLeft.Controls.Add(this.btn2);
-            this.panelLeft.Controls.Add(this.btn1);
+            this.panelLeft.Controls.Add(this.btnShift);
+            this.panelLeft.Controls.Add(this.btnStocks);
+            this.panelLeft.Controls.Add(this.btnDepartments);
+            this.panelLeft.Controls.Add(this.btnCancellations);
+            this.panelLeft.Controls.Add(this.btnEmployees);
             this.panelLeft.Controls.Add(this.label5);
-            this.panelLeft.Controls.Add(this.pictureBox2);
+            this.panelLeft.Controls.Add(this.btnSettings);
             this.panelLeft.Controls.Add(this.panelAccount);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
@@ -116,19 +116,19 @@
             this.panelLeft.Size = new System.Drawing.Size(257, 827);
             this.panelLeft.TabIndex = 0;
             // 
-            // btn4
+            // btnShift
             // 
-            this.btn4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btn4.Controls.Add(this.pictureBox13);
-            this.btn4.Controls.Add(this.pictureBox14);
-            this.btn4.Controls.Add(this.label9);
-            this.btn4.Location = new System.Drawing.Point(12, 508);
-            this.btn4.Name = "btn4";
-            this.btn4.Size = new System.Drawing.Size(230, 41);
-            this.btn4.TabIndex = 11;
-            this.btn4.Click += new System.EventHandler(this.btn4_Click);
-            this.btn4.MouseEnter += new System.EventHandler(this.btn4_MouseEnter);
-            this.btn4.MouseLeave += new System.EventHandler(this.btn4_MouseLeave);
+            this.btnShift.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnShift.Controls.Add(this.pictureBox13);
+            this.btnShift.Controls.Add(this.pictureBox14);
+            this.btnShift.Controls.Add(this.label9);
+            this.btnShift.Location = new System.Drawing.Point(12, 508);
+            this.btnShift.Name = "btnShift";
+            this.btnShift.Size = new System.Drawing.Size(230, 41);
+            this.btnShift.TabIndex = 11;
+            this.btnShift.Click += new System.EventHandler(this.btnShift_Click);
+            this.btnShift.MouseEnter += new System.EventHandler(this.btnShift_MouseEnter);
+            this.btnShift.MouseLeave += new System.EventHandler(this.btnShift_MouseLeave);
             // 
             // pictureBox13
             // 
@@ -160,16 +160,16 @@
             this.label9.TabIndex = 3;
             this.label9.Text = "Shifts";
             // 
-            // panel1
+            // btnStocks
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Controls.Add(this.pictureBox11);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(12, 439);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(230, 41);
-            this.panel1.TabIndex = 10;
+            this.btnStocks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnStocks.Controls.Add(this.pictureBox3);
+            this.btnStocks.Controls.Add(this.pictureBox11);
+            this.btnStocks.Controls.Add(this.label2);
+            this.btnStocks.Location = new System.Drawing.Point(12, 439);
+            this.btnStocks.Name = "btnStocks";
+            this.btnStocks.Size = new System.Drawing.Size(230, 41);
+            this.btnStocks.TabIndex = 10;
             // 
             // pictureBox3
             // 
@@ -201,16 +201,16 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Stocks";
             // 
-            // btn3
+            // btnDepartments
             // 
-            this.btn3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btn3.Controls.Add(this.pictureBox8);
-            this.btn3.Controls.Add(this.pictureBox5);
-            this.btn3.Controls.Add(this.label4);
-            this.btn3.Location = new System.Drawing.Point(12, 370);
-            this.btn3.Name = "btn3";
-            this.btn3.Size = new System.Drawing.Size(230, 41);
-            this.btn3.TabIndex = 8;
+            this.btnDepartments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDepartments.Controls.Add(this.pictureBox8);
+            this.btnDepartments.Controls.Add(this.pictureBox5);
+            this.btnDepartments.Controls.Add(this.label4);
+            this.btnDepartments.Location = new System.Drawing.Point(12, 370);
+            this.btnDepartments.Name = "btnDepartments";
+            this.btnDepartments.Size = new System.Drawing.Size(230, 41);
+            this.btnDepartments.TabIndex = 8;
             // 
             // pictureBox8
             // 
@@ -242,16 +242,16 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Departments";
             // 
-            // btn2
+            // btnCancellations
             // 
-            this.btn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btn2.Controls.Add(this.pictureBox7);
-            this.btn2.Controls.Add(this.pictureBox4);
-            this.btn2.Controls.Add(this.label3);
-            this.btn2.Location = new System.Drawing.Point(12, 301);
-            this.btn2.Name = "btn2";
-            this.btn2.Size = new System.Drawing.Size(230, 41);
-            this.btn2.TabIndex = 9;
+            this.btnCancellations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCancellations.Controls.Add(this.pictureBox7);
+            this.btnCancellations.Controls.Add(this.pictureBox4);
+            this.btnCancellations.Controls.Add(this.label3);
+            this.btnCancellations.Location = new System.Drawing.Point(12, 301);
+            this.btnCancellations.Name = "btnCancellations";
+            this.btnCancellations.Size = new System.Drawing.Size(230, 41);
+            this.btnCancellations.TabIndex = 9;
             // 
             // pictureBox7
             // 
@@ -283,19 +283,19 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Cancellations";
             // 
-            // btn1
+            // btnEmployees
             // 
-            this.btn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btn1.Controls.Add(this.label7);
-            this.btn1.Controls.Add(this.pictureBox6);
-            this.btn1.Controls.Add(this.pictureBox12);
-            this.btn1.Controls.Add(this.label8);
-            this.btn1.Location = new System.Drawing.Point(12, 231);
-            this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(230, 41);
-            this.btn1.TabIndex = 7;
-            this.btn1.MouseEnter += new System.EventHandler(this.btn1_MouseEnter);
-            this.btn1.MouseLeave += new System.EventHandler(this.btn1_MouseLeave);
+            this.btnEmployees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEmployees.Controls.Add(this.label7);
+            this.btnEmployees.Controls.Add(this.pictureBox6);
+            this.btnEmployees.Controls.Add(this.pictureBox12);
+            this.btnEmployees.Controls.Add(this.label8);
+            this.btnEmployees.Location = new System.Drawing.Point(12, 231);
+            this.btnEmployees.Name = "btnEmployees";
+            this.btnEmployees.Size = new System.Drawing.Size(230, 41);
+            this.btnEmployees.TabIndex = 7;
+            this.btnEmployees.MouseEnter += new System.EventHandler(this.btnEmployees_MouseEnter);
+            this.btnEmployees.MouseLeave += new System.EventHandler(this.btnEmployees_MouseLeave);
             // 
             // label7
             // 
@@ -346,15 +346,15 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Settings";
             // 
-            // pictureBox2
+            // btnSettings
             // 
-            this.pictureBox2.Image = global::EmployeesManagementSystem.Properties.Resources.settings;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 770);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(39, 35);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.btnSettings.Image = global::EmployeesManagementSystem.Properties.Resources.settings;
+            this.btnSettings.Location = new System.Drawing.Point(12, 770);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(39, 35);
+            this.btnSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnSettings.TabIndex = 1;
+            this.btnSettings.TabStop = false;
             // 
             // panelAccount
             // 
@@ -465,8 +465,8 @@
             this.panel4.Controls.Add(this.searchField);
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.pictureBox10);
-            this.panel4.Controls.Add(this.createPanel);
-            this.panel4.Controls.Add(this.exit);
+            this.panel4.Controls.Add(this.btnCreate);
+            this.panel4.Controls.Add(this.btnExit);
             this.panel4.Location = new System.Drawing.Point(255, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1260, 63);
@@ -500,28 +500,28 @@
             this.pictureBox10.TabIndex = 4;
             this.pictureBox10.TabStop = false;
             // 
-            // createPanel
+            // btnCreate
             // 
-            this.createPanel.BackColor = System.Drawing.Color.LightGray;
-            this.createPanel.Controls.Add(this.pictureBox9);
-            this.createPanel.Controls.Add(this.lbCreate);
-            this.createPanel.Location = new System.Drawing.Point(884, 12);
-            this.createPanel.Name = "createPanel";
-            this.createPanel.Size = new System.Drawing.Size(182, 38);
-            this.createPanel.TabIndex = 4;
-            this.createPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.createPanel_MouseClick);
-            this.createPanel.MouseEnter += new System.EventHandler(this.createPanel_MouseEnter);
-            this.createPanel.MouseLeave += new System.EventHandler(this.createPanel_MouseLeave);
+            this.btnCreate.BackColor = System.Drawing.Color.LightGray;
+            this.btnCreate.Controls.Add(this.pictureCreate);
+            this.btnCreate.Controls.Add(this.lbCreate);
+            this.btnCreate.Location = new System.Drawing.Point(884, 12);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(182, 38);
+            this.btnCreate.TabIndex = 4;
+            this.btnCreate.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnCreate_MouseClick);
+            this.btnCreate.MouseEnter += new System.EventHandler(this.btnCreate_MouseEnter);
+            this.btnCreate.MouseLeave += new System.EventHandler(this.btnCreate_MouseLeave);
             // 
-            // pictureBox9
+            // pictureCreate
             // 
-            this.pictureBox9.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_box_black_48dp;
-            this.pictureBox9.Location = new System.Drawing.Point(9, 3);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(34, 32);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 3;
-            this.pictureBox9.TabStop = false;
+            this.pictureCreate.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_box_black_48dp;
+            this.pictureCreate.Location = new System.Drawing.Point(9, 3);
+            this.pictureCreate.Name = "pictureCreate";
+            this.pictureCreate.Size = new System.Drawing.Size(34, 32);
+            this.pictureCreate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureCreate.TabIndex = 3;
+            this.pictureCreate.TabStop = false;
             // 
             // lbCreate
             // 
@@ -534,18 +534,18 @@
             this.lbCreate.Text = "CREATE";
             this.lbCreate.Click += new System.EventHandler(this.lbCreate_Click);
             // 
-            // exit
+            // btnExit
             // 
-            this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
-            this.exit.Location = new System.Drawing.Point(1184, 15);
-            this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(39, 35);
-            this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.exit.TabIndex = 2;
-            this.exit.TabStop = false;
-            this.exit.Click += new System.EventHandler(this.exit_Click);
-            this.exit.MouseEnter += new System.EventHandler(this.exit_MouseEnter);
-            this.exit.MouseLeave += new System.EventHandler(this.exit_MouseLeave);
+            this.btnExit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
+            this.btnExit.Location = new System.Drawing.Point(1184, 15);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(39, 35);
+            this.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnExit.TabIndex = 2;
+            this.btnExit.TabStop = false;
+            this.btnExit.Click += new System.EventHandler(this.exit_Click);
+            this.btnExit.MouseEnter += new System.EventHandler(this.btnExit_MouseEnter);
+            this.btnExit.MouseLeave += new System.EventHandler(this.btnExit_MouseLeave);
             // 
             // dataGridViewImageColumn1
             // 
@@ -583,27 +583,27 @@
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
-            this.btn4.ResumeLayout(false);
-            this.btn4.PerformLayout();
+            this.btnShift.ResumeLayout(false);
+            this.btnShift.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.btnStocks.ResumeLayout(false);
+            this.btnStocks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            this.btn3.ResumeLayout(false);
-            this.btn3.PerformLayout();
+            this.btnDepartments.ResumeLayout(false);
+            this.btnDepartments.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.btn2.ResumeLayout(false);
-            this.btn2.PerformLayout();
+            this.btnCancellations.ResumeLayout(false);
+            this.btnCancellations.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.btn1.ResumeLayout(false);
-            this.btn1.PerformLayout();
+            this.btnEmployees.ResumeLayout(false);
+            this.btnEmployees.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).EndInit();
             this.panelAccount.ResumeLayout(false);
             this.panelAccount.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -611,10 +611,10 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            this.createPanel.ResumeLayout(false);
-            this.createPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
+            this.btnCreate.ResumeLayout(false);
+            this.btnCreate.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCreate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -625,37 +625,37 @@
         private System.Windows.Forms.Panel panelAccount;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox btnSettings;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox exit;
+        private System.Windows.Forms.PictureBox btnExit;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.Panel createPanel;
-        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.Panel btnCreate;
+        private System.Windows.Forms.PictureBox pictureCreate;
         private System.Windows.Forms.Label lbCreate;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox searchField;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel btnStocks;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel btn3;
+        private System.Windows.Forms.Panel btnDepartments;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel btn2;
+        private System.Windows.Forms.Panel btnCancellations;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel btn1;
+        private System.Windows.Forms.Panel btnEmployees;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel btn4;
+        private System.Windows.Forms.Panel btnShift;
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.Label label9;
