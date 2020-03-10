@@ -7,16 +7,6 @@ using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
 {
-
-    // Remove White Spaces
-    public static class Extensions
-    {
-        public static string RemoveWhiteSpaces(this string str)
-        {
-            return Regex.Replace(str, @"\s+|\t|\n|\r", String.Empty);
-        }
-    }
-
     public partial class Dashboard : Form
     {
         // Load a Database context
@@ -78,7 +68,7 @@ namespace EmployeesManagementSystem
                 DataView dv = this.Table.DefaultView;
          
                 // Filter the rows
-                dv.RowFilter = string.Format("FullName Like '%{0}%'", this.searchField.Text.RemoveWhiteSpaces());
+                dv.RowFilter = string.Format("FullName Like '%{0}%'", RemoveWhiteSpaces(this.searchField.Text));
                 if (dv.ToTable().Rows.Count > 0)
                 {
                     // Get filtered Users info
@@ -93,6 +83,11 @@ namespace EmployeesManagementSystem
 
             }
                        
+        }
+
+        private string RemoveWhiteSpaces(string text)
+        {
+            return Regex.Replace(text, @"\s+|\t|\n|\r", String.Empty);
         }
 
         // Helper method
