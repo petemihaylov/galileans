@@ -247,6 +247,7 @@
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(300, 22);
             this.tbPassword.TabIndex = 37;
+            this.tbPassword.UseSystemPasswordChar = true;
             // 
             // panel7
             // 
@@ -260,6 +261,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(464, 689);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbPassword);

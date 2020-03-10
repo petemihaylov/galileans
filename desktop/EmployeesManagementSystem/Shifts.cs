@@ -176,5 +176,10 @@ namespace EmployeesManagementSystem
             showDate(now);
             displayShifts(now);
         }
+
+        private void currentTime_Tick(object sender, EventArgs e)
+        {
+            this.lbTime.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt");
+        }
     }
 }
