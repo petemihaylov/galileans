@@ -33,7 +33,13 @@ namespace EmployeesManagementSystem
             }
         }
 
-        //Get all cancellation announcements
+
+/// 
+/// Announcements
+/// 
+
+
+        // Get all cancellation announcements
         public Cancellations[] GetAnnouncements()
         {
             using (var command = connection.CreateCommand())
@@ -61,6 +67,13 @@ namespace EmployeesManagementSystem
             }
         }
 
+
+/// 
+/// SHIFTS
+/// 
+
+
+        // Create new Shift
         public void InsertShift(Shift shift)
         {
             using (var command = connection.CreateCommand())
@@ -79,6 +92,8 @@ namespace EmployeesManagementSystem
                 command.ExecuteNonQuery();
             }
         }
+
+        // Get all shifts
         public List<Shift> GetAllShifts()
         {
 
@@ -109,6 +124,17 @@ namespace EmployeesManagementSystem
     
         }
 
+        // Delete shift by user id
+        public void DeleteShiftOfUser(int id)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = @"DELETE FROM Shifts WHERE AssignedEmployeeID = @ID";
+                command.AddParameter("ID", id);
+                command.ExecuteNonQuery();
+            }
+        }
+
         // Get shift type by string
         private ShiftType getShiftTypeByString(string type)
         {
@@ -121,6 +147,58 @@ namespace EmployeesManagementSystem
             }
             return ShiftType.OTHER;
         }
+
+        public void DeleteShiftByID(int id)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = @"DELETE FROM Shifts WHERE ID = @ID";
+                command.AddParameter("ID", id);
+                command.ExecuteNonQuery();
+            }
+        }
+        public Shift GetShiftByDate(DateTime date, DateTime startTime)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                // Select statement
+                command.CommandText = @"SELECT * FROM Shifts WHERE  ShiftDate = @shiftDate and StartTime = @startTime";
+                command.AddParameter("shiftDate", date);
+                command.AddParameter("startTime", startTime);
+
+                // Executing it 
+                using (var reader = command.ExecuteReader())
+                {
+                    Shift shift = new Shift();
+                    if (reader.Read())
+                    {
+                        // Mapping the return data to the object
+                        shift.ID = (int)reader["ID"];
+
+
+                        shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
+                        shift.Availability = (bool)reader["Availability"];
+                        shift.ShiftDate = (DateTime)reader["ShiftDate"];
+                        shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
+                        shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
+                        shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
+
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                    return shift;
+                }
+            }
+        }
+
+
+/// 
+/// USERS
+/// 
+    
 
         // Get all users
         public User[] GetAllUsers()
@@ -192,8 +270,7 @@ namespace EmployeesManagementSystem
             return users.ToArray();
         }
 
-        // Create new user
-        // User
+        // Get a User by id
         public User GetUserByID(int ID)
         {
             using (var command = connection.CreateCommand())
@@ -255,16 +332,6 @@ namespace EmployeesManagementSystem
             }
         }
 
-        // Delete shift by user id
-        public void DeleteShiftOfUser(int id)
-        {
-            using (var command = connection.CreateCommand())
-            {
-                command.CommandText = @"DELETE FROM Shifts WHERE AssignedEmployeeID = @ID";
-                command.AddParameter("ID", id);
-                command.ExecuteNonQuery();
-            }
-        }
 
         public void DeleteUsersWithEmail(string email)
         {
@@ -284,52 +351,6 @@ namespace EmployeesManagementSystem
                 command.CommandText = @"DELETE FROM shiftcancellation WHERE ID = @ID";
                 command.AddParameter("ID", id);
                 command.ExecuteNonQuery();
-            }
-        }
-
-        public void DeleteShiftByID(int id)
-        {
-            using (var command = connection.CreateCommand())
-            {
-                command.CommandText = @"DELETE FROM Shifts WHERE ID = @ID";
-                command.AddParameter("ID", id);
-                command.ExecuteNonQuery();
-            }
-        }
-        public Shift GetShiftByDate(DateTime date, DateTime startTime)
-        {
-            using (var command = connection.CreateCommand())
-            {
-                // Select statement
-                command.CommandText = @"SELECT * FROM Shifts WHERE  ShiftDate = @shiftDate and StartTime = @startTime";
-                command.AddParameter("shiftDate", date);
-                command.AddParameter("startTime", startTime);
-
-                // Executing it 
-                using (var reader = command.ExecuteReader())
-                {
-                    Shift shift = new Shift();
-                    if (reader.Read())
-                    {
-                        // Mapping the return data to the object
-                        shift.ID = (int)reader["ID"];
-
-
-                        shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
-                        shift.Availability = (bool)reader["Availability"];
-                        shift.ShiftDate = (DateTime)reader["ShiftDate"];
-                        shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
-                        shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
-                        shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
-
-                    }
-                    else
-                    {
-                        return null;
-                    }
-
-                    return shift;
-                }
             }
         }
 
@@ -367,7 +388,8 @@ namespace EmployeesManagementSystem
                 }
             }
         }
-        //Update the user details.
+
+        // Update the user details.
         public void UpdateUserInfo(int id, string fullName, string email, string password, string phoneNumber, string role)
         {
             using (var command = connection.CreateCommand())
@@ -386,6 +408,7 @@ namespace EmployeesManagementSystem
         }
     }
 
+    // Helper Class / Method
     public static class CommandExtensions
     {
         /// <summary>

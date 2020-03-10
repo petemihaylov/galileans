@@ -16,46 +16,49 @@ namespace EmployeesManagementSystem
 {
     public partial class CreateAccounts : Form
     {
+        // Variables 
         private DbContext databaseContext = new DbContext();
         private Dashboard dashboard;
+
+        // Constructor
         public CreateAccounts(Dashboard dashboard)
         {
             InitializeComponent();
             this.dashboard = dashboard;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        // Functional Buttons
+
+        // Create Button
+        private void btnCreateAccount_Click(object sender, EventArgs e)
         {
-            // Check if the fields are not empty IsNullOrWhiteSpace is securer in the NullorEmpty you can pass the check by inputing space \t or \n
-            if (string.IsNullOrWhiteSpace(tbFullName.Text) || string.IsNullOrWhiteSpace(tbHourlyRate.Text) || string.IsNullOrWhiteSpace(tbPhone.Text) || string.IsNullOrWhiteSpace(tbEmail.Text))
-            {
-                MessageBox.Show("Please fill in everything");
-            }
-            else
+
+            if (ifEmptyOrNull(tbFullName.Text, tbHourlyRate.Text, tbPhone.Text, tbEmail.Text))
             {
 
                 try
                 {
                     string fullName = this.tbFullName.Text;
-                   
-                    float hourlyRate = float.Parse(this.tbHourlyRate.Text); //tbHourlyRate can be -123
-                    
+                    float hourlyRate = float.Parse(this.tbHourlyRate.Text);
                     string email = this.tbEmail.Text;
                     string phoneNumber = this.tbPhone.Text;
 
-                    
-                    if (ifExists(email))
-                    {
-                        MessageBox.Show("The Email is an unique key! Could not create account with this email!");
-                        return;
+                    if (IsEmailValid(email)) {
+                        // Validation of the email before checking if exists in the DB
+                        if (ifNotExists(email))
+                        {
+                           
+                            
+                        }
                     }
-                    // There should be a validation for every field
+                   
 
 
 
 
-                    //string generatedPassword = Hashing.HashPassword("mypassword123"); hah XD
-                    string generatedPassword = Hashing.HashPassword(this.txtPassword.Text);
+                   
+                    string generatedPassword = Hashing.HashPassword(this.tbPassword.Text);
 
                     User user = new User(fullName, email, phoneNumber, generatedPassword, Role.Employee.ToString(), hourlyRate);
                     databaseContext.InsertUser(user);
@@ -70,24 +73,66 @@ namespace EmployeesManagementSystem
 
                 }
             }
+            
 
-            databaseContext.Dispose(true);
-            this.Close();
-        }
-
-        // Check if an email exists
-        private bool ifExists(string email)
-        {
-            if (databaseContext.GetUserByEmail(email) != null) return true;
-            else return false;
         }
 
         // Exit button
-        private void exit_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            dashboard.Opacity = 1;
             databaseContext.Dispose(true);
             this.Close();
+        }
+
+
+        // Additional Methods
+
+        // Empty fields
+        private bool ifEmptyOrNull(string fullName, string wage, string phone, string email )
+        {
+
+            if (string.IsNullOrWhiteSpace(RemoveWhiteSpaces(tbFullName.Text))) {
+                MessageBox.Show("Change the Name field");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(RemoveWhiteSpaces(tbHourlyRate.Text)))
+            {
+                MessageBox.Show("Change the HourlyRate field");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(RemoveWhiteSpaces(tbPhone.Text)))
+            {
+                MessageBox.Show("Change the Phone field");
+                return false;
+            }
+            
+            if(string.IsNullOrWhiteSpace(RemoveWhiteSpaces(tbEmail.Text)))
+            {
+                MessageBox.Show("Change the Email field");
+                return false;
+            }
+                
+            return true;
+        }
+
+        // Remove the WhiteSpaces
+        private string RemoveWhiteSpaces(string text)
+        {
+            return Regex.Replace(text, @"\s+|\t|\n|\r", String.Empty);
+        }
+
+        // Check if an email exists
+        private bool ifNotExists(string email)
+        {
+            if (databaseContext.GetUserByEmail(email) != null)
+            {
+                MessageBox.Show("The Email is not unique!");
+                return false;
+            }
+
+            return true;
         }
 
         // Validate the emails
@@ -102,8 +147,10 @@ namespace EmployeesManagementSystem
             }
             catch (FormatException)
             {
-                return false;
+                MessageBox.Show("The Email is unvalid!");
             }
+
+            return false;
         }
 
         // Validate the password
@@ -113,5 +160,6 @@ namespace EmployeesManagementSystem
             Regex rx = new Regex(@"(?=.{6,})(?=(.*\d){1,})(?=(.*\W){1,})");
             return rx.IsMatch(password);
         }
+
     }
 }
