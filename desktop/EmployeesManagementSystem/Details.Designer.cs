@@ -60,7 +60,7 @@
             this.lbEvn_third = new System.Windows.Forms.Label();
             this.lbEvn_second = new System.Windows.Forms.Label();
             this.lbEvn_first = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnStatistics = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.picEvn_first = new System.Windows.Forms.PictureBox();
             this.picEvn_second = new System.Windows.Forms.PictureBox();
@@ -162,10 +162,9 @@
             // picBack
             // 
             this.picBack.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_arrow_back_ios_black_48dp;
-            this.picBack.Location = new System.Drawing.Point(20, 12);
-            this.picBack.Margin = new System.Windows.Forms.Padding(2);
+            this.picBack.Location = new System.Drawing.Point(26, 15);
             this.picBack.Name = "picBack";
-            this.picBack.Size = new System.Drawing.Size(29, 28);
+            this.picBack.Size = new System.Drawing.Size(39, 35);
             this.picBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBack.TabIndex = 3;
             this.picBack.TabStop = false;
@@ -174,10 +173,9 @@
             // exit
             // 
             this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
-            this.exit.Location = new System.Drawing.Point(1084, 12);
-            this.exit.Margin = new System.Windows.Forms.Padding(2);
+            this.exit.Location = new System.Drawing.Point(1446, 15);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(29, 28);
+            this.exit.Size = new System.Drawing.Size(39, 35);
             this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.exit.TabIndex = 2;
             this.exit.TabStop = false;
@@ -318,10 +316,9 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_create_black_48dp;
-            this.pictureBox3.Location = new System.Drawing.Point(73, 90);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Location = new System.Drawing.Point(97, 111);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(20, 18);
+            this.pictureBox3.Size = new System.Drawing.Size(26, 22);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 24;
             this.pictureBox3.TabStop = false;
@@ -373,10 +370,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_circle_black_48dp;
-            this.pictureBox2.Location = new System.Drawing.Point(97, 18);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(129, 22);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(71, 67);
+            this.pictureBox2.Size = new System.Drawing.Size(95, 82);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
@@ -515,20 +511,20 @@
             this.lbEvn_first.TabIndex = 43;
             this.lbEvn_first.Text = "20:00 - 21:00";
             // 
-            // button3
+            // btnStatistics
             // 
-            this.button3.BackColor = System.Drawing.Color.Gray;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(947, 589);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(141, 24);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "STATISTICS";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnStatistics.BackColor = System.Drawing.Color.Gray;
+            this.btnStatistics.FlatAppearance.BorderSize = 0;
+            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStatistics.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStatistics.ForeColor = System.Drawing.Color.White;
+            this.btnStatistics.Location = new System.Drawing.Point(1263, 725);
+            this.btnStatistics.Name = "btnStatistics";
+            this.btnStatistics.Size = new System.Drawing.Size(188, 29);
+            this.btnStatistics.TabIndex = 25;
+            this.btnStatistics.Text = "STATISTICS";
+            this.btnStatistics.UseVisualStyleBackColor = false;
+            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
             // 
             // groupBox6
             // 
@@ -552,10 +548,9 @@
             // picEvn_first
             // 
             this.picEvn_first.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
-            this.picEvn_first.Location = new System.Drawing.Point(4, 28);
-            this.picEvn_first.Margin = new System.Windows.Forms.Padding(2);
+            this.picEvn_first.Location = new System.Drawing.Point(6, 34);
             this.picEvn_first.Name = "picEvn_first";
-            this.picEvn_first.Size = new System.Drawing.Size(23, 21);
+            this.picEvn_first.Size = new System.Drawing.Size(31, 26);
             this.picEvn_first.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picEvn_first.TabIndex = 46;
             this.picEvn_first.TabStop = false;
@@ -564,10 +559,9 @@
             // picEvn_second
             // 
             this.picEvn_second.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp1;
-            this.picEvn_second.Location = new System.Drawing.Point(4, 55);
-            this.picEvn_second.Margin = new System.Windows.Forms.Padding(2);
+            this.picEvn_second.Location = new System.Drawing.Point(6, 68);
             this.picEvn_second.Name = "picEvn_second";
-            this.picEvn_second.Size = new System.Drawing.Size(23, 21);
+            this.picEvn_second.Size = new System.Drawing.Size(31, 26);
             this.picEvn_second.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picEvn_second.TabIndex = 47;
             this.picEvn_second.TabStop = false;
@@ -576,10 +570,9 @@
             // picEvn_third
             // 
             this.picEvn_third.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
-            this.picEvn_third.Location = new System.Drawing.Point(4, 81);
-            this.picEvn_third.Margin = new System.Windows.Forms.Padding(2);
+            this.picEvn_third.Location = new System.Drawing.Point(6, 100);
             this.picEvn_third.Name = "picEvn_third";
-            this.picEvn_third.Size = new System.Drawing.Size(23, 21);
+            this.picEvn_third.Size = new System.Drawing.Size(31, 26);
             this.picEvn_third.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picEvn_third.TabIndex = 48;
             this.picEvn_third.TabStop = false;
@@ -624,10 +617,9 @@
             // pictureBox16
             // 
             this.pictureBox16.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
-            this.pictureBox16.Location = new System.Drawing.Point(33, 67);
-            this.pictureBox16.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox16.Location = new System.Drawing.Point(44, 83);
             this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(23, 21);
+            this.pictureBox16.Size = new System.Drawing.Size(31, 26);
             this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox16.TabIndex = 52;
             this.pictureBox16.TabStop = false;
@@ -685,10 +677,9 @@
             // pictureBox17
             // 
             this.pictureBox17.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
-            this.pictureBox17.Location = new System.Drawing.Point(33, 67);
-            this.pictureBox17.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox17.Location = new System.Drawing.Point(44, 83);
             this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(23, 21);
+            this.pictureBox17.Size = new System.Drawing.Size(31, 26);
             this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox17.TabIndex = 52;
             this.pictureBox17.TabStop = false;
@@ -757,10 +748,9 @@
             // pictureBox15
             // 
             this.pictureBox15.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_block_black_48dp2;
-            this.pictureBox15.Location = new System.Drawing.Point(33, 67);
-            this.pictureBox15.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox15.Location = new System.Drawing.Point(44, 83);
             this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(23, 21);
+            this.pictureBox15.Size = new System.Drawing.Size(31, 26);
             this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox15.TabIndex = 52;
             this.pictureBox15.TabStop = false;
@@ -801,10 +791,9 @@
             // arrowRight
             // 
             this.arrowRight.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
-            this.arrowRight.Location = new System.Drawing.Point(580, 37);
-            this.arrowRight.Margin = new System.Windows.Forms.Padding(2);
+            this.arrowRight.Location = new System.Drawing.Point(774, 46);
             this.arrowRight.Name = "arrowRight";
-            this.arrowRight.Size = new System.Drawing.Size(54, 78);
+            this.arrowRight.Size = new System.Drawing.Size(72, 96);
             this.arrowRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.arrowRight.TabIndex = 57;
             this.arrowRight.TabStop = false;
@@ -813,10 +802,9 @@
             // arrowLeft
             // 
             this.arrowLeft.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp1;
-            this.arrowLeft.Location = new System.Drawing.Point(73, 38);
-            this.arrowLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.arrowLeft.Location = new System.Drawing.Point(97, 47);
             this.arrowLeft.Name = "arrowLeft";
-            this.arrowLeft.Size = new System.Drawing.Size(54, 78);
+            this.arrowLeft.Size = new System.Drawing.Size(72, 96);
             this.arrowLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.arrowLeft.TabIndex = 58;
             this.arrowLeft.TabStop = false;
@@ -880,10 +868,9 @@
             // picMor_first
             // 
             this.picMor_first.Image = global::EmployeesManagementSystem.Properties.Resources.btnAdd;
-            this.picMor_first.Location = new System.Drawing.Point(4, 28);
-            this.picMor_first.Margin = new System.Windows.Forms.Padding(2);
+            this.picMor_first.Location = new System.Drawing.Point(6, 34);
             this.picMor_first.Name = "picMor_first";
-            this.picMor_first.Size = new System.Drawing.Size(23, 21);
+            this.picMor_first.Size = new System.Drawing.Size(31, 26);
             this.picMor_first.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picMor_first.TabIndex = 46;
             this.picMor_first.TabStop = false;
@@ -892,10 +879,9 @@
             // picMor_second
             // 
             this.picMor_second.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp1;
-            this.picMor_second.Location = new System.Drawing.Point(4, 55);
-            this.picMor_second.Margin = new System.Windows.Forms.Padding(2);
+            this.picMor_second.Location = new System.Drawing.Point(6, 68);
             this.picMor_second.Name = "picMor_second";
-            this.picMor_second.Size = new System.Drawing.Size(23, 21);
+            this.picMor_second.Size = new System.Drawing.Size(31, 26);
             this.picMor_second.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picMor_second.TabIndex = 47;
             this.picMor_second.TabStop = false;
@@ -904,10 +890,9 @@
             // picMor_third
             // 
             this.picMor_third.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
-            this.picMor_third.Location = new System.Drawing.Point(4, 81);
-            this.picMor_third.Margin = new System.Windows.Forms.Padding(2);
+            this.picMor_third.Location = new System.Drawing.Point(6, 100);
             this.picMor_third.Name = "picMor_third";
-            this.picMor_third.Size = new System.Drawing.Size(23, 21);
+            this.picMor_third.Size = new System.Drawing.Size(31, 26);
             this.picMor_third.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picMor_third.TabIndex = 48;
             this.picMor_third.TabStop = false;
@@ -1011,10 +996,9 @@
             this.btnToday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnToday.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnToday.Location = new System.Drawing.Point(1006, 272);
-            this.btnToday.Margin = new System.Windows.Forms.Padding(2);
+            this.btnToday.Location = new System.Drawing.Point(1341, 335);
             this.btnToday.Name = "btnToday";
-            this.btnToday.Size = new System.Drawing.Size(82, 24);
+            this.btnToday.Size = new System.Drawing.Size(110, 29);
             this.btnToday.TabIndex = 61;
             this.btnToday.Text = "TODAY";
             this.btnToday.UseVisualStyleBackColor = false;
@@ -1069,7 +1053,7 @@
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.pictureBox19);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnStatistics);
             this.Controls.Add(this.pictureBox18);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label12);
@@ -1160,7 +1144,7 @@
         private System.Windows.Forms.Label lbEvn_second;
         private System.Windows.Forms.Label lbEvn_first;
         private System.Windows.Forms.PictureBox pictureBox18;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnStatistics;
         private System.Windows.Forms.PictureBox pictureBox19;
         private System.Windows.Forms.ComboBox cbRole;
         private System.Windows.Forms.ComboBox cbDepartment;
