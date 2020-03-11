@@ -3,9 +3,9 @@
 server with default setting (user 'root' with no password) */
 
 define('DB_SERVER', 'studmysql01.fhict.local');
-define('DB_USERNAME', 'dbi429937');
+define('DB_USERNAME', 'dbi391065');
 define('DB_PASSWORD', 'Galileans');
-define('DB_NAME', 'dbi429937');
+define('DB_NAME', 'dbi391065');
  
 /* Attempt to connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
