@@ -85,6 +85,15 @@ namespace EmployeesManagementSystem
                         dashboard.Closed += (s, args) => this.Close();
                         dashboard.Show();
                     }
+                    else if(user.Role == Role.Manager.ToString())
+                    {
+                        databaseContext.Dispose(true);
+                        this.Hide();
+                        // Show Departments
+                        Departments departments = new Departments();
+                        departments.Closed += (s, args) => this.Close();
+                        departments.Show();
+                    }
                     else
                     {
                         MessageBox.Show("Role restriction!");

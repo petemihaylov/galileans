@@ -390,19 +390,33 @@ namespace EmployeesManagementSystem
         }
 
         // Update the user details.
-        public void UpdateUserInfo(int id, string fullName, string email, string password, string phoneNumber, string role)
+        public void UpdateUserInfo(int id, string fullName, string email, string phoneNumber, string role)
         {
             using (var command = connection.CreateCommand())
             {
                 // Select statement
-                command.CommandText = @"UPDATE users SET FullName = @fullname, Email = @email, PhoneNumber = @phonenumber, Password = @password, Role = @role WHERE ID = @ID";
+                command.CommandText = @"UPDATE users SET FullName = @fullname, Email = @email, PhoneNumber = @phonenumber, Role = @role WHERE ID = @ID";
                 command.AddParameter("ID", id);
                 // Executing it 
                 command.Parameters.AddWithValue("@fullname", fullName);
                 command.Parameters.AddWithValue("@email", email);
                 command.Parameters.AddWithValue("@phonenumber", phoneNumber);
-                command.Parameters.AddWithValue("@password", password);
                 command.Parameters.AddWithValue("@role", role);
+                command.ExecuteNonQuery();
+            }
+        }
+
+
+        // Reset the user's password
+        public void ResetPassword(int id)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                // Select statement
+                command.CommandText = @"UPDATE users SET Password = @password WHERE ID = @ID";
+                command.AddParameter("ID", id);
+                // Executing it 
+                command.Parameters.AddWithValue("@password", Hashing.HashPassword("WelcomeToMediaBazaar"));
                 command.ExecuteNonQuery();
             }
         }

@@ -22,7 +22,6 @@ namespace EmployeesManagementSystem
             this.user = databaseContext.GetUserByID(UserID);
             
             this.tbFullName.Text = user.FullName;
-            this.tbPassword.Text = user.Password;
             this.tbEmail.Text = user.Email;
             // this.tbLocation.Text = "to add in db";
             this.tbPhoneNumber.Text = user.PhoneNumber;
@@ -243,7 +242,7 @@ namespace EmployeesManagementSystem
         {
             // Fields should be validated!
 
-            databaseContext.UpdateUserInfo(user.ID, tbFullName.Text, tbEmail.Text, tbPassword.Text, tbPhoneNumber.Text, cbRole.Text);           
+            databaseContext.UpdateUserInfo(user.ID, tbFullName.Text, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text);           
             databaseContext.Dispose(true);
             MessageBox.Show("User updated!");
 
@@ -485,6 +484,12 @@ namespace EmployeesManagementSystem
             DateTime now = DateTime.UtcNow.Date;
             showDate(now);
             visualizeShifts(now);
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            databaseContext.ResetPassword(user.ID);
+            MessageBox.Show("Password Reset to 'WelcomeToMediaBazaar'");
         }
     }
 }

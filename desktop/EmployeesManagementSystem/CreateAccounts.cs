@@ -58,8 +58,23 @@ namespace EmployeesManagementSystem
                                 // Generate the password
                                 string generatedPassword = Hashing.HashPassword(password);
 
+                                // Determine user's role
+                                string role;
+                                if (rbEmployee.Checked)
+                                {
+                                    role = Role.Employee.ToString();
+                                } 
+                                else if (rbManager.Checked)
+                                {
+                                    role = Role.Manager.ToString();
+                                }
+                                else
+                                {
+                                    role = Role.Administrator.ToString();
+                                }
+
                                 // Create new User
-                                User user = new User(fullName, email, phoneNumber, generatedPassword, Role.Employee.ToString(), hourlyRate);
+                                User user = new User(fullName, email, phoneNumber, generatedPassword, role, hourlyRate);
                                 this.databaseContext.InsertUser(user);
                                 this.dashboard.UpdateDashboard();
                                 this.Close();
@@ -228,6 +243,5 @@ namespace EmployeesManagementSystem
 
             return true;
         }
-
     }
 }

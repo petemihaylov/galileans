@@ -16,5 +16,10 @@ namespace EmployeesManagementSystem
         {
             InitializeComponent();
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("works");
+        }
     }
 }

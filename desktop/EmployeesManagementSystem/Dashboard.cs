@@ -209,14 +209,19 @@ namespace EmployeesManagementSystem
             this.btnShift.BackColor = color;
         }
 
-        private void lbSettings_Click(object sender, EventArgs e)
+        private void lblLogOut_Click(object sender, EventArgs e)
         {
-            this.settingsPanel.Visible = true;
+            databaseContext.Dispose(true);
+            this.Hide();
+            // Show Log In
+            Login login = new Login();
+            login.Closed += (s, args) => this.Close();
+            login.Show();
         }
 
-        private void settingsPanel_MouseClick(object sender, MouseEventArgs e)
+        private void btnSettings_Click(object sender, EventArgs e)
         {
-            this.settingsPanel.Visible = false;
+            settingsPanel.Visible = !settingsPanel.Visible;
         }
     }
 }
