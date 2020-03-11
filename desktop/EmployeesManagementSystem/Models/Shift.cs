@@ -32,6 +32,18 @@ namespace EmployeesManagementSystem.Models
             Attended = attended;
             Type = type;
         }
+
+        public int GetInfo()
+        {
+            if (this.Attended)
+            {
+                TimeSpan span = this.EndTime.Subtract(this.StartTime);
+                int hrs = (int)span.TotalHours;
+                return hrs;
+            }
+            return 0;
+        }
+
     }
 
     enum ShiftType
