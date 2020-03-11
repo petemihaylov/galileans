@@ -17,17 +17,19 @@ namespace EmployeesManagementSystem.Models
 
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+        public bool Attended { get; set; }
 
         public ShiftType Type { get; set; }
 
         public Shift() { }
-        public Shift( int assignedEmployeeID, bool availability, DateTime shiftDate, DateTime startTime, DateTime endTime, ShiftType type)
+        public Shift( int assignedEmployeeID, bool availability, DateTime shiftDate, DateTime startTime, DateTime endTime, bool attended, ShiftType type)
         {
             AssignedEmployeeID = assignedEmployeeID;
             Availability = availability;
             ShiftDate = shiftDate;
             StartTime = startTime;
             EndTime = endTime;
+            Attended = attended;
             Type = type;
         }
     }
