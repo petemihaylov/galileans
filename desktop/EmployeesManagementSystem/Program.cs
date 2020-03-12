@@ -18,7 +18,7 @@ namespace EmployeesManagementSystem
 
             // Now instead of email you can type
             // admin and the password is: admin 
-             Application.Run(new Stocks());
+             Application.Run(new CreateStock());
         }
     }
 }
