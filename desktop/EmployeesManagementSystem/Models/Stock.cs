@@ -8,24 +8,34 @@ namespace EmployeesManagementSystem.Models
 {
     class Stock
     {
-        public string name { get; private set; }
-        public int amount { get; private set; }
-        public double price { get; private set; }
+        public int  ID { get; set; }
+        public string Name { get; set; }
+        public int Amount { get;  set; }
+        public double Price { get; set; }
+        public bool Availability { get; set; }
 
-        public Stock(string name, int amount, double price)
+        public Stock(string name, int amount, double price, bool availability)
         {
-            this.name = name;
-            this.amount = amount;
-            this.price = price;
-        }
+            this.Name = name;
+            this.Amount = amount;
+            this.Price = price;
+            this.Availability = availability;
 
+        }
+        public Stock() { }
+
+        public string[] GetInfo()
+        {
+            string[] s = { Convert.ToString(this.ID), this.Name, Convert.ToString(this.Price), Convert.ToString(this.Amount), Convert.ToString(Availability), "Reload"};
+            return s;
+        }
         public bool SellStock(int amount)
         {
-            if (this.amount < amount)
+            if (this.Amount < amount)
             {
                 return false;
             }
-            this.amount = this.amount - amount;
+            this.Amount = this.Amount - amount;
             return true;
         }
     }

@@ -423,6 +423,16 @@ namespace EmployeesManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap stock_icon_png_12 {
+            get {
+                object obj = ResourceManager.GetObject("stock-icon-png-12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap taken {
             get {
                 object obj = ResourceManager.GetObject("taken", resourceCulture);

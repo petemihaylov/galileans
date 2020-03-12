@@ -38,10 +38,10 @@
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label.Location = new System.Drawing.Point(141, 142);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(229, 20);
+            this.label.Size = new System.Drawing.Size(255, 24);
             this.label.TabIndex = 7;
             this.label.Text = "You can\'t delete this account!";
             // 
@@ -60,7 +60,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.BackColor = System.Drawing.Color.DarkGray;
             this.panel4.Controls.Add(this.exit);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);

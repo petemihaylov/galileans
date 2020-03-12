@@ -458,6 +458,31 @@ namespace EmployeesManagementSystem
                 command.ExecuteNonQuery();
             }
         }
+
+        // Stocks
+
+        public Stock[] GetAllStocks()
+        {
+            var command = new MySqlCommand("SELECT * FROM stocks", connection);
+            // Executing it 
+            using (var reader = command.ExecuteReader())
+            {
+                List<Stock> stocks = new List<Stock>();
+                while (reader.Read())
+                {
+                    // Mapping the return data to the object
+                    Stock stock = new Stock();
+
+                    stock.ID = (int)reader["ID"];
+                    stock.Name = (string)reader["Name"];
+                    stock.Availability = (bool)reader["Availability"];
+                    stock.Price = (double)reader["Price"];
+                    stock.Amount = (int)reader["Amount"];
+                    stocks.Add(stock);
+                }
+                return stocks.ToArray();
+            }
+        }
     }
 
     // Helper Class / Method
