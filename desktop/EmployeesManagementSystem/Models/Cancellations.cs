@@ -27,7 +27,7 @@ namespace EmployeesManagementSystem.Models
 
         public string[] GetInfo()
         {
-            string[] s = { Convert.ToString(this.ID) , this.Date , this.Employee, this.Subject, this.Description };
+            string[] s = { Convert.ToString(this.ID) , this.Date , this.Employee, this.Subject, this.Description, "Delete"};
             return s;
         }
     }

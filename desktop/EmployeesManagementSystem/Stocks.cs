@@ -139,5 +139,10 @@ namespace EmployeesManagementSystem
             Color color = Color.LightGray;
             this.btnCreate.BackColor = color;
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
