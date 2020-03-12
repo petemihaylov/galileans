@@ -30,25 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lbTime = new System.Windows.Forms.Label();
             this.exit = new System.Windows.Forms.PictureBox();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.btn4 = new System.Windows.Forms.Panel();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnStocks = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn3 = new System.Windows.Forms.Panel();
+            this.btnDepartments = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btn2 = new System.Windows.Forms.Panel();
+            this.btnCancellations = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn1 = new System.Windows.Forms.Panel();
+            this.btnEmployee = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
@@ -90,23 +91,22 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.currentTime = new System.Windows.Forms.Timer(this.components);
-            this.lbTime = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             this.panelLeft.SuspendLayout();
             this.btn4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.btnStocks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            this.btn3.SuspendLayout();
+            this.btnDepartments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.btn2.SuspendLayout();
+            this.btnCancellations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.btn1.SuspendLayout();
+            this.btnEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -136,6 +136,17 @@
             this.panel4.Size = new System.Drawing.Size(1260, 63);
             this.panel4.TabIndex = 5;
             // 
+            // lbTime
+            // 
+            this.lbTime.AutoSize = true;
+            this.lbTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbTime.Location = new System.Drawing.Point(523, 31);
+            this.lbTime.Name = "lbTime";
+            this.lbTime.Size = new System.Drawing.Size(172, 23);
+            this.lbTime.TabIndex = 56;
+            this.lbTime.Text = "00:00:00 0/0/2020";
+            // 
             // exit
             // 
             this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
@@ -153,10 +164,10 @@
             // 
             this.panelLeft.BackColor = System.Drawing.Color.White;
             this.panelLeft.Controls.Add(this.btn4);
-            this.panelLeft.Controls.Add(this.panel1);
-            this.panelLeft.Controls.Add(this.btn3);
-            this.panelLeft.Controls.Add(this.btn2);
-            this.panelLeft.Controls.Add(this.btn1);
+            this.panelLeft.Controls.Add(this.btnStocks);
+            this.panelLeft.Controls.Add(this.btnDepartments);
+            this.panelLeft.Controls.Add(this.btnCancellations);
+            this.panelLeft.Controls.Add(this.btnEmployee);
             this.panelLeft.Controls.Add(this.label5);
             this.panelLeft.Controls.Add(this.pictureBox2);
             this.panelLeft.Controls.Add(this.panelAccount);
@@ -207,16 +218,17 @@
             this.label9.TabIndex = 3;
             this.label9.Text = "Shifts";
             // 
-            // panel1
+            // btnStocks
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Controls.Add(this.pictureBox11);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(12, 439);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(230, 41);
-            this.panel1.TabIndex = 10;
+            this.btnStocks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnStocks.Controls.Add(this.pictureBox3);
+            this.btnStocks.Controls.Add(this.pictureBox11);
+            this.btnStocks.Controls.Add(this.label2);
+            this.btnStocks.Location = new System.Drawing.Point(12, 439);
+            this.btnStocks.Name = "btnStocks";
+            this.btnStocks.Size = new System.Drawing.Size(230, 41);
+            this.btnStocks.TabIndex = 10;
+            this.btnStocks.Click += new System.EventHandler(this.btnStocks_Click);
             // 
             // pictureBox3
             // 
@@ -248,16 +260,17 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Stocks";
             // 
-            // btn3
+            // btnDepartments
             // 
-            this.btn3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btn3.Controls.Add(this.pictureBox8);
-            this.btn3.Controls.Add(this.pictureBox5);
-            this.btn3.Controls.Add(this.label4);
-            this.btn3.Location = new System.Drawing.Point(12, 370);
-            this.btn3.Name = "btn3";
-            this.btn3.Size = new System.Drawing.Size(230, 41);
-            this.btn3.TabIndex = 8;
+            this.btnDepartments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDepartments.Controls.Add(this.pictureBox8);
+            this.btnDepartments.Controls.Add(this.pictureBox5);
+            this.btnDepartments.Controls.Add(this.label4);
+            this.btnDepartments.Location = new System.Drawing.Point(12, 370);
+            this.btnDepartments.Name = "btnDepartments";
+            this.btnDepartments.Size = new System.Drawing.Size(230, 41);
+            this.btnDepartments.TabIndex = 8;
+            this.btnDepartments.Click += new System.EventHandler(this.btnDepartments_Click);
             // 
             // pictureBox8
             // 
@@ -289,16 +302,17 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Departments";
             // 
-            // btn2
+            // btnCancellations
             // 
-            this.btn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btn2.Controls.Add(this.pictureBox7);
-            this.btn2.Controls.Add(this.pictureBox4);
-            this.btn2.Controls.Add(this.label3);
-            this.btn2.Location = new System.Drawing.Point(12, 301);
-            this.btn2.Name = "btn2";
-            this.btn2.Size = new System.Drawing.Size(230, 41);
-            this.btn2.TabIndex = 9;
+            this.btnCancellations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCancellations.Controls.Add(this.pictureBox7);
+            this.btnCancellations.Controls.Add(this.pictureBox4);
+            this.btnCancellations.Controls.Add(this.label3);
+            this.btnCancellations.Location = new System.Drawing.Point(12, 301);
+            this.btnCancellations.Name = "btnCancellations";
+            this.btnCancellations.Size = new System.Drawing.Size(230, 41);
+            this.btnCancellations.TabIndex = 9;
+            this.btnCancellations.Click += new System.EventHandler(this.btnCancellations_Click);
             // 
             // pictureBox7
             // 
@@ -330,20 +344,20 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Cancellations";
             // 
-            // btn1
+            // btnEmployee
             // 
-            this.btn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btn1.Controls.Add(this.label7);
-            this.btn1.Controls.Add(this.pictureBox6);
-            this.btn1.Controls.Add(this.pictureBox12);
-            this.btn1.Controls.Add(this.label8);
-            this.btn1.Location = new System.Drawing.Point(12, 231);
-            this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(230, 41);
-            this.btn1.TabIndex = 7;
-            this.btn1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn1_MouseClick);
-            this.btn1.MouseEnter += new System.EventHandler(this.btn1_MouseEnter);
-            this.btn1.MouseLeave += new System.EventHandler(this.btn1_MouseLeave);
+            this.btnEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEmployee.Controls.Add(this.label7);
+            this.btnEmployee.Controls.Add(this.pictureBox6);
+            this.btnEmployee.Controls.Add(this.pictureBox12);
+            this.btnEmployee.Controls.Add(this.label8);
+            this.btnEmployee.Location = new System.Drawing.Point(12, 231);
+            this.btnEmployee.Name = "btnEmployee";
+            this.btnEmployee.Size = new System.Drawing.Size(230, 41);
+            this.btnEmployee.TabIndex = 7;
+            this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
+            this.btnEmployee.MouseEnter += new System.EventHandler(this.btnEmployee_MouseEnter);
+            this.btnEmployee.MouseLeave += new System.EventHandler(this.btnEmployee_MouseLeave);
             // 
             // label7
             // 
@@ -786,17 +800,6 @@
             this.currentTime.Enabled = true;
             this.currentTime.Tick += new System.EventHandler(this.currentTime_Tick);
             // 
-            // lbTime
-            // 
-            this.lbTime.AutoSize = true;
-            this.lbTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbTime.Location = new System.Drawing.Point(523, 31);
-            this.lbTime.Name = "lbTime";
-            this.lbTime.Size = new System.Drawing.Size(172, 23);
-            this.lbTime.TabIndex = 56;
-            this.lbTime.Text = "00:00:00 0/0/2020";
-            // 
             // Shifts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -832,20 +835,20 @@
             this.btn4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.btnStocks.ResumeLayout(false);
+            this.btnStocks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            this.btn3.ResumeLayout(false);
-            this.btn3.PerformLayout();
+            this.btnDepartments.ResumeLayout(false);
+            this.btnDepartments.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.btn2.ResumeLayout(false);
-            this.btn2.PerformLayout();
+            this.btnCancellations.ResumeLayout(false);
+            this.btnCancellations.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.btn1.ResumeLayout(false);
-            this.btn1.PerformLayout();
+            this.btnEmployee.ResumeLayout(false);
+            this.btnEmployee.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -894,13 +897,13 @@
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel btn4;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel btnStocks;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel btn3;
+        private System.Windows.Forms.Panel btnDepartments;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel btn2;
+        private System.Windows.Forms.Panel btnCancellations;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel btn1;
+        private System.Windows.Forms.Panel btnEmployee;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;

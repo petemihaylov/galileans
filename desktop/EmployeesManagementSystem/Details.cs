@@ -486,12 +486,6 @@ namespace EmployeesManagementSystem
             visualizeShifts(now);
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            databaseContext.ResetPassword(user.ID);
-            MessageBox.Show("Password Reset to 'WelcomeToMediaBazaar'");
-        }
-        
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             databaseContext.Dispose(true);
@@ -500,6 +494,12 @@ namespace EmployeesManagementSystem
             Statistic stat = new Statistic(this.id);
             stat.Closed += (s, args) => this.Close();
             stat.Show();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            databaseContext.ResetPassword(user.ID);
+            MessageBox.Show("Password Reset to 'WelcomeToMediaBazaar'");
         }
     }
 }

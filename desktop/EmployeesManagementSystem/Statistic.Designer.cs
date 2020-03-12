@@ -37,6 +37,7 @@
             this.exit = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbRole = new System.Windows.Forms.ComboBox();
@@ -51,7 +52,6 @@
             this.tbLocation = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.tbPassword = new System.Windows.Forms.TextBox();
             this.lbFullName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tbFullName = new System.Windows.Forms.TextBox();
@@ -113,6 +113,8 @@
             this.exit.TabIndex = 2;
             this.exit.TabStop = false;
             this.exit.Click += new System.EventHandler(this.exit_Click);
+            this.exit.MouseEnter += new System.EventHandler(this.exit_MouseEnter);
+            this.exit.MouseLeave += new System.EventHandler(this.exit_MouseLeave);
             // 
             // panel1
             // 
@@ -126,6 +128,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.tbEmail);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cbRole);
@@ -140,7 +143,6 @@
             this.groupBox1.Controls.Add(this.tbLocation);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.tbPassword);
             this.groupBox1.Controls.Add(this.lbFullName);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tbFullName);
@@ -153,6 +155,20 @@
             this.groupBox1.Size = new System.Drawing.Size(412, 727);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.SlateBlue;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReset.Location = new System.Drawing.Point(28, 259);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(348, 36);
+            this.btnReset.TabIndex = 34;
+            this.btnReset.Text = "RESET";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // tbEmail
             // 
@@ -291,15 +307,6 @@
             this.label7.Size = new System.Drawing.Size(76, 19);
             this.label7.TabIndex = 21;
             this.label7.Text = "Location:";
-            // 
-            // tbPassword
-            // 
-            this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbPassword.Location = new System.Drawing.Point(28, 256);
-            this.tbPassword.Multiline = true;
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(349, 42);
-            this.tbPassword.TabIndex = 15;
             // 
             // lbFullName
             // 
@@ -442,7 +449,6 @@
         private System.Windows.Forms.TextBox tbLocation;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label lbFullName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbFullName;
@@ -451,5 +457,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label lbMoneyMade;
         private System.Windows.Forms.Label lbText;
+        private System.Windows.Forms.Button btnReset;
     }
 }

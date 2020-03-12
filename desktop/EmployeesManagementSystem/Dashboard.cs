@@ -223,5 +223,51 @@ namespace EmployeesManagementSystem
         {
             settingsPanel.Visible = !settingsPanel.Visible;
         }
+
+        private void lbSettings_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editAccount_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancellations_Click(object sender, EventArgs e)
+        {
+            databaseContext.Dispose(true);
+            this.Hide();
+            // Show Dashboard
+            Cancellations cncl = new Cancellations();
+            cncl.Closed += (s, args) => this.Close();
+            cncl.Show();
+        }
+
+       
+        private void btnStocks_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void btnDepartments_Click(object sender, EventArgs e)
+        {
+            databaseContext.Dispose(true);
+            this.Hide();
+            // Show Dashboard
+            Departments dep = new Departments();
+            dep.Closed += (s, args) => this.Close();
+            dep.Show();
+
+        }
+        private void btnStocks_Click(object sender, EventArgs e)
+        {
+            databaseContext.Dispose(true);
+            this.Hide();
+            // Show Dashboard
+            Stocks stock = new Stocks();
+            stock.Closed += (s, args) => this.Close();
+            stock.Show();
+        }
     }
 }

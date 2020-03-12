@@ -30,7 +30,6 @@ namespace EmployeesManagementSystem
             this.shifts = databaseContext.GetShiftsByID(UserID);
             this.id = UserID;
             this.tbFullName.Text = user.FullName;
-            this.tbPassword.Text = user.Password;
             this.tbEmail.Text = user.Email;
             // this.tbLocation.Text = "to add in db";
             this.tbPhoneNumber.Text = user.PhoneNumber;
@@ -63,6 +62,13 @@ namespace EmployeesManagementSystem
 
             lbMoneyMade.Text = Convert.ToString(money) + "$";
         }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            databaseContext.ResetPassword(user.ID);
+            MessageBox.Show("Password Reset to 'WelcomeToMediaBazaar'");
+        }
+
         private void picBack_Click(object sender, EventArgs e)
         {
             databaseContext.Dispose(true);
@@ -82,5 +88,17 @@ namespace EmployeesManagementSystem
                 Application.Exit();
             }
         }
+        private void exit_MouseEnter(object sender, EventArgs e)
+        {
+            Color color = Color.DarkGray;
+            this.exit.BackColor = color;
+        }
+
+        private void exit_MouseLeave(object sender, EventArgs e)
+        {
+            Color color = Color.White;
+            this.exit.BackColor = color;
+        }
+
     }
 }

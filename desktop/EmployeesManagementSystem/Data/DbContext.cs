@@ -40,7 +40,7 @@ namespace EmployeesManagementSystem
 
 
         // Get all cancellation announcements
-        public Cancellations[] GetAnnouncements()
+        public Models.Cancellations[] GetAnnouncements()
         {
             using (var command = connection.CreateCommand())
             {
@@ -50,11 +50,11 @@ namespace EmployeesManagementSystem
                 // Executing it 
                 using (var reader = command.ExecuteReader())
                 {
-                    List<Cancellations> cancels = new List<Cancellations>();
+                    List<Models.Cancellations> cancels = new List<Models.Cancellations>();
                     while (reader.Read())
                     {
                         // Mapping the return data to the object
-                        Cancellations cancel = new Cancellations();
+                        Models.Cancellations cancel = new Models.Cancellations();
                         cancel.ID = (int)reader["ID"];
                         cancel.Date = (string)reader["Date"];
                         cancel.Employee = (string)reader["Employee"];
