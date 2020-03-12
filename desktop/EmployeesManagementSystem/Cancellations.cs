@@ -64,5 +64,15 @@ namespace EmployeesManagementSystem
 
 
         }
+
+        private void btnShift_Click(object sender, EventArgs e)
+        {
+            databaseContext.Dispose(true);
+            this.Hide();
+            // Show Dashboard
+            Shifts shifts = new Shifts();
+            shifts.Closed += (s, args) => this.Close();
+            shifts.Show();
+        }
     }
 }

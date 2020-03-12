@@ -221,7 +221,7 @@ namespace EmployeesManagementSystem
         // Validate the wage
         private bool isWageValid(float wage)
         {
-            if(wage < 0.0)
+            if(wage <= 0.0)
             {
                 MessageBox.Show("The Wage is invalid! (wage > 0)");
                 return false;

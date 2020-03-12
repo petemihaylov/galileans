@@ -21,11 +21,6 @@ namespace EmployeesManagementSystem
             InitializeComponent();
         }
 
-
-        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
         private void showInformation(Stock[] stocks)
         {
             // Clean the dataGrid
@@ -92,7 +87,6 @@ namespace EmployeesManagementSystem
             try
             {
                 this.stocks = databaseContext.GetAllStocks();
-
                 showInformation(this.stocks);
             }
             catch (Exception)
@@ -142,7 +136,29 @@ namespace EmployeesManagementSystem
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            CreateStock createStocks = new CreateStock(this);
+            createStocks.Show();
+        }
+        public void UpdateStocks()
+        {
+            this.stockDataGrid.Rows.Clear();
 
+            Stock[] stock = databaseContext.GetAllStocks();
+            stockDataGrid.Rows.Clear();
+            showInformation(stock);
+        }
+
+        private void stockDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (stockDataGrid.CurrentCell.ColumnIndex.Equals(5))
+            {
+                int index = stockDataGrid.CurrentCell.RowIndex;
+                int id = Convert.ToInt32(stockDataGrid.Rows[index].Cells[0].Value);
+                Stock stock = databaseContext.GetStockByID(id);
+                stock.Amount++;
+                databaseContext.UpdateStockByID(stock.ID, stock.Name, stock.Price, stock.Amount, true);
+                UpdateStocks();
+            }
         }
     }
 }
