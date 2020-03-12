@@ -147,28 +147,6 @@ namespace EmployeesManagementSystem
             displayShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
 
-        private void btn1_MouseEnter(object sender, EventArgs e)
-        {
-            Color color = Color.DarkGray;
-            this.btn1.BackColor = color;
-        }
-
-        private void btn1_MouseLeave(object sender, EventArgs e)
-        {
-            Color color = Color.LightGray;
-            this.btn1.BackColor = color;
-        }
-
-        private void btn1_MouseClick(object sender, MouseEventArgs e)
-        {
-            databaseContext.Dispose(true);
-            this.Hide();
-            // Show Dashboard
-            Dashboard dashboard = new Dashboard();
-            dashboard.Closed += (s, args) => this.Close();
-            dashboard.Show();
-        }
-
         private void btnToday_Click(object sender, EventArgs e)
         {
             addDays = 0;
@@ -180,6 +158,57 @@ namespace EmployeesManagementSystem
         private void currentTime_Tick(object sender, EventArgs e)
         {
             this.lbTime.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt");
+        }
+
+        private void btnStocks_Click(object sender, EventArgs e)
+        {
+            databaseContext.Dispose(true);
+            this.Hide();
+            // Show Dashboard
+            Stocks stock = new Stocks();
+            stock.Closed += (s, args) => this.Close();
+            stock.Show();
+        }
+
+        private void btnDepartments_Click(object sender, EventArgs e)
+        {
+            databaseContext.Dispose(true);
+            this.Hide();
+            // Show Dashboard
+            Departments dep = new Departments();
+            dep.Closed += (s, args) => this.Close();
+            dep.Show();
+        }
+
+        private void btnCancellations_Click(object sender, EventArgs e)
+        {
+            databaseContext.Dispose(true);
+            this.Hide();
+            // Show Dashboard
+            Cancellations cncl = new Cancellations();
+            cncl.Closed += (s, args) => this.Close();
+            cncl.Show();
+        }
+
+        private void btnEmployee_MouseEnter(object sender, EventArgs e)
+        {
+            Color color = Color.DarkGray;
+            this.btnEmployee.BackColor = color;
+        }
+
+        private void btnEmployee_MouseLeave(object sender, EventArgs e)
+        {
+            Color color = Color.LightGray;
+            this.btnEmployee.BackColor = color;
+        }
+
+        private void btnEmployee_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Dashboard
+            Dashboard dashboard = new Dashboard();
+            dashboard.Closed += (s, args) => this.Close();
+            dashboard.Show();
         }
     }
 }

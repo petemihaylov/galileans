@@ -123,11 +123,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Cancellations.cs" />
-    <Compile Include="Complaint.cs">
+    <Compile Include="Cancellations.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Complaint.Designer.cs">
-      <DependentUpon>Complaint.cs</DependentUpon>
+    <Compile Include="Cancellations.Designer.cs">
+      <DependentUpon>Cancellations.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateAccounts.cs">
       <SubType>Form</SubType>
@@ -199,8 +199,8 @@
     <Compile Include="Warning.Designer.cs">
       <DependentUpon>Warning.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Complaint.resx">
-      <DependentUpon>Complaint.cs</DependentUpon>
+    <EmbeddedResource Include="Cancellations.resx">
+      <DependentUpon>Cancellations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccounts.resx">
       <DependentUpon>CreateAccounts.cs</DependentUpon>

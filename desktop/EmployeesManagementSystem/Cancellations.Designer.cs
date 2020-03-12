@@ -1,6 +1,6 @@
 ﻿namespace EmployeesManagementSystem
 {
-    partial class Complaint
+    partial class Cancellations
     {
         /// <summary>
         /// Required designer variable.

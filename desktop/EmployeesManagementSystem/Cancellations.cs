@@ -12,13 +12,13 @@ using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
 {
-    public partial class Complaint : Form
+    public partial class Cancellations : Form
     {
         private DbContext databaseContext = new DbContext();
         List<int> ids = new List<int>();
 
 
-        public Complaint()
+        public Cancellations()
         {
             InitializeComponent();
         }
@@ -28,8 +28,8 @@ namespace EmployeesManagementSystem
             //needs to upload as the program runs in the future
             try
             {
-                Cancellations[] cancels = databaseContext.GetAnnouncements();
-                foreach (Cancellations cancel in cancels)
+                Models.Cancellations[] cancels = databaseContext.GetAnnouncements();
+                foreach (Models.Cancellations cancel in cancels)
                 {
                     dataGridView.Rows.Add(cancel.GetInfo());
                 }
