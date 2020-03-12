@@ -24,10 +24,10 @@ namespace EmployeesManagementSystem
         public CreateAccounts(Dashboard dashboard)
         {
             InitializeComponent();
-            this.dashboard = dashboard;
+            this.dashboard = dashboard; 
         }
 
-
+        
         // Functional Buttons
 
         // Create Button

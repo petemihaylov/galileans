@@ -165,7 +165,15 @@ namespace EmployeesManagementSystem
         }
         private void exit_Click(object sender, EventArgs e)
         {
+            // Closing the db connection 
+            databaseContext.Dispose(true);
             this.Close();
+
+            // exiting properly the application
+            if (Application.MessageLoop)
+            {
+                Application.Exit();
+            }
         }
         private void exit_MouseEnter(object sender, EventArgs e)
         {

@@ -78,7 +78,7 @@ namespace EmployeesManagementSystem
         {
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = @"INSERT INTO Shifts (AssignedEmployeeID, Availability, ShiftDate, StartTime, EndTime, Attended. ShiftType)" +
+                command.CommandText = @"INSERT INTO Shifts (AssignedEmployeeID, Availability, ShiftDate, StartTime, EndTime, Attended, ShiftType)" +
                 " VALUES(@userId, @availability, @date, @startTime, @endTime, @attended, @shiftType)";
 
 

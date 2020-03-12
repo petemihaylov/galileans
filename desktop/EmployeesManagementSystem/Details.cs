@@ -288,12 +288,6 @@ namespace EmployeesManagementSystem
             dashboard.Show();
         }
 
-        private void arrowRight_Click(object sender, EventArgs e)
-        {
-            addDays++;
-            showDate(DateTime.UtcNow.Date.AddDays(addDays));
-            visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
-        }
 
         private void arrowLeft_Click(object sender, EventArgs e)
         {
@@ -478,13 +472,6 @@ namespace EmployeesManagementSystem
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
 
-        private void btnToday_Click(object sender, EventArgs e)
-        {
-            addDays = 0;
-            DateTime now = DateTime.UtcNow.Date;
-            showDate(now);
-            visualizeShifts(now);
-        }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -492,7 +479,7 @@ namespace EmployeesManagementSystem
             MessageBox.Show("Password Reset to 'WelcomeToMediaBazaar'");
         }
         
-        private void btnStatistics_Click(object sender, EventArgs e)
+        private void btnStatistic_Click(object sender, EventArgs e)
         {
             databaseContext.Dispose(true);
             this.Hide();
@@ -500,6 +487,21 @@ namespace EmployeesManagementSystem
             Statistic stat = new Statistic(this.id);
             stat.Closed += (s, args) => this.Close();
             stat.Show();
+        }
+
+        private void arrowRight_Click(object sender, EventArgs e)
+        {
+            addDays++;
+            showDate(DateTime.UtcNow.Date.AddDays(addDays));
+            visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
+        }
+
+        private void bToday_Click(object sender, EventArgs e)
+        {
+            addDays = 0;
+            DateTime now = DateTime.UtcNow.Date;
+            showDate(now);
+            visualizeShifts(now);
         }
     }
 }
