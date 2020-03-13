@@ -56,12 +56,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.stockDataGrid = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.availability = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Reload = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnCreate = new System.Windows.Forms.Panel();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
@@ -69,6 +63,12 @@
             this.exit = new System.Windows.Forms.PictureBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.availability = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reload = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panelLeft.SuspendLayout();
             this.btnShift.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -395,9 +395,9 @@
             this.stockDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.name,
+            this.price,
             this.amount,
             this.availability,
-            this.price,
             this.Reload});
             this.stockDataGrid.Location = new System.Drawing.Point(296, 74);
             this.stockDataGrid.Name = "stockDataGrid";
@@ -405,53 +405,7 @@
             this.stockDataGrid.RowTemplate.Height = 30;
             this.stockDataGrid.Size = new System.Drawing.Size(1156, 716);
             this.stockDataGrid.TabIndex = 4;
-            this.stockDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 125;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.name.HeaderText = "name";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // amount
-            // 
-            this.amount.HeaderText = "amount";
-            this.amount.MinimumWidth = 6;
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
-            this.amount.Width = 125;
-            // 
-            // availability
-            // 
-            this.availability.HeaderText = "availability";
-            this.availability.MinimumWidth = 6;
-            this.availability.Name = "availability";
-            this.availability.Width = 125;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "price";
-            this.price.MinimumWidth = 6;
-            this.price.Name = "price";
-            this.price.Width = 125;
-            // 
-            // Reload
-            // 
-            this.Reload.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Reload.HeaderText = "Reload";
-            this.Reload.MinimumWidth = 30;
-            this.Reload.Name = "Reload";
-            this.Reload.Width = 125;
+            this.stockDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.stockDataGrid_CellContentClick);
             // 
             // panel4
             // 
@@ -529,6 +483,52 @@
             this.dataGridViewImageColumn2.MinimumWidth = 6;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.Width = 125;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 125;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.HeaderText = "name";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "price";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.Width = 125;
+            // 
+            // amount
+            // 
+            this.amount.HeaderText = "amount";
+            this.amount.MinimumWidth = 6;
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            this.amount.Width = 125;
+            // 
+            // availability
+            // 
+            this.availability.HeaderText = "availability";
+            this.availability.MinimumWidth = 6;
+            this.availability.Name = "availability";
+            this.availability.Width = 125;
+            // 
+            // Reload
+            // 
+            this.Reload.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.Reload.HeaderText = "Reload";
+            this.Reload.MinimumWidth = 30;
+            this.Reload.Name = "Reload";
+            this.Reload.Width = 125;
             // 
             // Stocks
             // 
@@ -618,9 +618,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn availability;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewButtonColumn Reload;
     }
 }

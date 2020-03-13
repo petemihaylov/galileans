@@ -475,14 +475,77 @@ namespace EmployeesManagementSystem
 
                     stock.ID = (int)reader["ID"];
                     stock.Name = (string)reader["Name"];
-                    stock.Availability = (bool)reader["Availability"];
                     stock.Price = (double)reader["Price"];
                     stock.Amount = (int)reader["Amount"];
+                    stock.Availability = (bool)reader["Availability"];
                     stocks.Add(stock);
                 }
                 return stocks.ToArray();
             }
         }
+
+        // create stock
+        public void InsertStock(Stock stock)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = @"INSERT INTO stocks (Name, Amount, Price, Availability)" +
+                " VALUES(@name, @price, @amount, @availability)";
+
+                command.AddParameter("name", stock.Name);
+                command.AddParameter("price", stock.Price);
+                command.AddParameter("amount", stock.Amount);
+                command.AddParameter("availability", stock.Availability);
+                command.ExecuteNonQuery();
+            }
+        }
+        public void UpdateStockByID(int ID, string name, double price, int amount, bool availability)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                // Select statement
+                command.CommandText = @"UPDATE stocks SET Name = @name, Price = @price, Amount = @amount, Availability = @availability WHERE ID = @ID";
+                command.AddParameter("ID", ID);
+                // Executing it 
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@price", price);
+                command.Parameters.AddWithValue("@amount", amount);
+                command.Parameters.AddWithValue("@availability", availability);
+                command.ExecuteNonQuery();
+            }
+        }
+        public Stock GetStockByID(int ID)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                // Select statement
+                command.CommandText = @"SELECT * FROM Stocks WHERE ID = @stockId";
+                command.AddParameter("stockId", ID);
+
+                // Ececuting it 
+                using (var reader = command.ExecuteReader())
+                {
+                    Stock stock = new Stock();
+                    if (reader.Read())
+                    {
+                        // Mapping the return data to the object
+                        stock.ID = (int)reader["ID"];
+                        stock.Name = (string)reader["Name"];
+                        stock.Amount = (int)reader["Amount"];
+                        stock.Price = (double)reader["Price"];
+                        stock.Availability = (bool)reader["Availability"];
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                    return stock;
+                }
+            }
+            
+        }
+        
     }
 
     // Helper Class / Method
