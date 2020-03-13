@@ -67,15 +67,19 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.arrowRight = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.dateCenter = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.monthCenter = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.dateRight = new System.Windows.Forms.Label();
             this.monthRight = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.dateLeft = new System.Windows.Forms.Label();
             this.monthLeft = new System.Windows.Forms.Label();
             this.arrowLeft = new System.Windows.Forms.PictureBox();
@@ -97,10 +101,6 @@
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.btnStatistic = new System.Windows.Forms.Button();
             this.bToday = new System.Windows.Forms.Button();
-            this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
@@ -115,9 +115,11 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowLeft)).BeginInit();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMor_first)).BeginInit();
@@ -128,8 +130,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picAft_second)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAft_third)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -394,7 +394,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(129, 110);
+            this.button1.Location = new System.Drawing.Point(132, 109);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(95, 24);
@@ -602,6 +602,17 @@
             this.groupBox3.TabIndex = 56;
             this.groupBox3.TabStop = false;
             // 
+            // pictureBox16
+            // 
+            this.pictureBox16.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
+            this.pictureBox16.Location = new System.Drawing.Point(39, 84);
+            this.pictureBox16.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox16.TabIndex = 52;
+            this.pictureBox16.TabStop = false;
+            // 
             // dateCenter
             // 
             this.dateCenter.AutoSize = true;
@@ -646,6 +657,16 @@
             this.groupBox4.Size = new System.Drawing.Size(125, 149);
             this.groupBox4.TabIndex = 59;
             this.groupBox4.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(24, 120);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 19);
+            this.label1.TabIndex = 54;
+            this.label1.Text = "available";
             // 
             // pictureBox17
             // 
@@ -704,6 +725,27 @@
             this.groupBox2.Size = new System.Drawing.Size(125, 149);
             this.groupBox2.TabIndex = 60;
             this.groupBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
+            this.pictureBox1.Location = new System.Drawing.Point(40, 84);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 54;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(29, 120);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 19);
+            this.label4.TabIndex = 55;
+            this.label4.Text = "available";
             // 
             // dateLeft
             // 
@@ -970,48 +1012,6 @@
             this.bToday.UseVisualStyleBackColor = false;
             this.bToday.Click += new System.EventHandler(this.bToday_Click);
             // 
-            // pictureBox16
-            // 
-            this.pictureBox16.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
-            this.pictureBox16.Location = new System.Drawing.Point(39, 84);
-            this.pictureBox16.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(41, 32);
-            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox16.TabIndex = 52;
-            this.pictureBox16.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 120);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 19);
-            this.label1.TabIndex = 54;
-            this.label1.Text = "available";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
-            this.pictureBox1.Location = new System.Drawing.Point(40, 84);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 54;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(29, 120);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 19);
-            this.label4.TabIndex = 55;
-            this.label4.Text = "available";
-            // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1056,11 +1056,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowLeft)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
@@ -1073,8 +1075,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picAft_second)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAft_third)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
