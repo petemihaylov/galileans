@@ -24,20 +24,25 @@ namespace EmployeesManagementSystem
 
         }
 
-        private void CreateStock_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnCreateStock_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(tbAmount.Text) && !String.IsNullOrEmpty(tbName.Text) && !String.IsNullOrEmpty(tbPrice.Text))
             {
                 string name = tbName.Text;
-                int amount = Convert.ToInt32(tbAmount.Text);
-                double price = Convert.ToDouble(tbPrice.Text);
+                int amount = 0;
+                double price = 0;
 
-                if(amountIsValid(amount) && priceIsValid(price))
+                try { 
+                 amount = Convert.ToInt32(tbAmount.Text);
+                 price = Convert.ToDouble(tbPrice.Text);
+                }
+                catch (FormatException formatException)
+                {
+                    throw new FormatException("Could not convert numbers!");
+                }
+
+                if (amountIsValid(amount) && priceIsValid(price))
                 {
                     Stock stock = new Stock(name, amount, price, true);
                     this.databaseContext.InsertStock(stock);

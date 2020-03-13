@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Net;
 using System.Windows.Forms;
 using EmployeesManagementSystem.Models;
 
@@ -32,6 +33,7 @@ namespace EmployeesManagementSystem
         // Shifts
         private void Details_Load(object sender, EventArgs e)
         {
+            this.UpdateImg(user.ID);
             DateTime now = DateTime.UtcNow.Date;
             showDate(now);
             shifts = databaseContext.GetAllShifts();
@@ -502,6 +504,29 @@ namespace EmployeesManagementSystem
             DateTime now = DateTime.UtcNow.Date;
             showDate(now);
             visualizeShifts(now);
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            UploadImg uploadImg = new UploadImg(user.ID, this);
+            uploadImg.Show();
+        }
+
+        public void UpdateImg(int userId)
+        {
+            ImageClass img = databaseContext.GetUserImg(userId);
+
+            if (img == null) { return;  }
+
+            WebRequest request = WebRequest.Create(img.UrlPath);
+
+            using (var response = request.GetResponse())
+            {
+                using (var str = response.GetResponseStream())
+                {
+                    profilePic.Image = Bitmap.FromStream(str);
+                }
+            }
         }
     }
 }

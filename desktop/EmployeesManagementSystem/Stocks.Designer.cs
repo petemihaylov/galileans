@@ -69,6 +69,7 @@
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.availability = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reload = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelLeft.SuspendLayout();
             this.btnShift.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -398,7 +399,8 @@
             this.price,
             this.amount,
             this.availability,
-            this.Reload});
+            this.Reload,
+            this.Delete});
             this.stockDataGrid.Location = new System.Drawing.Point(296, 74);
             this.stockDataGrid.Name = "stockDataGrid";
             this.stockDataGrid.RowHeadersWidth = 51;
@@ -530,6 +532,16 @@
             this.Reload.Name = "Reload";
             this.Reload.Width = 125;
             // 
+            // Delete
+            // 
+            this.Delete.FillWeight = 50F;
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_delete_forever_black_48dp;
+            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Delete.MinimumWidth = 6;
+            this.Delete.Name = "Delete";
+            this.Delete.Width = 52;
+            // 
             // Stocks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -622,5 +634,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn availability;
         private System.Windows.Forms.DataGridViewButtonColumn Reload;
+        private System.Windows.Forms.DataGridViewImageColumn Delete;
     }
 }

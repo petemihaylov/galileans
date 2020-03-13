@@ -150,13 +150,19 @@ namespace EmployeesManagementSystem
 
         private void stockDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (stockDataGrid.CurrentCell.ColumnIndex.Equals(5))
+            int btnReload = 5;
+            int btnDelete = 6;
+
+            int index = stockDataGrid.CurrentCell.RowIndex;
+            int stockId = Convert.ToInt32(stockDataGrid.Rows[index].Cells[0].Value);
+
+            if (stockDataGrid.CurrentCell.ColumnIndex.Equals(btnReload))
             {
-                int index = stockDataGrid.CurrentCell.RowIndex;
-                int id = Convert.ToInt32(stockDataGrid.Rows[index].Cells[0].Value);
-                Stock stock = databaseContext.GetStockByID(id);
-                stock.Amount++;
-                databaseContext.UpdateStockByID(stock.ID, stock.Name, stock.Price, stock.Amount, true);
+                ReloadStock reloadStock = new ReloadStock(stockId, this);
+                reloadStock.Show();
+            }else if (stockDataGrid.CurrentCell.ColumnIndex.Equals(btnDelete))
+            {
+                databaseContext.DeleteStockByID(stockId);
                 UpdateStocks();
             }
         }

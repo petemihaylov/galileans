@@ -545,7 +545,68 @@ namespace EmployeesManagementSystem
             }
             
         }
-        
+
+        public void DeleteStockByID(int id)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = @"DELETE FROM stocks WHERE ID = @ID";
+                command.AddParameter("ID", id);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        // Images
+
+        public void InsertImage(ImageClass image)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = @"INSERT INTO images (UserID, UrlPath)" +
+                " VALUES(@userId, @urlPath)";
+
+                command.AddParameter("userId", image.UserID);
+                command.AddParameter("urlPath", image.UrlPath);
+                command.ExecuteNonQuery();
+            }
+        }
+        public ImageClass GetUserImg(int userId)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                // Select statement
+                command.CommandText = @"SELECT * FROM images WHERE UserID = @userId";
+                command.AddParameter("userId", userId);
+
+                // Ececuting it 
+                using (var reader = command.ExecuteReader())
+                {
+                    ImageClass img = new ImageClass();
+                    if (reader.Read())
+                    {
+                        // Mapping the return data to the object
+                        img.ID = (int)reader["ID"];
+                        img.UserID = (int)reader["UserID"];
+                        img.UrlPath = (string)reader["UrlPath"];
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                    return img;
+                }
+            }
+        }
+        public void DeleteImgById(int id)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = @"DELETE FROM images WHERE ID = @ID";
+                command.AddParameter("ID", id);
+                command.ExecuteNonQuery();
+            }
+        }
     }
 
     // Helper Class / Method

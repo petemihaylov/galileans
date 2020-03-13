@@ -28,18 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbBack = new System.Windows.Forms.Label();
             this.picBack = new System.Windows.Forms.PictureBox();
             this.exit = new System.Windows.Forms.PictureBox();
             this.tcWeek = new System.Windows.Forms.TabControl();
             this.tpMonth = new System.Windows.Forms.TabPage();
+            this.lbMoneyMadeMonth = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnToday = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -58,16 +61,14 @@
             this.arrowRight = new System.Windows.Forms.PictureBox();
             this.arrowLeft = new System.Windows.Forms.PictureBox();
             this.lbText = new System.Windows.Forms.Label();
-            this.lbMoneyMadeMonth = new System.Windows.Forms.Label();
             this.chartAttendenceMonth = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tpYear = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             this.tcWeek.SuspendLayout();
             this.tpMonth.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
@@ -78,7 +79,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartAttendenceMonth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -153,6 +153,48 @@
             this.tpMonth.Size = new System.Drawing.Size(1451, 717);
             this.tpMonth.TabIndex = 1;
             this.tpMonth.Text = " Per Month";
+            // 
+            // lbMoneyMadeMonth
+            // 
+            this.lbMoneyMadeMonth.AutoSize = true;
+            this.lbMoneyMadeMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
+            this.lbMoneyMadeMonth.Location = new System.Drawing.Point(814, 446);
+            this.lbMoneyMadeMonth.Name = "lbMoneyMadeMonth";
+            this.lbMoneyMadeMonth.Size = new System.Drawing.Size(132, 48);
+            this.lbMoneyMadeMonth.TabIndex = 29;
+            this.lbMoneyMadeMonth.Text = "label1";
+            // 
+            // chart1
+            // 
+            this.chart1.BackColor = System.Drawing.SystemColors.Control;
+            chartArea1.BackColor = System.Drawing.SystemColors.Control;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.BackColor = System.Drawing.SystemColors.Control;
+            legend1.Name = "Legend1";
+            legend1.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(516, 393);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
+            series1.BorderColor = System.Drawing.SystemColors.Control;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(405, 293);
+            this.chart1.TabIndex = 65;
+            this.chart1.Text = "chart1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
+            this.label1.Location = new System.Drawing.Point(63, 342);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(344, 48);
+            this.label1.TabIndex = 64;
+            this.label1.Text = "Attendence score";
             // 
             // btnToday
             // 
@@ -363,35 +405,25 @@
             this.lbText.TabIndex = 30;
             this.lbText.Text = "Money made this month";
             // 
-            // lbMoneyMadeMonth
-            // 
-            this.lbMoneyMadeMonth.AutoSize = true;
-            this.lbMoneyMadeMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
-            this.lbMoneyMadeMonth.Location = new System.Drawing.Point(814, 446);
-            this.lbMoneyMadeMonth.Name = "lbMoneyMadeMonth";
-            this.lbMoneyMadeMonth.Size = new System.Drawing.Size(132, 48);
-            this.lbMoneyMadeMonth.TabIndex = 29;
-            this.lbMoneyMadeMonth.Text = "label1";
-            // 
             // chartAttendenceMonth
             // 
             this.chartAttendenceMonth.BackColor = System.Drawing.SystemColors.Control;
-            chartArea4.BackColor = System.Drawing.SystemColors.Control;
-            chartArea4.Name = "ChartArea1";
-            this.chartAttendenceMonth.ChartAreas.Add(chartArea4);
-            legend4.BackColor = System.Drawing.SystemColors.Control;
-            legend4.Name = "Legend1";
-            legend4.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
-            this.chartAttendenceMonth.Legends.Add(legend4);
+            chartArea2.BackColor = System.Drawing.SystemColors.Control;
+            chartArea2.Name = "ChartArea1";
+            this.chartAttendenceMonth.ChartAreas.Add(chartArea2);
+            legend2.BackColor = System.Drawing.SystemColors.Control;
+            legend2.Name = "Legend1";
+            legend2.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
+            this.chartAttendenceMonth.Legends.Add(legend2);
             this.chartAttendenceMonth.Location = new System.Drawing.Point(52, 393);
             this.chartAttendenceMonth.Name = "chartAttendenceMonth";
             this.chartAttendenceMonth.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series4.BorderColor = System.Drawing.SystemColors.Control;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartAttendenceMonth.Series.Add(series4);
+            series2.BorderColor = System.Drawing.SystemColors.Control;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartAttendenceMonth.Series.Add(series2);
             this.chartAttendenceMonth.Size = new System.Drawing.Size(405, 293);
             this.chartAttendenceMonth.TabIndex = 28;
             this.chartAttendenceMonth.Text = "chart1";
@@ -405,38 +437,6 @@
             this.tpYear.TabIndex = 2;
             this.tpYear.Text = "Per Year";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
-            this.label1.Location = new System.Drawing.Point(63, 342);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(344, 48);
-            this.label1.TabIndex = 64;
-            this.label1.Text = "Attendence score";
-            // 
-            // chart1
-            // 
-            this.chart1.BackColor = System.Drawing.SystemColors.Control;
-            chartArea3.BackColor = System.Drawing.SystemColors.Control;
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.BackColor = System.Drawing.SystemColors.Control;
-            legend3.Name = "Legend1";
-            legend3.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
-            this.chart1.Legends.Add(legend3);
-            this.chart1.Location = new System.Drawing.Point(516, 393);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series3.BorderColor = System.Drawing.SystemColors.Control;
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(405, 293);
-            this.chart1.TabIndex = 65;
-            this.chart1.Text = "chart1";
-            // 
             // Statistic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -446,6 +446,7 @@
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Statistic";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Statistic";
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -454,6 +455,7 @@
             this.tcWeek.ResumeLayout(false);
             this.tpMonth.ResumeLayout(false);
             this.tpMonth.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -468,7 +470,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartAttendenceMonth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem.Models
 {
-    class Image
+    class ImageClass
     {
         public int ID { get; set; }
         public string UrlPath { get; set; }
         public int UserID { get; set; }
 
-        public Image(int userId, string path)
+        public ImageClass(int userId, string path)
         {
             this.UrlPath = path;
             this.UserID = userId;
         }
+        public ImageClass() { }
     }
 }

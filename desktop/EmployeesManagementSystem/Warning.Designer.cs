@@ -38,17 +38,17 @@
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.Location = new System.Drawing.Point(141, 142);
+            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.Location = new System.Drawing.Point(160, 132);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(255, 24);
+            this.label.Size = new System.Drawing.Size(266, 25);
             this.label.TabIndex = 7;
             this.label.Text = "You can\'t delete this account!";
             // 
             // exit
             // 
             this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
-            this.exit.Location = new System.Drawing.Point(478, 15);
+            this.exit.Location = new System.Drawing.Point(521, 9);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(39, 35);
             this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -60,12 +60,12 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.DarkGray;
+            this.panel4.BackColor = System.Drawing.Color.Salmon;
             this.panel4.Controls.Add(this.exit);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(569, 64);
+            this.panel4.Size = new System.Drawing.Size(569, 55);
             this.panel4.TabIndex = 6;
             // 
             // Warning
@@ -73,7 +73,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(569, 269);
+            this.ClientSize = new System.Drawing.Size(569, 249);
             this.Controls.Add(this.label);
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
