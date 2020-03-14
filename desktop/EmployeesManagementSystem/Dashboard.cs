@@ -221,6 +221,11 @@ namespace EmployeesManagementSystem
         private void editAccount_Click(object sender, EventArgs e)
         {
 
+            this.Hide();
+            // Show Dashboard
+            AdminDetails adminDetails = new AdminDetails();
+            adminDetails.Closed += (s, args) => this.Close();
+            adminDetails.Show();
         }
 
         private void btnCancellations_Click(object sender, EventArgs e)
