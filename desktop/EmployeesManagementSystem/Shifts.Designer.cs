@@ -33,6 +33,12 @@
             this.lbTime = new System.Windows.Forms.Label();
             this.exit = new System.Windows.Forms.PictureBox();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.settingsPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblLogOut = new System.Windows.Forms.Label();
+            this.pictureBox19 = new System.Windows.Forms.PictureBox();
+            this.editAccount = new System.Windows.Forms.Label();
+            this.pictureBox20 = new System.Windows.Forms.PictureBox();
             this.btn4 = new System.Windows.Forms.Panel();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
@@ -94,6 +100,9 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             this.panelLeft.SuspendLayout();
+            this.settingsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             this.btn4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
@@ -163,6 +172,7 @@
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.White;
+            this.panelLeft.Controls.Add(this.settingsPanel);
             this.panelLeft.Controls.Add(this.btn4);
             this.panelLeft.Controls.Add(this.btnStocks);
             this.panelLeft.Controls.Add(this.btnDepartments);
@@ -176,6 +186,76 @@
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(257, 827);
             this.panelLeft.TabIndex = 3;
+            // 
+            // settingsPanel
+            // 
+            this.settingsPanel.BackColor = System.Drawing.Color.White;
+            this.settingsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.settingsPanel.Controls.Add(this.panel1);
+            this.settingsPanel.Controls.Add(this.lblLogOut);
+            this.settingsPanel.Controls.Add(this.pictureBox19);
+            this.settingsPanel.Controls.Add(this.editAccount);
+            this.settingsPanel.Controls.Add(this.pictureBox20);
+            this.settingsPanel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.settingsPanel.Location = new System.Drawing.Point(43, 688);
+            this.settingsPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.settingsPanel.Name = "settingsPanel";
+            this.settingsPanel.Size = new System.Drawing.Size(191, 76);
+            this.settingsPanel.TabIndex = 13;
+            this.settingsPanel.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Location = new System.Drawing.Point(4, 34);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(180, 1);
+            this.panel1.TabIndex = 13;
+            // 
+            // lblLogOut
+            // 
+            this.lblLogOut.AutoSize = true;
+            this.lblLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogOut.Location = new System.Drawing.Point(51, 50);
+            this.lblLogOut.Name = "lblLogOut";
+            this.lblLogOut.Size = new System.Drawing.Size(72, 18);
+            this.lblLogOut.TabIndex = 16;
+            this.lblLogOut.Text = "LOGOUT";
+            this.lblLogOut.Click += new System.EventHandler(this.lblLogOut_Click);
+            // 
+            // pictureBox19
+            // 
+            this.pictureBox19.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_circle_black_48dp;
+            this.pictureBox19.Location = new System.Drawing.Point(14, 45);
+            this.pictureBox19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox19.Name = "pictureBox19";
+            this.pictureBox19.Size = new System.Drawing.Size(29, 26);
+            this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox19.TabIndex = 15;
+            this.pictureBox19.TabStop = false;
+            // 
+            // editAccount
+            // 
+            this.editAccount.AutoSize = true;
+            this.editAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAccount.Location = new System.Drawing.Point(50, 8);
+            this.editAccount.Name = "editAccount";
+            this.editAccount.Size = new System.Drawing.Size(119, 18);
+            this.editAccount.TabIndex = 14;
+            this.editAccount.Text = "EDIT ACCOUNT";
+            this.editAccount.Click += new System.EventHandler(this.editAccount_Click);
+            // 
+            // pictureBox20
+            // 
+            this.pictureBox20.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_create_black_48dp;
+            this.pictureBox20.Location = new System.Drawing.Point(14, 4);
+            this.pictureBox20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox20.Name = "pictureBox20";
+            this.pictureBox20.Size = new System.Drawing.Size(29, 26);
+            this.pictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox20.TabIndex = 13;
+            this.pictureBox20.TabStop = false;
             // 
             // btn4
             // 
@@ -831,6 +911,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
+            this.settingsPanel.ResumeLayout(false);
+            this.settingsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
             this.btn4.ResumeLayout(false);
             this.btn4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
@@ -940,5 +1024,11 @@
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.Timer currentTime;
         private System.Windows.Forms.Label lbTime;
+        private System.Windows.Forms.Panel settingsPanel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblLogOut;
+        private System.Windows.Forms.PictureBox pictureBox19;
+        private System.Windows.Forms.Label editAccount;
+        private System.Windows.Forms.PictureBox pictureBox20;
     }
 }

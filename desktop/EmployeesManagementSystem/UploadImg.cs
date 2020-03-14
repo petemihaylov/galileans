@@ -16,12 +16,19 @@ namespace EmployeesManagementSystem
 
         private DbContext databaseContext = new DbContext();
         private Details details;
+        private AdminDetails admin;
         private int userId;
         public UploadImg(int userId, Details details)
         {
             InitializeComponent();
             this.userId = userId;
             this.details = details;
+        }
+        public UploadImg(int userId, AdminDetails admin)
+        {
+            InitializeComponent();
+            this.userId = userId;
+            this.admin = admin;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -47,7 +54,15 @@ namespace EmployeesManagementSystem
             databaseContext.InsertImage(img);
 
             this.Close();
-            this.details.UpdateImg(userId);
+            User user = databaseContext.GetUserByID(userId);
+            if(user.Email == "admin")
+            {
+                this.admin.UpdateImg(userId);
+            }
+            else
+            {
+                this.details.UpdateImg(userId);
+            }
         }
     }
 }

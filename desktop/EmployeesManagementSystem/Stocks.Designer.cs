@@ -56,13 +56,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.stockDataGrid = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnCreate = new System.Windows.Forms.Panel();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.lbCreate = new System.Windows.Forms.Label();
-            this.exit = new System.Windows.Forms.PictureBox();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +63,19 @@
             this.availability = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Reload = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCreate = new System.Windows.Forms.Panel();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.lbCreate = new System.Windows.Forms.Label();
+            this.exit = new System.Windows.Forms.PictureBox();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.settingsPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblLogOut = new System.Windows.Forms.Label();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.editAccount = new System.Windows.Forms.Label();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.panelLeft.SuspendLayout();
             this.btnShift.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -94,11 +100,15 @@
             this.btnCreate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
+            this.settingsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.White;
+            this.panelLeft.Controls.Add(this.settingsPanel);
             this.panelLeft.Controls.Add(this.btnShift);
             this.panelLeft.Controls.Add(this.btnStocks);
             this.panelLeft.Controls.Add(this.btnDepartments);
@@ -409,6 +419,62 @@
             this.stockDataGrid.TabIndex = 4;
             this.stockDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.stockDataGrid_CellContentClick);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 125;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.name.HeaderText = "name";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "price";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.Width = 125;
+            // 
+            // amount
+            // 
+            this.amount.HeaderText = "amount";
+            this.amount.MinimumWidth = 6;
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            this.amount.Width = 125;
+            // 
+            // availability
+            // 
+            this.availability.HeaderText = "availability";
+            this.availability.MinimumWidth = 6;
+            this.availability.Name = "availability";
+            this.availability.Width = 125;
+            // 
+            // Reload
+            // 
+            this.Reload.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.Reload.HeaderText = "Reload";
+            this.Reload.MinimumWidth = 30;
+            this.Reload.Name = "Reload";
+            this.Reload.Width = 125;
+            // 
+            // Delete
+            // 
+            this.Delete.FillWeight = 50F;
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_delete_forever_black_48dp;
+            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Delete.MinimumWidth = 6;
+            this.Delete.Name = "Delete";
+            this.Delete.Width = 52;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
@@ -486,61 +552,75 @@
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.Width = 125;
             // 
-            // ID
+            // settingsPanel
             // 
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 125;
+            this.settingsPanel.BackColor = System.Drawing.Color.White;
+            this.settingsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.settingsPanel.Controls.Add(this.panel1);
+            this.settingsPanel.Controls.Add(this.lblLogOut);
+            this.settingsPanel.Controls.Add(this.pictureBox10);
+            this.settingsPanel.Controls.Add(this.editAccount);
+            this.settingsPanel.Controls.Add(this.pictureBox13);
+            this.settingsPanel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.settingsPanel.Location = new System.Drawing.Point(43, 688);
+            this.settingsPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.settingsPanel.Name = "settingsPanel";
+            this.settingsPanel.Size = new System.Drawing.Size(191, 76);
+            this.settingsPanel.TabIndex = 14;
+            this.settingsPanel.Visible = false;
             // 
-            // name
+            // panel1
             // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.name.HeaderText = "name";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Location = new System.Drawing.Point(4, 34);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(180, 1);
+            this.panel1.TabIndex = 13;
             // 
-            // price
+            // lblLogOut
             // 
-            this.price.HeaderText = "price";
-            this.price.MinimumWidth = 6;
-            this.price.Name = "price";
-            this.price.Width = 125;
+            this.lblLogOut.AutoSize = true;
+            this.lblLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogOut.Location = new System.Drawing.Point(51, 50);
+            this.lblLogOut.Name = "lblLogOut";
+            this.lblLogOut.Size = new System.Drawing.Size(72, 18);
+            this.lblLogOut.TabIndex = 16;
+            this.lblLogOut.Text = "LOGOUT";
+            this.lblLogOut.Click += new System.EventHandler(this.lblLogOut_Click);
             // 
-            // amount
+            // pictureBox10
             // 
-            this.amount.HeaderText = "amount";
-            this.amount.MinimumWidth = 6;
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
-            this.amount.Width = 125;
+            this.pictureBox10.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_circle_black_48dp;
+            this.pictureBox10.Location = new System.Drawing.Point(14, 45);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(29, 26);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 15;
+            this.pictureBox10.TabStop = false;
             // 
-            // availability
+            // editAccount
             // 
-            this.availability.HeaderText = "availability";
-            this.availability.MinimumWidth = 6;
-            this.availability.Name = "availability";
-            this.availability.Width = 125;
+            this.editAccount.AutoSize = true;
+            this.editAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editAccount.Location = new System.Drawing.Point(50, 8);
+            this.editAccount.Name = "editAccount";
+            this.editAccount.Size = new System.Drawing.Size(119, 18);
+            this.editAccount.TabIndex = 14;
+            this.editAccount.Text = "EDIT ACCOUNT";
+            this.editAccount.Click += new System.EventHandler(this.editAccount_Click);
             // 
-            // Reload
+            // pictureBox13
             // 
-            this.Reload.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.Reload.HeaderText = "Reload";
-            this.Reload.MinimumWidth = 30;
-            this.Reload.Name = "Reload";
-            this.Reload.Width = 125;
-            // 
-            // Delete
-            // 
-            this.Delete.FillWeight = 50F;
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_delete_forever_black_48dp;
-            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Delete.MinimumWidth = 6;
-            this.Delete.Name = "Delete";
-            this.Delete.Width = 52;
+            this.pictureBox13.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_create_black_48dp;
+            this.pictureBox13.Location = new System.Drawing.Point(14, 4);
+            this.pictureBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(29, 26);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox13.TabIndex = 13;
+            this.pictureBox13.TabStop = false;
             // 
             // Stocks
             // 
@@ -587,6 +667,10 @@
             this.btnCreate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
+            this.settingsPanel.ResumeLayout(false);
+            this.settingsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -635,5 +719,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn availability;
         private System.Windows.Forms.DataGridViewButtonColumn Reload;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
+        private System.Windows.Forms.Panel settingsPanel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblLogOut;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.Label editAccount;
+        private System.Windows.Forms.PictureBox pictureBox13;
     }
 }

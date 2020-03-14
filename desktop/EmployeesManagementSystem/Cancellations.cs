@@ -38,6 +38,12 @@ namespace EmployeesManagementSystem
         private void exit_Click(object sender, EventArgs e)
         {
             this.Close();
+
+            // exiting properly the application
+            if (Application.MessageLoop)
+            {
+                Application.Exit();
+            }
         }
 
 
@@ -108,6 +114,24 @@ namespace EmployeesManagementSystem
             Stocks stocks = new Stocks();
             stocks.Closed += (s, args) => this.Close();
             stocks.Show();
+        }
+
+        private void editAccount_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Dashboard
+            AdminDetails adminDetails = new AdminDetails();
+            adminDetails.Closed += (s, args) => this.Close();
+            adminDetails.Show();
+        }
+
+        private void lblLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Log In
+            Login login = new Login();
+            login.Closed += (s, args) => this.Close();
+            login.Show();
         }
     }
 }
