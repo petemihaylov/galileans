@@ -26,7 +26,6 @@ namespace EmployeesManagementSystem
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Close();
         }
 
@@ -39,15 +38,14 @@ namespace EmployeesManagementSystem
             }
 
             ImageClass img = databaseContext.GetUserImg(userId);
-            if(img != null)
+            if (img != null)
             {
                 databaseContext.DeleteImgById(img.ID);
             }
-            
+
             img = new ImageClass(userId, txtUrl.Text);
             databaseContext.InsertImage(img);
 
-            databaseContext.Dispose(true);
             this.Close();
             this.details.UpdateImg(userId);
         }

@@ -116,7 +116,6 @@ namespace EmployeesManagementSystem
 
         private void exit_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Close();
         }
 
@@ -162,7 +161,6 @@ namespace EmployeesManagementSystem
 
         private void btnStocks_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Hide();
             // Show Dashboard
             Stocks stock = new Stocks();
@@ -172,7 +170,6 @@ namespace EmployeesManagementSystem
 
         private void btnDepartments_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Hide();
             // Show Dashboard
             Departments dep = new Departments();
@@ -182,7 +179,6 @@ namespace EmployeesManagementSystem
 
         private void btnCancellations_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Hide();
             // Show Dashboard
             Cancellations cncl = new Cancellations();

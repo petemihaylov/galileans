@@ -245,7 +245,6 @@ namespace EmployeesManagementSystem
             // Fields should be validated!
 
             databaseContext.UpdateUserInfo(user.ID, tbFullName.Text, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text);           
-            databaseContext.Dispose(true);
             MessageBox.Show("User updated!");
 
 
@@ -260,8 +259,6 @@ namespace EmployeesManagementSystem
         // Buttons
         private void picBack_Click(object sender, EventArgs e)
         {
-
-            databaseContext.Dispose(true);
             this.Close();
             // Show Dashboard
             Dashboard dashboard = new Dashboard();
@@ -272,7 +269,6 @@ namespace EmployeesManagementSystem
 
         private void exit_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Close();
             if (Application.MessageLoop)
             {
@@ -282,7 +278,6 @@ namespace EmployeesManagementSystem
 
         private void lbBack_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Close();
             // Show Dashboard
             Dashboard dashboard = new Dashboard();
@@ -477,13 +472,21 @@ namespace EmployeesManagementSystem
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            databaseContext.ResetPassword(user.ID);
-            MessageBox.Show("Password Reset to 'WelcomeToMediaBazaar'");
+            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show("Enter new password!");
+            }
+            else
+            {
+
+                string password = txtPassword.Text;
+                databaseContext.ResetPassword(user.ID, password);
+                MessageBox.Show($"Password Reset to '{password}'");
+            }
         }
         
         private void btnStatistic_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Hide();
             // Show Dashboard
             Statistic stat = new Statistic(this.id);
@@ -517,16 +520,23 @@ namespace EmployeesManagementSystem
             ImageClass img = databaseContext.GetUserImg(userId);
 
             if (img == null) { return;  }
+            
+            try { 
 
-            WebRequest request = WebRequest.Create(img.UrlPath);
-
-            using (var response = request.GetResponse())
-            {
-                using (var str = response.GetResponseStream())
+                WebRequest request = WebRequest.Create(img.UrlPath);
+                using (var response = request.GetResponse())
                 {
-                    profilePic.Image = Bitmap.FromStream(str);
+                    using (var str = response.GetResponseStream())
+                    {
+                        profilePic.Image = Bitmap.FromStream(str);
+                    }
                 }
             }
+            catch(WebException web)
+            {
+                MessageBox.Show("Incorect url path! " + web.Message);
+            }
+
         }
     }
 }

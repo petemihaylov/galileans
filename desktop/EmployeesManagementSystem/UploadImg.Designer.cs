@@ -53,7 +53,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.Gray;
+            this.panel4.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Controls.Add(this.btnExit);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -75,12 +75,15 @@
             // 
             // txtUrl
             // 
-            this.txtUrl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUrl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtUrl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUrl.ForeColor = System.Drawing.SystemColors.Highlight;
             this.txtUrl.Location = new System.Drawing.Point(77, 71);
             this.txtUrl.Multiline = true;
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(432, 28);
             this.txtUrl.TabIndex = 9;
+            this.txtUrl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -94,10 +97,10 @@
             // 
             // btnUpload
             // 
-            this.btnUpload.BackColor = System.Drawing.SystemColors.GrayText;
+            this.btnUpload.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnUpload.FlatAppearance.BorderSize = 0;
             this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpload.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnUpload.Location = new System.Drawing.Point(539, 71);
             this.btnUpload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

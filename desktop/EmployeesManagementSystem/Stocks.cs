@@ -43,7 +43,6 @@ namespace EmployeesManagementSystem
 
         private void btnCancellations_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Hide();
             // Show Dashboard
             Cancellations cncl = new Cancellations();
@@ -53,7 +52,6 @@ namespace EmployeesManagementSystem
 
         private void btnDepartments_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Hide();
             // Show Dashboard
             Departments dep = new Departments();
@@ -64,7 +62,6 @@ namespace EmployeesManagementSystem
 
         private void btnStocks_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Hide();
             // Show Dashboard
             Stocks stock = new Stocks();
@@ -74,7 +71,6 @@ namespace EmployeesManagementSystem
 
         private void btnShift_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Hide();
             // Show Dashboard
             Shifts shifts = new Shifts();
@@ -97,7 +93,6 @@ namespace EmployeesManagementSystem
 
         private void exit_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Close();
 
             // exiting properly the application
@@ -106,7 +101,6 @@ namespace EmployeesManagementSystem
                 Application.Exit();
             }
         }
-
         private void exit_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.LightGray;
@@ -160,7 +154,8 @@ namespace EmployeesManagementSystem
             {
                 ReloadStock reloadStock = new ReloadStock(stockId, this);
                 reloadStock.Show();
-            }else if (stockDataGrid.CurrentCell.ColumnIndex.Equals(btnDelete))
+            }
+            else if (stockDataGrid.CurrentCell.ColumnIndex.Equals(btnDelete))
             {
                 databaseContext.DeleteStockByID(stockId);
                 UpdateStocks();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.panelLeft = new System.Windows.Forms.Panel();
             this.settingsPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -157,7 +158,7 @@
             // 
             this.lblLogOut.AutoSize = true;
             this.lblLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogOut.Location = new System.Drawing.Point(49, 7);
+            this.lblLogOut.Location = new System.Drawing.Point(51, 50);
             this.lblLogOut.Name = "lblLogOut";
             this.lblLogOut.Size = new System.Drawing.Size(72, 18);
             this.lblLogOut.TabIndex = 16;
@@ -167,7 +168,7 @@
             // pictureBox9
             // 
             this.pictureBox9.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_circle_black_48dp;
-            this.pictureBox9.Location = new System.Drawing.Point(13, 5);
+            this.pictureBox9.Location = new System.Drawing.Point(14, 45);
             this.pictureBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(29, 26);
@@ -179,7 +180,7 @@
             // 
             this.editAccount.AutoSize = true;
             this.editAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editAccount.Location = new System.Drawing.Point(48, 46);
+            this.editAccount.Location = new System.Drawing.Point(50, 8);
             this.editAccount.Name = "editAccount";
             this.editAccount.Size = new System.Drawing.Size(119, 18);
             this.editAccount.TabIndex = 14;
@@ -189,7 +190,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_create_black_48dp;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 42);
+            this.pictureBox2.Location = new System.Drawing.Point(14, 4);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(29, 26);
@@ -203,6 +204,7 @@
             this.btnShift.Controls.Add(this.pictureBox13);
             this.btnShift.Controls.Add(this.pictureBox14);
             this.btnShift.Controls.Add(this.label9);
+            this.btnShift.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnShift.Location = new System.Drawing.Point(12, 508);
             this.btnShift.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnShift.Name = "btnShift";
@@ -250,12 +252,15 @@
             this.btnStocks.Controls.Add(this.pictureBox3);
             this.btnStocks.Controls.Add(this.pictureBox11);
             this.btnStocks.Controls.Add(this.label2);
+            this.btnStocks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStocks.Location = new System.Drawing.Point(12, 439);
             this.btnStocks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStocks.Name = "btnStocks";
             this.btnStocks.Size = new System.Drawing.Size(229, 41);
             this.btnStocks.TabIndex = 10;
             this.btnStocks.Click += new System.EventHandler(this.btnStocks_Click);
+            this.btnStocks.MouseEnter += new System.EventHandler(this.btnStocks_MouseEnter);
+            this.btnStocks.MouseLeave += new System.EventHandler(this.btnStocks_MouseLeave);
             // 
             // pictureBox3
             // 
@@ -295,12 +300,15 @@
             this.btnDepartments.Controls.Add(this.pictureBox8);
             this.btnDepartments.Controls.Add(this.pictureBox5);
             this.btnDepartments.Controls.Add(this.label4);
+            this.btnDepartments.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDepartments.Location = new System.Drawing.Point(12, 370);
             this.btnDepartments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDepartments.Name = "btnDepartments";
             this.btnDepartments.Size = new System.Drawing.Size(229, 41);
             this.btnDepartments.TabIndex = 8;
             this.btnDepartments.Click += new System.EventHandler(this.btnDepartments_Click);
+            this.btnDepartments.MouseEnter += new System.EventHandler(this.btnDepartments_MouseEnter);
+            this.btnDepartments.MouseLeave += new System.EventHandler(this.btnDepartments_MouseLeave);
             // 
             // pictureBox8
             // 
@@ -340,12 +348,15 @@
             this.btnCancellations.Controls.Add(this.pictureBox7);
             this.btnCancellations.Controls.Add(this.pictureBox4);
             this.btnCancellations.Controls.Add(this.label3);
+            this.btnCancellations.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancellations.Location = new System.Drawing.Point(12, 302);
             this.btnCancellations.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancellations.Name = "btnCancellations";
             this.btnCancellations.Size = new System.Drawing.Size(229, 41);
             this.btnCancellations.TabIndex = 9;
             this.btnCancellations.Click += new System.EventHandler(this.btnCancellations_Click);
+            this.btnCancellations.MouseEnter += new System.EventHandler(this.btnCancellations_MouseEnter);
+            this.btnCancellations.MouseLeave += new System.EventHandler(this.btnCancellations_MouseLeave);
             // 
             // pictureBox7
             // 
@@ -386,6 +397,7 @@
             this.btnEmployees.Controls.Add(this.pictureBox6);
             this.btnEmployees.Controls.Add(this.pictureBox12);
             this.btnEmployees.Controls.Add(this.label8);
+            this.btnEmployees.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEmployees.Location = new System.Drawing.Point(12, 231);
             this.btnEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEmployees.Name = "btnEmployees";
@@ -438,6 +450,7 @@
             // lbSettings
             // 
             this.lbSettings.AutoSize = true;
+            this.lbSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSettings.Location = new System.Drawing.Point(57, 779);
             this.lbSettings.Name = "lbSettings";
@@ -448,6 +461,7 @@
             // 
             // btnSettings
             // 
+            this.btnSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSettings.Image = global::EmployeesManagementSystem.Properties.Resources.settings;
             this.btnSettings.Location = new System.Drawing.Point(12, 770);
             this.btnSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -614,6 +628,7 @@
             this.btnCreate.BackColor = System.Drawing.Color.LightGray;
             this.btnCreate.Controls.Add(this.pictureCreate);
             this.btnCreate.Controls.Add(this.lbCreate);
+            this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCreate.Location = new System.Drawing.Point(884, 12);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreate.Name = "btnCreate";
@@ -647,6 +662,7 @@
             // 
             // btnExit
             // 
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
             this.btnExit.Location = new System.Drawing.Point(1184, 15);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -689,6 +705,7 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.panelLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

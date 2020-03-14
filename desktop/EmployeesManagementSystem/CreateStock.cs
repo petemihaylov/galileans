@@ -74,7 +74,6 @@ namespace EmployeesManagementSystem
 
         private void exit_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Close();
         }
     }

@@ -10,15 +10,11 @@ namespace EmployeesManagementSystem.Models
     {
         public int ID { get; set; }
         public int AssignedEmployeeID { get; set; }
-       
         public bool Availability { get; set; }
-
         public DateTime ShiftDate { get; set; }
-
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public bool Attended { get; set; }
-
         public ShiftType Type { get; set; }
 
         public Shift() { }
@@ -32,7 +28,6 @@ namespace EmployeesManagementSystem.Models
             Attended = attended;
             Type = type;
         }
-
         public int GetInfo()
         {
             if (this.Attended)
@@ -43,7 +38,6 @@ namespace EmployeesManagementSystem.Models
             }
             return 0;
         }
-
     }
 
     enum ShiftType

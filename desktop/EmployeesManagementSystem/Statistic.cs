@@ -43,7 +43,6 @@ namespace EmployeesManagementSystem
 
         private void picBack_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Close();
             // Show Dashboard
             Details details = new Details(this.id);
@@ -53,7 +52,6 @@ namespace EmployeesManagementSystem
 
         private void exit_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Close();
             if (Application.MessageLoop)
             {

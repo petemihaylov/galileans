@@ -102,7 +102,6 @@ namespace EmployeesManagementSystem
         // Exit button
         private void btnExit_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Close();
         }
 

@@ -28,13 +28,11 @@ namespace EmployeesManagementSystem
 
         private void bntNo_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Close();
             dashboard.Show();
         }
         private void exit_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Close();
             dashboard.Show();
         }

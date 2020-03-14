@@ -30,6 +30,8 @@
         {
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbBack = new System.Windows.Forms.Label();
+            this.picBack = new System.Windows.Forms.PictureBox();
+            this.exit = new System.Windows.Forms.PictureBox();
             this.lbFullName = new System.Windows.Forms.Label();
             this.tbFullName = new System.Windows.Forms.TextBox();
             this.lbPhoneNumber = new System.Windows.Forms.Label();
@@ -40,13 +42,13 @@
             this.cbRole = new System.Windows.Forms.ComboBox();
             this.cbDepartment = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tbPhoneNumber = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.tbLocation = new System.Windows.Forms.TextBox();
+            this.profilePic = new System.Windows.Forms.PictureBox();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -57,79 +59,77 @@
             this.lbEvn_second = new System.Windows.Forms.Label();
             this.lbEvn_first = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.picEvn_first = new System.Windows.Forms.PictureBox();
+            this.picEvn_second = new System.Windows.Forms.PictureBox();
+            this.picEvn_third = new System.Windows.Forms.PictureBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.arrowRight = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.dateCenter = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.monthCenter = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.dateRight = new System.Windows.Forms.Label();
             this.monthRight = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dateLeft = new System.Windows.Forms.Label();
             this.monthLeft = new System.Windows.Forms.Label();
+            this.arrowLeft = new System.Windows.Forms.PictureBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.lbMorn_second = new System.Windows.Forms.Label();
             this.lbMorn_first = new System.Windows.Forms.Label();
             this.lbMorn_third = new System.Windows.Forms.Label();
+            this.picMor_first = new System.Windows.Forms.PictureBox();
+            this.picMor_second = new System.Windows.Forms.PictureBox();
+            this.picMor_third = new System.Windows.Forms.PictureBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.lbAft_second = new System.Windows.Forms.Label();
             this.lbAft_first = new System.Windows.Forms.Label();
             this.lbAft_third = new System.Windows.Forms.Label();
-            this.btnToday = new System.Windows.Forms.Button();
-            this.btnStatistic = new System.Windows.Forms.Button();
-            this.bToday = new System.Windows.Forms.Button();
             this.picAft_first = new System.Windows.Forms.PictureBox();
             this.picAft_second = new System.Windows.Forms.PictureBox();
             this.picAft_third = new System.Windows.Forms.PictureBox();
-            this.picMor_first = new System.Windows.Forms.PictureBox();
-            this.picMor_second = new System.Windows.Forms.PictureBox();
-            this.picMor_third = new System.Windows.Forms.PictureBox();
-            this.arrowRight = new System.Windows.Forms.PictureBox();
-            this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.arrowLeft = new System.Windows.Forms.PictureBox();
-            this.picEvn_first = new System.Windows.Forms.PictureBox();
-            this.picEvn_second = new System.Windows.Forms.PictureBox();
-            this.picEvn_third = new System.Windows.Forms.PictureBox();
+            this.btnToday = new System.Windows.Forms.Button();
+            this.btnStatistic = new System.Windows.Forms.Button();
+            this.bToday = new System.Windows.Forms.Button();
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.profilePic = new System.Windows.Forms.PictureBox();
-            this.picBack = new System.Windows.Forms.PictureBox();
-            this.exit = new System.Windows.Forms.PictureBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePic)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEvn_first)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEvn_second)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEvn_third)).BeginInit();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.arrowLeft)).BeginInit();
             this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMor_first)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMor_second)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMor_third)).BeginInit();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAft_first)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAft_second)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAft_third)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMor_first)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMor_second)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMor_third)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arrowLeft)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEvn_first)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEvn_second)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEvn_third)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -156,6 +156,30 @@
             this.lbBack.Text = "Back";
             this.lbBack.Click += new System.EventHandler(this.lbBack_Click);
             // 
+            // picBack
+            // 
+            this.picBack.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_arrow_back_ios_black_48dp;
+            this.picBack.Location = new System.Drawing.Point(28, 18);
+            this.picBack.Margin = new System.Windows.Forms.Padding(4);
+            this.picBack.Name = "picBack";
+            this.picBack.Size = new System.Drawing.Size(37, 32);
+            this.picBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBack.TabIndex = 3;
+            this.picBack.TabStop = false;
+            this.picBack.Click += new System.EventHandler(this.picBack_Click);
+            // 
+            // exit
+            // 
+            this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
+            this.exit.Location = new System.Drawing.Point(1928, 18);
+            this.exit.Margin = new System.Windows.Forms.Padding(4);
+            this.exit.Name = "exit";
+            this.exit.Size = new System.Drawing.Size(52, 43);
+            this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.exit.TabIndex = 2;
+            this.exit.TabStop = false;
+            this.exit.Click += new System.EventHandler(this.exit_Click);
+            // 
             // lbFullName
             // 
             this.lbFullName.AutoSize = true;
@@ -180,7 +204,7 @@
             // 
             this.lbPhoneNumber.AutoSize = true;
             this.lbPhoneNumber.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPhoneNumber.Location = new System.Drawing.Point(24, 557);
+            this.lbPhoneNumber.Location = new System.Drawing.Point(24, 575);
             this.lbPhoneNumber.Name = "lbPhoneNumber";
             this.lbPhoneNumber.Size = new System.Drawing.Size(123, 19);
             this.lbPhoneNumber.TabIndex = 16;
@@ -189,6 +213,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.tbEmail);
             this.groupBox1.Controls.Add(this.label2);
@@ -201,9 +227,7 @@
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.btnUpdate);
             this.groupBox1.Controls.Add(this.profilePic);
-            this.groupBox1.Controls.Add(this.tbLocation);
             this.groupBox1.Controls.Add(this.btnEdit);
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.lbFullName);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.tbFullName);
@@ -223,21 +247,21 @@
             this.btnReset.BackColor = System.Drawing.Color.SlateBlue;
             this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnReset.Location = new System.Drawing.Point(29, 260);
+            this.btnReset.Location = new System.Drawing.Point(29, 323);
             this.btnReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(348, 36);
+            this.btnReset.Size = new System.Drawing.Size(350, 28);
             this.btnReset.TabIndex = 33;
-            this.btnReset.Text = "RESET";
+            this.btnReset.Text = "CHANGE";
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // tbEmail
             // 
             this.tbEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbEmail.Location = new System.Drawing.Point(29, 518);
+            this.tbEmail.Location = new System.Drawing.Point(29, 536);
             this.tbEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbEmail.Multiline = true;
             this.tbEmail.Name = "tbEmail";
@@ -248,7 +272,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(24, 496);
+            this.label2.Location = new System.Drawing.Point(24, 514);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 19);
             this.label2.TabIndex = 31;
@@ -262,7 +286,7 @@
             "Employee",
             "Manager",
             "Administrator"});
-            this.cbRole.Location = new System.Drawing.Point(29, 459);
+            this.cbRole.Location = new System.Drawing.Point(29, 477);
             this.cbRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(349, 24);
@@ -272,7 +296,7 @@
             // 
             this.cbDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbDepartment.FormattingEnabled = true;
-            this.cbDepartment.Location = new System.Drawing.Point(28, 402);
+            this.cbDepartment.Location = new System.Drawing.Point(28, 420);
             this.cbDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbDepartment.Name = "cbDepartment";
             this.cbDepartment.Size = new System.Drawing.Size(349, 24);
@@ -282,16 +306,27 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(25, 377);
+            this.label29.Location = new System.Drawing.Point(25, 395);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(98, 19);
             this.label29.TabIndex = 27;
             this.label29.Text = "Department:";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_create_black_48dp;
+            this.pictureBox3.Location = new System.Drawing.Point(101, 108);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(29, 25);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 24;
+            this.pictureBox3.TabStop = false;
+            // 
             // tbPhoneNumber
             // 
             this.tbPhoneNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbPhoneNumber.Location = new System.Drawing.Point(29, 579);
+            this.tbPhoneNumber.Location = new System.Drawing.Point(29, 597);
             this.tbPhoneNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbPhoneNumber.Multiline = true;
             this.tbPhoneNumber.Name = "tbPhoneNumber";
@@ -301,7 +336,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Gray;
-            this.panel3.Location = new System.Drawing.Point(29, 616);
+            this.panel3.Location = new System.Drawing.Point(29, 634);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(350, 1);
@@ -323,7 +358,7 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(117, 637);
+            this.btnUpdate.Location = new System.Drawing.Point(117, 655);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(188, 29);
@@ -332,15 +367,16 @@
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // tbLocation
+            // profilePic
             // 
-            this.tbLocation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbLocation.Location = new System.Drawing.Point(29, 334);
-            this.tbLocation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbLocation.Multiline = true;
-            this.tbLocation.Name = "tbLocation";
-            this.tbLocation.Size = new System.Drawing.Size(349, 22);
-            this.tbLocation.TabIndex = 22;
+            this.profilePic.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_circle_black_48dp;
+            this.profilePic.Location = new System.Drawing.Point(132, 13);
+            this.profilePic.Margin = new System.Windows.Forms.Padding(4);
+            this.profilePic.Name = "profilePic";
+            this.profilePic.Size = new System.Drawing.Size(97, 90);
+            this.profilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.profilePic.TabIndex = 6;
+            this.profilePic.TabStop = false;
             // 
             // btnEdit
             // 
@@ -357,21 +393,11 @@
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(25, 310);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 19);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "Location:";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(25, 437);
+            this.label3.Location = new System.Drawing.Point(25, 455);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 19);
             this.label3.TabIndex = 19;
@@ -476,6 +502,42 @@
             this.groupBox6.TabIndex = 55;
             this.groupBox6.TabStop = false;
             // 
+            // picEvn_first
+            // 
+            this.picEvn_first.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
+            this.picEvn_first.Location = new System.Drawing.Point(8, 34);
+            this.picEvn_first.Margin = new System.Windows.Forms.Padding(4);
+            this.picEvn_first.Name = "picEvn_first";
+            this.picEvn_first.Size = new System.Drawing.Size(28, 29);
+            this.picEvn_first.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEvn_first.TabIndex = 46;
+            this.picEvn_first.TabStop = false;
+            this.picEvn_first.Click += new System.EventHandler(this.picEvn_first_Click);
+            // 
+            // picEvn_second
+            // 
+            this.picEvn_second.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp1;
+            this.picEvn_second.Location = new System.Drawing.Point(7, 68);
+            this.picEvn_second.Margin = new System.Windows.Forms.Padding(4);
+            this.picEvn_second.Name = "picEvn_second";
+            this.picEvn_second.Size = new System.Drawing.Size(28, 26);
+            this.picEvn_second.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEvn_second.TabIndex = 47;
+            this.picEvn_second.TabStop = false;
+            this.picEvn_second.Click += new System.EventHandler(this.picEvn_second_Click);
+            // 
+            // picEvn_third
+            // 
+            this.picEvn_third.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
+            this.picEvn_third.Location = new System.Drawing.Point(7, 100);
+            this.picEvn_third.Margin = new System.Windows.Forms.Padding(4);
+            this.picEvn_third.Name = "picEvn_third";
+            this.picEvn_third.Size = new System.Drawing.Size(28, 33);
+            this.picEvn_third.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEvn_third.TabIndex = 48;
+            this.picEvn_third.TabStop = false;
+            this.picEvn_third.Click += new System.EventHandler(this.picEvn_third_Click);
+            // 
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -493,6 +555,17 @@
             this.groupBox5.TabIndex = 56;
             this.groupBox5.TabStop = false;
             // 
+            // arrowRight
+            // 
+            this.arrowRight.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
+            this.arrowRight.Location = new System.Drawing.Point(838, 57);
+            this.arrowRight.Name = "arrowRight";
+            this.arrowRight.Size = new System.Drawing.Size(80, 104);
+            this.arrowRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.arrowRight.TabIndex = 62;
+            this.arrowRight.TabStop = false;
+            this.arrowRight.Click += new System.EventHandler(this.arrowRight_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -509,6 +582,17 @@
             this.groupBox3.Size = new System.Drawing.Size(125, 149);
             this.groupBox3.TabIndex = 56;
             this.groupBox3.TabStop = false;
+            // 
+            // pictureBox16
+            // 
+            this.pictureBox16.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
+            this.pictureBox16.Location = new System.Drawing.Point(39, 84);
+            this.pictureBox16.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox16.TabIndex = 52;
+            this.pictureBox16.TabStop = false;
             // 
             // dateCenter
             // 
@@ -565,6 +649,17 @@
             this.label1.TabIndex = 54;
             this.label1.Text = "available";
             // 
+            // pictureBox17
+            // 
+            this.pictureBox17.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
+            this.pictureBox17.Location = new System.Drawing.Point(39, 84);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox17.TabIndex = 52;
+            this.pictureBox17.TabStop = false;
+            // 
             // dateRight
             // 
             this.dateRight.AutoSize = true;
@@ -612,6 +707,17 @@
             this.groupBox2.TabIndex = 60;
             this.groupBox2.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
+            this.pictureBox1.Location = new System.Drawing.Point(40, 84);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(41, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 54;
+            this.pictureBox1.TabStop = false;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -641,6 +747,18 @@
             this.monthLeft.Size = new System.Drawing.Size(48, 23);
             this.monthLeft.TabIndex = 51;
             this.monthLeft.Text = "FEB";
+            // 
+            // arrowLeft
+            // 
+            this.arrowLeft.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp1;
+            this.arrowLeft.Location = new System.Drawing.Point(26, 57);
+            this.arrowLeft.Margin = new System.Windows.Forms.Padding(4);
+            this.arrowLeft.Name = "arrowLeft";
+            this.arrowLeft.Size = new System.Drawing.Size(80, 104);
+            this.arrowLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.arrowLeft.TabIndex = 58;
+            this.arrowLeft.TabStop = false;
+            this.arrowLeft.Click += new System.EventHandler(this.arrowLeft_Click);
             // 
             // groupBox7
             // 
@@ -694,6 +812,42 @@
             this.lbMorn_third.TabIndex = 45;
             this.lbMorn_third.Text = "11:00 - 12:00";
             // 
+            // picMor_first
+            // 
+            this.picMor_first.Image = global::EmployeesManagementSystem.Properties.Resources.btnAdd;
+            this.picMor_first.Location = new System.Drawing.Point(7, 34);
+            this.picMor_first.Margin = new System.Windows.Forms.Padding(4);
+            this.picMor_first.Name = "picMor_first";
+            this.picMor_first.Size = new System.Drawing.Size(31, 26);
+            this.picMor_first.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picMor_first.TabIndex = 46;
+            this.picMor_first.TabStop = false;
+            this.picMor_first.Click += new System.EventHandler(this.picMor_first_Click);
+            // 
+            // picMor_second
+            // 
+            this.picMor_second.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp1;
+            this.picMor_second.Location = new System.Drawing.Point(7, 68);
+            this.picMor_second.Margin = new System.Windows.Forms.Padding(4);
+            this.picMor_second.Name = "picMor_second";
+            this.picMor_second.Size = new System.Drawing.Size(31, 26);
+            this.picMor_second.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picMor_second.TabIndex = 47;
+            this.picMor_second.TabStop = false;
+            this.picMor_second.Click += new System.EventHandler(this.picMor_second_Click);
+            // 
+            // picMor_third
+            // 
+            this.picMor_third.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
+            this.picMor_third.Location = new System.Drawing.Point(7, 100);
+            this.picMor_third.Margin = new System.Windows.Forms.Padding(4);
+            this.picMor_third.Name = "picMor_third";
+            this.picMor_third.Size = new System.Drawing.Size(31, 26);
+            this.picMor_third.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picMor_third.TabIndex = 48;
+            this.picMor_third.TabStop = false;
+            this.picMor_third.Click += new System.EventHandler(this.picMor_third_Click);
+            // 
             // groupBox8
             // 
             this.groupBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -746,6 +900,42 @@
             this.lbAft_third.TabIndex = 45;
             this.lbAft_third.Text = "16:00 - 17:00";
             // 
+            // picAft_first
+            // 
+            this.picAft_first.Image = global::EmployeesManagementSystem.Properties.Resources.btnAdd;
+            this.picAft_first.Location = new System.Drawing.Point(6, 34);
+            this.picAft_first.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picAft_first.Name = "picAft_first";
+            this.picAft_first.Size = new System.Drawing.Size(31, 26);
+            this.picAft_first.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAft_first.TabIndex = 46;
+            this.picAft_first.TabStop = false;
+            this.picAft_first.Click += new System.EventHandler(this.picAft_first_Click);
+            // 
+            // picAft_second
+            // 
+            this.picAft_second.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
+            this.picAft_second.Location = new System.Drawing.Point(5, 68);
+            this.picAft_second.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picAft_second.Name = "picAft_second";
+            this.picAft_second.Size = new System.Drawing.Size(31, 26);
+            this.picAft_second.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAft_second.TabIndex = 47;
+            this.picAft_second.TabStop = false;
+            this.picAft_second.Click += new System.EventHandler(this.picAft_second_Click);
+            // 
+            // picAft_third
+            // 
+            this.picAft_third.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
+            this.picAft_third.Location = new System.Drawing.Point(5, 100);
+            this.picAft_third.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picAft_third.Name = "picAft_third";
+            this.picAft_third.Size = new System.Drawing.Size(31, 26);
+            this.picAft_third.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAft_third.TabIndex = 48;
+            this.picAft_third.TabStop = false;
+            this.picAft_third.Click += new System.EventHandler(this.picAft_third_Click);
+            // 
             // btnToday
             // 
             this.btnToday.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -792,170 +982,6 @@
             this.bToday.UseVisualStyleBackColor = false;
             this.bToday.Click += new System.EventHandler(this.bToday_Click);
             // 
-            // picAft_first
-            // 
-            this.picAft_first.Image = global::EmployeesManagementSystem.Properties.Resources.btnAdd;
-            this.picAft_first.Location = new System.Drawing.Point(6, 34);
-            this.picAft_first.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picAft_first.Name = "picAft_first";
-            this.picAft_first.Size = new System.Drawing.Size(31, 26);
-            this.picAft_first.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picAft_first.TabIndex = 46;
-            this.picAft_first.TabStop = false;
-            this.picAft_first.Click += new System.EventHandler(this.picAft_first_Click);
-            // 
-            // picAft_second
-            // 
-            this.picAft_second.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
-            this.picAft_second.Location = new System.Drawing.Point(5, 68);
-            this.picAft_second.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picAft_second.Name = "picAft_second";
-            this.picAft_second.Size = new System.Drawing.Size(31, 26);
-            this.picAft_second.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picAft_second.TabIndex = 47;
-            this.picAft_second.TabStop = false;
-            this.picAft_second.Click += new System.EventHandler(this.picAft_second_Click);
-            // 
-            // picAft_third
-            // 
-            this.picAft_third.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
-            this.picAft_third.Location = new System.Drawing.Point(5, 100);
-            this.picAft_third.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picAft_third.Name = "picAft_third";
-            this.picAft_third.Size = new System.Drawing.Size(31, 26);
-            this.picAft_third.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picAft_third.TabIndex = 48;
-            this.picAft_third.TabStop = false;
-            this.picAft_third.Click += new System.EventHandler(this.picAft_third_Click);
-            // 
-            // picMor_first
-            // 
-            this.picMor_first.Image = global::EmployeesManagementSystem.Properties.Resources.btnAdd;
-            this.picMor_first.Location = new System.Drawing.Point(7, 34);
-            this.picMor_first.Margin = new System.Windows.Forms.Padding(4);
-            this.picMor_first.Name = "picMor_first";
-            this.picMor_first.Size = new System.Drawing.Size(31, 26);
-            this.picMor_first.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picMor_first.TabIndex = 46;
-            this.picMor_first.TabStop = false;
-            this.picMor_first.Click += new System.EventHandler(this.picMor_first_Click);
-            // 
-            // picMor_second
-            // 
-            this.picMor_second.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp1;
-            this.picMor_second.Location = new System.Drawing.Point(7, 68);
-            this.picMor_second.Margin = new System.Windows.Forms.Padding(4);
-            this.picMor_second.Name = "picMor_second";
-            this.picMor_second.Size = new System.Drawing.Size(31, 26);
-            this.picMor_second.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picMor_second.TabIndex = 47;
-            this.picMor_second.TabStop = false;
-            this.picMor_second.Click += new System.EventHandler(this.picMor_second_Click);
-            // 
-            // picMor_third
-            // 
-            this.picMor_third.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
-            this.picMor_third.Location = new System.Drawing.Point(7, 100);
-            this.picMor_third.Margin = new System.Windows.Forms.Padding(4);
-            this.picMor_third.Name = "picMor_third";
-            this.picMor_third.Size = new System.Drawing.Size(31, 26);
-            this.picMor_third.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picMor_third.TabIndex = 48;
-            this.picMor_third.TabStop = false;
-            this.picMor_third.Click += new System.EventHandler(this.picMor_third_Click);
-            // 
-            // arrowRight
-            // 
-            this.arrowRight.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
-            this.arrowRight.Location = new System.Drawing.Point(838, 57);
-            this.arrowRight.Name = "arrowRight";
-            this.arrowRight.Size = new System.Drawing.Size(80, 104);
-            this.arrowRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.arrowRight.TabIndex = 62;
-            this.arrowRight.TabStop = false;
-            this.arrowRight.Click += new System.EventHandler(this.arrowRight_Click);
-            // 
-            // pictureBox16
-            // 
-            this.pictureBox16.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
-            this.pictureBox16.Location = new System.Drawing.Point(39, 84);
-            this.pictureBox16.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(41, 32);
-            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox16.TabIndex = 52;
-            this.pictureBox16.TabStop = false;
-            // 
-            // pictureBox17
-            // 
-            this.pictureBox17.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
-            this.pictureBox17.Location = new System.Drawing.Point(39, 84);
-            this.pictureBox17.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(41, 32);
-            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox17.TabIndex = 52;
-            this.pictureBox17.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
-            this.pictureBox1.Location = new System.Drawing.Point(40, 84);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 54;
-            this.pictureBox1.TabStop = false;
-            // 
-            // arrowLeft
-            // 
-            this.arrowLeft.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp1;
-            this.arrowLeft.Location = new System.Drawing.Point(26, 57);
-            this.arrowLeft.Margin = new System.Windows.Forms.Padding(4);
-            this.arrowLeft.Name = "arrowLeft";
-            this.arrowLeft.Size = new System.Drawing.Size(80, 104);
-            this.arrowLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.arrowLeft.TabIndex = 58;
-            this.arrowLeft.TabStop = false;
-            this.arrowLeft.Click += new System.EventHandler(this.arrowLeft_Click);
-            // 
-            // picEvn_first
-            // 
-            this.picEvn_first.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
-            this.picEvn_first.Location = new System.Drawing.Point(8, 34);
-            this.picEvn_first.Margin = new System.Windows.Forms.Padding(4);
-            this.picEvn_first.Name = "picEvn_first";
-            this.picEvn_first.Size = new System.Drawing.Size(28, 29);
-            this.picEvn_first.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picEvn_first.TabIndex = 46;
-            this.picEvn_first.TabStop = false;
-            this.picEvn_first.Click += new System.EventHandler(this.picEvn_first_Click);
-            // 
-            // picEvn_second
-            // 
-            this.picEvn_second.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp1;
-            this.picEvn_second.Location = new System.Drawing.Point(7, 68);
-            this.picEvn_second.Margin = new System.Windows.Forms.Padding(4);
-            this.picEvn_second.Name = "picEvn_second";
-            this.picEvn_second.Size = new System.Drawing.Size(28, 26);
-            this.picEvn_second.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picEvn_second.TabIndex = 47;
-            this.picEvn_second.TabStop = false;
-            this.picEvn_second.Click += new System.EventHandler(this.picEvn_second_Click);
-            // 
-            // picEvn_third
-            // 
-            this.picEvn_third.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
-            this.picEvn_third.Location = new System.Drawing.Point(7, 100);
-            this.picEvn_third.Margin = new System.Windows.Forms.Padding(4);
-            this.picEvn_third.Name = "picEvn_third";
-            this.picEvn_third.Size = new System.Drawing.Size(28, 33);
-            this.picEvn_third.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picEvn_third.TabIndex = 48;
-            this.picEvn_third.TabStop = false;
-            this.picEvn_third.Click += new System.EventHandler(this.picEvn_third_Click);
-            // 
             // pictureBox19
             // 
             this.pictureBox19.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_insert_chart_outlined_black_48dp;
@@ -967,51 +993,28 @@
             this.pictureBox19.TabIndex = 50;
             this.pictureBox19.TabStop = false;
             // 
-            // pictureBox3
+            // txtPassword
             // 
-            this.pictureBox3.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_create_black_48dp;
-            this.pictureBox3.Location = new System.Drawing.Point(101, 108);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(29, 25);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 24;
-            this.pictureBox3.TabStop = false;
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.txtPassword.Location = new System.Drawing.Point(29, 288);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPassword.Multiline = true;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(349, 22);
+            this.txtPassword.TabIndex = 34;
+            this.txtPassword.Text = "MediaBazaar";
             // 
-            // profilePic
+            // label5
             // 
-            this.profilePic.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_circle_black_48dp;
-            this.profilePic.Location = new System.Drawing.Point(132, 13);
-            this.profilePic.Margin = new System.Windows.Forms.Padding(4);
-            this.profilePic.Name = "profilePic";
-            this.profilePic.Size = new System.Drawing.Size(97, 90);
-            this.profilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.profilePic.TabIndex = 6;
-            this.profilePic.TabStop = false;
-            // 
-            // picBack
-            // 
-            this.picBack.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_arrow_back_ios_black_48dp;
-            this.picBack.Location = new System.Drawing.Point(28, 18);
-            this.picBack.Margin = new System.Windows.Forms.Padding(4);
-            this.picBack.Name = "picBack";
-            this.picBack.Size = new System.Drawing.Size(37, 32);
-            this.picBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picBack.TabIndex = 3;
-            this.picBack.TabStop = false;
-            this.picBack.Click += new System.EventHandler(this.picBack_Click);
-            // 
-            // exit
-            // 
-            this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
-            this.exit.Location = new System.Drawing.Point(1928, 18);
-            this.exit.Margin = new System.Windows.Forms.Padding(4);
-            this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(52, 43);
-            this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.exit.TabIndex = 2;
-            this.exit.TabStop = false;
-            this.exit.Click += new System.EventHandler(this.exit_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(25, 259);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(163, 19);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "Change password to:";
             // 
             // Details
             // 
@@ -1040,42 +1043,42 @@
             this.Load += new System.EventHandler(this.Details_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePic)).EndInit();
             this.panel1.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEvn_first)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEvn_second)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEvn_third)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.arrowLeft)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMor_first)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMor_second)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMor_third)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAft_first)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAft_second)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAft_third)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMor_first)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMor_second)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMor_third)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arrowLeft)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEvn_first)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEvn_second)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEvn_third)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBack)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1093,8 +1096,6 @@
         private System.Windows.Forms.Label lbPhoneNumber;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.TextBox tbLocation;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -1156,5 +1157,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtPassword;
     }
 }

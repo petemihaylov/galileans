@@ -26,7 +26,6 @@ namespace EmployeesManagementSystem
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Close();
         }
 
@@ -42,7 +41,6 @@ namespace EmployeesManagementSystem
             databaseContext.UpdateStockByID(stock.ID, stock.Name, stock.Price, stock.Amount, true);
             stocksForm.UpdateStocks();
 
-            databaseContext.Dispose(true);
             this.Close();
         }
         private int getValidAmount()

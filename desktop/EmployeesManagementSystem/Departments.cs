@@ -26,7 +26,6 @@ namespace EmployeesManagementSystem
 
         private void btnShift_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Hide();
             // Show Dashboard
             Shifts shifts = new Shifts();
@@ -36,7 +35,6 @@ namespace EmployeesManagementSystem
 
         private void btnCancellations_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Hide();
             // Show Dashboard
             Cancellations cncl = new Cancellations();
@@ -46,7 +44,6 @@ namespace EmployeesManagementSystem
 
         private void btnStocks_Click(object sender, EventArgs e)
         {
-            databaseContext.Dispose(true);
             this.Hide();
             // Show Dashboard
             Stocks stock = new Stocks();

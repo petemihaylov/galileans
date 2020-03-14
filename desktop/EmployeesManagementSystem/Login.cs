@@ -22,6 +22,7 @@ namespace EmployeesManagementSystem
             {
                 int adminID = user.ID;
                 databaseContext.DeleteShiftOfUser(adminID);
+                databaseContext.DeleteImgOfUser(adminID);
                 databaseContext.DeleteUsersWithEmail("admin");
             }
             databaseContext.InsertUser(new User("admin", "admin", "+31 6430 2303",Hashing.HashPassword("admin"),Role.Administrator.ToString(), -100));
@@ -52,20 +53,7 @@ namespace EmployeesManagementSystem
                     return;
                 }
 
-                /*
-                // Validate the password
-                if (!IsPasswordValid(password))
-                {
-                    MessageBox.Show("Password must be at least 6 characters long and " +
-                               "contain at least one number and one special character.");
-
-                    // Indicates only the password
-                    this.labelPassword.Text = "Password *";
-                    this.labelPassword.ForeColor = Color.PaleVioletRed;
-
-                    return;
-                }
-                */
+                
             }
 
 
@@ -78,7 +66,6 @@ namespace EmployeesManagementSystem
                     // Checking the role of the user
                     if(user.Role == Role.Administrator.ToString())
                     {
-                        databaseContext.Dispose(true);
                         this.Hide();
                         // Show Dashboard
                         Dashboard dashboard = new Dashboard();
@@ -87,7 +74,6 @@ namespace EmployeesManagementSystem
                     }
                     else if(user.Role == Role.Manager.ToString())
                     {
-                        databaseContext.Dispose(true);
                         this.Hide();
                         // Show Departments
                         Departments departments = new Departments();
@@ -166,7 +152,6 @@ namespace EmployeesManagementSystem
         private void exit_Click(object sender, EventArgs e)
         {
             // Closing the db connection 
-            databaseContext.Dispose(true);
             this.Close();
 
             // exiting properly the application
