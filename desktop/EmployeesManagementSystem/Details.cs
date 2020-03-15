@@ -14,11 +14,13 @@ namespace EmployeesManagementSystem
         private List<Shift> shifts;
         private int id;
         private int addDays = 0;
+        private User loggedUser;
 
 
-        public Details(int UserID)
+        public Details(int UserID, User loggedUser)
         {
             InitializeComponent();
+            this.loggedUser = loggedUser;
 
             this.user = databaseContext.GetUserByID(UserID);
             this.id = UserID;
@@ -250,7 +252,7 @@ namespace EmployeesManagementSystem
 
             this.Hide();
             // Show Dashboard
-            Dashboard dashboard = new Dashboard();
+            Dashboard dashboard = new Dashboard(this.loggedUser);
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
 
@@ -261,7 +263,7 @@ namespace EmployeesManagementSystem
         {
             this.Close();
             // Show Dashboard
-            Dashboard dashboard = new Dashboard();
+            Dashboard dashboard = new Dashboard(this.loggedUser);
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
 
@@ -280,7 +282,7 @@ namespace EmployeesManagementSystem
         {
             this.Close();
             // Show Dashboard
-            Dashboard dashboard = new Dashboard();
+            Dashboard dashboard = new Dashboard(this.loggedUser);
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
         }

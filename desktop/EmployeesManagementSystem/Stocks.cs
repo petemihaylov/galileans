@@ -1,12 +1,6 @@
 ﻿using EmployeesManagementSystem.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EmployeesManagementSystem
@@ -15,10 +9,11 @@ namespace EmployeesManagementSystem
     {
         private DbContext databaseContext = new DbContext();
         private Stock[] stocks;
-
-        public Stocks()
+        private User loggedUser;
+        public Stocks(User user)
         {
             InitializeComponent();
+            this.loggedUser = user;
         }
 
         private void showInformation(Stock[] stocks)
@@ -36,7 +31,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Dashboard dashboard = new Dashboard();
+            Dashboard dashboard = new Dashboard(this.loggedUser);
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
         }
@@ -45,7 +40,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Cancellations cncl = new Cancellations();
+            Cancellations cncl = new Cancellations(this.loggedUser);
             cncl.Closed += (s, args) => this.Close();
             cncl.Show();
         }
@@ -54,7 +49,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Departments dep = new Departments();
+            Departments dep = new Departments(this.loggedUser);
             dep.Closed += (s, args) => this.Close();
             dep.Show();
 
@@ -64,7 +59,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Stocks stock = new Stocks();
+            Stocks stock = new Stocks(this.loggedUser);
             stock.Closed += (s, args) => this.Close();
             stock.Show();
         }
@@ -73,7 +68,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Shifts shifts = new Shifts();
+            Shifts shifts = new Shifts(this.loggedUser);
             shifts.Closed += (s, args) => this.Close();
             shifts.Show();
         }
@@ -166,7 +161,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            AdminDetails adminDetails = new AdminDetails();
+            AdminDetails adminDetails = new AdminDetails(this.loggedUser);
             adminDetails.Closed += (s, args) => this.Close();
             adminDetails.Show();
         }
@@ -184,7 +179,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Statistic stat = new Statistic();
+            Statistic stat = new Statistic(this.loggedUser);
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }

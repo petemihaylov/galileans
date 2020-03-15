@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
+using System.Drawing;
 using System.Windows.Forms;
 using EmployeesManagementSystem.Models;
+using System.Text.RegularExpressions;
 
 namespace EmployeesManagementSystem
 {
@@ -16,39 +11,79 @@ namespace EmployeesManagementSystem
     {
         private DbContext databaseContext = new DbContext();
         private User user;
-        
-
-        public AdminDetails()
+       
+        public AdminDetails(User loggedUser)
         {
             InitializeComponent();
+            this.user = loggedUser;
+
+            // Temporary validation used when debugging
+            if(user == null)
+            {
+                this.user = databaseContext.GetUserByEmail("admin");
+            }
 
         }
-
         private void AdminDetails_Load(object sender, EventArgs e)
         {
-            var user = databaseContext.GetUserByEmail("admin");
-            tbFullName.Text = user.FullName;
-            tbPhoneNumber.Text = user.PhoneNumber;
-            tbEmail.Text = user.Email;
-            cbDepartment.Text = user.Department;
-            cbRole.Text = user.Role;
-            txtPassword.Text = user.Password;
-            this.UpdateImg(user.ID);
+            tbFullName.Text = this.user.FullName;
+            tbPhoneNumber.Text = this.user.PhoneNumber;
+            tbEmail.Text = this.user.Email;
+            cbDepartment.Text = this.user.Department;
+            cbRole.Text = this.user.Role;
+            this.UpdateImg(this.user.ID);
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            var user = databaseContext.GetUserByEmail("admin");
-            databaseContext.UpdateUserInfo(user.ID, tbFullName.Text, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text, cbDepartment.Text);
-            MessageBox.Show("User updated!");
+            // basic validation
+            if (ifEmptyOrNull(tbFullName.Text, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text))
+            {
 
-            this.Hide();
-            // Show Dashboard
-            AdminDetails admin = new AdminDetails();
-            admin.Closed += (s, args) => this.Close();
-            admin.Show();
+                string fullName = removeWhiteSpaces(this.tbFullName.Text);
+                
+                databaseContext.UpdateUserInfo(this.user.ID, fullName, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text, cbDepartment.Text);
+                MessageBox.Show("User updated!");
+
+                user = databaseContext.GetUserByID(this.user.ID);
+                this.Hide();
+                // Show Dashboard
+                AdminDetails admin = new AdminDetails(user);
+                admin.Closed += (s, args) => this.Close();
+                admin.Show();
+            }
+
         }
 
+
+        private bool ifEmptyOrNull(string fullName, string email, string phone, string role)
+        {
+
+            if (string.IsNullOrWhiteSpace(removeWhiteSpaces(fullName)))
+            {
+                MessageBox.Show("Change the Name field");
+                return false;
+            }
+
+
+            if (string.IsNullOrWhiteSpace(removeWhiteSpaces(phone)))
+            {
+                MessageBox.Show("Change the Phone field");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(removeWhiteSpaces(email)))
+            {
+                MessageBox.Show("Change the Email field");
+                return false;
+            }
+
+            return true;
+        }
+
+        private string removeWhiteSpaces(string text)
+        {
+            return Regex.Replace(text, @"\s+|\t|\n|\r", String.Empty);
+        }
         private void btnReset_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Text))
@@ -98,12 +133,11 @@ namespace EmployeesManagementSystem
 
         private void exit_Click(object sender, EventArgs e)
         {
-            this.Close();
-            // exiting properly the application
-            if (Application.MessageLoop)
-            {
-                Application.Exit();
-            }
+            this.Hide();
+            // Show Dashboard
+            Dashboard dashboard = new Dashboard(this.user);
+            dashboard.Closed += (s, args) => this.Close();
+            dashboard.Show();
         }
     }
 }

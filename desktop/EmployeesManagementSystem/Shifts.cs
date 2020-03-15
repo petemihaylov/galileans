@@ -17,10 +17,12 @@ namespace EmployeesManagementSystem
         private DbContext databaseContext = new DbContext();
         private List<Shift> shifts;
         private int addDays = 0;
-        public Shifts()
+        private User loggedUser;
+        public Shifts(User user)
         {
             InitializeComponent();
             shifts = databaseContext.GetAllShifts();
+            this.loggedUser = user;
         }
 
         private void showDate(DateTime now)
@@ -163,7 +165,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Stocks stock = new Stocks();
+            Stocks stock = new Stocks(this.loggedUser);
             stock.Closed += (s, args) => this.Close();
             stock.Show();
         }
@@ -172,7 +174,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Departments dep = new Departments();
+            Departments dep = new Departments(this.loggedUser);
             dep.Closed += (s, args) => this.Close();
             dep.Show();
         }
@@ -181,7 +183,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Cancellations cncl = new Cancellations();
+            Cancellations cncl = new Cancellations(this.loggedUser);
             cncl.Closed += (s, args) => this.Close();
             cncl.Show();
         }
@@ -202,7 +204,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Dashboard dashboard = new Dashboard();
+            Dashboard dashboard = new Dashboard(this.loggedUser);
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
         }
@@ -211,7 +213,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            AdminDetails adminDetails = new AdminDetails();
+            AdminDetails adminDetails = new AdminDetails(this.loggedUser);
             adminDetails.Closed += (s, args) => this.Close();
             adminDetails.Show();
         }
@@ -229,7 +231,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Statistic stat = new Statistic();
+            Statistic stat = new Statistic(this.loggedUser);
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }

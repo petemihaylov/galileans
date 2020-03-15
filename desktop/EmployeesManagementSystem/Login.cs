@@ -44,7 +44,8 @@ namespace EmployeesManagementSystem
             }
             else
             {
-                if (!IsEmailValid(email) && email != "admin")
+                User user = databaseContext.GetUserByEmail(email);
+                if (!IsEmailValid(email) && user == null)
                 {
                     // Indicates only the email
                     this.labelEmail.Text = "Email *";
@@ -68,17 +69,13 @@ namespace EmployeesManagementSystem
                     {
                         this.Hide();
                         // Show Dashboard
-                        Dashboard dashboard = new Dashboard();
+                        Dashboard dashboard = new Dashboard(user);
                         dashboard.Closed += (s, args) => this.Close();
                         dashboard.Show();
                     }
                     else if(user.Role == Role.Manager.ToString())
                     {
-                        this.Hide();
-                        // Show Departments
-                        Departments departments = new Departments();
-                        departments.Closed += (s, args) => this.Close();
-                        departments.Show();
+                        // Should be implemented 
                     }
                     else
                     {

@@ -19,15 +19,20 @@ namespace EmployeesManagementSystem
         int counter = 0;
         bool worked = false;
 
+
+        // Keeps  track of the current loggedUser
+        private User loggedUser;
+
         float money = 0;
         DateTime today = DateTime.Today;
         DateTime keepTrack = DateTime.Today;
 
 
-        public Statistic()
+        public Statistic(User user)
         {
             InitializeComponent();
             this.users = this.databaseContext.GetAllUsers();
+            this.loggedUser = user;
 
             monthCenter.Text = today.ToString("MMM").ToUpper();
             yearCenter.Text = today.ToString("yyyy");
@@ -40,11 +45,11 @@ namespace EmployeesManagementSystem
 
         private void picBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             // Show Dashboard
-            Details details = new Details(this.id);
-            details.Closed += (s, args) => this.Close();
-            details.Show();
+            Dashboard dashboard = new Dashboard( this.loggedUser);
+            dashboard.Closed += (s, args) => this.Close();
+            dashboard.Show();
         }
 
         private void exit_Click(object sender, EventArgs e)
@@ -58,10 +63,10 @@ namespace EmployeesManagementSystem
 
         private void UpdateStatisticsEmployee()
         {
-            shifts = databaseContext.GetShiftsByID(Convert.ToInt32(cbEmployee.Text));
+            shifts = databaseContext.GetShiftsByID(Convert.ToInt32(cbEmployee.Text)); // try catch 
             User user = databaseContext.GetUserByID(Convert.ToInt32(cbEmployee.Text));
 
-            if (keepTrack.ToString("MMM").ToUpper() == monthCenter.Text && keepTrack.ToString("yyyy") == yearCenter.Text)
+            if (keepTrack.ToString("MMM").ToUpper() == monthCenter.Text && keepTrack.ToString("yyyy") == yearCenter.Text) 
             {
                 foreach (Shift shift in shifts)
                 {

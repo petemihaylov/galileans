@@ -12,11 +12,13 @@ namespace EmployeesManagementSystem
 
         private User[] users;
         private DataTable table;
+        private User loggedUser;
         private DbContext databaseContext = new DbContext();
 
-        public Dashboard()
+        public Dashboard(User user)
         {
             InitializeComponent();
+            this.loggedUser = user;
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -25,7 +27,7 @@ namespace EmployeesManagementSystem
             {
                 this.users = this.databaseContext.GetAllUsers();
                 this.table = this.databaseContext.GetUsers();
-                
+
                 showInformation(this.users);
             }
             catch (Exception)
@@ -45,13 +47,13 @@ namespace EmployeesManagementSystem
 
         private void searchField_KeyPress(object sender, KeyPressEventArgs e)
         {
-        
+
             // Pressed enter
             if (e.KeyChar == (char)13)
             {
 
                 DataView dv = this.table.DefaultView;
-         
+
                 // Filter the rows
                 dv.RowFilter = string.Format("FullName Like '%{0}%'", RemoveWhiteSpaces(this.searchField.Text));
                 if (dv.ToTable().Rows.Count > 0)
@@ -63,10 +65,10 @@ namespace EmployeesManagementSystem
                 {
                     User[] users = databaseContext.GetAllUsers();
                     showInformation(users);
-                }        
+                }
 
             }
-                       
+
         }
 
         // Remove the WhiteSpaces
@@ -97,23 +99,23 @@ namespace EmployeesManagementSystem
                 int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
 
                 this.Hide();
-                Details details = new Details(id);
+                Details details = new Details(id, this.loggedUser);
                 details.Show();
-               
+
             }
 
             if (dataGridView.CurrentCell.ColumnIndex.Equals(Delete))
             {
-               
-                    
-             // Ask if you want to delete and proccess
-             int index = dataGridView.CurrentCell.RowIndex;
-            
+
+
+                // Ask if you want to delete and proccess
+                int index = dataGridView.CurrentCell.RowIndex;
+
                 // Find the role
                 if (!Convert.ToString(dataGridView.Rows[index].Cells[3].Value).Contains("Administrator"))
                 {
                     int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
-                    
+
                     Delete delete = new Delete(id, this);
                     delete.Show();
                 }
@@ -142,10 +144,10 @@ namespace EmployeesManagementSystem
         // Shifts
         private void btnShift_Click(object sender, EventArgs e)
         {
-           
+
             this.Hide();
 
-            Shifts shifts = new Shifts();
+            Shifts shifts = new Shifts(this.loggedUser);
             shifts.Closed += (s, args) => this.Close();
             shifts.Show();
         }
@@ -174,7 +176,7 @@ namespace EmployeesManagementSystem
         }
         private void btnEmployees_MouseEnter(object sender, EventArgs e)
         {
-            this.btnEmployees.BackColor = Color.DarkGray; 
+            this.btnEmployees.BackColor = Color.DarkGray;
         }
         private void btnEmployees_MouseLeave(object sender, EventArgs e)
         {
@@ -187,8 +189,8 @@ namespace EmployeesManagementSystem
         private void btnCreate_MouseLeave(object sender, EventArgs e)
         {
             this.btnCreate.BackColor = Color.LightGray;
-        }      
-       
+        }
+
         private void btnShift_MouseEnter(object sender, EventArgs e)
         {
             this.btnShift.BackColor = Color.DarkGray; ;
@@ -212,37 +214,31 @@ namespace EmployeesManagementSystem
         {
             settingsPanel.Visible = !settingsPanel.Visible;
         }
-
         private void lbSettings_Click(object sender, EventArgs e)
         {
             settingsPanel.Visible = !settingsPanel.Visible;
         }
-
         private void editAccount_Click(object sender, EventArgs e)
         {
-
             this.Hide();
             // Show Dashboard
-            AdminDetails adminDetails = new AdminDetails();
+            AdminDetails adminDetails = new AdminDetails(this.loggedUser);
             adminDetails.Closed += (s, args) => this.Close();
             adminDetails.Show();
         }
-
         private void btnCancellations_Click(object sender, EventArgs e)
         {
             this.Hide();
             // Show Dashboard
-            Cancellations cncl = new Cancellations();
+            Cancellations cncl = new Cancellations(this.loggedUser);
             cncl.Closed += (s, args) => this.Close();
             cncl.Show();
         }
-
-
         private void btnDepartments_Click(object sender, EventArgs e)
         {
             this.Hide();
             // Show Dashboard
-            Departments dep = new Departments();
+            Departments dep = new Departments(this.loggedUser);
             dep.Closed += (s, args) => this.Close();
             dep.Show();
 
@@ -251,46 +247,39 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Stocks stock = new Stocks();
+            Stocks stock = new Stocks(this.loggedUser);
             stock.Closed += (s, args) => this.Close();
             stock.Show();
         }
-
         private void btnCancellations_MouseEnter(object sender, EventArgs e)
         {
-           btnCancellations.BackColor = Color.DarkGray;
+            btnCancellations.BackColor = Color.DarkGray;
         }
-
         private void btnCancellations_MouseLeave(object sender, EventArgs e)
         {
             btnCancellations.BackColor = Color.LightGray;
         }
-
         private void btnDepartments_MouseEnter(object sender, EventArgs e)
         {
             btnDepartments.BackColor = Color.DarkGray;
         }
-
         private void btnDepartments_MouseLeave(object sender, EventArgs e)
         {
             btnDepartments.BackColor = Color.LightGray;
         }
-
         private void btnStocks_MouseEnter(object sender, EventArgs e)
         {
             btnStocks.BackColor = Color.DarkGray;
         }
-
         private void btnStocks_MouseLeave(object sender, EventArgs e)
         {
             btnStocks.BackColor = Color.LightGray;
         }
-
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             this.Hide();
             // Show Dashboard
-            Statistic stat = new Statistic();
+            Statistic stat = new Statistic(this.loggedUser);
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }
