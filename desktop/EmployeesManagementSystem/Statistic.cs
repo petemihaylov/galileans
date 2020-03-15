@@ -12,7 +12,7 @@ namespace EmployeesManagementSystem
     public partial class Statistic : Form
     {
         private DbContext databaseContext = new DbContext();
-        private User user;
+        private User[] users;
         private List<Shift> shifts;
         private int hoursWorked, hrs, id;
         private int hoursSkipped;
@@ -24,12 +24,10 @@ namespace EmployeesManagementSystem
         DateTime keepTrack = DateTime.Today;
 
 
-        public Statistic(int UserID)
+        public Statistic()
         {
             InitializeComponent();
-            this.user = databaseContext.GetUserByID(UserID);
-            this.shifts = databaseContext.GetShiftsByID(UserID);
-            this.id = UserID;
+            this.users = this.databaseContext.GetAllUsers();
 
             monthCenter.Text = today.ToString("MMM").ToUpper();
             yearCenter.Text = today.ToString("yyyy");
@@ -37,7 +35,6 @@ namespace EmployeesManagementSystem
             yearLeft.Text = today.ToString("yyyy");
             monthRight.Text = today.AddMonths(1).ToString("MMM").ToUpper();
             yearLeft.Text = today.ToString("yyyy");
-            UpdateStatistics();
         }
 
 
@@ -59,8 +56,11 @@ namespace EmployeesManagementSystem
             }
         }
 
-        private void UpdateStatistics()
+        private void UpdateStatisticsEmployee()
         {
+            shifts = databaseContext.GetShiftsByID(Convert.ToInt32(cbEmployee.Text));
+            User user = databaseContext.GetUserByID(Convert.ToInt32(cbEmployee.Text));
+
             if (keepTrack.ToString("MMM").ToUpper() == monthCenter.Text && keepTrack.ToString("yyyy") == yearCenter.Text)
             {
                 foreach (Shift shift in shifts)
@@ -88,34 +88,37 @@ namespace EmployeesManagementSystem
                     }
                 }
 
-                if (worked)
+                foreach (var series in chart1.Series)
                 {
-                    foreach (var series in chartAttendenceMonth.Series)
-                    {
-                        series.Points.Clear();
-                    }
-                    chartAttendenceMonth.Series["Series1"].Points.AddXY(hoursWorked * 100 / (hoursWorked + hoursSkipped) + "%", hoursWorked);
-                    chartAttendenceMonth.Series["Series1"].Points.AddXY(hoursSkipped * 100 / (hoursWorked + hoursSkipped) + "%", hoursSkipped);
-                    
-                    foreach (var series in chart1.Series)
-                    {
-                        series.Points.Clear();
-                    }
-                    chart1.Series["Series1"].Points.AddXY(hoursWorked, money); ;
-                    lbMoneyMadeMonth.Text = Convert.ToString(money) + "$";
+                    series.Points.Clear();
                 }
-                else
+                foreach (Shift shift in shifts)
                 {
-                    foreach (var series in chartAttendenceMonth.Series)
+                    if (shift.Attended == true)
+                        chart1.Series["Present"].Points.AddXY(shift.ShiftDate.Day + "/" + shift.ShiftDate.Month, shift.StartTime);
+                    else
+                        chart1.Series["Absent"].Points.AddXY(shift.ShiftDate.Day + "/" + shift.ShiftDate.Month, shift.StartTime);
+                    if (shift.ShiftDate > today)
                     {
-                        series.Points.Clear();
+                        chart1.Series["Scheduled"].Points.AddXY(shift.ShiftDate.Day + "/" + shift.ShiftDate.Month, shift.StartTime);
                     }
-                    chartAttendenceMonth.Series["Series1"].Points.AddXY(0 + "%", 0);
-                    chartAttendenceMonth.Series["Series1"].Points.AddXY(100 + "%", 100);
+                }
 
-                    lbMoneyMadeMonth.Text = "Did not work.";
+                //chart1.Series["Series1"].Points.AddXY(hoursWorked * 100 / (hoursWorked + hoursSkipped) + "%", hoursWorked);
+                //chart1.Series["Series1"].Points.AddXY(hoursSkipped * 100 / (hoursWorked + hoursSkipped) + "%", hoursSkipped);
+
+                /*foreach (var series in chart1.Series)
+                {
+                    series.Points.Clear();
                 }
+                chart1.Series["Series1"].Points.AddXY(hoursWorked, money); ;
+                lbMoneyMadeMonth.Text = Convert.ToString(money) + "$";*/
             }
+
+        }
+
+        public void UpdateStatisticDepartment()
+        {
 
         }
 
@@ -132,7 +135,6 @@ namespace EmployeesManagementSystem
             yearCenter.Text = today.ToString("yyyy");
             yearRight.Text = today.ToString("yyyy");
 
-            UpdateStatistics();
         }
 
         private void arrowLeft_Click(object sender, EventArgs e)
@@ -148,7 +150,11 @@ namespace EmployeesManagementSystem
             yearCenter.Text = today.AddMonths(counter).ToString("yyyy");
             yearRight.Text = today.AddMonths(counter + 1).ToString("yyyy");
 
-            UpdateStatistics();
+            if (cbStatistic.Text.Contains("employee"))
+                UpdateStatisticsEmployee();
+            else if (cbStatistic.Text.Contains("department"))
+                UpdateStatisticDepartment();
+
         }
 
         private void arrowRight_Click(object sender, EventArgs e)
@@ -163,7 +169,11 @@ namespace EmployeesManagementSystem
             yearCenter.Text = today.AddMonths(counter).ToString("yyyy");
             yearRight.Text = today.AddMonths(counter + 1).ToString("yyyy");
 
-            UpdateStatistics();
+            if (cbStatistic.Text.Contains("employee"))
+                UpdateStatisticsEmployee();
+            else if (cbStatistic.Text.Contains("department"))
+                UpdateStatisticDepartment();
+
         }
 
         private void exit_MouseEnter(object sender, EventArgs e)
@@ -178,20 +188,50 @@ namespace EmployeesManagementSystem
             this.exit.BackColor = color;
         }
 
-        private void groupBox5_Enter(object sender, EventArgs e)
+        private void cbStatistic_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbStatistic.Text.Contains("employee"))
+            {
+                cbEmployee.Items.Clear();
+                lbEmployee.Text = "Select an employee";
+                cbEmployee.Enabled = true;
+                cbEmployee.Show();
+                lbEmployee.Show();
+                foreach (User item in users)
+                {
+                    cbEmployee.Items.Add(item.ID);
+                }
 
+            }
+            else if (cbStatistic.Text.Contains("department"))
+            {
+                cbEmployee.Items.Clear();
+                cbEmployee.Enabled = true;
+                lbEmployee.Text = "Select a department";
+                foreach (User item in users)
+                {
+                    cbEmployee.Items.Add(item.Department);
+                }
+
+            }
+            else
+            {
+                cbEmployee.Hide();
+                lbEmployee.Hide();
+            }
         }
 
-        private void pictureBox16_Click(object sender, EventArgs e)
+        private void Statistic_Load(object sender, EventArgs e)
         {
 
+            cbEmployee.Hide();
+            lbEmployee.Hide();
         }
 
-        private void monthLeft_Click(object sender, EventArgs e)
+        private void cbEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            UpdateStatisticsEmployee();
         }
-
     }
 }

@@ -89,8 +89,8 @@ namespace EmployeesManagementSystem
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int Details = 4;
-            int Delete = 5;
+            int Details = 5;
+            int Delete = 6;
             if (dataGridView.CurrentCell.ColumnIndex.Equals(Details))
             {
                 int index = dataGridView.CurrentCell.RowIndex;
@@ -284,6 +284,15 @@ namespace EmployeesManagementSystem
         private void btnStocks_MouseLeave(object sender, EventArgs e)
         {
             btnStocks.BackColor = Color.LightGray;
+        }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Dashboard
+            Statistic stat = new Statistic();
+            stat.Closed += (s, args) => this.Close();
+            stat.Show();
         }
     }
 }

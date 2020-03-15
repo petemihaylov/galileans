@@ -74,7 +74,7 @@ namespace EmployeesManagementSystem
                                 }
 
                                 // Create new User
-                                User user = new User(fullName, email, phoneNumber, generatedPassword, role, hourlyRate);
+                                User user = new User(fullName, email, phoneNumber, generatedPassword, role, hourlyRate, "to add department");
                                 this.databaseContext.InsertUser(user);
                                 this.dashboard.UpdateDashboard();
                                 this.Close();

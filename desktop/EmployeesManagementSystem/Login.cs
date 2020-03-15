@@ -25,7 +25,7 @@ namespace EmployeesManagementSystem
                 databaseContext.DeleteImgOfUser(adminID);
                 databaseContext.DeleteUsersWithEmail("admin");
             }
-            databaseContext.InsertUser(new User("admin", "admin", "+31 6430 2303",Hashing.HashPassword("admin"),Role.Administrator.ToString(), -100));
+            databaseContext.InsertUser(new User("admin", "admin", "+31 6430 2303",Hashing.HashPassword("admin"),Role.Administrator.ToString(), -100, "to add"));
         }
 
 

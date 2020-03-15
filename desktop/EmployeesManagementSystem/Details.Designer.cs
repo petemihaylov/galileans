@@ -36,6 +36,8 @@
             this.tbFullName = new System.Windows.Forms.TextBox();
             this.lbPhoneNumber = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -96,11 +98,7 @@
             this.picAft_second = new System.Windows.Forms.PictureBox();
             this.picAft_third = new System.Windows.Forms.PictureBox();
             this.btnToday = new System.Windows.Forms.Button();
-            this.btnStatistic = new System.Windows.Forms.Button();
             this.bToday = new System.Windows.Forms.Button();
-            this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
@@ -129,7 +127,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picAft_first)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAft_second)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAft_third)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -241,6 +238,29 @@
             this.groupBox1.Size = new System.Drawing.Size(412, 727);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(25, 259);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(163, 19);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "Change password to:";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.txtPassword.Location = new System.Drawing.Point(29, 288);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPassword.Multiline = true;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(349, 22);
+            this.txtPassword.TabIndex = 34;
+            this.txtPassword.Text = "MediaBazaar";
             // 
             // btnReset
             // 
@@ -951,22 +971,6 @@
             this.btnToday.Text = "TODAY";
             this.btnToday.UseVisualStyleBackColor = false;
             // 
-            // btnStatistic
-            // 
-            this.btnStatistic.BackColor = System.Drawing.Color.Gray;
-            this.btnStatistic.FlatAppearance.BorderSize = 0;
-            this.btnStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatistic.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStatistic.ForeColor = System.Drawing.Color.White;
-            this.btnStatistic.Location = new System.Drawing.Point(1198, 725);
-            this.btnStatistic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnStatistic.Name = "btnStatistic";
-            this.btnStatistic.Size = new System.Drawing.Size(256, 30);
-            this.btnStatistic.TabIndex = 34;
-            this.btnStatistic.Text = "Statistics";
-            this.btnStatistic.UseVisualStyleBackColor = false;
-            this.btnStatistic.Click += new System.EventHandler(this.btnStatistic_Click);
-            // 
             // bToday
             // 
             this.bToday.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -982,53 +986,17 @@
             this.bToday.UseVisualStyleBackColor = false;
             this.bToday.Click += new System.EventHandler(this.bToday_Click);
             // 
-            // pictureBox19
-            // 
-            this.pictureBox19.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_insert_chart_outlined_black_48dp;
-            this.pictureBox19.Location = new System.Drawing.Point(1145, 725);
-            this.pictureBox19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(36, 30);
-            this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox19.TabIndex = 50;
-            this.pictureBox19.TabStop = false;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.txtPassword.Location = new System.Drawing.Point(29, 288);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtPassword.Multiline = true;
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(349, 22);
-            this.txtPassword.TabIndex = 34;
-            this.txtPassword.Text = "MediaBazaar";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(25, 259);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(163, 19);
-            this.label5.TabIndex = 35;
-            this.label5.Text = "Change password to:";
-            // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1511, 827);
             this.Controls.Add(this.bToday);
-            this.Controls.Add(this.btnStatistic);
             this.Controls.Add(this.btnToday);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.pictureBox19);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -1078,7 +1046,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picAft_first)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAft_second)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAft_third)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1113,7 +1080,6 @@
         private System.Windows.Forms.Label lbEvn_third;
         private System.Windows.Forms.Label lbEvn_second;
         private System.Windows.Forms.Label lbEvn_first;
-        private System.Windows.Forms.PictureBox pictureBox19;
         private System.Windows.Forms.ComboBox cbRole;
         private System.Windows.Forms.ComboBox cbDepartment;
         private System.Windows.Forms.Label label29;
@@ -1150,7 +1116,6 @@
         private System.Windows.Forms.PictureBox picAft_third;
         private System.Windows.Forms.Button btnToday;
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnStatistic;
         private System.Windows.Forms.PictureBox arrowRight;
         private System.Windows.Forms.Button bToday;
         private System.Windows.Forms.PictureBox pictureBox16;

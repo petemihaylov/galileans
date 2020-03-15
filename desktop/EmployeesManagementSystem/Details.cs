@@ -27,7 +27,7 @@ namespace EmployeesManagementSystem
             // this.tbLocation.Text = "to add in db";
             this.tbPhoneNumber.Text = user.PhoneNumber;
             this.cbRole.Text = user.Role;
-            // this.cbDepartment.Text = "to add in db";
+            this.cbDepartment.Text = "to add";
         }
 
         // Shifts
@@ -244,7 +244,7 @@ namespace EmployeesManagementSystem
         {
             // Fields should be validated!
 
-            databaseContext.UpdateUserInfo(user.ID, tbFullName.Text, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text);           
+            databaseContext.UpdateUserInfo(user.ID, tbFullName.Text, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text, cbDepartment.Text);           
             MessageBox.Show("User updated!");
 
 
@@ -484,15 +484,7 @@ namespace EmployeesManagementSystem
                 MessageBox.Show($"Password Reset to '{password}'");
             }
         }
-        
-        private void btnStatistic_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Dashboard
-            Statistic stat = new Statistic(this.id);
-            stat.Closed += (s, args) => this.Close();
-            stat.Show();
-        }
+       
 
         private void arrowRight_Click(object sender, EventArgs e)
         {

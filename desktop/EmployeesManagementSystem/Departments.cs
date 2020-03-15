@@ -77,5 +77,14 @@ namespace EmployeesManagementSystem
             login.Closed += (s, args) => this.Close();
             login.Show();
         }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Dashboard
+            Statistic stat = new Statistic();
+            stat.Closed += (s, args) => this.Close();
+            stat.Show();
+        }
     }
 }

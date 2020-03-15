@@ -286,6 +286,7 @@ namespace EmployeesManagementSystem
                             user.Email = (string)reader["Email"];
                             user.Password = (string)reader["Password"];
                             user.Role = (string)reader["Role"];
+                            user.Department = (string)reader["Department"];
                             users.Add(user);
                         }
 
@@ -331,6 +332,7 @@ namespace EmployeesManagementSystem
                 user.Email = (string)row["Email"];
                 user.Password = (string)row["Password"];
                 user.Role = (string)row["Role"];
+                user.Department = (string)row["Department"];
                 users.Add(user);
             }
 
@@ -361,6 +363,8 @@ namespace EmployeesManagementSystem
                             user.HourlyRate = (float)reader["HourlyRate"];
                             user.Password = (string)reader["Password"];
                             user.Role = (string)reader["Role"];
+                            user.Department = (string)reader["Department"];
+
                         }
                         else
                         {
@@ -381,7 +385,7 @@ namespace EmployeesManagementSystem
 
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO Users (FullName, Email, PhoneNumber, Password, Role, HourlyRate) VALUES(@fullName, @email, @phoneNumber, @password, @role, @hourlyRate)";
+                    command.CommandText = @"INSERT INTO Users (FullName, Email, PhoneNumber, Password, Role, HourlyRate, Department) VALUES(@fullName, @email, @phoneNumber, @password, @role, @hourlyRate, @department)";
 
                     command.AddParameter("fullName", user.FullName);
                     command.AddParameter("email", user.Email);
@@ -389,6 +393,7 @@ namespace EmployeesManagementSystem
                     command.AddParameter("role", user.Role);
                     command.AddParameter("password", user.Password);
                     command.AddParameter("hourlyRate", user.HourlyRate);
+                    command.AddParameter("department", user.Department);
                     command.ExecuteNonQuery();
                 }
             }
@@ -447,6 +452,7 @@ namespace EmployeesManagementSystem
                             user.HourlyRate = (float)reader["HourlyRate"];
                             user.PhoneNumber = (string)reader["PhoneNumber"];
                             user.Role = (string)reader["Role"];
+                            user.Department = (string)reader["Department"];
                         }
                         else
                         {
@@ -461,7 +467,7 @@ namespace EmployeesManagementSystem
 
             }
         }
-        public void UpdateUserInfo(int id, string fullName, string email, string phoneNumber, string role)
+        public void UpdateUserInfo(int id, string fullName, string email, string phoneNumber, string role, string department)
         {
             using (var con = new MySqlConnection(connectionString))
             {
@@ -470,13 +476,16 @@ namespace EmployeesManagementSystem
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"UPDATE Users SET FullName = @fullname, Email = @email, PhoneNumber = @phonenumber, Role = @role WHERE ID = @ID";
+                    command.CommandText = @"UPDATE Users SET FullName = @fullname, Email = @email, PhoneNumber = @phonenumber, Role = @role, Department = @department WHERE ID = @ID";
                     command.AddParameter("ID", id);
                     // Executing it 
                     command.Parameters.AddWithValue("@fullname", fullName);
                     command.Parameters.AddWithValue("@email", email);
                     command.Parameters.AddWithValue("@phonenumber", phoneNumber);
-                    command.Parameters.AddWithValue("@role", role);
+                    command.Parameters.AddWithValue("@role", role); 
+                    command.Parameters.AddWithValue("@department", department);
+
+
                     command.ExecuteNonQuery();
                 }
             }

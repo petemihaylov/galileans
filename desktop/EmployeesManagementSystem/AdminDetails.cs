@@ -30,7 +30,7 @@ namespace EmployeesManagementSystem
             tbFullName.Text = user.FullName;
             tbPhoneNumber.Text = user.PhoneNumber;
             tbEmail.Text = user.Email;
-            //cbDepartment.Text = user.Department;
+            cbDepartment.Text = user.Department;
             cbRole.Text = user.Role;
             txtPassword.Text = user.Password;
             this.UpdateImg(user.ID);
@@ -39,7 +39,7 @@ namespace EmployeesManagementSystem
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             var user = databaseContext.GetUserByEmail("admin");
-            databaseContext.UpdateUserInfo(user.ID, tbFullName.Text, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text);
+            databaseContext.UpdateUserInfo(user.ID, tbFullName.Text, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text, cbDepartment.Text);
             MessageBox.Show("User updated!");
 
             this.Hide();

@@ -16,10 +16,11 @@ namespace EmployeesManagementSystem.Models
         public string Password { get; set; }
         public string Role { get; set; }
         public float HourlyRate { get; set; }
+        public string Department { get; set; }
 
 
         public User() { }
-        public User(string fullName, string email, string phoneNumber, string password, string role, float hourlyRate)
+        public User(string fullName, string email, string phoneNumber, string password, string role, float hourlyRate, string department)
         {
             this.FullName = fullName;
             this.Email = email;
@@ -27,12 +28,13 @@ namespace EmployeesManagementSystem.Models
             this.Password = password;
             this.PhoneNumber = phoneNumber;
             this.HourlyRate = hourlyRate;
+            this.Department = department;
         }
 
 
         public string[] GetInfo()
         {
-            string[] s = {this.ID.ToString(), this.FullName, this.Email, this.Role};
+            string[] s = {this.ID.ToString(), this.FullName, this.Email, this.Role, this.Department};
             return s;
         }
     }
