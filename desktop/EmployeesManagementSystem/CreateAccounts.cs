@@ -49,6 +49,7 @@ namespace EmployeesManagementSystem
 
                                 // Determine user's role
                                 string role;
+
                                 if (rbEmployee.Checked)
                                 {
                                     role = Role.Employee.ToString();
@@ -59,6 +60,7 @@ namespace EmployeesManagementSystem
                                 }
                                 else
                                 {
+                                    // Default choice
                                     role = Role.Administrator.ToString();
                                 }
 
@@ -94,7 +96,7 @@ namespace EmployeesManagementSystem
         }
 
 
-        private bool ifEmptyOrNull(string fullName, string wage, string phone, string email, string password, string confirmationpassword)
+        private bool ifEmptyOrNull(string fullName, string hourlyRate, string phone, string email, string password, string confirmationpassword)
         {
 
             if (string.IsNullOrWhiteSpace(removeWhiteSpaces(fullName)))
@@ -103,7 +105,7 @@ namespace EmployeesManagementSystem
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(removeWhiteSpaces(wage)))
+            if (string.IsNullOrWhiteSpace(removeWhiteSpaces(hourlyRate)))
             {
                 MessageBox.Show("Change the HourlyRate field");
                 return false;
@@ -135,10 +137,14 @@ namespace EmployeesManagementSystem
 
             return true;
         }
+        
+        // Validation removeWhiteSpaces
         private string removeWhiteSpaces(string text)
         {
             return Regex.Replace(text, @"\s+|\t|\n|\r", String.Empty);
         }
+
+        // Check the email if exists
         private bool ifNotExists(string email)
         {
             if (userContext.GetUserByEmail(email) != null)
@@ -149,6 +155,8 @@ namespace EmployeesManagementSystem
 
             return true;
         }
+
+        // Email validation
         private bool isEmailValid(string emailaddress)
         {
             try
@@ -164,6 +172,8 @@ namespace EmployeesManagementSystem
 
             return false;
         }
+
+        // Correction of the password
         private bool isPasswordValid(string password)
         {
             Regex rx = new Regex(@"(?=.{6,})(?=(.*\d){1,})(?=(.*\W){1,})");
@@ -194,9 +204,9 @@ namespace EmployeesManagementSystem
         }
 
         // Validate the wage
-        private bool isWageValid(float wage)
+        private bool isWageValid(float hourlyRate)
         {
-            if (wage <= 0.0)
+            if (hourlyRate <= 0.0)
             {
                 MessageBox.Show("The Wage is invalid! (wage > 0)");
                 return false;
