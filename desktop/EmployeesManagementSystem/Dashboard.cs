@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
@@ -13,7 +14,7 @@ namespace EmployeesManagementSystem
         private User[] users;
         private DataTable table;
         private User loggedUser;
-        private DbContext databaseContext = new DbContext();
+        private UserContext userContext = new UserContext();
 
         public Dashboard(User user)
         {
@@ -25,8 +26,8 @@ namespace EmployeesManagementSystem
         {
             try
             {
-                this.users = this.databaseContext.GetAllUsers();
-                this.table = this.databaseContext.GetUsers();
+                this.users = this.userContext.GetAllUsers();
+                this.table = this.userContext.GetUsersTable();
 
                 showInformation(this.users);
             }
@@ -39,9 +40,9 @@ namespace EmployeesManagementSystem
         public void UpdateDashboard()
         {
             this.dataGridView.Rows.Clear();
-            this.table = this.databaseContext.GetUsers();
+            this.table = this.userContext.GetUsersTable();
 
-            User[] users = databaseContext.GetAllUsers();
+            User[] users = userContext.GetAllUsers();
             showInformation(users);
         }
 
@@ -56,14 +57,15 @@ namespace EmployeesManagementSystem
 
                 // Filter the rows
                 dv.RowFilter = string.Format("FullName Like '%{0}%'", RemoveWhiteSpaces(this.searchField.Text));
+                
                 if (dv.ToTable().Rows.Count > 0)
                 {
-                    User[] users = databaseContext.GetAllFilteredUsers(dv.ToTable());
+                    User[] users = userContext.GetAllFilteredUsers(dv.ToTable());
                     showInformation(users);
                 }
                 else
                 {
-                    User[] users = databaseContext.GetAllUsers();
+                    User[] users = userContext.GetAllUsers();
                     showInformation(users);
                 }
 

@@ -1,20 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Net;
+using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
 {
     public partial class Details : Form
     {
-        private DbContext databaseContext = new DbContext();
-        private User user;
-        private List<Shift> shifts;
+        private UserContext userContext = new UserContext();
+        private ShiftContext shiftContext = new ShiftContext();
+        private ImageContext imageContext = new ImageContext();
+
         private int id;
         private int addDays = 0;
+
+        private User user;
         private User loggedUser;
+        private List<Shift> shifts;
 
 
         public Details(int UserID, User loggedUser)
@@ -22,25 +27,24 @@ namespace EmployeesManagementSystem
             InitializeComponent();
             this.loggedUser = loggedUser;
 
-            this.user = databaseContext.GetUserByID(UserID);
+            this.user = userContext.GetUserByID(UserID);
             this.id = UserID;
             this.tbFullName.Text = user.FullName;
             this.tbEmail.Text = user.Email;
-            // this.tbLocation.Text = "to add in db";
+
             this.tbPhoneNumber.Text = user.PhoneNumber;
             this.cbRole.Text = user.Role;
             this.cbDepartment.Text = "to add";
         }
-
-        // Shifts
         private void Details_Load(object sender, EventArgs e)
         {
             this.UpdateImg(user.ID);
             DateTime now = DateTime.UtcNow.Date;
             showDate(now);
-            shifts = databaseContext.GetAllShifts();
+            shifts = shiftContext.GetAllShifts();
             visualizeShifts(now);
         }
+
 
         private void visualizeShifts(DateTime date)
         {
@@ -152,7 +156,6 @@ namespace EmployeesManagementSystem
             lbMorn_third.ForeColor = Color.Black;
             picMor_third.Image = Properties.Resources.btnAdd;
         }
-
         private void resetShiftVisualAfternoon() 
         { 
             // Afernoon
@@ -168,7 +171,6 @@ namespace EmployeesManagementSystem
             lbAft_third.ForeColor = Color.Black;
             picAft_third.Image = Properties.Resources.btnAdd;
         }
-
         private void resetShiftVisualEvening()
         {
             // Evening
@@ -188,7 +190,7 @@ namespace EmployeesManagementSystem
         private List<Shift> getMorningShiftsForDate(DateTime dateTime)
         {
             List<Shift> list = new List<Shift>();
-            shifts = databaseContext.GetAllShifts();
+            shifts = shiftContext.GetAllShifts();
             foreach (var item in shifts)
             {
                 if (item.Type == ShiftType.MORNING && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) == 0)
@@ -198,7 +200,6 @@ namespace EmployeesManagementSystem
             }
             return list;
         }
-
         private List<Shift> getAfternoonShiftsForDate(DateTime dateTime)
         {
             List<Shift> list = new List<Shift>();
@@ -211,7 +212,6 @@ namespace EmployeesManagementSystem
             }
             return list;
         }
-
         private List<Shift> getEveningShiftsForDate(DateTime dateTime)
         {
             List<Shift> list = new List<Shift>();
@@ -224,8 +224,6 @@ namespace EmployeesManagementSystem
             }
             return list;
         }
-
-
         private void showDate(DateTime now)
         {
             dateCenter.Text = now.ToString("dd");
@@ -241,14 +239,20 @@ namespace EmployeesManagementSystem
             dateRight.Text = tomorrow.ToString("dd");
             monthRight.Text = tomorrow.ToString("MMM").ToUpper();
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             // Fields should be validated!
+            User u = new User();
 
-            databaseContext.UpdateUserInfo(user.ID, tbFullName.Text, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text, cbDepartment.Text);           
+            u.ID = user.ID;
+            u.FullName = tbFullName.Text;
+            u.Email = tbEmail.Text;
+            u.PhoneNumber = tbPhoneNumber.Text;
+            u.Role = cbRole.Text;
+            u.Department = cbDepartment.Text;
+
+            userContext.UpdateUserInfo(u);           
             MessageBox.Show("User updated!");
-
 
             this.Hide();
             // Show Dashboard
@@ -268,7 +272,6 @@ namespace EmployeesManagementSystem
             dashboard.Show();
 
         }
-
         private void exit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -277,7 +280,6 @@ namespace EmployeesManagementSystem
                 Application.Exit();
             }
         }
-
         private void lbBack_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -286,15 +288,12 @@ namespace EmployeesManagementSystem
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
         }
-
-
         private void arrowLeft_Click(object sender, EventArgs e)
         {
             addDays--;
             showDate(DateTime.UtcNow.Date.AddDays(addDays));
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
-
         private void picMor_first_Click(object sender, EventArgs e)
         {
 
@@ -302,18 +301,17 @@ namespace EmployeesManagementSystem
             if (lbMorn_first.ForeColor != Color.DimGray)
             {
                 
-                databaseContext.InsertShift(new Shift(user.ID, false, d,
+                shiftContext.Insert(new Shift(user.ID, false, d,
                     new DateTime(d.Year, d.Month,d.Day,9,0,0), new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), false, ShiftType.MORNING));
 
             }else
             {
-                Shift shift = databaseContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 9, 0, 0));
-                databaseContext.DeleteShiftByID(shift.ID);
+                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 9, 0, 0));
+                shiftContext.DeleteById(shift.ID);
             }
 
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
-
         private void picMor_second_Click(object sender, EventArgs e)
         {
 
@@ -321,157 +319,138 @@ namespace EmployeesManagementSystem
             if (lbMorn_second.ForeColor != Color.DimGray)
             {
 
-                databaseContext.InsertShift(new Shift(user.ID, false, d,
+                shiftContext.Insert(new Shift(user.ID, false, d,
                     new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), false, ShiftType.MORNING));
 
             }
             else
             {
-                Shift shift = databaseContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 10, 0, 0));
-                databaseContext.DeleteShiftByID(shift.ID);
+                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 10, 0, 0));
+                shiftContext.DeleteById(shift.ID);
             }
 
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
-
         private void picMor_third_Click(object sender, EventArgs e)
         {
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbMorn_third.ForeColor != Color.DimGray)
             {
 
-                databaseContext.InsertShift(new Shift(user.ID, false, d,
+                shiftContext.Insert(new Shift(user.ID, false, d,
                     new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), new DateTime(d.Year, d.Month, d.Day, 12, 0, 0), false, ShiftType.MORNING));
 
             }
             else
             {
-                Shift shift = databaseContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 11, 0, 0));
-                databaseContext.DeleteShiftByID(shift.ID);
+                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 11, 0, 0));
+                shiftContext.DeleteById(shift.ID);
             }
 
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
-
         private void picAft_first_Click(object sender, EventArgs e)
         {
-
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbAft_first.ForeColor != Color.DimGray)
             {
 
-                databaseContext.InsertShift(new Shift(user.ID, false, d,
+                shiftContext.Insert(new Shift(user.ID, false, d,
                     new DateTime(d.Year, d.Month, d.Day, 14, 0, 0), new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), false, ShiftType.AFTERNOON));
 
             }
             else
             {
-                Shift shift = databaseContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 14, 0, 0));
-                databaseContext.DeleteShiftByID(shift.ID);
+                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 14, 0, 0));
+                shiftContext.DeleteById(shift.ID);
             }
 
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
-
         private void picAft_second_Click(object sender, EventArgs e)
         {
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbAft_second.ForeColor != Color.DimGray)
             {
-
-                databaseContext.InsertShift(new Shift(user.ID, false, d,
+                shiftContext.Insert(new Shift(user.ID, false, d,
                     new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), false, ShiftType.AFTERNOON));
-
             }
             else
             {
-                Shift shift = databaseContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 15, 0, 0));
-                databaseContext.DeleteShiftByID(shift.ID);
+                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 15, 0, 0));
+                shiftContext.DeleteById(shift.ID);
             }
 
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
-
         private void picAft_third_Click(object sender, EventArgs e)
         {
-
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbAft_third.ForeColor != Color.DimGray)
             {
-
-                databaseContext.InsertShift(new Shift(user.ID, false, d,
+                shiftContext.Insert(new Shift(user.ID, false, d,
                     new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), new DateTime(d.Year, d.Month, d.Day, 17, 0, 0), false, ShiftType.AFTERNOON));
-
             }
             else
             {
-                Shift shift = databaseContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 16, 0, 0));
-                databaseContext.DeleteShiftByID(shift.ID);
+                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 16, 0, 0));
+                shiftContext.DeleteById(shift.ID);
             }
 
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
-
         private void picEvn_first_Click(object sender, EventArgs e)
         {
 
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbEvn_first.ForeColor != Color.DimGray)
             {
-
-                databaseContext.InsertShift(new Shift(user.ID, false, d,
+                shiftContext.Insert(new Shift(user.ID, false, d,
                     new DateTime(d.Year, d.Month, d.Day, 20, 0, 0), new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), false, ShiftType.EVENING));
-
             }
             else
             {
-                Shift shift = databaseContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 20, 0, 0));
-                databaseContext.DeleteShiftByID(shift.ID);
+                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 20, 0, 0));
+                shiftContext.DeleteById(shift.ID);
             }
 
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
         private void picEvn_second_Click(object sender, EventArgs e)
         {
-
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbEvn_second.ForeColor != Color.DimGray)
             {
 
-                databaseContext.InsertShift(new Shift(user.ID, false, d,
+                shiftContext.Insert(new Shift(user.ID, false, d,
                     new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), false, ShiftType.EVENING));
 
             }
             else
             {
-                Shift shift = databaseContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 21, 0, 0));
-                databaseContext.DeleteShiftByID(shift.ID);
+                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 21, 0, 0));
+                shiftContext.DeleteById(shift.ID);
             }
 
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
-
         private void picEvn_third_Click(object sender, EventArgs e)
         {
 
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbEvn_third.ForeColor != Color.DimGray)
             {
-
-                databaseContext.InsertShift(new Shift(user.ID, false, d,
+                shiftContext.Insert(new Shift(user.ID, false, d,
                     new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), new DateTime(d.Year, d.Month, d.Day, 23, 0, 0), false, ShiftType.EVENING));
-
             }
             else
             {
-                Shift shift = databaseContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 22, 0, 0));
-                databaseContext.DeleteShiftByID(shift.ID);
+                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 22, 0, 0));
+                shiftContext.DeleteById(shift.ID);
             }
 
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
-
-
         private void btnReset_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Text))
@@ -482,19 +461,16 @@ namespace EmployeesManagementSystem
             {
 
                 string password = txtPassword.Text;
-                databaseContext.ResetPassword(user.ID, password);
+                userContext.ResetPassword(user.ID, password);
                 MessageBox.Show($"Password Reset to '{password}'");
             }
-        }
-       
-
+        }  
         private void arrowRight_Click(object sender, EventArgs e)
         {
             addDays++;
             showDate(DateTime.UtcNow.Date.AddDays(addDays));
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
-
         private void bToday_Click(object sender, EventArgs e)
         {
             addDays = 0;
@@ -502,21 +478,18 @@ namespace EmployeesManagementSystem
             showDate(now);
             visualizeShifts(now);
         }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             UploadImg uploadImg = new UploadImg(user.ID, this);
             uploadImg.Show();
         }
-
         public void UpdateImg(int userId)
         {
-            ImageClass img = databaseContext.GetUserImg(userId);
+            ImageClass img = imageContext.GetImgByUser(userId);
 
-            if (img == null) { return;  }
+            if (img == null) {return;}
             
-            try { 
-
+            try {
                 WebRequest request = WebRequest.Create(img.UrlPath);
                 using (var response = request.GetResponse())
                 {

@@ -1,44 +1,36 @@
-﻿using EmployeesManagementSystem.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EmployeesManagementSystem.Data;
+using EmployeesManagementSystem.Models;
 using System.Windows.Forms;
+using System;
 
 namespace EmployeesManagementSystem
 {
     public partial class ReloadStock : Form
     {
-
-        private DbContext databaseContext = new DbContext();
-        private int stockID;
+        private StockContext stockContext = new StockContext();
         private Stocks stocksForm;
+        private int stockID;
+
         public ReloadStock(int stockID, Stocks stocks)
         {
             InitializeComponent();
             this.stockID = stockID;
             this.stocksForm = stocks;
         }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void btnReaload_Click(object sender, EventArgs e)
         {
-            Stock stock = databaseContext.GetStockByID(stockID);
+            Stock stock = stockContext.GetStockByID(stockID);
 
             
             if (getValidAmount() == -1) return; // checking for error
 
             stock.Amount += getValidAmount();
 
-            databaseContext.UpdateStockByID(stock.ID, stock.Name, stock.Price, stock.Amount, true);
+            stockContext.UpdateStockByID(stock.ID, stock.Name, stock.Price, stock.Amount, true);
             stocksForm.UpdateStocks();
 
             this.Close();

@@ -1,4 +1,5 @@
-﻿using EmployeesManagementSystem.Models;
+﻿using EmployeesManagementSystem.Data;
+using EmployeesManagementSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +14,15 @@ namespace EmployeesManagementSystem
 {
     public partial class UploadImg : Form
     {
+        private int userId;
 
-        private DbContext databaseContext = new DbContext();
         private Details details;
         private AdminDetails admin;
-        private int userId;
+
+        private ImageContext imgContext = new ImageContext();
+        private UserContext userContext = new UserContext();
+
+        
         public UploadImg(int userId, Details details)
         {
             InitializeComponent();
@@ -44,25 +49,19 @@ namespace EmployeesManagementSystem
                 return;
             }
 
-            ImageClass img = databaseContext.GetUserImg(userId);
+            ImageClass img = imgContext.GetImgByUser(userId);
             if (img != null)
             {
-                databaseContext.DeleteImgById(img.ID);
+               imgContext.DeleteById(img.ID);
             }
 
-            img = new ImageClass(userId, txtUrl.Text);
-            databaseContext.InsertImage(img);
+            imgContext.Insert(new ImageClass(userId, txtUrl.Text));
 
             this.Close();
-            User user = databaseContext.GetUserByID(userId);
-            if(user.Email == "admin")
-            {
+            User user = userContext.GetUserByID(userId);
+            
                 this.admin.UpdateImg(userId);
-            }
-            else
-            {
-                this.details.UpdateImg(userId);
-            }
+            
         }
     }
 }

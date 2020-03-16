@@ -2,14 +2,17 @@
 using System.Drawing;
 using System.Net.Mail;
 using System.Windows.Forms;
-using EmployeesManagementSystem.Models;
+using EmployeesManagementSystem.Data;
 using System.Text.RegularExpressions;
+using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
 {
     public partial class Login : Form
     {
-        private DbContext databaseContext = new DbContext();
+        private UserContext userContext = new UserContext();
+        private ShiftContext shiftContext = new ShiftContext();
+        private ImageContext imageContext = new ImageContext();
         
         public Login()
         {
@@ -17,15 +20,15 @@ namespace EmployeesManagementSystem
             clearColor();
 
             //insert data so you can actually login
-            var user = databaseContext.GetUserByEmail("admin");
+            var user = userContext.GetUserByEmail("admin");
             if (user != null)
             {
                 int adminID = user.ID;
-                databaseContext.DeleteShiftOfUser(adminID);
-                databaseContext.DeleteImgOfUser(adminID);
-                databaseContext.DeleteUsersWithEmail("admin");
+                shiftContext.DeleteShiftByUserId(adminID);
+                imageContext.DeleteImgByUserId(adminID);
+                userContext.DeleteUsersWithEmail("admin");
             }
-            databaseContext.InsertUser(new User("admin", "admin", "+31 6430 2303",Hashing.HashPassword("admin"),Role.Administrator.ToString(), -100, "to add"));
+            userContext.Insert(new User("admin", "admin", "+31 6430 2303",Hashing.HashPassword("admin"),Role.Administrator.ToString(), -100, "master"));
         }
 
 
@@ -44,7 +47,7 @@ namespace EmployeesManagementSystem
             }
             else
             {
-                User user = databaseContext.GetUserByEmail(email);
+                User user = userContext.GetUserByEmail(email);
                 if (!IsEmailValid(email) && user == null)
                 {
                     // Indicates only the email
@@ -60,7 +63,7 @@ namespace EmployeesManagementSystem
 
             if (ifExists(email))
             {
-                User user = databaseContext.GetUserByEmail(email);
+                User user = userContext.GetUserByEmail(email);
 
                 if(Hashing.ValidatePassword(password, user.Password)) 
                 {
@@ -123,7 +126,7 @@ namespace EmployeesManagementSystem
         }
         private bool ifExists(string email)
         {
-            if (databaseContext.GetUserByEmail(email) != null) return true;
+            if (userContext.GetUserByEmail(email) != null) return true;
             else return false;
         }
         private void clearFields()

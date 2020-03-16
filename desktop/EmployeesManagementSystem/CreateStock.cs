@@ -1,29 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
+using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
 {
     public partial class CreateStock : Form
     {
-        private DbContext databaseContext = new DbContext();
         private Stocks stocks;
-
+        private StockContext stockContext = new StockContext();
         public CreateStock(Stocks stocks)
         {
             InitializeComponent();
             this.stocks = stocks;
 
         }
-
 
         private void btnCreateStock_Click(object sender, EventArgs e)
         {
@@ -45,7 +36,7 @@ namespace EmployeesManagementSystem
                 if (amountIsValid(amount) && priceIsValid(price))
                 {
                     Stock stock = new Stock(name, amount, price, true);
-                    this.databaseContext.InsertStock(stock);
+                    this.stockContext.Insert(stock);
                     this.stocks.UpdateStocks();
                     this.Close();
                 }

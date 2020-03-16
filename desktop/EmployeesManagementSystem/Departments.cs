@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Windows.Forms;
 using EmployeesManagementSystem.Models;
 
@@ -7,13 +6,11 @@ namespace EmployeesManagementSystem
 {
     public partial class Departments : Form
     {
-        private DbContext databaseContext;
         private User loggedUser;
         public Departments(User user)
         {
             InitializeComponent();
             this.loggedUser = user;
-            databaseContext = new DbContext();
         }
 
         private void btnCreate_Click(object sender, EventArgs e)

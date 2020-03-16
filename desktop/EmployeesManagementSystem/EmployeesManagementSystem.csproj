@@ -135,6 +135,11 @@
     <Compile Include="CreateStock.Designer.cs">
       <DependentUpon>CreateStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\CancellationContext.cs" />
+    <Compile Include="Data\ImageContext.cs" />
+    <Compile Include="Data\ShiftContext.cs" />
+    <Compile Include="Data\StockContext.cs" />
+    <Compile Include="Data\UserContext.cs" />
     <Compile Include="Models\Cancellations.cs" />
     <Compile Include="Cancellations.cs">
       <SubType>Form</SubType>
@@ -173,8 +178,8 @@
     <Compile Include="Details.Designer.cs">
       <DependentUpon>Details.cs</DependentUpon>
     </Compile>
-    <Compile Include="Encrypt.cs" />
-    <Compile Include="Hashing.cs" />
+    <Compile Include="Data\Encrypt.cs" />
+    <Compile Include="Data\Hashing.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

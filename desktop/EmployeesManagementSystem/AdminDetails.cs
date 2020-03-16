@@ -2,14 +2,16 @@
 using System.Net;
 using System.Drawing;
 using System.Windows.Forms;
-using EmployeesManagementSystem.Models;
+using EmployeesManagementSystem.Data;
 using System.Text.RegularExpressions;
+using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
 {
     public partial class AdminDetails : Form
     {
-        private DbContext databaseContext = new DbContext();
+        private UserContext userContext = new UserContext();
+        private ImageContext imageContext = new ImageContext();
         private User user;
        
         public AdminDetails(User loggedUser)
@@ -20,7 +22,7 @@ namespace EmployeesManagementSystem
             // Temporary validation used when debugging
             if(user == null)
             {
-                this.user = databaseContext.GetUserByEmail("admin");
+                this.user = userContext.GetUserByEmail("admin");
             }
 
         }
@@ -38,13 +40,18 @@ namespace EmployeesManagementSystem
             // basic validation
             if (ifEmptyOrNull(tbFullName.Text, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text))
             {
+                User u = new User();
+                u.ID = this.user.ID;
+                u.FullName = removeWhiteSpaces(this.tbFullName.Text);
+                u.Email = tbEmail.Text;
+                u.PhoneNumber = tbPhoneNumber.Text;
+                u.Role = cbRole.Text;
+                u.Department = cbDepartment.Text;
 
-                string fullName = removeWhiteSpaces(this.tbFullName.Text);
-                
-                databaseContext.UpdateUserInfo(this.user.ID, fullName, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text, cbDepartment.Text);
+                userContext.UpdateUserInfo(u);
                 MessageBox.Show("User updated!");
 
-                user = databaseContext.GetUserByID(this.user.ID);
+                user = userContext.GetUserByID(this.user.ID);
                 this.Hide();
                 // Show Dashboard
                 AdminDetails admin = new AdminDetails(user);
@@ -94,14 +101,14 @@ namespace EmployeesManagementSystem
             {
 
                 string password = txtPassword.Text;
-                databaseContext.ResetPassword(user.ID, password);
+                userContext.ResetPassword(user.ID, password);
                 MessageBox.Show($"Password Reset to '{password}'");
             }
         }
 
         public void UpdateImg(int userId)
         {
-            ImageClass img = databaseContext.GetUserImg(userId);
+            ImageClass img = imageContext.GetImgByUser(userId);
 
             if (img == null) { return; }
 
@@ -126,7 +133,6 @@ namespace EmployeesManagementSystem
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            var user = databaseContext.GetUserByEmail("admin"); 
             UploadImg uploadImg = new UploadImg(user.ID, this);
             uploadImg.Show();
         }

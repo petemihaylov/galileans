@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -11,7 +10,9 @@ namespace EmployeesManagementSystem
 {
     public partial class Statistic : Form
     {
-        private DbContext databaseContext = new DbContext();
+        private UserContext userContext = new UserContext();
+        private ShiftContext shiftContext = new ShiftContext();
+
         private User[] users;
         private List<Shift> shifts;
         private int hoursWorked, hrs, id;
@@ -30,7 +31,7 @@ namespace EmployeesManagementSystem
         public Statistic(User user)
         {
             InitializeComponent();
-            this.users = this.databaseContext.GetAllUsers();
+            this.users = this.userContext.GetAllUsers();
             this.loggedUser = user;
 
             monthCenter.Text = today.ToString("MMM").ToUpper();
@@ -64,14 +65,14 @@ namespace EmployeesManagementSystem
         {
             try
             {
-                shifts = databaseContext.GetShiftsByID(Convert.ToInt32(cbEmployee.Text)); // try catch
+                shifts = shiftContext.GetShiftsByUserId(Convert.ToInt32(cbEmployee.Text)); // try catch
             }
             catch (Exception)
             {
                 throw new Exception("Can't take employee's shifts");
             }
 
-            User user = databaseContext.GetUserByID(Convert.ToInt32(cbEmployee.Text));
+            User user = userContext.GetUserByID(Convert.ToInt32(cbEmployee.Text));
 
             //clears the chart
             foreach (var series in chart1.Series)
@@ -112,13 +113,13 @@ namespace EmployeesManagementSystem
         {
             try
             {
-                shifts = databaseContext.GetShiftsByID(Convert.ToInt32(cbEmployee.Text)); // try catch
+                shifts = shiftContext.GetShiftsByUserId(Convert.ToInt32(cbEmployee.Text)); // try catch
             }
             catch (Exception)
             {
                 throw new Exception("Can't take employee's shifts");
             }
-            User user = databaseContext.GetUserByID(Convert.ToInt32(cbEmployee.Text));
+            User user = userContext.GetUserByID(Convert.ToInt32(cbEmployee.Text));
 
             //clears the chart
             foreach (var series in chart1.Series)

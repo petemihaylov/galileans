@@ -1,7 +1,8 @@
-﻿using EmployeesManagementSystem.Models;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using EmployeesManagementSystem.Data;
+using EmployeesManagementSystem.Models;
 
 
 namespace EmployeesManagementSystem
@@ -10,7 +11,7 @@ namespace EmployeesManagementSystem
     {
 
 
-        private DbContext databaseContext = new DbContext();
+        private CancellationContext cancellationContext = new CancellationContext();
         private User loggedUser;
        
 
@@ -25,7 +26,7 @@ namespace EmployeesManagementSystem
             //needs to upload as the program runs in the future
             try
             {
-                Models.Cancellations[] cancels = databaseContext.GetAnnouncements();
+                Models.Cancellations[] cancels = cancellationContext.GetAnnouncements();
                 foreach (Models.Cancellations cancel in cancels)
                 {
                     dataGridView.Rows.Add(cancel.GetInfo());
@@ -62,7 +63,7 @@ namespace EmployeesManagementSystem
                 int index = dataGridView.CurrentCell.RowIndex;
                 //MessageBox.Show(Convert.ToString(dataGridView.Rows[index].Cells[0].Value));
                 int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
-                databaseContext.DeleteAnnouncement(id);
+                cancellationContext.DeleteById(id);
                 dataGridView.Rows.Remove(dataGridView.Rows[index]);
 
             }

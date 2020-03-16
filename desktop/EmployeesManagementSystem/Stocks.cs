@@ -1,21 +1,71 @@
-﻿using EmployeesManagementSystem.Models;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using EmployeesManagementSystem.Data;
+using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
 {
     public partial class Stocks : Form
     {
-        private DbContext databaseContext = new DbContext();
         private Stock[] stocks;
         private User loggedUser;
+
+
+        private StockContext stockContext = new StockContext();
+
         public Stocks(User user)
         {
             InitializeComponent();
             this.loggedUser = user;
         }
 
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            CreateStock createStocks = new CreateStock(this);
+            createStocks.Show();
+        }
+
+        public void UpdateStocks()
+        {
+            this.stockDataGrid.Rows.Clear();
+
+            Stock[] stock = stockContext.GetAllStocks();
+            stockDataGrid.Rows.Clear();
+            showInformation(stock);
+        }
+        private void stockDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int btnReload = 5;
+            int btnDelete = 6;
+
+            int index = stockDataGrid.CurrentCell.RowIndex;
+            int stockId = Convert.ToInt32(stockDataGrid.Rows[index].Cells[0].Value);
+
+            if (stockDataGrid.CurrentCell.ColumnIndex.Equals(btnReload))
+            {
+                ReloadStock reloadStock = new ReloadStock(stockId, this);
+                reloadStock.Show();
+            }
+            else if (stockDataGrid.CurrentCell.ColumnIndex.Equals(btnDelete))
+            {
+                stockContext.DeleteById(stockId);
+                UpdateStocks();
+            }
+        }
+
+        private void Stocks_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                this.stocks = stockContext.GetAllStocks();
+                showInformation(this.stocks);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Can't display info correctly!");
+            }
+        }
         private void showInformation(Stock[] stocks)
         {
             // Clean the dataGrid
@@ -73,18 +123,6 @@ namespace EmployeesManagementSystem
             shifts.Show();
         }
 
-        private void Stocks_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                this.stocks = databaseContext.GetAllStocks();
-                showInformation(this.stocks);
-            }
-            catch (Exception)
-            {
-                throw new Exception("Can't display info correctly!");
-            }
-        }
 
         private void exit_Click(object sender, EventArgs e)
         {
@@ -121,40 +159,6 @@ namespace EmployeesManagementSystem
 
             Color color = Color.LightGray;
             this.btnCreate.BackColor = color;
-        }
-
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            CreateStock createStocks = new CreateStock(this);
-            createStocks.Show();
-        }
-        public void UpdateStocks()
-        {
-            this.stockDataGrid.Rows.Clear();
-
-            Stock[] stock = databaseContext.GetAllStocks();
-            stockDataGrid.Rows.Clear();
-            showInformation(stock);
-        }
-
-        private void stockDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int btnReload = 5;
-            int btnDelete = 6;
-
-            int index = stockDataGrid.CurrentCell.RowIndex;
-            int stockId = Convert.ToInt32(stockDataGrid.Rows[index].Cells[0].Value);
-
-            if (stockDataGrid.CurrentCell.ColumnIndex.Equals(btnReload))
-            {
-                ReloadStock reloadStock = new ReloadStock(stockId, this);
-                reloadStock.Show();
-            }
-            else if (stockDataGrid.CurrentCell.ColumnIndex.Equals(btnDelete))
-            {
-                databaseContext.DeleteStockByID(stockId);
-                UpdateStocks();
-            }
         }
 
         private void editAccount_Click(object sender, EventArgs e)

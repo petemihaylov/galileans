@@ -1,27 +1,26 @@
-﻿using EmployeesManagementSystem.Models;
-using System;
+﻿using EmployeesManagementSystem.Data;
+using EmployeesManagementSystem.Models;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
+using System;
+
 
 namespace EmployeesManagementSystem
 {
     public partial class Shifts : Form
     {
+        private ShiftContext shiftContext = new ShiftContext();
+        private UserContext userContext = new UserContext();
 
-        private DbContext databaseContext = new DbContext();
         private List<Shift> shifts;
-        private int addDays = 0;
         private User loggedUser;
+        private int addDays = 0;
+
         public Shifts(User user)
         {
             InitializeComponent();
-            shifts = databaseContext.GetAllShifts();
+            this.shifts = shiftContext.GetAllShifts();
             this.loggedUser = user;
         }
 
@@ -40,7 +39,6 @@ namespace EmployeesManagementSystem
             dateRight.Text = tomorrow.ToString("dd");
             monthRight.Text = tomorrow.ToString("MMM").ToUpper();
         }
-
         private void Shifts_Load(object sender, EventArgs e)
         {
             DateTime now = DateTime.UtcNow.Date;
@@ -48,8 +46,6 @@ namespace EmployeesManagementSystem
 
             displayShifts(now);
         }
-
-        
         private void displayShifts(DateTime dateTime)
         {
             // MORNING
@@ -57,7 +53,7 @@ namespace EmployeesManagementSystem
             this.morningList.Items.Clear();
             foreach (var item in morning)
             {
-                this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + databaseContext.GetUserByID(item.AssignedEmployeeID).FullName);
+                this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
             }
 
             // EVENING
@@ -65,7 +61,7 @@ namespace EmployeesManagementSystem
             this.eveningList.Items.Clear();
             foreach (var item in evening)
             {
-               this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + databaseContext.GetUserByID(item.AssignedEmployeeID).FullName);
+               this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
             }
 
             // AFTERNOON
@@ -73,7 +69,7 @@ namespace EmployeesManagementSystem
             this.afternoonList.Items.Clear();
             foreach (var item in afternoon)
             {
-                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + databaseContext.GetUserByID(item.AssignedEmployeeID).FullName);
+                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
             }
 
         }
@@ -89,7 +85,6 @@ namespace EmployeesManagementSystem
             }
             return list;
         }
-
         private List<Shift> getAfternoonShiftsForDate(DateTime dateTime)
         {
             List<Shift> list = new List<Shift>();
@@ -102,7 +97,6 @@ namespace EmployeesManagementSystem
             }
             return list;
         }
-
         private List<Shift> getEveningShiftsForDate(DateTime dateTime)
         {
             List<Shift> list = new List<Shift>();
@@ -115,31 +109,26 @@ namespace EmployeesManagementSystem
             }
             return list;
         }
-
         private void exit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void exit_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.DarkGray;
             this.exit.BackColor = color;
         }
-
         private void exit_MouseLeave(object sender, EventArgs e)
         {
             Color color = Color.White;
             this.exit.BackColor = color;
         }
-
         private void arrowRight_Click(object sender, EventArgs e)
         {
             addDays++;
             showDate(DateTime.UtcNow.Date.AddDays(addDays));
             displayShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
-
         private void arrowLeft_Click(object sender, EventArgs e)
         {
 
@@ -147,7 +136,6 @@ namespace EmployeesManagementSystem
             showDate(DateTime.UtcNow.Date.AddDays(addDays));
             displayShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
-
         private void btnToday_Click(object sender, EventArgs e)
         {
             addDays = 0;
@@ -155,12 +143,10 @@ namespace EmployeesManagementSystem
             showDate(now);
             displayShifts(now);
         }
-
         private void currentTime_Tick(object sender, EventArgs e)
         {
             this.lbTime.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt");
         }
-
         private void btnStocks_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -169,7 +155,6 @@ namespace EmployeesManagementSystem
             stock.Closed += (s, args) => this.Close();
             stock.Show();
         }
-
         private void btnDepartments_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -178,7 +163,6 @@ namespace EmployeesManagementSystem
             dep.Closed += (s, args) => this.Close();
             dep.Show();
         }
-
         private void btnCancellations_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -187,19 +171,16 @@ namespace EmployeesManagementSystem
             cncl.Closed += (s, args) => this.Close();
             cncl.Show();
         }
-
         private void btnEmployee_MouseEnter(object sender, EventArgs e)
         {
             Color color = Color.DarkGray;
             this.btnEmployee.BackColor = color;
         }
-
         private void btnEmployee_MouseLeave(object sender, EventArgs e)
         {
             Color color = Color.LightGray;
             this.btnEmployee.BackColor = color;
         }
-
         private void btnEmployee_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -208,7 +189,6 @@ namespace EmployeesManagementSystem
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
         }
-
         private void editAccount_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -217,7 +197,6 @@ namespace EmployeesManagementSystem
             adminDetails.Closed += (s, args) => this.Close();
             adminDetails.Show();
         }
-
         private void lblLogOut_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -226,7 +205,6 @@ namespace EmployeesManagementSystem
             login.Closed += (s, args) => this.Close();
             login.Show();
         }
-
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             this.Hide();
