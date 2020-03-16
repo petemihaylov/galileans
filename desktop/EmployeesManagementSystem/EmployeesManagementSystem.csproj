@@ -129,6 +129,12 @@
     <Compile Include="AdminDetails.Designer.cs">
       <DependentUpon>AdminDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateDepartment.Designer.cs">
+      <DependentUpon>CreateDepartment.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,7 @@
       <DependentUpon>CreateStock.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\CancellationContext.cs" />
+    <Compile Include="Data\DepartmentContext.cs" />
     <Compile Include="Data\ImageContext.cs" />
     <Compile Include="Data\ShiftContext.cs" />
     <Compile Include="Data\StockContext.cs" />
@@ -238,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccounts.resx">
       <DependentUpon>CreateAccounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateDepartment.resx">
+      <DependentUpon>CreateDepartment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateStock.resx">
       <DependentUpon>CreateStock.cs</DependentUpon>

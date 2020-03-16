@@ -2,17 +2,24 @@
 
 namespace EmployeesManagementSystem.Models
 {
-    class Department
+    public class Department
     {
-        public string name { get; private set; }
-        List<Stock> stocks;
-        List<User> employees;
+        public int ID;
+        public string Name;
+
+        public Department()
+        {
+        }
 
         public Department(string name)
         {
-            this.name = name;
-            stocks = new List<Stock>();
-            employees = new List<User>();
+            Name = name;
+        }
+
+        public string[] GetInfo()
+        {
+            string[] s = { $"{ID}", Name, "Delete" };
+            return s;
         }
     }
 }
