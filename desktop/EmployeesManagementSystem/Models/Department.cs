@@ -18,7 +18,7 @@ namespace EmployeesManagementSystem.Models
 
         public string[] GetInfo()
         {
-            string[] s = { $"{ID}", Name, "Delete" };
+            string[] s = { $"{ID}", Name };
             return s;
         }
     }
