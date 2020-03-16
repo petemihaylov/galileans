@@ -13,6 +13,7 @@ namespace EmployeesManagementSystem
         private UserContext userContext = new UserContext();
         private ShiftContext shiftContext = new ShiftContext();
         private ImageContext imageContext = new ImageContext();
+        private DepartmentContext departmentContext = new DepartmentContext();
 
         private int id;
         private int addDays = 0;
@@ -34,7 +35,11 @@ namespace EmployeesManagementSystem
 
             this.tbPhoneNumber.Text = user.PhoneNumber;
             this.cbRole.Text = user.Role;
-            this.cbDepartment.Text = "to add";
+            foreach (Department department in departmentContext.GetAllDepartments())
+            {
+                cbDepartment.Items.Add(department.Name);
+            }
+            cbDepartment.Text = departmentContext.GetNameById(this.user.Department);
         }
         private void Details_Load(object sender, EventArgs e)
         {
@@ -249,7 +254,11 @@ namespace EmployeesManagementSystem
             u.Email = tbEmail.Text;
             u.PhoneNumber = tbPhoneNumber.Text;
             u.Role = cbRole.Text;
-            u.Department = cbDepartment.Text;
+            u.Department = departmentContext.GetIdByName(cbDepartment.Text);
+            if (u.Department == -1)
+            {
+                MessageBox.Show("The given department doesn't exist");
+            }
 
             userContext.UpdateUserInfo(u);           
             MessageBox.Show("User updated!");

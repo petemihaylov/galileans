@@ -70,5 +70,49 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+
+        public int GetIdByName(string name)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"SELECT ID FROM Departments WHERE Name = @name";
+                    command.AddParameter("name", name);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        int id = -1;
+                        while (reader.Read())
+                        {
+                            id = (int)reader["ID"];
+                        }
+                        return id;
+                    }
+                }
+            }
+        }
+
+        public string GetNameById(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"SELECT Name FROM Departments WHERE ID = @id";
+                    command.AddParameter("id", id);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        string name = "";
+                        while (reader.Read())
+                        {
+                            name = (string)reader["Name"];
+                        }
+                        return name;
+                    }
+                }
+            }
+        }
     }
 }

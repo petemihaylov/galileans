@@ -34,6 +34,8 @@ namespace EmployeesManagementSystem
                     string phoneNumber = this.tbPhone.Text;
                     string password = this.tbPassword.Text;
                     string confirmationPassword = this.tbConfirmationPassword.Text;
+                    // TEMP - replace with int.Parse(tbDepartment.Text) as 
+                    int department = 4;
 
                     if (isNameValid(fullName) && isEmailValid(email) && isPhoneValid(phoneNumber) && isWageValid(hourlyRate) && isPasswordValid(password) && isPasswordValid(confirmationPassword))
                     {
@@ -65,7 +67,7 @@ namespace EmployeesManagementSystem
                                 }
 
                                 // Create new User
-                                User user = new User(fullName, email, phoneNumber, generatedPassword, role, hourlyRate, "to add department");
+                                User user = new User(fullName, email, phoneNumber, generatedPassword, role, hourlyRate, department);
                                 this.userContext.Insert(user);
                                 this.dashboard.UpdateDashboard();
                                 this.Close();

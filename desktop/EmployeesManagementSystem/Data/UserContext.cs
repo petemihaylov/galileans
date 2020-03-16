@@ -18,7 +18,7 @@ namespace EmployeesManagementSystem.Data
 
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO Users (FullName, Email, PhoneNumber, Password, Role, HourlyRate, Department) VALUES(@fullName, @email, @phoneNumber, @password, @role, @hourlyRate, @department)";
+                    command.CommandText = @"INSERT INTO Users (FullName, Email, PhoneNumber, Password, Role, HourlyRate, DepartmentID) VALUES(@fullName, @email, @phoneNumber, @password, @role, @hourlyRate, @department)";
 
                     command.AddParameter("fullName", user.FullName);
                     command.AddParameter("email", user.Email);
@@ -56,7 +56,7 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"UPDATE Users SET FullName = @fullname, Email = @email, PhoneNumber = @phonenumber, Role = @role, Department = @department WHERE ID = @ID";
+                    command.CommandText = @"UPDATE Users SET FullName = @fullname, Email = @email, PhoneNumber = @phonenumber, Role = @role, DepartmentID = @department WHERE ID = @ID";
                     command.AddParameter("ID", user.ID);
                     // Executing it 
                     command.Parameters.AddWithValue("@fullname", user.FullName);
@@ -95,7 +95,7 @@ namespace EmployeesManagementSystem.Data
                             user.Email = (string)reader["Email"];
                             user.Password = (string)reader["Password"];
                             user.Role = (string)reader["Role"];
-                            user.Department = (string)reader["Department"];
+                            user.Department = (int)reader["DepartmentID"];
                             users.Add(user);
                         }
 
@@ -141,7 +141,7 @@ namespace EmployeesManagementSystem.Data
                 user.Email = (string)row["Email"];
                 user.Password = (string)row["Password"];
                 user.Role = (string)row["Role"];
-                user.Department = (string)row["Department"];
+                user.Department = (int)row["DepartmentID"];
                 users.Add(user);
             }
 
@@ -172,7 +172,7 @@ namespace EmployeesManagementSystem.Data
                             user.HourlyRate = (float)reader["HourlyRate"];
                             user.Password = (string)reader["Password"];
                             user.Role = (string)reader["Role"];
-                            user.Department = (string)reader["Department"];
+                            user.Department = (int)reader["DepartmentID"];
 
                         }
                         else
@@ -212,7 +212,7 @@ namespace EmployeesManagementSystem.Data
                             user.HourlyRate = (float)reader["HourlyRate"];
                             user.PhoneNumber = (string)reader["PhoneNumber"];
                             user.Role = (string)reader["Role"];
-                            user.Department = (string)reader["Department"];
+                            user.Department = (int)reader["DepartmentID"];
                         }
                         else
                         {

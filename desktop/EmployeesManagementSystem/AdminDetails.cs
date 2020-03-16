@@ -12,15 +12,16 @@ namespace EmployeesManagementSystem
     {
         private UserContext userContext = new UserContext();
         private ImageContext imageContext = new ImageContext();
+        private DepartmentContext departmentContext = new DepartmentContext();
         private User user;
-       
+
         public AdminDetails(User loggedUser)
         {
             InitializeComponent();
             this.user = loggedUser;
 
             // Temporary validation used when debugging
-            if(user == null)
+            if (user == null)
             {
                 this.user = userContext.GetUserByEmail("admin");
             }
@@ -31,7 +32,11 @@ namespace EmployeesManagementSystem
             tbFullName.Text = this.user.FullName;
             tbPhoneNumber.Text = this.user.PhoneNumber;
             tbEmail.Text = this.user.Email;
-            cbDepartment.Text = this.user.Department;
+            cbDepartment.Text = departmentContext.GetNameById(this.user.Department);
+            foreach (Department department in departmentContext.GetAllDepartments())
+            {
+                cbDepartment.Items.Add(department.Name);
+            }
             cbRole.Text = this.user.Role;
             this.UpdateImg(this.user.ID);
         }
@@ -46,7 +51,11 @@ namespace EmployeesManagementSystem
                 u.Email = tbEmail.Text;
                 u.PhoneNumber = tbPhoneNumber.Text;
                 u.Role = cbRole.Text;
-                u.Department = cbDepartment.Text;
+                u.Department = departmentContext.GetIdByName(cbDepartment.Text);
+                if (u.Department == -1)
+                {
+                    MessageBox.Show("The given department doesn't exist");
+                }
 
                 userContext.UpdateUserInfo(u);
                 MessageBox.Show("User updated!");
