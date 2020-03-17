@@ -75,7 +75,7 @@ namespace EmployeesManagementSystem
         {
             try
             {
-                shifts = shiftContext.GetShiftsByUserId(Convert.ToInt32(cbEmployee.Text)); // try catch
+                shifts = shiftContext.GetShiftsByDepId(Convert.ToInt32(cbEmployee.Text)); // try catch
             }
             catch (Exception)
             {
