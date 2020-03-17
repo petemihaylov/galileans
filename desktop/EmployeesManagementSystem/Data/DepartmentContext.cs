@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem.Data
 {
@@ -110,6 +111,28 @@ namespace EmployeesManagementSystem.Data
                             name = (string)reader["Name"];
                         }
                         return name;
+                    }
+                }
+            }
+        }
+
+        public Department GetDepartmentById(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"SELECT Name FROM Departments WHERE ID = @id";
+                    command.AddParameter("id", id);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        Department dep = new Department();
+                        while (reader.Read())
+                        {
+                            dep.Name = (string)reader["Name"];
+                        }
+                        return dep;
                     }
                 }
             }

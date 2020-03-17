@@ -12,11 +12,20 @@ namespace EmployeesManagementSystem
     {
         private UserContext userContext = new UserContext();
         private ShiftContext shiftContext = new ShiftContext();
+        private DepartmentContext departmentContext = new DepartmentContext();
 
         private User[] users;
         private List<Shift> shifts;
+        private Department[] departments;
+
         private int hoursWorked, hrs, id;
         private int hoursSkipped;
+
+        private int presentWorkers = 0;
+        private int absentWorkers = 0;
+        private int lateWorkers = 0;
+
+
         int counter = 0;
 
         // Keeps  track of the current loggedUser
@@ -32,6 +41,7 @@ namespace EmployeesManagementSystem
         {
             InitializeComponent();
             this.users = this.userContext.GetAllUsers();
+            this.departments = departmentContext.GetAllDepartments();
             this.loggedUser = user;
 
             monthCenter.Text = today.ToString("MMM").ToUpper();
@@ -102,12 +112,49 @@ namespace EmployeesManagementSystem
 
         private void AttendancePerDepartment()
         {
+            presentWorkers = 0; absentWorkers = 0; lateWorkers = 0;
             //clears the chart
             foreach (var series in chart1.Series)
             {
                 series.Points.Clear();
             }
-        }
+            try
+            {
+                shifts = shiftContext.GetShiftsByUserId(Convert.ToInt32(cbEmployee.Text)); // try catch
+            }
+            catch (Exception)
+            {
+                throw new Exception("Can't take employee's shifts");
+            }
+
+            Department department = departmentContext.GetDepartmentById(Convert.ToInt32(cbEmployee.Text));
+
+            foreach (Shift shift in shifts)
+            {
+                if(shift.Department == department.ID)
+                {
+                    if (keepTrack.ToString("MMM").ToUpper() == monthCenter.Text && keepTrack.ToString("yyyy") == yearCenter.Text)
+                    {
+                        //marks attended
+                        if (shift.Attended == true)
+                            chart1.Series["Present"].Points.Add(new DataPoint() { AxisLabel = Convert.ToString(shift.ShiftDate.Day) + "/" + Convert.ToString(shift.ShiftDate.Month), XValue = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day, YValues = new double[] {1,1} });
+                        //marks absent
+                        else if (shift.Attended == false && shift.ShiftDate < today)
+                            chart1.Series["Absent"].Points.Add(new DataPoint() { AxisLabel = Convert.ToString(shift.ShiftDate.Day) + "/" + Convert.ToString(shift.ShiftDate.Month), XValue = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day, YValues = new double[] { 1, 1 } });
+                        //marks future scheduled shifts
+                        else if (shift.Attended == false && shift.ShiftDate > today)
+                        {
+                            chart1.Series["Scheduled"].Points.Add(new DataPoint() { AxisLabel = Convert.ToString(shift.ShiftDate.Day) + "/" + Convert.ToString(shift.ShiftDate.Month), XValue = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day, YValues = new double[] { 1, 1 } });
+                        }
+                    }
+
+                }
+            }
+                
+
+
+
+    }
 
         private void WagePerEmployee()
         {
@@ -286,10 +333,12 @@ namespace EmployeesManagementSystem
             {
                 cbEmployee.Items.Clear();
                 cbEmployee.Enabled = true;
+                cbEmployee.Show();
+                lbEmployee.Show();
                 lbEmployee.Text = "Select a department";
-                foreach (User item in users)
+                foreach (Department item in departments)
                 {
-                    cbEmployee.Items.Add(item.Department);
+                    cbEmployee.Items.Add(item.ID);
                 }
 
             }
