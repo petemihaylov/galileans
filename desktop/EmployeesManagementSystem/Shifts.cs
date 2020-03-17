@@ -10,7 +10,6 @@ namespace EmployeesManagementSystem
 {
     public partial class Shifts : Form
     {
-        // Variables
         private ShiftContext shiftContext = new ShiftContext();
         private UserContext userContext = new UserContext();
 
@@ -18,13 +17,6 @@ namespace EmployeesManagementSystem
         private User loggedUser;
         private int addDays = 0;
 
-        // Default constructor
-        public Shifts()
-        {
-
-        }
-
-        // Constructor
         public Shifts(User user)
         {
             InitializeComponent();
@@ -121,7 +113,6 @@ namespace EmployeesManagementSystem
         {
             this.Close();
         }
-
         private void arrowRight_Click(object sender, EventArgs e)
         {
             addDays++;
@@ -170,7 +161,6 @@ namespace EmployeesManagementSystem
             cncl.Closed += (s, args) => this.Close();
             cncl.Show();
         }
-
         private void btnEmployees_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -178,22 +168,6 @@ namespace EmployeesManagementSystem
             Dashboard dashboard = new Dashboard(this.loggedUser);
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
-        }
-        private void editAccount_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Dashboard
-            AdminDetails adminDetails = new AdminDetails(this.loggedUser);
-            adminDetails.Closed += (s, args) => this.Close();
-            adminDetails.Show();
-        }
-        private void lblLogOut_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Log In
-            Login login = new Login();
-            login.Closed += (s, args) => this.Close();
-            login.Show();
         }
         private void btnStatistics_Click(object sender, EventArgs e)
         {
@@ -203,6 +177,29 @@ namespace EmployeesManagementSystem
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }
+
+        // Settings
+        private void Settings_Click(object sender, EventArgs e)
+        {
+            settingsPanel.Visible = !settingsPanel.Visible;
+        }
+        private void editAccount_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Admin details
+            AdminDetails adminDetails = new AdminDetails(this.loggedUser, this);
+            adminDetails.Closed += (s, args) => this.Hide();
+            adminDetails.Show();
+        }
+        private void LogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Log In
+            Login login = new Login();
+            login.Closed += (s, args) => this.Close();
+            login.Show();
+        }
+
 
         // Hovering
         private void btnExit_MouseEnter(object sender, EventArgs e)

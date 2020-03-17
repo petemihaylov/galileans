@@ -142,23 +142,6 @@ namespace EmployeesManagementSystem
                 Application.Exit();
             }
         }
-        private void editAccount_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Dashboard
-            AdminDetails adminDetails = new AdminDetails(this.loggedUser);
-            adminDetails.Closed += (s, args) => this.Close();
-            adminDetails.Show();
-        }
-
-        private void lblLogOut_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Log In
-            Login login = new Login();
-            login.Closed += (s, args) => this.Close();
-            login.Show();
-        }
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
@@ -168,6 +151,29 @@ namespace EmployeesManagementSystem
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }
+
+        // Settings
+        private void Settings_Click(object sender, EventArgs e)
+        {
+            settingsPanel.Visible = !settingsPanel.Visible;
+        }
+        private void editAccount_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Admin details
+            AdminDetails adminDetails = new AdminDetails(this.loggedUser, this);
+            adminDetails.Closed += (s, args) => this.Hide();
+            adminDetails.Show();
+        }
+        private void LogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Log In
+            Login login = new Login();
+            login.Closed += (s, args) => this.Close();
+            login.Show();
+        }
+
 
         // Hovering
         private void btnExit_MouseEnter(object sender, EventArgs e)
@@ -234,6 +240,5 @@ namespace EmployeesManagementSystem
         {
             this.btnCreate.BackColor = Color.LightGray;
         }
-
     }
 }

@@ -174,34 +174,28 @@ namespace EmployeesManagementSystem
         {
             CreateAccounts createAccounts = new CreateAccounts(this);
             createAccounts.Show();
-        } 
+        }
+
+        // Settings
+        private void Settings_Click(object sender, EventArgs e)
+        {
+            settingsPanel.Visible = !settingsPanel.Visible;
+        }
         private void editAccount_Click(object sender, EventArgs e)
         {
             this.Hide();
-            // Show Dashboard
-            AdminDetails adminDetails = new AdminDetails(this.loggedUser);
-            adminDetails.Closed += (s, args) => this.Close();
+            // Show Admin details
+            AdminDetails adminDetails = new AdminDetails(this.loggedUser, this);
+            adminDetails.Closed += (s, args) => this.Hide();
             adminDetails.Show();
         }
-
-        // Setting button
-        private void lblLogOut_Click(object sender, EventArgs e)
+        private void LogOut_Click(object sender, EventArgs e)
         {
             this.Hide();
             // Show Log In
             Login login = new Login();
             login.Closed += (s, args) => this.Close();
             login.Show();
-        }
-
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            settingsPanel.Visible = !settingsPanel.Visible;
-        }
-
-        private void lbSettings_Click(object sender, EventArgs e)
-        {
-            settingsPanel.Visible = !settingsPanel.Visible;
         }
 
         // Cancellations
