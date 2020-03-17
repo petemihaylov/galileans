@@ -65,7 +65,7 @@
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnSettings = new System.Windows.Forms.PictureBox();
             this.panelAccount = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -125,7 +125,7 @@
             this.btnEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).BeginInit();
             this.panelAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -190,7 +190,7 @@
             this.panelLeft.Controls.Add(this.btnCancellations);
             this.panelLeft.Controls.Add(this.btnEmployees);
             this.panelLeft.Controls.Add(this.label5);
-            this.panelLeft.Controls.Add(this.pictureBox2);
+            this.panelLeft.Controls.Add(this.btnSettings);
             this.panelLeft.Controls.Add(this.panelAccount);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
@@ -584,17 +584,19 @@
             this.label5.Text = "Settings";
             this.label5.Click += new System.EventHandler(this.Settings_Click);
             // 
-            // pictureBox2
+            // btnSettings
             // 
-            this.pictureBox2.Image = global::EmployeesManagementSystem.Properties.Resources.settings;
-            this.pictureBox2.Location = new System.Drawing.Point(9, 626);
+            this.btnSettings.Image = global::EmployeesManagementSystem.Properties.Resources.settings;
+            this.btnSettings.Location = new System.Drawing.Point(9, 626);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(29, 28);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.Settings_Click);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(29, 28);
+            this.btnSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnSettings.TabIndex = 1;
+            this.btnSettings.TabStop = false;
+            this.btnSettings.Click += new System.EventHandler(this.Settings_Click);
+            this.btnSettings.MouseEnter += new System.EventHandler(this.btnSettings_MouseEnter);
+            this.btnSettings.MouseLeave += new System.EventHandler(this.btnSettings_MouseLeave);
             // 
             // panelAccount
             // 
@@ -1077,7 +1079,7 @@
             this.btnEmployees.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).EndInit();
             this.panelAccount.ResumeLayout(false);
             this.panelAccount.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1109,7 +1111,7 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.PictureBox pictureBox13;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox btnSettings;
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.PictureBox pictureBox8;

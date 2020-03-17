@@ -530,6 +530,8 @@
             this.btnSettings.TabIndex = 1;
             this.btnSettings.TabStop = false;
             this.btnSettings.Click += new System.EventHandler(this.Settings_Click);
+            this.btnSettings.MouseEnter += new System.EventHandler(this.btnSettings_MouseEnter);
+            this.btnSettings.MouseLeave += new System.EventHandler(this.btnSettings_MouseLeave);
             // 
             // panelAccount
             // 

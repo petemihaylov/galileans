@@ -207,5 +207,13 @@ namespace EmployeesManagementSystem
         {
             this.btnStatistics.BackColor = Color.LightGray;
         }
+        private void btnSettings_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnSettings.BackColor = Color.DarkGray;
+        }
+        private void btnSettings_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnSettings.BackColor = Color.LightGray;
+        }
     }
 }
