@@ -142,32 +142,6 @@ namespace EmployeesManagementSystem
                 Application.Exit();
             }
         }
-        private void exit_MouseEnter(object sender, EventArgs e)
-        {
-            Color color = Color.LightGray;
-            this.exit.BackColor = color;
-        }
-
-        private void exit_MouseLeave(object sender, EventArgs e)
-        {
-
-            Color color = Color.White;
-            this.exit.BackColor = color;
-        }
-
-        private void btnCreate_MouseEnter(object sender, EventArgs e)
-        {
-
-            Color color = Color.DarkGray;
-            this.btnCreate.BackColor = color;
-        }
-
-        private void btnCreate_MouseLeave(object sender, EventArgs e)
-        {
-
-            Color color = Color.LightGray;
-            this.btnCreate.BackColor = color;
-        }
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
