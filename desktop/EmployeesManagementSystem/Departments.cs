@@ -94,7 +94,10 @@ namespace EmployeesManagementSystem
 
             foreach (Department department in departments)
             {
-                this.dataGridView.Rows.Add(department.GetInfo());
+                if (department.ID > 0) // exclude Administration department
+                {
+                    this.dataGridView.Rows.Add(department.GetInfo());
+                }
             }
         }
 

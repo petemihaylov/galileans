@@ -53,10 +53,10 @@ namespace EmployeesManagementSystem
         // datagrid cell click needs a refactoring
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView.CurrentCell.ColumnIndex.Equals(4) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
+            if (!dataGridView.CurrentCell.ColumnIndex.Equals(5) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
                 // open another message box with the whole description
-                MessageBox.Show("Description:" + dataGridView.CurrentCell.Value.ToString());
+                txDescription.Text = "Description: " + dataGridView.CurrentCell.Value.ToString();
             }
             else if (dataGridView.CurrentCell.ColumnIndex.Equals(5) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
