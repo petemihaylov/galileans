@@ -174,14 +174,6 @@ namespace EmployeesManagementSystem
         {
             settingsPanel.Visible = !settingsPanel.Visible;
         }
-        private void editAccount_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Dashboard
-            AdminDetails adminDetails = new AdminDetails(this.loggedUser);
-            adminDetails.Closed += (s, args) => this.Close();
-            adminDetails.Show();
-        }
 
         private void lblLogOut_Click(object sender, EventArgs e)
         {
