@@ -117,11 +117,14 @@ namespace EmployeesManagementSystem
             }
             return list;
         }
+
+        // Exit
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // Arrows
         private void arrowRight_Click(object sender, EventArgs e)
         {
             addDays++;
@@ -135,6 +138,8 @@ namespace EmployeesManagementSystem
             showDate(DateTime.UtcNow.Date.AddDays(addDays));
             displayShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
+
+        // Today
         private void btnToday_Click(object sender, EventArgs e)
         {
             addDays = 0;
@@ -142,10 +147,14 @@ namespace EmployeesManagementSystem
             showDate(now);
             displayShifts(now);
         }
+
+        // Time
         private void currentTime_Tick(object sender, EventArgs e)
         {
             this.lbTime.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt");
         }
+
+        // Stocks
         private void btnStocks_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -154,6 +163,8 @@ namespace EmployeesManagementSystem
             stock.Closed += (s, args) => this.Close();
             stock.Show();
         }
+
+        // Departments
         private void btnDepartments_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -162,6 +173,8 @@ namespace EmployeesManagementSystem
             dep.Closed += (s, args) => this.Close();
             dep.Show();
         }
+        
+        // Cancellations
         private void btnCancellations_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -171,6 +184,7 @@ namespace EmployeesManagementSystem
             cncl.Show();
         }
 
+        // Employees
         private void btnEmployees_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -179,6 +193,8 @@ namespace EmployeesManagementSystem
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
         }
+
+        // Settings
         private void editAccount_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -187,6 +203,7 @@ namespace EmployeesManagementSystem
             adminDetails.Closed += (s, args) => this.Close();
             adminDetails.Show();
         }
+
         private void lblLogOut_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -195,6 +212,18 @@ namespace EmployeesManagementSystem
             login.Closed += (s, args) => this.Close();
             login.Show();
         }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            settingsPanel.Visible = !settingsPanel.Visible;
+        }
+
+        private void lbSettings_Click(object sender, EventArgs e)
+        {
+            settingsPanel.Visible = !settingsPanel.Visible;
+        }
+
+        // Statistics
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -284,6 +313,14 @@ namespace EmployeesManagementSystem
         private void btnArrowLeft_MouseLeave(object sender, EventArgs e)
         {
             this.btnArrowLeft.BackColor = Color.LightGray;
+        }
+        private void btnSettings_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnSettings.BackColor = Color.DarkGray;
+        }
+        private void btnSettings_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnSettings.BackColor = Color.LightGray;
         }
     }
 }

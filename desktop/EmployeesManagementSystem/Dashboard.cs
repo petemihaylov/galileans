@@ -174,7 +174,9 @@ namespace EmployeesManagementSystem
         {
             CreateAccounts createAccounts = new CreateAccounts(this);
             createAccounts.Show();
-        } 
+        }
+
+        // Setting
         private void editAccount_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -184,7 +186,6 @@ namespace EmployeesManagementSystem
             adminDetails.Show();
         }
 
-        // Setting button
         private void lblLogOut_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -310,6 +311,14 @@ namespace EmployeesManagementSystem
         private void btnCreate_MouseLeave(object sender, EventArgs e)
         {
             this.btnCreate.BackColor = Color.LightGray;
+        }
+        private void btnSettings_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnSettings.BackColor = Color.DarkGray;
+        }
+        private void btnSettings_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnSettings.BackColor = Color.LightGray;
         }
     }
 }

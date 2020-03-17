@@ -85,6 +85,8 @@ namespace EmployeesManagementSystem
                 this.stockDataGrid.Rows.Add(stock.GetInfo());
             }
         }
+        
+        // Employees
         private void btnEmployees_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -94,6 +96,7 @@ namespace EmployeesManagementSystem
             dashboard.Show();
         }
 
+        // Cancellations
         private void btnCancellations_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -103,6 +106,7 @@ namespace EmployeesManagementSystem
             cncl.Show();
         }
 
+        // Departments
         private void btnDepartments_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -113,6 +117,7 @@ namespace EmployeesManagementSystem
 
         }
 
+        // Stocks
         private void btnStocks_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -122,6 +127,7 @@ namespace EmployeesManagementSystem
             stock.Show();
         }
 
+        // Shifts
         private void btnShifts_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -131,7 +137,7 @@ namespace EmployeesManagementSystem
             shifts.Show();
         }
 
-
+        // Exit
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -141,7 +147,19 @@ namespace EmployeesManagementSystem
             {
                 Application.Exit();
             }
+        } 
+
+        // Statistics
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Dashboard
+            Statistic stat = new Statistic(this.loggedUser);
+            stat.Closed += (s, args) => this.Close();
+            stat.Show();
         }
+
+        // Settings
         private void editAccount_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -160,13 +178,14 @@ namespace EmployeesManagementSystem
             login.Show();
         }
 
-        private void btnStatistics_Click(object sender, EventArgs e)
+        private void btnSettings_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            // Show Dashboard
-            Statistic stat = new Statistic(this.loggedUser);
-            stat.Closed += (s, args) => this.Close();
-            stat.Show();
+            settingsPanel.Visible = !settingsPanel.Visible;
+        }
+
+        private void lbSettings_Click(object sender, EventArgs e)
+        {
+            settingsPanel.Visible = !settingsPanel.Visible;
         }
 
         // Hovering
@@ -233,6 +252,14 @@ namespace EmployeesManagementSystem
         private void btnCreate_MouseLeave(object sender, EventArgs e)
         {
             this.btnCreate.BackColor = Color.LightGray;
+        }
+        private void btnSettings_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnSettings.BackColor = Color.DarkGray;
+        }
+        private void btnSettings_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnSettings.BackColor = Color.LightGray;
         }
 
     }

@@ -375,6 +375,7 @@
             this.label5.Size = new System.Drawing.Size(70, 20);
             this.label5.TabIndex = 3;
             this.label5.Text = "Settings";
+            this.label5.Click += new System.EventHandler(this.lbSettings_Click);
             // 
             // panelAccount
             // 
@@ -649,6 +650,9 @@
             this.btnSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnSettings.TabIndex = 1;
             this.btnSettings.TabStop = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            this.btnSettings.MouseEnter += new System.EventHandler(this.btnSettings_MouseEnter);
+            this.btnSettings.MouseLeave += new System.EventHandler(this.btnSettings_MouseLeave);
             // 
             // dataGridViewImageColumn1
             // 

@@ -253,6 +253,7 @@
             this.lbSettings.Size = new System.Drawing.Size(70, 20);
             this.lbSettings.TabIndex = 14;
             this.lbSettings.Text = "Settings";
+            this.lbSettings.Click += new System.EventHandler(this.lbSettings_Click);
             // 
             // btnSettings
             // 
@@ -265,6 +266,9 @@
             this.btnSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnSettings.TabIndex = 13;
             this.btnSettings.TabStop = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            this.btnSettings.MouseEnter += new System.EventHandler(this.btnSettings_MouseEnter);
+            this.btnSettings.MouseLeave += new System.EventHandler(this.btnSettings_MouseLeave);
             // 
             // btnStocks
             // 

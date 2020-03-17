@@ -106,8 +106,9 @@ namespace EmployeesManagementSystem
             stocks.Show();
         }
 
-        // Settings
+        
 
+        // Settings
         private void editAccount_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -124,6 +125,16 @@ namespace EmployeesManagementSystem
             Login login = new Login();
             login.Closed += (s, args) => this.Close();
             login.Show();
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            settingsPanel.Visible = !settingsPanel.Visible;
+        }
+
+        private void lbSettings_Click(object sender, EventArgs e)
+        {
+            settingsPanel.Visible = !settingsPanel.Visible;
         }
 
         // Statistics
@@ -204,6 +215,14 @@ namespace EmployeesManagementSystem
         private void btnStatistics_MouseLeave(object sender, EventArgs e)
         {
             this.btnStatistics.BackColor = Color.LightGray;
+        }
+        private void btnSettings_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnSettings.BackColor = Color.DarkGray;
+        }
+        private void btnSettings_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnSettings.BackColor = Color.LightGray;
         }
     }
 }
