@@ -11,22 +11,24 @@ namespace EmployeesManagementSystem.Models
     {
         public int ID { get; set; }
         public DateTime Date { get; set; }
+        public string Email { get; set; }
         public string Subject { get; set; }
-        public string Description { get; set; }
-        public string Employee { get; set; }
+        public string Message { get; set; }
+        public string EmployeeName { get; set; }
 
         public Cancellations() { }
-        public Cancellations(int id, DateTime date, string subject, string description, string employee)
+        public Cancellations(int id, DateTime date, string email, string subject, string message, string employeeName)
         {
             this.ID = id;
             this.Date = date;
             this.Subject = subject;
-            this.Description = description;
-            this.Employee = employee;
+            this.Message = message;
+            this.Email = email;
+            this.EmployeeName = employeeName;
         }
         public string[] GetInfo()
         {
-            string[] s = { Convert.ToString(this.ID) , this.Date.ToString() , this.Employee, this.Subject, this.Description, "Delete"};
+            string[] s = { Convert.ToString(this.ID) , this.Date.ToString() , this.EmployeeName, this.Email, this.Subject, this.Message, "Delete"};
             return s;
         }
     }

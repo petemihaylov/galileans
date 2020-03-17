@@ -7,11 +7,12 @@ namespace EmployeesManagementSystem.Data
     class CancellationContext : DbContext
     {
 
-        // Should be implemented
+        // No required functionality
         public override void Insert(object obj)
         {
             throw new NotImplementedException();
         }
+
         public override void DeleteById(int id)
         {
             using (var con = new MySqlConnection(connectionString))
@@ -45,10 +46,11 @@ namespace EmployeesManagementSystem.Data
                             // Mapping the return data to the object
                             Models.Cancellations cancel = new Models.Cancellations();
                             cancel.ID = (int)reader["ID"];
-                            cancel.Date = Convert.ToDateTime(((TimeSpan)reader["Date"]).ToString());
-                            cancel.Employee = (string)reader["Employee"];
+                            cancel.Date = (DateTime)reader["Date"];
+                            cancel.EmployeeName = (string)reader["EmployeeName"];
+                            cancel.Email = (string)reader["Email"];
                             cancel.Subject = (string)reader["Subject"];
-                            cancel.Description = (string)reader["Description"];
+                            cancel.Message = (string)reader["Message"];
                             cancels.Add(cancel);
                         }
                         return cancels.ToArray();

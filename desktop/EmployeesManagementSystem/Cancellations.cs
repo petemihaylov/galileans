@@ -40,12 +40,12 @@ namespace EmployeesManagementSystem
         // datagrid cell click needs a refactoring
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (!dataGridView.CurrentCell.ColumnIndex.Equals(5) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
+            if (!dataGridView.CurrentCell.ColumnIndex.Equals(6) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
                 // open another message box with the whole description
-                txDescription.Text = "Description: " + dataGridView.CurrentCell.Value.ToString();
+                txDescription.Text = "Message: " + dataGridView.CurrentCell.Value.ToString();
             }
-            else if (dataGridView.CurrentCell.ColumnIndex.Equals(5) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
+            else if (dataGridView.CurrentCell.ColumnIndex.Equals(6) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
                 int index = dataGridView.CurrentCell.RowIndex;
                 //MessageBox.Show(Convert.ToString(dataGridView.Rows[index].Cells[0].Value));
@@ -141,7 +141,7 @@ namespace EmployeesManagementSystem
 
         // Hovering
         private void btnExit_MouseEnter(object sender, EventArgs e)
-        {
+            {
             this.btnExit.BackColor = Color.LightGray;
         }
         private void btnExit_MouseLeave(object sender, EventArgs e)
