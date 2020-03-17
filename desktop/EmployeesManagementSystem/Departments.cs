@@ -40,40 +40,44 @@ namespace EmployeesManagementSystem
         {
             int btnDelete = 2;
             int nameCol = 1;
-           
 
-            // Delete specific Department
-            if (this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete))
+            // Check if there are departments in the list
+            if(this.dataGridView.Rows.Count > 0)
             {
-                // Local variables
-                int index = this.dataGridView.CurrentCell.RowIndex;
-                int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
-
-                this.departmentContext.DeleteById(id);
-                UpdateDepartments();
-            }
-
-            // Select and list Users from specific Department
-            if (this.dataGridView.CurrentCell.ColumnIndex.Equals(nameCol))
-            {
-                // Clear all users information
-                this.listUsersByDepartment.Items.Clear();
-
-                // Local variables
-                int index = this.dataGridView.CurrentCell.RowIndex;
-                int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
-                string department = Convert.ToString(this.dataGridView.Rows[index].Cells[1].Value);
-
-                this.listUsersByDepartment.Items.Add(department);
-                this.listUsersByDepartment.Items.Add("---------------------------------------");
-                foreach (User u in this.users)
+                // Delete specific Department
+                if (this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete))
                 {
-                    if (Convert.ToInt32(u.Department) == id)
+                    // Local variables
+                    int index = this.dataGridView.CurrentCell.RowIndex;
+                    int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
+
+                    this.departmentContext.DeleteById(id);
+                    UpdateDepartments();
+                }
+
+                // Select and list Users from specific Department
+                if (this.dataGridView.CurrentCell.ColumnIndex.Equals(nameCol))
+                {
+                    // Clear all users information
+                    this.listUsersByDepartment.Items.Clear();
+
+                    // Local variables
+                    int index = this.dataGridView.CurrentCell.RowIndex;
+                    int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
+                    string department = Convert.ToString(this.dataGridView.Rows[index].Cells[1].Value);
+
+                    this.listUsersByDepartment.Items.Add(department);
+                    this.listUsersByDepartment.Items.Add("---------------------------------------");
+                    foreach (User u in this.users)
                     {
-                        this.listUsersByDepartment.Items.Add("#" + u.ID + " " + u.FullName.ToString());
-                    }                                
+                        if (Convert.ToInt32(u.Department) == id)
+                        {
+                            this.listUsersByDepartment.Items.Add("#" + u.ID + " " + u.FullName.ToString());
+                        }
+                    }
                 }
             }
+            
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -203,11 +207,11 @@ namespace EmployeesManagementSystem
         }
         private void btnShift_MouseEnter(object sender, EventArgs e)
         {
-            this.btnShift.BackColor = Color.DarkGray; ;
+            this.btnShift.BackColor = Color.DarkGray;
         }
         private void btnShift_MouseLeave(object sender, EventArgs e)
         {
-            this.btnShift.BackColor = Color.LightGray; ;
+            this.btnShift.BackColor = Color.LightGray;
         }
         private void btnCancellations_MouseEnter(object sender, EventArgs e)
         {
