@@ -172,6 +172,75 @@ namespace EmployeesManagementSystem
         {
             CreateAccounts createAccounts = new CreateAccounts(this);
             createAccounts.Show();
+        } 
+        private void editAccount_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Dashboard
+            AdminDetails adminDetails = new AdminDetails(this.loggedUser);
+            adminDetails.Closed += (s, args) => this.Close();
+            adminDetails.Show();
+        }
+
+        // Setting button
+        private void lblLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Log In
+            Login login = new Login();
+            login.Closed += (s, args) => this.Close();
+            login.Show();
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            settingsPanel.Visible = !settingsPanel.Visible;
+        }
+
+        private void lbSettings_Click(object sender, EventArgs e)
+        {
+            settingsPanel.Visible = !settingsPanel.Visible;
+        }
+
+        // Cancellations
+        private void btnCancellations_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Dashboard
+            Cancellations cncl = new Cancellations(this.loggedUser);
+            cncl.Closed += (s, args) => this.Close();
+            cncl.Show();
+        }
+
+        // Departments
+        private void btnDepartments_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Dashboard
+            Departments dep = new Departments(this.loggedUser);
+            dep.Closed += (s, args) => this.Close();
+            dep.Show();
+
+        }
+
+        // Stocks
+        private void btnStocks_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Dashboard
+            Stocks stock = new Stocks(this.loggedUser);
+            stock.Closed += (s, args) => this.Close();
+            stock.Show();
+        }
+
+        // Statistics
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Dashboard
+            Statistic stat = new Statistic(this.loggedUser);
+            stat.Closed += (s, args) => this.Close();
+            stat.Show();
         }
 
 
@@ -190,7 +259,7 @@ namespace EmployeesManagementSystem
         }
         private void btnEmployees_MouseLeave(object sender, EventArgs e)
         {
-            this.btnEmployees.BackColor = Color.LightGray; ;
+            this.btnEmployees.BackColor = Color.LightGray;
         }
         private void btnCreate_MouseEnter(object sender, EventArgs e)
         {
@@ -200,66 +269,13 @@ namespace EmployeesManagementSystem
         {
             this.btnCreate.BackColor = Color.LightGray;
         }
-
         private void btnShift_MouseEnter(object sender, EventArgs e)
         {
             this.btnShift.BackColor = Color.DarkGray; ;
         }
-
         private void btnShift_MouseLeave(object sender, EventArgs e)
         {
             this.btnShift.BackColor = Color.LightGray; ;
-        }
-
-        private void lblLogOut_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Log In
-            Login login = new Login();
-            login.Closed += (s, args) => this.Close();
-            login.Show();
-        }
-
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            settingsPanel.Visible = !settingsPanel.Visible;
-        }
-        private void lbSettings_Click(object sender, EventArgs e)
-        {
-            settingsPanel.Visible = !settingsPanel.Visible;
-        }
-        private void editAccount_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Dashboard
-            AdminDetails adminDetails = new AdminDetails(this.loggedUser);
-            adminDetails.Closed += (s, args) => this.Close();
-            adminDetails.Show();
-        }
-        private void btnCancellations_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Dashboard
-            Cancellations cncl = new Cancellations(this.loggedUser);
-            cncl.Closed += (s, args) => this.Close();
-            cncl.Show();
-        }
-        private void btnDepartments_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Dashboard
-            Departments dep = new Departments(this.loggedUser);
-            dep.Closed += (s, args) => this.Close();
-            dep.Show();
-
-        }
-        private void btnStocks_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Dashboard
-            Stocks stock = new Stocks(this.loggedUser);
-            stock.Closed += (s, args) => this.Close();
-            stock.Show();
         }
         private void btnCancellations_MouseEnter(object sender, EventArgs e)
         {
@@ -285,13 +301,13 @@ namespace EmployeesManagementSystem
         {
             btnStocks.BackColor = Color.LightGray;
         }
-        private void btnStatistics_Click(object sender, EventArgs e)
+        private void btnStatistics_MouseEnter(object sender, EventArgs e)
         {
-            this.Hide();
-            // Show Dashboard
-            Statistic stat = new Statistic(this.loggedUser);
-            stat.Closed += (s, args) => this.Close();
-            stat.Show();
+            btnCancellations.BackColor = Color.DarkGray;
+        }
+        private void btnStatistics_MouseLeave(object sender, EventArgs e)
+        {
+            btnCancellations.BackColor = Color.LightGray;
         }
     }
 }

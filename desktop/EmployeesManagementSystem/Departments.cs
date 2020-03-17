@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
@@ -97,7 +98,7 @@ namespace EmployeesManagementSystem
             }
         }
 
-        // Buttons
+        // Shifts
         private void btnShift_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -106,6 +107,8 @@ namespace EmployeesManagementSystem
             shifts.Closed += (s, args) => this.Close();
             shifts.Show();
         }
+
+        // Cancellations
         private void btnCancellations_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -114,6 +117,8 @@ namespace EmployeesManagementSystem
             cncl.Closed += (s, args) => this.Close();
             cncl.Show();
         }
+
+        // Stocks
         private void btnStocks_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -122,7 +127,9 @@ namespace EmployeesManagementSystem
             stock.Closed += (s, args) => this.Close();
             stock.Show();
         }
-        private void btnEmployee_Click(object sender, EventArgs e)
+
+        // Employees
+        private void btnEmployees_Click(object sender, EventArgs e)
         {
             this.Hide();
             // Show Dashboard
@@ -130,6 +137,24 @@ namespace EmployeesManagementSystem
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
         }
+        
+        // Statistics
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Dashboard
+            Statistic stat = new Statistic(this.loggedUser);
+            stat.Closed += (s, args) => this.Close();
+            stat.Show();
+        }
+        
+        // Exit
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // Settings
         private void editAccount_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -146,28 +171,63 @@ namespace EmployeesManagementSystem
             login.Closed += (s, args) => this.Close();
             login.Show();
         }
-        private void btnStatistics_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Dashboard
-            Statistic stat = new Statistic(this.loggedUser);
-            stat.Closed += (s, args) => this.Close();
-            stat.Show();
-        }
 
-        private void exit_Click(object sender, EventArgs e)
+        // Hovering
+        private void btnExit_MouseEnter(object sender, EventArgs e)
         {
-            this.Close();
+            this.btnExit.BackColor = Color.LightGray;
         }
-        private void exit_MouseEnter(object sender, EventArgs e)
+        private void btnExit_MouseLeave(object sender, EventArgs e)
         {
-            System.Drawing.Color color = System.Drawing.Color.DarkGray;
-            this.exit.BackColor = color;
+            this.btnExit.BackColor = Color.White;
         }
-        private void exit_MouseLeave(object sender, EventArgs e)
+        private void btnEmployees_MouseEnter(object sender, EventArgs e)
         {
-            System.Drawing.Color color = System.Drawing.Color.White;
-            this.exit.BackColor = color;
+            this.btnEmployees.BackColor = Color.DarkGray;
+        }
+        private void btnEmployees_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnEmployees.BackColor = Color.LightGray;
+        }
+        private void btnShift_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnShift.BackColor = Color.DarkGray; ;
+        }
+        private void btnShift_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnShift.BackColor = Color.LightGray; ;
+        }
+        private void btnCancellations_MouseEnter(object sender, EventArgs e)
+        {
+            btnCancellations.BackColor = Color.DarkGray;
+        }
+        private void btnCancellations_MouseLeave(object sender, EventArgs e)
+        {
+            btnCancellations.BackColor = Color.LightGray;
+        }
+        private void btnDepartments_MouseEnter(object sender, EventArgs e)
+        {
+            btnDepartments.BackColor = Color.DarkGray;
+        }
+        private void btnDepartments_MouseLeave(object sender, EventArgs e)
+        {
+            btnDepartments.BackColor = Color.LightGray;
+        }
+        private void btnStocks_MouseEnter(object sender, EventArgs e)
+        {
+            btnStocks.BackColor = Color.DarkGray;
+        }
+        private void btnStocks_MouseLeave(object sender, EventArgs e)
+        {
+            btnStocks.BackColor = Color.LightGray;
+        }
+        private void btnStatistics_MouseEnter(object sender, EventArgs e)
+        {
+            btnCancellations.BackColor = Color.DarkGray;
+        }
+        private void btnStatistics_MouseLeave(object sender, EventArgs e)
+        {
+            btnCancellations.BackColor = Color.LightGray;
         }
     }
 }
