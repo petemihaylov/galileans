@@ -28,11 +28,40 @@ namespace EmployeesManagementSystem
             this.loggedUser = user;
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void Stocks_Load(object sender, EventArgs e)
         {
-            CreateStock createStocks = new CreateStock(this);
-            createStocks.Show();
+            // Roles division
+            if (this.loggedUser.Role == Models.Role.Manager.ToString())
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnCancellations.Enabled = true;
+                this.btnDepartments.Enabled = true;
+                this.btnStocks.Enabled = true;
+                this.btnShifts.Enabled = false;
+                this.btnStatistics.Enabled = true;
+            }
+            else if (this.loggedUser.Role == Models.Role.Administrator.ToString())
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnCancellations.Enabled = false;
+                this.btnDepartments.Enabled = true;
+                this.btnStocks.Enabled = false;
+                this.btnShifts.Enabled = true;
+                this.btnStatistics.Enabled = false;
+            }
+
+            try
+            {
+                this.stocks = stockContext.GetAllStocks();
+                showInformation(this.stocks);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Can't display info correctly!");
+            }
         }
+
+       
 
         public void UpdateStocks()
         {
@@ -62,18 +91,6 @@ namespace EmployeesManagementSystem
             }
         }
 
-        private void Stocks_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                this.stocks = stockContext.GetAllStocks();
-                showInformation(this.stocks);
-            }
-            catch (Exception)
-            {
-                throw new Exception("Can't display info correctly!");
-            }
-        }
         private void showInformation(Stock[] stocks)
         {
             // Clean the dataGrid
@@ -85,7 +102,14 @@ namespace EmployeesManagementSystem
                 this.stockDataGrid.Rows.Add(stock.GetInfo());
             }
         }
-        
+
+        // Create
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            CreateStock createStocks = new CreateStock(this);
+            createStocks.Show();
+        }
+
         // Employees
         private void btnEmployees_Click(object sender, EventArgs e)
         {

@@ -25,6 +25,26 @@ namespace EmployeesManagementSystem
 
         private void Departments_Load(object sender, EventArgs e)
         {
+            // Roles division
+            if (this.loggedUser.Role == Models.Role.Manager.ToString())
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnCancellations.Enabled = true;
+                this.btnDepartments.Enabled = true;
+                this.btnStocks.Enabled = true;
+                this.btnShifts.Enabled = false;
+                this.btnStatistics.Enabled = true;
+            }
+            else if (this.loggedUser.Role == Models.Role.Administrator.ToString())
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnCancellations.Enabled = false;
+                this.btnDepartments.Enabled = true;
+                this.btnStocks.Enabled = false;
+                this.btnShifts.Enabled = true;
+                this.btnStatistics.Enabled = false;
+            }
+
             try
             {
                 this.departments = departmentContext.GetAllDepartments();

@@ -31,6 +31,26 @@ namespace EmployeesManagementSystem
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            // Roles division
+            if(this.loggedUser.Role == Models.Role.Manager.ToString())
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnCancellations.Enabled = true;
+                this.btnDepartments.Enabled = true;
+                this.btnStocks.Enabled = true;
+                this.btnShifts.Enabled = false;
+                this.btnStatistics.Enabled = true;
+            }
+            else if(this.loggedUser.Role == Models.Role.Administrator.ToString())
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnCancellations.Enabled = false;
+                this.btnDepartments.Enabled = true;
+                this.btnStocks.Enabled = false;
+                this.btnShifts.Enabled = true;
+                this.btnStatistics.Enabled = false;
+            }
+            
             try
             {
                 this.users = this.userContext.GetAllUsers();
@@ -122,7 +142,7 @@ namespace EmployeesManagementSystem
             {
                 // Ask if you want to delete and proccess
                 int index = dataGridView.CurrentCell.RowIndex;
-
+                
                 // Find the role
                 if (!Convert.ToString(dataGridView.Rows[index].Cells[3].Value).Contains("Administrator"))
                 {
