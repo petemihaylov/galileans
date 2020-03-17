@@ -83,8 +83,8 @@
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.dateLeft = new System.Windows.Forms.Label();
             this.monthLeft = new System.Windows.Forms.Label();
-            this.arrowRight = new System.Windows.Forms.PictureBox();
-            this.arrowLeft = new System.Windows.Forms.PictureBox();
+            this.btnArrowRight = new System.Windows.Forms.PictureBox();
+            this.btnArrowLeft = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -135,8 +135,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arrowLeft)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnArrowRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnArrowLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -600,8 +600,8 @@
             this.groupBox5.Controls.Add(this.groupBox4);
             this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Controls.Add(this.groupBox2);
-            this.groupBox5.Controls.Add(this.arrowRight);
-            this.groupBox5.Controls.Add(this.arrowLeft);
+            this.groupBox5.Controls.Add(this.btnArrowRight);
+            this.groupBox5.Controls.Add(this.btnArrowLeft);
             this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox5.Location = new System.Drawing.Point(414, 84);
@@ -753,27 +753,31 @@
             this.monthLeft.TabIndex = 51;
             this.monthLeft.Text = "FEB";
             // 
-            // arrowRight
+            // btnArrowRight
             // 
-            this.arrowRight.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
-            this.arrowRight.Location = new System.Drawing.Point(816, 47);
-            this.arrowRight.Name = "arrowRight";
-            this.arrowRight.Size = new System.Drawing.Size(72, 96);
-            this.arrowRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.arrowRight.TabIndex = 57;
-            this.arrowRight.TabStop = false;
-            this.arrowRight.Click += new System.EventHandler(this.arrowRight_Click);
+            this.btnArrowRight.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
+            this.btnArrowRight.Location = new System.Drawing.Point(816, 47);
+            this.btnArrowRight.Name = "btnArrowRight";
+            this.btnArrowRight.Size = new System.Drawing.Size(72, 96);
+            this.btnArrowRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnArrowRight.TabIndex = 57;
+            this.btnArrowRight.TabStop = false;
+            this.btnArrowRight.Click += new System.EventHandler(this.arrowRight_Click);
+            this.btnArrowRight.MouseEnter += new System.EventHandler(this.btnArrowRight_MouseEnter);
+            this.btnArrowRight.MouseLeave += new System.EventHandler(this.btnArrowRight_MouseLeave);
             // 
-            // arrowLeft
+            // btnArrowLeft
             // 
-            this.arrowLeft.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp1;
-            this.arrowLeft.Location = new System.Drawing.Point(46, 47);
-            this.arrowLeft.Name = "arrowLeft";
-            this.arrowLeft.Size = new System.Drawing.Size(72, 96);
-            this.arrowLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.arrowLeft.TabIndex = 58;
-            this.arrowLeft.TabStop = false;
-            this.arrowLeft.Click += new System.EventHandler(this.arrowLeft_Click);
+            this.btnArrowLeft.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp1;
+            this.btnArrowLeft.Location = new System.Drawing.Point(46, 47);
+            this.btnArrowLeft.Name = "btnArrowLeft";
+            this.btnArrowLeft.Size = new System.Drawing.Size(72, 96);
+            this.btnArrowLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnArrowLeft.TabIndex = 58;
+            this.btnArrowLeft.TabStop = false;
+            this.btnArrowLeft.Click += new System.EventHandler(this.arrowLeft_Click);
+            this.btnArrowLeft.MouseEnter += new System.EventHandler(this.btnArrowLeft_MouseEnter);
+            this.btnArrowLeft.MouseLeave += new System.EventHandler(this.btnArrowLeft_MouseLeave);
             // 
             // panel5
             // 
@@ -1020,8 +1024,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arrowLeft)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnArrowRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnArrowLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
@@ -1079,8 +1083,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label dateLeft;
         private System.Windows.Forms.Label monthLeft;
-        private System.Windows.Forms.PictureBox arrowRight;
-        private System.Windows.Forms.PictureBox arrowLeft;
+        private System.Windows.Forms.PictureBox btnArrowRight;
+        private System.Windows.Forms.PictureBox btnArrowLeft;
         private System.Windows.Forms.ListBox morningList;
         private System.Windows.Forms.ListBox afternoonList;
         private System.Windows.Forms.ListBox eveningList;

@@ -269,6 +269,21 @@ namespace EmployeesManagementSystem
         {
             this.btnToday.BackColor = Color.LightGray;
         }
-
+        private void btnArrowRight_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnArrowRight.BackColor = Color.DarkGray;
+        }
+        private void btnArrowRight_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnArrowRight.BackColor = Color.LightGray;
+        }
+        private void btnArrowLeft_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnArrowLeft.BackColor = Color.DarkGray;
+        }
+        private void btnArrowLeft_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnArrowLeft.BackColor = Color.LightGray;
+        }
     }
 }
