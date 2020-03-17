@@ -12,7 +12,6 @@ namespace EmployeesManagementSystem
         private CancellationContext cancellationContext = new CancellationContext();
         private User loggedUser;
 
-
         public Cancellations(User user)
         {
             InitializeComponent();
