@@ -131,7 +131,7 @@ namespace EmployeesManagementSystem
 
             foreach (Shift shift in shifts)
             {
-                if(shift.Department == department.ID)
+                if(shift.DepartmentID == department.ID)
                 {
                     if (keepTrack.ToString("MMM").ToUpper() == monthCenter.Text && keepTrack.ToString("yyyy") == yearCenter.Text)
                     {
