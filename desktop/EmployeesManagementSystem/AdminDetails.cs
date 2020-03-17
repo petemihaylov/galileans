@@ -14,13 +14,11 @@ namespace EmployeesManagementSystem
         private ImageContext imageContext = new ImageContext();
         private DepartmentContext departmentContext = new DepartmentContext();
         private User user;
-        private Form previousForm;
 
-        public AdminDetails(User loggedUser, Form previousForm)
+        public AdminDetails(User loggedUser)
         {
             InitializeComponent();
             this.user = loggedUser;
-            this.previousForm = previousForm;
 
             // Temporary validation used when debugging
             if (user == null)
@@ -64,9 +62,10 @@ namespace EmployeesManagementSystem
 
                 user = userContext.GetUserByID(this.user.ID);
                 this.Hide();
-                // Show previous form
-                previousForm.Closed += (s, args) => this.Close();
-                previousForm.Show();
+                // Show Dashboard
+                AdminDetails admin = new AdminDetails(user);
+                admin.Closed += (s, args) => this.Close();
+                admin.Show();
             }
 
         }
@@ -149,10 +148,11 @@ namespace EmployeesManagementSystem
 
         private void exit_Click(object sender, EventArgs e)
         {
-            // Show previous form
-            previousForm.Closed += (s, args) => this.Close();
-            previousForm.Show();
             this.Hide();
+            // Show Dashboard
+            Dashboard dashboard = new Dashboard(this.user);
+            dashboard.Closed += (s, args) => this.Close();
+            dashboard.Show();
         }
     }
 }

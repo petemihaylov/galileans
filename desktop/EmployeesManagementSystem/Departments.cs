@@ -39,7 +39,7 @@ namespace EmployeesManagementSystem
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int btnDelete = 2;
-           
+            int nameCol = 1;
 
             // Check if there are departments in the list
             if(this.dataGridView.Rows.Count > 0)
@@ -55,11 +55,11 @@ namespace EmployeesManagementSystem
                     UpdateDepartments();
                 }
 
-            // Select and list Users from specific Department
-            if (!this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete))
-            {
-                // Clear all users information
-                this.listUsersByDepartment.Items.Clear();
+                // Select and list Users from specific Department
+                if (this.dataGridView.CurrentCell.ColumnIndex.Equals(nameCol))
+                {
+                    // Clear all users information
+                    this.listUsersByDepartment.Items.Clear();
 
                     // Local variables
                     int index = this.dataGridView.CurrentCell.RowIndex;
@@ -174,12 +174,11 @@ namespace EmployeesManagementSystem
         private void editAccount_Click(object sender, EventArgs e)
         {
             this.Hide();
-            // Show Admin details
-            AdminDetails adminDetails = new AdminDetails(this.loggedUser, this);
-            adminDetails.Closed += (s, args) => this.Hide();
+            // Show Dashboard
+            AdminDetails adminDetails = new AdminDetails(this.loggedUser);
+            adminDetails.Closed += (s, args) => this.Close();
             adminDetails.Show();
         }
-
         private void lblLogOut_Click(object sender, EventArgs e)
         {
             this.Hide();

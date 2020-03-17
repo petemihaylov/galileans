@@ -112,12 +112,13 @@ namespace EmployeesManagementSystem
         private void editAccount_Click(object sender, EventArgs e)
         {
             this.Hide();
-            // Show Admin details
-            AdminDetails adminDetails = new AdminDetails(this.loggedUser, this);
-            adminDetails.Closed += (s, args) => this.Hide();
+            // Show Dashboard
+            AdminDetails adminDetails = new AdminDetails(this.loggedUser);
+            adminDetails.Closed += (s, args) => this.Close();
             adminDetails.Show();
         }
-        private void LogOut_Click(object sender, EventArgs e)
+
+        private void lblLogOut_Click(object sender, EventArgs e)
         {
             this.Hide();
             // Show Log In
