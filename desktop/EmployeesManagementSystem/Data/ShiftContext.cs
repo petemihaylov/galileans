@@ -82,6 +82,48 @@ namespace EmployeesManagementSystem.Data
 
             }
         }
+
+
+        public List<Shift> GetShiftsByDepId(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"SELECT * FROM Shifts WHERE DepartmentID = @ID";
+                    command.AddParameter("ID", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        List<Shift> shifts = new List<Shift>();
+                        while (reader.Read())
+                        {
+                            // Mapping the return data to the object
+
+                            Shift shift = new Shift();
+                            shift.ID = (int)reader["ID"];
+                            shift.ShiftDate = (DateTime)reader["ShiftDate"];
+
+
+                            shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
+                            shift.Availability = (bool)reader["Availability"];
+                            shift.Department = (int)reader["DepartmentID"];
+                            shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
+                            shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
+                            shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
+                            shift.Attended = (bool)reader["Attended"];
+
+                            shifts.Add(shift);
+                        }
+
+                        return shifts;
+                    }
+                }
+
+            }
+        }
         public Shift GetShiftByDate(DateTime date, DateTime startTime)
         {
             using (var con = new MySqlConnection(connectionString))
