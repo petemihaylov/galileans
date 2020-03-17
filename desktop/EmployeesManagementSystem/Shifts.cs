@@ -10,7 +10,6 @@ namespace EmployeesManagementSystem
 {
     public partial class Shifts : Form
     {
-        // Variables
         private ShiftContext shiftContext = new ShiftContext();
         private UserContext userContext = new UserContext();
 
@@ -18,13 +17,6 @@ namespace EmployeesManagementSystem
         private User loggedUser;
         private int addDays = 0;
 
-        // Default constructor
-        public Shifts()
-        {
-
-        }
-
-        // Constructor
         public Shifts(User user)
         {
             InitializeComponent();
@@ -193,9 +185,7 @@ namespace EmployeesManagementSystem
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
         }
-
-        // Settings
-        private void editAccount_Click(object sender, EventArgs e)
+        private void btnStatistics_Click(object sender, EventArgs e)
         {
             this.Hide();
             // Show Dashboard
@@ -209,7 +199,15 @@ namespace EmployeesManagementSystem
         {
             settingsPanel.Visible = !settingsPanel.Visible;
         }
-        private void lblLogOut_Click(object sender, EventArgs e)
+        private void editAccount_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Admin details
+            AdminDetails adminDetails = new AdminDetails(this.loggedUser, this);
+            adminDetails.Closed += (s, args) => this.Hide();
+            adminDetails.Show();
+        }
+        private void LogOut_Click(object sender, EventArgs e)
         {
             this.Hide();
             // Show Log In
@@ -218,25 +216,6 @@ namespace EmployeesManagementSystem
             login.Show();
         }
 
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            settingsPanel.Visible = !settingsPanel.Visible;
-        }
-
-        private void lbSettings_Click(object sender, EventArgs e)
-        {
-            settingsPanel.Visible = !settingsPanel.Visible;
-        }
-
-        // Statistics
-        private void btnStatistics_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Dashboard
-            Statistic stat = new Statistic(this.loggedUser);
-            stat.Closed += (s, args) => this.Close();
-            stat.Show();
-        }
 
         // Hovering
         private void btnExit_MouseEnter(object sender, EventArgs e)
