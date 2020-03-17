@@ -149,14 +149,6 @@ namespace EmployeesManagementSystem
         }
 
         // Hovering
-        private void btnCancellations_MouseEnter(object sender, EventArgs e)
-        {
-            btnCancellations.BackColor = Color.DarkGray;
-        }
-        private void btnCancellations_MouseLeave(object sender, EventArgs e)
-        {
-            btnCancellations.BackColor = Color.LightGray;
-        }
         private void btnExit_MouseEnter(object sender, EventArgs e)
         {
             this.btnExit.BackColor = Color.LightGray;
@@ -181,29 +173,37 @@ namespace EmployeesManagementSystem
         {
             this.btnShifts.BackColor = Color.LightGray;
         }
+        private void btnCancellations_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnCancellations.BackColor = Color.DarkGray;
+        }
+        private void btnCancellations_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnCancellations.BackColor = Color.LightGray;
+        }
         private void btnDepartments_MouseEnter(object sender, EventArgs e)
         {
-            btnDepartments.BackColor = Color.DarkGray;
+            this.btnDepartments.BackColor = Color.DarkGray;
         }
         private void btnDepartments_MouseLeave(object sender, EventArgs e)
         {
-            btnDepartments.BackColor = Color.LightGray;
+            this.btnDepartments.BackColor = Color.LightGray;
         }
         private void btnStocks_MouseEnter(object sender, EventArgs e)
         {
-            btnStocks.BackColor = Color.DarkGray;
+            this.btnStocks.BackColor = Color.DarkGray;
         }
         private void btnStocks_MouseLeave(object sender, EventArgs e)
         {
-            btnStocks.BackColor = Color.LightGray;
+            this.btnStocks.BackColor = Color.LightGray;
         }
         private void btnStatistics_MouseEnter(object sender, EventArgs e)
         {
-            btnStatistics.BackColor = Color.DarkGray;
+            this.btnStatistics.BackColor = Color.DarkGray;
         }
         private void btnStatistics_MouseLeave(object sender, EventArgs e)
         {
-            btnStatistics.BackColor = Color.LightGray;
+            this.btnStatistics.BackColor = Color.LightGray;
         }
     }
 }
