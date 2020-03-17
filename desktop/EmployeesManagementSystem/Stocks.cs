@@ -159,15 +159,6 @@ namespace EmployeesManagementSystem
             stat.Show();
         }
 
-        private void btnStatistics_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Dashboard
-            Statistic stat = new Statistic(this.loggedUser);
-            stat.Closed += (s, args) => this.Close();
-            stat.Show();
-        }
-
         // Settings
         private void Settings_Click(object sender, EventArgs e)
         {

@@ -588,7 +588,7 @@
             // 
             this.btnSettings.Image = global::EmployeesManagementSystem.Properties.Resources.settings;
             this.btnSettings.Location = new System.Drawing.Point(9, 626);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(2);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(29, 28);
             this.btnSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
