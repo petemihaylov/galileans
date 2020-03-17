@@ -17,15 +17,14 @@ namespace EmployeesManagementSystem
         private User[] users;
         private List<Shift> shifts;
         private Department[] departments;
+        private int[] cevaAttended = new int[1000];
+        private int[] cevaAbsent = new int[1000];
+        private int[] cevaScheduled = new int[1000];
+
+
 
         private int hoursWorked, hrs, id;
         private int hoursSkipped;
-
-        private int presentWorkers = 0;
-        private int absentWorkers = 0;
-        private int lateWorkers = 0;
-
-
         int counter = 0;
 
         // Keeps  track of the current loggedUser
@@ -43,13 +42,10 @@ namespace EmployeesManagementSystem
             this.users = this.userContext.GetAllUsers();
             this.departments = departmentContext.GetAllDepartments();
             this.loggedUser = user;
+            int[] cevaAttended = { 0 };
+            int[] cevaAbsent = { 0 };
+            int[] cevaScheduled = { 0 };
 
-            monthCenter.Text = today.ToString("MMM").ToUpper();
-            yearCenter.Text = today.ToString("yyyy");
-            monthLeft.Text = today.AddMonths(-1).ToString("MMM").ToUpper();
-            yearLeft.Text = today.ToString("yyyy");
-            monthRight.Text = today.AddMonths(1).ToString("MMM").ToUpper();
-            yearLeft.Text = today.ToString("yyyy");
         }
 
 
@@ -75,25 +71,26 @@ namespace EmployeesManagementSystem
         {
             try
             {
-                shifts = shiftContext.GetShiftsByDepId(Convert.ToInt32(cbEmployee.Text)); // try catch
+                shifts = shiftContext.GetShiftsByUserId(Convert.ToInt32(cbEmployee.Text)); // try catch
             }
             catch (Exception)
             {
                 throw new Exception("Can't take employee's shifts");
             }
 
+            foreach (Shift shift in shifts)
+            {
+                cbMonth.Items.Add(shift.ShiftDate.Month.ToString("mmmm"));
+            }
             User user = userContext.GetUserByID(Convert.ToInt32(cbEmployee.Text));
 
-            //clears the chart
-            foreach (var series in chart1.Series)
-            {
-                series.Points.Clear();
-            }
+            chart1.ChartAreas[0].AxisY.Maximum = 23;
+            chart1.ChartAreas[0].AxisY.Minimum= 9;
 
             //attendance per employee
             foreach (Shift shift in shifts)
             {
-                if (keepTrack.ToString("MMM").ToUpper() == monthCenter.Text && keepTrack.ToString("yyyy") == yearCenter.Text)
+                if (cbMonth.Text == Convert.ToString(shift.ShiftDate.Month))
                 {
                     //marks attended
                     if (shift.Attended == true)
@@ -112,49 +109,52 @@ namespace EmployeesManagementSystem
 
         private void AttendancePerDepartment()
         {
-            presentWorkers = 0; absentWorkers = 0; lateWorkers = 0;
-            //clears the chart
-            foreach (var series in chart1.Series)
-            {
-                series.Points.Clear();
-            }
             try
             {
-                shifts = shiftContext.GetShiftsByUserId(Convert.ToInt32(cbEmployee.Text)); // try catch
+                shifts = shiftContext.GetShiftsByDepId(Convert.ToInt32(cbEmployee.Text)); // try catch
+                //MessageBox.Show(cbEmployee.Text);
             }
             catch (Exception)
             {
-                throw new Exception("Can't take employee's shifts");
+                throw new Exception("Can't take department's shifts");
             }
+
+            chart1.ChartAreas[0].AxisY.Minimum = 0;
+            chart1.ChartAreas[0].AxisY.Maximum = Double.NaN;
 
             Department department = departmentContext.GetDepartmentById(Convert.ToInt32(cbEmployee.Text));
-
+            
             foreach (Shift shift in shifts)
             {
-                if(shift.Department == department.ID)
+                int ics = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day;
+                //marks attended
+                if (shift.Attended == true)
                 {
-                    if (keepTrack.ToString("MMM").ToUpper() == monthCenter.Text && keepTrack.ToString("yyyy") == yearCenter.Text)
-                    {
-                        //marks attended
-                        if (shift.Attended == true)
-                            chart1.Series["Present"].Points.Add(new DataPoint() { AxisLabel = Convert.ToString(shift.ShiftDate.Day) + "/" + Convert.ToString(shift.ShiftDate.Month), XValue = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day, YValues = new double[] {1,1} });
-                        //marks absent
-                        else if (shift.Attended == false && shift.ShiftDate < today)
-                            chart1.Series["Absent"].Points.Add(new DataPoint() { AxisLabel = Convert.ToString(shift.ShiftDate.Day) + "/" + Convert.ToString(shift.ShiftDate.Month), XValue = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day, YValues = new double[] { 1, 1 } });
-                        //marks future scheduled shifts
-                        else if (shift.Attended == false && shift.ShiftDate > today)
-                        {
-                            chart1.Series["Scheduled"].Points.Add(new DataPoint() { AxisLabel = Convert.ToString(shift.ShiftDate.Day) + "/" + Convert.ToString(shift.ShiftDate.Month), XValue = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day, YValues = new double[] { 1, 1 } });
-                        }
-                    }
-
+                    cevaAttended[ics]++;
                 }
+                //marks absent
+                else if (shift.Attended == false && shift.ShiftDate <= today)
+                {
+                    cevaAbsent[ics]++;
+                }
+                //mark scheduled
+                else if (shift.Attended == false && shift.ShiftDate > today)
+                {
+                    cevaScheduled[ics]++;
+                }   
             }
-                
+            for (int i = 0; i <= 31 * 12 + 2; i++)
+            {
+                if (cevaAttended[i] != 0)
+                    chart1.Series["Present"].Points.Add(new DataPoint() { AxisLabel = i / 31 + "/" + i % 31, XValue = i, YValues = new double[] { 0, cevaAttended[i] } });
+                if (cevaAbsent[i] != 0)
+                    chart1.Series["Absent"].Points.Add(new DataPoint() { AxisLabel = i / 31 + "/" + i % 31, XValue = i, YValues = new double[] { cevaAttended[i], cevaAttended[i] + cevaAbsent[i] } });
+                if (cevaScheduled[i] != 0)
+                    chart1.Series["Scheduled"].Points.Add(new DataPoint() { AxisLabel = i / 31 + "/" + i % 31, XValue = i, YValues = new double[] { cevaAttended[i] + cevaAbsent[i], cevaAttended[i] + cevaAbsent[i] + cevaScheduled[i] } });
+                cevaAttended[i] = cevaAbsent[i] = cevaScheduled[i] = 0;
+            }
 
-
-
-    }
+        }
 
         private void WagePerEmployee()
         {
@@ -168,16 +168,10 @@ namespace EmployeesManagementSystem
             }
             User user = userContext.GetUserByID(Convert.ToInt32(cbEmployee.Text));
 
-            //clears the chart
-            foreach (var series in chart1.Series)
-            {
-                series.Points.Clear();
-            }
-
             //if the month selected is the one in center
-            if (keepTrack.ToString("MMM").ToUpper() == monthCenter.Text && keepTrack.ToString("yyyy") == yearCenter.Text)
+            foreach (Shift shift in shifts)
             {
-                foreach (Shift shift in shifts)
+                if (cbMonth.Text == Convert.ToString(shift.ShiftDate.Month))
                 {
                     money = 0;
                     if (shift.Attended)
@@ -200,6 +194,7 @@ namespace EmployeesManagementSystem
                     }
                 }
             }
+        }
             /*
             chart1.Series["Series1"].Points.AddXY(hoursWorked * 100 / (hoursWorked + hoursSkipped) + "%", hoursWorked);
             chart1.Series["Series1"].Points.AddXY(hoursSkipped * 100 / (hoursWorked + hoursSkipped) + "%", hoursSkipped);
@@ -209,97 +204,8 @@ namespace EmployeesManagementSystem
                 series.Points.Clear();
             }
             chart1.Series["Series1"].Points.AddXY(hoursWorked, money); ;
-            lbMoneyMadeMonth.Text = Convert.ToString(money) + "$";*/
-        }
-
-        private void Turnover()
-        {
-            //clears the chart
-            foreach (var series in chart1.Series)
-            {
-                series.Points.Clear();
-            }
-
-        }
-
-    
-        private void btnToday_Click(object sender, EventArgs e)
-        {
-            counter = 0;
-            keepTrack = today;
-
-            monthLeft.Text = today.AddMonths(counter - 1).ToString("MMM").ToUpper();
-            monthCenter.Text = today.ToString("MMM").ToUpper();
-            monthRight.Text = today.AddMonths(counter + 1).ToString("MMM").ToUpper();
-
-            yearLeft.Text = today.ToString("yyyy");
-            yearCenter.Text = today.ToString("yyyy");
-            yearRight.Text = today.ToString("yyyy");
-
-            if (cbStatistic.Text == "Attendance per employee")
-                AttendancePerEmployee();
-
-            else if (cbStatistic.Text == "Attendance per department")
-                AttendancePerDepartment();
-
-            else if (cbStatistic.Text == "Turnover")
-                Turnover();
-
-            else if (cbStatistic.Text == "Wage per employee")
-                WagePerEmployee();
-        }
-
-        private void arrowLeft_Click(object sender, EventArgs e)
-        {
-            counter--;
-
-            keepTrack = today.AddMonths(counter);
-            monthCenter.Text = today.AddMonths(counter).ToString("MMM").ToUpper();
-            monthLeft.Text = today.AddMonths(counter - 1).ToString("MMM").ToUpper();
-            monthRight.Text = today.AddMonths(counter + 1).ToString("MMM").ToUpper();
-
-            yearLeft.Text = today.AddMonths(counter - 1).ToString("yyyy");
-            yearCenter.Text = today.AddMonths(counter).ToString("yyyy");
-            yearRight.Text = today.AddMonths(counter + 1).ToString("yyyy");
-
-            if (cbStatistic.Text == "Attendance per employee")
-                AttendancePerEmployee();
-
-            else if (cbStatistic.Text == "Attendance per department")
-                AttendancePerDepartment();
-
-            else if (cbStatistic.Text == "Turnover")
-                Turnover();
-
-            else if (cbStatistic.Text == "Wage per employee")
-                WagePerEmployee();
-        }
-
-        private void arrowRight_Click(object sender, EventArgs e)
-        {
-            counter++;
-            keepTrack = today.AddMonths(counter);
-            monthCenter.Text = today.AddMonths(counter).ToString("MMM").ToUpper();
-            monthLeft.Text = today.AddMonths(counter - 1).ToString("MMM").ToUpper();
-            monthRight.Text = today.AddMonths(counter + 1).ToString("MMM").ToUpper();
-
-            yearLeft.Text = today.AddMonths(counter - 1).ToString("yyyy");
-            yearCenter.Text = today.AddMonths(counter).ToString("yyyy");
-            yearRight.Text = today.AddMonths(counter + 1).ToString("yyyy");
-
-            if (cbStatistic.Text == "Attendance per employee")
-                AttendancePerEmployee();
-
-            else if (cbStatistic.Text == "Attendance per department")
-                AttendancePerDepartment();
-
-            else if (cbStatistic.Text == "Turnover")
-                Turnover();
-
-            else if (cbStatistic.Text == "Wage per employee")
-                WagePerEmployee();
-
-        }
+            l
+        */
 
         private void exit_MouseEnter(object sender, EventArgs e)
         {
@@ -333,14 +239,13 @@ namespace EmployeesManagementSystem
             {
                 cbEmployee.Items.Clear();
                 cbEmployee.Enabled = true;
-                cbEmployee.Show();
+                  cbEmployee.Show();
                 lbEmployee.Show();
                 lbEmployee.Text = "Select a department";
                 foreach (Department item in departments)
                 {
                     cbEmployee.Items.Add(item.ID);
                 }
-
             }
 
             else
@@ -349,7 +254,7 @@ namespace EmployeesManagementSystem
                 lbEmployee.Hide();
             }
 
-            if (cbStatistic.Text.Contains("Attendance"))
+            if (cbStatistic.Text == "Attendance per employee")
             {
                 //labels for y axis hours
                 CustomLabel label1 = new CustomLabel
@@ -490,17 +395,20 @@ namespace EmployeesManagementSystem
 
         private void cbEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //clears the chart
+
+            foreach (var series in chart1.Series)
+            {
+                series.Points.Clear();
+            }
 
             if (cbStatistic.Text == "Attendance per employee")
                 AttendancePerEmployee();
 
-            else if (cbStatistic.Text == "Attendance per department")
+            if (cbStatistic.Text == "Attendance per department")
                 AttendancePerDepartment();
 
-            else if (cbStatistic.Text == "Turnover")
-                Turnover();
-
-            else if (cbStatistic.Text == "Wage per employee")
+            if (cbStatistic.Text == "Wage per employee")
                 WagePerEmployee();
         }
     }
