@@ -46,6 +46,19 @@ namespace EmployeesManagementSystem
             int[] cevaAbsent = { 0 };
             int[] cevaScheduled = { 0 };
 
+            cbMonth.Items.Add("january");
+            cbMonth.Items.Add("february");
+            cbMonth.Items.Add("march");
+            cbMonth.Items.Add("april");
+            cbMonth.Items.Add("may");
+            cbMonth.Items.Add("june");
+            cbMonth.Items.Add("july");
+            cbMonth.Items.Add("august");
+            cbMonth.Items.Add("september");
+            cbMonth.Items.Add("october");
+            cbMonth.Items.Add("november");
+            cbMonth.Items.Add("december");
+
         }
 
 
@@ -78,10 +91,6 @@ namespace EmployeesManagementSystem
                 throw new Exception("Can't take employee's shifts");
             }
 
-            foreach (Shift shift in shifts)
-            {
-                cbMonth.Items.Add(shift.ShiftDate.Month.ToString("mmmm"));
-            }
             User user = userContext.GetUserByID(Convert.ToInt32(cbEmployee.Text));
 
             chart1.ChartAreas[0].AxisY.Maximum = 23;
@@ -90,7 +99,7 @@ namespace EmployeesManagementSystem
             //attendance per employee
             foreach (Shift shift in shifts)
             {
-                if (cbMonth.Text == Convert.ToString(shift.ShiftDate.Month))
+                if (cbMonth.Text == Convert.ToString(shift.ShiftDate.Month.ToString("m")))
                 {
                     //marks attended
                     if (shift.Attended == true)
@@ -129,7 +138,6 @@ namespace EmployeesManagementSystem
                 int ics = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day;
                 //marks attended
                 if (shift.Attended == true)
-                if(shift.DepartmentID == department.ID)
                 {
                     counterAttended[ics]++;
                 }
