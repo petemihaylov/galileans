@@ -28,6 +28,7 @@ namespace EmployeesManagementSystem.Data
                             shift.ID = (int)reader["ID"];
                             shift.ShiftDate = (DateTime)reader["ShiftDate"];
                             shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
+                            shift.DepartmentID = (int)reader["DepartmentID"];
                             shift.Availability = (bool)reader["Availability"];
                             shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
                             shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
@@ -63,9 +64,8 @@ namespace EmployeesManagementSystem.Data
                             Shift shift = new Shift();
                             shift.ID = (int)reader["ID"];
                             shift.ShiftDate = (DateTime)reader["ShiftDate"];
-
-
                             shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
+                            shift.DepartmentID = (int)reader["DepartmentID"];
                             shift.Availability = (bool)reader["Availability"];
                             shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
                             shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
@@ -101,9 +101,8 @@ namespace EmployeesManagementSystem.Data
                         {
                             // Mapping the return data to the object
                             shift.ID = (int)reader["ID"];
-
-
                             shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
+                            shift.DepartmentID = (int)reader["DepartmentID"];
                             shift.Availability = (bool)reader["Availability"];
                             shift.ShiftDate = (DateTime)reader["ShiftDate"];
                             shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
@@ -161,11 +160,12 @@ namespace EmployeesManagementSystem.Data
             {
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO Shifts (AssignedEmployeeID, Availability, ShiftDate, StartTime, EndTime, Attended, ShiftType)" +
-                    " VALUES(@userId, @availability, @date, @startTime, @endTime, @attended, @shiftType)";
+                    command.CommandText = @"INSERT INTO Shifts (AssignedEmployeeID, DepartmentID, Availability, ShiftDate, StartTime, EndTime, Attended, ShiftType)" +
+                    " VALUES(@userId, @departmentId, @availability, @date, @startTime, @endTime, @attended, @shiftType)";
 
 
                     command.AddParameter("userId", shift.AssignedEmployeeID);
+                    command.AddParameter("departmentId", shift.DepartmentID);
                     command.AddParameter("availability", shift.Availability);
                     command.AddParameter("date", shift.ShiftDate);
                     command.AddParameter("startTime", shift.StartTime);
