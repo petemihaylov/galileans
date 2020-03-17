@@ -154,5 +154,20 @@ namespace EmployeesManagementSystem
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }
+
+        private void exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void exit_MouseEnter(object sender, EventArgs e)
+        {
+            System.Drawing.Color color = System.Drawing.Color.DarkGray;
+            this.exit.BackColor = color;
+        }
+        private void exit_MouseLeave(object sender, EventArgs e)
+        {
+            System.Drawing.Color color = System.Drawing.Color.White;
+            this.exit.BackColor = color;
+        }
     }
 }
