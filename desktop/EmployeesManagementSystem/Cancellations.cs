@@ -173,13 +173,13 @@ namespace EmployeesManagementSystem
         {
             this.btnEmployees.BackColor = Color.LightGray;
         }
-        private void btnShift_MouseEnter(object sender, EventArgs e)
+        private void btnShifts_MouseEnter(object sender, EventArgs e)
         {
-            this.btnShift.BackColor = Color.DarkGray;
+            this.btnShifts.BackColor = Color.DarkGray;
         }
-        private void btnShift_MouseLeave(object sender, EventArgs e)
+        private void btnShifts_MouseLeave(object sender, EventArgs e)
         {
-            this.btnShift.BackColor = Color.LightGray;
+            this.btnShifts.BackColor = Color.LightGray;
         }
         private void btnDepartments_MouseEnter(object sender, EventArgs e)
         {
