@@ -220,7 +220,7 @@
             this.lblLogOut.Size = new System.Drawing.Size(72, 18);
             this.lblLogOut.TabIndex = 16;
             this.lblLogOut.Text = "LOGOUT";
-            this.lblLogOut.Click += new System.EventHandler(this.LogOut_Click);
+            this.lblLogOut.Click += new System.EventHandler(this.lblLogOut_Click);
             // 
             // pictureBox9
             // 
@@ -232,7 +232,6 @@
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox9.TabIndex = 15;
             this.pictureBox9.TabStop = false;
-            this.pictureBox9.Click += new System.EventHandler(this.LogOut_Click);
             // 
             // editAccount
             // 
@@ -255,7 +254,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.editAccount_Click);
             // 
             // btnShifts
             // 
@@ -516,7 +514,7 @@
             this.lbSettings.Size = new System.Drawing.Size(70, 20);
             this.lbSettings.TabIndex = 3;
             this.lbSettings.Text = "Settings";
-            this.lbSettings.Click += new System.EventHandler(this.Settings_Click);
+            this.lbSettings.Click += new System.EventHandler(this.lbSettings_Click);
             // 
             // btnSettings
             // 
@@ -529,7 +527,7 @@
             this.btnSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnSettings.TabIndex = 1;
             this.btnSettings.TabStop = false;
-            this.btnSettings.Click += new System.EventHandler(this.Settings_Click);
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // panelAccount
             // 

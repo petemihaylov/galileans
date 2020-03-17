@@ -106,6 +106,27 @@ namespace EmployeesManagementSystem
             stocks.Show();
         }
 
+        // Settings
+
+        private void editAccount_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Dashboard
+            AdminDetails adminDetails = new AdminDetails(this.loggedUser);
+            adminDetails.Closed += (s, args) => this.Close();
+            adminDetails.Show();
+        }
+
+        private void lblLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Show Log In
+            Login login = new Login();
+            login.Closed += (s, args) => this.Close();
+            login.Show();
+        }
+
+        // Statistics
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -113,28 +134,6 @@ namespace EmployeesManagementSystem
             Statistic stat = new Statistic(this.loggedUser);
             stat.Closed += (s, args) => this.Close();
             stat.Show();
-        }
-
-        // Settings
-        private void Settings_Click(object sender, EventArgs e)
-        {
-            settingsPanel.Visible = !settingsPanel.Visible;
-        }
-        private void editAccount_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Admin details
-            AdminDetails adminDetails = new AdminDetails(this.loggedUser, this);
-            adminDetails.Closed += (s, args) => this.Hide();
-            adminDetails.Show();
-        }
-        private void LogOut_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            // Show Log In
-            Login login = new Login();
-            login.Closed += (s, args) => this.Close();
-            login.Show();
         }
 
         // Exit
