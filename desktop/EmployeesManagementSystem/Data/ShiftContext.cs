@@ -28,8 +28,8 @@ namespace EmployeesManagementSystem.Data
                             shift.ID = (int)reader["ID"];
                             shift.ShiftDate = (DateTime)reader["ShiftDate"];
                             shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
-                            shift.Availability = (bool)reader["Availability"];
-                            shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
+                            shift.Availability = (bool)reader["Availability"]; 
+                            shift.Department = (int)reader["DepartmentID"];                                                                                   shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
                             shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
                             shift.Attended = (bool)reader["Attended"];
                             shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
@@ -67,6 +67,7 @@ namespace EmployeesManagementSystem.Data
 
                             shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
                             shift.Availability = (bool)reader["Availability"];
+                            shift.Department = (int)reader["DepartmentID"];
                             shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
                             shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
                             shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
@@ -105,6 +106,7 @@ namespace EmployeesManagementSystem.Data
 
                             shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
                             shift.Availability = (bool)reader["Availability"];
+                            shift.Department = (int)reader["DepartmentID"];
                             shift.ShiftDate = (DateTime)reader["ShiftDate"];
                             shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
                             shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
@@ -161,12 +163,13 @@ namespace EmployeesManagementSystem.Data
             {
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO Shifts (AssignedEmployeeID, Availability, ShiftDate, StartTime, EndTime, Attended, ShiftType)" +
-                    " VALUES(@userId, @availability, @date, @startTime, @endTime, @attended, @shiftType)";
+                    command.CommandText = @"INSERT INTO Shifts (AssignedEmployeeID, Availability, DepartmentID, ShiftDate, StartTime, EndTime, Attended, ShiftType)" +
+                    " VALUES(@userId, @availability, @department, @date, @startTime, @endTime, @attended, @shiftType)";
 
 
                     command.AddParameter("userId", shift.AssignedEmployeeID);
                     command.AddParameter("availability", shift.Availability);
+                    command.AddParameter("department", shift.Department);
                     command.AddParameter("date", shift.ShiftDate);
                     command.AddParameter("startTime", shift.StartTime);
                     command.AddParameter("endTime", shift.EndTime);

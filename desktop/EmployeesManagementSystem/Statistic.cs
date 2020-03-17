@@ -12,11 +12,18 @@ namespace EmployeesManagementSystem
     {
         private UserContext userContext = new UserContext();
         private ShiftContext shiftContext = new ShiftContext();
+        private DepartmentContext departmentContext = new DepartmentContext();
 
         private User[] users;
         private List<Shift> shifts;
         private int hoursWorked, hrs, id;
         private int hoursSkipped;
+
+        private int presentWorkers = 0;
+        private int absentWorkers = 0;
+        private int lateWorkers = 0;
+
+
         int counter = 0;
 
         // Keeps  track of the current loggedUser
@@ -102,12 +109,28 @@ namespace EmployeesManagementSystem
 
         private void AttendancePerDepartment()
         {
+            presentWorkers = 0; absentWorkers = 0; lateWorkers = 0;
             //clears the chart
             foreach (var series in chart1.Series)
             {
                 series.Points.Clear();
             }
-        }
+
+            Department department = departmentContext.GetDepartmentById(Convert.ToInt32(cbEmployee.Text));
+
+            foreach (Shift item in shifts)
+            {
+                if(item.Department == department.ID)
+                {
+
+
+                }
+            }
+                
+
+
+
+    }
 
         private void WagePerEmployee()
         {

@@ -11,6 +11,7 @@ namespace EmployeesManagementSystem.Models
         public int ID { get; set; }
         public int AssignedEmployeeID { get; set; }
         public bool Availability { get; set; }
+        public int Department { get; set; }
         public DateTime ShiftDate { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
@@ -18,10 +19,11 @@ namespace EmployeesManagementSystem.Models
         public ShiftType Type { get; set; }
 
         public Shift() { }
-        public Shift( int assignedEmployeeID, bool availability, DateTime shiftDate, DateTime startTime, DateTime endTime, bool attended, ShiftType type)
+        public Shift( int assignedEmployeeID, bool availability, int department, DateTime shiftDate, DateTime startTime, DateTime endTime, bool attended, ShiftType type)
         {
             AssignedEmployeeID = assignedEmployeeID;
             Availability = availability;
+            Department = department;
             ShiftDate = shiftDate;
             StartTime = startTime;
             EndTime = endTime;
