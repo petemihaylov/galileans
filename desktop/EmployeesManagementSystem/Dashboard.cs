@@ -10,12 +10,19 @@ namespace EmployeesManagementSystem
 {
     public partial class Dashboard : Form
     {
-
+        // Variables
         private User[] users;
         private DataTable table;
         private User loggedUser;
         private UserContext userContext = new UserContext();
 
+        // Default constructor
+        public Dashboard()
+        {
+
+        }
+
+        // Constructor
         public Dashboard(User user)
         {
             InitializeComponent();
@@ -46,6 +53,7 @@ namespace EmployeesManagementSystem
             showInformation(users);
         }
 
+        // Search functionality
         private void searchField_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -79,6 +87,8 @@ namespace EmployeesManagementSystem
             return Regex.Replace(text, @"\s+|\t|\n|\r", String.Empty);
         }
 
+
+        // Update information method
         private void showInformation(User[] users)
         {
             // Clean the dataGrid
@@ -108,8 +118,6 @@ namespace EmployeesManagementSystem
 
             if (dataGridView.CurrentCell.ColumnIndex.Equals(Delete))
             {
-
-
                 // Ask if you want to delete and proccess
                 int index = dataGridView.CurrentCell.RowIndex;
 

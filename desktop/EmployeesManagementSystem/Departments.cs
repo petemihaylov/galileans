@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Windows.Forms;
+using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
 {
     public partial class Departments : Form
     {
+        // Variables 
         private User loggedUser;
-        public Data.DepartmentContext departmentContext = new Data.DepartmentContext();
+        private DepartmentContext departmentContext = new DepartmentContext();
+        private UserContext userContext = new UserContext();
+        private User[] users;
+        private Department[] departments;
 
+        // Constructor
         public Departments(User user)
         {
             InitializeComponent();
@@ -19,8 +25,9 @@ namespace EmployeesManagementSystem
         {
             try
             {
-                Department[] departments = departmentContext.GetAllDepartments();
-                showInformation(departments);
+                this.departments = departmentContext.GetAllDepartments();
+                this.users = this.userContext.GetAllUsers();
+                showInformation(this.departments);
             }
             catch (Exception)
             {
@@ -31,14 +38,37 @@ namespace EmployeesManagementSystem
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int btnDelete = 2;
+            int nameCol = 1;
+           
 
-            int index = dataGridView.CurrentCell.RowIndex;
-            int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
-
-            if (dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete))
+            // Delete specific Department
+            if (this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete))
             {
-                departmentContext.DeleteById(id);
+                // Local variables
+                int index = this.dataGridView.CurrentCell.RowIndex;
+                int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
+
+                this.departmentContext.DeleteById(id);
                 UpdateDepartments();
+            }
+
+            // Select and list Users from specific Department
+            if (this.dataGridView.CurrentCell.ColumnIndex.Equals(nameCol))
+            {
+                // Clear all users information
+                this.listUsersByDepartment.Items.Clear();
+
+                // Local variables
+                int index = this.dataGridView.CurrentCell.RowIndex;
+                int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
+
+                foreach (User u in this.users)
+                {
+                    if (Convert.ToInt32(u.Department) == id)
+                    {
+                        this.listUsersByDepartment.Items.Add(u.FullName.ToString());
+                    }                                
+                }
             }
         }
 
@@ -59,7 +89,7 @@ namespace EmployeesManagementSystem
         private void showInformation(Department[] departments)
         {
             // Clean the dataGrid
-            dataGridView.Rows.Clear();
+            this.dataGridView.Rows.Clear();
 
             foreach (Department department in departments)
             {
@@ -67,7 +97,7 @@ namespace EmployeesManagementSystem
             }
         }
 
-        // buttons to other forms
+        // Buttons
         private void btnShift_Click(object sender, EventArgs e)
         {
             this.Hide();
