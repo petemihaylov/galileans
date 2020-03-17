@@ -17,10 +17,11 @@ namespace EmployeesManagementSystem
         private User[] users;
         private List<Shift> shifts;
         private Department[] departments;
+
+        //counters keep track for each of the x-axis position the number of employees for each kind 
         private int[] counterAttended = new int[1000];
         private int[] counterAbsent = new int[1000];
         private int[] counterScheduled = new int[1000];
-
 
 
         private int hoursWorked, hrs, id;
@@ -32,8 +33,6 @@ namespace EmployeesManagementSystem
 
         float money = 0;
         DateTime today = DateTime.Today;
-        //keeps track of the month at the center
-        DateTime keepTrack = DateTime.Today;
 
 
         public Statistic(User user)
@@ -58,7 +57,6 @@ namespace EmployeesManagementSystem
             cbMonth.Items.Add("October");
             cbMonth.Items.Add("November");
             cbMonth.Items.Add("December");
-
         }
 
 
@@ -93,16 +91,18 @@ namespace EmployeesManagementSystem
 
             User user = userContext.GetUserByID(Convert.ToInt32(cbEmployee.Text));
 
+            //switches the min and max to the earliest and latest a shift can be
             chart1.ChartAreas[0].AxisY.Maximum = 23;
             chart1.ChartAreas[0].AxisY.Minimum= 9;
 
             //attendance per employee
             foreach (Shift shift in shifts)
             {
-                //MessageBox.Show(shift.ShiftDate.ToString("MMMM"));
+                //counts only the shift in the month equal to the one selected
                 if (cbMonth.Text == shift.ShiftDate.ToString("MMMM"))
                 {
                     //marks attended
+                    //convert the months into days for the x axis and the minutes into hours for the y axis
                     if (shift.Attended == true)
                         chart1.Series["Present"].Points.Add(new DataPoint() { AxisLabel = Convert.ToString(shift.ShiftDate.Day) + "/" + Convert.ToString(shift.ShiftDate.Month), XValue = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day, YValues = new double[] { shift.StartTime.Hour + shift.StartTime.Minute / 60, shift.EndTime.Hour + shift.EndTime.Minute / 60 } });
                     //marks absent
@@ -121,14 +121,15 @@ namespace EmployeesManagementSystem
         {
             try
             {
+                //gets only the shifts for the selected department
                 shifts = shiftContext.GetShiftsByDepId(Convert.ToInt32(cbEmployee.Text)); // try catch
-                //MessageBox.Show(cbEmployee.Text);
             }
             catch (Exception)
             {
                 throw new Exception("Can't take department's shifts");
             }
 
+            //switches the min and max to 0 and auto
             chart1.ChartAreas[0].AxisY.Minimum = 0;
             chart1.ChartAreas[0].AxisY.Maximum = Double.NaN;
 
@@ -138,6 +139,7 @@ namespace EmployeesManagementSystem
             {
                 if (cbMonth.Text == shift.ShiftDate.ToString("MMMM"))
                 {
+                    //converts months into days and counts how many people work on each day
                     int ics = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day;
                     //marks attended
                     if (shift.Attended == true)
@@ -156,7 +158,9 @@ namespace EmployeesManagementSystem
                     }
                 }
             }
-            for (int i = 0; i <= 31 * 12 + 2; i++)
+
+            //goes through each possible ics which is 31 days * 12 months
+            for (int i = 0; i <= 31 * 12; i++)
             {
                 if (counterAttended[i] != 0)
                     chart1.Series["Present"].Points.Add(new DataPoint() { AxisLabel = i / 31 + "/" + i % 31, XValue = i, YValues = new double[] { 0, counterAttended[i] } });
@@ -190,7 +194,7 @@ namespace EmployeesManagementSystem
                     if (shift.Attended)
                     {
                         //for all shifts that took place during the selected month, before todays date (in case of current month)
-                        if (keepTrack.Month == shift.ShiftDate.Month && keepTrack.Day > shift.ShiftDate.Day)
+                        //if (keepTrack.Month == shift.ShiftDate.Month && keepTrack.Day > shift.ShiftDate.Day)
                         {
                             //money = hrsWorked * wage
                             money = (shift.EndTime - shift.StartTime).Hours * user.HourlyRate;
@@ -200,7 +204,7 @@ namespace EmployeesManagementSystem
                     }
                     else
                     {
-                        if (keepTrack.Month == shift.ShiftDate.Month && keepTrack.Day > shift.ShiftDate.Day)
+                       // if (keepTrack.Month == shift.ShiftDate.Month && keepTrack.Day > shift.ShiftDate.Day)
                         {
                             hoursSkipped++;
                         }
