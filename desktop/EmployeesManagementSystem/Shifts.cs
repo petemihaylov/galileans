@@ -114,6 +114,12 @@ namespace EmployeesManagementSystem
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+
+            // exiting properly the application
+            if (Application.MessageLoop)
+            {
+                Application.Exit();
+            }
         }
 
         // Arrows

@@ -36,17 +36,6 @@ namespace EmployeesManagementSystem
             }
         }
 
-        private void exit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
-            // exiting properly the application
-            if (Application.MessageLoop)
-            {
-                Application.Exit();
-            }
-        }
-
 
         // datagrid cell click needs a refactoring
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)

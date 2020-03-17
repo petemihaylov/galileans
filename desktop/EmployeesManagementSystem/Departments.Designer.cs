@@ -77,7 +77,7 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.listUsersByDepartment = new System.Windows.Forms.ListBox();
-            this.labelDepartment = new System.Windows.Forms.Label();
+            this.lblDepartment = new System.Windows.Forms.Label();
             this.btnCancellations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -698,24 +698,25 @@
             this.listUsersByDepartment.Name = "listUsersByDepartment";
             this.listUsersByDepartment.Size = new System.Drawing.Size(654, 140);
             this.listUsersByDepartment.TabIndex = 6;
+            this.listUsersByDepartment.SelectedIndexChanged += new System.EventHandler(this.listUsersByDepartment_SelectedIndexChanged);
             // 
-            // labelDepartment
+            // lblDepartment
             // 
-            this.labelDepartment.AutoSize = true;
-            this.labelDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDepartment.Location = new System.Drawing.Point(226, 449);
-            this.labelDepartment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDepartment.Name = "labelDepartment";
-            this.labelDepartment.Size = new System.Drawing.Size(246, 17);
-            this.labelDepartment.TabIndex = 7;
-            this.labelDepartment.Text = "All users for the selected Department:";
+            this.lblDepartment.AutoSize = true;
+            this.lblDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDepartment.Location = new System.Drawing.Point(226, 449);
+            this.lblDepartment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDepartment.Name = "lblDepartment";
+            this.lblDepartment.Size = new System.Drawing.Size(271, 17);
+            this.lblDepartment.TabIndex = 7;
+            this.lblDepartment.Text = "All employees in the selected department:";
             // 
             // Departments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1133, 672);
-            this.Controls.Add(this.labelDepartment);
+            this.Controls.Add(this.lblDepartment);
             this.Controls.Add(this.listUsersByDepartment);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.dataGridView);
@@ -823,6 +824,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn location;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
         private System.Windows.Forms.ListBox listUsersByDepartment;
-        private System.Windows.Forms.Label labelDepartment;
+        private System.Windows.Forms.Label lblDepartment;
     }
 }

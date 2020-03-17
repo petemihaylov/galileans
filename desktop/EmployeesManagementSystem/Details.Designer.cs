@@ -151,7 +151,7 @@
             this.lbBack.Size = new System.Drawing.Size(47, 20);
             this.lbBack.TabIndex = 4;
             this.lbBack.Text = "Back";
-            this.lbBack.Click += new System.EventHandler(this.lbBack_Click);
+            this.lbBack.Click += new System.EventHandler(this.Back_Click);
             // 
             // picBack
             // 
@@ -163,7 +163,7 @@
             this.picBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBack.TabIndex = 3;
             this.picBack.TabStop = false;
-            this.picBack.Click += new System.EventHandler(this.picBack_Click);
+            this.picBack.Click += new System.EventHandler(this.Back_Click);
             // 
             // exit
             // 

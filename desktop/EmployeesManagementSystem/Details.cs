@@ -16,6 +16,7 @@ namespace EmployeesManagementSystem
         private ShiftContext shiftContext = new ShiftContext();
         private ImageContext imageContext = new ImageContext();
         private DepartmentContext departmentContext = new DepartmentContext();
+        private Form previousForm;
 
         private int id;
         private int addDays = 0;
@@ -25,10 +26,11 @@ namespace EmployeesManagementSystem
         private List<Shift> shifts;
 
         // Constructor
-        public Details(int UserID, User loggedUser)
+        public Details(int UserID, User loggedUser, Form previousForm)
         {
             InitializeComponent();
             this.loggedUser = loggedUser;
+            this.previousForm = previousForm;
 
             this.user = userContext.GetUserByID(UserID);
             this.id = UserID;
@@ -266,11 +268,10 @@ namespace EmployeesManagementSystem
                 userContext.UpdateUserInfo(u);
                 MessageBox.Show("User updated!");
 
+                // Show previous form
+                previousForm.Closed += (s, args) => this.Close();
+                previousForm.Show();
                 this.Hide();
-                // Show Dashboard
-                Dashboard dashboard = new Dashboard(this.loggedUser);
-                dashboard.Closed += (s, args) => this.Close();
-                dashboard.Show();
             }
 
         }
@@ -307,13 +308,12 @@ namespace EmployeesManagementSystem
         }
 
         // Buttons
-        private void picBack_Click(object sender, EventArgs e)
+        private void Back_Click(object sender, EventArgs e)
         {
-            this.Close();
-            // Show Dashboard
-            Dashboard dashboard = new Dashboard(this.loggedUser);
-            dashboard.Closed += (s, args) => this.Close();
-            dashboard.Show();
+            // Show previous form
+            previousForm.Closed += (s, args) => this.Close();
+            previousForm.Show();
+            this.Hide();
 
         }
         private void exit_Click(object sender, EventArgs e)
@@ -323,14 +323,6 @@ namespace EmployeesManagementSystem
             {
                 Application.Exit();
             }
-        }
-        private void lbBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            // Show Dashboard
-            Dashboard dashboard = new Dashboard(this.loggedUser);
-            dashboard.Closed += (s, args) => this.Close();
-            dashboard.Show();
         }
         private void arrowLeft_Click(object sender, EventArgs e)
         {

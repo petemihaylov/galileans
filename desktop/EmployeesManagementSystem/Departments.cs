@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using EmployeesManagementSystem.Data;
@@ -12,7 +13,7 @@ namespace EmployeesManagementSystem
         private User loggedUser;
         private DepartmentContext departmentContext = new DepartmentContext();
         private UserContext userContext = new UserContext();
-        private User[] users;
+        private List<User> employees = new List<User>();
         private Department[] departments;
 
         // Constructor
@@ -27,7 +28,6 @@ namespace EmployeesManagementSystem
             try
             {
                 this.departments = departmentContext.GetAllDepartments();
-                this.users = this.userContext.GetAllUsers();
                 showInformation(this.departments);
             }
             catch (Exception)
@@ -39,7 +39,6 @@ namespace EmployeesManagementSystem
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int btnDelete = 2;
-            int nameCol = 1;
 
             // Check if there are departments in the list
             if(this.dataGridView.Rows.Count > 0)
@@ -56,7 +55,7 @@ namespace EmployeesManagementSystem
                 }
 
                 // Select and list Users from specific Department
-                if (this.dataGridView.CurrentCell.ColumnIndex.Equals(nameCol))
+                if (!this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete))
                 {
                     // Clear all users information
                     this.listUsersByDepartment.Items.Clear();
@@ -66,12 +65,13 @@ namespace EmployeesManagementSystem
                     int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
                     string department = Convert.ToString(this.dataGridView.Rows[index].Cells[1].Value);
 
-                    this.listUsersByDepartment.Items.Add(department);
-                    this.listUsersByDepartment.Items.Add("---------------------------------------");
-                    foreach (User u in this.users)
+                    lblDepartment.Text = "All employees in " + department;
+                    employees.Clear();
+                    foreach (User u in userContext.GetAllUsers())
                     {
                         if (Convert.ToInt32(u.Department) == id)
                         {
+                            employees.Add(u);
                             this.listUsersByDepartment.Items.Add("#" + u.ID + " " + u.FullName.ToString());
                         }
                     }
@@ -274,6 +274,17 @@ namespace EmployeesManagementSystem
         private void btnSettings_MouseLeave(object sender, EventArgs e)
         {
             this.btnSettings.BackColor = Color.LightGray;
+        }
+
+        private void listUsersByDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listUsersByDepartment.SelectedIndex != -1)
+            {
+                int id = employees[listUsersByDepartment.SelectedIndex].ID;
+                this.Hide();
+                Details details = new Details(id, this.loggedUser, this);
+                details.Show();
+            }
         }
     }
 }

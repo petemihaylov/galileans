@@ -113,7 +113,7 @@ namespace EmployeesManagementSystem
                 int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
 
                 this.Hide();
-                Details details = new Details(id, this.loggedUser);
+                Details details = new Details(id, this.loggedUser, this);
                 details.Show();
 
             }
