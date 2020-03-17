@@ -327,6 +327,7 @@
             this.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnExit.TabIndex = 2;
             this.btnExit.TabStop = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             this.btnExit.MouseEnter += new System.EventHandler(this.btnExit_MouseEnter);
             this.btnExit.MouseLeave += new System.EventHandler(this.btnExit_MouseLeave);
             // 
@@ -341,6 +342,8 @@
             this.btnCreate.Size = new System.Drawing.Size(181, 38);
             this.btnCreate.TabIndex = 4;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnCreate.MouseEnter += new System.EventHandler(this.btnCreate_MouseEnter);
+            this.btnCreate.MouseLeave += new System.EventHandler(this.btnCreate_MouseLeave);
             // 
             // pictureBox9
             // 
@@ -675,7 +678,6 @@
             this.listUsersByDepartment.Location = new System.Drawing.Point(305, 577);
             this.listUsersByDepartment.Name = "listUsersByDepartment";
             this.listUsersByDepartment.Size = new System.Drawing.Size(870, 184);
-            this.listUsersByDepartment.Sorted = true;
             this.listUsersByDepartment.TabIndex = 6;
             // 
             // labelDepartment

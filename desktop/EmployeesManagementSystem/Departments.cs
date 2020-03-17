@@ -62,12 +62,15 @@ namespace EmployeesManagementSystem
                 // Local variables
                 int index = this.dataGridView.CurrentCell.RowIndex;
                 int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
+                string department = Convert.ToString(this.dataGridView.Rows[index].Cells[1].Value);
 
+                this.listUsersByDepartment.Items.Add(department);
+                this.listUsersByDepartment.Items.Add("---------------------------------------");
                 foreach (User u in this.users)
                 {
                     if (Convert.ToInt32(u.Department) == id)
                     {
-                        this.listUsersByDepartment.Items.Add(u.FullName.ToString());
+                        this.listUsersByDepartment.Items.Add("#" + u.ID + " " + u.FullName.ToString());
                     }                                
                 }
             }
@@ -152,6 +155,12 @@ namespace EmployeesManagementSystem
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+
+            // exiting properly the application
+            if (Application.MessageLoop)
+            {
+                Application.Exit();
+            }
         }
 
         // Settings
@@ -223,11 +232,19 @@ namespace EmployeesManagementSystem
         }
         private void btnStatistics_MouseEnter(object sender, EventArgs e)
         {
-            btnCancellations.BackColor = Color.DarkGray;
+            btnStatistics.BackColor = Color.DarkGray;
         }
         private void btnStatistics_MouseLeave(object sender, EventArgs e)
         {
-            btnCancellations.BackColor = Color.LightGray;
+            btnStatistics.BackColor = Color.LightGray;
+        }
+        private void btnCreate_MouseEnter(object sender, EventArgs e)
+        {
+            btnCreate.BackColor = Color.DarkGray;
+        }
+        private void btnCreate_MouseLeave(object sender, EventArgs e)
+        {
+            btnCreate.BackColor = Color.LightGray;
         }
     }
 }

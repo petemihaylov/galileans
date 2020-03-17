@@ -101,10 +101,12 @@ namespace EmployeesManagementSystem
             this.searchField.Text = String.Empty;
         }
 
+        // Data Grid event handling
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int Details = 5;
             int Delete = 6;
+
             if (dataGridView.CurrentCell.ColumnIndex.Equals(Details))
             {
                 int index = dataGridView.CurrentCell.RowIndex;
@@ -139,7 +141,7 @@ namespace EmployeesManagementSystem
         }
 
 
-        private void exit_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
 
@@ -303,11 +305,11 @@ namespace EmployeesManagementSystem
         }
         private void btnStatistics_MouseEnter(object sender, EventArgs e)
         {
-            btnCancellations.BackColor = Color.DarkGray;
+            btnStatistics.BackColor = Color.DarkGray;
         }
         private void btnStatistics_MouseLeave(object sender, EventArgs e)
         {
-            btnCancellations.BackColor = Color.LightGray;
+            btnStatistics.BackColor = Color.LightGray;
         }
     }
 }

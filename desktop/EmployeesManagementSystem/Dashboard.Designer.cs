@@ -737,7 +737,7 @@
             this.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnExit.TabIndex = 2;
             this.btnExit.TabStop = false;
-            this.btnExit.Click += new System.EventHandler(this.exit_Click);
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             this.btnExit.MouseEnter += new System.EventHandler(this.btnExit_MouseEnter);
             this.btnExit.MouseLeave += new System.EventHandler(this.btnExit_MouseLeave);
             // 
