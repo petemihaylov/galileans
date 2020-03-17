@@ -41,16 +41,19 @@ namespace EmployeesManagementSystem
             int btnDelete = 2;
            
 
-            // Delete specific Department
-            if (this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete))
+            // Check if there are departments in the list
+            if(this.dataGridView.Rows.Count > 0)
             {
-                // Local variables
-                int index = this.dataGridView.CurrentCell.RowIndex;
-                int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
+                // Delete specific Department
+                if (this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete))
+                {
+                    // Local variables
+                    int index = this.dataGridView.CurrentCell.RowIndex;
+                    int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
 
-                this.departmentContext.DeleteById(id);
-                UpdateDepartments();
-            }
+                    this.departmentContext.DeleteById(id);
+                    UpdateDepartments();
+                }
 
             // Select and list Users from specific Department
             if (!this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete))
@@ -58,18 +61,23 @@ namespace EmployeesManagementSystem
                 // Clear all users information
                 this.listUsersByDepartment.Items.Clear();
 
-                // Local variables
-                int index = this.dataGridView.CurrentCell.RowIndex;
-                int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
+                    // Local variables
+                    int index = this.dataGridView.CurrentCell.RowIndex;
+                    int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
+                    string department = Convert.ToString(this.dataGridView.Rows[index].Cells[1].Value);
 
-                foreach (User u in this.users)
-                {
-                    if (Convert.ToInt32(u.Department) == id)
+                    this.listUsersByDepartment.Items.Add(department);
+                    this.listUsersByDepartment.Items.Add("---------------------------------------");
+                    foreach (User u in this.users)
                     {
-                        this.listUsersByDepartment.Items.Add(u.FullName.ToString());
-                    }                                
+                        if (Convert.ToInt32(u.Department) == id)
+                        {
+                            this.listUsersByDepartment.Items.Add("#" + u.ID + " " + u.FullName.ToString());
+                        }
+                    }
                 }
             }
+            
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -154,6 +162,12 @@ namespace EmployeesManagementSystem
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+
+            // exiting properly the application
+            if (Application.MessageLoop)
+            {
+                Application.Exit();
+            }
         }
 
         // Settings
@@ -195,45 +209,53 @@ namespace EmployeesManagementSystem
         {
             this.btnEmployees.BackColor = Color.LightGray;
         }
-        private void btnShift_MouseEnter(object sender, EventArgs e)
+        private void btnShifts_MouseEnter(object sender, EventArgs e)
         {
-            this.btnShift.BackColor = Color.DarkGray; ;
+            this.btnShifts.BackColor = Color.DarkGray;
         }
-        private void btnShift_MouseLeave(object sender, EventArgs e)
+        private void btnShifts_MouseLeave(object sender, EventArgs e)
         {
-            this.btnShift.BackColor = Color.LightGray; ;
+            this.btnShifts.BackColor = Color.LightGray;
         }
         private void btnCancellations_MouseEnter(object sender, EventArgs e)
         {
-            btnCancellations.BackColor = Color.DarkGray;
+            this.btnCancellations.BackColor = Color.DarkGray;
         }
         private void btnCancellations_MouseLeave(object sender, EventArgs e)
         {
-            btnCancellations.BackColor = Color.LightGray;
+            this.btnCancellations.BackColor = Color.LightGray;
         }
         private void btnDepartments_MouseEnter(object sender, EventArgs e)
         {
-            btnDepartments.BackColor = Color.DarkGray;
+            this.btnDepartments.BackColor = Color.DarkGray;
         }
         private void btnDepartments_MouseLeave(object sender, EventArgs e)
         {
-            btnDepartments.BackColor = Color.LightGray;
+            this.btnDepartments.BackColor = Color.LightGray;
         }
         private void btnStocks_MouseEnter(object sender, EventArgs e)
         {
-            btnStocks.BackColor = Color.DarkGray;
+            this.btnStocks.BackColor = Color.DarkGray;
         }
         private void btnStocks_MouseLeave(object sender, EventArgs e)
         {
-            btnStocks.BackColor = Color.LightGray;
+            this.btnStocks.BackColor = Color.LightGray;
         }
         private void btnStatistics_MouseEnter(object sender, EventArgs e)
         {
-            btnCancellations.BackColor = Color.DarkGray;
+            this.btnStatistics.BackColor = Color.DarkGray;
         }
         private void btnStatistics_MouseLeave(object sender, EventArgs e)
         {
-            btnCancellations.BackColor = Color.LightGray;
+            this.btnStatistics.BackColor = Color.LightGray;
+        }
+        private void btnCreate_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnCreate.BackColor = Color.DarkGray;
+        }
+        private void btnCreate_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnCreate.BackColor = Color.LightGray;
         }
     }
 }

@@ -69,7 +69,7 @@
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.editAccount = new System.Windows.Forms.Label();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.btnShift = new System.Windows.Forms.Panel();
+            this.btnShifts = new System.Windows.Forms.Panel();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -104,7 +104,7 @@
             this.settingsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
-            this.btnShift.SuspendLayout();
+            this.btnShifts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).BeginInit();
@@ -347,6 +347,8 @@
             this.btnCreate.Size = new System.Drawing.Size(136, 31);
             this.btnCreate.TabIndex = 4;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnCreate.MouseEnter += new System.EventHandler(this.btnCreate_MouseEnter);
+            this.btnCreate.MouseLeave += new System.EventHandler(this.btnCreate_MouseLeave);
             // 
             // pictureBox9
             // 
@@ -466,7 +468,7 @@
             this.panelLeft.BackColor = System.Drawing.Color.White;
             this.panelLeft.Controls.Add(this.btnStatistics);
             this.panelLeft.Controls.Add(this.settingsPanel);
-            this.panelLeft.Controls.Add(this.btnShift);
+            this.panelLeft.Controls.Add(this.btnShifts);
             this.panelLeft.Controls.Add(this.btnStocks);
             this.panelLeft.Controls.Add(this.btnDepartments);
             this.panelLeft.Controls.Add(this.btnCancellations);
@@ -604,20 +606,20 @@
             this.pictureBox17.TabStop = false;
             this.pictureBox17.Click += new System.EventHandler(this.editAccount_Click);
             // 
-            // btnShift
+            // btnShifts
             // 
-            this.btnShift.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnShift.Controls.Add(this.pictureBox10);
-            this.btnShift.Controls.Add(this.pictureBox15);
-            this.btnShift.Controls.Add(this.label9);
-            this.btnShift.Location = new System.Drawing.Point(9, 413);
-            this.btnShift.Margin = new System.Windows.Forms.Padding(2);
-            this.btnShift.Name = "btnShift";
-            this.btnShift.Size = new System.Drawing.Size(172, 33);
-            this.btnShift.TabIndex = 12;
-            this.btnShift.Click += new System.EventHandler(this.btnShift_Click);
-            this.btnShift.MouseEnter += new System.EventHandler(this.btnShift_MouseEnter);
-            this.btnShift.MouseLeave += new System.EventHandler(this.btnShift_MouseLeave);
+            this.btnShifts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnShifts.Controls.Add(this.pictureBox10);
+            this.btnShifts.Controls.Add(this.pictureBox15);
+            this.btnShifts.Controls.Add(this.label9);
+            this.btnShifts.Location = new System.Drawing.Point(12, 508);
+            this.btnShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnShifts.Name = "btnShifts";
+            this.btnShifts.Size = new System.Drawing.Size(229, 41);
+            this.btnShifts.TabIndex = 12;
+            this.btnShifts.Click += new System.EventHandler(this.btnShift_Click);
+            this.btnShifts.MouseEnter += new System.EventHandler(this.btnShifts_MouseEnter);
+            this.btnShifts.MouseLeave += new System.EventHandler(this.btnShifts_MouseLeave);
             // 
             // pictureBox10
             // 
@@ -692,8 +694,7 @@
             this.listUsersByDepartment.Location = new System.Drawing.Point(229, 469);
             this.listUsersByDepartment.Margin = new System.Windows.Forms.Padding(2);
             this.listUsersByDepartment.Name = "listUsersByDepartment";
-            this.listUsersByDepartment.Size = new System.Drawing.Size(654, 140);
-            this.listUsersByDepartment.Sorted = true;
+            this.listUsersByDepartment.Size = new System.Drawing.Size(870, 184);
             this.listUsersByDepartment.TabIndex = 6;
             // 
             // labelDepartment
@@ -759,8 +760,8 @@
             this.settingsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
-            this.btnShift.ResumeLayout(false);
-            this.btnShift.PerformLayout();
+            this.btnShifts.ResumeLayout(false);
+            this.btnShifts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).EndInit();
@@ -802,7 +803,7 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.PictureBox btnSettings;
-        private System.Windows.Forms.Panel btnShift;
+        private System.Windows.Forms.Panel btnShifts;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.Label label9;

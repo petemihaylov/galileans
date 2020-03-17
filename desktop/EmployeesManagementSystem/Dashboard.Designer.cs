@@ -40,7 +40,7 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.editAccount = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnShift = new System.Windows.Forms.Panel();
+            this.btnShifts = new System.Windows.Forms.Panel();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -91,7 +91,7 @@
             this.settingsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.btnShift.SuspendLayout();
+            this.btnShifts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             this.btnStocks.SuspendLayout();
@@ -122,7 +122,7 @@
             this.panelLeft.BackColor = System.Drawing.Color.White;
             this.panelLeft.Controls.Add(this.btnStatistics);
             this.panelLeft.Controls.Add(this.settingsPanel);
-            this.panelLeft.Controls.Add(this.btnShift);
+            this.panelLeft.Controls.Add(this.btnShifts);
             this.panelLeft.Controls.Add(this.btnStocks);
             this.panelLeft.Controls.Add(this.btnDepartments);
             this.panelLeft.Controls.Add(this.btnCancellations);
@@ -257,21 +257,21 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.editAccount_Click);
             // 
-            // btnShift
+            // btnShifts
             // 
-            this.btnShift.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnShift.Controls.Add(this.pictureBox13);
-            this.btnShift.Controls.Add(this.pictureBox14);
-            this.btnShift.Controls.Add(this.label9);
-            this.btnShift.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnShift.Location = new System.Drawing.Point(12, 508);
-            this.btnShift.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnShift.Name = "btnShift";
-            this.btnShift.Size = new System.Drawing.Size(229, 41);
-            this.btnShift.TabIndex = 11;
-            this.btnShift.Click += new System.EventHandler(this.btnShift_Click);
-            this.btnShift.MouseEnter += new System.EventHandler(this.btnShift_MouseEnter);
-            this.btnShift.MouseLeave += new System.EventHandler(this.btnShift_MouseLeave);
+            this.btnShifts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnShifts.Controls.Add(this.pictureBox13);
+            this.btnShifts.Controls.Add(this.pictureBox14);
+            this.btnShifts.Controls.Add(this.label9);
+            this.btnShifts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnShifts.Location = new System.Drawing.Point(12, 508);
+            this.btnShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnShifts.Name = "btnShifts";
+            this.btnShifts.Size = new System.Drawing.Size(229, 41);
+            this.btnShifts.TabIndex = 11;
+            this.btnShifts.Click += new System.EventHandler(this.btnShift_Click);
+            this.btnShifts.MouseEnter += new System.EventHandler(this.btnShifts_MouseEnter);
+            this.btnShifts.MouseLeave += new System.EventHandler(this.btnShifts_MouseLeave);
             // 
             // pictureBox13
             // 
@@ -739,7 +739,7 @@
             this.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnExit.TabIndex = 2;
             this.btnExit.TabStop = false;
-            this.btnExit.Click += new System.EventHandler(this.exit_Click);
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             this.btnExit.MouseEnter += new System.EventHandler(this.btnExit_MouseEnter);
             this.btnExit.MouseLeave += new System.EventHandler(this.btnExit_MouseLeave);
             // 
@@ -789,8 +789,8 @@
             this.settingsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.btnShift.ResumeLayout(false);
-            this.btnShift.PerformLayout();
+            this.btnShifts.ResumeLayout(false);
+            this.btnShifts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             this.btnStocks.ResumeLayout(false);
@@ -861,7 +861,7 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel btnShift;
+        private System.Windows.Forms.Panel btnShifts;
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.Label label9;

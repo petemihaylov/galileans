@@ -5,11 +5,13 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
+using System.Text.RegularExpressions;
 
 namespace EmployeesManagementSystem
 {
     public partial class Details : Form
     {
+        // Variables
         private UserContext userContext = new UserContext();
         private ShiftContext shiftContext = new ShiftContext();
         private ImageContext imageContext = new ImageContext();
@@ -22,7 +24,7 @@ namespace EmployeesManagementSystem
         private User loggedUser;
         private List<Shift> shifts;
 
-
+        // Constructor
         public Details(int UserID, User loggedUser)
         {
             InitializeComponent();
@@ -49,7 +51,6 @@ namespace EmployeesManagementSystem
             shifts = shiftContext.GetAllShifts();
             visualizeShifts(now);
         }
-
 
         private void visualizeShifts(DateTime date)
         {
@@ -248,27 +249,61 @@ namespace EmployeesManagementSystem
         {
             // Fields should be validated!
             User u = new User();
-
-            u.ID = user.ID;
-            u.FullName = tbFullName.Text;
-            u.Email = tbEmail.Text;
-            u.PhoneNumber = tbPhoneNumber.Text;
-            u.Role = cbRole.Text;
-            u.Department = departmentContext.GetIdByName(cbDepartment.Text);
-            if (u.Department == -1)
+            if (isNameValid(tbFullName.Text))
             {
-                MessageBox.Show("The given department doesn't exist");
+                u.ID = user.ID;
+                u.FullName = tbFullName.Text;
+
+                u.Email = tbEmail.Text;
+                u.PhoneNumber = tbPhoneNumber.Text;
+                u.Role = cbRole.Text;
+                u.Department = departmentContext.GetIdByName(cbDepartment.Text);
+                if (u.Department == -1)
+                {
+                    MessageBox.Show("The given department doesn't exist");
+                }
+
+                userContext.UpdateUserInfo(u);
+                MessageBox.Show("User updated!");
+
+                this.Hide();
+                // Show Dashboard
+                Dashboard dashboard = new Dashboard(this.loggedUser);
+                dashboard.Closed += (s, args) => this.Close();
+                dashboard.Show();
             }
 
-            userContext.UpdateUserInfo(u);           
-            MessageBox.Show("User updated!");
+        }
 
-            this.Hide();
-            // Show Dashboard
-            Dashboard dashboard = new Dashboard(this.loggedUser);
-            dashboard.Closed += (s, args) => this.Close();
-            dashboard.Show();
+        // Helper methods
+        // Correction of the password
+        private bool isPasswordValid(string password)
+        {
+            Regex rx = new Regex(@"(?=.{6,})(?=(.*\d){1,})(?=(.*\W){1,})");
 
+            if (!rx.IsMatch(password))
+            {
+                MessageBox.Show("The Password is invalid!" +
+                    "Password must be at least 6 characters long and " +
+                    "contain at least one number and one special character.");
+                return false;
+            }
+
+            return true;
+        }
+
+        // Validate the name
+        private bool isNameValid(string name)
+        {
+            Regex rx = new Regex(@"^[A-Z][a-zA-Z]*$");
+
+            if (!rx.IsMatch(name))
+            {
+                MessageBox.Show("The Name is invalid! Only \"A-Z\"  \"a-z\" characters, at least one uppercase letter ");
+                return false;
+            }
+
+            return true;
         }
 
         // Buttons
@@ -470,8 +505,11 @@ namespace EmployeesManagementSystem
             {
 
                 string password = txtPassword.Text;
-                userContext.ResetPassword(user.ID, password);
-                MessageBox.Show($"Password Reset to '{password}'");
+                if (isPasswordValid(password))
+                {
+                    userContext.ResetPassword(user.ID, password);
+                    MessageBox.Show($"Password Reset to '{password}'");
+                }
             }
         }  
         private void arrowRight_Click(object sender, EventArgs e)
