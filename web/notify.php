@@ -14,7 +14,7 @@ require_once "./includes/config.php";
  
 $fullname = $email = $subject = $message = "";
 $fullname_err = $email_err = $subject_err = $message_err = "";
-
+$success_mes = "";
 
 $date = new DateTime("now", new DateTimeZone('Europe/Amsterdam') );
 $creationDate = $date->format('Y-m-d');
@@ -48,10 +48,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Attempt to execute the prepared statement
         if(!mysqli_stmt_execute($stmt)){
           echo "Oops! Something went wrong. Please try again later.";
+        }else{
+            $success_mes = "Successfully submitted!";
         }
       }
-
-      
             // Close statement
             mysqli_stmt_close($stmt);
     }
@@ -93,12 +93,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <form class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" >
                 <!-- Name -->
                 <div class="form-group">
-                    <input type="name" class="form-control" name="fullname" id="nameInput" placeholder="Name">
+                    <input type="name" class="form-control" name="fullname" id="nameInput" value="<?php echo $_SESSION['fullname']?>">
                 </div>
                 
                 <!-- Email address -->
                 <div class="form-group">
-                    <input type="email" class="form-control" name="email" id="emailInput" aria-describedby="emailHelp" placeholder="Email">
+                    <input type="email" class="form-control" name="email" id="emailInput" aria-describedby="emailHelp" value="<?php echo $_SESSION['email']?>">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 
@@ -106,7 +106,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div class="form-group">
                     <input type="subject" class="form-control" name="subject" id="subjectInput" placeholder="Subject">
                 </div>
-
+                <span class="success-message"><?php echo $success_mes; ?></span>
                 <!-- Message -->
                 <div class="form-group">
                     <textarea class="form-control" placeholder="Message" name="message" id="messageBox" rows="5"></textarea>

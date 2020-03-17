@@ -156,8 +156,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="form-group">
                         <label for="fullname">Full Name:</label>
                         <input type="text" class="form-control" name="fullname" value="<?php echo $fullname; ?>" 
-                        placeholder="<?php echo $user->get_FullName();?>"
-                        >
+                        placeholder="<?php echo $user->get_FullName();?>">
 
                         
                         <span class="help-block"><?php echo $fullname_err; ?></span>
@@ -174,7 +173,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <script src="./js/show-hide-password.js"></script>
                     <label for="pnm">Password:</label>
                     <div class="input-group" id="show_hide_password">
-                        <input class="form-control" name="password" type="password">
+                        <input class="form-control" name="password" value="<?php echo $password; ?>" type="password"
+                        
+                        placeholder="<?php echo $password;?>">
                         <div class="input-group-append">
                             <a class="input-group-text"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                         </div>

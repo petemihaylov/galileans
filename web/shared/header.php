@@ -14,8 +14,12 @@
         <a class="nav-link" href="notify.php">  <i class="far fa-envelope"></i> Inform</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="preferences.php"> <i class="fas fa-praying-hands"></i></i> Preferences</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#"> <i class="far fa-money-bill-alt"></i> Payments</a>
       </li>
+      
     </ul>
   </div>
   <a class="nav-link disable"> Welcome <b><?php echo $_SESSION["fullname"] ?></b></a>
