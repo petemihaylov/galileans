@@ -81,6 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         }
                     }else{
                         $email_err = "* Sorry! You are not authorized!";
+                        $focus = "focus";
                     }
 
                     }

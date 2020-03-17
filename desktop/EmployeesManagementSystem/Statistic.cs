@@ -17,9 +17,9 @@ namespace EmployeesManagementSystem
         private User[] users;
         private List<Shift> shifts;
         private Department[] departments;
-        private int[] cevaAttended = new int[1000];
-        private int[] cevaAbsent = new int[1000];
-        private int[] cevaScheduled = new int[1000];
+        private int[] counterAttended = new int[1000];
+        private int[] counterAbsent = new int[1000];
+        private int[] counterScheduled = new int[1000];
 
 
 
@@ -129,29 +129,30 @@ namespace EmployeesManagementSystem
                 int ics = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day;
                 //marks attended
                 if (shift.Attended == true)
+                if(shift.DepartmentID == department.ID)
                 {
-                    cevaAttended[ics]++;
+                    counterAttended[ics]++;
                 }
                 //marks absent
                 else if (shift.Attended == false && shift.ShiftDate <= today)
                 {
-                    cevaAbsent[ics]++;
+                    counterAbsent[ics]++;
                 }
                 //mark scheduled
                 else if (shift.Attended == false && shift.ShiftDate > today)
                 {
-                    cevaScheduled[ics]++;
+                    counterScheduled[ics]++;
                 }   
             }
             for (int i = 0; i <= 31 * 12 + 2; i++)
             {
-                if (cevaAttended[i] != 0)
-                    chart1.Series["Present"].Points.Add(new DataPoint() { AxisLabel = i / 31 + "/" + i % 31, XValue = i, YValues = new double[] { 0, cevaAttended[i] } });
-                if (cevaAbsent[i] != 0)
-                    chart1.Series["Absent"].Points.Add(new DataPoint() { AxisLabel = i / 31 + "/" + i % 31, XValue = i, YValues = new double[] { cevaAttended[i], cevaAttended[i] + cevaAbsent[i] } });
-                if (cevaScheduled[i] != 0)
-                    chart1.Series["Scheduled"].Points.Add(new DataPoint() { AxisLabel = i / 31 + "/" + i % 31, XValue = i, YValues = new double[] { cevaAttended[i] + cevaAbsent[i], cevaAttended[i] + cevaAbsent[i] + cevaScheduled[i] } });
-                cevaAttended[i] = cevaAbsent[i] = cevaScheduled[i] = 0;
+                if (counterAttended[i] != 0)
+                    chart1.Series["Present"].Points.Add(new DataPoint() { AxisLabel = i / 31 + "/" + i % 31, XValue = i, YValues = new double[] { 0, counterAttended[i] } });
+                if (counterAbsent[i] != 0)
+                    chart1.Series["Absent"].Points.Add(new DataPoint() { AxisLabel = i / 31 + "/" + i % 31, XValue = i, YValues = new double[] { counterAttended[i], counterAttended[i] + counterAbsent[i] } });
+                if (counterScheduled[i] != 0)
+                    chart1.Series["Scheduled"].Points.Add(new DataPoint() { AxisLabel = i / 31 + "/" + i % 31, XValue = i, YValues = new double[] { counterAttended[i] + counterAbsent[i], counterAttended[i] + counterAbsent[i] + counterScheduled[i] } });
+                counterAttended[i] = counterAbsent[i] = counterScheduled[i] = 0;
             }
 
         }

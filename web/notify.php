@@ -17,7 +17,7 @@ $fullname_err = $email_err = $subject_err = $message_err = "";
 
 
 $date = new DateTime("now", new DateTimeZone('Europe/Amsterdam') );
-$creationDate = $date->format('Y-m-d H:i:s');
+$creationDate = $date->format('Y-m-d');
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -39,11 +39,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   if(empty($name_err) && empty($email_err)){
     
     // Prepare a select statement
-    $sql = "INSERT INTO Cancellations(Date, Subject, Description, EmployeeName) values(?,?,?,?);";
+    $sql = "INSERT INTO Cancellations(Date, Subject, Email, Message, EmployeeName) values(?,?,?,?,?);";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "ssss", $creationDate, $_POST['subject'], $_POST['message'], $_SESSION['fullname']);
+        mysqli_stmt_bind_param($stmt, "sssss", $creationDate, $_POST['subject'], $_POST["email"] ,$_POST['message'], $_SESSION['fullname']);
         
         // Attempt to execute the prepared statement
         if(!mysqli_stmt_execute($stmt)){
