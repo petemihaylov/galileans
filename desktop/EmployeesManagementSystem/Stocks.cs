@@ -8,12 +8,20 @@ namespace EmployeesManagementSystem
 {
     public partial class Stocks : Form
     {
+
+        // Variables
         private Stock[] stocks;
         private User loggedUser;
 
-
         private StockContext stockContext = new StockContext();
 
+        // Default contructor
+        public Stocks()
+        {
+
+        }
+
+        // Constructor
         public Stocks(User user)
         {
             InitializeComponent();
@@ -77,7 +85,7 @@ namespace EmployeesManagementSystem
                 this.stockDataGrid.Rows.Add(stock.GetInfo());
             }
         }
-        private void btnEmployee_Click(object sender, EventArgs e)
+        private void btnEmployees_Click(object sender, EventArgs e)
         {
             this.Hide();
             // Show Dashboard
@@ -114,7 +122,7 @@ namespace EmployeesManagementSystem
             stock.Show();
         }
 
-        private void btnShift_Click(object sender, EventArgs e)
+        private void btnShifts_Click(object sender, EventArgs e)
         {
             this.Hide();
             // Show Dashboard
@@ -124,7 +132,7 @@ namespace EmployeesManagementSystem
         }
 
 
-        private void exit_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
 
@@ -134,33 +142,6 @@ namespace EmployeesManagementSystem
                 Application.Exit();
             }
         }
-        private void exit_MouseEnter(object sender, EventArgs e)
-        {
-            Color color = Color.LightGray;
-            this.exit.BackColor = color;
-        }
-
-        private void exit_MouseLeave(object sender, EventArgs e)
-        {
-
-            Color color = Color.White;
-            this.exit.BackColor = color;
-        }
-
-        private void btnCreate_MouseEnter(object sender, EventArgs e)
-        {
-
-            Color color = Color.DarkGray;
-            this.btnCreate.BackColor = color;
-        }
-
-        private void btnCreate_MouseLeave(object sender, EventArgs e)
-        {
-
-            Color color = Color.LightGray;
-            this.btnCreate.BackColor = color;
-        }
-
         private void editAccount_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -187,5 +168,72 @@ namespace EmployeesManagementSystem
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }
+
+        // Hovering
+        private void btnExit_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnExit.BackColor = Color.LightGray;
+        }
+        private void btnExit_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnExit.BackColor = Color.White;
+        }
+        private void btnEmployees_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnEmployees.BackColor = Color.DarkGray;
+        }
+        private void btnEmployees_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnEmployees.BackColor = Color.LightGray;
+        }
+        private void btnShifts_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnShifts.BackColor = Color.DarkGray;
+        }
+        private void btnShifts_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnShifts.BackColor = Color.LightGray;
+        }
+        private void btnCancellations_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnCancellations.BackColor = Color.DarkGray;
+        }
+        private void btnCancellations_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnCancellations.BackColor = Color.LightGray;
+        }
+        private void btnDepartments_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnDepartments.BackColor = Color.DarkGray;
+        }
+        private void btnDepartments_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnDepartments.BackColor = Color.LightGray;
+        }
+        private void btnStocks_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnStocks.BackColor = Color.DarkGray;
+        }
+        private void btnStocks_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnStocks.BackColor = Color.LightGray;
+        }
+        private void btnStatistics_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnStatistics.BackColor = Color.DarkGray;
+        }
+        private void btnStatistics_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnStatistics.BackColor = Color.LightGray;
+        }
+        private void btnCreate_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnCreate.BackColor = Color.DarkGray;
+        }
+        private void btnCreate_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnCreate.BackColor = Color.LightGray;
+        }
+
     }
 }

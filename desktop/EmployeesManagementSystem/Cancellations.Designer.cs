@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.btnStatistics = new System.Windows.Forms.Panel();
+            this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.settingsPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblLogOut = new System.Windows.Forms.Label();
@@ -45,11 +49,11 @@
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnCancellations = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnEmployee = new System.Windows.Forms.Panel();
+            this.btnEmployees = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -65,19 +69,18 @@
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.exit = new System.Windows.Forms.PictureBox();
+            this.btnExit = new System.Windows.Forms.PictureBox();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.txDescription = new System.Windows.Forms.TextBox();
-            this.btnShift = new System.Windows.Forms.Panel();
+            this.btnShifts = new System.Windows.Forms.Panel();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnStatistics = new System.Windows.Forms.Panel();
-            this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox19 = new System.Windows.Forms.PictureBox();
+            this.txDescription = new System.Windows.Forms.TextBox();
             this.panelLeft.SuspendLayout();
+            this.btnStatistics.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             this.settingsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -88,23 +91,20 @@
             this.btnDepartments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.btnCancellations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.btnEmployee.SuspendLayout();
+            this.btnEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panelAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
-            this.btnShift.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
+            this.btnShifts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            this.btnStatistics.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLeft
@@ -116,14 +116,62 @@
             this.panelLeft.Controls.Add(this.btnSettings);
             this.panelLeft.Controls.Add(this.btnStocks);
             this.panelLeft.Controls.Add(this.btnDepartments);
-            this.panelLeft.Controls.Add(this.panel2);
-            this.panelLeft.Controls.Add(this.btnEmployee);
+            this.panelLeft.Controls.Add(this.btnCancellations);
+            this.panelLeft.Controls.Add(this.btnEmployees);
             this.panelLeft.Controls.Add(this.panelAccount);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(257, 816);
             this.panelLeft.TabIndex = 6;
+            // 
+            // btnStatistics
+            // 
+            this.btnStatistics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnStatistics.Controls.Add(this.pictureBox16);
+            this.btnStatistics.Controls.Add(this.label5);
+            this.btnStatistics.Controls.Add(this.pictureBox19);
+            this.btnStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStatistics.Location = new System.Drawing.Point(12, 577);
+            this.btnStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnStatistics.Name = "btnStatistics";
+            this.btnStatistics.Size = new System.Drawing.Size(229, 41);
+            this.btnStatistics.TabIndex = 16;
+            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
+            this.btnStatistics.MouseEnter += new System.EventHandler(this.btnStatistics_MouseEnter);
+            this.btnStatistics.MouseLeave += new System.EventHandler(this.btnStatistics_MouseLeave);
+            // 
+            // pictureBox16
+            // 
+            this.pictureBox16.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
+            this.pictureBox16.Location = new System.Drawing.Point(191, 6);
+            this.pictureBox16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox16.TabIndex = 3;
+            this.pictureBox16.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(44, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 20);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Statistics";
+            // 
+            // pictureBox19
+            // 
+            this.pictureBox19.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_insert_chart_outlined_black_48dp;
+            this.pictureBox19.Location = new System.Drawing.Point(4, 6);
+            this.pictureBox19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox19.Name = "pictureBox19";
+            this.pictureBox19.Size = new System.Drawing.Size(36, 30);
+            this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox19.TabIndex = 52;
+            this.pictureBox19.TabStop = false;
             // 
             // settingsPanel
             // 
@@ -229,6 +277,8 @@
             this.btnStocks.Size = new System.Drawing.Size(230, 41);
             this.btnStocks.TabIndex = 6;
             this.btnStocks.Click += new System.EventHandler(this.btnStocks_Click);
+            this.btnStocks.MouseEnter += new System.EventHandler(this.btnStocks_MouseEnter);
+            this.btnStocks.MouseLeave += new System.EventHandler(this.btnStocks_MouseLeave);
             // 
             // pictureBox9
             // 
@@ -271,6 +321,8 @@
             this.btnDepartments.Size = new System.Drawing.Size(230, 41);
             this.btnDepartments.TabIndex = 4;
             this.btnDepartments.Click += new System.EventHandler(this.btnDepartments_Click);
+            this.btnDepartments.MouseEnter += new System.EventHandler(this.btnDepartments_MouseEnter);
+            this.btnDepartments.MouseLeave += new System.EventHandler(this.btnDepartments_MouseLeave);
             // 
             // pictureBox8
             // 
@@ -302,16 +354,18 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Departments";
             // 
-            // panel2
+            // btnCancellations
             // 
-            this.panel2.BackColor = System.Drawing.Color.DarkGray;
-            this.panel2.Controls.Add(this.pictureBox7);
-            this.panel2.Controls.Add(this.pictureBox4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(12, 291);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(230, 41);
-            this.panel2.TabIndex = 4;
+            this.btnCancellations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCancellations.Controls.Add(this.pictureBox7);
+            this.btnCancellations.Controls.Add(this.pictureBox4);
+            this.btnCancellations.Controls.Add(this.label3);
+            this.btnCancellations.Location = new System.Drawing.Point(12, 291);
+            this.btnCancellations.Name = "btnCancellations";
+            this.btnCancellations.Size = new System.Drawing.Size(230, 41);
+            this.btnCancellations.TabIndex = 4;
+            this.btnCancellations.MouseEnter += new System.EventHandler(this.btnCancellations_MouseEnter);
+            this.btnCancellations.MouseLeave += new System.EventHandler(this.btnCancellations_MouseLeave);
             // 
             // pictureBox7
             // 
@@ -343,18 +397,20 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Cancellations";
             // 
-            // btnEmployee
+            // btnEmployees
             // 
-            this.btnEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEmployee.Controls.Add(this.label7);
-            this.btnEmployee.Controls.Add(this.pictureBox6);
-            this.btnEmployee.Controls.Add(this.pictureBox3);
-            this.btnEmployee.Controls.Add(this.label2);
-            this.btnEmployee.Location = new System.Drawing.Point(12, 221);
-            this.btnEmployee.Name = "btnEmployee";
-            this.btnEmployee.Size = new System.Drawing.Size(230, 41);
-            this.btnEmployee.TabIndex = 1;
-            this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
+            this.btnEmployees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEmployees.Controls.Add(this.label7);
+            this.btnEmployees.Controls.Add(this.pictureBox6);
+            this.btnEmployees.Controls.Add(this.pictureBox3);
+            this.btnEmployees.Controls.Add(this.label2);
+            this.btnEmployees.Location = new System.Drawing.Point(12, 221);
+            this.btnEmployees.Name = "btnEmployees";
+            this.btnEmployees.Size = new System.Drawing.Size(230, 41);
+            this.btnEmployees.TabIndex = 1;
+            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
+            this.btnEmployees.MouseEnter += new System.EventHandler(this.btnEmployees_MouseEnter);
+            this.btnEmployees.MouseLeave += new System.EventHandler(this.btnEmployees_MouseLeave);
             // 
             // label7
             // 
@@ -497,24 +553,24 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.exit);
+            this.panel4.Controls.Add(this.btnExit);
             this.panel4.Location = new System.Drawing.Point(252, 1);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1203, 52);
             this.panel4.TabIndex = 8;
             // 
-            // exit
+            // btnExit
             // 
-            this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
-            this.exit.Location = new System.Drawing.Point(1152, 8);
-            this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(39, 35);
-            this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.exit.TabIndex = 2;
-            this.exit.TabStop = false;
-            this.exit.Click += new System.EventHandler(this.exit_Click);
-            this.exit.MouseEnter += new System.EventHandler(this.exit_MouseEnter);
-            this.exit.MouseLeave += new System.EventHandler(this.exit_MouseLeave);
+            this.btnExit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
+            this.btnExit.Location = new System.Drawing.Point(1152, 8);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(39, 35);
+            this.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnExit.TabIndex = 2;
+            this.btnExit.TabStop = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.MouseEnter += new System.EventHandler(this.btnExit_MouseEnter);
+            this.btnExit.MouseLeave += new System.EventHandler(this.btnExit_MouseLeave);
             // 
             // dataGridViewImageColumn2
             // 
@@ -536,26 +592,20 @@
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.Width = 125;
             // 
-            // txDescription
+            // btnShifts
             // 
-            this.txDescription.Location = new System.Drawing.Point(279, 478);
-            this.txDescription.Multiline = true;
-            this.txDescription.Name = "txDescription";
-            this.txDescription.Size = new System.Drawing.Size(1140, 298);
-            this.txDescription.TabIndex = 9;
-            // 
-            // btnShift
-            // 
-            this.btnShift.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnShift.Controls.Add(this.pictureBox12);
-            this.btnShift.Controls.Add(this.pictureBox15);
-            this.btnShift.Controls.Add(this.label9);
-            this.btnShift.Location = new System.Drawing.Point(12, 508);
-            this.btnShift.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnShift.Name = "btnShift";
-            this.btnShift.Size = new System.Drawing.Size(229, 41);
-            this.btnShift.TabIndex = 14;
-            this.btnShift.Click += new System.EventHandler(this.btnShift_Click);
+            this.btnShifts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnShifts.Controls.Add(this.pictureBox12);
+            this.btnShifts.Controls.Add(this.pictureBox15);
+            this.btnShifts.Controls.Add(this.label9);
+            this.btnShifts.Location = new System.Drawing.Point(12, 508);
+            this.btnShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnShifts.Name = "btnShifts";
+            this.btnShifts.Size = new System.Drawing.Size(229, 41);
+            this.btnShifts.TabIndex = 14;
+            this.btnShifts.Click += new System.EventHandler(this.btnShift_Click);
+            this.btnShifts.MouseEnter += new System.EventHandler(this.btnShifts_MouseEnter);
+            this.btnShifts.MouseLeave += new System.EventHandler(this.btnShifts_MouseLeave);
             // 
             // pictureBox12
             // 
@@ -589,58 +639,20 @@
             this.label9.TabIndex = 3;
             this.label9.Text = "Shifts";
             // 
-            // btnStatistics
+            // txDescription
             // 
-            this.btnStatistics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnStatistics.Controls.Add(this.pictureBox16);
-            this.btnStatistics.Controls.Add(this.label5);
-            this.btnStatistics.Controls.Add(this.pictureBox19);
-            this.btnStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStatistics.Location = new System.Drawing.Point(12, 577);
-            this.btnStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(229, 41);
-            this.btnStatistics.TabIndex = 16;
-            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
-            // 
-            // pictureBox16
-            // 
-            this.pictureBox16.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
-            this.pictureBox16.Location = new System.Drawing.Point(191, 6);
-            this.pictureBox16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox16.TabIndex = 3;
-            this.pictureBox16.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(44, 11);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 20);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Statistics";
-            // 
-            // pictureBox19
-            // 
-            this.pictureBox19.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_insert_chart_outlined_black_48dp;
-            this.pictureBox19.Location = new System.Drawing.Point(4, 6);
-            this.pictureBox19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(36, 30);
-            this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox19.TabIndex = 52;
-            this.pictureBox19.TabStop = false;
+            this.txDescription.Location = new System.Drawing.Point(263, 478);
+            this.txDescription.Multiline = true;
+            this.txDescription.Name = "txDescription";
+            this.txDescription.Size = new System.Drawing.Size(1156, 298);
+            this.txDescription.TabIndex = 9;
             // 
             // Cancellations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1455, 816);
-            this.Controls.Add(this.btnShift);
+            this.Controls.Add(this.btnShifts);
             this.Controls.Add(this.txDescription);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.dataGridView);
@@ -652,6 +664,10 @@
             this.Load += new System.EventHandler(this.Complaint_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
+            this.btnStatistics.ResumeLayout(false);
+            this.btnStatistics.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             this.settingsPanel.ResumeLayout(false);
             this.settingsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -665,12 +681,12 @@
             this.btnDepartments.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.btnCancellations.ResumeLayout(false);
+            this.btnCancellations.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.btnEmployee.ResumeLayout(false);
-            this.btnEmployee.PerformLayout();
+            this.btnEmployees.ResumeLayout(false);
+            this.btnEmployees.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panelAccount.ResumeLayout(false);
@@ -678,15 +694,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
-            this.btnShift.ResumeLayout(false);
-            this.btnShift.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
+            this.btnShifts.ResumeLayout(false);
+            this.btnShifts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            this.btnStatistics.ResumeLayout(false);
-            this.btnStatistics.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -702,7 +714,7 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox exit;
+        private System.Windows.Forms.PictureBox btnExit;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.Panel panelLeft;
@@ -710,9 +722,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel btnDepartments;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel btnCancellations;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel btnEmployee;
+        private System.Windows.Forms.Panel btnEmployees;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelAccount;
         private System.Windows.Forms.Label label1;
@@ -720,8 +732,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txDescription;
-        private System.Windows.Forms.Panel btnShift;
+        private System.Windows.Forms.Panel btnShifts;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.Label label9;
@@ -743,5 +754,6 @@
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox19;
+        private System.Windows.Forms.TextBox txDescription;
     }
 }

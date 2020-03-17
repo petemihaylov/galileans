@@ -162,7 +162,7 @@ namespace EmployeesManagementSystem
         }
         private void exit_MouseEnter(object sender, EventArgs e)
         {
-            this.exit.BackColor = Color.White;
+            this.exit.BackColor = Color.DarkGray;
         }
         private void exit_MouseLeave(object sender, EventArgs e)
         {

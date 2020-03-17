@@ -10,9 +10,18 @@ namespace EmployeesManagementSystem
 {
     public partial class CreateAccounts : Form
     {
+
+        // Variables
         private Dashboard dashboard;
         private UserContext userContext = new UserContext();
 
+        // Default Constructor
+        public CreateAccounts()
+        {
+
+        }
+
+        // Constructor
         public CreateAccounts(Dashboard dashboard)
         {
             InitializeComponent();
@@ -198,7 +207,7 @@ namespace EmployeesManagementSystem
 
             if (!rx.IsMatch(name))
             {
-                MessageBox.Show("The Name is invalid! Only \"A-Z\" \"a-z\" characters");
+                MessageBox.Show("The Name is invalid! Only \"A-Z\" \"a-z\" characters, at least one uppercase letter");
                 return false;
             }
 

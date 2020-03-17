@@ -45,15 +45,15 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.LightSlateGray;
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(78, 558);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(300, 39);
+            this.btnLogin.Size = new System.Drawing.Size(300, 43);
             this.btnLogin.TabIndex = 16;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -149,11 +149,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Calibri", 30F);
+            this.label3.Font = new System.Drawing.Font("Calibri Light", 36F);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(126, 89);
+            this.label3.Location = new System.Drawing.Point(111, 79);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(191, 61);
+            this.label3.Size = new System.Drawing.Size(225, 73);
             this.label3.TabIndex = 0;
             this.label3.Text = "BAZAAR";
             // 

@@ -10,11 +10,17 @@ namespace EmployeesManagementSystem
     public partial class Cancellations : Form
     {
 
-
+        // Variables
         private CancellationContext cancellationContext = new CancellationContext();
         private User loggedUser;
        
+        // Default constructor
+        public Cancellations()
+        {
 
+        }
+
+        // Constructor
         public Cancellations(User user)
         {
             InitializeComponent();
@@ -38,25 +44,13 @@ namespace EmployeesManagementSystem
             }
         }
 
-        private void exit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
-            // exiting properly the application
-            if (Application.MessageLoop)
-            {
-                Application.Exit();
-            }
-        }
-
-
         // datagrid cell click needs a refactoring
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView.CurrentCell.ColumnIndex.Equals(4) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
+            if (!dataGridView.CurrentCell.ColumnIndex.Equals(5) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
                 // open another message box with the whole description
-                MessageBox.Show("Description:" + dataGridView.CurrentCell.Value.ToString());
+                txDescription.Text = "Description: " + dataGridView.CurrentCell.Value.ToString();
             }
             else if (dataGridView.CurrentCell.ColumnIndex.Equals(5) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
@@ -80,17 +74,8 @@ namespace EmployeesManagementSystem
             shifts.Show();
         }
 
-        private void exit_MouseEnter(object sender, EventArgs e)
-        {
-            exit.BackColor = Color.DarkGray;
-        }
-
-        private void exit_MouseLeave(object sender, EventArgs e)
-        {
-            exit.BackColor = Color.LightGray;
-        }
-
-        private void btnEmployee_Click(object sender, EventArgs e)
+        // Employees
+        private void btnEmployees_Click(object sender, EventArgs e)
         {
             this.Hide();
             // Show Dashboard
@@ -99,6 +84,7 @@ namespace EmployeesManagementSystem
             dashboard.Show();
         }
 
+        // Departments
         private void btnDepartments_Click(object sender, EventArgs e)
         {
 
@@ -109,6 +95,7 @@ namespace EmployeesManagementSystem
             departments.Show();
         }
 
+        // Stocks
         private void btnStocks_Click(object sender, EventArgs e)
         {
 
@@ -118,6 +105,8 @@ namespace EmployeesManagementSystem
             stocks.Closed += (s, args) => this.Close();
             stocks.Show();
         }
+
+        // Settings
 
         private void editAccount_Click(object sender, EventArgs e)
         {
@@ -137,6 +126,7 @@ namespace EmployeesManagementSystem
             login.Show();
         }
 
+        // Statistics
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -144,6 +134,76 @@ namespace EmployeesManagementSystem
             Statistic stat = new Statistic(this.loggedUser);
             stat.Closed += (s, args) => this.Close();
             stat.Show();
+        }
+
+        // Exit
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            // exiting properly the application
+            if (Application.MessageLoop)
+            {
+                Application.Exit();
+            }
+        }
+
+        // Hovering
+        private void btnExit_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnExit.BackColor = Color.LightGray;
+        }
+        private void btnExit_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnExit.BackColor = Color.White;
+        }
+        private void btnEmployees_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnEmployees.BackColor = Color.DarkGray;
+        }
+        private void btnEmployees_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnEmployees.BackColor = Color.LightGray;
+        }
+        private void btnShifts_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnShifts.BackColor = Color.DarkGray;
+        }
+        private void btnShifts_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnShifts.BackColor = Color.LightGray;
+        }
+        private void btnCancellations_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnCancellations.BackColor = Color.DarkGray;
+        }
+        private void btnCancellations_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnCancellations.BackColor = Color.LightGray;
+        }
+        private void btnDepartments_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnDepartments.BackColor = Color.DarkGray;
+        }
+        private void btnDepartments_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnDepartments.BackColor = Color.LightGray;
+        }
+        private void btnStocks_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnStocks.BackColor = Color.DarkGray;
+        }
+        private void btnStocks_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnStocks.BackColor = Color.LightGray;
+        }
+        private void btnStatistics_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnStatistics.BackColor = Color.DarkGray;
+        }
+        private void btnStatistics_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnStatistics.BackColor = Color.LightGray;
         }
     }
 }
