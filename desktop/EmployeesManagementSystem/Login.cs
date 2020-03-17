@@ -78,7 +78,11 @@ namespace EmployeesManagementSystem
                     }
                     else if(user.Role == Role.Manager.ToString())
                     {
-                        // Should be implemented 
+                        this.Hide();
+                        // Show Dashboard
+                        Dashboard dashboard = new Dashboard(user);
+                        dashboard.Closed += (s, args) => this.Close();
+                        dashboard.Show();
                     }
                     else
                     {

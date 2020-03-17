@@ -12,7 +12,6 @@ namespace EmployeesManagementSystem
         private CancellationContext cancellationContext = new CancellationContext();
         private User loggedUser;
 
-
         public Cancellations(User user)
         {
             InitializeComponent();
@@ -21,6 +20,26 @@ namespace EmployeesManagementSystem
 
         private void Complaint_Load(object sender, EventArgs e)
         {
+            // Roles division
+            if (this.loggedUser.Role == Models.Role.Manager.ToString())
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnCancellations.Enabled = true;
+                this.btnDepartments.Enabled = true;
+                this.btnStocks.Enabled = true;
+                this.btnShifts.Enabled = false;
+                this.btnStatistics.Enabled = true;
+            }
+            else if (this.loggedUser.Role == Models.Role.Administrator.ToString())
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnCancellations.Enabled = false;
+                this.btnDepartments.Enabled = true;
+                this.btnStocks.Enabled = false;
+                this.btnShifts.Enabled = true;
+                this.btnStatistics.Enabled = false;
+            }
+
             //needs to upload as the program runs in the future
             try
             {
