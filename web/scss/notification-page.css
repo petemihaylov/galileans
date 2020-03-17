@@ -10,8 +10,7 @@
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  background: linear-gradient(60deg, #91766ad3, #2d756de1);
+  background: linear-gradient(120deg, rgb(58, 84, 155) 0%,  #ef7f2d 100%);
   background-size: 250% 250%;
   -webkit-animation: gradient 12s ease infinite;
           animation: gradient 12s ease infinite;
