@@ -46,18 +46,18 @@ namespace EmployeesManagementSystem
             int[] cevaAbsent = { 0 };
             int[] cevaScheduled = { 0 };
 
-            cbMonth.Items.Add("january");
-            cbMonth.Items.Add("february");
-            cbMonth.Items.Add("march");
-            cbMonth.Items.Add("april");
-            cbMonth.Items.Add("may");
-            cbMonth.Items.Add("june");
-            cbMonth.Items.Add("july");
-            cbMonth.Items.Add("august");
-            cbMonth.Items.Add("september");
-            cbMonth.Items.Add("october");
-            cbMonth.Items.Add("november");
-            cbMonth.Items.Add("december");
+            cbMonth.Items.Add("January");
+            cbMonth.Items.Add("February");
+            cbMonth.Items.Add("March");
+            cbMonth.Items.Add("April");
+            cbMonth.Items.Add("May");
+            cbMonth.Items.Add("June");
+            cbMonth.Items.Add("July");
+            cbMonth.Items.Add("August");
+            cbMonth.Items.Add("September");
+            cbMonth.Items.Add("October");
+            cbMonth.Items.Add("November");
+            cbMonth.Items.Add("December");
 
         }
 
@@ -99,7 +99,8 @@ namespace EmployeesManagementSystem
             //attendance per employee
             foreach (Shift shift in shifts)
             {
-                if (cbMonth.Text == Convert.ToString(shift.ShiftDate.Month.ToString("m")))
+                //MessageBox.Show(shift.ShiftDate.ToString("MMMM"));
+                if (cbMonth.Text == shift.ShiftDate.ToString("MMMM"))
                 {
                     //marks attended
                     if (shift.Attended == true)
@@ -135,22 +136,25 @@ namespace EmployeesManagementSystem
             
             foreach (Shift shift in shifts)
             {
-                int ics = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day;
-                //marks attended
-                if (shift.Attended == true)
+                if (cbMonth.Text == shift.ShiftDate.ToString("MMMM"))
                 {
-                    counterAttended[ics]++;
+                    int ics = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day;
+                    //marks attended
+                    if (shift.Attended == true)
+                    {
+                        counterAttended[ics]++;
+                    }
+                    //marks absent
+                    else if (shift.Attended == false && shift.ShiftDate <= today)
+                    {
+                        counterAbsent[ics]++;
+                    }
+                    //mark scheduled
+                    else if (shift.Attended == false && shift.ShiftDate > today)
+                    {
+                        counterScheduled[ics]++;
+                    }
                 }
-                //marks absent
-                else if (shift.Attended == false && shift.ShiftDate <= today)
-                {
-                    counterAbsent[ics]++;
-                }
-                //mark scheduled
-                else if (shift.Attended == false && shift.ShiftDate > today)
-                {
-                    counterScheduled[ics]++;
-                }   
             }
             for (int i = 0; i <= 31 * 12 + 2; i++)
             {
@@ -230,14 +234,15 @@ namespace EmployeesManagementSystem
 
         private void cbStatistic_SelectedIndexChanged(object sender, EventArgs e)
         {
+            foreach (var series in chart1.Series)
+            {
+                series.Points.Clear();
+            }
             if (cbStatistic.Text.Contains("employee"))
             {
                 cbEmployee.Items.Clear();
                 lbEmployee.Text = "Select an employee";
-                cbEmployee.Enabled = true;
-                cbEmployee.Show();
-                lbEmployee.Show();
-                
+                            
                 foreach (User item in users)
                 {
                     cbEmployee.Items.Add(item.ID);
@@ -247,22 +252,13 @@ namespace EmployeesManagementSystem
             else if (cbStatistic.Text.Contains("department"))
             {
                 cbEmployee.Items.Clear();
-                cbEmployee.Enabled = true;
-                  cbEmployee.Show();
-                lbEmployee.Show();
                 lbEmployee.Text = "Select a department";
                 foreach (Department item in departments)
                 {
                     cbEmployee.Items.Add(item.ID);
                 }
             }
-
-            else
-            {
-                cbEmployee.Hide();
-                lbEmployee.Hide();
-            }
-
+            
             if (cbStatistic.Text == "Attendance per employee")
             {
                 //labels for y axis hours
@@ -394,15 +390,7 @@ namespace EmployeesManagementSystem
             }
         }
 
-        private void Statistic_Load(object sender, EventArgs e)
-        {
-
-            cbEmployee.Hide();
-            lbEmployee.Hide();
-            
-        }
-
-        private void cbEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
             //clears the chart
 
@@ -419,6 +407,21 @@ namespace EmployeesManagementSystem
 
             if (cbStatistic.Text == "Wage per employee")
                 WagePerEmployee();
+        }
+
+        private void Statistic_Load(object sender, EventArgs e)
+        { 
+        }
+
+        private void cbEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //clears the chart
+
+            foreach (var series in chart1.Series)
+            {
+                series.Points.Clear();
+            }
+
         }
     }
 }
