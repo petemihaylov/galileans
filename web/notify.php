@@ -8,7 +8,60 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 
+
+// Include config file
+require_once "./includes/config.php";
+ 
+$fullname = $email = $subject = $message = "";
+$fullname_err = $email_err = $subject_err = $message_err = "";
+
+
+$date = new DateTime("now", new DateTimeZone('Europe/Amsterdam') );
+$creationDate = $date->format('Y-m-d H:i:s');
+
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+     // Check if email is empty
+  if(empty(trim($_POST["email"]))){
+      $email_err = "* Please enter email.";
+  } else{
+      $email = trim($_POST["email"]);
+  }
+  
+  // Check if name is empty
+  if(empty(trim($_POST["fullname"]))){
+      $fullname_err = "* Please enter your name";
+      
+  } else{
+      $fullname = trim($_POST["fullname"]);
+  }
+
+  if(empty($name_err) && empty($email_err)){
+    
+    // Prepare a select statement
+    $sql = "INSERT INTO Cancellations(Date, Subject, Description, EmployeeName) values(?,?,?,?);";
+    
+    if($stmt = mysqli_prepare($link, $sql)){
+        // Bind variables to the prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "ssss", $creationDate, $_POST['subject'], $_POST['message'], $_SESSION['fullname']);
+        
+        // Attempt to execute the prepared statement
+        if(!mysqli_stmt_execute($stmt)){
+          echo "Oops! Something went wrong. Please try again later.";
+        }
+      }
+
+      
+            // Close statement
+            mysqli_stmt_close($stmt);
+    }
+    // Close connection
+    mysqli_close($link);
+
+
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +90,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <h1>Get in touch</h1>
             
             <!-- Notification Form -->
-            <form class="form">
+            <form class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" >
                 <!-- Name -->
                 <div class="form-group">
                     <input type="name" class="form-control" name="fullname" id="nameInput" placeholder="Name">
