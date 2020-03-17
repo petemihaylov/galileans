@@ -11,12 +11,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 // Include config file
 require_once "./includes/config.php";
-require_once "./models/Shift.php";
+require "./models/Shift.php";
 
 $shiftArray = array();
 
  // Prepare a select statement
- $sql = "SELECT ID, ShiftDate, StartTime, EndTime FROM Shifts Where AssignedEmployeeID = ?";
+ $sql = "SELECT ID, ShiftDate, StartTime, EndTime, ShiftType FROM Shifts Where AssignedEmployeeID = ?";
     if($stmt = mysqli_prepare($link, $sql)){
     
         mysqli_stmt_bind_param($stmt, "s", $_SESSION['id']);
@@ -30,10 +30,10 @@ $shiftArray = array();
 
             for ($i=0; $i < $rows; $i++) { 
                    
-                    mysqli_stmt_bind_result($stmt, $ID, $ShiftDate, $StartTime, $EndTime);
+                    mysqli_stmt_bind_result($stmt, $ID, $ShiftDate, $StartTime, $EndTime, $ShiftType);
                     
                     if(mysqli_stmt_fetch($stmt)){
-                            $shift = new Shift($ID, $ShiftDate, $StartTime, $EndTime);
+                            $shift = new Shift($ID, $ShiftDate, $StartTime, $EndTime, $ShiftType);
                             array_push($shiftArray, $shift);
                     }
                 }
@@ -42,12 +42,8 @@ $shiftArray = array();
             echo "Oops! Something went wrong. Please try again later.";
         }
         
-            // Close statement
-            mysqli_stmt_close($stmt);
     }
     
-    // Close connection
-    mysqli_close($link);
 ?>
 
 
@@ -56,11 +52,12 @@ $shiftArray = array();
 
 <!-- Body -->
 <div class="container welcome-container">
-    <table class="table table-hover table-dark">
+    <table id="example" class="table table-hover table-dark">
     <thead>
         <tr>
-        <th scope="col">#</th>
-        <th scope="col">Shift Date</th>
+        <th scope="col"></th>
+        <th scope="col">Type</th>
+        <th scope="col"> Date</th>
         <th scope="col">Start Time</th>
         <th scope="col">End Time</th>
         </tr>
@@ -69,7 +66,9 @@ $shiftArray = array();
     <tbody>
     <?php for ($i=0; $i < count($shiftArray); $i++) { ?>
         <tr>
-        <th scope="row"> <?php echo $shiftArray[$i]->get_ID();?> </th>
+        
+        <th scope="row"> <?php echo $i+1 ?> </th>
+        <td> <?php echo $shiftArray[$i]->get_ShiftType();?></td>
         <td> <?php echo $shiftArray[$i]->get_ShiftDate();?></td>
         <td> <?php echo $shiftArray[$i]->get_StartTime();?></td>
         <td> <?php echo $shiftArray[$i]->get_EndTime();?></td>
@@ -81,5 +80,11 @@ $shiftArray = array();
     </table>
 </div>
     
+<script>
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+
 <!-- Footer -->
 <?php require('./shared/footer.php') ?>
