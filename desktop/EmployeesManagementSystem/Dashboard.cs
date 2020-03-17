@@ -180,9 +180,9 @@ namespace EmployeesManagementSystem
         private void editAccount_Click(object sender, EventArgs e)
         {
             this.Hide();
-            // Show Dashboard
-            AdminDetails adminDetails = new AdminDetails(this.loggedUser);
-            adminDetails.Closed += (s, args) => this.Close();
+            // Show Admin details
+            AdminDetails adminDetails = new AdminDetails(this.loggedUser, this);
+            adminDetails.Closed += (s, args) => this.Hide();
             adminDetails.Show();
         }
 
@@ -193,16 +193,6 @@ namespace EmployeesManagementSystem
             Login login = new Login();
             login.Closed += (s, args) => this.Close();
             login.Show();
-        }
-
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            settingsPanel.Visible = !settingsPanel.Visible;
-        }
-
-        private void lbSettings_Click(object sender, EventArgs e)
-        {
-            settingsPanel.Visible = !settingsPanel.Visible;
         }
 
         // Cancellations

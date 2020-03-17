@@ -121,8 +121,9 @@
             this.panelLeft.Controls.Add(this.panelAccount);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(257, 816);
+            this.panelLeft.Size = new System.Drawing.Size(193, 663);
             this.panelLeft.TabIndex = 6;
             // 
             // btnStatistics
@@ -183,51 +184,54 @@
             this.settingsPanel.Controls.Add(this.editAccount);
             this.settingsPanel.Controls.Add(this.pictureBox10);
             this.settingsPanel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.settingsPanel.Location = new System.Drawing.Point(44, 685);
-            this.settingsPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.settingsPanel.Location = new System.Drawing.Point(33, 557);
+            this.settingsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.settingsPanel.Name = "settingsPanel";
-            this.settingsPanel.Size = new System.Drawing.Size(191, 76);
+            this.settingsPanel.Size = new System.Drawing.Size(144, 62);
             this.settingsPanel.TabIndex = 15;
             this.settingsPanel.Visible = false;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
-            this.panel1.Location = new System.Drawing.Point(4, 34);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(3, 28);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(180, 1);
+            this.panel1.Size = new System.Drawing.Size(135, 1);
             this.panel1.TabIndex = 13;
             // 
             // lblLogOut
             // 
             this.lblLogOut.AutoSize = true;
             this.lblLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogOut.Location = new System.Drawing.Point(51, 50);
+            this.lblLogOut.Location = new System.Drawing.Point(38, 41);
+            this.lblLogOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLogOut.Name = "lblLogOut";
-            this.lblLogOut.Size = new System.Drawing.Size(72, 18);
+            this.lblLogOut.Size = new System.Drawing.Size(57, 15);
             this.lblLogOut.TabIndex = 16;
             this.lblLogOut.Text = "LOGOUT";
-            this.lblLogOut.Click += new System.EventHandler(this.lblLogOut_Click);
+            this.lblLogOut.Click += new System.EventHandler(this.LogOut_Click);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_circle_black_48dp;
-            this.pictureBox2.Location = new System.Drawing.Point(14, 45);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(10, 37);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(29, 26);
+            this.pictureBox2.Size = new System.Drawing.Size(22, 21);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 15;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.LogOut_Click);
             // 
             // editAccount
             // 
             this.editAccount.AutoSize = true;
             this.editAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editAccount.Location = new System.Drawing.Point(50, 8);
+            this.editAccount.Location = new System.Drawing.Point(38, 6);
+            this.editAccount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.editAccount.Name = "editAccount";
-            this.editAccount.Size = new System.Drawing.Size(119, 18);
+            this.editAccount.Size = new System.Drawing.Size(94, 15);
             this.editAccount.TabIndex = 14;
             this.editAccount.Text = "EDIT ACCOUNT";
             this.editAccount.Click += new System.EventHandler(this.editAccount_Click);
@@ -235,22 +239,24 @@
             // pictureBox10
             // 
             this.pictureBox10.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_create_black_48dp;
-            this.pictureBox10.Location = new System.Drawing.Point(14, 4);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox10.Location = new System.Drawing.Point(10, 3);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(29, 26);
+            this.pictureBox10.Size = new System.Drawing.Size(22, 21);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox10.TabIndex = 13;
             this.pictureBox10.TabStop = false;
+            this.pictureBox10.Click += new System.EventHandler(this.editAccount_Click);
             // 
             // lbSettings
             // 
             this.lbSettings.AutoSize = true;
             this.lbSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSettings.Location = new System.Drawing.Point(58, 776);
+            this.lbSettings.Location = new System.Drawing.Point(44, 630);
+            this.lbSettings.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbSettings.Name = "lbSettings";
-            this.lbSettings.Size = new System.Drawing.Size(70, 20);
+            this.lbSettings.Size = new System.Drawing.Size(59, 17);
             this.lbSettings.TabIndex = 14;
             this.lbSettings.Text = "Settings";
             this.lbSettings.Click += new System.EventHandler(this.lbSettings_Click);
@@ -259,10 +265,10 @@
             // 
             this.btnSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSettings.Image = global::EmployeesManagementSystem.Properties.Resources.settings;
-            this.btnSettings.Location = new System.Drawing.Point(13, 767);
-            this.btnSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSettings.Location = new System.Drawing.Point(10, 623);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(39, 34);
+            this.btnSettings.Size = new System.Drawing.Size(29, 28);
             this.btnSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnSettings.TabIndex = 13;
             this.btnSettings.TabStop = false;
@@ -276,9 +282,10 @@
             this.btnStocks.Controls.Add(this.pictureBox9);
             this.btnStocks.Controls.Add(this.pictureBox11);
             this.btnStocks.Controls.Add(this.label6);
-            this.btnStocks.Location = new System.Drawing.Point(12, 429);
+            this.btnStocks.Location = new System.Drawing.Point(9, 349);
+            this.btnStocks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnStocks.Name = "btnStocks";
-            this.btnStocks.Size = new System.Drawing.Size(230, 41);
+            this.btnStocks.Size = new System.Drawing.Size(172, 33);
             this.btnStocks.TabIndex = 6;
             this.btnStocks.Click += new System.EventHandler(this.btnStocks_Click);
             this.btnStocks.MouseEnter += new System.EventHandler(this.btnStocks_MouseEnter);
@@ -287,9 +294,10 @@
             // pictureBox9
             // 
             this.pictureBox9.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_shopping_cart_black_18dp;
-            this.pictureBox9.Location = new System.Drawing.Point(4, 5);
+            this.pictureBox9.Location = new System.Drawing.Point(3, 4);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(34, 32);
+            this.pictureBox9.Size = new System.Drawing.Size(26, 26);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox9.TabIndex = 5;
             this.pictureBox9.TabStop = false;
@@ -297,9 +305,10 @@
             // pictureBox11
             // 
             this.pictureBox11.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
-            this.pictureBox11.Location = new System.Drawing.Point(191, 6);
+            this.pictureBox11.Location = new System.Drawing.Point(143, 5);
+            this.pictureBox11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox11.Size = new System.Drawing.Size(24, 26);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox11.TabIndex = 3;
             this.pictureBox11.TabStop = false;
@@ -308,9 +317,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(44, 11);
+            this.label6.Location = new System.Drawing.Point(33, 9);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 20);
+            this.label6.Size = new System.Drawing.Size(50, 17);
             this.label6.TabIndex = 3;
             this.label6.Text = "Stocks";
             // 
@@ -320,9 +330,10 @@
             this.btnDepartments.Controls.Add(this.pictureBox8);
             this.btnDepartments.Controls.Add(this.pictureBox5);
             this.btnDepartments.Controls.Add(this.label4);
-            this.btnDepartments.Location = new System.Drawing.Point(12, 360);
+            this.btnDepartments.Location = new System.Drawing.Point(9, 292);
+            this.btnDepartments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDepartments.Name = "btnDepartments";
-            this.btnDepartments.Size = new System.Drawing.Size(230, 41);
+            this.btnDepartments.Size = new System.Drawing.Size(172, 33);
             this.btnDepartments.TabIndex = 4;
             this.btnDepartments.Click += new System.EventHandler(this.btnDepartments_Click);
             this.btnDepartments.MouseEnter += new System.EventHandler(this.btnDepartments_MouseEnter);
@@ -331,9 +342,10 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_business_black_48dp;
-            this.pictureBox8.Location = new System.Drawing.Point(4, 5);
+            this.pictureBox8.Location = new System.Drawing.Point(3, 4);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(34, 32);
+            this.pictureBox8.Size = new System.Drawing.Size(26, 26);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 5;
             this.pictureBox8.TabStop = false;
@@ -341,9 +353,10 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
-            this.pictureBox5.Location = new System.Drawing.Point(191, 6);
+            this.pictureBox5.Location = new System.Drawing.Point(143, 5);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox5.Size = new System.Drawing.Size(24, 26);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 3;
             this.pictureBox5.TabStop = false;
@@ -352,9 +365,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(44, 11);
+            this.label4.Location = new System.Drawing.Point(33, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 20);
+            this.label4.Size = new System.Drawing.Size(89, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Departments";
             // 
@@ -374,9 +388,10 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_format_list_bulleted_black_48dp;
-            this.pictureBox7.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox7.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(34, 32);
+            this.pictureBox7.Size = new System.Drawing.Size(26, 26);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox7.TabIndex = 4;
             this.pictureBox7.TabStop = false;
@@ -384,9 +399,10 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
-            this.pictureBox4.Location = new System.Drawing.Point(191, 6);
+            this.pictureBox4.Location = new System.Drawing.Point(143, 5);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox4.Size = new System.Drawing.Size(24, 26);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 3;
             this.pictureBox4.TabStop = false;
@@ -395,9 +411,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(44, 10);
+            this.label3.Location = new System.Drawing.Point(33, 8);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 20);
+            this.label3.Size = new System.Drawing.Size(92, 17);
             this.label3.TabIndex = 3;
             this.label3.Text = "Cancellations";
             // 
@@ -420,18 +437,20 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(44, 11);
+            this.label7.Location = new System.Drawing.Point(33, 9);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 20);
+            this.label7.Size = new System.Drawing.Size(77, 17);
             this.label7.TabIndex = 4;
             this.label7.Text = "Employees";
             // 
             // pictureBox6
             // 
             this.pictureBox6.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_dashboard_black_48dp;
-            this.pictureBox6.Location = new System.Drawing.Point(4, 5);
+            this.pictureBox6.Location = new System.Drawing.Point(3, 4);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(34, 32);
+            this.pictureBox6.Size = new System.Drawing.Size(26, 26);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 3;
             this.pictureBox6.TabStop = false;
@@ -439,9 +458,10 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
-            this.pictureBox3.Location = new System.Drawing.Point(191, 6);
+            this.pictureBox3.Location = new System.Drawing.Point(143, 5);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox3.Size = new System.Drawing.Size(24, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
@@ -450,9 +470,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(44, 11);
+            this.label2.Location = new System.Drawing.Point(33, 9);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 20);
+            this.label2.Size = new System.Drawing.Size(0, 17);
             this.label2.TabIndex = 3;
             // 
             // panelAccount
@@ -462,16 +483,18 @@
             this.panelAccount.Controls.Add(this.label1);
             this.panelAccount.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelAccount.Location = new System.Drawing.Point(0, 0);
+            this.panelAccount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelAccount.Name = "panelAccount";
-            this.panelAccount.Size = new System.Drawing.Size(257, 63);
+            this.panelAccount.Size = new System.Drawing.Size(193, 51);
             this.panelAccount.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_create_new_folder_black_48dp;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 7);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(53, 51);
+            this.pictureBox1.Size = new System.Drawing.Size(40, 41);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -480,9 +503,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(81, 30);
+            this.label1.Location = new System.Drawing.Point(61, 24);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 20);
+            this.label1.Size = new System.Drawing.Size(97, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Administration";
             // 
@@ -499,11 +523,12 @@
             this.subject,
             this.description,
             this.Delete});
-            this.dataGridView.Location = new System.Drawing.Point(263, 59);
+            this.dataGridView.Location = new System.Drawing.Point(197, 48);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 30;
-            this.dataGridView.Size = new System.Drawing.Size(1156, 370);
+            this.dataGridView.Size = new System.Drawing.Size(867, 301);
             this.dataGridView.TabIndex = 7;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
@@ -513,7 +538,7 @@
             this.ID.HeaderText = "ID";
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
-            this.ID.Width = 50;
+            this.ID.Width = 43;
             // 
             // date
             // 
@@ -552,7 +577,7 @@
             this.Delete.HeaderText = "Delete";
             this.Delete.MinimumWidth = 6;
             this.Delete.Name = "Delete";
-            this.Delete.Width = 55;
+            this.Delete.Width = 44;
             // 
             // panel4
             // 
@@ -560,7 +585,7 @@
             this.panel4.Controls.Add(this.btnExit);
             this.panel4.Location = new System.Drawing.Point(252, 1);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1203, 52);
+            this.panel4.Size = new System.Drawing.Size(902, 42);
             this.panel4.TabIndex = 8;
             // 
             // btnExit
@@ -596,6 +621,15 @@
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.Width = 125;
             // 
+            // txDescription
+            // 
+            this.txDescription.Location = new System.Drawing.Point(209, 388);
+            this.txDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txDescription.Multiline = true;
+            this.txDescription.Name = "txDescription";
+            this.txDescription.Size = new System.Drawing.Size(856, 243);
+            this.txDescription.TabIndex = 9;
+            // 
             // btnShifts
             // 
             this.btnShifts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -614,10 +648,10 @@
             // pictureBox12
             // 
             this.pictureBox12.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp1;
-            this.pictureBox12.Location = new System.Drawing.Point(4, 5);
-            this.pictureBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox12.Location = new System.Drawing.Point(3, 4);
+            this.pictureBox12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(35, 32);
+            this.pictureBox12.Size = new System.Drawing.Size(26, 26);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox12.TabIndex = 5;
             this.pictureBox12.TabStop = false;
@@ -625,10 +659,10 @@
             // pictureBox15
             // 
             this.pictureBox15.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
-            this.pictureBox15.Location = new System.Drawing.Point(191, 6);
-            this.pictureBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox15.Location = new System.Drawing.Point(143, 5);
+            this.pictureBox15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox15.Size = new System.Drawing.Size(24, 26);
             this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox15.TabIndex = 3;
             this.pictureBox15.TabStop = false;
@@ -637,9 +671,10 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(44, 11);
+            this.label9.Location = new System.Drawing.Point(33, 9);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 20);
+            this.label9.Size = new System.Drawing.Size(43, 17);
             this.label9.TabIndex = 3;
             this.label9.Text = "Shifts";
             // 
@@ -653,7 +688,7 @@
             // 
             // Cancellations
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1455, 816);
             this.Controls.Add(this.btnShifts);
@@ -662,6 +697,7 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Cancellations";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Complaint";

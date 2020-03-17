@@ -1,4 +1,6 @@
 .navbar-nav{
-    width: 30%;
     justify-content: space-around;
+}
+.navbar-nav .nav-link{
+    margin-right: 60px;
 }

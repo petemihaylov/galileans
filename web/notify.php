@@ -1,3 +1,14 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: index.php");
+    exit;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +21,16 @@
 
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="./scss/notification-page.css">
-    
+    <link rel="stylesheet" href="./css/header-page.css">
     
   
   <title>Notification</title>
 </head>
 <body>
+
+<!-- Navbar -->
+<?php require('./shared/header.php') ?>
+
     <main class="main">
         <div class="notification-container">
             <!-- Header -->
@@ -25,27 +40,23 @@
             <form class="form">
                 <!-- Name -->
                 <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="name" class="form-control" id="nameInput" placeholder="Name">
+                    <input type="name" class="form-control" name="fullname" id="nameInput" placeholder="Name">
                 </div>
                 
                 <!-- Email address -->
                 <div class="form-group">
-                    <label for="emailInput">Email address</label>
-                    <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Email">
+                    <input type="email" class="form-control" name="email" id="emailInput" aria-describedby="emailHelp" placeholder="Email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 
                 <!-- Subject -->
                 <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="subject" class="form-control" id="subjectInput" placeholder="Subject">
+                    <input type="subject" class="form-control" name="subject" id="subjectInput" placeholder="Subject">
                 </div>
 
                 <!-- Message -->
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea class="form-control" id="messageBox" rows="3"></textarea>
+                    <textarea class="form-control" placeholder="Message" name="message" id="messageBox" rows="5"></textarea>
                 </div>
 
                 <!-- Submit button -->
