@@ -18,7 +18,7 @@
         <div class="error">4</div>
         <div class="error">0</div>
         <div class="error">4</div>
-        <div class="col error-description">No Account! We will register you soon!</div>
+        <div class="col error-description">Opps! Page not found.</div>
     <div>
 
 </body>

@@ -46,15 +46,18 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lbMonth = new System.Windows.Forms.Label();
             this.cbMonth = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Controls.Add(this.lbBack);
             this.panel4.Controls.Add(this.picBack);
             this.panel4.Controls.Add(this.exit);
@@ -103,11 +106,12 @@
             // 
             this.lbMoneyMadeMonth.AutoSize = true;
             this.lbMoneyMadeMonth.Font = new System.Drawing.Font("Arial", 12F);
-            this.lbMoneyMadeMonth.Location = new System.Drawing.Point(778, 27);
+            this.lbMoneyMadeMonth.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lbMoneyMadeMonth.Location = new System.Drawing.Point(713, 25);
             this.lbMoneyMadeMonth.Name = "lbMoneyMadeMonth";
-            this.lbMoneyMadeMonth.Size = new System.Drawing.Size(90, 23);
+            this.lbMoneyMadeMonth.Size = new System.Drawing.Size(122, 23);
             this.lbMoneyMadeMonth.TabIndex = 67;
-            this.lbMoneyMadeMonth.Text = "Statistics";
+            this.lbMoneyMadeMonth.Text = "STATISTICS";
             // 
             // cbStatistic
             // 
@@ -223,7 +227,7 @@
             this.lbMonth.AutoSize = true;
             this.lbMonth.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbMonth.Location = new System.Drawing.Point(1101, 113);
+            this.lbMonth.Location = new System.Drawing.Point(1090, 113);
             this.lbMonth.Name = "lbMonth";
             this.lbMonth.Size = new System.Drawing.Size(135, 24);
             this.lbMonth.TabIndex = 79;
@@ -233,16 +237,27 @@
             // 
             this.cbMonth.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMonth.FormattingEnabled = true;
-            this.cbMonth.Location = new System.Drawing.Point(1106, 141);
+            this.cbMonth.Location = new System.Drawing.Point(1095, 141);
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(327, 32);
             this.cbMonth.TabIndex = 78;
             this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_insert_chart_outlined_black_48dp;
+            this.pictureBox1.Location = new System.Drawing.Point(653, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(36, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 68;
+            this.pictureBox1.TabStop = false;
+            // 
             // Statistic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1511, 827);
             this.Controls.Add(this.lbMonth);
             this.Controls.Add(this.cbMonth);
@@ -262,6 +277,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,5 +296,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label lbMonth;
         private System.Windows.Forms.ComboBox cbMonth;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

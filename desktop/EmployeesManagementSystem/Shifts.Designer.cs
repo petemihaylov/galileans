@@ -103,7 +103,6 @@
             this.currentTime = new System.Windows.Forms.Timer(this.components);
             this.cbDepartment = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
-            this.autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.btnDisplay = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
@@ -1022,14 +1021,6 @@
             this.label29.TabIndex = 65;
             this.label29.Text = "Department:";
             // 
-            // autoLabel1
-            // 
-            this.autoLabel1.Location = new System.Drawing.Point(0, 0);
-            this.autoLabel1.Name = "autoLabel1";
-            this.autoLabel1.Size = new System.Drawing.Size(79, 17);
-            this.autoLabel1.TabIndex = 67;
-            this.autoLabel1.Text = "autoLabel1";
-            // 
             // btnDisplay
             // 
             this.btnDisplay.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -1054,7 +1045,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1511, 827);
             this.Controls.Add(this.btnDisplay);
-            this.Controls.Add(this.autoLabel1);
             this.Controls.Add(this.cbDepartment);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.pictureBox18);
@@ -1213,7 +1203,6 @@
         private System.Windows.Forms.PictureBox pictureBox22;
         private System.Windows.Forms.ComboBox cbDepartment;
         private System.Windows.Forms.Label label29;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private System.Windows.Forms.Button btnDisplay;
     }
 }

@@ -48,7 +48,7 @@ namespace EmployeesManagementSystem
 
             foreach (Availability availability in availabilityContext.GetAllAvailabilitiesByID(UserID))
             {
-                listOfAvailabilities.Items.Add(availability.Date.ToString() + departmentContext.GetNameById(userContext.GetDepIDByUserId(availability.EmployeeID)).ToString() + " shift, " + user.FullName);
+                listOfAvailabilities.Items.Add(" shift: " + availability.Date.ToString() + " " + departmentContext.GetNameById(userContext.GetDepIDByUserId(availability.EmployeeID)).ToString() + "  " + user.FullName);
             }
             
         }

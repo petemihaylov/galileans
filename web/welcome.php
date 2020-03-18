@@ -83,6 +83,8 @@ $closestShift = new Shift("", "", "", "", "");
         mysqli_stmt_close($stmt);
 }
  
+    // Close connection
+    mysqli_close($link);
 ?>
 
 
