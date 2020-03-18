@@ -1,0 +1,85 @@
+/* Imports */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+$font-size-min: 4rem;
+$font-size-mid: 8rem;
+$font-size-max: 18rem;
+$font-size-description: 2rem;
+
+$font-family: 'Montserrat', sans-serif;
+
+$white: #ffffff;
+$dark: #1c1c1d;
+$red: #f25252;
+
+body {
+    margin:0;
+    font-family:$font-family;
+    color:$red;
+    background:$white;
+}
+
+.container {
+    max-width: 100%;
+    padding: 0px;
+}
+
+.error {
+    font-size: $font-size-mid;
+    ;
+    position:absolute;
+    transform:translate(-50%,-50%);
+    margin:0;
+}
+
+.error-description{
+    font-size: $font-size-description;
+    position:absolute;
+    top: 70%;
+    margin:0;
+    text-align: center;
+}
+
+.error:nth-of-type(1){
+    animation: range 4s infinite;
+}
+
+.error:nth-of-type(2){
+    left:50%;
+    top:50%;
+    animation: size 4s infinite;
+}
+
+.error:nth-of-type(3){
+    animation: range2 4s infinite;  
+}
+
+h2{
+    left:50%;
+    top:50%;
+}
+
+@keyframes range {
+    0%  {left:42%;top:50%;font-size:$font-size-mid;}
+    25% {left:50%;top:45%;font-size:$font-size-min;}
+    50% {left:58%;top:50%;font-size:$font-size-mid;}
+    75% {left:50%;top:55%;font-size:$font-size-min;}
+    100%{left:42%;top:50%;font-size:$font-size-mid;}
+}
+
+@keyframes range2 {
+    0%  {left:58%;top:50%;font-size:$font-size-mid;}
+    25% {left:50%;top:55%;font-size:$font-size-min;}
+    50% {left:42%;top:50%;font-size:$font-size-mid;}
+    75% {left:50%;top:45%;font-size:$font-size-min;}
+    100%{left:58%;top:50%;font-size:$font-size-mid;}
+}
+
+@keyframes size {
+    0%  {font-size:$font-size-mid;}
+    25% {font-size:$font-size-max;}
+    50% {font-size:$font-size-mid;}
+    75% {font-size:$font-size-max;}
+    100%{font-size:$font-size-mid;}
+}
