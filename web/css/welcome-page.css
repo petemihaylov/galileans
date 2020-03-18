@@ -1,4 +1,6 @@
-
+body{
+    min-height: 100vh;
+}
 .details-container{
     margin-top: 5%;
 }
@@ -9,7 +11,7 @@ footer{
 
 
 .next-shift{
-    margin-top: 35px;
+    margin-top: 10%;
     display: flex;
     justify-content: center;
     align-items: center;

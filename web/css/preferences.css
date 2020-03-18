@@ -17,6 +17,7 @@ body{
     border: solid 1px  rgb(199, 199, 199);
     text-align: center;
     border-radius: 20px;
+    color: rgb(100, 98, 98);
     padding: 10px;
 }
 .dayNumber{
@@ -43,7 +44,13 @@ body{
     text-align: center;
 }
 .booked{
-    color: green;
+    color: rgb(23, 184, 117);
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: 1px solid rgba(97, 97, 97, 0.144);
+}
+.booked-date{
+    background-color:  rgb(23, 184, 117);
 }
 .btn.btn-outline-info{
     font-size: 12px;

@@ -161,22 +161,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           $daysArray[$i]->set_Booked(true);
         }else $daysArray[$i]->set_Booked(false);
       ?>
-    <div class="row">
+    <div class="row <?php echo $daysArray[$i]->get_Booked() ? "booked": ""; ?>">
       <div class="col-md-1">
-        <div class="dayNumber">
+        <div class="dayNumber <?php echo $daysArray[$i]->get_Booked() ? "booked-date": ""; ?>">
         <?php echo date('d', $daysArray[$i]->get_Date());?>
         </div>
       </div>
       <div class="col-md-1 weekDay">
       <?php echo strtoupper(date('D', $daysArray[$i]->get_Date()));?>
       </div>
-      <div class="col-md-8 <?php echo $daysArray[$i]->get_Booked() ? "booked": ""; ?>">
+      <div class="col-md-8">
       <?php echo strtoupper($daysArray[$i]->get_Availability() ? "Booked": "Available");?>
       </div>
       <div class="col-md-2">
       
       <?php
-           echo "<button id=\"$i\" class=\"btn btn-outline-info\" name=\"submit_$i\" type=\"submit\"  onclick=\"return myId(this);\"><i class=\"fas fa-plus\"></i> </button>" . PHP_EOL;
+           $str =  "<button id=\"$i\" class=\"btn btn-outline-info\" name=\"submit_$i\" type=\"submit\"  onclick=\"return myId(this);\">";
+             $res = $daysArray[$i]->get_Booked() ? "<i class=\"fas fa-minus\"></i>": "<i class=\"fas fa-plus\"></i>";
+             echo $str . $res. "</button>" . PHP_EOL;
       ?>
 
       </div>

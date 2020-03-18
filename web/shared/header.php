@@ -17,7 +17,7 @@
         <a class="nav-link" href="preferences.php"> <i class="fas fa-praying-hands"></i></i> Preferences</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"> <i class="far fa-money-bill-alt"></i> Payments</a>
+        <a class="nav-link" href="payments.php"> <i class="far fa-money-bill-alt"></i> Payments</a>
       </li>
       
     </ul>
