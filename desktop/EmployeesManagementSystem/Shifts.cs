@@ -28,6 +28,7 @@ namespace EmployeesManagementSystem
             this.loggedUser = user;
             this.departmentList = new Dictionary<string, int>();
 
+            this.cbDepartment.Items.Add("All");
             foreach (Department department in departmentContext.GetAllDepartments())
             {
                 this.cbDepartment.Items.Add(department.Name);
@@ -83,77 +84,89 @@ namespace EmployeesManagementSystem
             {
                 string selectedDepartment = this.cbDepartment.SelectedItem.ToString();
 
-                // MORNING
-                List<Shift> morning = getMorningShiftsForDate(dateTime);
-                this.morningList.Items.Clear();
-                foreach (var item in morning)
+                if (selectedDepartment.ToString() != "All")
                 {
-                    if (item.DepartmentID == this.departmentList[selectedDepartment])
+                    // MORNING
+                    List<Shift> morning = getMorningShiftsForDate(dateTime);
+                    this.morningList.Items.Clear();
+                    foreach (var item in morning)
                     {
-                        this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+                        if (item.DepartmentID == this.departmentList[selectedDepartment])
+                        {
+                            this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+                        }
+                    }
+
+                    // EVENING
+                    List<Shift> evening = getEveningShiftsForDate(dateTime);
+                    this.eveningList.Items.Clear();
+                    foreach (var item in evening)
+                    {
+                        if (item.DepartmentID == this.departmentList[selectedDepartment])
+                        {
+                            this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+
+                        }
+                    }
+
+                    // AFTERNOON
+                    List<Shift> afternoon = getAfternoonShiftsForDate(dateTime);
+                    this.afternoonList.Items.Clear();
+                    foreach (var item in afternoon)
+                    {
+                        if (item.DepartmentID == this.departmentList[selectedDepartment])
+                        {
+                            this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+
+                        }
                     }
                 }
-
-                // EVENING
-                List<Shift> evening = getEveningShiftsForDate(dateTime);
-                this.eveningList.Items.Clear();
-                foreach (var item in evening)
+                else
                 {
-                    if (item.DepartmentID == this.departmentList[selectedDepartment])
-                    {
-                        this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
-
-                    }
-                }
-
-                // AFTERNOON
-                List<Shift> afternoon = getAfternoonShiftsForDate(dateTime);
-                this.afternoonList.Items.Clear();
-                foreach (var item in afternoon)
-                {
-                    if (item.DepartmentID == this.departmentList[selectedDepartment])
-                    {
-                        this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
-
-                    }
+                    showAll(dateTime);
                 }
             }
             else 
-            { 
-                 // MORNING
-                List<Shift> morning = getMorningShiftsForDate(dateTime);
-                this.morningList.Items.Clear();
-                foreach (var item in morning)
-                {
-                   
-                        this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
-                    
-                }
-
-                // EVENING
-                List<Shift> evening = getEveningShiftsForDate(dateTime);
-                this.eveningList.Items.Clear();
-                foreach (var item in evening)
-                {
-                   
-                        this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
-
-                    
-                }
-
-                // AFTERNOON
-                List<Shift> afternoon = getAfternoonShiftsForDate(dateTime);
-                this.afternoonList.Items.Clear();
-                foreach (var item in afternoon)
-                {
-                    
-                        this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
-
-                    
-                }
+            {
+                showAll(dateTime);
             }
 
         }
+
+        private void showAll(DateTime dateTime)
+        {
+            // MORNING
+            List<Shift> morning = getMorningShiftsForDate(dateTime);
+            this.morningList.Items.Clear();
+            foreach (var item in morning)
+            {
+
+                this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+
+            }
+
+            // EVENING
+            List<Shift> evening = getEveningShiftsForDate(dateTime);
+            this.eveningList.Items.Clear();
+            foreach (var item in evening)
+            {
+
+                this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+
+
+            }
+
+            // AFTERNOON
+            List<Shift> afternoon = getAfternoonShiftsForDate(dateTime);
+            this.afternoonList.Items.Clear();
+            foreach (var item in afternoon)
+            {
+
+                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+
+            }
+        }
+
         private List<Shift> getMorningShiftsForDate(DateTime dateTime)
         {
             List<Shift> list = new List<Shift>();

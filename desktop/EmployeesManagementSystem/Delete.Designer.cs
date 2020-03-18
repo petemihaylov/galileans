@@ -52,7 +52,7 @@
             // exit
             // 
             this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
-            this.exit.Location = new System.Drawing.Point(478, 15);
+            this.exit.Location = new System.Drawing.Point(518, 12);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(39, 35);
             this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

@@ -40,6 +40,7 @@ namespace EmployeesManagementSystem
                 this.btnStocks.Enabled = true;
                 this.btnShifts.Enabled = false;
                 this.btnStatistics.Enabled = true;
+                this.btnCreate.Enabled = false;
             }
             else if(this.loggedUser.Role == Models.Role.Administrator.ToString())
             {
@@ -140,22 +141,32 @@ namespace EmployeesManagementSystem
 
             if (dataGridView.CurrentCell.ColumnIndex.Equals(Delete))
             {
+                
                 // Ask if you want to delete and proccess
                 int index = dataGridView.CurrentCell.RowIndex;
-                
-                // Find the role
-                if (!Convert.ToString(dataGridView.Rows[index].Cells[3].Value).Contains("Administrator"))
-                {
-                    int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
 
-                    Delete delete = new Delete(id, this);
-                    delete.Show();
+                // Find the role
+                if (this.loggedUser.Role != Models.Role.Manager.ToString())
+                {
+                    if (!Convert.ToString(dataGridView.Rows[index].Cells[2].Value).Contains("admin"))
+                    {
+                        int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
+
+                        Delete delete = new Delete(id, this);
+                        delete.Show();
+                    }
+                    else
+                    {
+                        Warning warning = new Warning(this);
+                        warning.Show();
+                    }
                 }
                 else
                 {
                     Warning warning = new Warning(this);
                     warning.Show();
                 }
+
             }
 
         }
