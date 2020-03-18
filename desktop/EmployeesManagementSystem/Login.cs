@@ -31,14 +31,12 @@ namespace EmployeesManagementSystem
             userContext.Insert(new User("admin", "admin", "+31 6430 2303",Hashing.HashPassword("admin"),Role.Administrator.ToString(), -100, 0));
         }
 
-
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void activeLogin()
         {
-
             clearColor();
             string email = this.tbEmail.Text;
             string password = this.tbPassword.Text;
-            
+
             // Validation with isNullOrEmpty you can pass with a single \t or space the WhiteSpace is securer
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
@@ -57,7 +55,7 @@ namespace EmployeesManagementSystem
                     return;
                 }
 
-                
+
             }
 
 
@@ -65,10 +63,10 @@ namespace EmployeesManagementSystem
             {
                 User user = userContext.GetUserByEmail(email);
 
-                if(Hashing.ValidatePassword(password, user.Password)) 
+                if (Hashing.ValidatePassword(password, user.Password))
                 {
                     // Checking the role of the user
-                    if(user.Role == Role.Administrator.ToString())
+                    if (user.Role == Role.Administrator.ToString())
                     {
                         this.Hide();
                         // Show Dashboard
@@ -76,7 +74,7 @@ namespace EmployeesManagementSystem
                         dashboard.Closed += (s, args) => this.Close();
                         dashboard.Show();
                     }
-                    else if(user.Role == Role.Manager.ToString())
+                    else if (user.Role == Role.Manager.ToString())
                     {
                         this.Hide();
                         // Show Dashboard
@@ -103,6 +101,11 @@ namespace EmployeesManagementSystem
                 this.labelEmail.ForeColor = Color.PaleVioletRed;
             }
             clearFields();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            activeLogin();            
         }
 
         // Validate the emails
@@ -171,6 +174,16 @@ namespace EmployeesManagementSystem
         private void exit_MouseLeave(object sender, EventArgs e)
         {
             this.exit.BackColor = Color.Transparent;
+        }
+
+        // Enter in during the login form
+        private void login_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                activeLogin();
+            }
+
         }
     }
 }

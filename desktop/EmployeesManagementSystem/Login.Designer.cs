@@ -91,6 +91,7 @@
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(300, 22);
             this.tbEmail.TabIndex = 1;
+            this.tbEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.login_KeyPress);
             // 
             // tbPassword
             // 
@@ -102,6 +103,7 @@
             this.tbPassword.Size = new System.Drawing.Size(300, 22);
             this.tbPassword.TabIndex = 2;
             this.tbPassword.UseSystemPasswordChar = true;
+            this.tbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.login_KeyPress);
             // 
             // panel3
             // 

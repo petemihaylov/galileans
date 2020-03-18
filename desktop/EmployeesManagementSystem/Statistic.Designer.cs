@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbBack = new System.Windows.Forms.Label();
             this.picBack = new System.Windows.Forms.PictureBox();
@@ -105,13 +105,13 @@
             this.lbMoneyMadeMonth.Font = new System.Drawing.Font("Arial", 12F);
             this.lbMoneyMadeMonth.Location = new System.Drawing.Point(778, 27);
             this.lbMoneyMadeMonth.Name = "lbMoneyMadeMonth";
-            this.lbMoneyMadeMonth.Size = new System.Drawing.Size(62, 23);
+            this.lbMoneyMadeMonth.Size = new System.Drawing.Size(90, 23);
             this.lbMoneyMadeMonth.TabIndex = 67;
-            this.lbMoneyMadeMonth.Text = "label1";
+            this.lbMoneyMadeMonth.Text = "Statistics";
             // 
             // cbStatistic
             // 
-            this.cbStatistic.Font = new System.Drawing.Font("Arial", 12F);
+            this.cbStatistic.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbStatistic.FormattingEnabled = true;
             this.cbStatistic.Items.AddRange(new object[] {
             "Attendance per employee",
@@ -119,101 +119,101 @@
             "Wage per employee"});
             this.cbStatistic.Location = new System.Drawing.Point(97, 143);
             this.cbStatistic.Name = "cbStatistic";
-            this.cbStatistic.Size = new System.Drawing.Size(327, 31);
+            this.cbStatistic.Size = new System.Drawing.Size(327, 32);
             this.cbStatistic.TabIndex = 73;
             this.cbStatistic.SelectedIndexChanged += new System.EventHandler(this.cbStatistic_SelectedIndexChanged);
             // 
             // cbEmployee
             // 
-            this.cbEmployee.Font = new System.Drawing.Font("Arial", 12F);
+            this.cbEmployee.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEmployee.FormattingEnabled = true;
             this.cbEmployee.Location = new System.Drawing.Point(605, 141);
             this.cbEmployee.Name = "cbEmployee";
-            this.cbEmployee.Size = new System.Drawing.Size(327, 31);
+            this.cbEmployee.Size = new System.Drawing.Size(327, 32);
             this.cbEmployee.TabIndex = 74;
             this.cbEmployee.SelectedIndexChanged += new System.EventHandler(this.cbEmployee_SelectedIndexChanged);
             // 
             // lbSelect
             // 
             this.lbSelect.AutoSize = true;
-            this.lbSelect.Font = new System.Drawing.Font("Arial", 14F);
+            this.lbSelect.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSelect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lbSelect.Location = new System.Drawing.Point(92, 113);
             this.lbSelect.Name = "lbSelect";
-            this.lbSelect.Size = new System.Drawing.Size(186, 27);
+            this.lbSelect.Size = new System.Drawing.Size(142, 24);
             this.lbSelect.TabIndex = 75;
             this.lbSelect.Text = "Select a statistic";
             // 
             // lbEmployee
             // 
             this.lbEmployee.AutoSize = true;
-            this.lbEmployee.Font = new System.Drawing.Font("Arial", 14F);
+            this.lbEmployee.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lbEmployee.Location = new System.Drawing.Point(600, 113);
             this.lbEmployee.Name = "lbEmployee";
-            this.lbEmployee.Size = new System.Drawing.Size(224, 27);
+            this.lbEmployee.Size = new System.Drawing.Size(172, 24);
             this.lbEmployee.TabIndex = 76;
             this.lbEmployee.Text = "Select an employee";
             // 
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.SystemColors.Control;
-            chartArea2.AxisX.Interval = 1D;
-            chartArea2.AxisX.IsStartedFromZero = false;
-            chartArea2.AxisX.ScaleBreakStyle.CollapsibleSpaceThreshold = 10;
-            chartArea2.AxisX.ScaleBreakStyle.Enabled = true;
-            chartArea2.AxisX.ScaleBreakStyle.StartFromZero = System.Windows.Forms.DataVisualization.Charting.StartFromZero.No;
-            chartArea2.AxisY.Interval = 1D;
-            chartArea2.AxisY.IsStartedFromZero = false;
-            chartArea2.AxisY.Maximum = 23D;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.BackColor = System.Drawing.SystemColors.Control;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.AxisX.Interval = 1D;
+            chartArea1.AxisX.IsStartedFromZero = false;
+            chartArea1.AxisX.ScaleBreakStyle.CollapsibleSpaceThreshold = 10;
+            chartArea1.AxisX.ScaleBreakStyle.Enabled = true;
+            chartArea1.AxisX.ScaleBreakStyle.StartFromZero = System.Windows.Forms.DataVisualization.Charting.StartFromZero.No;
+            chartArea1.AxisY.Interval = 1D;
+            chartArea1.AxisY.IsStartedFromZero = false;
+            chartArea1.AxisY.Maximum = 23D;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.BackColor = System.Drawing.SystemColors.Control;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(39, 221);
             this.chart1.Name = "chart1";
-            series5.BorderColor = System.Drawing.SystemColors.Control;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeColumn;
-            series5.CustomProperties = "DrawSideBySide=False";
-            series5.EmptyPointStyle.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            series5.EmptyPointStyle.BorderWidth = 0;
-            series5.EmptyPointStyle.IsVisibleInLegend = false;
-            series5.Legend = "Legend1";
-            series5.Name = "Present";
-            series5.YValuesPerPoint = 2;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeColumn;
-            series6.CustomProperties = "DrawSideBySide=False";
-            series6.EmptyPointStyle.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            series6.EmptyPointStyle.BorderWidth = 0;
-            series6.EmptyPointStyle.IsVisibleInLegend = false;
-            series6.Legend = "Legend1";
-            series6.Name = "Absent";
-            series6.YValuesPerPoint = 2;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeColumn;
-            series7.Color = System.Drawing.Color.Silver;
-            series7.CustomProperties = "DrawSideBySide=False";
-            series7.EmptyPointStyle.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            series7.EmptyPointStyle.BorderWidth = 0;
-            series7.EmptyPointStyle.IsVisibleInLegend = false;
-            series7.Legend = "Legend1";
-            series7.Name = "Scheduled";
-            series7.YValuesPerPoint = 2;
-            series8.ChartArea = "ChartArea1";
-            series8.Color = System.Drawing.Color.ForestGreen;
-            series8.Font = new System.Drawing.Font("Roboto", 12F);
-            series8.IsValueShownAsLabel = true;
-            series8.Legend = "Legend1";
-            series8.Name = "Money";
-            series8.ShadowColor = System.Drawing.Color.ForestGreen;
-            series8.YValuesPerPoint = 2;
-            this.chart1.Series.Add(series5);
-            this.chart1.Series.Add(series6);
-            this.chart1.Series.Add(series7);
-            this.chart1.Series.Add(series8);
+            series1.BorderColor = System.Drawing.SystemColors.Control;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeColumn;
+            series1.CustomProperties = "DrawSideBySide=False";
+            series1.EmptyPointStyle.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            series1.EmptyPointStyle.BorderWidth = 0;
+            series1.EmptyPointStyle.IsVisibleInLegend = false;
+            series1.Legend = "Legend1";
+            series1.Name = "Present";
+            series1.YValuesPerPoint = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeColumn;
+            series2.CustomProperties = "DrawSideBySide=False";
+            series2.EmptyPointStyle.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            series2.EmptyPointStyle.BorderWidth = 0;
+            series2.EmptyPointStyle.IsVisibleInLegend = false;
+            series2.Legend = "Legend1";
+            series2.Name = "Absent";
+            series2.YValuesPerPoint = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeColumn;
+            series3.Color = System.Drawing.Color.Silver;
+            series3.CustomProperties = "DrawSideBySide=False";
+            series3.EmptyPointStyle.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            series3.EmptyPointStyle.BorderWidth = 0;
+            series3.EmptyPointStyle.IsVisibleInLegend = false;
+            series3.Legend = "Legend1";
+            series3.Name = "Scheduled";
+            series3.YValuesPerPoint = 2;
+            series4.ChartArea = "ChartArea1";
+            series4.Color = System.Drawing.Color.ForestGreen;
+            series4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            series4.IsValueShownAsLabel = true;
+            series4.Legend = "Legend1";
+            series4.Name = "Money";
+            series4.ShadowColor = System.Drawing.Color.ForestGreen;
+            series4.YValuesPerPoint = 2;
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
+            this.chart1.Series.Add(series4);
             this.chart1.Size = new System.Drawing.Size(1432, 579);
             this.chart1.TabIndex = 77;
             this.chart1.Text = "u";
@@ -221,21 +221,21 @@
             // lbMonth
             // 
             this.lbMonth.AutoSize = true;
-            this.lbMonth.Font = new System.Drawing.Font("Arial", 14F);
+            this.lbMonth.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lbMonth.Location = new System.Drawing.Point(1101, 113);
             this.lbMonth.Name = "lbMonth";
-            this.lbMonth.Size = new System.Drawing.Size(174, 27);
+            this.lbMonth.Size = new System.Drawing.Size(135, 24);
             this.lbMonth.TabIndex = 79;
             this.lbMonth.Text = "Select a month";
             // 
             // cbMonth
             // 
-            this.cbMonth.Font = new System.Drawing.Font("Arial", 12F);
+            this.cbMonth.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMonth.FormattingEnabled = true;
             this.cbMonth.Location = new System.Drawing.Point(1106, 141);
             this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(327, 31);
+            this.cbMonth.Size = new System.Drawing.Size(327, 32);
             this.cbMonth.TabIndex = 78;
             this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             // 
