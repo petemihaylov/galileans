@@ -41,7 +41,6 @@ require_once "./includes/config.php";
 <!-- Navbar -->
 <?php require('./shared/header.php') ?>
 
-<!-- comment is place here -->
 <div class="container preferences">
   <?php for($i = 0; $i < 7; $i++){?>
   <div class="row">
