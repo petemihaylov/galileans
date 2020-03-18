@@ -15,6 +15,7 @@ namespace EmployeesManagementSystem
         private UserContext userContext = new UserContext();
         private ShiftContext shiftContext = new ShiftContext();
         private ImageContext imageContext = new ImageContext();
+        private AvailabilityContext availabilityContext = new AvailabilityContext();
         private DepartmentContext departmentContext = new DepartmentContext();
         private Form previousForm;
 
@@ -44,6 +45,12 @@ namespace EmployeesManagementSystem
                 this.cbDepartment.Items.Add(department.Name);
             }
             this.cbDepartment.Text = departmentContext.GetNameById(this.user.Department);
+
+            foreach (Availability availability in availabilityContext.GetAllAvailabilitiesByID(UserID))
+            {
+                listOfAvailabilities.Items.Add(availability.Date.ToString() + departmentContext.GetNameById(userContext.GetDepIDByUserId(availability.EmployeeID)).ToString() + " shift, " + user.FullName);
+            }
+            
         }
         private void Details_Load(object sender, EventArgs e)
         {

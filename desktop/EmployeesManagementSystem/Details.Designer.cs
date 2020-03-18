@@ -1006,8 +1006,6 @@
             this.listOfAvailabilities.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.listOfAvailabilities.FormattingEnabled = true;
             this.listOfAvailabilities.ItemHeight = 18;
-            this.listOfAvailabilities.Items.AddRange(new object[] {
-            "03/04/2020 <DepartmentName> shift,  <EmployeeName> "});
             this.listOfAvailabilities.Location = new System.Drawing.Point(624, 692);
             this.listOfAvailabilities.Name = "listOfAvailabilities";
             this.listOfAvailabilities.Size = new System.Drawing.Size(719, 112);
