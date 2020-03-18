@@ -4,18 +4,22 @@ body{
 .details-container{
     margin-top: 5%;
 }
+.welcome-container{
+    height: 60vh;
+}
 
 footer{
-    margin-top: 10vh;
+    color: rgb(219, 216, 216);
 }
 
 
 .next-shift{
     margin-top: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
     display: flex;
+    text-transform: uppercase;
     justify-content: center;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     font-weight: 500;
     align-items: center;
     color: rgba(255, 174, 0, 0.685);
