@@ -126,7 +126,7 @@ $closestShift = new Shift("", "", "", "", "");
     
   <?php if(isset($closestShift)){?>
 
-  <p ><i class="fas fa-forward"></i> Next shift:
+  <p ><i class="fas fa-forward  faa-wrench animated"></i> Next shift:
      <?php 
         echo "<b>" . $closestShift->get_ShiftType() ."  ". $closestShift->get_ShiftDate()."</b>"; 
       ?>
