@@ -258,6 +258,27 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+        public int GetDepIDByUserId(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"SELECT DepartmentID FROM users WHERE ID = @id";
+                    command.AddParameter("id", id);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        int depID = 0;
+                        while (reader.Read())
+                        {
+                            depID = (int)reader["DepartmentID"];
+                        }
+                        return depID;
+                    }
+                }
+            }
+        }
 
     }
 }

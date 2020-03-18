@@ -141,12 +141,14 @@
     <Compile Include="CreateStock.Designer.cs">
       <DependentUpon>CreateStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\AvailabilityContext.cs" />
     <Compile Include="Data\CancellationContext.cs" />
     <Compile Include="Data\DepartmentContext.cs" />
     <Compile Include="Data\ImageContext.cs" />
     <Compile Include="Data\ShiftContext.cs" />
     <Compile Include="Data\StockContext.cs" />
     <Compile Include="Data\UserContext.cs" />
+    <Compile Include="Models\Availability.cs" />
     <Compile Include="Models\Cancellations.cs" />
     <Compile Include="Cancellations.cs">
       <SubType>Form</SubType>
