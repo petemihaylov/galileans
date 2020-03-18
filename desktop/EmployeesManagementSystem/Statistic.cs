@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Globalization;
 
 namespace EmployeesManagementSystem
 {
@@ -22,6 +23,8 @@ namespace EmployeesManagementSystem
         private int[] counterAttended = new int[1000];
         private int[] counterAbsent = new int[1000];
         private int[] counterScheduled = new int[1000];
+
+        private double[] banet = new double[1000];
 
 
         private int hoursWorked, hrs, id;
@@ -44,6 +47,7 @@ namespace EmployeesManagementSystem
             int[] cevaAttended = { 0 };
             int[] cevaAbsent = { 0 };
             int[] cevaScheduled = { 0 };
+            double[] banet = { 0 };
 
             cbMonth.Items.Add("January");
             cbMonth.Items.Add("February");
@@ -94,6 +98,7 @@ namespace EmployeesManagementSystem
             //switches the min and max to the earliest and latest a shift can be
             chart1.ChartAreas[0].AxisY.Maximum = 23;
             chart1.ChartAreas[0].AxisY.Minimum= 9;
+            chart1.ChartAreas[0].AxisY.Interval = 1;
 
             //attendance per employee
             foreach (Shift shift in shifts)
@@ -132,6 +137,7 @@ namespace EmployeesManagementSystem
             //switches the min and max to 0 and auto
             chart1.ChartAreas[0].AxisY.Minimum = 0;
             chart1.ChartAreas[0].AxisY.Maximum = Double.NaN;
+            chart1.ChartAreas[0].AxisY.Interval = 1;
 
             Department department = departmentContext.GetDepartmentById(Convert.ToInt32(cbEmployee.Text));
             
@@ -177,7 +183,7 @@ namespace EmployeesManagementSystem
         {
             try
             {
-                shifts = shiftContext.GetShiftsByUserId(Convert.ToInt32(cbEmployee.Text)); // try catch
+                shifts = shiftContext.GetShiftsByUserId(Convert.ToInt32(cbEmployee.Text)); 
             }
             catch (Exception)
             {
@@ -185,44 +191,40 @@ namespace EmployeesManagementSystem
             }
             User user = userContext.GetUserByID(Convert.ToInt32(cbEmployee.Text));
 
-            //if the month selected is the one in center
+            chart1.ChartAreas[0].AxisY.Minimum = 0;
+            chart1.ChartAreas[0].AxisY.Maximum = Double.NaN;
+
             foreach (Shift shift in shifts)
             {
-                if (cbMonth.Text == Convert.ToString(shift.ShiftDate.Month))
+                if (cbMonth.Text == shift.ShiftDate.ToString("MMMM")) 
                 {
-                    money = 0;
+                    money = 0; //sad
                     if (shift.Attended)
                     {
-                        //for all shifts that took place during the selected month, before todays date (in case of current month)
-                        //if (keepTrack.Month == shift.ShiftDate.Month && keepTrack.Day > shift.ShiftDate.Day)
                         {
                             //money = hrsWorked * wage
                             money = (shift.EndTime - shift.StartTime).Hours * user.HourlyRate;
-                            hrs = shift.GetInfo();
-                            hoursWorked += hrs;
+                            banet[GetWeekOfYear(shift.ShiftDate)] += money;
+                           
                         }
                     }
-                    else
-                    {
-                       // if (keepTrack.Month == shift.ShiftDate.Month && keepTrack.Day > shift.ShiftDate.Day)
-                        {
-                            hoursSkipped++;
-                        }
-                    }
+                    
                 }
             }
-        }
-            /*
-            chart1.Series["Series1"].Points.AddXY(hoursWorked * 100 / (hoursWorked + hoursSkipped) + "%", hoursWorked);
-            chart1.Series["Series1"].Points.AddXY(hoursSkipped * 100 / (hoursWorked + hoursSkipped) + "%", hoursSkipped);
-            */
-            /*foreach (var series in chart1.Series)
+
+            chart1.ChartAreas[0].AxisY.Interval = 10;
+            for (int i = 0; i < banet.Length; i++)
             {
-                series.Points.Clear();
+                if (banet[i] != 0)
+                {
+                    chart1.Series["Money"].Points.Add(new DataPoint() { AxisLabel = "Week " + Convert.ToString(i), XValue = i, YValues = new double[] { banet[i] } });
+                }
+
+                //chart1.Series["Money"].Label = Convert.ToString(banet[i]);
+                banet[i] = 0;
             }
-            chart1.Series["Series1"].Points.AddXY(hoursWorked, money); ;
-            l
-        */
+        }
+           
 
         private void exit_MouseEnter(object sender, EventArgs e)
         {
@@ -392,6 +394,21 @@ namespace EmployeesManagementSystem
             {
                 chart1.ChartAreas[0].AxisY.CustomLabels.Clear();
             }
+
+
+            if (cbMonth.Text.Length > 0 && cbEmployee.Text.Length > 0)
+            {
+
+                if (cbStatistic.Text == "Attendance per employee")
+                    AttendancePerEmployee();
+
+                if (cbStatistic.Text == "Attendance per department")
+                    AttendancePerDepartment();
+
+                if (cbStatistic.Text == "Wage per employee")
+                    WagePerEmployee();
+            }
+            
         }
 
         private void cbMonth_SelectedIndexChanged(object sender, EventArgs e)
@@ -402,15 +419,18 @@ namespace EmployeesManagementSystem
             {
                 series.Points.Clear();
             }
+            if (cbStatistic.Text.Length > 0 && cbEmployee.Text.Length > 0)
+            {
 
-            if (cbStatistic.Text == "Attendance per employee")
-                AttendancePerEmployee();
+                if (cbStatistic.Text == "Attendance per employee")
+                    AttendancePerEmployee();
 
-            if (cbStatistic.Text == "Attendance per department")
-                AttendancePerDepartment();
+                if (cbStatistic.Text == "Attendance per department")
+                    AttendancePerDepartment();
 
-            if (cbStatistic.Text == "Wage per employee")
-                WagePerEmployee();
+                if (cbStatistic.Text == "Wage per employee")
+                    WagePerEmployee();
+            }
         }
 
         private void Statistic_Load(object sender, EventArgs e)
@@ -426,6 +446,29 @@ namespace EmployeesManagementSystem
                 series.Points.Clear();
             }
 
+            if (cbMonth.Text.Length > 0 && cbStatistic.Text.Length > 0)
+            {
+
+                if (cbStatistic.Text == "Attendance per employee")
+                    AttendancePerEmployee();
+
+                if (cbStatistic.Text == "Attendance per department")
+                    AttendancePerDepartment();
+
+                if (cbStatistic.Text == "Wage per employee")
+                    WagePerEmployee();
+            }
+        }
+        public static int GetWeekOfYear(DateTime date)
+        {
+            DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(date);
+            if (day >= DayOfWeek.Monday && day <= DayOfWeek.Wednesday)
+            {
+                date = date.AddDays(3);
+            }
+
+            // Return the week of the day
+            return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(date, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
         }
     }
 }
