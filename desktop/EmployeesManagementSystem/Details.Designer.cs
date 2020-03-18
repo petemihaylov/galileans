@@ -99,6 +99,8 @@
             this.picAft_third = new System.Windows.Forms.PictureBox();
             this.btnToday = new System.Windows.Forms.Button();
             this.bToday = new System.Windows.Forms.Button();
+            this.labelAvailability = new System.Windows.Forms.Label();
+            this.listOfAvailabilities = new System.Windows.Forms.ListBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
@@ -986,11 +988,38 @@
             this.bToday.UseVisualStyleBackColor = false;
             this.bToday.Click += new System.EventHandler(this.bToday_Click);
             // 
+            // labelAvailability
+            // 
+            this.labelAvailability.AutoSize = true;
+            this.labelAvailability.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAvailability.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelAvailability.Location = new System.Drawing.Point(621, 671);
+            this.labelAvailability.Name = "labelAvailability";
+            this.labelAvailability.Size = new System.Drawing.Size(98, 18);
+            this.labelAvailability.TabIndex = 64;
+            this.labelAvailability.Text = "My availabilty:";
+            // 
+            // listOfAvailabilities
+            // 
+            this.listOfAvailabilities.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.listOfAvailabilities.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listOfAvailabilities.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.listOfAvailabilities.FormattingEnabled = true;
+            this.listOfAvailabilities.ItemHeight = 18;
+            this.listOfAvailabilities.Items.AddRange(new object[] {
+            "03/04/2020 <DepartmentName> shift,  <EmployeeName> "});
+            this.listOfAvailabilities.Location = new System.Drawing.Point(624, 692);
+            this.listOfAvailabilities.Name = "listOfAvailabilities";
+            this.listOfAvailabilities.Size = new System.Drawing.Size(719, 112);
+            this.listOfAvailabilities.TabIndex = 65;
+            // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1511, 827);
+            this.Controls.Add(this.listOfAvailabilities);
+            this.Controls.Add(this.labelAvailability);
             this.Controls.Add(this.bToday);
             this.Controls.Add(this.btnToday);
             this.Controls.Add(this.groupBox8);
@@ -1124,5 +1153,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label labelAvailability;
+        private System.Windows.Forms.ListBox listOfAvailabilities;
     }
 }

@@ -238,6 +238,7 @@
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(327, 31);
             this.cbMonth.TabIndex = 78;
+            this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             // 
             // Statistic
             // 

@@ -41,16 +41,16 @@ namespace EmployeesManagementSystem
             this.cbRole.Text = user.Role;
             foreach (Department department in departmentContext.GetAllDepartments())
             {
-                cbDepartment.Items.Add(department.Name);
+                this.cbDepartment.Items.Add(department.Name);
             }
-            cbDepartment.Text = departmentContext.GetNameById(this.user.Department);
+            this.cbDepartment.Text = departmentContext.GetNameById(this.user.Department);
         }
         private void Details_Load(object sender, EventArgs e)
         {
             this.UpdateImg(user.ID);
             DateTime now = DateTime.UtcNow.Date;
             showDate(now);
-            shifts = shiftContext.GetAllShifts();
+            this.shifts = shiftContext.GetAllShifts();
             visualizeShifts(now);
         }
 

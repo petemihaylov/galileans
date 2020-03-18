@@ -10,34 +10,45 @@ namespace EmployeesManagementSystem
 {
     public partial class Shifts : Form
     {
+        // Variables
         private ShiftContext shiftContext = new ShiftContext();
         private UserContext userContext = new UserContext();
+        private DepartmentContext departmentContext = new DepartmentContext();
 
         private List<Shift> shifts;
+        private IDictionary<string, int> departmentList;
         private User loggedUser;
         private int addDays = 0;
 
+        // Constructor
         public Shifts(User user)
         {
             InitializeComponent();
             this.shifts = shiftContext.GetAllShifts();
             this.loggedUser = user;
+            this.departmentList = new Dictionary<string, int>();
+
+            foreach (Department department in departmentContext.GetAllDepartments())
+            {
+                this.cbDepartment.Items.Add(department.Name);
+                this.departmentList.Add(department.Name, department.ID);
+            }
         }
 
         private void showDate(DateTime now)
         {
-            dateCenter.Text = now.ToString("dd");
-            monthCenter.Text = now.ToString("MMM").ToUpper();
-            dateCenter.ForeColor = Color.Black;
+            this.dateCenter.Text = now.ToString("dd");
+            this.monthCenter.Text = now.ToString("MMM").ToUpper();
+            this.dateCenter.ForeColor = Color.Black;
 
             DateTime yesterday = now.AddDays(-1);
-            dateLeft.Text = yesterday.ToString("dd");
-            monthLeft.Text = yesterday.ToString("MMM").ToUpper();
+            this.dateLeft.Text = yesterday.ToString("dd");
+            this.monthLeft.Text = yesterday.ToString("MMM").ToUpper();
 
 
             DateTime tomorrow = now.AddDays(+1);
-            dateRight.Text = tomorrow.ToString("dd");
-            monthRight.Text = tomorrow.ToString("MMM").ToUpper();
+            this.dateRight.Text = tomorrow.ToString("dd");
+            this.monthRight.Text = tomorrow.ToString("MMM").ToUpper();
         }
         private void Shifts_Load(object sender, EventArgs e)
         {
@@ -68,28 +79,44 @@ namespace EmployeesManagementSystem
         }
         private void displayShifts(DateTime dateTime)
         {
-            // MORNING
-            List<Shift> morning = getMorningShiftsForDate(dateTime);
-            this.morningList.Items.Clear();
-            foreach (var item in morning)
+            if (this.cbDepartment.SelectedIndex > -1)
             {
-                this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
-            }
+                string selectedDepartment = this.cbDepartment.SelectedItem.ToString();
 
-            // EVENING
-            List<Shift> evening = getEveningShiftsForDate(dateTime);
-            this.eveningList.Items.Clear();
-            foreach (var item in evening)
-            {
-               this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
-            }
+                // MORNING
+                List<Shift> morning = getMorningShiftsForDate(dateTime);
+                this.morningList.Items.Clear();
+                foreach (var item in morning)
+                {
+                    if (item.DepartmentID == this.departmentList[selectedDepartment])
+                    {
+                        this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+                    }
+                }
 
-            // AFTERNOON
-            List<Shift> afternoon = getAfternoonShiftsForDate(dateTime);
-            this.afternoonList.Items.Clear();
-            foreach (var item in afternoon)
-            {
-                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+                // EVENING
+                List<Shift> evening = getEveningShiftsForDate(dateTime);
+                this.eveningList.Items.Clear();
+                foreach (var item in evening)
+                {
+                    if (item.DepartmentID == this.departmentList[selectedDepartment])
+                    {
+                        this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+
+                    }
+                }
+
+                // AFTERNOON
+                List<Shift> afternoon = getAfternoonShiftsForDate(dateTime);
+                this.afternoonList.Items.Clear();
+                foreach (var item in afternoon)
+                {
+                    if (item.DepartmentID == this.departmentList[selectedDepartment])
+                    {
+                        this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+
+                    }
+                }
             }
 
         }
@@ -164,6 +191,13 @@ namespace EmployeesManagementSystem
             DateTime now = DateTime.UtcNow.Date;
             showDate(now);
             displayShifts(now);
+        }
+
+        // Display
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+            showDate(DateTime.UtcNow.Date.AddDays(addDays));
+            displayShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
 
         // Time
@@ -307,6 +341,14 @@ namespace EmployeesManagementSystem
         private void btnToday_MouseLeave(object sender, EventArgs e)
         {
             this.btnToday.BackColor = Color.LightGray;
+        }
+        private void btnDisplay_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnDisplay.BackColor = Color.DarkGray;
+        }
+        private void btnDisplay_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnDisplay.BackColor = Color.LightGray;
         }
         private void btnArrowRight_MouseEnter(object sender, EventArgs e)
         {
