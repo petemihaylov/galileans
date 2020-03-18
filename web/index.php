@@ -158,7 +158,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               </div>
               
               <div class="bottom-text">
-                Don't have account? <a href="#"><i class="fas fa-user-plus"></i></a>
+                Don't have account? <a href="/error.html"><i class="fas fa-user-plus"></i></a>
               </div>
   
             </form>
