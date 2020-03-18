@@ -6,6 +6,7 @@ class Preference{
     private $Date;
     private $EmployeeID;
     private $Availability;
+    private $bookedColor;
 
 
     function __construct($id, $date, $employeeId,  $availability){
@@ -19,6 +20,10 @@ class Preference{
         return $this->ID;
     }
 
+    function get_Booked(){
+        return $this->bookedColor;
+    }
+
     function get_Date(){
         return $this->Date;
     }
@@ -30,6 +35,9 @@ class Preference{
 
     function get_Availability(){
         return $this->Availability;
+    }
+    function set_Booked($bool){
+        $this->bookedColor = $bool;
     }
 
     function set_Availability($bool){

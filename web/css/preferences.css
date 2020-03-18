@@ -19,7 +19,32 @@ body{
     border-radius: 20px;
     padding: 10px;
 }
-
+.dayNumber{
+    margin-left: 10px;
+    margin-right: 0px;
+    background:#323539;
+    color: white;
+    transition: 0.9s;
+    border-radius: 10rem;
+    font-size: 14px;
+    min-width: 30px;
+    padding: 0;
+}
+.dayNumber:hover{
+    transition: 0.9s;
+    background: #17A2B8;
+}
+.row .col-md-1 {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.weekDay{
+    border-right: solid rgb(209, 208, 208) 1px;
+    text-align: center;
+}
+.booked{
+    color: green;
+}
 .btn.btn-outline-info{
     font-size: 12px;
     width: 90px;

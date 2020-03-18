@@ -13,28 +13,27 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 require_once "./includes/config.php";
 require_once "./models/Preference.php";
 
+// Getting all of the user's preferences
 $dbArray = array();
 
 $sql = "SELECT ID, Date, Available FROM Availability where EmployeeID = ?";
 if($stmt = mysqli_prepare($link, $sql)){
   
-    echo $_SESSION['id'];
     mysqli_stmt_bind_param($stmt, "s", $_SESSION['id']);
     
     // Attempt to execute the prepared statement
     if(!mysqli_stmt_execute($stmt)){
       echo "Oops! Something went wrong. Please try again later.";
     }else{
-
+          
             /* bind result variables */
-          mysqli_stmt_bind_result($stmt, $id, $date, $available);
+          $stmt->bind_result($id, $date, $available);
 
           /* fetch values */
-          while (mysqli_stmt_fetch($stmt)) {
-            echo $id . " " . $date . " " . $available . "<br";
+          while ($stmt->fetch()) {
+            # echo $id . " " . $date . " " . $available . "<br>";
             $pref = new Preference($id, $date, $_SESSION['id'], $available);
             array_push($dbArray, $pref);
-
           }
     }
     
@@ -43,13 +42,32 @@ if($stmt = mysqli_prepare($link, $sql)){
   }
 
  
+
+
+
+
+// Creating showable objects 
 $daysArray = array();
 
+function checkIfDateExists($date, $arr){
+  for($i = 0; $i < count($arr); $i++){
+    if($arr[$i]->get_Date() == $date)
+    return true;
+  }
+  return false;
+}
 $date = new DateTime("now", new DateTimeZone('Europe/Amsterdam') );
 $date = strtotime($date->format('Y-m-d H:i:s'));
 for($i = 0; $i < 7; $i++){
-  $pref = new Preference($i, strtotime("+$i day", $date), $_SESSION['id'], false);
+  $d = strtotime("+$i day", $date);
+  if(checkIfDateExists(date('Y-m-d',$d),$dbArray))
+  {
+    $pref = new Preference($i, $d, $_SESSION['id'], true);
+  }else{
+    $pref = new Preference($i, $d, $_SESSION['id'], false);
+  }
   array_push($daysArray, $pref);
+
 }
 
 
@@ -57,6 +75,20 @@ for($i = 0; $i < 7; $i++){
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
  $selected =  $daysArray[$_POST["the_clicked_id"]];
+
+ $dayTime = date('Y-m-d',$selected->get_Date());  
+ if(checkIfDateExists($dayTime, $dbArray)){
+  $sqlDelete = "DELETE FROM Availability WHERE Date = ?";
+  if($stmt = mysqli_prepare($link, $sqlDelete)){
+    
+    mysqli_stmt_bind_param($stmt, "s", $dayTime);
+    if(!mysqli_stmt_execute($stmt)){
+      echo "Oops! Something went wrong. Please try again later.";
+    }
+  }
+  $selected->set_Availability(false);  
+}else{
+
  $selected->set_Availability(true);
 
     
@@ -83,8 +115,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 
 }
-
-
+}
 ?>
 
 <!DOCTYPE html>
@@ -119,7 +150,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 
-
 <div class="container preferences">
 
 <form method="post">
@@ -127,17 +157,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <?php
     for ($i = 0; $i < count($daysArray); $i++) {
-
+        if($daysArray[$i]->get_Availability()){
+          $daysArray[$i]->set_Booked(true);
+        }else $daysArray[$i]->set_Booked(false);
       ?>
     <div class="row">
-      <div class="col-md-1"><span class="badge badge-info badge-pill">
+      <div class="col-md-1">
+        <div class="dayNumber">
         <?php echo date('d', $daysArray[$i]->get_Date());?>
+        </div>
       </div>
-      <div class="col-md-1 ">
+      <div class="col-md-1 weekDay">
       <?php echo strtoupper(date('D', $daysArray[$i]->get_Date()));?>
       </div>
-      <div class="col-md-8">
-      <?php echo strtoupper($daysArray[$i]->get_Availability() ? "Available": "Not Available");?>
+      <div class="col-md-8 <?php echo $daysArray[$i]->get_Booked() ? "booked": ""; ?>">
+      <?php echo strtoupper($daysArray[$i]->get_Availability() ? "Booked": "Available");?>
       </div>
       <div class="col-md-2">
       
