@@ -221,17 +221,14 @@ namespace EmployeesManagementSystem
                     this.chart1.Series["Money"].Points.Add(new DataPoint() { AxisLabel = "Week " + Convert.ToString(i), XValue = i, YValues = new double[] { banet[i] } });
                 }
 
-                //chart1.Series["Money"].Label = Convert.ToString(banet[i]);
                 this.banet[i] = 0;
             }
         }
 
         private void cbStatistic_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (var series in chart1.Series)
-            {
-                series.Points.Clear();
-            }
+            clearChart();
+
             if (this.cbStatistic.Text.Contains("employee"))
             {
                 this.cbEmployee.Items.Clear();
@@ -255,127 +252,21 @@ namespace EmployeesManagementSystem
             
             if (this.cbStatistic.Text == "Attendance per employee")
             {
-                //labels for y axis hours
-                CustomLabel label1 = new CustomLabel
+                // Auto generate 15 labels
+                double position = 8.5;
+                for (int i = 0; i < 15; i++)
                 {
-                    FromPosition = 8.5,
-                    ToPosition = 9.5,
-                    Text = "09:00"
-                };
+                    CustomLabel label = new CustomLabel
+                    {
+                        FromPosition = position,
+                        ToPosition = position + 1,
+                        Text = TimeSpan.FromHours((double)position + 0.5).ToString(@"hh\:mm")
+                    };
 
-                CustomLabel label2 = new CustomLabel
-                {
-                    FromPosition = 9.5,
-                    ToPosition = 10.5,
-                    Text = "10:00"
-                };
+                    chart1.ChartAreas[0].AxisY.CustomLabels.Add(label);
 
-                CustomLabel label3 = new CustomLabel
-                {
-                    FromPosition = 10.5,
-                    ToPosition = 11.5,
-                    Text = "11:00"
-                };
-
-                CustomLabel label4 = new CustomLabel
-                {
-                    FromPosition = 11.5,
-                    ToPosition = 12.5,
-                    Text = "12:00"
-                };
-
-                CustomLabel label5 = new CustomLabel
-                {
-                    FromPosition = 12.5,
-                    ToPosition = 13.5,
-                    Text = "13:00"
-                };
-
-                CustomLabel label6 = new CustomLabel
-                {
-                    FromPosition = 13.5,
-                    ToPosition = 14.5,
-                    Text = "14:00"
-                };
-
-                CustomLabel label7 = new CustomLabel
-                {
-                    FromPosition = 14.5,
-                    ToPosition = 15.5,
-                    Text = "15:00"
-                };
-
-                CustomLabel label8 = new CustomLabel
-                {
-                    FromPosition = 15.5,
-                    ToPosition = 16.5,
-                    Text = "16:00"
-                };
-
-                CustomLabel label9 = new CustomLabel
-                {
-                    FromPosition = 16.5,
-                    ToPosition = 17.5,
-                    Text = "17:00"
-                };
-
-                CustomLabel label10 = new CustomLabel
-                {
-                    FromPosition = 17.5,
-                    ToPosition = 18.5,
-                    Text = "18:00"
-                };
-
-                CustomLabel label11 = new CustomLabel
-                {
-                    FromPosition = 18.5,
-                    ToPosition = 19.5,
-                    Text = "19:00"
-                };
-
-                CustomLabel label12 = new CustomLabel
-                {
-                    FromPosition = 19.5,
-                    ToPosition = 20.5,
-                    Text = "20:00"
-                };
-
-                CustomLabel label13 = new CustomLabel
-                {
-                    FromPosition = 20.5,
-                    ToPosition = 21.5,
-                    Text = "21:00"
-                };
-
-                CustomLabel label14 = new CustomLabel
-                {
-                    FromPosition = 21.5,
-                    ToPosition = 22.5,
-                    Text = "22:00"
-                };
-
-                CustomLabel label15 = new CustomLabel
-                {
-                    FromPosition = 22.5,
-                    ToPosition = 23.5,
-                    Text = "23:00"
-                };
-
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label1);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label2);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label3);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label4);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label5);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label6);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label7);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label8);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label9);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label10);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label11);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label12);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label13);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label14);
-                chart1.ChartAreas[0].AxisY.CustomLabels.Add(label15);
+                    position++;
+                }
 
             }
             else
