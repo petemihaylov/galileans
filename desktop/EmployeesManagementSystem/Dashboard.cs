@@ -41,6 +41,7 @@ namespace EmployeesManagementSystem
                 this.btnShifts.Enabled = false;
                 this.btnStatistics.Enabled = true;
                 this.btnCreate.Enabled = false;
+                this.btnCreate.Visible = false;
             }
             else if(this.loggedUser.Role == Models.Role.Administrator.ToString())
             {
