@@ -118,6 +118,40 @@ namespace EmployeesManagementSystem
                     }
                 }
             }
+            else 
+            { 
+                 // MORNING
+                List<Shift> morning = getMorningShiftsForDate(dateTime);
+                this.morningList.Items.Clear();
+                foreach (var item in morning)
+                {
+                   
+                        this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+                    
+                }
+
+                // EVENING
+                List<Shift> evening = getEveningShiftsForDate(dateTime);
+                this.eveningList.Items.Clear();
+                foreach (var item in evening)
+                {
+                   
+                        this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+
+                    
+                }
+
+                // AFTERNOON
+                List<Shift> afternoon = getAfternoonShiftsForDate(dateTime);
+                this.afternoonList.Items.Clear();
+                foreach (var item in afternoon)
+                {
+                    
+                        this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+
+                    
+                }
+            }
 
         }
         private List<Shift> getMorningShiftsForDate(DateTime dateTime)
