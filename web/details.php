@@ -133,7 +133,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      <!-- Nav pills -->
     <ul class="nav nav-pills" role="tablist">
         <li class="nav-item">
-        <a class="nav-link " data-toggle="pill" href="#details"><i class="fas fa-info-circle"></i></a>
+        <a class="nav-link " data-toggle="pill" href="#details"><i class="fas fa-info-circle faa-wrench animated"></i></a>
         </li>
         <li class="nav-item">
         <a class="nav-link active" data-toggle="pill" href="#update">Update</a>
@@ -186,7 +186,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         <span class="help-block"><?php echo $password_err; ?></span>
                     </div>
-                    <button type="submit" class="btn btn-outline-primary">Update</button>
+                    <button type="submit" class="btn btn-update">Update</button>
                 </form>
             </div>
         </div>

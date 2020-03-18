@@ -34,3 +34,28 @@ footer{
     transition: .8s;
     color: black;
 }
+
+.nav-pills .nav-link.active {
+    color: #fff;
+    background-color: rgb(187, 187, 187);
+    display: none;
+}
+.nav-pills .nav-link{
+    color: rgb(255, 174, 0);
+    font-size: 20px;
+    border: 1px solid rgba(255, 174, 0, 0.473);
+}
+.btn-update{
+    letter-spacing: 2px;
+    background: linear-gradient(120deg, rgba(255, 174, 0, 0.733) 0%,  #f7ad3d 100%);
+    border: white;
+    opacity: 0.8;;
+    color: white;
+    width: 300px;
+    transition: 0.1s;  
+}
+.btn-update:hover{
+    opacity:1;
+    transition: 0.1s;   
+    color:white;
+}
