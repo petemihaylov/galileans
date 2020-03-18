@@ -15,4 +15,24 @@ class Preference{
         $this->Availability = $availability;
     }
 
+    function get_ID(){
+        return $this->ID;
+    }
+
+    function get_Date(){
+        return $this->Date;
+    }
+
+    function get_EmployeeID(){
+        return $this->EmployeeID;
+    }
+
+
+    function get_Availability(){
+        return $this->Availability;
+    }
+
+    function set_Availability($bool){
+        $this->Availability = $bool;
+    }
 }
