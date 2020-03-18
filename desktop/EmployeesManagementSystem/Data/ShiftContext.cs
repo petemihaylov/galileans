@@ -164,6 +164,45 @@ namespace EmployeesManagementSystem.Data
 
             }
         }
+        public Shift GetShiftByID(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"SELECT * FROM Shifts WHERE ID = @id";
+                    command.AddParameter("id", id);
+
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        Shift shift = new Shift();
+                        if (reader.Read())
+                        {
+                            // Mapping the return data to the object
+                            shift.ID = (int)reader["ID"];
+                            shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
+                            shift.DepartmentID = (int)reader["DepartmentID"];
+                            shift.Availability = (bool)reader["Availability"];
+                            shift.ShiftDate = (DateTime)reader["ShiftDate"];
+                            shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
+                            shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
+                            shift.Attended = (bool)reader["Attended"];
+                            shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
+                        }
+                        else
+                        {
+                            return null;
+                        }
+
+                        return shift;
+                    }
+                }
+
+            }
+        }
         public void DeleteShiftByUserId(int id)
         {
             using (var con = new MySqlConnection(connectionString))

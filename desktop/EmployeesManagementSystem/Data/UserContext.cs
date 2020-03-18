@@ -186,6 +186,45 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+        public User GetUserByName(string name)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"SELECT * FROM Users WHERE FullName = @name";
+                    command.AddParameter("name", name);
+
+                    // Ececuting it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        User user = new User();
+                        if (reader.Read())
+                        {
+                            // Mapping the return data to the object
+                            user.ID = (int)reader["ID"];
+                            user.FullName = (string)reader["FullName"];
+                            user.Email = (string)reader["Email"];
+                            user.PhoneNumber = (string)reader["PhoneNumber"];
+                            user.HourlyRate = (float)reader["HourlyRate"];
+                            user.Password = (string)reader["Password"];
+                            user.Role = (string)reader["Role"];
+                            user.Department = (int)reader["DepartmentID"];
+
+                        }
+                        else
+                        {
+                            return null;
+                        }
+
+                        // getting the actual user
+                        return user;
+                    }
+                }
+            }
+        }
         public User GetUserByEmail(string email)
         {
             using (var con = new MySqlConnection(connectionString))
