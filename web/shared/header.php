@@ -22,7 +22,7 @@
       
     </ul>
   </div>
-  <a class="nav-link disable"> Welcome <b><?php echo $_SESSION["fullname"] ?></b></a>
+  <a class="nav-link disable" id="header-username"><?php echo $_SESSION["fullname"] ?></a>
   <a  href="./includes/logout.php" class="btn btn-sm btn-outline-secondary">Sign out <i class="fas fa-sign-out-alt"></i> </a>
 </nav>
 

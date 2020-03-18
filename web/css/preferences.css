@@ -7,3 +7,20 @@
 body{
     font-family: 'Montserrat', ;
 }
+
+.preferences{
+    margin-top: 10vh;
+}
+.row{
+    margin: 20px;
+    align-items: center;
+    border: solid 1px  rgb(199, 199, 199);
+    text-align: center;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.btn.btn-outline-info{
+    font-size: 12px;
+    width: 90px;
+}
