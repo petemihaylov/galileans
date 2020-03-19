@@ -231,8 +231,40 @@ namespace EmployeesManagementSystem.Data
             return ShiftType.OTHER;
         }
 
+        public void UpdateShift(Shift shift)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"UPDATE Shifts SET AssignedEmployeeID = @userId, DepartmentID = @departmentId, Availability =  @availability,
+                    ShiftDate =  @date, StartTime =  @startTime, EndTime = @endTime, Attended = @attended, ShiftType =  @shiftType
+                      WHERE ID = @shiftId;
+                        ";
 
-    
+
+                    command.AddParameter("shiftId", shift.ID);
+                    command.AddParameter("userId", shift.AssignedEmployeeID);
+                    command.AddParameter("departmentId", shift.DepartmentID);
+                    command.AddParameter("availability", shift.Availability);
+                    command.AddParameter("date", shift.ShiftDate);
+                    command.AddParameter("startTime", shift.StartTime);
+                    command.AddParameter("endTime", shift.EndTime);
+                    command.AddParameter("attended", shift.Attended);
+                    command.AddParameter("shiftType", shift.Type.ToString());
+                    string st = command.ToString();
+
+                    con.Open();
+                    command.ExecuteNonQuery();
+
+                }
+            }
+
+
+        }
+
+
+
         public override void Insert(object obj)
         {
             Shift shift = (Shift)obj;

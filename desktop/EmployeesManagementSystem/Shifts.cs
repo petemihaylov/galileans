@@ -103,7 +103,9 @@ namespace EmployeesManagementSystem
                     {
                         if (item.DepartmentID == this.departmentList[selectedDepartment])
                         {
-                            this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+
+                            char mark = item.Attended ? '*' : ' ';
+                            this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
                             morningId.Add(item.ID);
                         }
                     }
@@ -115,7 +117,9 @@ namespace EmployeesManagementSystem
                     {
                         if (item.DepartmentID == this.departmentList[selectedDepartment])
                         {
-                            this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+
+                            char mark = item.Attended ? '*' : ' ';
+                            this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
                             eveningId.Add(item.ID);
                         }
                     }
@@ -127,7 +131,9 @@ namespace EmployeesManagementSystem
                     {
                         if (item.DepartmentID == this.departmentList[selectedDepartment])
                         {
-                            this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+
+                            char mark = item.Attended ? '*' : ' ';
+                            this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
                             afternoonId.Add(item.ID);
                         }
                     }
@@ -154,8 +160,8 @@ namespace EmployeesManagementSystem
             this.morningList.Items.Clear();
             foreach (var item in morning)
             {
-
-                this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+                char mark = item.Attended ? '*' : ' '; 
+                this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName  + " " + mark);
                 morningId.Add(item.ID);
             }
 
@@ -165,7 +171,8 @@ namespace EmployeesManagementSystem
             foreach (var item in evening)
             {
 
-                this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+                char mark = item.Attended ? '*' : ' ';
+                this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
                 eveningId.Add(item.ID);
 
 
@@ -177,7 +184,8 @@ namespace EmployeesManagementSystem
             foreach (var item in afternoon)
             {
 
-                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName);
+                char mark = item.Attended ? '*' : ' ';
+                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
                 afternoonId.Add(item.ID);
 
             }
@@ -445,6 +453,7 @@ namespace EmployeesManagementSystem
                 int shiftId = morningId[morningList.SelectedIndex];
                 Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
                 shiftAttended.Attended = true;
+                shiftContext.UpdateShift(shiftAttended);
             }
 
             if (afternoonList.SelectedItem != null)
@@ -452,6 +461,7 @@ namespace EmployeesManagementSystem
                 int shiftId = afternoonId[afternoonList.SelectedIndex];
                 Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
                 shiftAttended.Attended = true;
+                shiftContext.UpdateShift(shiftAttended);
             }
 
             if (eveningList.SelectedItem != null)
@@ -459,9 +469,12 @@ namespace EmployeesManagementSystem
                 int shiftId = eveningId[eveningList.SelectedIndex];
                 Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
                 shiftAttended.Attended = true;
+                shiftContext.UpdateShift(shiftAttended);
             }
-
+            
             MessageBox.Show("The employee(s) have been marked as present.");
+            // Updating listing of shifts
+            displayShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
 
         private void btnMissed_Click(object sender, EventArgs e)
@@ -472,6 +485,7 @@ namespace EmployeesManagementSystem
                 int shiftId = morningId[morningList.SelectedIndex];
                 Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
                 shiftAttended.Attended = false;
+                shiftContext.UpdateShift(shiftAttended);
             }
 
             else if (afternoonList.SelectedItem != null)
@@ -479,6 +493,7 @@ namespace EmployeesManagementSystem
                 int shiftId = afternoonId[afternoonList.SelectedIndex];
                 Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
                 shiftAttended.Attended = false;
+                shiftContext.UpdateShift(shiftAttended);
             }
 
             else if (eveningList.SelectedItem != null)
@@ -486,9 +501,12 @@ namespace EmployeesManagementSystem
                 int shiftId = eveningId[eveningList.SelectedIndex];
                 Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
                 shiftAttended.Attended = false;
+                shiftContext.UpdateShift(shiftAttended);
             }
 
             MessageBox.Show("The employee(s) have been marked as absent.");
+            // Updating listing of shifts
+            displayShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
     }
 }
