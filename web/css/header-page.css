@@ -10,8 +10,8 @@
     color: rgb(227, 228, 230);
 }
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
-    color: rgb(88, 92, 167);
-    transition: 0.2s ease-in-out;
+	color: rgb(88, 92, 167);
+	transition: 0.2s ease-in-out;
 }
 
 

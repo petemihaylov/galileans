@@ -40,20 +40,20 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <div class="container earnings-container">
         <div class="total-container">
-            <div class="money">
+            <div class="money tracking-in-expand">
                 <h4> € </h4>
                 <h2>100</h2>
                 <h3>00 </h3>
             </div>
-            <div class="money-label">
+            <div class="money-label text-focus-in">
                 Total earnings
             </div>
         </div>
         <div class="attendance-container">
-            <div class="attendance">
+            <div class="attendance  tracking-in-expand">
                     <h2>20</h2>
             </div>
-            <div class="attendance-label">
+            <div class="attendance-label text-focus-in">
                 Attended shifts
             </div>
         </div>
