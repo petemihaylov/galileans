@@ -8,6 +8,67 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 
+
+
+// Include config file
+require_once "./includes/config.php";
+
+$AttendedCount = 0;
+// Get count of attended shifts for the current employee
+$sql = "SELECT COUNT(*) FROM Shifts WHERE AssignedEmployeeID = ? and Attended = 1;";
+
+if($stmt = mysqli_prepare($link, $sql)){
+    
+    mysqli_stmt_bind_param($stmt, "s", $_SESSION['id']);
+    // Attempt to execute the prepared statement
+    if(mysqli_stmt_execute($stmt)){
+        
+        // Store result
+        mysqli_stmt_store_result($stmt);
+        $stmt->bind_result($count);
+        
+
+        if(mysqli_stmt_fetch($stmt)) {
+            $AttendedCount = $count;
+         }
+    }else{
+        echo "Oops! Something went wrong. Please try again later.";
+    }
+        // Close statement
+        mysqli_stmt_close($stmt);
+}
+
+
+$HourlyRate = 0;
+// Get HourlyRate for the current employee
+
+$sql = "SELECT HourlyRate FROM dbi429937.users Where ID = ?;";
+
+if($stmt = mysqli_prepare($link, $sql)){
+    
+    mysqli_stmt_bind_param($stmt, "s", $_SESSION['id']);
+    // Attempt to execute the prepared statement
+    if(mysqli_stmt_execute($stmt)){
+        
+        // Store result
+        mysqli_stmt_store_result($stmt);
+        $stmt->bind_result($wage);
+        
+
+        if(mysqli_stmt_fetch($stmt)) {
+            $HourlyRate = $wage;
+         }
+    }else{
+        echo "Oops! Something went wrong. Please try again later.";
+    }
+        // Close statement
+        mysqli_stmt_close($stmt);
+}
+
+
+ 
+    // Close connection
+    mysqli_close($link);
 ?>
 
 
@@ -28,7 +89,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <script src="https://kit.fontawesome.com/03cf08f72f.js" crossorigin="anonymous"></script>
 
         <!-- JQuery 3.4.1 CDN -->
+        
         <script src="https://code.jquery.com/jquery-3.4.1.js"  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
         <link rel="stylesheet" href="./css/header-page.css">
         <link rel="stylesheet" href="./css/earnings-page.css">
@@ -42,16 +108,16 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <div class="total-container">
             <div class="money tracking-in-expand">
                 <h4> € </h4>
-                <h2>100</h2>
+                <h2 ><?php echo ($HourlyRate* $AttendedCount);?></h2>
                 <h3>00 </h3>
             </div>
             <div class="money-label text-focus-in">
                 Total earnings
             </div>
-        </div>
+        </div> 
         <div class="attendance-container">
-            <div class="attendance  tracking-in-expand">
-                    <h2>20</h2>
+            <div class="attendance  tracking-in-expand" data-toggle="tooltip" title="<?php echo "Your hourly wage is: ". $HourlyRate . " €"?>">
+                    <h2><?php echo $AttendedCount;?></h2>
             </div>
             <div class="attendance-label text-focus-in">
                 Attended shifts
@@ -59,5 +125,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </div>
 </div>
 
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
 </body>
 </html>
