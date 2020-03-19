@@ -4,18 +4,13 @@ body{
 .details-container{
     margin-top: 5%;
 }
-.welcome-container{
-    height: 60vh;
-}
 
 footer{
     color: rgb(219, 216, 216);
 }
 
-
 .next-shift{
-    margin-top: 5%;
-    margin-bottom: 2%;
+    margin-top: 6%;
     display: flex;
     text-transform: uppercase;
     justify-content: center;
@@ -62,4 +57,19 @@ footer{
     opacity:1;
     transition: 0.1s;   
     color:white;
+}
+
+.btn-pdf{
+ width: 5px;   
+}
+.btn-pdf .btn-primary {
+    color: #fff;
+    background-color: rgb(255, 174, 0);
+    border-color: rgb(255, 174, 0);
+}
+
+.btn-pdf .btn-primary:hover{
+    color: #fff;
+    background-color: rgb(255, 196, 0);
+    border-color: rgb(255, 196, 0);
 }

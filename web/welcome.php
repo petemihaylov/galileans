@@ -12,6 +12,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 // Include config file
 require_once "./includes/config.php";
 require "./models/Shift.php";
+// for the pdf
+require_once __DIR__ . '/vendor/autoload.php';
+
+function getPDF($arr){
+    $mpdf = new \Mpdf\Mpdf();
+    $data = '<h1>Shift details</h1>';
+
+
+    $mpdf->WriteHTML($data);
+    $mpdf->Output("my-shifts-details.pdf", "D");
+}
 
 $shiftArray = array();
 
@@ -42,38 +53,44 @@ $shiftArray = array();
             echo "Oops! Something went wrong. Please try again later.";
         }
         
+    mysqli_stmt_close($stmt);
     }
 
 // closestShift
 $date = new DateTime("now", new DateTimeZone('Europe/Amsterdam') );
-$shDate = $date->format('Y-m-d');
+$shtDate = $date->format('Y-m-d');
 $shStart = $date->format('H:i:s');
 
 
-$closestShift = new Shift("", "", "", "", "");
+
+$closestShift;
 
  // Prepare a select statement
  $sql = "SELECT ID, ShiftDate, StartTime, EndTime, ShiftType
-  FROM Shifts WHERE ShiftDate <= ? && StartTime <= ? ORDER BY ShiftDate DESC, StartTime DESC limit 1;";
-   
+FROM Shifts WHERE ShiftDate <= ? && StartTime <= ? && AssignedEmployeeID = ? ORDER BY ShiftDate DESC, StartTime DESC limit 1;";
+
+if($shStart < '09:00:00'){
+    $sql = "SELECT ID, ShiftDate, StartTime, EndTime, ShiftType
+    FROM Shifts WHERE ShiftDate >= ? && StartTime >= ? && AssignedEmployeeID = ? ORDER BY ShiftDate ASC, StartTime ASC limit 1;";
+}
+
 
    if($stmt = mysqli_prepare($link, $sql)){
     
-    mysqli_stmt_bind_param($stmt, "ss", $shDate, $shStart);
+    mysqli_stmt_bind_param($stmt, "sss", $shtDate, $shStart, $_SESSION['id']);
     // Attempt to execute the prepared statement
     if(mysqli_stmt_execute($stmt)){
         
-    
         // Store result
         mysqli_stmt_store_result($stmt);
     
-                
-                mysqli_stmt_bind_result($stmt, $Id, $shDate, $shStartTime, $shEndTime, $shType);
-               
-                if(mysqli_stmt_fetch($stmt)){ 
-                   $closestShift = new Shift($Id, $shDate, $shStartTime, $shEndTime, $shType);
-                }
-    
+        
+        $stmt->bind_result($Id, $shDate, $shStartTime, $shEndTime , $shType);
+        
+
+        if(mysqli_stmt_fetch($stmt)) {
+            $closestShift = new Shift($Id, strval($shDate), strval($shStartTime), strval($shEndTime), $shType);
+         }
 
     }else{
         echo "Oops! Something went wrong. Please try again later.";
@@ -85,6 +102,12 @@ $closestShift = new Shift("", "", "", "", "");
  
     // Close connection
     mysqli_close($link);
+
+  // Processing form data when form is submitted
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        getPDF($shiftArray);
+
+    }
 ?>
 
 
@@ -122,6 +145,7 @@ $closestShift = new Shift("", "", "", "", "");
 <!-- Navbar -->
 <?php require('./shared/header.php') ?>
 
+
 <div class="container next-shift">
     
   <?php if(isset($closestShift)){?>
@@ -140,7 +164,11 @@ $closestShift = new Shift("", "", "", "", "");
     <table id="example" class="table table-hover table-dark">
     <thead>
         <tr>
-        <th scope="col"></th>
+        <th scope="col">
+            <form class="btn-pdf" method="post">
+                <button type="submit" class="btn btn-primary">PDF</button>
+            </form>
+        </th>
         <th scope="col">Type</th>
         <th scope="col"> Date</th>
         <th scope="col">Start Time</th>
@@ -163,8 +191,9 @@ $closestShift = new Shift("", "", "", "", "");
     </tbody>
     
     </table>
+        
 </div>
-    
+
 <script>
 $(document).ready(function() {
     $('#example').DataTable();

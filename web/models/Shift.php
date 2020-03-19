@@ -9,12 +9,12 @@ class Shift{
     private $ShiftType;
 
 
-    function __construct($id, $shiftDate, $startTime, $endTime, $shiftType){
+    function __construct($id, $shiftDate, $startTime, $endTime, $type){
         $this->ID = $id;
         $this->ShiftDate = $shiftDate;
         $this->StartTime = $startTime;
         $this->EndTime = $endTime;
-        $this->ShiftType = $shiftType;
+        $this->ShiftType = $type;
     }
 
     function get_ID(){
