@@ -529,7 +529,7 @@ namespace EmployeesManagementSystem
             UploadImg uploadImg = new UploadImg(user.ID, this);
             uploadImg.Show();
         }
-        public void UpdateImg(int userId)
+        public void UpdateImg(int userId) 
         {
             ImageClass img = imageContext.GetImgByUser(userId);
 
