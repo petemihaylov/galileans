@@ -50,7 +50,7 @@ namespace EmployeesManagementSystem
                 this.btnDepartments.Enabled = true;
                 this.btnStocks.Enabled = false;
                 this.btnShifts.Enabled = true;
-                this.btnStatistics.Enabled = true;
+                this.btnStatistics.Enabled = false;
             }
             
             try
