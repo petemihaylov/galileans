@@ -25,6 +25,7 @@ namespace EmployeesManagementSystem
         private User loggedUser;
         private int addDays = 0;
         private int counter = 0;
+        private char attendedMark = '*';
         // Constructor
         public Shifts(User user)
         {
@@ -88,6 +89,8 @@ namespace EmployeesManagementSystem
         }
         private void displayShifts(DateTime dateTime)
         {
+            // Updating the shifts from db
+            this.shifts = shiftContext.GetAllShifts();
             if (this.cbDepartment.SelectedIndex > -1)
             {
                 morningId.Clear();
@@ -104,7 +107,7 @@ namespace EmployeesManagementSystem
                         if (item.DepartmentID == this.departmentList[selectedDepartment])
                         {
 
-                            char mark = item.Attended ? '*' : ' ';
+                            char mark = item.Attended ? attendedMark : ' ';
                             this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
                             morningId.Add(item.ID);
                         }
@@ -118,7 +121,7 @@ namespace EmployeesManagementSystem
                         if (item.DepartmentID == this.departmentList[selectedDepartment])
                         {
 
-                            char mark = item.Attended ? '*' : ' ';
+                            char mark = item.Attended ? attendedMark : ' ';
                             this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
                             eveningId.Add(item.ID);
                         }
@@ -132,7 +135,7 @@ namespace EmployeesManagementSystem
                         if (item.DepartmentID == this.departmentList[selectedDepartment])
                         {
 
-                            char mark = item.Attended ? '*' : ' ';
+                            char mark = item.Attended ? attendedMark : ' ';
                             this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
                             afternoonId.Add(item.ID);
                         }
@@ -160,7 +163,7 @@ namespace EmployeesManagementSystem
             this.morningList.Items.Clear();
             foreach (var item in morning)
             {
-                char mark = item.Attended ? '*' : ' '; 
+                char mark = item.Attended ? attendedMark : ' '; 
                 this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName  + " " + mark);
                 morningId.Add(item.ID);
             }
@@ -171,7 +174,7 @@ namespace EmployeesManagementSystem
             foreach (var item in evening)
             {
 
-                char mark = item.Attended ? '*' : ' ';
+                char mark = item.Attended ? attendedMark : ' ';
                 this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
                 eveningId.Add(item.ID);
 
@@ -184,7 +187,7 @@ namespace EmployeesManagementSystem
             foreach (var item in afternoon)
             {
 
-                char mark = item.Attended ? '*' : ' ';
+                char mark = item.Attended ? attendedMark : ' ';
                 this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
                 afternoonId.Add(item.ID);
 
@@ -473,7 +476,9 @@ namespace EmployeesManagementSystem
             }
             
             MessageBox.Show("The employee(s) have been marked as present.");
-            // Updating listing of shifts
+
+
+            // Updating listing of shifts 
             displayShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
 
@@ -505,7 +510,8 @@ namespace EmployeesManagementSystem
             }
 
             MessageBox.Show("The employee(s) have been marked as absent.");
-            // Updating listing of shifts
+
+            // Updating listing of shifts 
             displayShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
     }
