@@ -14,6 +14,8 @@ namespace EmployeesManagementSystem
         // Variables
         private Dashboard dashboard;
         private UserContext userContext = new UserContext();
+        private DepartmentContext departmentContext = new DepartmentContext();
+        private Department[] departments;
 
         // Default Constructor
         public CreateAccounts()
@@ -28,13 +30,21 @@ namespace EmployeesManagementSystem
             this.dashboard = dashboard;
         }
 
+        private void CreateAccounts_Load(object sender, EventArgs e)
+        {
+            departments = departmentContext.GetAllDepartments();
+            foreach (Department d in departments)
+            {
+                cbDepartments.Items.Add(d.Name);
+            }
+            cbDepartments.SelectedIndex = 0;
+        }
 
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
 
             if (ifEmptyOrNull(tbFullName.Text, tbHourlyRate.Text, tbPhone.Text, tbEmail.Text, tbPassword.Text, tbConfirmationPassword.Text))
             {
-
                 try
                 {
                     string fullName = removeWhiteSpaces(this.tbFullName.Text);
@@ -43,8 +53,8 @@ namespace EmployeesManagementSystem
                     string phoneNumber = this.tbPhone.Text;
                     string password = this.tbPassword.Text;
                     string confirmationPassword = this.tbConfirmationPassword.Text;
-                    // TEMP - replace with int.Parse(tbDepartment.Text) as 
-                    int department = 4;
+                    string role = cbRole.SelectedText;
+                    int department = departments[cbDepartments.SelectedIndex].ID;
 
                     if (isNameValid(fullName) && isEmailValid(email) && isPhoneValid(phoneNumber) && isWageValid(hourlyRate) && isPasswordValid(password) && isPasswordValid(confirmationPassword))
                     {
@@ -57,23 +67,6 @@ namespace EmployeesManagementSystem
                             {
                                 // Generate the password
                                 string generatedPassword = Hashing.HashPassword(password);
-
-                                // Determine user's role
-                                string role;
-
-                                if (rbEmployee.Checked)
-                                {
-                                    role = Role.Employee.ToString();
-                                }
-                                else if (rbManager.Checked)
-                                {
-                                    role = Role.Manager.ToString();
-                                }
-                                else
-                                {
-                                    // Default choice
-                                    role = Role.Administrator.ToString();
-                                }
 
                                 // Create new User
                                 User user = new User(fullName, email, phoneNumber, generatedPassword, role, hourlyRate, department);
