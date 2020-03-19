@@ -1,0 +1,62 @@
+.earnings-container{
+        background: #fff;
+        display: flex;
+        border-radius: 2px;
+        height: 220px;
+        margin: auto;
+        margin-top: 8vh;
+        width: 700px;    
+        transition: ease-in-out 0.3s;
+        box-shadow: 0 14px 28px rgba(87, 87, 87, 0.25), 0 10px 10px rgba(78, 78, 78, 0.062);
+}
+.earnings-container:hover{
+    transition: ease-in-out 0.3s;
+    box-shadow: 0 14px 28px rgba(36, 36, 36, 0.25), 0 10px 10px rgba(27, 27, 27, 0.062);   
+}
+.attendance-container , .total-container{
+    padding: 10px;
+    height: 100px;
+    text-align: center;
+    text-align: center; 
+    margin-top: 50px;   
+}
+.attendance-container{
+    margin-left: auto;
+    margin-right: 50px;
+}
+.total-container{
+    margin-left: 50px;
+}
+.attendance-container .attendance{
+    color: rgb(55, 151, 130);
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.total-container .money{
+    color: rgb(55, 151, 130);
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.attendance-container .attendance h2{
+    font-size: 50px;
+    font-weight: 600;
+}
+.total-container .money h2{
+    letter-spacing: 1px;
+    font-size: 50px;
+    font-weight: 600;
+    padding-right: 5px;
+    padding-left: 10px;
+}
+.total-container .money h4{
+    font-size: 30px;
+}
+.total-container .money-label, .attendance-container .attendance-label{
+  color: gray;
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+}

@@ -8,16 +8,16 @@
         <a class="nav-link" href="welcome.php"><i class="fas fa-home "></i> My Shifts</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="preferences.php"> <i class="fas fa-praying-hands"></i></i> Preferences</a>
+        <a class="nav-link" href="preferences.php"><i class="far fa-calendar-alt"></i> Planner</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="details.php"><i class="fas fa-info-circle faa-spin animated-hover"></i> Details</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="notify.php">  <i class="far fa-envelope "></i> Cancel</a>
+        <a class="nav-link" href="notify.php">  <i class="fas fa-praying-hands"></i> Notify</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="payments.php"> <i class="far fa-money-bill-alt"></i> Payments</a>
+        <a class="nav-link" href="earnings.php"> <i class="far fa-money-bill-alt"></i> Earnings</a>
       </li>
       
     </ul>

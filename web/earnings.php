@@ -31,12 +31,33 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <script src="https://code.jquery.com/jquery-3.4.1.js"  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
         <link rel="stylesheet" href="./css/header-page.css">
+        <link rel="stylesheet" href="./css/earnings-page.css">
 </head>
 <body>
     
 <!-- Navbar -->
 <?php require('./shared/header.php') ?>
 
+<div class="container earnings-container">
+        <div class="total-container">
+            <div class="money">
+                <h4> € </h4>
+                <h2>100</h2>
+                <h3>00 </h3>
+            </div>
+            <div class="money-label">
+                Total earnings
+            </div>
+        </div>
+        <div class="attendance-container">
+            <div class="attendance">
+                    <h2>20</h2>
+            </div>
+            <div class="attendance-label">
+                Attended shifts
+            </div>
+        </div>
+</div>
 
 </body>
 </html>

@@ -63,7 +63,7 @@ h1, h2, h3 {
 .success-message{
   position: relative;
   bottom: 2vh;
-  color: rgb(9, 241, 9);
+  color: rgb(79, 192, 126);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
 }
@@ -111,22 +111,18 @@ h1, h2, h3 {
 
 .notification-container .form-group ::-webkit-input-placeholder {
   font-size: 12px;
-  font-family: "Montserrat", sans-serif;
 }
 
 .notification-container .form-group :-ms-input-placeholder {
   font-size: 12px;
-  font-family: "Montserrat", sans-serif;
 }
 
 .notification-container .form-group ::-ms-input-placeholder {
   font-size: 12px;
-  font-family: "Montserrat", sans-serif;
 }
 
 .notification-container .form-group ::placeholder {
   font-size: 12px;
-  font-family: "Montserrat", sans-serif;
 }
 
 /* Bubble button */
