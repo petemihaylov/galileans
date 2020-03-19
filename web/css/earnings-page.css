@@ -5,23 +5,35 @@ body{
         background: #fff;
         display: flex;
         border-radius: 2px;
-        height: 220px;
+        height: 130px;
         margin: auto;
-        margin-top: 8vh;
+        margin-top: 5vh;
         width: 700px;    
         transition: ease-in-out 0.3s;
         box-shadow: 0 14px 28px rgba(87, 87, 87, 0.25), 0 10px 10px rgba(78, 78, 78, 0.062);
+}
+.header-container{
+    color: rgb(196, 198, 199);
+    text-align: center;
+    padding-top: 30px;
+    letter-spacing: 1px;
+    height: 200px;
+    margin-top: 5vh;
+}
+.chart-container{
+    width: 900px;
+    padding: 5px;
+    margin-bottom: 20vh;
+    box-shadow: 0 14px 28px rgba(87, 87, 87, 0.25), 0 10px 10px rgba(78, 78, 78, 0.062);
 }
 .earnings-container:hover{
     transition: ease-in-out 0.3s;
     box-shadow: 0 14px 28px rgba(36, 36, 36, 0.25), 0 10px 10px rgba(27, 27, 27, 0.062);   
 }
 .attendance-container , .total-container{
-    padding: 10px;
     height: 100px;
     text-align: center;
     text-align: center; 
-    margin-top: 50px;   
 }
 .attendance-container{
     margin-left: auto;

@@ -53,7 +53,7 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM availability where EmployeeID = @id ORDER BY Date ASC";
+                    command.CommandText = @"SELECT * FROM Availability where EmployeeID = @id ORDER BY Date ASC";
                     command.AddParameter("id", id);
 
                     // Executing it 
@@ -72,7 +72,6 @@ namespace EmployeesManagementSystem.Data
 
                         return availabilities.ToArray();
                     }
-                    return null;
                 }
             }
         }

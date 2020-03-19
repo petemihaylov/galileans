@@ -42,7 +42,7 @@ if($stmt = mysqli_prepare($link, $sql)){
 $HourlyRate = 0;
 // Get HourlyRate for the current employee
 
-$sql = "SELECT HourlyRate FROM dbi429937.users Where ID = ?;";
+$sql = "SELECT HourlyRate FROM Users Where ID = ?;";
 
 if($stmt = mysqli_prepare($link, $sql)){
     
@@ -65,9 +65,7 @@ if($stmt = mysqli_prepare($link, $sql)){
         mysqli_stmt_close($stmt);
 }
 
-
- 
-    // Close connection
+   // Close connection
     mysqli_close($link);
 ?>
 
@@ -96,11 +94,15 @@ if($stmt = mysqli_prepare($link, $sql)){
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+        <!-- Chart js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
         <link rel="stylesheet" href="./css/header-page.css">
         <link rel="stylesheet" href="./css/earnings-page.css">
 </head>
 <body>
-    
+
 <!-- Navbar -->
 <?php require('./shared/header.php') ?>
 
@@ -124,11 +126,40 @@ if($stmt = mysqli_prepare($link, $sql)){
             </div>
         </div>
 </div>
+<div class="container header-container">
+    <h2>Statistics for your shift monitoring</h2>
+    <h4>Based on your current statistics, you can start booking sessions for the next week.</h4>
+</div>
+<div class="container chart-container">
+    <canvas id="myChart"></canvas>
+</div>
 
 <script>
-$(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip();   
-});
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: '#8899C5',
+                borderColor: '#8879C5',
+                data: [0, 10, 5, 2, 20, 30, 45]
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+        });
+    });
 </script>
+
+
 </body>
 </html>

@@ -113,7 +113,7 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // select statement
-                    command.CommandText = @"select * from users";
+                    command.CommandText = @"select * from Users";
 
                     // executing it 
                     using (var reader = command.ExecuteReader())
