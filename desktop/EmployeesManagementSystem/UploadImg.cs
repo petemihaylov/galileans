@@ -59,9 +59,9 @@ namespace EmployeesManagementSystem
 
             this.Close();
             User user = userContext.GetUserByID(userId);
-            
+            if (admin != null)
                 this.admin.UpdateImg(userId);
-            
+            else details.UpdateImg(userId);     
         }
     }
 }

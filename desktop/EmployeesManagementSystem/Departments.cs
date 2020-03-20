@@ -58,7 +58,7 @@ namespace EmployeesManagementSystem
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int btnDelete = 2;
+            int btnDelete = 3;
 
             // Check if there are departments in the list
             if(this.dataGridView.Rows.Count > 0)

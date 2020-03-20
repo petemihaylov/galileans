@@ -33,11 +33,15 @@ namespace EmployeesManagementSystem
         private void CreateAccounts_Load(object sender, EventArgs e)
         {
             departments = departmentContext.GetAllDepartments();
-            foreach (Department d in departments)
+            if (departments.Length > 0)
             {
-                cbDepartments.Items.Add(d.Name);
+                foreach (Department d in departments)
+                {
+                    cbDepartments.Items.Add(d.Name);
+                }
+                cbDepartments.SelectedIndex = 0;
             }
-            cbDepartments.SelectedIndex = 0;
+            
         }
 
         private void btnCreateAccount_Click(object sender, EventArgs e)
@@ -54,7 +58,11 @@ namespace EmployeesManagementSystem
                     string password = this.tbPassword.Text;
                     string confirmationPassword = this.tbConfirmationPassword.Text;
                     string role = cbRole.SelectedText;
-                    int department = departments[cbDepartments.SelectedIndex].ID;
+                    int department = 0;
+                    if (cbDepartments.SelectedIndex  != -1)
+                    {
+                         department = departments[cbDepartments.SelectedIndex].ID;
+                    }
 
                     if (isNameValid(fullName) && isEmailValid(email) && isPhoneValid(phoneNumber) && isWageValid(hourlyRate) && isPasswordValid(password) && isPasswordValid(confirmationPassword))
                     {
