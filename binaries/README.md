@@ -1,8 +1,5 @@
 ## Helper
 
-## Test cases
- - [Test cases](https://drive.google.com/file/d/1vyLDJXDgaYIV_OPkpcVa8vUpECcfw3bq/view?usp=sharing)
-
 ### Prerequisites
 
 First, make sure that you have cloned our repository.
@@ -17,6 +14,9 @@ You can find  our desktop version ( the *.exe file ) in `~/binaries/EmployeesMan
 
 Our web version for the employees here: 
 [http://myphp-server.herokuapp.com/](http://myphp-server.herokuapp.com/)
+
+Test cases:
+[Test cases](https://drive.google.com/file/d/1vyLDJXDgaYIV_OPkpcVa8vUpECcfw3bq/view?usp=sharing)
 
 ### Usage
 
