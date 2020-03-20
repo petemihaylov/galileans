@@ -3,6 +3,7 @@
 [READER link](https://fhict.instructure.com/courses/9429/pages/project-part-1-waterfall?module_item_id=465109)
 ___
 ### Week 1:
+ - [Test cases](https://drive.google.com/file/d/1vyLDJXDgaYIV_OPkpcVa8vUpECcfw3bq/view?usp=sharing)
  - Create a name and logo for your group
  - [Client interview](https://docs.google.com/document/d/1Lh5lgM4L1ifmWBCn-WfOWO1Lb-dmeCvP-VKaYcRPB1k/edit?usp=sharing)
  - [Project plan](https://drive.google.com/file/d/17rOSxpdcZBA5G8GMOrgSdz42MoV644yb/view?usp=sharing)
