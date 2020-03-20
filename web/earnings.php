@@ -37,6 +37,30 @@ if($stmt = mysqli_prepare($link, $sql)){
         // Close statement
         mysqli_stmt_close($stmt);
 }
+$TotalCount = 0;
+// Get count of shifts for the current employee
+$sql = "SELECT COUNT(*) FROM Shifts WHERE AssignedEmployeeID = ?;";
+
+if($stmt = mysqli_prepare($link, $sql)){
+    
+    mysqli_stmt_bind_param($stmt, "s", $_SESSION['id']);
+    // Attempt to execute the prepared statement
+    if(mysqli_stmt_execute($stmt)){
+        
+        // Store result
+        mysqli_stmt_store_result($stmt);
+        $stmt->bind_result($count);
+        
+
+        if(mysqli_stmt_fetch($stmt)) {
+            $TotalCount = $count;
+         }
+    }else{
+        echo "Oops! Something went wrong. Please try again later.";
+    }
+        // Close statement
+        mysqli_stmt_close($stmt);
+}
 
 
 $HourlyRate = 0;
@@ -120,6 +144,7 @@ if($stmt = mysqli_prepare($link, $sql)){
         <div class="attendance-container">
             <div class="attendance  tracking-in-expand" data-toggle="tooltip" title="<?php echo "Your hourly wage is: ". $HourlyRate . " €"?>">
                     <h2><?php echo $AttendedCount;?></h2>
+					<h3><?php echo "/" . $TotalCount;?></h3>
             </div>
             <div class="attendance-label text-focus-in">
                 Attended shifts
