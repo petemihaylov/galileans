@@ -20,6 +20,9 @@ body{
     height: 200px;
     margin-top: 5vh;
 }
+.header-container h2{
+  margin-bottom: 4%;
+}
 .chart-container{
     width: 900px;
     padding: 5px;

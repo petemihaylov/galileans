@@ -304,7 +304,7 @@ namespace EmployeesManagementSystem.Data
                 con.Open();
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"SELECT DepartmentID FROM users WHERE ID = @id";
+                    command.CommandText = @"SELECT DepartmentID FROM Users WHERE ID = @id";
                     command.AddParameter("id", id);
                     using (var reader = command.ExecuteReader())
                     {

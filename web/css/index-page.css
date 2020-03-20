@@ -40,8 +40,14 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+
+@media only screen and (max-height: 700px) {
+        .login-container{
+            display: none;
+        }
+}
 .login-container{
-    position: relative;
     background: rgb(255, 255, 255);
     position: absolute;
     border-radius: 2px;
@@ -67,6 +73,7 @@ body{
     margin-bottom: 80px;
     transition: .5s;
 }
+
 .login-form h1:hover{
     transition: .5s;
     color:  #ef7e2d85;
@@ -137,7 +144,6 @@ body{
 .logbtn:hover{
     background-position: right;
 }
-
 .bottom-text{
     margin-top: 10vh;
     text-align: center;
@@ -157,6 +163,7 @@ body{
     font-size: 14px;
     color: rgb(252, 102, 114);
 }
+
 @media only screen and (max-width: 600px) {
 .login-form h1{
     font-size: 30px;

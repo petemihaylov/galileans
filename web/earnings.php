@@ -38,6 +38,33 @@ if($stmt = mysqli_prepare($link, $sql)){
         mysqli_stmt_close($stmt);
 }
 
+$totalCountShifts = 0;
+$sql = "SELECT COUNT(*) FROM Shifts WHERE AssignedEmployeeID = ? ";
+
+if($stmt = mysqli_prepare($link, $sql)){
+    
+    mysqli_stmt_bind_param($stmt, "s", $_SESSION['id']);
+    // Attempt to execute the prepared statement
+    if(mysqli_stmt_execute($stmt)){
+        
+        // Store result
+        mysqli_stmt_store_result($stmt);
+        $stmt->bind_result($count);
+        
+
+        if(mysqli_stmt_fetch($stmt)) {
+            $totalCountShifts = $count;
+         }
+    }else{
+        echo "Oops! Something went wrong. Please try again later.";
+    }
+        // Close statement
+        mysqli_stmt_close($stmt);
+}
+
+
+
+
 
 $HourlyRate = 0;
 // Get HourlyRate for the current employee
@@ -90,13 +117,17 @@ if($stmt = mysqli_prepare($link, $sql)){
         
         <script src="https://code.jquery.com/jquery-3.4.1.js"  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <!-- Chart js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+
+        <!-- Ajax for dataset -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <link rel="stylesheet" href="./css/header-page.css">
         <link rel="stylesheet" href="./css/earnings-page.css">
@@ -127,36 +158,57 @@ if($stmt = mysqli_prepare($link, $sql)){
         </div>
 </div>
 <div class="container header-container">
-    <h2>Statistics for your shift monitoring</h2>
-    <h4>Based on your current statistics, you can start booking sessions for the next week.</h4>
+    <h2>Statistics for your shifts</h2>
+    <h4>Based on your current statistics, you can start booking sessions for the next week</h4>
 </div>
 <div class="container chart-container">
     <canvas id="myChart"></canvas>
 </div>
 
 <script>
+    
     $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();   
+        
+        $.post("/includes/dataset.php",
+                function (data)
+                {
+                    console.log(data);
+                    var months = [];
+                    var counts = [];
 
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
+                    for (var i in data) {
+                        months.push(data[i][0]);
+                        
+                        counts.push(data[i][1]);
+                        
+                    }
 
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'My First dataset',
-                backgroundColor: '#8899C5',
-                borderColor: '#8879C5',
-                data: [0, 10, 5, 2, 20, 30, 45]
-            }]
-        },
+                    var chartdata = {
+                        labels: months,
+                        datasets: [
+                            {                
+                                label: 'Total Shifts <?php echo $totalCountShifts ?>',
+                                backgroundColor: '#8899C5',
+                                borderColor: '#8879C5',
+                                data: counts
+                            }
+                        ]
+                    };
+                            
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
 
-        // Configuration options go here
-        options: {}
-        });
+                // The data for our dataset
+                data: chartdata,
+
+                // Configuration options go here
+                options: {}
+                });
+
+                });
+
     });
 </script>
 
