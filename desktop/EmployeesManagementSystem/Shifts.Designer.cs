@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shifts));
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbTime = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.PictureBox();
@@ -1100,6 +1101,7 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Shifts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
