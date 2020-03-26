@@ -35,6 +35,6 @@ ___
 
 ### Week 6:
  - Tag software as deliverable in GIT repository
- - Create Presentation
+ - [Presentation](https://docs.google.com/presentation/d/1cZmjCpOL-2pYyZTM0MhEg9BRnLY4R4kwvskUjiTpSXs/edit?usp=sharing)
  - Present final version to client and peers
 
