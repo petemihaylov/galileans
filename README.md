@@ -1,5 +1,3 @@
-https://docs.google.com/document/d/1-vP8AzvkyTYfoclmn1MhoQwasXPvOnQV0Fe9-v0lKLs/edit
-
 <img src="https://i.ibb.co/mHbBfmw/logo.jpg" alt="logo" height="150" width="400">
 
 [READER link](https://fhict.instructure.com/courses/9429/pages/project-part-1-waterfall?module_item_id=465109)
@@ -19,6 +17,7 @@ ___
  - [User reqiurements structure](https://docs.google.com/document/d/1ohwEnu2-mQLMnskQPNYxnIEvKF7_dmJj/edit?dls=true)
 
 ### Week 3:
+ - [Process report - Peter](https://docs.google.com/document/d/1-vP8AzvkyTYfoclmn1MhoQwasXPvOnQV0Fe9-v0lKLs/edit?usp=sharing)
  - Improve URS based on feedback
  - Implement software solution
  - Work on the project
