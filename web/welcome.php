@@ -12,6 +12,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 // Include config file
 require_once "./includes/config.php";
 require "./models/Shift.php";
+
 // for the pdf
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -86,17 +87,12 @@ $shtDate = $date->format('Y-m-d');
 $shStart = $date->format('H:i:s');
 
 
-
 $closestShift;
 
  // Prepare a select statement
  $sql = "SELECT ID, ShiftDate, StartTime, EndTime, ShiftType
-FROM Shifts WHERE ShiftDate <= ? && StartTime <= ? && AssignedEmployeeID = ? ORDER BY ShiftDate DESC, StartTime DESC limit 1;";
+FROM Shifts WHERE ShiftDate <= ? && StartTime <= ? && AssignedEmployeeID = ? ORDER BY ShiftDate DESC, StartTime DESC limit 1";
 
-if($shStart < '09:00:00'){
-    $sql = "SELECT ID, ShiftDate, StartTime, EndTime, ShiftType
-    FROM Shifts WHERE ShiftDate >= ? && StartTime >= ? && AssignedEmployeeID = ? ORDER BY ShiftDate ASC, StartTime ASC limit 1;";
-}
 
 
    if($stmt = mysqli_prepare($link, $sql)){

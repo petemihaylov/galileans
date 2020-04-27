@@ -71,7 +71,7 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     command.CommandText = @"INSERT INTO Stocks (Name, Amount, Price, Availability)" +
-                    " VALUES(@name, @price, @amount, @availability)";
+                    " VALUES(@name, @amount, @price, @availability)";
 
                     command.AddParameter("name", stock.Name);
                     command.AddParameter("price", stock.Price);

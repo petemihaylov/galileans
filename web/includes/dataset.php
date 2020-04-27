@@ -1,4 +1,4 @@
-<?php
+    <?php
 header('Content-Type: application/json');
 
 // Initialize the session
