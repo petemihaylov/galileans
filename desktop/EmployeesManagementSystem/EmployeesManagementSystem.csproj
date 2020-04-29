@@ -152,7 +152,7 @@
     <Compile Include="Data\ShiftContext.cs" />
     <Compile Include="Data\StockContext.cs" />
     <Compile Include="Data\UserContext.cs" />
-    <Compile Include="JsonConvert.cs" />
+    <Compile Include="JsonSerializer.cs" />
     <Compile Include="Models\Availability.cs" />
     <Compile Include="Models\Cancellations.cs" />
     <Compile Include="Cancellations.cs">
