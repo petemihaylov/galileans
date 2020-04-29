@@ -1,6 +1,5 @@
 <img src="https://i.ibb.co/mHbBfmw/logo.jpg" alt="logo" height="150" width="400">
 
-[READER link](https://fhict.instructure.com/courses/9429/pages/project-part-1-waterfall?module_item_id=465109)
 ___
 ### Week 1:
 
@@ -38,3 +37,28 @@ ___
  - [Presentation](https://docs.google.com/presentation/d/1cZmjCpOL-2pYyZTM0MhEg9BRnLY4R4kwvskUjiTpSXs/edit?usp=sharing)
  - Present final version to client and peers
 
+### Week 7:
+ - Refactoring
+ - Maintainable code
+
+### Week 9:
+ - Peer review each other's code
+ - Present current status
+
+### Week 10:
+ - Unit testing
+ - Single-responsibilty principle (S in SOLID)
+ - Refactoring of the code & Database
+
+### Week 11:
+ - Open-Closed principle (O in SOLID)
+ - Integration-segregation principle (I in SOLID)
+
+### Week 15:
+- Peer review each other’s code
+
+## Weeks 12 & 18:
+ - Tag git repository for tutor
+ - Deploy system and provide binaries to client
+ - Present current status
+ 

@@ -79,6 +79,8 @@ namespace EmployeesManagementSystem
         private void searchField_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+            this.table = this.userContext.GetUsersTable();
+
             // Pressed enter
             if (e.KeyChar == (char)13)
             {
