@@ -143,6 +143,7 @@
     </Compile>
     <Compile Include="Data\AvailabilityContext.cs" />
     <Compile Include="Data\CancellationContext.cs" />
+    <Compile Include="Data\DataConverterCSV.cs" />
     <Compile Include="Data\DepartmentContext.cs" />
     <Compile Include="Data\ImageContext.cs" />
     <Compile Include="Data\ShiftContext.cs" />
@@ -438,6 +439,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\stock-icon-png-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
