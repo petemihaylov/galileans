@@ -18,6 +18,7 @@ namespace EmployeesManagementSystem
             // Now instead of email you can type
             // admin and the password is: admin 
             // Application.Run(new Login());
+
             DataConverterCSV c = new DataConverterCSV("file");
 
             User user1 = new User("Chat", "chat@email", "+31 888 444 666", "password", "Manager", 30, 888);
@@ -32,6 +33,8 @@ namespace EmployeesManagementSystem
             c.CSVFileRead();
             c.CSVFileReadByField("Admin", 5);
             c.CSVFileReadByField("John", 1);
+
+            // DataConverter.Run();
         }
     }
 }
