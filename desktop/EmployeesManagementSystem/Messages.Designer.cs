@@ -1,6 +1,6 @@
 ﻿namespace EmployeesManagementSystem
 {
-    partial class Cancellations
+    partial class Messages
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cancellations));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Messages));
             this.panelLeft = new System.Windows.Forms.Panel();
             this.btnStatistics = new System.Windows.Forms.Panel();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
@@ -508,7 +508,7 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 30;
-            this.dataGridView.Size = new System.Drawing.Size(1156, 370);
+            this.dataGridView.Size = new System.Drawing.Size(1156, 480);
             this.dataGridView.TabIndex = 7;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
@@ -657,13 +657,13 @@
             // 
             // txDescription
             // 
-            this.txDescription.Location = new System.Drawing.Point(263, 478);
+            this.txDescription.Location = new System.Drawing.Point(263, 577);
             this.txDescription.Multiline = true;
             this.txDescription.Name = "txDescription";
-            this.txDescription.Size = new System.Drawing.Size(1156, 298);
+            this.txDescription.Size = new System.Drawing.Size(1156, 199);
             this.txDescription.TabIndex = 9;
             // 
-            // Cancellations
+            // Messages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -675,7 +675,7 @@
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Cancellations";
+            this.Name = "Messages";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Complaint";
             this.Load += new System.EventHandler(this.Complaint_Load);

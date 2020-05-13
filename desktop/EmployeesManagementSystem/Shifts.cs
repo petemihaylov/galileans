@@ -108,6 +108,7 @@ namespace EmployeesManagementSystem
                         {
 
                             char mark = item.Attended ? attendedMark : ' ';
+                           
                             this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
                             morningId.Add(item.ID);
                         }
@@ -305,7 +306,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Cancellations cncl = new Cancellations(this.loggedUser);
+            Messages cncl = new Messages(this.loggedUser);
             cncl.Closed += (s, args) => this.Close();
             cncl.Show();
         }
@@ -455,7 +456,7 @@ namespace EmployeesManagementSystem
             {
                 int shiftId = morningId[morningList.SelectedIndex];
                 Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
-                shiftAttended.Attended = true;
+                shiftAttended.Attendance = AttendanceType.ATTENDED;
                 shiftContext.UpdateShift(shiftAttended);
             }
 
@@ -463,7 +464,7 @@ namespace EmployeesManagementSystem
             {
                 int shiftId = afternoonId[afternoonList.SelectedIndex];
                 Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
-                shiftAttended.Attended = true;
+                shiftAttended.Attendance = AttendanceType.ATTENDED;
                 shiftContext.UpdateShift(shiftAttended);
             }
 
@@ -471,7 +472,7 @@ namespace EmployeesManagementSystem
             {
                 int shiftId = eveningId[eveningList.SelectedIndex];
                 Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
-                shiftAttended.Attended = true;
+                shiftAttended.Attendance = AttendanceType.ATTENDED;
                 shiftContext.UpdateShift(shiftAttended);
             }
             
@@ -489,7 +490,7 @@ namespace EmployeesManagementSystem
             {
                 int shiftId = morningId[morningList.SelectedIndex];
                 Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
-                shiftAttended.Attended = false;
+                shiftAttended.Attendance = AttendanceType.ABSENT;
                 shiftContext.UpdateShift(shiftAttended);
             }
 
@@ -497,7 +498,7 @@ namespace EmployeesManagementSystem
             {
                 int shiftId = afternoonId[afternoonList.SelectedIndex];
                 Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
-                shiftAttended.Attended = false;
+                shiftAttended.Attendance = AttendanceType.ABSENT;
                 shiftContext.UpdateShift(shiftAttended);
             }
 
@@ -505,7 +506,7 @@ namespace EmployeesManagementSystem
             {
                 int shiftId = eveningId[eveningList.SelectedIndex];
                 Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
-                shiftAttended.Attended = false;
+                shiftAttended.Attendance = AttendanceType.ABSENT;
                 shiftContext.UpdateShift(shiftAttended);
             }
 

@@ -29,6 +29,7 @@ namespace EmployeesManagementSystem.Data
                             stock.Price = (double)reader["Price"];
                             stock.Amount = (int)reader["Amount"];
                             stock.Availability = (bool)reader["Availability"];
+                            stock.DepartmentID = (int)reader["DepartmentID"];
                             stocks.Add(stock);
                         }
                         return stocks.ToArray();
@@ -37,7 +38,7 @@ namespace EmployeesManagementSystem.Data
             }
         }
         
-        public void UpdateStockByID(int ID, string name, double price, int amount, bool availability)
+        public void UpdateStockByID(int ID, string name, double price, int amount, bool availability, int departmentId)
         {
             using (var con = new MySqlConnection(connectionString))
             {
@@ -47,13 +48,14 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"UPDATE Stocks SET Name = @name, Price = @price, Amount = @amount, Availability = @availability WHERE ID = @ID";
+                    command.CommandText = @"UPDATE Stocks SET Name = @name, Price = @price, Amount = @amount, Availability = @availability, DepartmentID = @departmentId WHERE ID = @ID";
                     command.AddParameter("ID", ID);
                     // Executing it 
                     command.Parameters.AddWithValue("@name", name);
                     command.Parameters.AddWithValue("@price", price);
                     command.Parameters.AddWithValue("@amount", amount);
                     command.Parameters.AddWithValue("@availability", availability);
+                    command.Parameters.AddWithValue("@departmentId", departmentId);
                     command.ExecuteNonQuery();
                 }
             }
@@ -70,13 +72,14 @@ namespace EmployeesManagementSystem.Data
 
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO Stocks (Name, Amount, Price, Availability)" +
-                    " VALUES(@name, @amount, @price, @availability)";
+                    command.CommandText = @"INSERT INTO Stocks (Name, Amount, Price, Availability, DepartmentID)" +
+                    " VALUES(@name, @amount, @price, @availability, @departmentId)";
 
                     command.AddParameter("name", stock.Name);
                     command.AddParameter("price", stock.Price);
                     command.AddParameter("amount", stock.Amount);
                     command.AddParameter("availability", stock.Availability);
+                    command.AddParameter("departmentId", stock.DepartmentID);
                     command.ExecuteNonQuery();
                 }
             }
@@ -121,6 +124,7 @@ namespace EmployeesManagementSystem.Data
                             stock.Amount = (int)reader["Amount"];
                             stock.Price = (double)reader["Price"];
                             stock.Availability = (bool)reader["Availability"];
+                            stock.DepartmentID = (int)reader["DepartmentID"];
                         }
                         else
                         {

@@ -7,12 +7,12 @@ using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
 {
-    public partial class Cancellations : Form
+    public partial class Messages : Form
     {
         private CancellationContext cancellationContext = new CancellationContext();
         private User loggedUser;
 
-        public Cancellations(User user)
+        public Messages(User user)
         {
             InitializeComponent();
             this.loggedUser = user;
@@ -62,6 +62,10 @@ namespace EmployeesManagementSystem
             if (!dataGridView.CurrentCell.ColumnIndex.Equals(6) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
                 // open another message box with the whole description
+                int index = dataGridView.CurrentCell.RowIndex;
+                int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
+                ConfirmCancellation confirm = new ConfirmCancellation(id);
+                confirm.Show();
                 txDescription.Text = "Message: " + dataGridView.CurrentCell.Value.ToString();
             }
             else if (dataGridView.CurrentCell.ColumnIndex.Equals(6) && e.RowIndex != -1 && dataGridView.CurrentCell != null)

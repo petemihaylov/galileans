@@ -108,13 +108,13 @@ namespace EmployeesManagementSystem
                 {
                     // Marks attended
                     // Convert the months into days for the x axis and the minutes into hours for the y axis
-                    if (shift.Attended == true)
+                    if (shift.Attendance.ToString() == "ATTENDED")
                         this.chart1.Series["Present"].Points.Add(new DataPoint() { AxisLabel = Convert.ToString(shift.ShiftDate.Day) + "/" + Convert.ToString(shift.ShiftDate.Month), XValue = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day, YValues = new double[] { shift.StartTime.Hour + shift.StartTime.Minute / 60, shift.EndTime.Hour + shift.EndTime.Minute / 60 } });
                     // Marks absent
-                    else if (shift.Attended == false && shift.ShiftDate < this.today)
+                    else if (shift.Attendance.ToString() == "ABSENT" && shift.ShiftDate < this.today)
                         this.chart1.Series["Absent"].Points.Add(new DataPoint() { AxisLabel = Convert.ToString(shift.ShiftDate.Day) + "/" + Convert.ToString(shift.ShiftDate.Month), XValue = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day, YValues = new double[] { shift.StartTime.Hour + shift.StartTime.Minute / 60, shift.EndTime.Hour + shift.EndTime.Minute / 60 } });
                     // Marks future scheduled shifts
-                    else if (shift.Attended == false && shift.ShiftDate > this.today)
+                    else if (shift.Attendance.ToString() == "SCHEDULED" && shift.ShiftDate > this.today)
                     {
                         this.chart1.Series["Scheduled"].Points.Add(new DataPoint() { AxisLabel = Convert.ToString(shift.ShiftDate.Day) + "/" + Convert.ToString(shift.ShiftDate.Month), XValue = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day, YValues = new double[] { shift.StartTime.Hour + shift.StartTime.Minute / 60, shift.EndTime.Hour + shift.EndTime.Minute / 60 } });
                     }
@@ -148,17 +148,17 @@ namespace EmployeesManagementSystem
                     // Converts months into days and counts how many people work on each day
                     int ics = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day;
                     // Marks attended
-                    if (shift.Attended == true)
+                    if (shift.Attendance.ToString() == "ATTENDED")
                     {
                         this.counterAttended[ics]++;
                     }
                     // Marks absent
-                    else if (shift.Attended == false && shift.ShiftDate <= this.today)
+                    else if (shift.Attendance.ToString() == "ABSENT" && shift.ShiftDate <= this.today)
                     {
                         this.counterAbsent[ics]++;
                     }
                     // Mark scheduled
-                    else if (shift.Attended == false && shift.ShiftDate > this.today)
+                    else if (shift.Attendance.ToString() == "SCHEDULED" && shift.ShiftDate > this.today)
                     {
                         this.counterScheduled[ics]++;
                     }
@@ -200,7 +200,7 @@ namespace EmployeesManagementSystem
                 if (this.cbMonth.Text == shift.ShiftDate.ToString("MMMM")) 
                 {
                     this.money = 0;
-                    if (shift.Attended)
+                    if (shift.Attendance.ToString() == "ATTENDED")
                     {
                         {
                             //money = hrsWorked * wage

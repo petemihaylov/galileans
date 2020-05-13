@@ -125,7 +125,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Cancellations cncl = new Cancellations(this.loggedUser);
+            Messages cncl = new Messages(this.loggedUser);
             cncl.Closed += (s, args) => this.Close();
             cncl.Show();
         }

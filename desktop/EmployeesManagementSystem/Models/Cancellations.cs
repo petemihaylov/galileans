@@ -15,9 +15,10 @@ namespace EmployeesManagementSystem.Models
         public string Subject { get; set; }
         public string Message { get; set; }
         public string EmployeeName { get; set; }
-
+        public int EmployeeID { get; set; }
+        public int ShiftID { get; set; }
         public Cancellations() { }
-        public Cancellations(int id, DateTime date, string email, string subject, string message, string employeeName)
+        public Cancellations(int id, DateTime date, string email, string subject, string message, string employeeName, int employeeID,int shiftId)
         {
             this.ID = id;
             this.Date = date;
@@ -25,6 +26,8 @@ namespace EmployeesManagementSystem.Models
             this.Message = message;
             this.Email = email;
             this.EmployeeName = employeeName;
+            this.EmployeeID = employeeID;
+            this.ShiftID = shiftId;
         }
         public string[] GetInfo()
         {

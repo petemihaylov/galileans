@@ -8,6 +8,7 @@ namespace EmployeesManagementSystem.Data
 {
     class ShiftContext : DbContext
     {
+
         public List<Shift> GetAllShifts()
         {
             using (var con = new MySqlConnection(connectionString))
@@ -32,8 +33,8 @@ namespace EmployeesManagementSystem.Data
                             shift.Availability = (bool)reader["Availability"];
                             shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
                             shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
-                            shift.Attended = (bool)reader["Attended"];
                             shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
+                            shift.Attendance = getAttendanceTypeByString((string)reader["Attendance"]);
 
                             shifts.Add(shift);
                         }
@@ -70,7 +71,7 @@ namespace EmployeesManagementSystem.Data
                             shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
                             shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
                             shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
-                            shift.Attended = (bool)reader["Attended"];
+                            shift.Attendance = getAttendanceTypeByString((string)reader["Attendance"]);
 
                             shifts.Add(shift);
                         }
@@ -112,8 +113,7 @@ namespace EmployeesManagementSystem.Data
                             shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
                             shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
                             shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
-                            shift.Attended = (bool)reader["Attended"];
-
+                            shift.Attendance = getAttendanceTypeByString((string)reader["Attendance"]);
                             shifts.Add(shift);
                         }
 
@@ -149,8 +149,49 @@ namespace EmployeesManagementSystem.Data
                             shift.ShiftDate = (DateTime)reader["ShiftDate"];
                             shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
                             shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
-                            shift.Attended = (bool)reader["Attended"];
                             shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
+                            shift.Attendance = getAttendanceTypeByString((string)reader["Attendance"]);
+
+                        }
+                        else
+                        {
+                            return null;
+                        }
+
+                        return shift;
+                    }
+                }
+
+            }
+        }
+
+        public Shift GetShiftByUserID(int userId)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"SELECT * FROM Shifts WHERE AssignedEmployeeID = @ID";
+                    command.AddParameter("ID", userId);
+
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        Shift shift = new Shift();
+                        if (reader.Read())
+                        {
+                            // Mapping the return data to the object
+                            shift.ID = (int)reader["ID"];
+                            shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
+                            shift.DepartmentID = (int)reader["DepartmentID"];
+                            shift.Availability = (bool)reader["Availability"];
+                            shift.ShiftDate = (DateTime)reader["ShiftDate"];
+                            shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
+                            shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
+                            shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
+                            shift.Attendance = getAttendanceTypeByString((string)reader["Attendance"]);
 
                         }
                         else
@@ -174,7 +215,6 @@ namespace EmployeesManagementSystem.Data
                     // Select statement
                     command.CommandText = @"SELECT * FROM Shifts WHERE ID = @id";
                     command.AddParameter("id", id);
-
                     // Executing it 
                     using (var reader = command.ExecuteReader())
                     {
@@ -189,8 +229,8 @@ namespace EmployeesManagementSystem.Data
                             shift.ShiftDate = (DateTime)reader["ShiftDate"];
                             shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
                             shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
-                            shift.Attended = (bool)reader["Attended"];
                             shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
+                            shift.Attendance = getAttendanceTypeByString((string)reader["Attendance"]);
                         }
                         else
                         {
@@ -217,7 +257,18 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
-
+        public AttendanceType getAttendanceTypeByString(string type)
+        {
+            switch (type.ToUpper())
+            {
+                case "ATTENDED": return AttendanceType.ATTENDED;
+                case "ABSENT": return AttendanceType.ABSENT;
+                case "EXCUSED": return AttendanceType.EXCUSED;
+                case "SCHEDULED": return AttendanceType.SCHEDULED;
+                default: break;
+            }
+            return AttendanceType.CANCELLED;
+        }
 
         private ShiftType getShiftTypeByString(string type)
         {
@@ -238,7 +289,7 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     command.CommandText = @"UPDATE Shifts SET AssignedEmployeeID = @userId, DepartmentID = @departmentId, Availability =  @availability,
-                    ShiftDate =  @date, StartTime =  @startTime, EndTime = @endTime, Attended = @attended, ShiftType =  @shiftType
+                    ShiftDate =  @date, StartTime =  @startTime, EndTime = @endTime, ShiftType =  @shiftType, Attendance = @attendance
                       WHERE ID = @shiftId;
                         ";
 
@@ -250,8 +301,8 @@ namespace EmployeesManagementSystem.Data
                     command.AddParameter("date", shift.ShiftDate);
                     command.AddParameter("startTime", shift.StartTime);
                     command.AddParameter("endTime", shift.EndTime);
-                    command.AddParameter("attended", shift.Attended);
                     command.AddParameter("shiftType", shift.Type.ToString());
+                    command.AddParameter("attendance", shift.Attendance.ToString());
                     string st = command.ToString();
 
                     con.Open();
@@ -273,8 +324,8 @@ namespace EmployeesManagementSystem.Data
             {
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO Shifts (AssignedEmployeeID, DepartmentID, Availability, ShiftDate, StartTime, EndTime, Attended, ShiftType)" +
-                    " VALUES(@userId, @departmentId, @availability, @date, @startTime, @endTime, @attended, @shiftType)";
+                    command.CommandText = @"INSERT INTO Shifts (AssignedEmployeeID, DepartmentID, Availability, ShiftDate, StartTime, EndTime, ShiftType , Attendance)" +
+                    " VALUES(@userId, @departmentId, @availability, @date, @startTime, @endTime,  @shiftType, @attendance)";
 
 
                     command.AddParameter("userId", shift.AssignedEmployeeID);
@@ -283,8 +334,8 @@ namespace EmployeesManagementSystem.Data
                     command.AddParameter("date", shift.ShiftDate);
                     command.AddParameter("startTime", shift.StartTime);
                     command.AddParameter("endTime", shift.EndTime);
-                    command.AddParameter("attended", shift.Attended);
                     command.AddParameter("shiftType", shift.Type.ToString());
+                    command.AddParameter("attendance", shift.Attendance.ToString());
                     string st = command.ToString();
 
                     con.Open();

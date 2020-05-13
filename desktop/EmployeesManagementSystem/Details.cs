@@ -343,9 +343,8 @@ namespace EmployeesManagementSystem
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbMorn_first.ForeColor != Color.DimGray)
             {
-                
                 shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month,d.Day,9,0,0), new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), false, ShiftType.MORNING));
+                    new DateTime(d.Year, d.Month,d.Day,9,0,0), new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), ShiftType.MORNING, AttendanceType.SCHEDULED));
 
             }else
             {
@@ -363,7 +362,7 @@ namespace EmployeesManagementSystem
             {
 
                 shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), false, ShiftType.MORNING));
+                    new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), ShiftType.MORNING, AttendanceType.SCHEDULED));
 
             }
             else
@@ -381,7 +380,7 @@ namespace EmployeesManagementSystem
             {
 
                 shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), new DateTime(d.Year, d.Month, d.Day, 12, 0, 0), false, ShiftType.MORNING));
+                    new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), new DateTime(d.Year, d.Month, d.Day, 12, 0, 0), ShiftType.MORNING, AttendanceType.SCHEDULED));
 
             }
             else
@@ -399,7 +398,7 @@ namespace EmployeesManagementSystem
             {
 
                 shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 14, 0, 0), new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), false, ShiftType.AFTERNOON));
+                    new DateTime(d.Year, d.Month, d.Day, 14, 0, 0), new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), ShiftType.AFTERNOON, AttendanceType.SCHEDULED));
 
             }
             else
@@ -416,7 +415,7 @@ namespace EmployeesManagementSystem
             if (lbAft_second.ForeColor != Color.DimGray)
             {
                 shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), false, ShiftType.AFTERNOON));
+                    new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), ShiftType.AFTERNOON, AttendanceType.SCHEDULED));
             }
             else
             {
@@ -432,7 +431,7 @@ namespace EmployeesManagementSystem
             if (lbAft_third.ForeColor != Color.DimGray)
             {
                 shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), new DateTime(d.Year, d.Month, d.Day, 17, 0, 0), false, ShiftType.AFTERNOON));
+                    new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), new DateTime(d.Year, d.Month, d.Day, 17, 0, 0), ShiftType.AFTERNOON, AttendanceType.SCHEDULED));
             }
             else
             {
@@ -449,7 +448,7 @@ namespace EmployeesManagementSystem
             if (lbEvn_first.ForeColor != Color.DimGray)
             {
                 shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 20, 0, 0), new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), false, ShiftType.EVENING));
+                    new DateTime(d.Year, d.Month, d.Day, 20, 0, 0), new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), ShiftType.EVENING, AttendanceType.SCHEDULED));
             }
             else
             {
@@ -466,7 +465,7 @@ namespace EmployeesManagementSystem
             {
 
                 shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), false, ShiftType.EVENING));
+                    new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), ShiftType.EVENING, AttendanceType.SCHEDULED));
 
             }
             else
@@ -484,7 +483,7 @@ namespace EmployeesManagementSystem
             if (lbEvn_third.ForeColor != Color.DimGray)
             {
                 shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), new DateTime(d.Year, d.Month, d.Day, 23, 0, 0), false, ShiftType.EVENING));
+                    new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), new DateTime(d.Year, d.Month, d.Day, 23, 0, 0), ShiftType.EVENING, AttendanceType.SCHEDULED));
             }
             else
             {

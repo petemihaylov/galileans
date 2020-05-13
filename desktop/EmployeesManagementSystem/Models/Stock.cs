@@ -14,12 +14,15 @@ namespace EmployeesManagementSystem.Models
         public double Price { get; set; }
         public bool Availability { get; set; }
 
-        public Stock(string name, int amount, double price, bool availability)
+        public int DepartmentID { get; set; }
+
+        public Stock(string name, int amount, double price, bool availability, int departmentId)
         {
             this.Name = name;
             this.Amount = amount;
             this.Price = price;
             this.Availability = availability;
+            this.DepartmentID = departmentId;
 
         }
         public Stock() { }
