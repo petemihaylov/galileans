@@ -10,9 +10,9 @@ namespace EmployeesManagementSystem.Data
 {
     class AvailabilityContext: DbContext
     {
-        public override void Insert(object obj)
+        public override bool Insert(object obj)
         {
-            Models.Availability availability = (Models.Availability)obj;
+            Availability availability = (Availability)obj;
 
             using (var con = new MySqlConnection(connectionString))
             {
@@ -20,31 +20,44 @@ namespace EmployeesManagementSystem.Data
 
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO availability (EmployeeID, Date, Available) VALUES( @employeeID, @date, @available)";
+                    command.CommandText = @"INSERT INTO Availability (UserID, Date, Available) VALUES( @userID, @date, @available)";
 
-                    command.AddParameter("employeeID", availability.EmployeeID);
+                    command.AddParameter("userID", availability.User.ID);
                     command.AddParameter("date", availability.Date);
                     command.AddParameter("available", availability.Available);
-                    command.ExecuteNonQuery();
+                    return command.ExecuteNonQuery() > 0 ? true : false;
                 }
             }
         }
 
-        public override void DeleteById(int id)
+        public override bool DeleteById(int id)
         {
             using (var con = new MySqlConnection(connectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"DELETE FROM Availability WHERE EmployeeID = @ID";
+                    command.CommandText = @"DELETE FROM Availability WHERE ID = @ID";
                     command.AddParameter("ID", id);
-                    command.ExecuteNonQuery();
+                    return command.ExecuteNonQuery() > 0 ? true: false;
                 }
             }
         }
-
-        public Models.Availability[] GetAllAvailabilitiesByID(int id)
+        public bool DeleteByUser(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"DELETE FROM Availability WHERE UserID = @ID";
+                    command.AddParameter("ID", id);
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+            }
+        }
+       
+        public Availability[] GetAllAvailabilitiesByID(int id)
         {
             using (var con = new MySqlConnection(connectionString))
             {
@@ -75,5 +88,12 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+
+        private Availability MapObject(Availability availability, MySqlDataReader reader)
+        {
+            
+            return availability;
+        }
+
     }
 }

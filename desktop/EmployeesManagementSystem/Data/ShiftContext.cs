@@ -9,12 +9,123 @@ namespace EmployeesManagementSystem.Data
     class ShiftContext : DbContext
     {
 
+        public override bool Insert(object obj)
+        {
+            Shift shift = (Shift)obj;
+
+            using (var con = new MySqlConnection(connectionString))
+            {
+                using (var command = con.CreateCommand())
+                {
+
+                    con.Open();
+
+                    command.CommandText = @"INSERT INTO Shift (AssignedUserID, DepartmentID, Availability, ShiftDate, StartTime, EndTime, ShiftType , Attended, Cancelled)" +
+                    " VALUES(@userId, @departmentId, @availability, @shiftDate, @startTime, @endTime,  @shiftType, @attended, @cancelled)";
+
+
+                    command.AddParameter("userId", shift.AssignedUser.ID);
+                    command.AddParameter("departmentId", shift.Department.ID);
+                    command.AddParameter("availability", shift.Availability);
+                    command.AddParameter("shiftDate", shift.ShiftDate);
+                    command.AddParameter("startTime", shift.StartTime);
+                    command.AddParameter("endTime", shift.EndTime);
+                    command.AddParameter("shiftType", shift.Type.ToString());
+                    command.AddParameter("attended", shift.Attended);
+                    command.AddParameter("cancelled", shift.Cancelled);
+
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+
+                }
+            }
+        }
+        
+        public override bool DeleteById(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"DELETE FROM Shift WHERE ID = @ID";
+                    command.AddParameter("ID", id);
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+
+            }
+        }
+        public bool DeleteShiftsByUser(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"DELETE FROM Shift WHERE AssignedUserID = @ID";
+                    command.AddParameter("ID", id);
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+            }
+        }
+
+        public bool UpdateShift(Shift shift)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"UPDATE Shift SET AssignedUserID = @userId, DepartmentID = @departmentId, Availability =  @availability,
+                    ShiftDate =  @date, StartTime =  @startTime, EndTime = @endTime, ShiftType =  @shiftType, Attended = @attended, Cancelled = @cancelled
+                      WHERE ID = @shiftId;";
+
+                    command.AddParameter("shiftId", shift.ID);
+                    command.AddParameter("userId", shift.AssignedUser.ID);
+                    command.AddParameter("departmentId", shift.Department.ID);
+                    command.AddParameter("availability", shift.Availability);
+                    command.AddParameter("date", shift.ShiftDate);
+                    command.AddParameter("startTime", shift.StartTime);
+                    command.AddParameter("endTime", shift.EndTime);
+                    command.AddParameter("shiftType", shift.Type.ToString());
+                    command.AddParameter("attended", shift.Attended);
+                    command.AddParameter("cancelled", shift.Cancelled);
+
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+
+                }
+            }
+
+
+        }
+        private Shift MapObject(Shift shift, MySqlDataReader reader)
+        {
+            shift.ID = (int)reader["ID"];
+            shift.ShiftDate = (DateTime)reader["ShiftDate"];
+
+            shift.AssignedUser.ID = (int)reader["AssignedUserID"];
+            shift.Department.ID = (int)reader["DepartmentID"];
+
+            shift.Availability = (bool)reader["Availability"];
+
+            shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
+            shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
+
+            shift.Type = (ShiftType)reader["ShiftType"];
+            shift.Attended = (bool)reader["Attended"];
+            shift.Cancelled = (bool)reader["Cancelled"];
+
+            return shift;
+        }
+
+
         public List<Shift> GetAllShifts()
         {
             using (var con = new MySqlConnection(connectionString))
             {
                 con.Open();
-                using (var command = new MySqlCommand("SELECT * FROM Shifts", con))
+                using (var command = new MySqlCommand("SELECT * FROM Shift", con))
                 {
 
                     // Executing it 
@@ -24,18 +135,8 @@ namespace EmployeesManagementSystem.Data
                         while (reader.Read())
                         {
                             // Mapping the return data to the object
-
                             Shift shift = new Shift();
-                            shift.ID = (int)reader["ID"];
-                            shift.ShiftDate = (DateTime)reader["ShiftDate"];
-                            shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
-                            shift.DepartmentID = (int)reader["DepartmentID"];
-                            shift.Availability = (bool)reader["Availability"];
-                            shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
-                            shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
-                            shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
-                            shift.Attendance = getAttendanceTypeByString((string)reader["Attendance"]);
-
+                            MapObject(shift, reader);
                             shifts.Add(shift);
                         }
                         return shifts;
@@ -52,7 +153,7 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Shifts WHERE AssignedEmployeeID = @ID";
+                    command.CommandText = @"SELECT * FROM Shift WHERE AssignedUserID = @ID";
                     command.AddParameter("ID", userId);
 
                     using (var reader = command.ExecuteReader())
@@ -63,16 +164,7 @@ namespace EmployeesManagementSystem.Data
                             // Mapping the return data to the object
 
                             Shift shift = new Shift();
-                            shift.ID = (int)reader["ID"];
-                            shift.ShiftDate = (DateTime)reader["ShiftDate"];
-                            shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
-                            shift.DepartmentID = (int)reader["DepartmentID"];
-                            shift.Availability = (bool)reader["Availability"];
-                            shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
-                            shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
-                            shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
-                            shift.Attendance = getAttendanceTypeByString((string)reader["Attendance"]);
-
+                            MapObject(shift, reader);
                             shifts.Add(shift);
                         }
 
@@ -82,9 +174,7 @@ namespace EmployeesManagementSystem.Data
 
             }
         }
-
-
-        public List<Shift> GetShiftsByDepId(int id)
+        public List<Shift> GetShiftsByDepartment(int id)
         {
             using (var con = new MySqlConnection(connectionString))
             {
@@ -92,7 +182,7 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Shifts WHERE DepartmentID = @ID";
+                    command.CommandText = @"SELECT * FROM Shift WHERE DepartmentID = @ID";
                     command.AddParameter("ID", id);
 
                     using (var reader = command.ExecuteReader())
@@ -101,19 +191,8 @@ namespace EmployeesManagementSystem.Data
                         while (reader.Read())
                         {
                             // Mapping the return data to the object
-
                             Shift shift = new Shift();
-                            shift.ID = (int)reader["ID"];
-                            shift.ShiftDate = (DateTime)reader["ShiftDate"];
-
-
-                            shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
-                            shift.Availability = (bool)reader["Availability"];
-                            shift.DepartmentID = (int)reader["DepartmentID"];
-                            shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
-                            shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
-                            shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
-                            shift.Attendance = getAttendanceTypeByString((string)reader["Attendance"]);
+                            MapObject(shift, reader);
                             shifts.Add(shift);
                         }
 
@@ -131,7 +210,7 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Shifts WHERE  ShiftDate = @shiftDate and StartTime = @startTime";
+                    command.CommandText = @"SELECT * FROM Shift WHERE  ShiftDate = @shiftDate and StartTime = @startTime";
                     command.AddParameter("shiftDate", date);
                     command.AddParameter("startTime", startTime);
 
@@ -141,22 +220,9 @@ namespace EmployeesManagementSystem.Data
                         Shift shift = new Shift();
                         if (reader.Read())
                         {
-                            // Mapping the return data to the object
-                            shift.ID = (int)reader["ID"];
-                            shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
-                            shift.DepartmentID = (int)reader["DepartmentID"];
-                            shift.Availability = (bool)reader["Availability"];
-                            shift.ShiftDate = (DateTime)reader["ShiftDate"];
-                            shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
-                            shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
-                            shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
-                            shift.Attendance = getAttendanceTypeByString((string)reader["Attendance"]);
-
+                            MapObject(shift, reader);
                         }
-                        else
-                        {
-                            return null;
-                        }
+                        else { return null; }
 
                         return shift;
                     }
@@ -164,8 +230,7 @@ namespace EmployeesManagementSystem.Data
 
             }
         }
-
-        public Shift GetShiftByUserID(int userId)
+        public Shift GetShiftByUser(int id)
         {
             using (var con = new MySqlConnection(connectionString))
             {
@@ -173,8 +238,8 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Shifts WHERE AssignedEmployeeID = @ID";
-                    command.AddParameter("ID", userId);
+                    command.CommandText = @"SELECT * FROM Shift WHERE AssignedUserID = @ID";
+                    command.AddParameter("ID", id);
 
                     // Executing it 
                     using (var reader = command.ExecuteReader())
@@ -182,22 +247,10 @@ namespace EmployeesManagementSystem.Data
                         Shift shift = new Shift();
                         if (reader.Read())
                         {
-                            // Mapping the return data to the object
-                            shift.ID = (int)reader["ID"];
-                            shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
-                            shift.DepartmentID = (int)reader["DepartmentID"];
-                            shift.Availability = (bool)reader["Availability"];
-                            shift.ShiftDate = (DateTime)reader["ShiftDate"];
-                            shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
-                            shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
-                            shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
-                            shift.Attendance = getAttendanceTypeByString((string)reader["Attendance"]);
+                            MapObject(shift, reader);
 
                         }
-                        else
-                        {
-                            return null;
-                        }
+                        else { return null; }
 
                         return shift;
                     }
@@ -213,7 +266,7 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Shifts WHERE ID = @id";
+                    command.CommandText = @"SELECT * FROM Shift WHERE ID = @id";
                     command.AddParameter("id", id);
                     // Executing it 
                     using (var reader = command.ExecuteReader())
@@ -221,21 +274,9 @@ namespace EmployeesManagementSystem.Data
                         Shift shift = new Shift();
                         if (reader.Read())
                         {
-                            // Mapping the return data to the object
-                            shift.ID = (int)reader["ID"];
-                            shift.AssignedEmployeeID = (int)reader["AssignedEmployeeID"];
-                            shift.DepartmentID = (int)reader["DepartmentID"];
-                            shift.Availability = (bool)reader["Availability"];
-                            shift.ShiftDate = (DateTime)reader["ShiftDate"];
-                            shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
-                            shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
-                            shift.Type = getShiftTypeByString((string)reader["ShiftType"]);
-                            shift.Attendance = getAttendanceTypeByString((string)reader["Attendance"]);
+                            MapObject(shift, reader);
                         }
-                        else
-                        {
-                            return null;
-                        }
+                        else { return null; }
 
                         return shift;
                     }
@@ -243,120 +284,6 @@ namespace EmployeesManagementSystem.Data
 
             }
         }
-        public void DeleteShiftByUserId(int id)
-        {
-            using (var con = new MySqlConnection(connectionString))
-            {
-
-                con.Open();
-                using (var command = con.CreateCommand())
-                {
-                    command.CommandText = @"DELETE FROM Shifts WHERE AssignedEmployeeID = @ID";
-                    command.AddParameter("ID", id);
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-        public AttendanceType getAttendanceTypeByString(string type)
-        {
-            switch (type.ToUpper())
-            {
-                case "ATTENDED": return AttendanceType.ATTENDED;
-                case "ABSENT": return AttendanceType.ABSENT;
-                case "EXCUSED": return AttendanceType.EXCUSED;
-                case "SCHEDULED": return AttendanceType.SCHEDULED;
-                default: break;
-            }
-            return AttendanceType.CANCELLED;
-        }
-
-        private ShiftType getShiftTypeByString(string type)
-        {
-            switch (type.ToUpper())
-            {
-                case "MORNING": return ShiftType.MORNING;
-                case "AFTERNOON": return ShiftType.AFTERNOON;
-                case "EVENING": return ShiftType.EVENING;
-                default: break;
-            }
-            return ShiftType.OTHER;
-        }
-
-        public void UpdateShift(Shift shift)
-        {
-            using (var con = new MySqlConnection(connectionString))
-            {
-                using (var command = con.CreateCommand())
-                {
-                    command.CommandText = @"UPDATE Shifts SET AssignedEmployeeID = @userId, DepartmentID = @departmentId, Availability =  @availability,
-                    ShiftDate =  @date, StartTime =  @startTime, EndTime = @endTime, ShiftType =  @shiftType, Attendance = @attendance
-                      WHERE ID = @shiftId;
-                        ";
-
-
-                    command.AddParameter("shiftId", shift.ID);
-                    command.AddParameter("userId", shift.AssignedEmployeeID);
-                    command.AddParameter("departmentId", shift.DepartmentID);
-                    command.AddParameter("availability", shift.Availability);
-                    command.AddParameter("date", shift.ShiftDate);
-                    command.AddParameter("startTime", shift.StartTime);
-                    command.AddParameter("endTime", shift.EndTime);
-                    command.AddParameter("shiftType", shift.Type.ToString());
-                    command.AddParameter("attendance", shift.Attendance.ToString());
-                    string st = command.ToString();
-
-                    con.Open();
-                    command.ExecuteNonQuery();
-
-                }
-            }
-
-
-        }
-
-
-
-        public override void Insert(object obj)
-        {
-            Shift shift = (Shift)obj;
-
-            using (var con = new MySqlConnection(connectionString))
-            {
-                using (var command = con.CreateCommand())
-                {
-                    command.CommandText = @"INSERT INTO Shifts (AssignedEmployeeID, DepartmentID, Availability, ShiftDate, StartTime, EndTime, ShiftType , Attendance)" +
-                    " VALUES(@userId, @departmentId, @availability, @date, @startTime, @endTime,  @shiftType, @attendance)";
-
-
-                    command.AddParameter("userId", shift.AssignedEmployeeID);
-                    command.AddParameter("departmentId", shift.DepartmentID);
-                    command.AddParameter("availability", shift.Availability);
-                    command.AddParameter("date", shift.ShiftDate);
-                    command.AddParameter("startTime", shift.StartTime);
-                    command.AddParameter("endTime", shift.EndTime);
-                    command.AddParameter("shiftType", shift.Type.ToString());
-                    command.AddParameter("attendance", shift.Attendance.ToString());
-                    string st = command.ToString();
-
-                    con.Open();
-                    command.ExecuteNonQuery();
-
-                }
-            }
-        }
-        public override void DeleteById(int id)
-        {
-            using (var con = new MySqlConnection(connectionString))
-            {
-                con.Open();
-                using (var command = con.CreateCommand())
-                {
-                    command.CommandText = @"DELETE FROM Shifts WHERE ID = @ID";
-                    command.AddParameter("ID", id);
-                    command.ExecuteNonQuery();
-                }
-
-            }
-        }
+      
     }
 }
