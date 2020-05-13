@@ -23,7 +23,6 @@ CREATE TABLE IF NOT EXISTS UserDepartment (
 	FOREIGN KEY (UserID) REFERENCES User(ID)
 );
 
-
 CREATE TABLE IF NOT EXISTS Cancellation(
 	ID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	Date date,
@@ -60,7 +59,6 @@ CREATE TABLE IF NOT EXISTS Availability(
     FOREIGN KEY (UserID) REFERENCES User(ID)
 );
 
-
 CREATE TABLE IF NOT EXISTS Image(
     ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	UserID INT NOT NULL,
@@ -69,11 +67,10 @@ CREATE TABLE IF NOT EXISTS Image(
     FOREIGN KEY (UserID) REFERENCES User(ID)
 );
 
-
 CREATE TABLE IF NOT EXISTS Stock(
 	ID INT AUTO_INCREMENT not null PRIMARY KEY,
 	Name text,
-    Price DECIMAL not null,
+    Price float not null,
     Amount int not null,
     Availability bool DEFAULT FALSE,
     DepartmentID INT NOT NULL,
