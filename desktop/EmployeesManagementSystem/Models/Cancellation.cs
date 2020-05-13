@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem.Models
 {
-    class Cancellations
+    class Cancellation
     {
         public int ID { get; set; }
         public DateTime Date { get; set; }
@@ -15,8 +15,8 @@ namespace EmployeesManagementSystem.Models
         public string Subject { get; set; }
         public string Message { get; set; }
         public Employee Employee { get; set; }
-        public Cancellations() { }
-        public Cancellations(int id, DateTime date, string email, string subject, string message, Employee employee)
+        public Cancellation() { }
+        public Cancellation(int id, DateTime date, string email, string subject, string message, Employee employee)
         {
             this.ID = id;
             this.Date = date;

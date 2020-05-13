@@ -8,60 +8,52 @@ namespace EmployeesManagementSystem.Data
     class CancellationContext : DbContext
     {
 
-        // No required functionality
-        public override void Insert(object obj)
+        // Not required method
+        public override bool Insert(object obj)
         {
             throw new NotImplementedException();
         }
-
-        public override void DeleteById(int id)
+        public override bool DeleteById(int id)
         {
             using (var con = new MySqlConnection(connectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"DELETE FROM Cancellations WHERE ID = @ID";
+                    command.CommandText = @"DELETE FROM Cancellation WHERE ID = @ID";
                     command.AddParameter("ID", id);
-                    command.ExecuteNonQuery();
+                    return command.ExecuteNonQuery() > 0 ? true : false;
                 }
             }
         }
 
-        public Models.Cancellations[] GetAnnouncements()
+        public Cancellation[] GetCancellations()
         {
             using (var con = new MySqlConnection(connectionString))
             {
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Cancellations";
+                    command.CommandText = @"SELECT * FROM Cancellation";
 
                     con.Open();
                     // Executing it 
                     using (var reader = command.ExecuteReader())
                     {
-                        List<Models.Cancellations> cancels = new List<Models.Cancellations>();
+                        List<Cancellation> cancellations = new List<Cancellation>();
                         while (reader.Read())
                         {
                             // Mapping the return data to the object
-                            Models.Cancellations cancel = new Models.Cancellations();
-                            cancel.ID = (int)reader["ID"];
-                            cancel.Date = (DateTime)reader["Date"];
-                            cancel.EmployeeName = (string)reader["EmployeeName"];
-                            cancel.Email = (string)reader["Email"];
-                            cancel.Subject = (string)reader["Subject"];
-                            cancel.Message = (string)reader["Message"];
-                            cancel.EmployeeID = (int)reader["EmployeeID"];
-                            cancel.ShiftID = (int)reader["ShiftID"];
-                            cancels.Add(cancel);
+                            Cancellation c = new Cancellation();
+
+                            cancellations.Add(c);
                         }
-                        return cancels.ToArray();
+                        return cancellations.ToArray();
                     }
                 }
             }
         }
-        public Models.Cancellations GetCancellationByID(int id)
+        public Cancellation GetCancellationByID(int id)
         {
             using (var con = new MySqlConnection(connectionString))
             {
@@ -69,36 +61,34 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Cancellations WHERE ID = @id";
+                    command.CommandText = @"SELECT * FROM Cancellation WHERE ID = @id";
                     command.AddParameter("id", id);
 
                     // Ececuting it 
                     using (var reader = command.ExecuteReader())
                     {
-                        Models.Cancellations cancel = new Models.Cancellations();
+                        Cancellation cancellation = new Cancellation();
                         if (reader.Read())
                         {
-                            // Mapping the return data to the object
-                            cancel.ID = (int)reader["ID"];
-                            cancel.Date = (DateTime)reader["Date"];
-                            cancel.EmployeeName = (string)reader["EmployeeName"];
-                            cancel.Email = (string)reader["Email"];
-                            cancel.Subject = (string)reader["Subject"];
-                            cancel.Message = (string)reader["Message"];
-                            cancel.EmployeeID = (int)reader["EmployeeID"];
-                            cancel.ShiftID = (int)reader["ShiftID"];
-
+                            MapObject(cancellation, reader);
                         }
-                        else
-                        {
-                            return null;
-                        }
+                        else { return null; }
 
-                        // getting the actual user
-                        return cancel;
+                        return cancellation;
                     }
                 }
             }
+        }
+        private Cancellation MapObject(Cancellation cancellation, MySqlDataReader reader)
+        {
+            cancellation.ID = (int)reader["ID"];
+            cancellation.Date = (DateTime)reader["Date"];
+            cancellation.Employee.ID = (int)reader["UserID"];
+
+            cancellation.Email = (string)reader["Email"];
+            cancellation.Subject = (string)reader["Subject"];
+            cancellation.Message = (string)reader["Message"];
+            return cancellation;
         }
     }
 }

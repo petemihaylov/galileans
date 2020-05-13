@@ -24,7 +24,7 @@ namespace EmployeesManagementSystem
         {
             InitializeComponent();
             userId = id;
-            Models.Cancellations cancel = cancellationContext.GetCancellationByID(id);
+            Models.Cancellation cancel = cancellationContext.GetCancellationByID(id);
             Shift shift = shiftContext.GetShiftByID(cancel.ShiftID);
 
             lblName.Text = cancel.EmployeeName;
@@ -39,7 +39,7 @@ namespace EmployeesManagementSystem
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            Models.Cancellations cancel = cancellationContext.GetCancellationByID(userId);
+            Models.Cancellation cancel = cancellationContext.GetCancellationByID(userId);
             Shift shift = shiftContext.GetShiftByID(cancel.ShiftID);
             shift.Attendance = AttendanceType.EXCUSED;
             shiftContext.UpdateShift(shift);
@@ -48,7 +48,7 @@ namespace EmployeesManagementSystem
         }
         private void btnDeny_Click(object sender, EventArgs e)
         {
-            Models.Cancellations cancel = cancellationContext.GetCancellationByID(userId);
+            Models.Cancellation cancel = cancellationContext.GetCancellationByID(userId);
             Shift shift = shiftContext.GetShiftByID(cancel.ShiftID);
             shift.Attendance = AttendanceType.ABSENT;
             shiftContext.UpdateShift(shift);

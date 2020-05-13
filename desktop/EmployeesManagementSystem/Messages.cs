@@ -43,8 +43,8 @@ namespace EmployeesManagementSystem
             //needs to upload as the program runs in the future
             try
             {
-                Models.Cancellations[] cancels = cancellationContext.GetAnnouncements();
-                foreach (Models.Cancellations cancel in cancels)
+                Models.Cancellation[] cancels = cancellationContext.GetAnnouncements();
+                foreach (Models.Cancellation cancel in cancels)
                 {
                     dataGridView.Rows.Add(cancel.GetInfo());
                 }
