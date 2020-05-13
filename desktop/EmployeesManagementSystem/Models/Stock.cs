@@ -29,7 +29,9 @@ namespace EmployeesManagementSystem.Models
         private int amount;
         public int Amount { get { return this.amount; } set { if (value > 0) this.amount = value; } }
         public bool Availability { get; set; } = false;
-        public Department Department { get; set; }
+        private Department department = new Department();
+
+        public Department Department { get { return this.department; } set { this.department = value; } }
 
 
         public Stock(string name, int amount, double price, bool availability, Department department)

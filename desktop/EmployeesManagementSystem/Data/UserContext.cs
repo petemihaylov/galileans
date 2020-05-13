@@ -72,12 +72,11 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"UPDATE User SET FullName = @fullname, Email = @email, Password = @password, PhoneNumber = @phonenumber, Role = @role, Wage = @wage WHERE ID = @ID";
+                    command.CommandText = @"UPDATE User SET FullName = @fullname, Email = @email, PhoneNumber = @phonenumber, Role = @role, Wage = @wage WHERE ID = @ID";
                     command.AddParameter("ID", user.ID);
                     // Executing it 
                     command.Parameters.AddWithValue("fullname", user.FullName);
                     command.Parameters.AddWithValue("email", user.Email);
-                    command.Parameters.AddWithValue("password", user.Password);
                     command.Parameters.AddWithValue("phonenumber", user.PhoneNumber);
                     command.Parameters.AddWithValue("role", user.Role);
                     command.Parameters.AddWithValue("wage", user.Wage);
@@ -170,7 +169,8 @@ namespace EmployeesManagementSystem.Data
                 user.FullName = (string)row["FullName"];
                 user.Email = (string)row["Email"];
                 user.Password = (string)row["Password"];
-                user.Role = (Role)row["Role"];
+                Enum.TryParse((string)row["Role"], out Role role);
+                user.Role = role;
                 user.Wage = (double)row["Wage"];
 
                 users.Add(user);
@@ -241,7 +241,7 @@ namespace EmployeesManagementSystem.Data
             using (var con = new MySqlConnection(connectionString))
             {
                 con.Open();
-
+                
                 using (var command = con.CreateCommand())
                 {
                     // Select statement

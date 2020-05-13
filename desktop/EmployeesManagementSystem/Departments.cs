@@ -14,6 +14,8 @@ namespace EmployeesManagementSystem
         private DepartmentContext departmentContext = new DepartmentContext();
         private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
         private UserContext userContext = new UserContext();
+        private ShiftContext shiftContext = new ShiftContext();
+        private StockContext stockContext = new StockContext();
         private List<User> employees = new List<User>();
         private Department[] departments;
 
@@ -65,19 +67,21 @@ namespace EmployeesManagementSystem
             if(this.dataGridView.Rows.Count > 0)
             {
                 // Delete specific Department
-                if (this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete))
+                var btn = this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete);
+                if (btn)
                 {
                     // Local variables
                     int index = this.dataGridView.CurrentCell.RowIndex;
                     int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
 
+                    this.userDepartmentContext.DeleteByDepartment(id);
+                    this.shiftContext.DeleteByDepartment(id);
+                    this.stockContext.DeleteByDepartment(id);
+
                     this.departmentContext.DeleteById(id);
                     UpdateDepartments();
                 }
-
-                // Select and list Users from specific Department
-                if (!this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete))
-                {
+                else { 
                     // Clear all users information
                     this.listUsersByDepartment.Items.Clear();
 
@@ -90,7 +94,7 @@ namespace EmployeesManagementSystem
                     employees.Clear();
                     foreach (User u in userContext.GetAllUsers())
                     {
-                        if (userDepartmentContext.GetDepartmentByUser(u.ID).ID == id)
+                        if (userDepartmentContext.GetDepartmentByUser(u.ID) != null)
                         {
                             employees.Add(u);
                             this.listUsersByDepartment.Items.Add("#" + u.ID + " " + u.FullName.ToString());

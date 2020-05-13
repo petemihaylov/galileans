@@ -8,7 +8,9 @@ namespace EmployeesManagementSystem.Models
 {
     public class UserDepartment
     {
-        public User User {get; set;}
-        public Department Department { get; set; }
+        private User user = new User();
+        private Department department = new Department();
+        public User User { get { return this.user; } set { this.user = value; } }
+        public Department Department { get { return this.department; } set { this.department = value; } }
     }
 }

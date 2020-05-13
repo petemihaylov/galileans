@@ -10,6 +10,9 @@ namespace EmployeesManagementSystem
         private int id;
         private Dashboard dashboard;
         private ShiftContext shiftContext = new ShiftContext();
+        private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
+        private ImageContext imageContext = new ImageContext();
+
         private UserContext userContext = new UserContext();
 
         public Delete(int ID, Dashboard dashboard)
@@ -22,6 +25,8 @@ namespace EmployeesManagementSystem
         private void btnDelete_Click(object sender, EventArgs e)
         {
             this.shiftContext.DeleteShiftsByUser(this.id);
+            this.userDepartmentContext.DeleteByUser(this.id);
+            this.imageContext.DeleteImgByUserId(this.id);
             this.userContext.DeleteById(this.id);
             this.dashboard.UpdateDashboard();
             this.Close();

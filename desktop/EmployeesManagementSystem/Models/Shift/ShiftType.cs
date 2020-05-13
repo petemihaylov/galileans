@@ -1,6 +1,6 @@
 ﻿namespace EmployeesManagementSystem.Models
 {
-    enum ShiftType
+    public enum ShiftType
     {
         Morning,
         Afternoon,

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace EmployeesManagementSystem.Data
 {
-    class ShiftContext : DbContext
+    public class ShiftContext : DbContext
     {
 
         public override bool Insert(object obj)
@@ -39,7 +39,7 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
-        
+
         public override bool DeleteById(int id)
         {
             using (var con = new MySqlConnection(connectionString))
@@ -48,6 +48,21 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     command.CommandText = @"DELETE FROM Shift WHERE ID = @ID";
+                    command.AddParameter("ID", id);
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+
+            }
+        }
+
+        public bool DeleteByDepartment(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"DELETE FROM Shift WHERE DepartmentID = @ID";
                     command.AddParameter("ID", id);
                     return command.ExecuteNonQuery() > 0 ? true : false;
                 }
@@ -112,7 +127,8 @@ namespace EmployeesManagementSystem.Data
             shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
             shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
 
-            shift.Type = (ShiftType)reader["ShiftType"];
+            Enum.TryParse((string)reader["ShiftType"], out ShiftType shiftType);
+            shift.Type = shiftType;
             shift.Attended = (bool)reader["Attended"];
             shift.Cancelled = (bool)reader["Cancelled"];
 
@@ -284,6 +300,6 @@ namespace EmployeesManagementSystem.Data
 
             }
         }
-      
+
     }
 }

@@ -66,7 +66,7 @@ namespace EmployeesManagementSystem.Models
 
         public string[] GetInfo()
         {
-            string[] s = { this.ID.ToString(), this.FullName, this.Email, this.Role.ToString()};
+            string[] s = { this.ID.ToString(), this.FullName, this.Email, this.Role.ToString(), ""};
             return s;
         }
 

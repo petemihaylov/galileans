@@ -44,7 +44,7 @@ namespace EmployeesManagementSystem
             try
             {
                 Cancellation[] cancels = cancellationContext.GetCancellations();
-                foreach (Models.Cancellation cancel in cancels)
+                foreach (Cancellation cancel in cancels)
                 {
                     dataGridView.Rows.Add(cancel.GetInfo());
                 }

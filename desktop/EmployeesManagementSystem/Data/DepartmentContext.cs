@@ -18,7 +18,7 @@ namespace EmployeesManagementSystem.Data
                 {
                     command.CommandText = @"INSERT INTO Department (ID, Name) VALUES(@id, @name)";
 
-                    command.AddParameter("ID", department.ID);
+                    command.AddParameter("id", department.ID);
                     command.AddParameter("name", department.Name);
                     return command.ExecuteNonQuery() > 0 ? true : false;
                 }
@@ -31,7 +31,7 @@ namespace EmployeesManagementSystem.Data
                 con.Open();
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"DELETE FROM Departments WHERE ID = @ID";
+                    command.CommandText = @"DELETE FROM Department WHERE ID = @ID";
                     command.AddParameter("ID", id);
                     return command.ExecuteNonQuery() > 0 ? true : false;
                 }
@@ -67,7 +67,7 @@ namespace EmployeesManagementSystem.Data
                 con.Open();
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"SELECT ID FROM Department WHERE Name = @name";
+                    command.CommandText = @"SELECT * FROM Department WHERE Name = @name";
                     command.AddParameter("name", name);
                     using (var reader = command.ExecuteReader())
                     {
@@ -88,14 +88,16 @@ namespace EmployeesManagementSystem.Data
                 con.Open();
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"SELECT Name FROM Department WHERE ID = @id";
+                    command.CommandText = @"SELECT * FROM Department WHERE ID = @id";
                     command.AddParameter("id", id);
 
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            return MapObject(new Department(), reader);
+                            var department = new Department();
+                             MapObject(department, reader);
+                            return department;
                         }
                         return null;
                     }

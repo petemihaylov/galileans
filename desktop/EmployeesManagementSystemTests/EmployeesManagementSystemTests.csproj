@@ -56,6 +56,11 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Data\AvailabilityContextTests.cs" />
+    <Compile Include="Data\CancellationContextTests.cs" />
+    <Compile Include="Data\DepartmentContextTests.cs" />
+    <Compile Include="Data\ImageContextTests.cs" />
+    <Compile Include="Data\ShiftContextTests.cs" />
     <Compile Include="Data\StockContextTests.cs" />
     <Compile Include="Data\UserContextTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

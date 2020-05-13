@@ -15,6 +15,7 @@ namespace EmployeesManagementSystem
         private DataTable table;
         private User loggedUser;
         private UserContext userContext = new UserContext();
+        private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
 
         // Default constructor
         public Dashboard()
@@ -118,7 +119,13 @@ namespace EmployeesManagementSystem
 
             foreach (User user in users)
             {
-                this.dataGridView.Rows.Add(user.GetInfo());
+                var arr = user.GetInfo();
+                var d = userDepartmentContext.GetDepartmentByUser(user.ID);
+                
+                if (d != null)
+                arr[arr.Length - 1] = d.Name;
+
+                this.dataGridView.Rows.Add(arr);
             }
             this.searchField.Text = String.Empty;
         }
@@ -136,6 +143,7 @@ namespace EmployeesManagementSystem
 
                 this.Hide();
                 Details details = new Details(id, this.loggedUser, this);
+                details.DashoboardUpdate(this);
                 details.Show();
 
             }

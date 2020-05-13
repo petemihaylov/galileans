@@ -16,8 +16,10 @@ namespace EmployeesManagementSystem.Models
         public ShiftType Type { get; set; }
         public bool Attended { get; set; } = false;
         public bool Cancelled { get; set; } = false;
-        public User AssignedUser { get; set; }
-        public Department Department { get; set; }
+        private User user = new User();
+        public User AssignedUser { get { return user; } set { this.user = value; } }
+        private Department department = new Department();
+        public Department Department { get { return this.department; } set { this.department = value; } }
 
         public Shift() { }
         public Shift(User assignedUser, bool availability, Department department,

@@ -42,6 +42,19 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+        public bool DeleteByDepartment(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"DELETE FROM Stock WHERE DepartmentID = @ID";
+                    command.AddParameter("ID", id);
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+            }
+        }
         public Stock[] GetAllStocks()
         {
             using (var con = new MySqlConnection(connectionString))
