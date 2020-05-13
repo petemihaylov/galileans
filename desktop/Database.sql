@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS Department(
 CREATE TABLE User(
     ID int auto_increment PRIMARY KEY,
     FullName varchar(255),
-    Email varchar(255) not null,
+    Email varchar(255) not null UNIQUE,
     Password varchar(255) not null,
     PhoneNumber varchar(255),
     Role ENUM('Administrator', 'Manager', 'Employee') NOT NULL,

@@ -2,41 +2,90 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem.Models
-{ 
+{
     public class User
     {
-        private Data.DepartmentContext departmentContext = new Data.DepartmentContext();
         public int ID { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; } 
+
+        private string fullname;
+        public string FullName
+        {
+            get { return this.fullname; }
+            set
+            {
+                if (value.Length > 0) this.fullname = value;
+                else { Console.WriteLine(ErrorMessage.EmptyFullName()); }
+            }
+        }
+        private string email;
+        public string Email
+        {
+            get { return this.email; }
+            set
+            {
+                if (isEmailValid(value) == true)
+                {
+                    this.email = value;
+                }
+            }
+        }
         public string Password { get; set; }
-        public string Role { get; set; }
-        public float HourlyRate { get; set; }
-        public int Department { get; set; }
+        public string PhoneNumber { get; set; }
+        public Role Role { get; set; }
+        private decimal wage;
+        public decimal Wage
+        {
+            get
+            {
+                return this.wage;
+            }
+            set
+            {
+                if (value >= 0) this.wage = value;
+                else { Console.WriteLine(ErrorMessage.InvalidWage()); }
+            }
+        }
+        public Department Department { get; set; }
 
 
         public User() { }
-        public User(string fullName, string email, string phoneNumber, string password, string role, float hourlyRate, int department)
+        public User(int id, string fullName, string email, string phoneNumber, string password, Role role, decimal wage, Department department)
         {
+            this.ID = id;
             this.FullName = fullName;
             this.Email = email;
             this.Role = role;
             this.Password = password;
             this.PhoneNumber = phoneNumber;
-            this.HourlyRate = hourlyRate;
+            this.Wage = wage;
             this.Department = department;
         }
 
 
         public string[] GetInfo()
         {
-            string[] s = {this.ID.ToString(), this.FullName, this.Email, this.Role, departmentContext.GetNameById(this.Department)};
+            string[] s = { this.ID.ToString(), this.FullName, this.Email, this.Role.ToString(), this.Department.Name };
             return s;
+        }
+
+        private bool isEmailValid(string email)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(email);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(ErrorMessage.InvalidEmail());
+            }
+
+            return false;
         }
     }
 }
