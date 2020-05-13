@@ -21,7 +21,7 @@ namespace EmployeesManagementSystem
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            this.shiftContext.DeleteShiftByUserId(this.id);
+            this.shiftContext.DeleteShiftsByUser(this.id);
             this.userContext.DeleteById(this.id);
             this.dashboard.UpdateDashboard();
             this.Close();

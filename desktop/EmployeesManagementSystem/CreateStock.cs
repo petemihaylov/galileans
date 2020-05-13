@@ -49,7 +49,7 @@ namespace EmployeesManagementSystem
 
                 if (amountIsValid(amount) && priceIsValid(price))
                 {
-                    Stock stock = new Stock(name, amount, price, true, departmentContext.GetIdByName(depName));
+                    Stock stock = new Stock(name, amount, price, true, departmentContext.GetDepartmentByName(depName));
                     this.stockContext.Insert(stock);
                     this.stocks.UpdateStocks();
                     this.Close();

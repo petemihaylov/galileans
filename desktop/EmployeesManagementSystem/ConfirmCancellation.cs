@@ -23,37 +23,37 @@ namespace EmployeesManagementSystem
         public ConfirmCancellation(int id)
         {
             InitializeComponent();
-            userId = id;
-            Models.Cancellation cancel = cancellationContext.GetCancellationByID(id);
-            Shift shift = shiftContext.GetShiftByID(cancel.ShiftID);
+            //userId = id;
+            //Cancellation cancel = cancellationContext.GetCancellationByID(id);
+            //Shift shift = shiftContext.GetShiftByID(cancel.S);
 
-            lblName.Text = cancel.EmployeeName;
-            lblSubject.Text = cancel.Subject;
-            lbDepartment.Text = depContext.GetNameById(shift.DepartmentID);
-            lbEnd.Text = shift.EndTime.ToString();
-            lbShiftDate.Text = shift.ShiftDate.ToString();
-            lbShiftTime.Text = shift.StartTime.ToString();
+            //lblName.Text = cancel.EmployeeName;
+            //lblSubject.Text = cancel.Subject;
+            //lbDepartment.Text = depContext.GetNameById(shift.DepartmentID);
+            //lbEnd.Text = shift.EndTime.ToString();
+            //lbShiftDate.Text = shift.ShiftDate.ToString();
+            //lbShiftTime.Text = shift.StartTime.ToString();
 
-            lbMessage.Text = cancel.Message;
+            //lbMessage.Text = cancel.Message;
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            Models.Cancellation cancel = cancellationContext.GetCancellationByID(userId);
-            Shift shift = shiftContext.GetShiftByID(cancel.ShiftID);
-            shift.Attendance = AttendanceType.EXCUSED;
-            shiftContext.UpdateShift(shift);
+            //Models.Cancellation cancel = cancellationContext.GetCancellationByID(userId);
+            //Shift shift = shiftContext.GetShiftByID(cancel.ShiftID);
+            //shift.Attendance = AttendanceType.EXCUSED;
+            //shiftContext.UpdateShift(shift);
 
-            this.Close();
+            //this.Close();
         }
         private void btnDeny_Click(object sender, EventArgs e)
-        {
+        {/*
             Models.Cancellation cancel = cancellationContext.GetCancellationByID(userId);
             Shift shift = shiftContext.GetShiftByID(cancel.ShiftID);
             shift.Attendance = AttendanceType.ABSENT;
             shiftContext.UpdateShift(shift);
             
-            this.Close();
+            this.Close();*/
         }
     }
 }

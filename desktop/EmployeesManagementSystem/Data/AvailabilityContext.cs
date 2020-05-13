@@ -66,7 +66,7 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Availability where EmployeeID = @id ORDER BY Date ASC";
+                    command.CommandText = @"SELECT * FROM Availability where UserID = @id ORDER BY Date ASC";
                     command.AddParameter("id", id);
 
                     // Executing it 
@@ -77,7 +77,7 @@ namespace EmployeesManagementSystem.Data
                         {
                             // Mapping the return data to the object
                             Availability availability = new Availability();
-                            availability.EmployeeID = (int)reader["EmployeeID"];
+                            availability.User.ID = (int)reader["UserID"];
                             availability.Date = (DateTime)reader["Date"];
                             availability.Available = (bool)reader["Available"];
                             availabilities.Add(availability);

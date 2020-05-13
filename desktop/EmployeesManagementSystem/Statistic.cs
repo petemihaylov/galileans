@@ -84,55 +84,55 @@ namespace EmployeesManagementSystem
 
         private void AttendancePerEmployee()
         {
-            try
-            {
-                this.shifts = this.shiftContext.GetShiftsByUserId(Convert.ToInt32(cbEmployee.Text)); // try catch
-            }
-            catch (Exception)
-            {
-                throw new Exception("Can't take employee's shifts");
-            }
+            //try
+            //{
+            //    this.shifts = this.shiftcontext.getshiftsbyuserid(convert.toint32(cbemployee.text)); // try catch
+            //}
+            //catch (exception)
+            //{
+            //    throw new exception("can't take employee's shifts");
+            //}
 
-            User user = userContext.GetUserByID(Convert.ToInt32(cbEmployee.Text));
+            //user user = usercontext.getuserbyid(convert.toint32(cbemployee.text));
 
-            // Switches the min and max to the earliest and latest a shift can be
-            this.chart1.ChartAreas[0].AxisY.Maximum = 23;
-            this.chart1.ChartAreas[0].AxisY.Minimum= 9;
-            this.chart1.ChartAreas[0].AxisY.Interval = 1;
+            //switches the min and max to the earliest and latest a shift can be
+            //this.chart1.chartareas[0].axisy.maximum = 23;
+            //this.chart1.chartareas[0].axisy.minimum = 9;
+            //this.chart1.chartareas[0].axisy.interval = 1;
 
-            // Attendance per employee
-            foreach (Shift shift in shifts)
-            {
-                // Counts only the shift in the month equal to the one selected
-                if (this.cbMonth.Text == shift.ShiftDate.ToString("MMMM"))
-                {
-                    // Marks attended
-                    // Convert the months into days for the x axis and the minutes into hours for the y axis
-                    if (shift.Attendance.ToString() == "ATTENDED")
-                        this.chart1.Series["Present"].Points.Add(new DataPoint() { AxisLabel = Convert.ToString(shift.ShiftDate.Day) + "/" + Convert.ToString(shift.ShiftDate.Month), XValue = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day, YValues = new double[] { shift.StartTime.Hour + shift.StartTime.Minute / 60, shift.EndTime.Hour + shift.EndTime.Minute / 60 } });
-                    // Marks absent
-                    else if (shift.Attendance.ToString() == "ABSENT" && shift.ShiftDate < this.today)
-                        this.chart1.Series["Absent"].Points.Add(new DataPoint() { AxisLabel = Convert.ToString(shift.ShiftDate.Day) + "/" + Convert.ToString(shift.ShiftDate.Month), XValue = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day, YValues = new double[] { shift.StartTime.Hour + shift.StartTime.Minute / 60, shift.EndTime.Hour + shift.EndTime.Minute / 60 } });
-                    // Marks future scheduled shifts
-                    else if (shift.Attendance.ToString() == "SCHEDULED" && shift.ShiftDate > this.today)
-                    {
-                        this.chart1.Series["Scheduled"].Points.Add(new DataPoint() { AxisLabel = Convert.ToString(shift.ShiftDate.Day) + "/" + Convert.ToString(shift.ShiftDate.Month), XValue = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day, YValues = new double[] { shift.StartTime.Hour + shift.StartTime.Minute / 60, shift.EndTime.Hour + shift.EndTime.Minute / 60 } });
-                    }
-                }
-            }
+            //attendance per employee
+            //foreach (shift shift in shifts)
+            //{
+            //    counts only the shift in the month equal to the one selected
+            //    if (this.cbmonth.text == shift.shiftdate.tostring("mmmm"))
+            //    {
+            //        marks attended
+            //         convert the months into days for the x axis and the minutes into hours for the y axis
+            //        if (shift.attendance.tostring() == "attended")
+            //                    this.chart1.series["present"].points.add(new datapoint() { axislabel = convert.tostring(shift.shiftdate.day) + "/" + convert.tostring(shift.shiftdate.month), xvalue = 31 * shift.shiftdate.month + shift.shiftdate.day, yvalues = new double[] { shift.starttime.hour + shift.starttime.minute / 60, shift.endtime.hour + shift.endtime.minute / 60 } });
+            //        marks absent
+            //        else if (shift.attendance.tostring() == "absent" && shift.shiftdate < this.today)
+            //            this.chart1.series["absent"].points.add(new datapoint() { axislabel = convert.tostring(shift.shiftdate.day) + "/" + convert.tostring(shift.shiftdate.month), xvalue = 31 * shift.shiftdate.month + shift.shiftdate.day, yvalues = new double[] { shift.starttime.hour + shift.starttime.minute / 60, shift.endtime.hour + shift.endtime.minute / 60 } });
+            //        marks future scheduled shifts
+            //        else if (shift.attendance.tostring() == "scheduled" && shift.shiftdate > this.today)
+            //        {
+            //            this.chart1.series["scheduled"].points.add(new datapoint() { axislabel = convert.tostring(shift.shiftdate.day) + "/" + convert.tostring(shift.shiftdate.month), xvalue = 31 * shift.shiftdate.month + shift.shiftdate.day, yvalues = new double[] { shift.starttime.hour + shift.starttime.minute / 60, shift.endtime.hour + shift.endtime.minute / 60 } });
+            //        }
+            //    }
+            //}
         }
 
         private void AttendancePerDepartment()
         {
-            try
-            {
-                // Gets only the shifts for the selected department
-                this.shifts = this.shiftContext.GetShiftsByDepId(Convert.ToInt32(this.cbEmployee.Text)); // try catch
-            }
-            catch (Exception)
-            {
-                throw new Exception("Can't take department's shifts");
-            }
+            //try
+            //{
+            //    // Gets only the shifts for the selected department
+            //    this.shifts = this.shiftContext.GetShiftsByDepId(Convert.ToInt32(this.cbEmployee.Text)); // try catch
+            //}
+            //catch (Exception)
+            //{
+            //    throw new Exception("Can't take department's shifts");
+            //}
 
             // Switches the min and max to 0 and auto
             this.chart1.ChartAreas[0].AxisY.Minimum = 0;
@@ -141,29 +141,29 @@ namespace EmployeesManagementSystem
 
             Department department = this.departmentContext.GetDepartmentById(Convert.ToInt32(this.cbEmployee.Text));
             
-            foreach (Shift shift in shifts)
-            {
-                if (this.cbMonth.Text == shift.ShiftDate.ToString("MMMM"))
-                {
-                    // Converts months into days and counts how many people work on each day
-                    int ics = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day;
-                    // Marks attended
-                    if (shift.Attendance.ToString() == "ATTENDED")
-                    {
-                        this.counterAttended[ics]++;
-                    }
-                    // Marks absent
-                    else if (shift.Attendance.ToString() == "ABSENT" && shift.ShiftDate <= this.today)
-                    {
-                        this.counterAbsent[ics]++;
-                    }
-                    // Mark scheduled
-                    else if (shift.Attendance.ToString() == "SCHEDULED" && shift.ShiftDate > this.today)
-                    {
-                        this.counterScheduled[ics]++;
-                    }
-                }
-            }
+            //foreach (Shift shift in shifts)
+            //{
+            //    if (this.cbMonth.Text == shift.ShiftDate.ToString("MMMM"))
+            //    {
+            //        // Converts months into days and counts how many people work on each day
+            //        int ics = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day;
+            //        // Marks attended
+            //        if (shift.Attendance.ToString() == "ATTENDED")
+            //        {
+            //            this.counterAttended[ics]++;
+            //        }
+            //        // Marks absent
+            //        else if (shift.Attendance.ToString() == "ABSENT" && shift.ShiftDate <= this.today)
+            //        {
+            //            this.counterAbsent[ics]++;
+            //        }
+            //        // Mark scheduled
+            //        else if (shift.Attendance.ToString() == "SCHEDULED" && shift.ShiftDate > this.today)
+            //        {
+            //            this.counterScheduled[ics]++;
+            //        }
+            //    }
+            //}
 
             //goes through each possible ics which is 31 days * 12 months
             for (int i = 0; i <= 31 * 12; i++)
@@ -179,51 +179,51 @@ namespace EmployeesManagementSystem
 
         }
 
-        private void WagePerEmployee()
-        {
-            try
-            {
-                this.shifts = this.shiftContext.GetShiftsByUserId(Convert.ToInt32(this.cbEmployee.Text)); 
-            }
-            catch (Exception)
-            {
-                throw new Exception("Can't take employee's shifts");
-            }
+        //private void WagePerEmployee()
+        //{
+        //    try
+        //    {
+        //        this.shifts = this.shiftContext.GetShiftsByUserId(Convert.ToInt32(this.cbEmployee.Text)); 
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new Exception("Can't take employee's shifts");
+        //    }
 
-            User user = userContext.GetUserByID(Convert.ToInt32(this.cbEmployee.Text));
+        //    User user = userContext.GetUserByID(Convert.ToInt32(this.cbEmployee.Text));
 
-            this.chart1.ChartAreas[0].AxisY.Minimum = 0;
-            this.chart1.ChartAreas[0].AxisY.Maximum = Double.NaN;
+        //    this.chart1.ChartAreas[0].AxisY.Minimum = 0;
+        //    this.chart1.ChartAreas[0].AxisY.Maximum = Double.NaN;
 
-            foreach (Shift shift in shifts)
-            {
-                if (this.cbMonth.Text == shift.ShiftDate.ToString("MMMM")) 
-                {
-                    this.money = 0;
-                    if (shift.Attendance.ToString() == "ATTENDED")
-                    {
-                        {
-                            //money = hrsWorked * wage
-                            this.money = (shift.EndTime - shift.StartTime).Hours * user.HourlyRate;
-                            this.banet[GetWeekOfYear(shift.ShiftDate)] += this.money;
+        //    foreach (Shift shift in shifts)
+        //    {
+        //        if (this.cbMonth.Text == shift.ShiftDate.ToString("MMMM")) 
+        //        {
+        //            this.money = 0;
+        //            if (shift.Attendance.ToString() == "ATTENDED")
+        //            {
+        //                {
+        //                    //money = hrsWorked * wage
+        //                    this.money = (shift.EndTime - shift.StartTime).Hours * user.HourlyRate;
+        //                    this.banet[GetWeekOfYear(shift.ShiftDate)] += this.money;
                            
-                        }
-                    }
+        //                }
+        //            }
                     
-                }
-            }
+        //        }
+        //    }
 
-            this.chart1.ChartAreas[0].AxisY.Interval = 10;
-            for (int i = 0; i < this.banet.Length; i++)
-            {
-                if (this.banet[i] != 0)
-                {
-                    this.chart1.Series["Money"].Points.Add(new DataPoint() { AxisLabel = "Week " + Convert.ToString(i), XValue = i, YValues = new double[] { banet[i] } });
-                }
+        //    this.chart1.ChartAreas[0].AxisY.Interval = 10;
+        //    for (int i = 0; i < this.banet.Length; i++)
+        //    {
+        //        if (this.banet[i] != 0)
+        //        {
+        //            this.chart1.Series["Money"].Points.Add(new DataPoint() { AxisLabel = "Week " + Convert.ToString(i), XValue = i, YValues = new double[] { banet[i] } });
+        //        }
 
-                this.banet[i] = 0;
-            }
-        }
+        //        this.banet[i] = 0;
+        //    }
+        //}
 
         private void cbStatistic_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -300,8 +300,8 @@ namespace EmployeesManagementSystem
             if (cbStatistic.Text == "Attendance per department")
                 AttendancePerDepartment();
 
-            if (cbStatistic.Text == "Wage per employee")
-                WagePerEmployee();
+            if (cbStatistic.Text == "Wage per employee") ;
+             //   WagePerEmployee();
         }
 
         private void cbMonth_SelectedIndexChanged(object sender, EventArgs e)

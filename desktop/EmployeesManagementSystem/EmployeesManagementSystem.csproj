@@ -150,20 +150,19 @@
     <Compile Include="CreateStock.Designer.cs">
       <DependentUpon>CreateStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataConverter.cs" />
+    <Compile Include="Data\Conversion\ConversionManager.cs" />
     <Compile Include="Data\AvailabilityContext.cs" />
     <Compile Include="Data\CancellationContext.cs" />
-    <Compile Include="Data\DataConverterCSV.cs" />
+    <Compile Include="Data\Conversion\DataConverterCSV.cs" />
     <Compile Include="Data\DepartmentContext.cs" />
     <Compile Include="Data\ImageContext.cs" />
-    <Compile Include="Data\RolesContext.cs" />
     <Compile Include="Data\ShiftContext.cs" />
     <Compile Include="Data\StockContext.cs" />
     <Compile Include="Data\UserContext.cs" />
-    <Compile Include="Data\UserDepartmentsContext.cs" />
-    <Compile Include="JsonSerializer.cs" />
+    <Compile Include="Data\UserDepartmentContext.cs" />
+    <Compile Include="Data\Conversion\JsonSerializer.cs" />
     <Compile Include="Models\Availability.cs" />
-    <Compile Include="Models\Cancellations.cs" />
+    <Compile Include="Models\Cancellation.cs" />
     <Compile Include="Messages.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +209,7 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Shift\ShiftType.cs" />
+    <Compile Include="Models\UserDepartment.cs" />
     <Compile Include="Models\User\Administrator.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\User\Employee.cs" />
@@ -464,6 +464,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

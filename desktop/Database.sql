@@ -12,7 +12,7 @@ CREATE TABLE User(
     Password varchar(255) not null,
     PhoneNumber varchar(255),
     Role ENUM('Administrator', 'Manager', 'Employee') NOT NULL,
-    Wage float
+    Wage double
 );
 
 CREATE TABLE IF NOT EXISTS UserDepartment (

@@ -31,7 +31,7 @@ namespace EmployeesManagementSystem
         private void Stocks_Load(object sender, EventArgs e)
         {
             // Roles division
-            if (this.loggedUser.Role == Models.Role.Manager.ToString())
+            if (this.loggedUser.Role == Role.Manager)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = true;
@@ -40,7 +40,7 @@ namespace EmployeesManagementSystem
                 this.btnShifts.Enabled = false;
                 this.btnStatistics.Enabled = true;
             }
-            else if (this.loggedUser.Role == Models.Role.Administrator.ToString())
+            else if (this.loggedUser.Role == Role.Administrator)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = false;

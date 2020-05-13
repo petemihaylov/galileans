@@ -77,7 +77,7 @@ namespace EmployeesManagementSystem
                                 string generatedPassword = Hashing.HashPassword(password);
 
                                 // Create new User
-                                User user = new User(fullName, email, phoneNumber, generatedPassword, role, hourlyRate, department);
+                                User user = new User(0,fullName, email, phoneNumber, generatedPassword, (Role)cbRole.SelectedIndex, hourlyRate);
                                 this.userContext.Insert(user);
                                 this.dashboard.UpdateDashboard();
                                 this.Close();

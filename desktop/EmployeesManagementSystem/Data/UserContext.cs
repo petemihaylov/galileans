@@ -25,7 +25,7 @@ namespace EmployeesManagementSystem.Data
                     command.AddParameter("email", user.Email);
                     command.AddParameter("password", user.Password);
                     command.AddParameter("phoneNumber", user.PhoneNumber);
-                    command.AddParameter("role", user.Role);
+                    command.AddParameter("role", user.Role.ToString());
                     command.AddParameter("wage", user.Wage);
                     return command.ExecuteNonQuery() > 0 ? true : false;
                 }
@@ -274,8 +274,9 @@ namespace EmployeesManagementSystem.Data
             user.PhoneNumber = (string)reader["PhoneNumber"];
             user.Wage = (double)reader["Wage"];
             user.Password = (string)reader["Password"];
-            user.Role = (Role)reader["Role"];
 
+            Enum.TryParse((string)reader["Role"], out Role role);
+            user.Role = role;
             return user;
 
         }

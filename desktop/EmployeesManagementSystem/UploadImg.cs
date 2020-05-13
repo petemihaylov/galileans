@@ -54,8 +54,7 @@ namespace EmployeesManagementSystem
             {
                imgContext.DeleteById(img.ID);
             }
-
-            imgContext.Insert(new Picture(userId, txtUrl.Text));
+            imgContext.Insert(new Picture(userContext.GetUserByID(userId), txtUrl.Text));
 
             this.Close();
             User user = userContext.GetUserByID(userId);

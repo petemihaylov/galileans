@@ -12,6 +12,7 @@ namespace EmployeesManagementSystem
         // Variables 
         private User loggedUser;
         private DepartmentContext departmentContext = new DepartmentContext();
+        private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
         private UserContext userContext = new UserContext();
         private List<User> employees = new List<User>();
         private Department[] departments;
@@ -26,7 +27,7 @@ namespace EmployeesManagementSystem
         private void Departments_Load(object sender, EventArgs e)
         {
             // Roles division
-            if (this.loggedUser.Role == Models.Role.Manager.ToString())
+            if (this.loggedUser.Role == Role.Manager)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = true;
@@ -35,7 +36,7 @@ namespace EmployeesManagementSystem
                 this.btnShifts.Enabled = false;
                 this.btnStatistics.Enabled = true;
             }
-            else if (this.loggedUser.Role == Models.Role.Administrator.ToString())
+            else if (this.loggedUser.Role == Role.Administrator)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = false;
@@ -89,7 +90,7 @@ namespace EmployeesManagementSystem
                     employees.Clear();
                     foreach (User u in userContext.GetAllUsers())
                     {
-                        if (Convert.ToInt32(u.Department) == id)
+                        if (userDepartmentContext.GetDepartmentByUser(u.ID).ID == id)
                         {
                             employees.Add(u);
                             this.listUsersByDepartment.Items.Add("#" + u.ID + " " + u.FullName.ToString());

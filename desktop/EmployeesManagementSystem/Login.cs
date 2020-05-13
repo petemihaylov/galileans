@@ -21,7 +21,7 @@ namespace EmployeesManagementSystem
             clearColor();
 
             //insert data so you can actually login
-            var user = (Administrator)userContext.GetUserByEmail("admin");
+            var user = userContext.GetUserByEmail("admin@mail.com");
             if (user != null)
             {
                 int adminID = user.ID;
