@@ -10,7 +10,14 @@ namespace EmployeesManagementSystem
         public DbContext()
         {
             // Change the connection string in the App.config file
-            connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
+            try
+            {
+                connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
+            }
+            catch (Exception)
+            {
+                connectionString = "Server=remotemysql.com;Uid=Crj2OTSNvh;Database=Crj2OTSNvh;Pwd=3bNXrfEhiw;";
+            }
         }
 
         public abstract bool Insert(object obj);

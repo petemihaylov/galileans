@@ -37,6 +37,7 @@ namespace EmployeesManagementSystem
             tbPhoneNumber.Text = this.user.PhoneNumber;
             tbEmail.Text = this.user.Email;
             cbDepartment.Text = userDepartmentContext.GetDepartmentByUser(this.user.ID).Name;
+
             foreach (Department department in departmentContext.GetAllDepartments())
             {
                 cbDepartment.Items.Add(department.Name);

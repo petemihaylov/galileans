@@ -1,7 +1,7 @@
 ﻿
 namespace EmployeesManagementSystem.Models
 {
-    class Picture
+    public class Picture
     {
         public int ID { get; set; }
         public string UrlPath { get; set; }

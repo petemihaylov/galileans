@@ -11,7 +11,8 @@ namespace EmployeesManagementSystem.Data.Tests
         {
             // Arrange
             UserContext userContext = new UserContext();
-            User user = new User(0, "Test", "test@gmail.com", "+31 635 928 796", "password", Role.Employee, 12.50);
+            userContext.DeleteUserByEmail("test@test.com");
+            User user = new User(0, "TestFullName", "test@test.com", "+31 635 928 796", "password", Role.Employee, 12);
 
             // Act
             bool result = userContext.Insert(user);

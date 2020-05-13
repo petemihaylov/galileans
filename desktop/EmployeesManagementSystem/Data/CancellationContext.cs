@@ -5,7 +5,7 @@ using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem.Data
 {
-    class CancellationContext : DbContext
+    public class CancellationContext : DbContext
     {
 
         // Not required method

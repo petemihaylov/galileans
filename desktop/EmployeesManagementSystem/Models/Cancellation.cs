@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem.Models
 {
-    class Cancellation
+    public class Cancellation
     {
         public int ID { get; set; }
         public DateTime Date { get; set; }

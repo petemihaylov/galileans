@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 
 namespace EmployeesManagementSystem.Data
 {
-    class UserDepartmentContext : DbContext
+    public class UserDepartmentContext : DbContext
     {
         public override bool Insert(object obj)
         {

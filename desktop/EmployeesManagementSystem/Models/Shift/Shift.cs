@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem.Models
 {
-    class Shift
+    public class Shift
     {
         public int ID { get; set; }
         public bool Availability { get; set; }

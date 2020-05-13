@@ -8,7 +8,7 @@ using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem.Data
 {
-    class AvailabilityContext: DbContext
+    public class AvailabilityContext: DbContext
     {
         public override bool Insert(object obj)
         {

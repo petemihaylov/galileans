@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem.Models
 {
-    class Availability
+    public class Availability
     {
         public int ID { get; set; }
         public DateTime Date { get; set; }

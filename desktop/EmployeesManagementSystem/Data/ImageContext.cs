@@ -3,7 +3,7 @@ using MySql.Data.MySqlClient;
 
 namespace EmployeesManagementSystem.Data
 {
-    class ImageContext : DbContext
+    public class ImageContext : DbContext
     {
         public override bool Insert(object obj)
         {
