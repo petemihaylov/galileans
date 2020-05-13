@@ -101,8 +101,8 @@
             this.cbRole.FormattingEnabled = true;
             this.cbRole.Items.AddRange(new object[] {
             "Administrator",
-            "Employee",
-            "Manager"});
+            "Manager",
+            "Employee"});
             this.cbRole.Location = new System.Drawing.Point(118, 519);
             this.cbRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbRole.Name = "cbRole";

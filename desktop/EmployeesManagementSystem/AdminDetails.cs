@@ -13,6 +13,8 @@ namespace EmployeesManagementSystem
         private UserContext userContext = new UserContext();
         private ImageContext imageContext = new ImageContext();
         private DepartmentContext departmentContext = new DepartmentContext();
+        private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
+
         private User user;
         private Form previousForm;
 
@@ -34,12 +36,12 @@ namespace EmployeesManagementSystem
             tbFullName.Text = this.user.FullName;
             tbPhoneNumber.Text = this.user.PhoneNumber;
             tbEmail.Text = this.user.Email;
-            cbDepartment.Text = departmentContext.GetNameById(this.user.Department);
+            cbDepartment.Text = userDepartmentContext.GetDepartmentByUser(this.user.ID).Name;
             foreach (Department department in departmentContext.GetAllDepartments())
             {
                 cbDepartment.Items.Add(department.Name);
             }
-            cbRole.Text = this.user.Role;
+            cbRole.Text = this.user.Role.ToString();
             this.UpdateImg(this.user.ID);
         }
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -52,15 +54,19 @@ namespace EmployeesManagementSystem
                 u.FullName = removeWhiteSpaces(this.tbFullName.Text);
                 u.Email = tbEmail.Text;
                 u.PhoneNumber = tbPhoneNumber.Text;
-                u.Role = cbRole.Text;
-                u.Department = departmentContext.GetIdByName(cbDepartment.Text);
-                if (u.Department == -1)
+                u.Role = (Role)cbRole.SelectedIndex;
+
+                Department department = departmentContext.GetDepartmentByName(cbDepartment.Text);
+                if (department != null)
+                {
+                    userDepartmentContext.UpdateInfo(u.ID, department.ID);
+                    userContext.UpdateUserInfo(u);
+                    MessageBox.Show("User updated!");
+                }
+                else
                 {
                     MessageBox.Show("The given department doesn't exist");
                 }
-
-                userContext.UpdateUserInfo(u);
-                MessageBox.Show("User updated!");
 
                 user = userContext.GetUserByID(this.user.ID);
                 this.Hide();
@@ -111,7 +117,7 @@ namespace EmployeesManagementSystem
             {
 
                 string password = txtPassword.Text;
-                userContext.ResetPassword(user.ID, password);
+                userContext.UpdatePassword(user.ID, password);
                 MessageBox.Show($"Password Reset to '{password}'");
             }
         }
