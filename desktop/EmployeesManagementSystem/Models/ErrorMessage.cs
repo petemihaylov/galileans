@@ -21,5 +21,9 @@ namespace EmployeesManagementSystem.Models
         {
             return "Format Exception! Invalid Email address.";
         }
+        public static string NegativePrice()
+        {
+            return "Stock could not have a negative price.";
+        }
     }
 }

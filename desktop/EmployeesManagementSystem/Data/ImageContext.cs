@@ -6,7 +6,7 @@ namespace EmployeesManagementSystem.Data
     class ImageContext : DbContext
     {
         
-        public ImageClass GetImgByUser(int userId)
+        public Picture GetImgByUser(int userId)
         {
             using (var con = new MySqlConnection(connectionString))
             {
@@ -21,7 +21,7 @@ namespace EmployeesManagementSystem.Data
                     // Ececuting it 
                     using (var reader = command.ExecuteReader())
                     {
-                        ImageClass img = new ImageClass();
+                        Picture img = new Picture();
                         if (reader.Read())
                         {
                             // Mapping the return data to the object
@@ -58,7 +58,7 @@ namespace EmployeesManagementSystem.Data
 
         public override void Insert(object obj)
         {
-            ImageClass image = (ImageClass)obj;
+            Picture image = (Picture)obj;
 
             using (var con = new MySqlConnection(connectionString))
             {

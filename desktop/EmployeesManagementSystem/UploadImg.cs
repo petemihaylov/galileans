@@ -49,13 +49,13 @@ namespace EmployeesManagementSystem
                 return;
             }
 
-            ImageClass img = imgContext.GetImgByUser(userId);
+            Picture img = imgContext.GetImgByUser(userId);
             if (img != null)
             {
                imgContext.DeleteById(img.ID);
             }
 
-            imgContext.Insert(new ImageClass(userId, txtUrl.Text));
+            imgContext.Insert(new Picture(userId, txtUrl.Text));
 
             this.Close();
             User user = userContext.GetUserByID(userId);

@@ -14,24 +14,20 @@ namespace EmployeesManagementSystem.Models
         public string Email { get; set; }
         public string Subject { get; set; }
         public string Message { get; set; }
-        public string EmployeeName { get; set; }
-        public int EmployeeID { get; set; }
-        public int ShiftID { get; set; }
+        public Employee Employee { get; set; }
         public Cancellations() { }
-        public Cancellations(int id, DateTime date, string email, string subject, string message, string employeeName, int employeeID,int shiftId)
+        public Cancellations(int id, DateTime date, string email, string subject, string message, Employee employee)
         {
             this.ID = id;
             this.Date = date;
             this.Subject = subject;
             this.Message = message;
             this.Email = email;
-            this.EmployeeName = employeeName;
-            this.EmployeeID = employeeID;
-            this.ShiftID = shiftId;
+            this.Employee = employee;
         }
         public string[] GetInfo()
         {
-            string[] s = { Convert.ToString(this.ID) , this.Date.ToString() , this.EmployeeName, this.Email, this.Subject, this.Message, "Delete"};
+            string[] s = { this.ID.ToString() , this.Date.ToString() , this.Employee.FullName, this.Email, this.Subject, this.Message, "Delete"};
             return s;
         }
     }

@@ -118,7 +118,7 @@ namespace EmployeesManagementSystem
 
         public void UpdateImg(int userId)
         {
-            ImageClass img = imageContext.GetImgByUser(userId);
+            Picture img = imageContext.GetImgByUser(userId);
 
             if (img == null) { return; }
 
