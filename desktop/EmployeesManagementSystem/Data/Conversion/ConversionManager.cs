@@ -4,7 +4,7 @@ using System;
 
 namespace EmployeesManagementSystem
 {
-    public static class DataConverter
+    public static class ConversionManager
     {
         public static void Run()
         {
