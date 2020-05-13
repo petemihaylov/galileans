@@ -61,6 +61,43 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+        public Department GetDepartmentByUser(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement it will be slow to many left joins
+                    command.CommandText =
+                         @" SELECT *
+                            FROM UserDepartment as ud
+                            LEFT JOIN Department as d
+                            ON ud.DepartmentID = d.ID
+                            WHERE ud.UserID = @userId;";
+                    command.AddParameter("userId", id);
+
+
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // Mapping the return data to the object
+                            Department department = new Department();
+                            department.ID = (int)reader["ID"];
+                            department.Name = (string)reader["Name"];
+
+                            return department;
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+
         public override bool DeleteById(int id)
         {
             using (var con = new MySqlConnection(connectionString))
@@ -71,12 +108,45 @@ namespace EmployeesManagementSystem.Data
                 {
                     command.CommandText = @"DELETE FROM UserDepartment WHERE ID = @ID";
                     command.AddParameter("ID", id);
-                    return command.ExecuteNonQuery() > 0 ? true: false;
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+
+            }
+        }
+        public bool DeleteByUser(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"DELETE FROM UserDepartment WHERE UserID = @ID";
+                    command.AddParameter("ID", id);
+                    return command.ExecuteNonQuery() > 0 ? true : false;
                 }
 
             }
         }
 
+        public bool UpdateInfo(int userID, int departmentID)
+        {
+
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"UPDATE UserDepartment SET DepartmentID = @departmentID WHERE UserID = @userID";
+                    command.AddParameter("userID", userID);
+                    command.AddParameter("departmentID", departmentID);
+
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+            }
+        }
         private UserDepartment MapObject(UserDepartment userDepartment, MySqlDataReader reader)
         {
             // User

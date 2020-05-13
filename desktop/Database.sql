@@ -70,8 +70,8 @@ CREATE TABLE IF NOT EXISTS Image(
 CREATE TABLE IF NOT EXISTS Stock(
 	ID INT AUTO_INCREMENT not null PRIMARY KEY,
 	Name text,
-    Price float not null,
     Amount int not null,
+    Price float not null,
     Availability bool DEFAULT FALSE,
     DepartmentID INT NOT NULL,
     

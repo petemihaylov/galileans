@@ -17,10 +17,13 @@ namespace EmployeesManagementSystem
         private ImageContext imageContext = new ImageContext();
         private AvailabilityContext availabilityContext = new AvailabilityContext();
         private DepartmentContext departmentContext = new DepartmentContext();
+        private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
+
         private Form previousForm;
 
         private int id;
         private int addDays = 0;
+        private Department department;
 
         private User user;
         private User loggedUser;
@@ -35,20 +38,21 @@ namespace EmployeesManagementSystem
 
             this.user = userContext.GetUserByID(UserID);
             this.id = UserID;
+            this.department = userDepartmentContext.GetDepartmentByUser(UserID);
             this.tbFullName.Text = user.FullName;
             this.tbEmail.Text = user.Email;
 
             this.tbPhoneNumber.Text = user.PhoneNumber;
-            this.cbRole.Text = user.Role;
+            this.cbRole.Text = user.Role.ToString();
             foreach (Department department in departmentContext.GetAllDepartments())
             {
                 this.cbDepartment.Items.Add(department.Name);
+                this.cbDepartment.Text = departmentContext.GetDepartmentById(department.ID).ToString();
             }
-            this.cbDepartment.Text = departmentContext.GetNameById(this.user.Department);
 
             foreach (Availability availability in availabilityContext.GetAllAvailabilitiesByID(UserID))
             {
-                listOfAvailabilities.Items.Add(" shift: " + availability.Date.ToString() + " " + departmentContext.GetNameById(userContext.GetDepIDByUserId(availability.EmployeeID)).ToString() + "  " + user.FullName);
+                listOfAvailabilities.Items.Add(" shift: " + availability.Date.ToString() + " " + userDepartmentContext.GetDepartmentByUser(availability.User.ID).Name + "  " + user.FullName);
             }
             
         }
@@ -72,7 +76,7 @@ namespace EmployeesManagementSystem
                 {
                     if (item.Availability) { lbMorn_first.Font = new Font("Arial", float.Parse("10.2")); picMor_first.Image = Properties.Resources.btnAdd; lbMorn_first.ForeColor = Color.Black; }
                     else { lbMorn_first.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picMor_first.Image = Properties.Resources.btnBlock; lbMorn_first.ForeColor = Color.DimGray;
-                        if (user.ID == item.AssignedEmployeeID) picMor_first.Image = Properties.Resources.taken1;
+                        if (user.ID == item.AssignedUser.ID) picMor_first.Image = Properties.Resources.taken1;
                     }
                 }
 
@@ -80,7 +84,7 @@ namespace EmployeesManagementSystem
                 {
                     if (item.Availability) { lbMorn_second.Font = new Font("Arial", float.Parse("10.2")); picMor_second.Image = Properties.Resources.btnAdd; lbMorn_second.ForeColor = Color.Black; }
                     else { lbMorn_second.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picMor_second.Image = Properties.Resources.btnBlock; lbMorn_second.ForeColor = Color.DimGray;
-                        if (user.ID == item.AssignedEmployeeID) picMor_second.Image = Properties.Resources.taken1;
+                        if (user.ID == item.AssignedUser.ID) picMor_second.Image = Properties.Resources.taken1;
                     }
                 }
 
@@ -89,7 +93,7 @@ namespace EmployeesManagementSystem
                     if (item.Availability) { lbMorn_third.Font = new Font("Arial", float.Parse("10.2")); picMor_third.Image = Properties.Resources.btnAdd; lbMorn_third.ForeColor = Color.Black; }
 
                     else { lbMorn_third.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picMor_third.Image = Properties.Resources.btnBlock; lbMorn_third.ForeColor = Color.DimGray;
-                        if (user.ID == item.AssignedEmployeeID) picMor_third.Image = Properties.Resources.taken1;
+                        if (user.ID == item.AssignedUser.ID) picMor_third.Image = Properties.Resources.taken1;
                     }
                 }
             }
@@ -103,7 +107,7 @@ namespace EmployeesManagementSystem
                 {
                     if (item.Availability) { lbAft_first.Font = new Font("Arial", float.Parse("10.2")); picAft_first.Image = Properties.Resources.btnAdd; lbAft_first.ForeColor = Color.Black; }
                     else { lbAft_first.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picAft_first.Image = Properties.Resources.btnBlock; lbAft_first.ForeColor = Color.DimGray;
-                        if (user.ID == item.AssignedEmployeeID) picAft_first.Image = Properties.Resources.taken1;
+                        if (user.ID == item.AssignedUser.ID) picAft_first.Image = Properties.Resources.taken1;
                     }
                 }
 
@@ -111,7 +115,7 @@ namespace EmployeesManagementSystem
                 {
                     if (item.Availability) { lbAft_second.Font = new Font("Arial", float.Parse("10.2")); picAft_second.Image = Properties.Resources.btnAdd; lbAft_second.ForeColor = Color.Black; }
                     else { lbAft_second.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picAft_second.Image = Properties.Resources.btnBlock; lbAft_second.ForeColor = Color.DimGray;
-                        if (user.ID == item.AssignedEmployeeID) picAft_second.Image = Properties.Resources.taken1;
+                        if (user.ID == item.AssignedUser.ID) picAft_second.Image = Properties.Resources.taken1;
                     }
                 }
 
@@ -120,7 +124,7 @@ namespace EmployeesManagementSystem
                     if (item.Availability) { lbAft_third.Font = new Font("Arial", float.Parse("10.2")); picAft_third.Image = Properties.Resources.btnAdd; lbAft_third.ForeColor = Color.Black; }
 
                     else { lbAft_third.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picAft_third.Image = Properties.Resources.btnBlock; lbAft_third.ForeColor = Color.DimGray;
-                        if (user.ID == item.AssignedEmployeeID) picAft_third.Image = Properties.Resources.taken1;
+                        if (user.ID == item.AssignedUser.ID) picAft_third.Image = Properties.Resources.taken1;
                     }
                 }
             }
@@ -134,7 +138,7 @@ namespace EmployeesManagementSystem
                 {
                     if (item.Availability) { lbEvn_first.Font = new Font("Arial", float.Parse("10.2")); picEvn_first.Image = Properties.Resources.btnAdd; lbEvn_first.ForeColor = Color.Black; }
                     else { lbEvn_first.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picEvn_first.Image = Properties.Resources.btnBlock; lbEvn_first.ForeColor = Color.DimGray;
-                        if (user.ID == item.AssignedEmployeeID) picEvn_first.Image = Properties.Resources.taken1;
+                        if (user.ID == item.AssignedUser.ID) picEvn_first.Image = Properties.Resources.taken1;
                     }
                 }
 
@@ -142,7 +146,7 @@ namespace EmployeesManagementSystem
                 {
                     if (item.Availability) { lbEvn_second.Font = new Font("Arial", float.Parse("10.2")); picEvn_second.Image = Properties.Resources.btnAdd; lbEvn_second.ForeColor = Color.Black; }
                     else { lbEvn_second.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picEvn_second.Image = Properties.Resources.btnBlock; lbEvn_second.ForeColor = Color.DimGray;
-                        if (user.ID == item.AssignedEmployeeID) picEvn_second.Image = Properties.Resources.taken1;
+                        if (user.ID == item.AssignedUser.ID) picEvn_second.Image = Properties.Resources.taken1;
                     }
                 }
 
@@ -151,7 +155,7 @@ namespace EmployeesManagementSystem
                     if (item.Availability) { lbEvn_third.Font = new Font("Arial", float.Parse("10.2")); picEvn_third.Image = Properties.Resources.btnAdd; lbEvn_third.ForeColor = Color.Black; }
 
                     else { lbEvn_third.Font = new Font("Arial", float.Parse("10.2"), FontStyle.Strikeout); picEvn_third.Image = Properties.Resources.btnBlock; lbEvn_third.ForeColor = Color.DimGray;
-                        if (user.ID == item.AssignedEmployeeID) picEvn_third.Image = Properties.Resources.taken1;
+                        if (user.ID == item.AssignedUser.ID) picEvn_third.Image = Properties.Resources.taken1;
                     }
                 }
             }
@@ -208,7 +212,7 @@ namespace EmployeesManagementSystem
             shifts = shiftContext.GetAllShifts();
             foreach (var item in shifts)
             {
-                if (item.Type == ShiftType.MORNING && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) == 0)
+                if (item.Type == ShiftType.Morning && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) == 0)
                 {
                     list.Add(item);
                 }
@@ -220,7 +224,7 @@ namespace EmployeesManagementSystem
             List<Shift> list = new List<Shift>();
             foreach (var item in shifts)
             {
-                if (item.Type == ShiftType.AFTERNOON && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) == 0)
+                if (item.Type == ShiftType.Afternoon && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) == 0)
                 {
                     list.Add(item);
                 }
@@ -232,7 +236,7 @@ namespace EmployeesManagementSystem
             List<Shift> list = new List<Shift>();
             foreach (var item in shifts)
             {
-                if (item.Type == ShiftType.EVENING && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) == 0)
+                if (item.Type == ShiftType.Evening && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) == 0)
                 {
                     list.Add(item);
                 }
@@ -265,15 +269,19 @@ namespace EmployeesManagementSystem
 
                 u.Email = tbEmail.Text;
                 u.PhoneNumber = tbPhoneNumber.Text;
-                u.Role = cbRole.Text;
-                u.Department = departmentContext.GetIdByName(cbDepartment.Text);
-                if (u.Department == -1)
+                u.Role = (Role)cbRole.SelectedIndex;
+                
+                Department department = departmentContext.GetDepartmentByName(cbDepartment.Text);
+                if (department != null)
+                {
+                    userDepartmentContext.UpdateInfo(u.ID, department.ID);
+                    userContext.UpdateUserInfo(u);
+                    MessageBox.Show("User updated!");
+                }else
                 {
                     MessageBox.Show("The given department doesn't exist");
                 }
 
-                userContext.UpdateUserInfo(u);
-                MessageBox.Show("User updated!");
 
                 // Show previous form
                 previousForm.Closed += (s, args) => this.Close();
@@ -343,8 +351,8 @@ namespace EmployeesManagementSystem
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbMorn_first.ForeColor != Color.DimGray)
             {
-                shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month,d.Day,9,0,0), new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), ShiftType.MORNING, AttendanceType.SCHEDULED));
+                shiftContext.Insert(new Shift(user, false, this.department, d,
+                    new DateTime(d.Year, d.Month,d.Day,9,0,0), new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), ShiftType.Morning));
 
             }else
             {
@@ -361,8 +369,8 @@ namespace EmployeesManagementSystem
             if (lbMorn_second.ForeColor != Color.DimGray)
             {
 
-                shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), ShiftType.MORNING, AttendanceType.SCHEDULED));
+                shiftContext.Insert(new Shift(user, false, department, d,
+                    new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), ShiftType.Morning));
 
             }
             else
@@ -379,8 +387,8 @@ namespace EmployeesManagementSystem
             if (lbMorn_third.ForeColor != Color.DimGray)
             {
 
-                shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), new DateTime(d.Year, d.Month, d.Day, 12, 0, 0), ShiftType.MORNING, AttendanceType.SCHEDULED));
+                shiftContext.Insert(new Shift(user, false, department, d,
+                    new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), new DateTime(d.Year, d.Month, d.Day, 12, 0, 0), ShiftType.Morning));
 
             }
             else
@@ -397,8 +405,8 @@ namespace EmployeesManagementSystem
             if (lbAft_first.ForeColor != Color.DimGray)
             {
 
-                shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 14, 0, 0), new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), ShiftType.AFTERNOON, AttendanceType.SCHEDULED));
+                shiftContext.Insert(new Shift(user, false, department, d,
+                    new DateTime(d.Year, d.Month, d.Day, 14, 0, 0), new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), ShiftType.Afternoon));
 
             }
             else
@@ -414,8 +422,8 @@ namespace EmployeesManagementSystem
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbAft_second.ForeColor != Color.DimGray)
             {
-                shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), ShiftType.AFTERNOON, AttendanceType.SCHEDULED));
+                shiftContext.Insert(new Shift(user, false, department, d,
+                    new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), ShiftType.Afternoon));
             }
             else
             {
@@ -430,8 +438,8 @@ namespace EmployeesManagementSystem
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbAft_third.ForeColor != Color.DimGray)
             {
-                shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), new DateTime(d.Year, d.Month, d.Day, 17, 0, 0), ShiftType.AFTERNOON, AttendanceType.SCHEDULED));
+                shiftContext.Insert(new Shift(user, false, department, d,
+                    new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), new DateTime(d.Year, d.Month, d.Day, 17, 0, 0), ShiftType.Afternoon));
             }
             else
             {
@@ -447,8 +455,8 @@ namespace EmployeesManagementSystem
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbEvn_first.ForeColor != Color.DimGray)
             {
-                shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 20, 0, 0), new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), ShiftType.EVENING, AttendanceType.SCHEDULED));
+                shiftContext.Insert(new Shift(user, false, department, d,
+                    new DateTime(d.Year, d.Month, d.Day, 20, 0, 0), new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), ShiftType.Evening));
             }
             else
             {
@@ -464,8 +472,8 @@ namespace EmployeesManagementSystem
             if (lbEvn_second.ForeColor != Color.DimGray)
             {
 
-                shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), ShiftType.EVENING, AttendanceType.SCHEDULED));
+                shiftContext.Insert(new Shift(user, false, department, d,
+                    new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), ShiftType.Evening));
 
             }
             else
@@ -482,8 +490,8 @@ namespace EmployeesManagementSystem
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbEvn_third.ForeColor != Color.DimGray)
             {
-                shiftContext.Insert(new Shift(user.ID, false, user.Department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), new DateTime(d.Year, d.Month, d.Day, 23, 0, 0), ShiftType.EVENING, AttendanceType.SCHEDULED));
+                shiftContext.Insert(new Shift(user, false, department, d,
+                    new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), new DateTime(d.Year, d.Month, d.Day, 23, 0, 0), ShiftType.Evening));
             }
             else
             {
@@ -505,7 +513,7 @@ namespace EmployeesManagementSystem
                 string password = txtPassword.Text;
                 if (isPasswordValid(password))
                 {
-                    userContext.ResetPassword(user.ID, password);
+                    userContext.UpdatePassword(user.ID, password);
                     MessageBox.Show($"Password Reset to '{password}'");
                 }
             }

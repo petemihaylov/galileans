@@ -18,9 +18,7 @@ namespace EmployeesManagementSystem
 
         // Default constructor
         public Dashboard()
-        {
-
-        }
+        {}
 
         // Constructor
         public Dashboard(User user)
@@ -32,7 +30,7 @@ namespace EmployeesManagementSystem
         private void Dashboard_Load(object sender, EventArgs e)
         {
             // Roles division
-            if(this.loggedUser.Role == Models.Role.Manager.ToString())
+            if(this.loggedUser.Role == Models.Role.Manager)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = true;
@@ -43,7 +41,7 @@ namespace EmployeesManagementSystem
                 this.btnCreate.Enabled = false;
                 this.btnCreate.Visible = false;
             }
-            else if(this.loggedUser.Role == Models.Role.Administrator.ToString())
+            else if(this.loggedUser.Role == Models.Role.Administrator)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = false;
@@ -149,7 +147,7 @@ namespace EmployeesManagementSystem
                 int index = dataGridView.CurrentCell.RowIndex;
 
                 // Find the role
-                if (this.loggedUser.Role != Models.Role.Manager.ToString())
+                if (this.loggedUser.Role != Models.Role.Manager)
                 {
                     if (!Convert.ToString(dataGridView.Rows[index].Cells[2].Value).Contains("admin"))
                     {

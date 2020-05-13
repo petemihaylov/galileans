@@ -8,8 +8,8 @@ namespace EmployeesManagementSystem.Models
 {
     class Employee : User
     {
-        public Employee(int id, string fullName, string email, string phoneNumber, string password, decimal wage, Department department)
-            : base(id, fullName, email, phoneNumber, password, Role.Employee, wage, department)
+        public Employee(int id, string fullName, string email, string phoneNumber, string password, double wage)
+            : base(id, fullName, email, phoneNumber, password, Role.Employee, wage)
         {
 
         }
