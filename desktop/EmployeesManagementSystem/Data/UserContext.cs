@@ -6,7 +6,7 @@ using System;
 
 namespace EmployeesManagementSystem.Data
 {
-    class UserContext : DbContext
+    public class UserContext : DbContext
     {
         public override bool Insert(object obj)
         {
@@ -31,7 +31,6 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
-
         public override bool DeleteById(int id)
         {
             using (var con = new MySqlConnection(connectionString))
@@ -172,7 +171,7 @@ namespace EmployeesManagementSystem.Data
                 user.Email = (string)row["Email"];
                 user.Password = (string)row["Password"];
                 user.Role = (Role)row["Role"];
-                user.Wage = (decimal)row["Wage"];
+                user.Wage = (double)row["Wage"];
 
                 users.Add(user);
             }
@@ -273,7 +272,7 @@ namespace EmployeesManagementSystem.Data
             user.FullName = (string)reader["FullName"];
             user.Email = (string)reader["Email"];
             user.PhoneNumber = (string)reader["PhoneNumber"];
-            user.Wage = (decimal)reader["Wage"];
+            user.Wage = (double)reader["Wage"];
             user.Password = (string)reader["Password"];
             user.Role = (Role)reader["Role"];
 

@@ -13,7 +13,7 @@ namespace EmployeesManagementSystem.Models
         public bool Available { get; set; } = false;
 
         public User User { get; set; }
-        public Availability(){}
+        public Availability() { }
 
         public Availability(User user, DateTime date, bool available)
         {

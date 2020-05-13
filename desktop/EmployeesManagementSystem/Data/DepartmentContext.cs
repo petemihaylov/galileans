@@ -1,5 +1,4 @@
-﻿using System;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using EmployeesManagementSystem.Models;
 
@@ -9,7 +8,7 @@ namespace EmployeesManagementSystem.Data
     {
         public override bool Insert(object obj)
         {
-            Models.Department department = (Models.Department)obj;
+            Department department = (Department)obj;
 
             using (var con = new MySqlConnection(connectionString))
             {
@@ -103,7 +102,6 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
-
 
         private Department MapObject(Department department, MySqlDataReader reader)
         {

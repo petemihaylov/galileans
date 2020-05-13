@@ -37,8 +37,8 @@ namespace EmployeesManagementSystem.Models
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
         public Role Role { get; set; }
-        private decimal wage;
-        public decimal Wage
+        private double wage;
+        public double Wage
         {
             get
             {
@@ -50,11 +50,9 @@ namespace EmployeesManagementSystem.Models
                 else { Console.WriteLine(ErrorMessage.InvalidWage()); }
             }
         }
-        public Department Department { get; set; }
-
 
         public User() { }
-        public User(int id, string fullName, string email, string phoneNumber, string password, Role role, decimal wage, Department department)
+        public User(int id, string fullName, string email, string phoneNumber, string password, Role role, double wage)
         {
             this.ID = id;
             this.FullName = fullName;
@@ -63,13 +61,12 @@ namespace EmployeesManagementSystem.Models
             this.Password = password;
             this.PhoneNumber = phoneNumber;
             this.Wage = wage;
-            this.Department = department;
         }
 
 
         public string[] GetInfo()
         {
-            string[] s = { this.ID.ToString(), this.FullName, this.Email, this.Role.ToString(), this.Department.Name };
+            string[] s = { this.ID.ToString(), this.FullName, this.Email, this.Role.ToString()};
             return s;
         }
 

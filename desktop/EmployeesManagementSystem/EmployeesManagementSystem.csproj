@@ -201,22 +201,25 @@
     <Compile Include="Details.Designer.cs">
       <DependentUpon>Details.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Encrypt.cs" />
-    <Compile Include="Data\Hashing.cs" />
+    <Compile Include="Data\Password\Encrypt.cs" />
+    <Compile Include="Data\Password\Hashing.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Shift\ShiftType.cs" />
+    <Compile Include="Models\User\Administrator.cs" />
     <Compile Include="Models\Department.cs" />
-    <Compile Include="Models\ImageClass.cs" />
-    <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\Roles.cs" />
-    <Compile Include="Models\Shift.cs" />
+    <Compile Include="Models\User\Employee.cs" />
+    <Compile Include="Models\ErrorMessage.cs" />
+    <Compile Include="Models\Picture.cs" />
+    <Compile Include="Models\User\Manager.cs" />
+    <Compile Include="Models\User\Role.cs" />
+    <Compile Include="Models\Shift\Shift.cs" />
     <Compile Include="Models\Stock.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserDepartments.cs" />
+    <Compile Include="Models\User\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReloadStock.cs">
