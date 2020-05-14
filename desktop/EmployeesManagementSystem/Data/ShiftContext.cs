@@ -251,6 +251,76 @@ namespace EmployeesManagementSystem.Data
 
             }
         }
+        public List<Shift> GetShiftsByDateAndUser(DateTime date, int id)
+        {
+            var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
+            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"SELECT * FROM Shift WHERE  (ShiftDate >= @monthStart and ShiftDate <= @monthEnd) AND  AssignedUserID = @ID";
+                    command.AddParameter("monthStart", firstDayOfMonth);
+                    command.AddParameter("monthEnd", lastDayOfMonth);
+                    command.AddParameter("ID", id);
+
+
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        List<Shift> shifts = new List<Shift>();
+                        while (reader.Read())
+                        {
+                            // Mapping the return data to the object
+                            Shift shift = new Shift();
+                            MapObject(shift, reader);
+                            shifts.Add(shift);
+                        }
+                        return shifts;
+                    }
+                }
+
+            }
+        }
+
+        public List<Shift> GetCancelledShiftsByDateAndUser(DateTime date, int id)
+        {
+            var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
+            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"SELECT * FROM Shift WHERE  (ShiftDate >= @monthStart and ShiftDate <= @monthEnd) AND  AssignedUserID = @ID AND Cancelled = TRUE";
+                    command.AddParameter("monthStart", firstDayOfMonth);
+                    command.AddParameter("monthEnd", lastDayOfMonth);
+                    command.AddParameter("ID", id);
+
+
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        List<Shift> shifts = new List<Shift>();
+                        while (reader.Read())
+                        {
+                            // Mapping the return data to the object
+                            Shift shift = new Shift();
+                            MapObject(shift, reader);
+                            shifts.Add(shift);
+                        }
+                        return shifts;
+                    }
+                }
+
+            }
+        }
+
         public Shift GetShiftByDate(DateTime date, DateTime startTime)
         {
             using (var con = new MySqlConnection(connectionString))

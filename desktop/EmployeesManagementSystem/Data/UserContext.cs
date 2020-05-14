@@ -215,7 +215,7 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Users WHERE FullName = @fullname";
+                    command.CommandText = @"SELECT * FROM User WHERE FullName = @fullname";
                     command.AddParameter("fullname", fullname);
 
 
