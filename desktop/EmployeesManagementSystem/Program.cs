@@ -15,7 +15,7 @@ namespace EmployeesManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new Statistic());
+            Application.Run(new Login());
 
            // ConversionManager.Run();
         }

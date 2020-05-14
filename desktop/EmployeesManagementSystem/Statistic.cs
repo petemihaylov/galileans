@@ -169,7 +169,18 @@ namespace EmployeesManagementSystem
             User[] users = userContext.GetAllUsers();
             // Write to users.json
             serializer.Write(users);
-            MessageBox.Show(@"User info is stored in ' user.JSON ' file!");
+            MessageBox.Show(@"Users info is stored in ' Users.JSON ' file!");
+        }
+
+        private void csvbtn_Click(object sender, EventArgs e)
+        {
+            DataConverterCSV dataConverterCSV = new DataConverterCSV("users.csv");
+            UserContext userContext = new UserContext();
+            User[] users = userContext.GetAllUsers();
+
+            dataConverterCSV.CSVFileWrite(users.OfType<User>().ToList());
+
+            MessageBox.Show(@"Users info is stored in ' User.CSV ' file!");
         }
     }
 
