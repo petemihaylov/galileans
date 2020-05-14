@@ -66,7 +66,7 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
-        public void DeleteImgByUserId(int id)
+        public bool DeleteImgByUserId(int id)
         {
             using (var con = new MySqlConnection(connectionString))
             {
@@ -76,7 +76,8 @@ namespace EmployeesManagementSystem.Data
                 {
                     command.CommandText = @"DELETE FROM Image WHERE UserID = @userID";
                     command.AddParameter("userID", id);
-                    command.ExecuteNonQuery();
+
+                    return command.ExecuteNonQuery() > 0 ? true : false;
                 }
 
             }

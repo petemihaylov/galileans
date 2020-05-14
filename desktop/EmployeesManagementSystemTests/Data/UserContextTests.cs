@@ -24,61 +24,79 @@ namespace EmployeesManagementSystem.Data.Tests
         [TestMethod()]
         public void DeleteByIdTest()
         {
-            Assert.IsTrue(false);
+            // Arrange
+            UserContext userContext = new UserContext();
+            userContext.DeleteUserByEmail("test5@test.com");
+            User user1 = new User(0, "TestFullName", "test5@test.com", "+31 635 928 796", "password", Role.Employee, 32);
+
+            // Act
+            userContext.Insert(user1);
+            User userRes = userContext.GetUserByEmail("test5@test.com");
+
+            bool result = userContext.DeleteById(userRes.ID);
+
+            // Assert
+            Assert.IsTrue(result);
         }
 
         [TestMethod()]
         public void DeleteUserByEmailTest()
         {
-            Assert.IsTrue(false);
+            // Arrange
+            UserContext userContext = new UserContext();
+            userContext.DeleteUserByEmail("test6@test.com");
+            User user = new User(0, "TestFullName", "test6@test.com", "+31 635 928 796", "password", Role.Employee, 32);
+
+            // Act
+            userContext.Insert(user);
+            bool result = userContext.DeleteUserByEmail("test6@test.com");
+
+            // Assert
+            Assert.IsTrue(result);
+
         }
 
         [TestMethod()]
         public void UpdateUserInfoTest()
         {
-            Assert.IsTrue(false);
+            // Arrange
+            UserContext userContext = new UserContext();
+            userContext.DeleteUserByEmail("test8@test.com");
+            User user = new User(0, "TestFullName", "test8@test.com", "+31 635 928 796", "password", Role.Employee, 32);
+
+
+            // Act
+            userContext.Insert(user);
+
+            User userUpdate = userContext.GetUserByEmail("test8@test.com");
+
+            userUpdate.FullName += "UpdateName";
+            userUpdate.PhoneNumber = "+31 635 928 000";
+            bool result = userContext.UpdateUserInfo(userUpdate);
+
+            // Assert
+            Assert.IsTrue(result);
         }
 
         [TestMethod()]
         public void UpdatePasswordTest()
         {
-            Assert.IsTrue(false);
+            // Arrange
+            UserContext userContext = new UserContext();
+            userContext.DeleteUserByEmail("test1@test.com");
+            User user = new User(0, "TestFullName", "test1@test.com", "+31 635 928 796", "password", Role.Employee, 32);
+
+
+            // Act
+            userContext.Insert(user);
+
+            User userUpdatePassword = userContext.GetUserByEmail("test1@test.com");
+
+            bool result = userContext.UpdatePassword(userUpdatePassword.ID, "newpassword");
+
+            // Assert
+            Assert.IsTrue(result);
         }
 
-        [TestMethod()]
-        public void GetAllUsersTest()
-        {
-            Assert.IsTrue(false);
-        }
-
-        [TestMethod()]
-        public void GetUsersTableTest()
-        {
-            Assert.IsTrue(false);
-        }
-
-        [TestMethod()]
-        public void GetAllFilteredUsersTest()
-        {
-            Assert.IsTrue(false);
-        }
-
-        [TestMethod()]
-        public void GetUserByIDTest()
-        {
-            Assert.IsTrue(false);
-        }
-
-        [TestMethod()]
-        public void GetUserByFullNameTest()
-        {
-            Assert.IsTrue(false);
-        }
-
-        [TestMethod()]
-        public void GetUserByEmailTest()
-        {
-            Assert.IsTrue(false);
-        }
     }
 }

@@ -52,6 +52,7 @@ namespace EmployeesManagementSystem.Models
         }
 
         public User() { }
+
         public User(int id, string fullName, string email, string phoneNumber, string password, Role role, double wage)
         {
             this.ID = id;
