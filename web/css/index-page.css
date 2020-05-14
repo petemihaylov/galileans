@@ -5,11 +5,14 @@
     text-decoration: none;
 }
 body{
-    font-family: 'Montserrat', ;
+    font-family: 'Montserrat', ;     
+    background: #eeeeee;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffffff, #eeeeee);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffffff, #eeeeee); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   
 }
 .banner{
     z-index: -1;
-    background-color: gray;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -28,32 +31,54 @@ body{
 }
 .overlay{
     position: absolute;
-    height: 100vh;
-    width: 100%;
-    background-image: linear-gradient(120deg, rgba(88, 96, 141, 0.829) 40%, #bb690b 60%);
+    height: 100%;
+    width: 100%; 
     z-index: -1;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 .main{
+    width: 100%;
     height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-family: "Montserrat", sans-serif;
+    background-blend-mode: screen;
 }
 
 
 @media only screen and (max-height: 700px) {
-        .login-container{
+        .banner video{
             display: none;
         }
+
 }
 .login-container{
     background: rgb(255, 255, 255);
     position: absolute;
     border-radius: 2px;
     height: 85vh;
-    width: 60vh;
-    padding: 1%;
+    max-height: 620px;
+    min-height: 620px;
+    width: 500px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.09);
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.09);
 }
 
 .login-form{
@@ -69,7 +94,7 @@ body{
     cursor: context-menu;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color:  #BDBEE1;
+    color:  #656565;
     margin-bottom: 80px;
     transition: .5s;
 }
@@ -88,7 +113,7 @@ body{
 .txtb input{
     font-size: 16px;
     font-weight: 600;
-    color: rgb(104, 104, 104);
+    color: #656565;
     border: none;
     width: 100%;
     outline: none;
@@ -125,7 +150,7 @@ body{
     width: 100%; 
 }
 .logbtn-container{
-    margin-top: 15vh;
+    margin-top: 110px;
 }
 .logbtn{
     display: block;
@@ -145,7 +170,7 @@ body{
     background-position: right;
 }
 .bottom-text{
-    margin-top: 10vh;
+    margin-top: 50px;
     text-align: center;
     color: gray;
 }
@@ -163,24 +188,3 @@ body{
     font-size: 14px;
     color: rgb(252, 102, 114);
 }
-
-@media only screen and (max-width: 600px) {
-.login-form h1{
-    font-size: 30px;
-    margin-bottom: 10%;
-}
-.login-container{
-    min-height: 500px;
-    min-width: 200px;
-}
-.login-container{
-    width: 50vh;
-    font-size: 14px;
- }
- .logbtn{
-     height: 40px;
- }
- .logbtn-container{
-    margin-top: 10vh;
- }
-  }

@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($email_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT ID, FullName, Email, Password, Role FROM Users WHERE Email = ?";
+        $sql = "SELECT ID, FullName, Email, Password, Role FROM User WHERE Email = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -97,6 +97,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Close statement
             mysqli_stmt_close($stmt);
         }
+    }else{
+        $password_err = "* SQL db error";
     }
     
     // Close connection
@@ -128,11 +130,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
     <main class="main">
-        <div class="banner">
+        <!-- <div class="banner">
           <video autoplay muted loop>
               <source src="./css/backgroundVideo.mp4" type="video/mp4">
           </video>
-        </div>
+        </div> -->
         <div class="overlay"></div>
 
         <div class="login-container">
@@ -158,7 +160,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               </div>
               
               <div class="bottom-text">
-                Don't have account? <a href="/error.html"><i class="fas fa-user-plus"></i></a>
+                Don't have account? <a href="error.php"><i class="fas fa-user-plus"></i></a>
               </div>
   
             </form>

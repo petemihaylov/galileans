@@ -8,16 +8,16 @@ class User{
     private $Password;
     private $PhoneNumber;
     private $Role;
-    private $HourlyRate;
+    private $Wage;
 
-    function __construct($id, $fullName, $email, $password, $phonenumber, $role, $hourlyRate){
+    function __construct($id, $fullName, $email, $password, $phonenumber, $role, $wage){
         $this->ID = $id;
         $this->FullName = $fullName;
         $this->Email = $email;
         $this->Password = $password;
         $this->PhoneNumber = $phonenumber;
         $this->Role = $role;
-        $this->HourlyRate = $hourlyRate;
+        $this->Wage = $wage;
     }
 
     function get_ID(){
@@ -39,7 +39,7 @@ class User{
     function get_Role(){
         return $this->Role;
     }
-    function get_HourlyRate(){
-        return $this->HourlyRate;
+    function get_Wage(){
+        return $this->Wage;
     }
 }

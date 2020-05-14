@@ -17,7 +17,7 @@ require_once "../models/Shift.php";
 
 $shiftArray = array();
 // Get count of attended shifts for the current employee
-$sql = "SELECT ID, ShiftDate, Attended FROM Shifts WHERE AssignedEmployeeID = ?";
+$sql = "SELECT ID, ShiftDate, Attended FROM Shift WHERE AssignedUserID = ?";
 
 if($stmt = mysqli_prepare($link, $sql)){
     
@@ -30,7 +30,7 @@ if($stmt = mysqli_prepare($link, $sql)){
         mysqli_stmt_store_result($stmt);
             
         $rows = mysqli_stmt_num_rows($stmt);
-
+        
         for ($i=0; $i < $rows; $i++) { 
                
                 mysqli_stmt_bind_result($stmt, $id, $shiftDate, $Attended);

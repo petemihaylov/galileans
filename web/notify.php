@@ -39,11 +39,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   if(empty($name_err) && empty($email_err)){
     
     // Prepare a select statement
-    $sql = "INSERT INTO Cancellations(Date, Subject, Email, Message, EmployeeName) values(?,?,?,?,?);";
+    $sql = "INSERT INTO Cancellation(Date, Email, Subject, Message, UserID) values(?,?,?,?,?);";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "sssss", $creationDate, $_POST['subject'], $_POST["email"] ,$_POST['message'], $_SESSION['fullname']);
+        mysqli_stmt_bind_param($stmt, "sssss", $creationDate, $_POST['subject'], $_POST["email"] ,$_POST['message'], $_SESSION['id']);
         
         // Attempt to execute the prepared statement
         if(!mysqli_stmt_execute($stmt)){

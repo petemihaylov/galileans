@@ -16,7 +16,7 @@ require "./models/Shift.php";
 
 
  // Prepare a select statement
- $sql = "SELECT ID, FullName, Email, Password, PhoneNumber, Role, HourlyRate FROM Users Where ID = ?";
+ $sql = "SELECT ID, FullName, Email, Password, PhoneNumber, Role, Wage FROM User Where ID = ?";
     if($stmt = mysqli_prepare($link, $sql)){
     
         mysqli_stmt_bind_param($stmt, "s", $_SESSION['id']);
@@ -26,10 +26,10 @@ require "./models/Shift.php";
             // Store result
             mysqli_stmt_store_result($stmt);
             
-                    mysqli_stmt_bind_result($stmt, $ID, $FullName, $Email, $Password, $PhoneNumber, $Role, $HourlyRate);
+                    mysqli_stmt_bind_result($stmt, $ID, $FullName, $Email, $Password, $PhoneNumber, $Role, $Wage);
                     
                     if(mysqli_stmt_fetch($stmt)){
-                           $user = new User($ID, $FullName, $Email, $Password, $PhoneNumber, $Role, $HourlyRate);
+                           $user = new User($ID, $FullName, $Email, $Password, $PhoneNumber, $Role, $Wage);
                     }
         }else{
             echo "Oops! Something went wrong. Please try again later.";
@@ -68,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($email_err) && empty($password_err) && empty($fullname_err)){
         // Prepare a select statement
-        $sql = "UPDATE Users SET FullName = ?, Email = ?, Password = ? WHERE ID=?; ";
+        $sql = "UPDATE User SET FullName = ?, Email = ?, Password = ? WHERE ID=?; ";
         
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -86,8 +86,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
-    // Close connection
-    mysqli_close($link);
 }
 
 
@@ -148,7 +146,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <li class="list-group-item">Fullname: <?php echo $user->get_FullName();?></li>
                     <li class="list-group-item">Email: <?php echo $user->get_Email();?></li>
                     <li class="list-group-item">Role: <?php echo $user->get_Role();?></li>
-                    <li class="list-group-item">Wage per hour: <?php echo $user->get_HourlyRate();?>$</li>
+                    <li class="list-group-item">Wage per hour: <?php echo $user->get_Wage();?>$</li>
                 </ul>
             </div>
         </div>

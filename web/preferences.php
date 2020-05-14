@@ -16,7 +16,7 @@ require_once "./models/Preference.php";
 // Getting all of the user's preferences
 $dbArray = array();
 
-$sql = "SELECT ID, Date, Available FROM Availability where EmployeeID = ?";
+$sql = "SELECT ID, Date, Available FROM Availability where UserID = ?";
 if($stmt = mysqli_prepare($link, $sql)){
   
     mysqli_stmt_bind_param($stmt, "s", $_SESSION['id']);
@@ -93,7 +93,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     
     // Prepare a select statement
-    $sql = "INSERT INTO Availability(EmployeeID, Date, Available) values(?,?,?);";
+    $sql = "INSERT INTO Availability(UserID, Date, Available) values(?,?,?);";
     
     if($stmt = mysqli_prepare($link, $sql)){
       
