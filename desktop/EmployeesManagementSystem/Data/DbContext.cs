@@ -13,8 +13,8 @@ namespace EmployeesManagementSystem
             connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
         }
 
-        public abstract void Insert(object obj);
-        public abstract void DeleteById(int id);
+        public abstract bool Insert(object obj);
+        public abstract bool DeleteById(int id);
 
     }
 
