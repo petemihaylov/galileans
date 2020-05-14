@@ -36,7 +36,6 @@
             this.lbMoneyMadeMonth = new System.Windows.Forms.Label();
             this.pieChart = new LiveCharts.WinForms.PieChart();
             this.label1 = new System.Windows.Forms.Label();
-            this.cartesianChart = new LiveCharts.WinForms.CartesianChart();
             this.label2 = new System.Windows.Forms.Label();
             this.cbUsers = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,6 +45,7 @@
             this.csvbtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.cartesianChart = new LiveCharts.WinForms.CartesianChart();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
@@ -126,14 +126,6 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "ATTENDANCE PER DEPARTMENT";
             // 
-            // cartesianChart
-            // 
-            this.cartesianChart.Location = new System.Drawing.Point(654, 121);
-            this.cartesianChart.Name = "cartesianChart";
-            this.cartesianChart.Size = new System.Drawing.Size(970, 481);
-            this.cartesianChart.TabIndex = 7;
-            this.cartesianChart.Text = "cartesianChart";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -150,6 +142,7 @@
             this.cbUsers.Name = "cbUsers";
             this.cbUsers.Size = new System.Drawing.Size(272, 24);
             this.cbUsers.TabIndex = 9;
+            this.cbUsers.SelectedIndexChanged += new System.EventHandler(this.cbUsers_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -230,12 +223,21 @@
             this.label5.TabIndex = 73;
             this.label5.Text = "EXPORT DATA";
             // 
+            // cartesianChart
+            // 
+            this.cartesianChart.Location = new System.Drawing.Point(662, 98);
+            this.cartesianChart.Name = "cartesianChart";
+            this.cartesianChart.Size = new System.Drawing.Size(943, 471);
+            this.cartesianChart.TabIndex = 74;
+            this.cartesianChart.Text = "cartesianChart";
+            // 
             // Statistic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1636, 867);
+            this.Controls.Add(this.cartesianChart);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.csvbtn);
@@ -245,7 +247,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbUsers);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cartesianChart);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pieChart);
             this.Controls.Add(this.panel4);
@@ -273,7 +274,6 @@
         private System.Windows.Forms.Label lbMoneyMadeMonth;
         private LiveCharts.WinForms.PieChart pieChart;
         private System.Windows.Forms.Label label1;
-        private LiveCharts.WinForms.CartesianChart cartesianChart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbUsers;
         private System.Windows.Forms.Label label3;
@@ -283,5 +283,6 @@
         private System.Windows.Forms.Button csvbtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
+        private LiveCharts.WinForms.CartesianChart cartesianChart;
     }
 }
