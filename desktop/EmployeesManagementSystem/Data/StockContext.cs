@@ -89,14 +89,13 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"UPDATE Stock SET Name = @name, Price = @price, Amount = @amount, Availability = @availability, DepartmentID = @departmentId WHERE ID = @ID";
+                    command.CommandText = @"UPDATE Stock SET Name = @name, Price = @price, Amount = @amount, Availability = @availability WHERE ID = @ID";
                     command.AddParameter("ID", stock.ID);
                     // Executing it 
                     command.Parameters.AddWithValue("@name", stock.Name);
                     command.Parameters.AddWithValue("@price", stock.Price);
                     command.Parameters.AddWithValue("@amount", stock.Amount);
                     command.Parameters.AddWithValue("@availability", stock.Availability);
-                    command.Parameters.AddWithValue("@departmentId", stock.Department.ID);
                     return command.ExecuteNonQuery() > 0 ? true : false;
                 }
             }

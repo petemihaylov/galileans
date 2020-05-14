@@ -178,7 +178,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Statistic stat = new Statistic(this.loggedUser);
+            Statistic stat = new Statistic();
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }

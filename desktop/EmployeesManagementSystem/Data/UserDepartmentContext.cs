@@ -86,7 +86,7 @@ namespace EmployeesManagementSystem.Data
                         {
                             // Mapping the return data to the object
                             Department department = new Department();
-                            department.ID = (int)reader["ID"];
+                            department.ID = (int)reader["DepartmentID"];
                             department.Name = (string)reader["Name"];
 
                             return department;

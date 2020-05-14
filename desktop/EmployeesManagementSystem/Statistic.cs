@@ -6,6 +6,11 @@ using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Globalization;
+using LiveCharts;
+using LiveCharts.Wpf;
+using SeriesCollection = LiveCharts.SeriesCollection;
+using System.Linq;
+using LiveCharts.Defaults;
 
 namespace EmployeesManagementSystem
 {
@@ -15,64 +20,131 @@ namespace EmployeesManagementSystem
         private UserContext userContext = new UserContext();
         private ShiftContext shiftContext = new ShiftContext();
         private DepartmentContext departmentContext = new DepartmentContext();
+        private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
 
-        private User[] users;
-        private List<Shift> shifts;
-        private Department[] departments;
-
-        // Counters keep track for each of the x-axis position the number of employees for each kind 
-        private int[] counterAttended = new int[1000];
-        private int[] counterAbsent = new int[1000];
-        private int[] counterScheduled = new int[1000];
-
-        private double[] banet = new double[1000];
-
-        // Keeps  track of the current loggedUser
-        private User loggedUser;
-
-        private float money = 0;
-        private DateTime today = DateTime.Today;
-
-
-        public Statistic(User user)
+        public Statistic()
         {
             InitializeComponent();
-            this.users = this.userContext.GetAllUsers();
-            this.departments = departmentContext.GetAllDepartments();
-            this.loggedUser = user;
-            int[] cevaAttended = { 0 };
-            int[] cevaAbsent = { 0 };
-            int[] cevaScheduled = { 0 };
-            double[] banet = { 0 };
 
-            displayMonths();
         }
         private void Statistic_Load(object sender, EventArgs e)
-        { 
-
+        {
+            LoadUsers();
+            LoadMonths();
+            DisplayPieChart(DateTime.Now);
+            DisplayCartesianChart();
         }
 
-        // Add months from the current day
-        private void displayMonths()
+        private void LoadUsers()
         {
-            DateTime now = DateTime.Now;
-            for (int i = 0; i < 12; i++)
+            List<User> list = userContext.GetAllUsers().OfType<User>().ToList();
+            list.ForEach(u => cbUsers.Items.Add(u.FullName));
+            cbUsers.Text = "SELECT USER";
+        }
+        private void LoadMonths()
+        {
+            for (int i = 0; i < 6; i++)
             {
-                this.cbMonth.Items.Add(now.ToString("MMMM"));
-                now = now.AddMonths(1);
+                cbMonths.Items.Add(DateTime.Now.AddMonths(i).ToString("MMM"));
             }
         }
+        private void DisplayPieChart(DateTime date)
+        {
 
 
+            pieChart.Series = new SeriesCollection();
+            Func<ChartPoint, string> labelPoint = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+            
+            // Load data
+            List<Department> departments = departmentContext.GetAllDepartments().OfType<Department>().ToList();
+            departments.ForEach(item =>
+                        pieChart.Series.Add(
+
+                            new PieSeries()
+                            {
+                                Title = item.Name,
+                                Values = new ChartValues<int> { shiftContext.GetShiftsByDateAndDepartment(date,item.ID).Count },
+                                DataLabels = true,
+                                LabelPoint = labelPoint
+                            })
+                        );
+
+        }
+        private void DisplayCartesianChart()
+        {
+
+            
+            cartesianChart.Series = new SeriesCollection();
+            
+            Func<ChartPoint, string> labelPoint = chartPoint => string.Format("User ({0})", chartPoint.X);
+            DateTime now = DateTime.Now;
+
+            
+            cartesianChart.Series.Add(
+                new LineSeries()
+                {
+                    Values = new ChartValues<ObservablePoint>
+                    {
+                        new ObservablePoint(0, 2),
+                        new ObservablePoint(4, 7),
+                        new ObservablePoint(5, 3),
+                        new ObservablePoint(7, 13),
+                        new ObservablePoint(8, 8),
+                        new ObservablePoint(10, 12),
+                        new ObservablePoint(15, 18)
+                    },
+                    PointGeometrySize = 15,
+                    LabelPoint = labelPoint,
+                    Title = "Attendance"
+                }
+
+            );
+            cartesianChart.Series.Add(
+                new LineSeries()
+                {
+                    Values = new ChartValues<ObservablePoint>
+                    {
+                        new ObservablePoint(0, 3),
+                        new ObservablePoint(1, 1),
+                        new ObservablePoint(2, 1),
+                        new ObservablePoint(5, 2),
+                        new ObservablePoint(7, 3),
+                        new ObservablePoint(9, 0),
+                        new ObservablePoint(15, 2)
+                    },
+                    PointGeometrySize = 10,
+                    LabelPoint = labelPoint,
+                    Title = "Late cancellation"
+                }
+
+            );
+
+
+        }
+
+
+
+        // Additional functions 
+        private void exit_MouseEnter(object sender, EventArgs e)
+        {
+            Color color = Color.DarkGray;
+            this.exit.BackColor = color;
+        }
+        private void exit_MouseLeave(object sender, EventArgs e)
+        {
+            Color color = Color.White;
+            this.exit.BackColor = color;
+        }
         private void picBack_Click(object sender, EventArgs e)
         {
             this.Hide();
+
             // Show Dashboard
-            Dashboard dashboard = new Dashboard( this.loggedUser);
+            Dashboard dashboard = new Dashboard();
             dashboard.Closed += (s, args) => this.Close();
             dashboard.Show();
         }
-
         private void exit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -82,272 +154,28 @@ namespace EmployeesManagementSystem
             }
         }
 
-        private void AttendancePerEmployee()
+        private void cbMonths_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    this.shifts = this.shiftcontext.getshiftsbyuserid(convert.toint32(cbemployee.text)); // try catch
-            //}
-            //catch (exception)
-            //{
-            //    throw new exception("can't take employee's shifts");
-            //}
-
-            //user user = usercontext.getuserbyid(convert.toint32(cbemployee.text));
-
-            //switches the min and max to the earliest and latest a shift can be
-            //this.chart1.chartareas[0].axisy.maximum = 23;
-            //this.chart1.chartareas[0].axisy.minimum = 9;
-            //this.chart1.chartareas[0].axisy.interval = 1;
-
-            //attendance per employee
-            //foreach (shift shift in shifts)
-            //{
-            //    counts only the shift in the month equal to the one selected
-            //    if (this.cbmonth.text == shift.shiftdate.tostring("mmmm"))
-            //    {
-            //        marks attended
-            //         convert the months into days for the x axis and the minutes into hours for the y axis
-            //        if (shift.attendance.tostring() == "attended")
-            //                    this.chart1.series["present"].points.add(new datapoint() { axislabel = convert.tostring(shift.shiftdate.day) + "/" + convert.tostring(shift.shiftdate.month), xvalue = 31 * shift.shiftdate.month + shift.shiftdate.day, yvalues = new double[] { shift.starttime.hour + shift.starttime.minute / 60, shift.endtime.hour + shift.endtime.minute / 60 } });
-            //        marks absent
-            //        else if (shift.attendance.tostring() == "absent" && shift.shiftdate < this.today)
-            //            this.chart1.series["absent"].points.add(new datapoint() { axislabel = convert.tostring(shift.shiftdate.day) + "/" + convert.tostring(shift.shiftdate.month), xvalue = 31 * shift.shiftdate.month + shift.shiftdate.day, yvalues = new double[] { shift.starttime.hour + shift.starttime.minute / 60, shift.endtime.hour + shift.endtime.minute / 60 } });
-            //        marks future scheduled shifts
-            //        else if (shift.attendance.tostring() == "scheduled" && shift.shiftdate > this.today)
-            //        {
-            //            this.chart1.series["scheduled"].points.add(new datapoint() { axislabel = convert.tostring(shift.shiftdate.day) + "/" + convert.tostring(shift.shiftdate.month), xvalue = 31 * shift.shiftdate.month + shift.shiftdate.day, yvalues = new double[] { shift.starttime.hour + shift.starttime.minute / 60, shift.endtime.hour + shift.endtime.minute / 60 } });
-            //        }
-            //    }
-            //}
+            DateTime date = DateTime.ParseExact(cbMonths.SelectedItem.ToString(), "MMM", CultureInfo.InvariantCulture);
+            DisplayPieChart(date);
         }
 
-        private void AttendancePerDepartment()
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    // Gets only the shifts for the selected department
-            //    this.shifts = this.shiftContext.GetShiftsByDepId(Convert.ToInt32(this.cbEmployee.Text)); // try catch
-            //}
-            //catch (Exception)
-            //{
-            //    throw new Exception("Can't take department's shifts");
-            //}
-
-            // Switches the min and max to 0 and auto
-            this.chart1.ChartAreas[0].AxisY.Minimum = 0;
-            this.chart1.ChartAreas[0].AxisY.Maximum = Double.NaN;
-            this.chart1.ChartAreas[0].AxisY.Interval = 1;
-
-            Department department = this.departmentContext.GetDepartmentById(Convert.ToInt32(this.cbEmployee.Text));
-            
-            //foreach (Shift shift in shifts)
-            //{
-            //    if (this.cbMonth.Text == shift.ShiftDate.ToString("MMMM"))
-            //    {
-            //        // Converts months into days and counts how many people work on each day
-            //        int ics = 31 * shift.ShiftDate.Month + shift.ShiftDate.Day;
-            //        // Marks attended
-            //        if (shift.Attendance.ToString() == "ATTENDED")
-            //        {
-            //            this.counterAttended[ics]++;
-            //        }
-            //        // Marks absent
-            //        else if (shift.Attendance.ToString() == "ABSENT" && shift.ShiftDate <= this.today)
-            //        {
-            //            this.counterAbsent[ics]++;
-            //        }
-            //        // Mark scheduled
-            //        else if (shift.Attendance.ToString() == "SCHEDULED" && shift.ShiftDate > this.today)
-            //        {
-            //            this.counterScheduled[ics]++;
-            //        }
-            //    }
-            //}
-
-            //goes through each possible ics which is 31 days * 12 months
-            for (int i = 0; i <= 31 * 12; i++)
-            {
-                if (this.counterAttended[i] != 0)
-                    this.chart1.Series["Present"].Points.Add(new DataPoint() { AxisLabel = i / 31 + "/" + i % 31, XValue = i, YValues = new double[] { 0, counterAttended[i] } });
-                if (this.counterAbsent[i] != 0)
-                    this.chart1.Series["Absent"].Points.Add(new DataPoint() { AxisLabel = i / 31 + "/" + i % 31, XValue = i, YValues = new double[] { counterAttended[i], counterAttended[i] + counterAbsent[i] } });
-                if (this.counterScheduled[i] != 0)
-                    this.chart1.Series["Scheduled"].Points.Add(new DataPoint() { AxisLabel = i / 31 + "/" + i % 31, XValue = i, YValues = new double[] { counterAttended[i] + counterAbsent[i], counterAttended[i] + counterAbsent[i] + counterScheduled[i] } });
-                this.counterAttended[i] = this.counterAbsent[i] = this.counterScheduled[i] = 0;
-            }
-
+            // Declare JsonSerializer
+            JsonSerializer serializer = new JsonSerializer("users.json");
+            // Get data from the Context
+            UserContext userContext = new UserContext();
+            User[] users = userContext.GetAllUsers();
+            // Write to users.json
+            serializer.Write(users);
+            MessageBox.Show(@"User info is stored in ' user.JSON ' file!");
         }
+    }
 
-        //private void WagePerEmployee()
-        //{
-        //    try
-        //    {
-        //        this.shifts = this.shiftContext.GetShiftsByUserId(Convert.ToInt32(this.cbEmployee.Text)); 
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw new Exception("Can't take employee's shifts");
-        //    }
-
-        //    User user = userContext.GetUserByID(Convert.ToInt32(this.cbEmployee.Text));
-
-        //    this.chart1.ChartAreas[0].AxisY.Minimum = 0;
-        //    this.chart1.ChartAreas[0].AxisY.Maximum = Double.NaN;
-
-        //    foreach (Shift shift in shifts)
-        //    {
-        //        if (this.cbMonth.Text == shift.ShiftDate.ToString("MMMM")) 
-        //        {
-        //            this.money = 0;
-        //            if (shift.Attendance.ToString() == "ATTENDED")
-        //            {
-        //                {
-        //                    //money = hrsWorked * wage
-        //                    this.money = (shift.EndTime - shift.StartTime).Hours * user.HourlyRate;
-        //                    this.banet[GetWeekOfYear(shift.ShiftDate)] += this.money;
-                           
-        //                }
-        //            }
-                    
-        //        }
-        //    }
-
-        //    this.chart1.ChartAreas[0].AxisY.Interval = 10;
-        //    for (int i = 0; i < this.banet.Length; i++)
-        //    {
-        //        if (this.banet[i] != 0)
-        //        {
-        //            this.chart1.Series["Money"].Points.Add(new DataPoint() { AxisLabel = "Week " + Convert.ToString(i), XValue = i, YValues = new double[] { banet[i] } });
-        //        }
-
-        //        this.banet[i] = 0;
-        //    }
-        //}
-
-        private void cbStatistic_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            clearChart();
-
-            if (this.cbStatistic.Text.Contains("employee"))
-            {
-                this.cbEmployee.Items.Clear();
-                this.lbEmployee.Text = "Select an employee";
-                            
-                foreach (User item in users)
-                {
-                    this.cbEmployee.Items.Add(item.ID);
-                }
-
-            }
-            else if (this.cbStatistic.Text.Contains("department"))
-            {
-                this.cbEmployee.Items.Clear();
-                this.lbEmployee.Text = "Select a department";
-                foreach (Department item in departments)
-                {
-                    this.cbEmployee.Items.Add(item.ID);
-                }
-            }
-            
-            if (this.cbStatistic.Text == "Attendance per employee")
-            {
-                // Auto generate 15 labels
-                double position = 8.5;
-                for (int i = 0; i < 15; i++)
-                {
-                    CustomLabel label = new CustomLabel
-                    {
-                        FromPosition = position,
-                        ToPosition = position + 1,
-                        Text = TimeSpan.FromHours((double)position + 0.5).ToString(@"hh\:mm")
-                    };
-
-                    chart1.ChartAreas[0].AxisY.CustomLabels.Add(label);
-
-                    position++;
-                }
-
-            }
-            else
-            {
-                chart1.ChartAreas[0].AxisY.CustomLabels.Clear();
-            }
-
-
-            if (cbMonth.Text.Length > 0 && cbEmployee.Text.Length > 0)
-            {
-                   showAttendance();
-            }
-            
-        }
-
-        // Clears the chart
-        private void clearChart()
-        {
-            foreach (var series in this.chart1.Series)
-            {
-                series.Points.Clear();
-            }
-        }
-
-        // Helper method
-        private void showAttendance()
-        {
-            if (cbStatistic.Text == "Attendance per employee")
-                AttendancePerEmployee();
-
-            if (cbStatistic.Text == "Attendance per department")
-                AttendancePerDepartment();
-
-            if (cbStatistic.Text == "Wage per employee") ;
-             //   WagePerEmployee();
-        }
-
-        private void cbMonth_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            clearChart();
-
-            if (cbStatistic.Text.Length > 0 && cbEmployee.Text.Length > 0)
-            {
-                showAttendance();
-            }
-        }
-
-        
-        private void cbEmployee_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            clearChart();
-
-            if (cbMonth.Text.Length > 0 && cbStatistic.Text.Length > 0)
-            {
-                showAttendance();
-            }
-        }
-
-        public static int GetWeekOfYear(DateTime date)
-        {
-            DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(date);
-            if (day >= DayOfWeek.Monday && day <= DayOfWeek.Wednesday)
-            {
-                date = date.AddDays(3);
-            }
-
-            // Return the week of the day
-            return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(date, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
-        }
-
-        // Hovering
-        private void exit_MouseEnter(object sender, EventArgs e)
-        {
-            Color color = Color.DarkGray;
-            this.exit.BackColor = color;
-        }
-
-        private void exit_MouseLeave(object sender, EventArgs e)
-        {
-            Color color = Color.White;
-            this.exit.BackColor = color;
-        }
+    public class DateModel
+    {
+        public System.DateTime DateTime { get; set; }
+        public double Value { get; set; }
     }
 }

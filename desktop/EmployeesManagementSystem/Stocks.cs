@@ -178,7 +178,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Statistic stat = new Statistic(this.loggedUser);
+            Statistic stat = new Statistic();
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }
@@ -280,5 +280,9 @@ namespace EmployeesManagementSystem
             this.btnSettings.BackColor = Color.LightGray;
         }
 
+        private void btnCreate_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

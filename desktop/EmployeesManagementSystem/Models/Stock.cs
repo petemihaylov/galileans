@@ -27,12 +27,10 @@ namespace EmployeesManagementSystem.Models
             }
         }
         private int amount;
-        public int Amount { get { return this.amount; } set { if (value > 0) this.amount = value; } }
+        public int Amount { get { return this.amount; } set { this.amount = value; } }
         public bool Availability { get; set; } = false;
         private Department department = new Department();
-
         public Department Department { get { return this.department; } set { this.department = value; } }
-
 
         public Stock(string name, int amount, double price, bool availability, Department department)
         {
@@ -44,7 +42,6 @@ namespace EmployeesManagementSystem.Models
 
         }
         public Stock() { }
-
         public string[] GetInfo()
         {
             string[] s = { this.ID.ToString(), this.Name, this.Price.ToString(), this.Amount.ToString(), Convert.ToString(Availability), "Reload" };
