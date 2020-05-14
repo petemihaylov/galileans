@@ -7,19 +7,17 @@ namespace EmployeesManagementSystem.Models
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public Department()
-        {
-        }
+        public Department() { }
 
         public Department(string name)
         {
-            Name = name;
+            this.Name = name;
         }
 
         public string[] GetInfo()
         {
-            string[] s = { $"{ID}", Name };
-            return s;
+            string[] output = { ID.ToString(), Name };
+            return output;
         }
     }
 }

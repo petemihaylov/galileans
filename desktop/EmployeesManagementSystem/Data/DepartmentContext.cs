@@ -1,19 +1,14 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem.Data
 {
     public class DepartmentContext : DbContext
     {
-        // Should be implemented
-        public override void Insert(object obj)
+        public override bool Insert(object obj)
         {
-            Models.Department department = (Models.Department)obj;
+            Department department = (Department)obj;
 
             using (var con = new MySqlConnection(connectionString))
             {
@@ -21,49 +16,43 @@ namespace EmployeesManagementSystem.Data
 
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO Departments (ID, Name) VALUES(@id, @name)";
+                    command.CommandText = @"INSERT INTO Department (ID, Name) VALUES(@id, @name)";
 
-                    command.AddParameter("ID", department.ID);
+                    command.AddParameter("id", department.ID);
                     command.AddParameter("name", department.Name);
-                    command.ExecuteNonQuery();
+                    return command.ExecuteNonQuery() > 0 ? true : false;
                 }
             }
         }
-
-        public override void DeleteById(int id)
+        public override bool DeleteById(int id)
         {
             using (var con = new MySqlConnection(connectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"DELETE FROM Departments WHERE ID = @ID";
+                    command.CommandText = @"DELETE FROM Department WHERE ID = @ID";
                     command.AddParameter("ID", id);
-                    command.ExecuteNonQuery();
+                    return command.ExecuteNonQuery() > 0 ? true : false;
                 }
             }
         }
-
-        public Models.Department[] GetAllDepartments()
+        public Department[] GetAllDepartments()
         {
             using (var con = new MySqlConnection(connectionString))
             {
                 con.Open();
-
-
-                using (var command = new MySqlCommand("SELECT * FROM Departments", con))
+                using (var command = new MySqlCommand("SELECT * FROM Department", con))
                 {
                     // Executing it 
                     using (var reader = command.ExecuteReader())
                     {
-                        List<Models.Department> departments = new List<Models.Department>();
+                        List<Department> departments = new List<Department>();
                         while (reader.Read())
                         {
                             // Mapping the return data to the object
-                            Models.Department department = new Models.Department();
-
-                            department.ID = (int)reader["ID"];
-                            department.Name = (string)reader["Name"];
+                            Department department = new Department();
+                            MapObject(department, reader);
                             departments.Add(department);
                         }
                         return departments.ToArray();
@@ -71,46 +60,22 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
-
-        public int GetIdByName(string name)
+        public Department GetDepartmentByName(string name)
         {
             using (var con = new MySqlConnection(connectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"SELECT ID FROM Departments WHERE Name = @name";
+                    command.CommandText = @"SELECT * FROM Department WHERE Name = @name";
                     command.AddParameter("name", name);
                     using (var reader = command.ExecuteReader())
                     {
-                        int id = -1;
                         while (reader.Read())
                         {
-                            id = (int)reader["ID"];
+                            return MapObject(new Department(), reader);
                         }
-                        return id;
-                    }
-                }
-            }
-        }
-
-        public string GetNameById(int id)
-        {
-            using (var con = new MySqlConnection(connectionString))
-            {
-                con.Open();
-                using (var command = con.CreateCommand())
-                {
-                    command.CommandText = @"SELECT Name FROM Departments WHERE ID = @id";
-                    command.AddParameter("id", id);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        string name = "";
-                        while (reader.Read())
-                        {
-                            name = (string)reader["Name"];
-                        }
-                        return name;
+                        return null;
                     }
                 }
             }
@@ -123,19 +88,29 @@ namespace EmployeesManagementSystem.Data
                 con.Open();
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"SELECT Name FROM Departments WHERE ID = @id";
+                    command.CommandText = @"SELECT * FROM Department WHERE ID = @id";
                     command.AddParameter("id", id);
+
                     using (var reader = command.ExecuteReader())
                     {
-                        Department dep = new Department();
                         while (reader.Read())
                         {
-                            dep.Name = (string)reader["Name"];
+                            var department = new Department();
+                             MapObject(department, reader);
+                            return department;
                         }
-                        return dep;
+                        return null;
                     }
                 }
             }
+        }
+
+        private Department MapObject(Department department, MySqlDataReader reader)
+        {
+            department.ID = (int)reader["ID"];
+            department.Name = (string)reader["Name"];
+            return department;
+
         }
     }
 }

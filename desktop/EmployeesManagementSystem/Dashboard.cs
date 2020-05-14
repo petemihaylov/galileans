@@ -15,12 +15,11 @@ namespace EmployeesManagementSystem
         private DataTable table;
         private User loggedUser;
         private UserContext userContext = new UserContext();
+        private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
 
         // Default constructor
         public Dashboard()
-        {
-
-        }
+        {}
 
         // Constructor
         public Dashboard(User user)
@@ -32,7 +31,7 @@ namespace EmployeesManagementSystem
         private void Dashboard_Load(object sender, EventArgs e)
         {
             // Roles division
-            if(this.loggedUser.Role == Models.Role.Manager.ToString())
+            if(this.loggedUser.Role == Models.Role.Manager)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = true;
@@ -43,7 +42,7 @@ namespace EmployeesManagementSystem
                 this.btnCreate.Enabled = false;
                 this.btnCreate.Visible = false;
             }
-            else if(this.loggedUser.Role == Models.Role.Administrator.ToString())
+            else if(this.loggedUser.Role == Models.Role.Administrator)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = false;
@@ -78,6 +77,8 @@ namespace EmployeesManagementSystem
         // Search functionality
         private void searchField_KeyPress(object sender, KeyPressEventArgs e)
         {
+
+            this.table = this.userContext.GetUsersTable();
 
             // Pressed enter
             if (e.KeyChar == (char)13)
@@ -118,7 +119,13 @@ namespace EmployeesManagementSystem
 
             foreach (User user in users)
             {
-                this.dataGridView.Rows.Add(user.GetInfo());
+                var arr = user.GetInfo();
+                var d = userDepartmentContext.GetDepartmentByUser(user.ID);
+                
+                if (d != null)
+                arr[arr.Length - 1] = d.Name;
+
+                this.dataGridView.Rows.Add(arr);
             }
             this.searchField.Text = String.Empty;
         }
@@ -136,6 +143,7 @@ namespace EmployeesManagementSystem
 
                 this.Hide();
                 Details details = new Details(id, this.loggedUser, this);
+                details.DashoboardUpdate(this);
                 details.Show();
 
             }
@@ -147,7 +155,7 @@ namespace EmployeesManagementSystem
                 int index = dataGridView.CurrentCell.RowIndex;
 
                 // Find the role
-                if (this.loggedUser.Role != Models.Role.Manager.ToString())
+                if (this.loggedUser.Role != Models.Role.Manager)
                 {
                     if (!Convert.ToString(dataGridView.Rows[index].Cells[2].Value).Contains("admin"))
                     {
@@ -235,7 +243,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Cancellations cncl = new Cancellations(this.loggedUser);
+            Messages cncl = new Messages(this.loggedUser);
             cncl.Closed += (s, args) => this.Close();
             cncl.Show();
         }
@@ -266,7 +274,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Statistic stat = new Statistic(this.loggedUser);
+            Statistic stat = new Statistic();
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }

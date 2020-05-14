@@ -1,9 +1,9 @@
-﻿using EmployeesManagementSystem.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using EmployeesManagementSystem.Data;
+using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
 {  
@@ -15,9 +15,9 @@ namespace EmployeesManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Now instead of email you can type
-            // admin and the password is: admin 
-             Application.Run(new Login());
+            Application.Run(new Login());
+
+           // ConversionManager.Run();
         }
     }
 }
