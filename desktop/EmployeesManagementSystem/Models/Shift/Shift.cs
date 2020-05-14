@@ -15,7 +15,7 @@ namespace EmployeesManagementSystem.Models
         public DateTime EndTime { get; set; }
         public ShiftType Type { get; set; }
         public bool Attended { get; set; } = false;
-        public bool Cancelled { get; set; } = false;
+        public bool Cancelled { get; set; } = true;
         private User user = new User();
         public User AssignedUser { get { return user; } set { this.user = value; } }
         private Department department = new Department();

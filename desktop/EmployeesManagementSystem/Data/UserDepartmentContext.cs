@@ -97,6 +97,48 @@ namespace EmployeesManagementSystem.Data
             return null;
         }
 
+        public User GetUserByDepartment(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement it will be slow to many left joins
+                    command.CommandText =
+                         @" SELECT *
+                            FROM UserDepartment as ud
+                            LEFT JOIN User as u
+                            ON ud.UserID = u.ID
+                            WHERE ud.DepartmentID = @Id;";
+                    command.AddParameter("Id", id);
+
+
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // User
+                            User user = new User();
+
+                            user.ID = (int)reader["UserID"];
+                            user.FullName = (string)reader["FullName"];
+                            user.Email = (string)reader["Email"];
+                            user.PhoneNumber = (string)reader["PhoneNumber"];
+                            user.Wage = (double)reader["Wage"];
+                            user.Password = (string)reader["Password"];
+                            Enum.TryParse((string)reader["Role"], out Role role);
+                            user.Role = role;
+
+                            return user;
+                        }
+                    }
+                }
+            }
+            return null;
+        }
 
         public override bool DeleteById(int id)
         {
@@ -172,7 +214,9 @@ namespace EmployeesManagementSystem.Data
             user.PhoneNumber = (string)reader["PhoneNumber"];
             user.Wage = (double)reader["Wage"];
             user.Password = (string)reader["Password"];
-            user.Role = (Role)reader["Role"];
+
+            Enum.TryParse((string)reader["Role"], out Role role);
+            user.Role = role;
 
 
             //Department 

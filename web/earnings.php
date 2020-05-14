@@ -179,9 +179,7 @@ if($stmt = mysqli_prepare($link, $sql)){
 
             for (var i in data) {
                 months.push(data[i][0]);
-                
                 counts.push(data[i][1]);
-                
             }
 
             var chartdata = {

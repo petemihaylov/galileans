@@ -72,15 +72,13 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"UPDATE User SET FullName = @fullname, Email = @email, PhoneNumber = @phonenumber, Role = @role, Wage = @wage WHERE ID = @ID";
+                    command.CommandText = @"UPDATE User SET FullName = @fullname, Email = @email, PhoneNumber = @phonenumber, Role = @role WHERE ID = @ID";
                     command.AddParameter("ID", user.ID);
                     // Executing it 
                     command.Parameters.AddWithValue("fullname", user.FullName);
                     command.Parameters.AddWithValue("email", user.Email);
                     command.Parameters.AddWithValue("phonenumber", user.PhoneNumber);
-                    command.Parameters.AddWithValue("role", user.Role);
-                    command.Parameters.AddWithValue("wage", user.Wage);
-
+                    command.Parameters.AddWithValue("role", user.Role.ToString());
 
                     return command.ExecuteNonQuery() > 0 ? true : false;
                 }

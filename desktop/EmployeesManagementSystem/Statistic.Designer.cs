@@ -112,9 +112,9 @@
             // 
             // pieChart
             // 
-            this.pieChart.Location = new System.Drawing.Point(43, 103);
+            this.pieChart.Location = new System.Drawing.Point(43, 130);
             this.pieChart.Name = "pieChart";
-            this.pieChart.Size = new System.Drawing.Size(436, 430);
+            this.pieChart.Size = new System.Drawing.Size(436, 403);
             this.pieChart.TabIndex = 5;
             // 
             // label1
@@ -252,6 +252,8 @@
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Statistic";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Statistic";

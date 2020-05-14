@@ -61,21 +61,14 @@ namespace EmployeesManagementSystem
         {
             if (!dataGridView.CurrentCell.ColumnIndex.Equals(6) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
-                // open another message box with the whole description
-                int index = dataGridView.CurrentCell.RowIndex;
-                int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
-                ConfirmCancellation confirm = new ConfirmCancellation(id);
-                confirm.Show();
-                txDescription.Text = "Message: " + dataGridView.CurrentCell.Value.ToString();
+                txDescription.Text = "Message: \n" + dataGridView.CurrentCell.Value.ToString();
             }
             else if (dataGridView.CurrentCell.ColumnIndex.Equals(6) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
                 int index = dataGridView.CurrentCell.RowIndex;
-                //MessageBox.Show(Convert.ToString(dataGridView.Rows[index].Cells[0].Value));
                 int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
                 cancellationContext.DeleteById(id);
                 dataGridView.Rows.Remove(dataGridView.Rows[index]);
-
             }
 
 
@@ -123,7 +116,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Statistic stat = new Statistic();
+            Statistic stat = new Statistic(loggedUser, this);
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }
@@ -164,7 +157,7 @@ namespace EmployeesManagementSystem
 
         // Hovering
         private void btnExit_MouseEnter(object sender, EventArgs e)
-            {
+        {
             this.btnExit.BackColor = Color.LightGray;
         }
         private void btnExit_MouseLeave(object sender, EventArgs e)

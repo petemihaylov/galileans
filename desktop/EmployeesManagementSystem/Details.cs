@@ -295,7 +295,9 @@ namespace EmployeesManagementSystem
 
                 u.Email = tbEmail.Text;
                 u.PhoneNumber = tbPhoneNumber.Text;
-                u.Role = (Role)cbRole.SelectedIndex;
+
+                Enum.TryParse(cbRole.SelectedIndex.ToString(), out Role role);
+                u.Role = role;
 
                 Department department = departmentContext.GetDepartmentByName(cbDepartment.Text);
                 if (department != null)

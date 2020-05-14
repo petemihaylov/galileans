@@ -14,9 +14,11 @@ namespace EmployeesManagementSystem.Models
         public string Email { get; set; }
         public string Subject { get; set; }
         public string Message { get; set; }
-        public Employee Employee { get; set; }
+
+        private User user = new User();
+        public User Employee { get { return this.user; } set { this.user = value; } }
         public Cancellation() { }
-        public Cancellation(int id, DateTime date, string email, string subject, string message, Employee employee)
+        public Cancellation(int id, DateTime date, string email, string subject, string message, User employee)
         {
             this.ID = id;
             this.Date = date;
@@ -27,7 +29,7 @@ namespace EmployeesManagementSystem.Models
         }
         public string[] GetInfo()
         {
-            string[] s = { this.ID.ToString() , this.Date.ToString() , this.Employee.FullName, this.Email, this.Subject, this.Message, "Delete"};
+            string[] s = { this.ID.ToString() , this.Date.ToString() , "Name", this.Email, this.Subject, this.Message, "Delete"};
             return s;
         }
     }

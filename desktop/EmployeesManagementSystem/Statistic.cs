@@ -36,9 +36,14 @@ namespace EmployeesManagementSystem
         Dictionary<string, List<KeyValuePair<string, int>>> cancelledShifts
                  = new Dictionary<string, List<KeyValuePair<string, int>>>();
 
-        public Statistic()
+        private User user;
+        private Form previousForm;
+
+        public Statistic(User loggedUser, Form previousForm)
         {
             InitializeComponent();
+            this.user = loggedUser;
+            this.previousForm = previousForm;
 
             departments = departmentContext.GetAllDepartments().OfType<Department>().ToList();
             users = userContext.GetAllUsers().OfType<User>().ToList();
@@ -187,12 +192,11 @@ namespace EmployeesManagementSystem
         }
         private void picBack_Click(object sender, EventArgs e)
         {
-            this.Hide();
 
-            // Show Dashboard
-            Dashboard dashboard = new Dashboard();
-            dashboard.Closed += (s, args) => this.Close();
-            dashboard.Show();
+            // Show previous form
+            previousForm.Closed += (s, args) => this.Close();
+            previousForm.Show();
+            this.Hide();
         }
         private void exit_Click(object sender, EventArgs e)
         {
