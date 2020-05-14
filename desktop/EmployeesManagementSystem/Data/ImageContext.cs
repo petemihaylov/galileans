@@ -3,10 +3,42 @@ using MySql.Data.MySqlClient;
 
 namespace EmployeesManagementSystem.Data
 {
-    class ImageContext : DbContext
+    public class ImageContext : DbContext
     {
-        
-        public ImageClass GetImgByUser(int userId)
+        public override bool Insert(object obj)
+        {
+            Picture image = (Picture)obj;
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"INSERT INTO Image (UserID, UrlPath)" +
+                    " VALUES(@userId, @urlPath)";
+
+                    command.AddParameter("userId", image.User.ID);
+                    command.AddParameter("urlPath", image.UrlPath);
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+
+                }
+            }
+        }
+        public override bool DeleteById(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"DELETE FROM Image WHERE ID = @ID";
+                    command.AddParameter("ID", id);
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+
+            }
+        }
+        public Picture GetImgByUser(int id)
         {
             using (var con = new MySqlConnection(connectionString))
             {
@@ -15,31 +47,26 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Images WHERE UserID = @userId";
-                    command.AddParameter("userId", userId);
+                    command.CommandText = @"SELECT * FROM Image WHERE UserID = @userId";
+                    command.AddParameter("userId", id);
 
                     // Ececuting it 
                     using (var reader = command.ExecuteReader())
                     {
-                        ImageClass img = new ImageClass();
+                        Picture img = new Picture();
                         if (reader.Read())
                         {
-                            // Mapping the return data to the object
-                            img.ID = (int)reader["ID"];
-                            img.UserID = (int)reader["UserID"];
-                            img.UrlPath = (string)reader["UrlPath"];
+                            MapObject(img, reader);
                         }
                         else
-                        {
-                            return null;
-                        }
+                        { return null; }
 
                         return img;
                     }
                 }
             }
         }
-        public void DeleteImgByUserId(int userId)
+        public void DeleteImgByUserId(int id)
         {
             using (var con = new MySqlConnection(connectionString))
             {
@@ -47,50 +74,20 @@ namespace EmployeesManagementSystem.Data
 
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"DELETE FROM Images WHERE UserID = @userID";
-                    command.AddParameter("userID", userId);
+                    command.CommandText = @"DELETE FROM Image WHERE UserID = @userID";
+                    command.AddParameter("userID", id);
                     command.ExecuteNonQuery();
                 }
 
             }
         }
-        
-
-        public override void Insert(object obj)
+        private Picture MapObject(Picture picture, MySqlDataReader reader)
         {
-            ImageClass image = (ImageClass)obj;
+            picture.ID = (int)reader["ID"];
+            picture.UrlPath = (string)reader["UrlPath"];
+            picture.User.ID = (int)reader["UserID"];
 
-            using (var con = new MySqlConnection(connectionString))
-            {
-                con.Open();
-
-
-                using (var command = con.CreateCommand())
-                {
-                    command.CommandText = @"INSERT INTO Images (UserID, UrlPath)" +
-                    " VALUES(@userId, @urlPath)";
-
-                    command.AddParameter("userId", image.UserID);
-                    command.AddParameter("urlPath", image.UrlPath);
-                    command.ExecuteNonQuery();
-
-                }
-            }
-        }
-        public override void DeleteById(int id)
-        {
-            using (var con = new MySqlConnection(connectionString))
-            {
-                con.Open();
-
-                using (var command = con.CreateCommand())
-                {
-                    command.CommandText = @"DELETE FROM Images WHERE ID = @ID";
-                    command.AddParameter("ID", id);
-                    command.ExecuteNonQuery();
-                }
-
-            }
+            return picture;
         }
     }
 }

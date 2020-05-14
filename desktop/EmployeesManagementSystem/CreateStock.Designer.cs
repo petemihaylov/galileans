@@ -42,6 +42,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.tbAmount = new System.Windows.Forms.ComboBox();
             this.tbPrice = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbDepartments = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -145,7 +147,7 @@
             this.btnCreateStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateStock.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateStock.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCreateStock.Location = new System.Drawing.Point(72, 508);
+            this.btnCreateStock.Location = new System.Drawing.Point(71, 557);
             this.btnCreateStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreateStock.Name = "btnCreateStock";
             this.btnCreateStock.Size = new System.Drawing.Size(302, 39);
@@ -174,7 +176,8 @@
             // 
             // tbAmount
             // 
-            this.tbAmount.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.tbAmount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tbAmount.Font = new System.Drawing.Font("Calibri", 12F);
             this.tbAmount.FormattingEnabled = true;
             this.tbAmount.Items.AddRange(new object[] {
             "25",
@@ -184,12 +187,13 @@
             "500"});
             this.tbAmount.Location = new System.Drawing.Point(72, 434);
             this.tbAmount.Name = "tbAmount";
-            this.tbAmount.Size = new System.Drawing.Size(302, 24);
+            this.tbAmount.Size = new System.Drawing.Size(302, 32);
             this.tbAmount.TabIndex = 47;
             // 
             // tbPrice
             // 
-            this.tbPrice.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.tbPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tbPrice.Font = new System.Drawing.Font("Calibri", 12F);
             this.tbPrice.FormattingEnabled = true;
             this.tbPrice.Items.AddRange(new object[] {
             "1.50",
@@ -199,14 +203,38 @@
             "50"});
             this.tbPrice.Location = new System.Drawing.Point(72, 360);
             this.tbPrice.Name = "tbPrice";
-            this.tbPrice.Size = new System.Drawing.Size(302, 24);
+            this.tbPrice.Size = new System.Drawing.Size(302, 32);
             this.tbPrice.TabIndex = 48;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(67, 477);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(103, 23);
+            this.label7.TabIndex = 50;
+            this.label7.Text = "Department";
+            // 
+            // cbDepartments
+            // 
+            this.cbDepartments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbDepartments.Font = new System.Drawing.Font("Calibri", 12F);
+            this.cbDepartments.FormattingEnabled = true;
+            this.cbDepartments.Location = new System.Drawing.Point(71, 502);
+            this.cbDepartments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbDepartments.Name = "cbDepartments";
+            this.cbDepartments.Size = new System.Drawing.Size(299, 32);
+            this.cbDepartments.TabIndex = 49;
             // 
             // CreateStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 619);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.cbDepartments);
             this.Controls.Add(this.tbPrice);
             this.Controls.Add(this.tbAmount);
             this.Controls.Add(this.btnCreateStock);
@@ -245,5 +273,7 @@
         private System.Windows.Forms.ComboBox tbAmount;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox tbPrice;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbDepartments;
     }
 }

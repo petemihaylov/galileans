@@ -6,9 +6,9 @@ using System;
 
 namespace EmployeesManagementSystem.Data
 {
-    class UserContext : DbContext
+    public class UserContext : DbContext
     {
-        public override void Insert(object obj)
+        public override bool Insert(object obj)
         {
             User user = (User)obj;
 
@@ -18,20 +18,20 @@ namespace EmployeesManagementSystem.Data
 
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO Users (FullName, Email, PhoneNumber, Password, Role, HourlyRate, DepartmentID) VALUES(@fullName, @email, @phoneNumber, @password, @role, @hourlyRate, @department)";
+                    command.CommandText = @"INSERT INTO User (FullName, Email, Password, PhoneNumber, Role, Wage)
+                                                      VALUES (@fullName, @email, @password , @phoneNumber, @role, @wage)";
 
                     command.AddParameter("fullName", user.FullName);
                     command.AddParameter("email", user.Email);
-                    command.AddParameter("phoneNumber", user.PhoneNumber);
-                    command.AddParameter("role", user.Role);
                     command.AddParameter("password", user.Password);
-                    command.AddParameter("hourlyRate", user.HourlyRate);
-                    command.AddParameter("department", user.Department);
-                    command.ExecuteNonQuery();
+                    command.AddParameter("phoneNumber", user.PhoneNumber);
+                    command.AddParameter("role", user.Role.ToString());
+                    command.AddParameter("wage", user.Wage);
+                    return command.ExecuteNonQuery() > 0 ? true : false;
                 }
             }
         }
-        public override void DeleteById(int id)
+        public override bool DeleteById(int id)
         {
             using (var con = new MySqlConnection(connectionString))
             {
@@ -39,14 +39,30 @@ namespace EmployeesManagementSystem.Data
 
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"DELETE FROM Users WHERE ID = @ID";
+                    command.CommandText = @"DELETE FROM User WHERE ID = @ID";
                     command.AddParameter("ID", id);
-                    command.ExecuteNonQuery();
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+            }
+        }
+        public bool DeleteUserByEmail(string email)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"DELETE FROM User WHERE Email = @email";
+                    command.AddParameter("email", email);
+
+                    // Check if you have deleted the shifts of this user!
+                    return command.ExecuteNonQuery() > 0 ? true : false;
                 }
             }
         }
 
-        public void UpdateUserInfo(User user)
+        public bool UpdateUserInfo(User user)
         {
 
             using (var con = new MySqlConnection(connectionString))
@@ -56,17 +72,34 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"UPDATE Users SET FullName = @fullname, Email = @email, PhoneNumber = @phonenumber, Role = @role, DepartmentID = @department WHERE ID = @ID";
+                    command.CommandText = @"UPDATE User SET FullName = @fullname, Email = @email, PhoneNumber = @phonenumber, Role = @role, Wage = @wage WHERE ID = @ID";
                     command.AddParameter("ID", user.ID);
                     // Executing it 
-                    command.Parameters.AddWithValue("@fullname", user.FullName);
-                    command.Parameters.AddWithValue("@email", user.Email);
-                    command.Parameters.AddWithValue("@phonenumber", user.PhoneNumber);
-                    command.Parameters.AddWithValue("@role", user.Role);
-                    command.Parameters.AddWithValue("@department", user.Department);
+                    command.Parameters.AddWithValue("fullname", user.FullName);
+                    command.Parameters.AddWithValue("email", user.Email);
+                    command.Parameters.AddWithValue("phonenumber", user.PhoneNumber);
+                    command.Parameters.AddWithValue("role", user.Role);
+                    command.Parameters.AddWithValue("wage", user.Wage);
 
 
-                    command.ExecuteNonQuery();
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+            }
+        }
+        public bool UpdatePassword(int userId, string password)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"UPDATE User SET Password = @password WHERE ID = @ID";
+                    command.AddParameter("ID", userId);
+                    // Executing it 
+                    command.Parameters.AddWithValue("@password", Hashing.HashPassword(password));
+                    return command.ExecuteNonQuery() > 0 ? true : false;
                 }
             }
         }
@@ -76,11 +109,10 @@ namespace EmployeesManagementSystem.Data
             using (var con = new MySqlConnection(connectionString))
             {
                 con.Open();
-
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Users";
+                    command.CommandText = @"SELECT * FROM User";
 
                     // Executing it 
                     using (var reader = command.ExecuteReader())
@@ -88,14 +120,9 @@ namespace EmployeesManagementSystem.Data
                         List<User> users = new List<User>();
                         while (reader.Read())
                         {
-                            // Mapping the return data to the object
                             User user = new User();
-                            user.ID = (int)reader["ID"];
-                            user.FullName = (string)reader["FullName"];
-                            user.Email = (string)reader["Email"];
-                            user.Password = (string)reader["Password"];
-                            user.Role = (string)reader["Role"];
-                            user.Department = (int)reader["DepartmentID"];
+                            MapObject(user, reader);
+
                             users.Add(user);
                         }
 
@@ -113,13 +140,12 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // select statement
-                    command.CommandText = @"select * from Users";
+                    command.CommandText = @"SELECT * FROM User";
 
                     // executing it 
                     using (var reader = command.ExecuteReader())
                     {
                         DataTable table = new DataTable();
-
                         if (reader.Read())
                         {
                             table.Load(reader);
@@ -130,9 +156,12 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+
+        // Should not be here 
         public User[] GetAllFilteredUsers(DataTable table)
         {
             List<User> users = new List<User>();
+
             foreach (DataRow row in table.Rows)
             {
                 User user = new User();
@@ -140,13 +169,16 @@ namespace EmployeesManagementSystem.Data
                 user.FullName = (string)row["FullName"];
                 user.Email = (string)row["Email"];
                 user.Password = (string)row["Password"];
-                user.Role = (string)row["Role"];
-                user.Department = (int)row["DepartmentID"];
+                Enum.TryParse((string)row["Role"], out Role role);
+                user.Role = role;
+                user.Wage = (double)row["Wage"];
+
                 users.Add(user);
             }
 
             return users.ToArray();
         }
+        
         public User GetUserByID(int ID)
         {
             using (var con = new MySqlConnection(connectionString))
@@ -155,30 +187,19 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Users WHERE ID = @userId";
-                    command.AddParameter("userId", ID);
+                    command.CommandText = @"SELECT * FROM User WHERE ID = @ID";
+                    command.AddParameter("ID", ID);
 
                     // Ececuting it 
                     using (var reader = command.ExecuteReader())
                     {
                         User user = new User();
+
                         if (reader.Read())
                         {
-                            // Mapping the return data to the object
-                            user.ID = (int)reader["ID"];
-                            user.FullName = (string)reader["FullName"];
-                            user.Email = (string)reader["Email"];
-                            user.PhoneNumber = (string)reader["PhoneNumber"];
-                            user.HourlyRate = (float)reader["HourlyRate"];
-                            user.Password = (string)reader["Password"];
-                            user.Role = (string)reader["Role"];
-                            user.Department = (int)reader["DepartmentID"];
-
+                            MapObject(user, reader);
                         }
-                        else
-                        {
-                            return null;
-                        }
+                        else { return null; }
 
                         // getting the actual user
                         return user;
@@ -186,7 +207,7 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
-        public User GetUserByName(string name)
+        public User GetUserByFullName(string fullname)
         {
             using (var con = new MySqlConnection(connectionString))
             {
@@ -194,30 +215,20 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Users WHERE FullName = @name";
-                    command.AddParameter("name", name);
+                    command.CommandText = @"SELECT * FROM Users WHERE FullName = @fullname";
+                    command.AddParameter("fullname", fullname);
+
 
                     // Ececuting it 
                     using (var reader = command.ExecuteReader())
                     {
                         User user = new User();
+
                         if (reader.Read())
                         {
-                            // Mapping the return data to the object
-                            user.ID = (int)reader["ID"];
-                            user.FullName = (string)reader["FullName"];
-                            user.Email = (string)reader["Email"];
-                            user.PhoneNumber = (string)reader["PhoneNumber"];
-                            user.HourlyRate = (float)reader["HourlyRate"];
-                            user.Password = (string)reader["Password"];
-                            user.Role = (string)reader["Role"];
-                            user.Department = (int)reader["DepartmentID"];
-
+                            MapObject(user, reader);
                         }
-                        else
-                        {
-                            return null;
-                        }
+                        else { return null; }
 
                         // getting the actual user
                         return user;
@@ -230,11 +241,11 @@ namespace EmployeesManagementSystem.Data
             using (var con = new MySqlConnection(connectionString))
             {
                 con.Open();
-
+                
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Users WHERE Email = @email";
+                    command.CommandText = @"SELECT * FROM User WHERE Email = @email";
                     command.AddParameter("email", email);
 
                     // Executing it 
@@ -243,20 +254,9 @@ namespace EmployeesManagementSystem.Data
                         User user = new User();
                         if (reader.Read())
                         {
-                            // Mapping the return data to the object
-                            user.ID = (int)reader["ID"];
-                            user.FullName = (string)reader["FullName"];
-                            user.Email = (string)reader["Email"];
-                            user.Password = (string)reader["Password"];
-                            user.HourlyRate = (float)reader["HourlyRate"];
-                            user.PhoneNumber = (string)reader["PhoneNumber"];
-                            user.Role = (string)reader["Role"];
-                            user.Department = (int)reader["DepartmentID"];
+                            MapObject(user, reader);
                         }
-                        else
-                        {
-                            return null;
-                        }
+                        else { return null; }
 
                         // getting the actual user
                         return user;
@@ -266,57 +266,19 @@ namespace EmployeesManagementSystem.Data
 
             }
         }
-        public void DeleteUsersWithEmail(string email)
+        private User MapObject(User user, MySqlDataReader reader)
         {
-            using (var con = new MySqlConnection(connectionString))
-            {
-                con.Open();
+            user.ID = (int)reader["ID"];
+            user.FullName = (string)reader["FullName"];
+            user.Email = (string)reader["Email"];
+            user.PhoneNumber = (string)reader["PhoneNumber"];
+            user.Wage = (double)reader["Wage"];
+            user.Password = (string)reader["Password"];
 
-                using (var command = con.CreateCommand())
-                {
-                    command.CommandText = @"DELETE FROM Users WHERE Email = @email";
-                    command.AddParameter("email", email);
-                    command.ExecuteNonQuery(); // check if you have deleted the shifts of this user!
-                }
-            }
-        }    
-        public void ResetPassword(int userId, string password)
-        {
-            using (var con = new MySqlConnection(connectionString))
-            {
-                con.Open();
+            Enum.TryParse((string)reader["Role"], out Role role);
+            user.Role = role;
+            return user;
 
-                using (var command = con.CreateCommand())
-                {
-                    // Select statement
-                    command.CommandText = @"UPDATE Users SET Password = @password WHERE ID = @ID";
-                    command.AddParameter("ID", userId);
-                    // Executing it 
-                    command.Parameters.AddWithValue("@password", Hashing.HashPassword(password));
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-        public int GetDepIDByUserId(int id)
-        {
-            using (var con = new MySqlConnection(connectionString))
-            {
-                con.Open();
-                using (var command = con.CreateCommand())
-                {
-                    command.CommandText = @"SELECT DepartmentID FROM Users WHERE ID = @id";
-                    command.AddParameter("id", id);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        int depID = 0;
-                        while (reader.Read())
-                        {
-                            depID = (int)reader["DepartmentID"];
-                        }
-                        return depID;
-                    }
-                }
-            }
         }
 
     }

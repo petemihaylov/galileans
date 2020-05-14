@@ -63,7 +63,7 @@ namespace EmployeesManagementSystem
         private void Shifts_Load(object sender, EventArgs e)
         {
             // Roles division
-            if (this.loggedUser.Role == Models.Role.Manager.ToString())
+            if (this.loggedUser.Role == Role.Manager)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = true;
@@ -72,7 +72,7 @@ namespace EmployeesManagementSystem
                 this.btnShifts.Enabled = false;
                 this.btnStatistics.Enabled = true;
             }
-            else if (this.loggedUser.Role == Models.Role.Administrator.ToString())
+            else if (this.loggedUser.Role == Role.Administrator)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = false;
@@ -99,44 +99,45 @@ namespace EmployeesManagementSystem
                 string selectedDepartment = this.cbDepartment.SelectedItem.ToString();
                 if (selectedDepartment.ToString() != "All")
                 {
-                    // MORNING
+                    // Morning
                     List<Shift> morning = getMorningShiftsForDate(dateTime);
                     this.morningList.Items.Clear();
                     foreach (var item in morning)
                     {
-                        if (item.DepartmentID == this.departmentList[selectedDepartment])
+                        if (item.Department.ID == this.departmentList[selectedDepartment])
                         {
 
                             char mark = item.Attended ? attendedMark : ' ';
-                            this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
+                           
+                            this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedUser.ID).FullName + " " + mark);
                             morningId.Add(item.ID);
                         }
                     }
 
-                    // EVENING
+                    // Evening
                     List<Shift> evening = getEveningShiftsForDate(dateTime);
                     this.eveningList.Items.Clear();
                     foreach (var item in evening)
                     {
-                        if (item.DepartmentID == this.departmentList[selectedDepartment])
+                        if (item.Department.ID == this.departmentList[selectedDepartment])
                         {
 
                             char mark = item.Attended ? attendedMark : ' ';
-                            this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
+                            this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedUser.ID).FullName + " " + mark);
                             eveningId.Add(item.ID);
                         }
                     }
 
-                    // AFTERNOON
+                    // Afternoon
                     List<Shift> afternoon = getAfternoonShiftsForDate(dateTime);
                     this.afternoonList.Items.Clear();
                     foreach (var item in afternoon)
                     {
-                        if (item.DepartmentID == this.departmentList[selectedDepartment])
+                        if (item.Department.ID == this.departmentList[selectedDepartment])
                         {
 
                             char mark = item.Attended ? attendedMark : ' ';
-                            this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
+                            this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedUser.ID).FullName + " " + mark);
                             afternoonId.Add(item.ID);
                         }
                     }
@@ -155,7 +156,7 @@ namespace EmployeesManagementSystem
 
         private void showAll(DateTime dateTime)
         {
-            // MORNING
+            // Morning
             List<Shift> morning = getMorningShiftsForDate(dateTime);
             morningId.Clear();
             eveningId.Clear();
@@ -164,31 +165,31 @@ namespace EmployeesManagementSystem
             foreach (var item in morning)
             {
                 char mark = item.Attended ? attendedMark : ' '; 
-                this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName  + " " + mark);
+                this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedUser.ID).FullName  + " " + mark);
                 morningId.Add(item.ID);
             }
 
-            // EVENING
+            // Evening
             List<Shift> evening = getEveningShiftsForDate(dateTime);
             this.eveningList.Items.Clear();
             foreach (var item in evening)
             {
 
                 char mark = item.Attended ? attendedMark : ' ';
-                this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
+                this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedUser.ID).FullName + " " + mark);
                 eveningId.Add(item.ID);
 
 
             }
 
-            // AFTERNOON
+            // Afternoon
             List<Shift> afternoon = getAfternoonShiftsForDate(dateTime);
             this.afternoonList.Items.Clear();
             foreach (var item in afternoon)
             {
 
                 char mark = item.Attended ? attendedMark : ' ';
-                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedEmployeeID).FullName + " " + mark);
+                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedUser.ID).FullName + " " + mark);
                 afternoonId.Add(item.ID);
 
             }
@@ -199,7 +200,7 @@ namespace EmployeesManagementSystem
             List<Shift> list = new List<Shift>();
             foreach (var item in shifts)
             {
-                if(item.Type == ShiftType.MORNING && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) ==  0)
+                if(item.Type == ShiftType.Morning && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) ==  0)
                 {
                     list.Add(item);
                 }
@@ -211,7 +212,7 @@ namespace EmployeesManagementSystem
             List<Shift> list = new List<Shift>();
             foreach (var item in shifts)
             {
-                if (item.Type == ShiftType.AFTERNOON && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) == 0)
+                if (item.Type == ShiftType.Afternoon && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) == 0)
                 {
                     list.Add(item);
                 }
@@ -223,7 +224,7 @@ namespace EmployeesManagementSystem
             List<Shift> list = new List<Shift>();
             foreach (var item in shifts)
             {
-                if (item.Type == ShiftType.EVENING && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) == 0)
+                if (item.Type == ShiftType.Evening && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) == 0)
                 {
                     list.Add(item);
                 }
@@ -305,7 +306,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Cancellations cncl = new Cancellations(this.loggedUser);
+            Messages cncl = new Messages(this.loggedUser);
             cncl.Closed += (s, args) => this.Close();
             cncl.Show();
         }
@@ -323,7 +324,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Statistic stat = new Statistic(this.loggedUser);
+            Statistic stat = new Statistic();
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }
