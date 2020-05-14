@@ -80,6 +80,8 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+
+        // Doesn't work properly
         public bool UpdateStock(Stock stock)
         {
             using (var con = new MySqlConnection(connectionString))

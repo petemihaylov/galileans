@@ -4,15 +4,15 @@ class Preference{
 
     private $ID;
     private $Date;
-    private $EmployeeID;
+    private $UserID;
     private $Availability;
     private $bookedColor;
 
 
-    function __construct($id, $date, $employeeId,  $availability){
+    function __construct($id, $date, $userID,  $availability){
         $this->ID = $id;
         $this->Date = $date;
-        $this->EmployeeID = $employeeId;
+        $this->UserID = $userID;
         $this->Availability = $availability;
     }
 
@@ -28,8 +28,8 @@ class Preference{
         return $this->Date;
     }
 
-    function get_EmployeeID(){
-        return $this->EmployeeID;
+    function get_UserID(){
+        return $this->UserID;
     }
 
 

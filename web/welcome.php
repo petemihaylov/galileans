@@ -52,7 +52,7 @@ function getPDF($arr){
 $shiftArray = array();
 
  // Prepare a select statement
- $sql = "SELECT ID, ShiftDate, StartTime, EndTime, ShiftType FROM Shifts Where AssignedEmployeeID = ?";
+ $sql = "SELECT ID, ShiftDate, StartTime, EndTime, ShiftType FROM Shift Where AssignedUserID = ?";
     if($stmt = mysqli_prepare($link, $sql)){
     
         mysqli_stmt_bind_param($stmt, "s", $_SESSION['id']);
@@ -91,7 +91,7 @@ $closestShift;
 
  // Prepare a select statement
  $sql = "SELECT ID, ShiftDate, StartTime, EndTime, ShiftType
-FROM Shifts WHERE ShiftDate <= ? && StartTime <= ? && AssignedEmployeeID = ? ORDER BY ShiftDate DESC, StartTime DESC limit 1";
+FROM Shift WHERE ShiftDate <= ? && StartTime <= ? && AssignedUserID = ? ORDER BY ShiftDate DESC, StartTime DESC limit 1";
 
 
 

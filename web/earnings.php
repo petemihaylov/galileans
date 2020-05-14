@@ -15,7 +15,7 @@ require_once "./includes/config.php";
 
 $AttendedCount = 0;
 // Get count of attended shifts for the current employee
-$sql = "SELECT COUNT(*) FROM Shifts WHERE AssignedEmployeeID = ? and Attended = 1;";
+$sql = "SELECT COUNT(*) FROM Shift WHERE AssignedUserID = ? and Attended = 1;";
 
 if($stmt = mysqli_prepare($link, $sql)){
     
@@ -40,7 +40,7 @@ if($stmt = mysqli_prepare($link, $sql)){
 
 
 $totalCountShifts = 0;
-$sql = "SELECT COUNT(*) FROM Shifts WHERE AssignedEmployeeID = ? ";
+$sql = "SELECT COUNT(*) FROM Shift WHERE AssignedUserID = ? ";
 
 if($stmt = mysqli_prepare($link, $sql)){
     
@@ -67,10 +67,10 @@ if($stmt = mysqli_prepare($link, $sql)){
 
 
 
-$HourlyRate = 0;
-// Get HourlyRate for the current employee
+$Wage = 0;
+// Get Wage for the current employee
 
-$sql = "SELECT HourlyRate FROM Users Where ID = ?;";
+$sql = "SELECT Wage FROM User Where ID = ?;";
 
 if($stmt = mysqli_prepare($link, $sql)){
     
@@ -84,7 +84,7 @@ if($stmt = mysqli_prepare($link, $sql)){
         
 
         if(mysqli_stmt_fetch($stmt)) {
-            $HourlyRate = $wage;
+            $Wage = $wage;
          }
     }else{
         echo "Oops! Something went wrong. Please try again later.";
@@ -142,7 +142,7 @@ if($stmt = mysqli_prepare($link, $sql)){
         <div class="total-container">
             <div class="money tracking-in-expand">
                 <h4> € </h4>
-                <h2 ><?php echo ($HourlyRate* $AttendedCount);?></h2>
+                <h2 ><?php echo ($Wage* $AttendedCount);?></h2>
                 <h3>00 </h3>
             </div>
             <div class="money-label text-focus-in">
@@ -150,7 +150,7 @@ if($stmt = mysqli_prepare($link, $sql)){
             </div>
         </div> 
         <div class="attendance-container">
-            <div class="attendance  tracking-in-expand" data-toggle="tooltip" title="<?php echo "Your hourly wage is: ". $HourlyRate . " €"?>">
+            <div class="attendance  tracking-in-expand" data-toggle="tooltip" title="<?php echo "Your hourly wage is: ". $Wage . " €"?>">
                     <h2><?php echo $AttendedCount;?></h2>
 					<h3><?php echo "/" . $totalCountShifts;?></h3>
             </div>
@@ -168,37 +168,41 @@ if($stmt = mysqli_prepare($link, $sql)){
 </div>
 
 <script>
+    document.querySelector('.chart-container').style.display = "none";
     
     $(document).ready(function(){
-        
         $.post("/includes/dataset.php",
-                function (data)
-                {
-                    console.log(data);
-                    var months = [];
-                    var counts = [];
+        function (data)
+        {
+            var months = [];
+            var counts = [];
 
-                    for (var i in data) {
-                        months.push(data[i][0]);
-                        
-                        counts.push(data[i][1]);
-                        
+            for (var i in data) {
+                months.push(data[i][0]);
+                
+                counts.push(data[i][1]);
+                
+            }
+
+            var chartdata = {
+                labels: months,
+                datasets: [
+                    {                
+                        label: 'Total Shifts <?php echo $totalCountShifts ?>',
+                        backgroundColor: '#8899C5',
+                        borderColor: '#8879C5',
+                        data: counts
                     }
+                ]
+            };
+              
+            // show the container
+            document.querySelector('.chart-container').style.display = "block";
 
-                    var chartdata = {
-                        labels: months,
-                        datasets: [
-                            {                
-                                label: 'Total Shifts <?php echo $totalCountShifts ?>',
-                                backgroundColor: '#8899C5',
-                                borderColor: '#8879C5',
-                                data: counts
-                            }
-                        ]
-                    };
-                            
-                var ctx = document.getElementById('myChart').getContext('2d');
-                var chart = new Chart(ctx, {
+            // date is defined and has at least one element
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                
                 // The type of chart we want to create
                 type: 'line',
 
@@ -207,9 +211,8 @@ if($stmt = mysqli_prepare($link, $sql)){
 
                 // Configuration options go here
                 options: {}
-                });
-
-                });
+                });         
+        });
 
     });
 </script>

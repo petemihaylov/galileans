@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem.Data.Tests
 {
@@ -14,31 +15,11 @@ namespace EmployeesManagementSystem.Data.Tests
         [TestMethod()]
         public void InsertTest()
         {
-            Assert.Fail();
+            DepartmentContext departmentContext = new DepartmentContext();
+            Department department = new Department("NewDepartment");
+
+            Assert.IsTrue(departmentContext.Insert(department));
         }
 
-        [TestMethod()]
-        public void DeleteByIdTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void GetAllDepartmentsTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void GetDepartmentByNameTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void GetDepartmentByIdTest()
-        {
-            Assert.Fail();
-        }
     }
 }
