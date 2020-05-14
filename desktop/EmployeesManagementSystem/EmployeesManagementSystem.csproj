@@ -47,9 +47,23 @@
     <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=8.0.19.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.19\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
@@ -108,6 +122,7 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -121,6 +136,7 @@
       <HintPath>..\packages\MySql.Data.8.0.19\lib\net452\Ubiety.Dns.Core.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminDetails.cs">
@@ -128,6 +144,12 @@
     </Compile>
     <Compile Include="AdminDetails.Designer.cs">
       <DependentUpon>AdminDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmCancellation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmCancellation.Designer.cs">
+      <DependentUpon>ConfirmCancellation.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateDepartment.cs">
       <SubType>Form</SubType>
@@ -141,20 +163,24 @@
     <Compile Include="CreateStock.Designer.cs">
       <DependentUpon>CreateStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\Conversion\ConversionManager.cs" />
     <Compile Include="Data\AvailabilityContext.cs" />
     <Compile Include="Data\CancellationContext.cs" />
+    <Compile Include="Data\Conversion\DataConverterCSV.cs" />
     <Compile Include="Data\DepartmentContext.cs" />
     <Compile Include="Data\ImageContext.cs" />
     <Compile Include="Data\ShiftContext.cs" />
     <Compile Include="Data\StockContext.cs" />
     <Compile Include="Data\UserContext.cs" />
+    <Compile Include="Data\UserDepartmentContext.cs" />
+    <Compile Include="Data\Conversion\JsonSerializer.cs" />
     <Compile Include="Models\Availability.cs" />
-    <Compile Include="Models\Cancellations.cs" />
-    <Compile Include="Cancellations.cs">
+    <Compile Include="Models\Cancellation.cs" />
+    <Compile Include="Messages.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cancellations.Designer.cs">
-      <DependentUpon>Cancellations.cs</DependentUpon>
+    <Compile Include="Messages.Designer.cs">
+      <DependentUpon>Messages.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateAccounts.cs">
       <SubType>Form</SubType>
@@ -187,20 +213,26 @@
     <Compile Include="Details.Designer.cs">
       <DependentUpon>Details.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Encrypt.cs" />
-    <Compile Include="Data\Hashing.cs" />
+    <Compile Include="Data\Password\Encrypt.cs" />
+    <Compile Include="Data\Password\Hashing.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Shift\ShiftType.cs" />
+    <Compile Include="Models\UserDepartment.cs" />
+    <Compile Include="Models\User\Administrator.cs" />
     <Compile Include="Models\Department.cs" />
-    <Compile Include="Models\ImageClass.cs" />
-    <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\Shift.cs" />
+    <Compile Include="Models\User\Employee.cs" />
+    <Compile Include="Models\ErrorMessage.cs" />
+    <Compile Include="Models\Picture.cs" />
+    <Compile Include="Models\User\Manager.cs" />
+    <Compile Include="Models\User\Role.cs" />
+    <Compile Include="Models\Shift\Shift.cs" />
     <Compile Include="Models\Stock.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\User\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReloadStock.cs">
@@ -242,8 +274,11 @@
     <EmbeddedResource Include="AdminDetails.resx">
       <DependentUpon>AdminDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cancellations.resx">
-      <DependentUpon>Cancellations.cs</DependentUpon>
+    <EmbeddedResource Include="Messages.resx">
+      <DependentUpon>Messages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmCancellation.resx">
+      <DependentUpon>ConfirmCancellation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccounts.resx">
       <DependentUpon>CreateAccounts.cs</DependentUpon>
@@ -439,6 +474,10 @@
   <ItemGroup>
     <None Include="Resources\stock-icon-png-12.png" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

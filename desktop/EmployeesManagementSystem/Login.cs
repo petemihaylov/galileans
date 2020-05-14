@@ -13,6 +13,7 @@ namespace EmployeesManagementSystem
         private UserContext userContext = new UserContext();
         private ShiftContext shiftContext = new ShiftContext();
         private ImageContext imageContext = new ImageContext();
+        private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
         
         public Login()
         {
@@ -20,15 +21,16 @@ namespace EmployeesManagementSystem
             clearColor();
 
             //insert data so you can actually login
-            var user = userContext.GetUserByEmail("admin");
+            var user = userContext.GetUserByEmail("admin@mail.com");
             if (user != null)
             {
                 int adminID = user.ID;
-                shiftContext.DeleteShiftByUserId(adminID);
+                shiftContext.DeleteShiftsByUser(adminID);
                 imageContext.DeleteImgByUserId(adminID);
-                userContext.DeleteUsersWithEmail("admin");
+                userDepartmentContext.DeleteByUser(adminID);
+                userContext.DeleteUserByEmail("admin@mail.com");
             }
-            userContext.Insert(new User("admin", "admin", "+31 6430 2303",Hashing.HashPassword("admin"),Role.Administrator.ToString(), -100, 0));
+            userContext.Insert(new Administrator(-1, "admin", "admin@mail.com", "+31 6430 2303", Hashing.HashPassword("admin"), 0));
         }
 
         private void activeLogin()
@@ -66,7 +68,7 @@ namespace EmployeesManagementSystem
                 if (Hashing.ValidatePassword(password, user.Password))
                 {
                     // Checking the role of the user
-                    if (user.Role == Role.Administrator.ToString())
+                    if (user.Role == Role.Administrator)
                     {
                         this.Hide();
                         // Show Dashboard
@@ -74,7 +76,7 @@ namespace EmployeesManagementSystem
                         dashboard.Closed += (s, args) => this.Close();
                         dashboard.Show();
                     }
-                    else if (user.Role == Role.Manager.ToString())
+                    else if (user.Role == Role.Manager)
                     {
                         this.Hide();
                         // Show Dashboard

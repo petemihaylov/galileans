@@ -9,8 +9,15 @@ namespace EmployeesManagementSystem
         protected string connectionString;
         public DbContext()
         {
-            // change the connection string in the App.config file
-            connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
+            // Change the connection string in the App.config file
+            try
+            {
+                connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
+            }
+            catch (Exception)
+            {
+                connectionString = "Server=remotemysql.com;Uid=Crj2OTSNvh;Database=Crj2OTSNvh;Pwd=3bNXrfEhiw;";
+            }
         }
 
         public abstract bool Insert(object obj);

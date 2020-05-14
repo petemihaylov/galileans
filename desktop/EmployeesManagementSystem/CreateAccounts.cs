@@ -15,6 +15,7 @@ namespace EmployeesManagementSystem
         private Dashboard dashboard;
         private UserContext userContext = new UserContext();
         private DepartmentContext departmentContext = new DepartmentContext();
+        private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
         private Department[] departments;
 
         // Default Constructor
@@ -39,7 +40,6 @@ namespace EmployeesManagementSystem
                 {
                     cbDepartments.Items.Add(d.Name);
                 }
-                cbDepartments.SelectedIndex = 0;
             }
             
         }
@@ -57,11 +57,14 @@ namespace EmployeesManagementSystem
                     string phoneNumber = this.tbPhone.Text;
                     string password = this.tbPassword.Text;
                     string confirmationPassword = this.tbConfirmationPassword.Text;
-                    string role = cbRole.SelectedText;
-                    int department = 0;
+
+                    Enum.TryParse(cbRole.Text, out Role role);
+                    int department = 1;
+                 
                     if (cbDepartments.SelectedIndex  != -1)
                     {
                          department = departments[cbDepartments.SelectedIndex].ID;
+                        
                     }
 
                     if (isNameValid(fullName) && isEmailValid(email) && isPhoneValid(phoneNumber) && isWageValid(hourlyRate) && isPasswordValid(password) && isPasswordValid(confirmationPassword))
@@ -77,8 +80,15 @@ namespace EmployeesManagementSystem
                                 string generatedPassword = Hashing.HashPassword(password);
 
                                 // Create new User
-                                User user = new User(fullName, email, phoneNumber, generatedPassword, role, hourlyRate, department);
+                                User user = new User(0,fullName, email, phoneNumber, generatedPassword, role, hourlyRate);
                                 this.userContext.Insert(user);
+                                // Insert in UserDepartment Table
+                                UserDepartment ud = new UserDepartment();
+
+                                ud.Department.ID = department;
+                                ud.User = userContext.GetUserByEmail(email);
+                                this.userDepartmentContext.Insert(ud);
+
                                 this.dashboard.UpdateDashboard();
                                 this.Close();
                             }

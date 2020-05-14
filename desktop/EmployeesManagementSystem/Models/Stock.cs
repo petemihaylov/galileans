@@ -6,27 +6,45 @@ using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem.Models
 {
-    class Stock
+    public class Stock
     {
-        public int  ID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
-        public int Amount { get;  set; }
-        public double Price { get; set; }
-        public bool Availability { get; set; }
+        private double price;
+        public double Price
+        {
+            get { return this.price; }
+            set
+            {
+                if (value >= 0)
+                {
+                    this.price = value;
+                }
+                else
+                {
+                    Console.WriteLine(ErrorMessage.NegativePrice());
+                }
+            }
+        }
+        private int amount;
+        public int Amount { get { return this.amount; } set { this.amount = value; } }
+        public bool Availability { get; set; } = false;
+        private Department department = new Department();
+        public Department Department { get { return this.department; } set { this.department = value; } }
 
-        public Stock(string name, int amount, double price, bool availability)
+        public Stock(string name, int amount, double price, bool availability, Department department)
         {
             this.Name = name;
             this.Amount = amount;
             this.Price = price;
             this.Availability = availability;
+            this.Department = department;
 
         }
         public Stock() { }
-
         public string[] GetInfo()
         {
-            string[] s = { Convert.ToString(this.ID), this.Name, Convert.ToString(this.Price), Convert.ToString(this.Amount), Convert.ToString(Availability), "Reload"};
+            string[] s = { this.ID.ToString(), this.Name, this.Price.ToString(), this.Amount.ToString(), Convert.ToString(Availability), "Reload" };
             return s;
         }
         public bool SellStock(int amount)

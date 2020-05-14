@@ -23,14 +23,14 @@ namespace EmployeesManagementSystem
         }
         private void btnReaload_Click(object sender, EventArgs e)
         {
-            Stock stock = stockContext.GetStockByID(stockID);
+            Stock stock = stockContext.GetStockById(stockID);
 
             
             if (getValidAmount() == -1) return; // checking for error
 
             stock.Amount += getValidAmount();
 
-            stockContext.UpdateStockByID(stock.ID, stock.Name, stock.Price, stock.Amount, true);
+            stockContext.UpdateStock( new Stock(stock.Name, stock.Amount, stock.Price, true, stock.Department));
             stocksForm.UpdateStocks();
 
             this.Close();

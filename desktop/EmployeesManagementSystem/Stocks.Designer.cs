@@ -609,6 +609,7 @@
             this.btnCreate.Size = new System.Drawing.Size(181, 38);
             this.btnCreate.TabIndex = 12;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnCreate.Paint += new System.Windows.Forms.PaintEventHandler(this.btnCreate_Paint);
             this.btnCreate.MouseEnter += new System.EventHandler(this.btnCreate_MouseEnter);
             this.btnCreate.MouseLeave += new System.EventHandler(this.btnCreate_MouseLeave);
             // 

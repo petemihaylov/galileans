@@ -7,12 +7,12 @@ using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
 {
-    public partial class Cancellations : Form
+    public partial class Messages : Form
     {
         private CancellationContext cancellationContext = new CancellationContext();
         private User loggedUser;
 
-        public Cancellations(User user)
+        public Messages(User user)
         {
             InitializeComponent();
             this.loggedUser = user;
@@ -21,7 +21,7 @@ namespace EmployeesManagementSystem
         private void Complaint_Load(object sender, EventArgs e)
         {
             // Roles division
-            if (this.loggedUser.Role == Models.Role.Manager.ToString())
+            if (this.loggedUser.Role == Role.Manager)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = true;
@@ -30,7 +30,7 @@ namespace EmployeesManagementSystem
                 this.btnShifts.Enabled = false;
                 this.btnStatistics.Enabled = true;
             }
-            else if (this.loggedUser.Role == Models.Role.Administrator.ToString())
+            else if (this.loggedUser.Role == Role.Administrator)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = false;
@@ -43,8 +43,8 @@ namespace EmployeesManagementSystem
             //needs to upload as the program runs in the future
             try
             {
-                Models.Cancellations[] cancels = cancellationContext.GetAnnouncements();
-                foreach (Models.Cancellations cancel in cancels)
+                Cancellation[] cancels = cancellationContext.GetCancellations();
+                foreach (Cancellation cancel in cancels)
                 {
                     dataGridView.Rows.Add(cancel.GetInfo());
                 }
@@ -62,6 +62,10 @@ namespace EmployeesManagementSystem
             if (!dataGridView.CurrentCell.ColumnIndex.Equals(6) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
                 // open another message box with the whole description
+                int index = dataGridView.CurrentCell.RowIndex;
+                int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
+                ConfirmCancellation confirm = new ConfirmCancellation(id);
+                confirm.Show();
                 txDescription.Text = "Message: " + dataGridView.CurrentCell.Value.ToString();
             }
             else if (dataGridView.CurrentCell.ColumnIndex.Equals(6) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
@@ -119,7 +123,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Statistic stat = new Statistic(this.loggedUser);
+            Statistic stat = new Statistic();
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }
