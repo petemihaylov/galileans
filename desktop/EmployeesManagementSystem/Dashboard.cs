@@ -279,6 +279,8 @@ namespace EmployeesManagementSystem
             stat.Show();
         }
 
+        private Color Enter = Color.DarkGray;
+        private Color Leave = Color.LightGray;
 
         // Hovering onn the the images
         private void btnExit_MouseEnter(object sender, EventArgs e)

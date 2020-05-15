@@ -521,5 +521,25 @@ namespace EmployeesManagementSystem
             // Updating listing of shifts 
             displayShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -219,7 +219,7 @@ namespace EmployeesManagementSystem
         }
         private void csvbtn_Click(object sender, EventArgs e)
         {
-            DataConverterCSV dataConverterCSV = new DataConverterCSV("users.csv");
+            DataConverterCSV dataConverterCSV = new DataConverterCSV("users");
             UserContext userContext = new UserContext();
             User[] users = userContext.GetAllUsers();
 
