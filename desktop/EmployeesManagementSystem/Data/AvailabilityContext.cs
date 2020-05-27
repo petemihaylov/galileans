@@ -25,6 +25,7 @@ namespace EmployeesManagementSystem.Data
                     command.AddParameter("userID", availability.User.ID);
                     command.AddParameter("date", availability.Date);
                     command.AddParameter("available", availability.Available);
+
                     return command.ExecuteNonQuery() > 0 ? true : false;
                 }
             }

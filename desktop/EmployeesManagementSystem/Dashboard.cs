@@ -274,11 +274,13 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Statistic stat = new Statistic();
+            Statistic stat = new Statistic(loggedUser, this);
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }
 
+        private Color Enter = Color.DarkGray;
+        private Color Leave = Color.LightGray;
 
         // Hovering onn the the images
         private void btnExit_MouseEnter(object sender, EventArgs e)

@@ -96,9 +96,6 @@
             this.btnToday = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox18 = new System.Windows.Forms.PictureBox();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.currentTime = new System.Windows.Forms.Timer(this.components);
@@ -143,9 +140,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnArrowRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnArrowLeft)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -206,12 +200,12 @@
             // 
             // btnStatistics
             // 
-            this.btnStatistics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnStatistics.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnStatistics.Controls.Add(this.pictureBox21);
             this.btnStatistics.Controls.Add(this.label10);
             this.btnStatistics.Controls.Add(this.pictureBox22);
             this.btnStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStatistics.Location = new System.Drawing.Point(12, 577);
+            this.btnStatistics.Location = new System.Drawing.Point(12, 501);
             this.btnStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStatistics.Name = "btnStatistics";
             this.btnStatistics.Size = new System.Drawing.Size(229, 41);
@@ -326,11 +320,11 @@
             // 
             // btnShifts
             // 
-            this.btnShifts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnShifts.BackColor = System.Drawing.Color.LightGray;
             this.btnShifts.Controls.Add(this.pictureBox13);
             this.btnShifts.Controls.Add(this.pictureBox14);
             this.btnShifts.Controls.Add(this.label9);
-            this.btnShifts.Location = new System.Drawing.Point(12, 508);
+            this.btnShifts.Location = new System.Drawing.Point(12, 230);
             this.btnShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnShifts.Name = "btnShifts";
             this.btnShifts.Size = new System.Drawing.Size(229, 41);
@@ -372,11 +366,11 @@
             // 
             // btnStocks
             // 
-            this.btnStocks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnStocks.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnStocks.Controls.Add(this.pictureBox3);
             this.btnStocks.Controls.Add(this.pictureBox11);
             this.btnStocks.Controls.Add(this.label2);
-            this.btnStocks.Location = new System.Drawing.Point(12, 439);
+            this.btnStocks.Location = new System.Drawing.Point(12, 365);
             this.btnStocks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStocks.Name = "btnStocks";
             this.btnStocks.Size = new System.Drawing.Size(229, 41);
@@ -419,11 +413,11 @@
             // 
             // btnDepartments
             // 
-            this.btnDepartments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDepartments.BackColor = System.Drawing.Color.LightGray;
             this.btnDepartments.Controls.Add(this.pictureBox8);
             this.btnDepartments.Controls.Add(this.pictureBox5);
             this.btnDepartments.Controls.Add(this.label4);
-            this.btnDepartments.Location = new System.Drawing.Point(12, 370);
+            this.btnDepartments.Location = new System.Drawing.Point(12, 299);
             this.btnDepartments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDepartments.Name = "btnDepartments";
             this.btnDepartments.Size = new System.Drawing.Size(229, 41);
@@ -466,11 +460,11 @@
             // 
             // btnCancellations
             // 
-            this.btnCancellations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCancellations.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnCancellations.Controls.Add(this.pictureBox7);
             this.btnCancellations.Controls.Add(this.pictureBox4);
             this.btnCancellations.Controls.Add(this.label3);
-            this.btnCancellations.Location = new System.Drawing.Point(12, 302);
+            this.btnCancellations.Location = new System.Drawing.Point(12, 435);
             this.btnCancellations.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancellations.Name = "btnCancellations";
             this.btnCancellations.Size = new System.Drawing.Size(229, 41);
@@ -513,12 +507,12 @@
             // 
             // btnEmployees
             // 
-            this.btnEmployees.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEmployees.BackColor = System.Drawing.Color.LightGray;
             this.btnEmployees.Controls.Add(this.label7);
             this.btnEmployees.Controls.Add(this.pictureBox6);
             this.btnEmployees.Controls.Add(this.pictureBox12);
             this.btnEmployees.Controls.Add(this.label8);
-            this.btnEmployees.Location = new System.Drawing.Point(12, 231);
+            this.btnEmployees.Location = new System.Drawing.Point(12, 165);
             this.btnEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEmployees.Name = "btnEmployees";
             this.btnEmployees.Size = new System.Drawing.Size(229, 41);
@@ -607,7 +601,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_supervisor_account_black_48dp;
+            this.pictureBox1.Image = global::EmployeesManagementSystem.Properties.Resources.icons8_sunrise_64;
             this.pictureBox1.Location = new System.Drawing.Point(12, 9);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
@@ -620,11 +614,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label1.Location = new System.Drawing.Point(81, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 20);
+            this.label1.Size = new System.Drawing.Size(68, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Administration";
+            this.label1.Text = "SHIFTS";
             // 
             // groupBox5
             // 
@@ -828,7 +823,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.LightGray;
-            this.panel5.Location = new System.Drawing.Point(323, 439);
+            this.panel5.Location = new System.Drawing.Point(323, 450);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(300, 1);
@@ -838,31 +833,37 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1235, 391);
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label12.Location = new System.Drawing.Point(1235, 403);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(99, 27);
             this.label12.TabIndex = 53;
             this.label12.Text = "Evening";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(817, 398);
+            this.label13.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label13.Location = new System.Drawing.Point(817, 410);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(116, 27);
             this.label13.TabIndex = 52;
             this.label13.Text = "Afternoon";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(419, 398);
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label14.Location = new System.Drawing.Point(419, 410);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(99, 27);
             this.label14.TabIndex = 51;
             this.label14.Text = "Morning";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // morningList
             // 
@@ -930,7 +931,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGray;
-            this.panel2.Location = new System.Drawing.Point(739, 439);
+            this.panel2.Location = new System.Drawing.Point(739, 452);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(300, 1);
@@ -939,44 +940,12 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.LightGray;
-            this.panel3.Location = new System.Drawing.Point(1151, 439);
+            this.panel3.Location = new System.Drawing.Point(1151, 451);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(300, 1);
             this.panel3.TabIndex = 51;
-            // 
-            // pictureBox18
-            // 
-            this.pictureBox18.Image = global::EmployeesManagementSystem.Properties.Resources.icons8_evening_50;
-            this.pictureBox18.Location = new System.Drawing.Point(1188, 385);
-            this.pictureBox18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(41, 36);
-            this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox18.TabIndex = 64;
-            this.pictureBox18.TabStop = false;
-            // 
-            // pictureBox15
-            // 
-            this.pictureBox15.Image = global::EmployeesManagementSystem.Properties.Resources.icons8_sunrise_64;
-            this.pictureBox15.Location = new System.Drawing.Point(371, 389);
-            this.pictureBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(43, 36);
-            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox15.TabIndex = 63;
-            this.pictureBox15.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = global::EmployeesManagementSystem.Properties.Resources.icons8_wagon_50;
-            this.pictureBox10.Location = new System.Drawing.Point(769, 389);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(43, 32);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 54;
-            this.pictureBox10.TabStop = false;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // dataGridViewImageColumn1
             // 
@@ -1078,15 +1047,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1511, 827);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDisplay);
             this.Controls.Add(this.cbDepartment);
             this.Controls.Add(this.label29);
-            this.Controls.Add(this.pictureBox18);
-            this.Controls.Add(this.pictureBox15);
-            this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnToday);
@@ -1157,9 +1124,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnArrowRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnArrowLeft)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1222,9 +1186,6 @@
         private System.Windows.Forms.Button btnToday;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.PictureBox pictureBox15;
-        private System.Windows.Forms.PictureBox pictureBox18;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.Timer currentTime;

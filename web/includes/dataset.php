@@ -20,7 +20,6 @@ $shiftArray = array();
 $sql = "SELECT ID, ShiftDate, Attended FROM Shift WHERE AssignedUserID = ?";
 
 if($stmt = mysqli_prepare($link, $sql)){
-    
     mysqli_stmt_bind_param($stmt, "s", $_SESSION['id']);
     
     // Attempt to execute the prepared statement
@@ -30,7 +29,7 @@ if($stmt = mysqli_prepare($link, $sql)){
         mysqli_stmt_store_result($stmt);
             
         $rows = mysqli_stmt_num_rows($stmt);
-        
+       
         for ($i=0; $i < $rows; $i++) { 
                
                 mysqli_stmt_bind_result($stmt, $id, $shiftDate, $Attended);

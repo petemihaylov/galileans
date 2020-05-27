@@ -12,7 +12,8 @@ namespace EmployeesManagementSystem.Models
         public DateTime Date { get; set; }
         public bool Available { get; set; } = false;
 
-        public User User { get; set; }
+        private User user = new User();
+        public User User { get { return this.user; } set { this.user = value; } }
         public Availability() { }
 
         public Availability(User user, DateTime date, bool available)

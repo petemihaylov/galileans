@@ -94,7 +94,8 @@ namespace EmployeesManagementSystem
                     employees.Clear();
                     foreach (User u in userContext.GetAllUsers())
                     {
-                        if (userDepartmentContext.GetDepartmentByUser(u.ID) != null)
+                        var ret = userDepartmentContext.GetUserByDepartment(departmentContext.GetDepartmentByName(department).ID);
+                        if (ret != null && ret.ID == u.ID)
                         {
                             employees.Add(u);
                             this.listUsersByDepartment.Items.Add("#" + u.ID + " " + u.FullName.ToString());
@@ -178,7 +179,7 @@ namespace EmployeesManagementSystem
         {
             this.Hide();
             // Show Dashboard
-            Statistic stat = new Statistic();
+            Statistic stat = new Statistic(loggedUser, this);
             stat.Closed += (s, args) => this.Close();
             stat.Show();
         }

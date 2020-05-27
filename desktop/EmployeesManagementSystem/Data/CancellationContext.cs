@@ -45,7 +45,7 @@ namespace EmployeesManagementSystem.Data
                         {
                             // Mapping the return data to the object
                             Cancellation c = new Cancellation();
-
+                            MapObject(c, reader);
                             cancellations.Add(c);
                         }
                         return cancellations.ToArray();

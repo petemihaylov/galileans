@@ -112,6 +112,7 @@
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.White;
+            this.panelLeft.Controls.Add(this.btnShifts);
             this.panelLeft.Controls.Add(this.btnStatistics);
             this.panelLeft.Controls.Add(this.settingsPanel);
             this.panelLeft.Controls.Add(this.lbSettings);
@@ -134,7 +135,7 @@
             this.btnStatistics.Controls.Add(this.label5);
             this.btnStatistics.Controls.Add(this.pictureBox19);
             this.btnStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStatistics.Location = new System.Drawing.Point(12, 577);
+            this.btnStatistics.Location = new System.Drawing.Point(11, 476);
             this.btnStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStatistics.Name = "btnStatistics";
             this.btnStatistics.Size = new System.Drawing.Size(229, 41);
@@ -280,7 +281,7 @@
             this.btnStocks.Controls.Add(this.pictureBox9);
             this.btnStocks.Controls.Add(this.pictureBox11);
             this.btnStocks.Controls.Add(this.label6);
-            this.btnStocks.Location = new System.Drawing.Point(12, 429);
+            this.btnStocks.Location = new System.Drawing.Point(10, 342);
             this.btnStocks.Name = "btnStocks";
             this.btnStocks.Size = new System.Drawing.Size(230, 41);
             this.btnStocks.TabIndex = 6;
@@ -324,7 +325,7 @@
             this.btnDepartments.Controls.Add(this.pictureBox8);
             this.btnDepartments.Controls.Add(this.pictureBox5);
             this.btnDepartments.Controls.Add(this.label4);
-            this.btnDepartments.Location = new System.Drawing.Point(12, 360);
+            this.btnDepartments.Location = new System.Drawing.Point(9, 272);
             this.btnDepartments.Name = "btnDepartments";
             this.btnDepartments.Size = new System.Drawing.Size(230, 41);
             this.btnDepartments.TabIndex = 4;
@@ -368,7 +369,7 @@
             this.btnCancellations.Controls.Add(this.pictureBox7);
             this.btnCancellations.Controls.Add(this.pictureBox4);
             this.btnCancellations.Controls.Add(this.label3);
-            this.btnCancellations.Location = new System.Drawing.Point(12, 291);
+            this.btnCancellations.Location = new System.Drawing.Point(10, 411);
             this.btnCancellations.Name = "btnCancellations";
             this.btnCancellations.Size = new System.Drawing.Size(230, 41);
             this.btnCancellations.TabIndex = 4;
@@ -412,7 +413,7 @@
             this.btnEmployees.Controls.Add(this.pictureBox6);
             this.btnEmployees.Controls.Add(this.pictureBox3);
             this.btnEmployees.Controls.Add(this.label2);
-            this.btnEmployees.Location = new System.Drawing.Point(12, 221);
+            this.btnEmployees.Location = new System.Drawing.Point(11, 147);
             this.btnEmployees.Name = "btnEmployees";
             this.btnEmployees.Size = new System.Drawing.Size(230, 41);
             this.btnEmployees.TabIndex = 1;
@@ -486,9 +487,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(81, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 20);
+            this.label1.Size = new System.Drawing.Size(101, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Administration";
+            this.label1.Text = "Cancellation";
             // 
             // dataGridView
             // 
@@ -614,7 +615,7 @@
             this.btnShifts.Controls.Add(this.pictureBox12);
             this.btnShifts.Controls.Add(this.pictureBox15);
             this.btnShifts.Controls.Add(this.label9);
-            this.btnShifts.Location = new System.Drawing.Point(12, 508);
+            this.btnShifts.Location = new System.Drawing.Point(11, 211);
             this.btnShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnShifts.Name = "btnShifts";
             this.btnShifts.Size = new System.Drawing.Size(229, 41);
@@ -668,7 +669,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1455, 816);
-            this.Controls.Add(this.btnShifts);
             this.Controls.Add(this.txDescription);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.dataGridView);

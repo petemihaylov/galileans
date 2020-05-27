@@ -27,7 +27,7 @@ namespace EmployeesManagementSystem
             // Temporary validation used when debugging
             if (user == null)
             {
-                this.user = userContext.GetUserByEmail("admin");
+                this.user = userContext.GetUserByEmail("admin@mail.com");
             }
 
         }
