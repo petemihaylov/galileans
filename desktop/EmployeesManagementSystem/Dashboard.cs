@@ -11,11 +11,8 @@ namespace EmployeesManagementSystem
 {
     public partial class Dashboard : Form
     {
-        // Variables
-        private User[] users;
-        private DataTable table;
+        // Keeps track of the current logged user
         private User loggedUser;
-
         private DashboardController controller = new DashboardController();
 
         // Default constructor
@@ -35,10 +32,8 @@ namespace EmployeesManagementSystem
   
             try
             {
-                this.users = controller.GetUsers();
-                this.table = controller.GetUsersTable();
-
-                showInformation(this.users);
+                User[] users = controller.GetUsers();
+                showUsersInformation(users);
             }
             catch (Exception)
             {
@@ -75,22 +70,22 @@ namespace EmployeesManagementSystem
         public void UpdateDashboard()
         {
             this.dataGridView.Rows.Clear();
-            this.table = controller.GetUsersTable();
+            DataTable table = controller.GetUsersTable();
             User[] users = controller.GetUsers();
-            showInformation(users);
+            showUsersInformation(users);
         }
 
         // Search functionality
         private void searchField_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            this.table = controller.GetUsersTable();
+           DataTable table = controller.GetUsersTable();
 
             // Pressed enter
             if (e.KeyChar == (char)13)
             {
 
-                DataView dv = this.table.DefaultView;
+                DataView dv = table.DefaultView;
 
                 // Filter the rows
                 dv.RowFilter = string.Format("FullName Like '%{0}%'", controller.RemoveWhiteSpaces(this.searchField.Text));
@@ -98,23 +93,21 @@ namespace EmployeesManagementSystem
                 if (dv.ToTable().Rows.Count > 0)
                 {
                     User[] users = controller.GetFilteredUsers(dv);
-                    showInformation(users);
+                    showUsersInformation(users);
                 }
                 else
                 {
                     User[] users = controller.GetUsers();
-                    showInformation(users);
+                    showUsersInformation(users);
                 }
 
             }
 
         }
 
-
         // Update information method
-        private void showInformation(User[] users)
+        private void showUsersInformation(User[] users)
         {
-
             // Clean the dataGrid
             controller.ShowDataGridInfo(this.dataGridView, users);
             this.searchField.Text = String.Empty;
