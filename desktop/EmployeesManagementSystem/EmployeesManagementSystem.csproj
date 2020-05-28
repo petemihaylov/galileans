@@ -145,6 +145,7 @@
     <Compile Include="AdminDetails.Designer.cs">
       <DependentUpon>AdminDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="CreateDepartment.cs">
       <SubType>Form</SubType>
     </Compile>

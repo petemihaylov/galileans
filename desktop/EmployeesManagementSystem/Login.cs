@@ -1,36 +1,21 @@
 ﻿using System;
 using System.Drawing;
-using System.Net.Mail;
 using System.Windows.Forms;
-using EmployeesManagementSystem.Data;
-using System.Text.RegularExpressions;
 using EmployeesManagementSystem.Models;
+using EmployeesManagementSystem.Controllers;
 
 namespace EmployeesManagementSystem
 {
     public partial class Login : Form
     {
-        private UserContext userContext = new UserContext();
-        private ShiftContext shiftContext = new ShiftContext();
-        private ImageContext imageContext = new ImageContext();
-        private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
-        
+        private LoginController controller = new LoginController();
         public Login()
         {
             InitializeComponent();
             clearColor();
 
-            //insert data so you can actually login
-            var user = userContext.GetUserByEmail("admin@mail.com");
-            if (user != null)
-            {
-                int adminID = user.ID;
-                shiftContext.DeleteShiftsByUser(adminID);
-                imageContext.DeleteImgByUserId(adminID);
-                userDepartmentContext.DeleteByUser(adminID);
-                userContext.DeleteUserByEmail("admin@mail.com");
-            }
-            userContext.Insert(new Administrator(-1, "admin", "admin@mail.com", "+31 6430 2303", Hashing.HashPassword("admin"), 0));
+            // Insert data so you can actually login
+            controller.PrepareData();
         }
 
         private void activeLogin()
@@ -39,104 +24,79 @@ namespace EmployeesManagementSystem
             string email = this.tbEmail.Text;
             string password = this.tbPassword.Text;
 
-            // Validation with isNullOrEmpty you can pass with a single \t or space the WhiteSpace is securer
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            // Input validation returns false if it is not valid
+            if (controller.InputValidation(email, password) == false)
             {
                 warningColors();
                 return;
             }
             else
             {
-                User user = userContext.GetUserByEmail(email);
-                if (!IsEmailValid(email) && user == null)
+                // Check if user exists 
+                User user = controller.FindUser(email);
+
+                if (user != null)
+                {
+
+                    if (controller.isPasswordValid(password, user))
+                    {
+                        // Checking the role of the user
+                        if (controller.isRoleValid(user))
+                        {
+                            this.Hide();
+                            // Show Dashboard
+                            Dashboard dashboard = new Dashboard(user);
+                            dashboard.Closed += (s, args) => this.Close();
+                            dashboard.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Role restriction!");
+                        }
+                    }
+                    else
+                    {
+                        // Error Massage
+                        this.labelPassword.Text = "Password *";
+                        this.labelPassword.ForeColor = Color.PaleVioletRed;
+                        MessageBox.Show("Password not correct");
+                    }
+
+                }
+                else
                 {
                     // Indicates only the email
                     this.labelEmail.Text = "Email *";
                     this.labelEmail.ForeColor = Color.PaleVioletRed;
-
-                    return;
-                }
-
-
-            }
-
-
-            if (ifExists(email))
-            {
-                User user = userContext.GetUserByEmail(email);
-
-                if (Hashing.ValidatePassword(password, user.Password))
-                {
-                    // Checking the role of the user
-                    if (user.Role == Role.Administrator)
-                    {
-                        this.Hide();
-                        // Show Dashboard
-                        Dashboard dashboard = new Dashboard(user);
-                        dashboard.Closed += (s, args) => this.Close();
-                        dashboard.Show();
-                    }
-                    else if (user.Role == Role.Manager)
-                    {
-                        this.Hide();
-                        // Show Dashboard
-                        Dashboard dashboard = new Dashboard(user);
-                        dashboard.Closed += (s, args) => this.Close();
-                        dashboard.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Role restriction!");
-                    }
-                }
-                else
-                {
-                    this.labelPassword.Text = "Password *";
-                    this.labelPassword.ForeColor = Color.PaleVioletRed;
-                    MessageBox.Show("Password not correct");
+                    clearFields();
                 }
             }
-            else
-            {
-                // Indicates that the email is not existing
-                this.labelEmail.Text = "Email *";
-                this.labelEmail.ForeColor = Color.PaleVioletRed;
-            }
-            clearFields();
+
         }
 
+
+        // On pressed Enter key
+        private void login_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                activeLogin();
+            }
+
+        }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            activeLogin();            
+            activeLogin();
         }
 
-        // Validate the emails
-        // https://docs.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format?redirectedfrom=MSDN
-        private bool IsEmailValid(string emailaddress)
-        {
-            try
-            {
-                MailAddress m = new MailAddress(emailaddress);
 
-                return true;
-            }
-            catch (FormatException)
-            {
-                return false;
-            }
-        }
+        private void clearColor()
+        {
 
-        // Validate the password
-        // https://docs.microsoft.com/en-us/dotnet/api/system.web.security.validatepasswordeventargs?view=netframework-4.8
-        private bool IsPasswordValid(string password)
-        {
-            Regex rx = new Regex(@"(?=.{6,})(?=(.*\d){1,})(?=(.*\W){1,})");
-            return rx.IsMatch(password);
-        }
-        private bool ifExists(string email)
-        {
-            if (userContext.GetUserByEmail(email) != null) return true;
-            else return false;
+            this.labelEmail.Text = "Email";
+            this.labelPassword.Text = "Password";
+            this.labelEmail.ForeColor = Color.FromArgb(105, 105, 105);
+            this.labelPassword.ForeColor = Color.FromArgb(105, 105, 105);
         }
         private void clearFields()
         {
@@ -150,14 +110,8 @@ namespace EmployeesManagementSystem
             this.labelEmail.ForeColor = Color.PaleVioletRed;
             this.labelPassword.ForeColor = Color.PaleVioletRed;
         }
-        private void clearColor()
-        {
 
-            this.labelEmail.Text = "Email";
-            this.labelPassword.Text = "Password";
-            this.labelEmail.ForeColor = Color.FromArgb(105, 105, 105);
-            this.labelPassword.ForeColor = Color.FromArgb(105, 105, 105);
-        }
+
         private void exit_Click(object sender, EventArgs e)
         {
             // Closing the db connection 
@@ -178,14 +132,5 @@ namespace EmployeesManagementSystem
             this.exit.BackColor = Color.Transparent;
         }
 
-        // Enter in during the login form
-        private void login_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                activeLogin();
-            }
-
-        }
     }
 }
