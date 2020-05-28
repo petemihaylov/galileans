@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using EmployeesManagementSystem.Controllers;
 using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
 
@@ -14,8 +15,8 @@ namespace EmployeesManagementSystem
         private User[] users;
         private DataTable table;
         private User loggedUser;
-        private UserContext userContext = new UserContext();
-        private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
+
+        private DashboardController controller = new DashboardController();
 
         // Default constructor
         public Dashboard()
@@ -30,8 +31,25 @@ namespace EmployeesManagementSystem
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            RoleDivision();
+  
+            try
+            {
+                this.users = controller.GetUsers();
+                this.table = controller.GetUsersTable();
+
+                showInformation(this.users);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Can't display info correctly!");
+            }
+        }
+
+        private void RoleDivision()
+        {
             // Roles division
-            if(this.loggedUser.Role == Models.Role.Manager)
+            if (this.loggedUser.Role == Models.Role.Manager)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = true;
@@ -42,7 +60,7 @@ namespace EmployeesManagementSystem
                 this.btnCreate.Enabled = false;
                 this.btnCreate.Visible = false;
             }
-            else if(this.loggedUser.Role == Models.Role.Administrator)
+            else if (this.loggedUser.Role == Models.Role.Administrator)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = false;
@@ -51,26 +69,14 @@ namespace EmployeesManagementSystem
                 this.btnShifts.Enabled = true;
                 this.btnStatistics.Enabled = false;
             }
-            
-            try
-            {
-                this.users = this.userContext.GetAllUsers();
-                this.table = this.userContext.GetUsersTable();
 
-                showInformation(this.users);
-            }
-            catch (Exception)
-            {
-                throw new Exception("Can't display info correctly!");
-            }
         }
 
         public void UpdateDashboard()
         {
             this.dataGridView.Rows.Clear();
-            this.table = this.userContext.GetUsersTable();
-
-            User[] users = userContext.GetAllUsers();
+            this.table = controller.GetUsersTable();
+            User[] users = controller.GetUsers();
             showInformation(users);
         }
 
@@ -78,7 +84,7 @@ namespace EmployeesManagementSystem
         private void searchField_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            this.table = this.userContext.GetUsersTable();
+            this.table = controller.GetUsersTable();
 
             // Pressed enter
             if (e.KeyChar == (char)13)
@@ -87,46 +93,30 @@ namespace EmployeesManagementSystem
                 DataView dv = this.table.DefaultView;
 
                 // Filter the rows
-                dv.RowFilter = string.Format("FullName Like '%{0}%'", RemoveWhiteSpaces(this.searchField.Text));
+                dv.RowFilter = string.Format("FullName Like '%{0}%'", controller.RemoveWhiteSpaces(this.searchField.Text));
                 
                 if (dv.ToTable().Rows.Count > 0)
                 {
-                    User[] users = userContext.GetAllFilteredUsers(dv.ToTable());
+                    User[] users = controller.GetFilteredUsers(dv);
                     showInformation(users);
                 }
                 else
                 {
-                    User[] users = userContext.GetAllUsers();
+                    User[] users = controller.GetUsers();
                     showInformation(users);
                 }
 
             }
 
-        }
-
-        // Remove the WhiteSpaces
-        private string RemoveWhiteSpaces(string text)
-        {
-            return Regex.Replace(text, @"\s+|\t|\n|\r", String.Empty);
         }
 
 
         // Update information method
         private void showInformation(User[] users)
         {
+
             // Clean the dataGrid
-            this.dataGridView.Rows.Clear();
-
-            foreach (User user in users)
-            {
-                var arr = user.GetInfo();
-                var d = userDepartmentContext.GetDepartmentByUser(user.ID);
-                
-                if (d != null)
-                arr[arr.Length - 1] = d.Name;
-
-                this.dataGridView.Rows.Add(arr);
-            }
+            controller.ShowDataGridInfo(this.dataGridView, users);
             this.searchField.Text = String.Empty;
         }
 
@@ -145,7 +135,6 @@ namespace EmployeesManagementSystem
                 Details details = new Details(id, this.loggedUser, this);
                 details.DashoboardUpdate(this);
                 details.Show();
-
             }
 
             if (dataGridView.CurrentCell.ColumnIndex.Equals(Delete))
@@ -196,12 +185,7 @@ namespace EmployeesManagementSystem
         // Shifts
         private void btnShift_Click(object sender, EventArgs e)
         {
-
-            this.Hide();
-
-            Shifts shifts = new Shifts(this.loggedUser);
-            shifts.Closed += (s, args) => this.Close();
-            shifts.Show();
+            ShowForm(new Shifts(this.loggedUser));   
         }
 
         // Create Accounts
@@ -223,62 +207,46 @@ namespace EmployeesManagementSystem
         }
         private void editAccount_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            // Show Admin details
-            AdminDetails adminDetails = new AdminDetails(this.loggedUser, this);
-            adminDetails.Closed += (s, args) => this.Hide();
-            adminDetails.Show();
+            ShowForm( new AdminDetails(this.loggedUser, this));   
         }
         private void LogOut_Click(object sender, EventArgs e)
         {
-            this.Hide();
             // Show Log In
-            Login login = new Login();
-            login.Closed += (s, args) => this.Close();
-            login.Show();
+            ShowForm(new Login());
         }
+
 
         // Cancellations
         private void btnCancellations_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            // Show Dashboard
-            Messages cncl = new Messages(this.loggedUser);
-            cncl.Closed += (s, args) => this.Close();
-            cncl.Show();
+            ShowForm(new Messages(this.loggedUser));
         }
 
         // Departments
         private void btnDepartments_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            // Show Dashboard
-            Departments dep = new Departments(this.loggedUser);
-            dep.Closed += (s, args) => this.Close();
-            dep.Show();
-
+            ShowForm(new Departments(this.loggedUser));
         }
 
         // Stocks
         private void btnStocks_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            // Show Dashboard
-            Stocks stock = new Stocks(this.loggedUser);
-            stock.Closed += (s, args) => this.Close();
-            stock.Show();
+            ShowForm(new Stocks(this.loggedUser));
         }
 
         // Statistics
         private void btnStatistics_Click(object sender, EventArgs e)
         {
-            this.Hide();
             // Show Dashboard
-            Statistic stat = new Statistic(loggedUser, this);
-            stat.Closed += (s, args) => this.Close();
-            stat.Show();
+            ShowForm(new Statistic(loggedUser, this));
         }
 
+        private void ShowForm(Form form)
+        {
+            this.Hide();
+            form.Closed += (s, args) => this.Close();
+            form.Show();
+        }
         private Color Enter = Color.DarkGray;
         private Color Leave = Color.LightGray;
 
