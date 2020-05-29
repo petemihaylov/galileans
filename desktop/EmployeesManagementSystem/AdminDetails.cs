@@ -48,6 +48,7 @@ namespace EmployeesManagementSystem
             cbRole.Text = this.user.Role.ToString();
             this.UpdateImg(this.user.ID);
         }
+     
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             // basic validation
