@@ -79,12 +79,14 @@ namespace EmployeesManagementSystem
 
         private void visualizeShifts(DateTime date)
         {
+            // Should be changed repeating the same pattern
+
             //morning
             List<Shift> morning = getMorningShiftsForDate(date);
             resetShiftVisualMorning();
             foreach (var item in morning)
             {
-                if (item.StartTime.Hour == 9)
+                if (item.StartTime == StartTime.morning[0])
                 {
                     if (item.Availability) { lbMorn_first.Font = new Font("Arial", float.Parse("10.2")); picMor_first.Image = Properties.Resources.btnAdd; lbMorn_first.ForeColor = Color.Black; }
                     else
@@ -94,7 +96,7 @@ namespace EmployeesManagementSystem
                     }
                 }
 
-                if (item.StartTime.Hour == 10)
+                if (item.StartTime == StartTime.morning[1])
                 {
                     if (item.Availability) { lbMorn_second.Font = new Font("Arial", float.Parse("10.2")); picMor_second.Image = Properties.Resources.btnAdd; lbMorn_second.ForeColor = Color.Black; }
                     else
@@ -104,7 +106,7 @@ namespace EmployeesManagementSystem
                     }
                 }
 
-                if (item.StartTime.Hour == 11)
+                if (item.StartTime == StartTime.morning[2])
                 {
                     if (item.Availability) { lbMorn_third.Font = new Font("Arial", float.Parse("10.2")); picMor_third.Image = Properties.Resources.btnAdd; lbMorn_third.ForeColor = Color.Black; }
 
@@ -121,7 +123,7 @@ namespace EmployeesManagementSystem
             resetShiftVisualAfternoon();
             foreach (var item in afternoon)
             {
-                if (item.StartTime.Hour == 14)
+                if (item.StartTime == StartTime.afternoon[0])
                 {
                     if (item.Availability) { lbAft_first.Font = new Font("Arial", float.Parse("10.2")); picAft_first.Image = Properties.Resources.btnAdd; lbAft_first.ForeColor = Color.Black; }
                     else
@@ -131,7 +133,7 @@ namespace EmployeesManagementSystem
                     }
                 }
 
-                if (item.StartTime.Hour == 15)
+                if (item.StartTime == StartTime.afternoon[1])
                 {
                     if (item.Availability) { lbAft_second.Font = new Font("Arial", float.Parse("10.2")); picAft_second.Image = Properties.Resources.btnAdd; lbAft_second.ForeColor = Color.Black; }
                     else
@@ -141,7 +143,7 @@ namespace EmployeesManagementSystem
                     }
                 }
 
-                if (item.StartTime.Hour == 16)
+                if (item.StartTime == StartTime.afternoon[2])
                 {
                     if (item.Availability) { lbAft_third.Font = new Font("Arial", float.Parse("10.2")); picAft_third.Image = Properties.Resources.btnAdd; lbAft_third.ForeColor = Color.Black; }
 
@@ -158,7 +160,7 @@ namespace EmployeesManagementSystem
             resetShiftVisualEvening();
             foreach (var item in evening)
             {
-                if (item.StartTime.Hour == 20)
+                if (item.StartTime == StartTime.evening[0])
                 {
                     if (item.Availability) { lbEvn_first.Font = new Font("Arial", float.Parse("10.2")); picEvn_first.Image = Properties.Resources.btnAdd; lbEvn_first.ForeColor = Color.Black; }
                     else
@@ -168,7 +170,7 @@ namespace EmployeesManagementSystem
                     }
                 }
 
-                if (item.StartTime.Hour == 21)
+                if (item.StartTime == StartTime.evening[1])
                 {
                     if (item.Availability) { lbEvn_second.Font = new Font("Arial", float.Parse("10.2")); picEvn_second.Image = Properties.Resources.btnAdd; lbEvn_second.ForeColor = Color.Black; }
                     else
@@ -178,7 +180,7 @@ namespace EmployeesManagementSystem
                     }
                 }
 
-                if (item.StartTime.Hour == 22)
+                if (item.StartTime == StartTime.evening[2])
                 {
                     if (item.Availability) { lbEvn_third.Font = new Font("Arial", float.Parse("10.2")); picEvn_third.Image = Properties.Resources.btnAdd; lbEvn_third.ForeColor = Color.Black; }
 
@@ -311,7 +313,7 @@ namespace EmployeesManagementSystem
                     MessageBox.Show("User updated!");
 
                     if (this.dashboard != null) dashboard.UpdateDashboard();
-                    
+
                 }
                 else
                 {
@@ -381,19 +383,19 @@ namespace EmployeesManagementSystem
             showDate(DateTime.UtcNow.Date.AddDays(addDays));
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
+  
         private void picMor_first_Click(object sender, EventArgs e)
         {
 
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbMorn_first.ForeColor != Color.DimGray)
             {
-                shiftContext.Insert(new Shift(user, false, this.department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 9, 0, 0), new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), ShiftType.Morning));
-
+                shiftContext.Insert(new Shift(user, false, this.department, d, StartTime.morning[0], EndTime.morning[0], ShiftType.Morning));
             }
             else
             {
-                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 9, 0, 0));
+
+                Shift shift = shiftContext.GetShiftByDate(d, StartTime.morning[0]);
                 shiftContext.DeleteById(shift.ID);
             }
 
@@ -406,13 +408,13 @@ namespace EmployeesManagementSystem
             if (lbMorn_second.ForeColor != Color.DimGray)
             {
 
-                shiftContext.Insert(new Shift(user, false, department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 10, 0, 0), new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), ShiftType.Morning));
+                shiftContext.Insert(new Shift(user, false, department, d, StartTime.morning[1], EndTime.morning[1], ShiftType.Morning));
 
             }
             else
             {
-                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 10, 0, 0));
+
+                Shift shift = shiftContext.GetShiftByDate(d, StartTime.morning[1]);
                 shiftContext.DeleteById(shift.ID);
             }
 
@@ -424,31 +426,31 @@ namespace EmployeesManagementSystem
             if (lbMorn_third.ForeColor != Color.DimGray)
             {
 
-                shiftContext.Insert(new Shift(user, false, department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 11, 0, 0), new DateTime(d.Year, d.Month, d.Day, 12, 0, 0), ShiftType.Morning));
+                shiftContext.Insert(new Shift(user, false, department, d, StartTime.morning[2], EndTime.morning[2], ShiftType.Morning));
 
             }
             else
             {
-                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 11, 0, 0));
+
+                Shift shift = shiftContext.GetShiftByDate(d, StartTime.morning[2]);
                 shiftContext.DeleteById(shift.ID);
             }
 
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
+    
         private void picAft_first_Click(object sender, EventArgs e)
         {
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbAft_first.ForeColor != Color.DimGray)
             {
 
-                shiftContext.Insert(new Shift(user, false, department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 14, 0, 0), new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), ShiftType.Afternoon));
+                shiftContext.Insert(new Shift(user, false, department, d, StartTime.afternoon[0], EndTime.afternoon[0], ShiftType.Afternoon));
 
             }
             else
             {
-                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 14, 0, 0));
+                Shift shift = shiftContext.GetShiftByDate(d, StartTime.afternoon[0]);
                 shiftContext.DeleteById(shift.ID);
             }
 
@@ -459,12 +461,12 @@ namespace EmployeesManagementSystem
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbAft_second.ForeColor != Color.DimGray)
             {
-                shiftContext.Insert(new Shift(user, false, department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 15, 0, 0), new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), ShiftType.Afternoon));
+                shiftContext.Insert(new Shift(user, false, department, d, StartTime.afternoon[1], EndTime.afternoon[1], ShiftType.Afternoon));
             }
             else
             {
-                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 15, 0, 0));
+
+                Shift shift = shiftContext.GetShiftByDate(d, StartTime.afternoon[1]);
                 shiftContext.DeleteById(shift.ID);
             }
 
@@ -475,29 +477,30 @@ namespace EmployeesManagementSystem
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbAft_third.ForeColor != Color.DimGray)
             {
-                shiftContext.Insert(new Shift(user, false, department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 16, 0, 0), new DateTime(d.Year, d.Month, d.Day, 17, 0, 0), ShiftType.Afternoon));
+                shiftContext.Insert(new Shift(user, false, department, d, StartTime.afternoon[2], EndTime.afternoon[2], ShiftType.Afternoon));
             }
             else
             {
-                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 16, 0, 0));
+
+                Shift shift = shiftContext.GetShiftByDate(d, StartTime.afternoon[2]);
                 shiftContext.DeleteById(shift.ID);
             }
 
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
+   
         private void picEvn_first_Click(object sender, EventArgs e)
         {
 
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbEvn_first.ForeColor != Color.DimGray)
             {
-                shiftContext.Insert(new Shift(user, false, department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 20, 0, 0), new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), ShiftType.Evening));
+                shiftContext.Insert(new Shift(user, false, department, d, StartTime.evening[0], EndTime.evening[0], ShiftType.Evening));
             }
             else
             {
-                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 20, 0, 0));
+
+                Shift shift = shiftContext.GetShiftByDate(d, StartTime.evening[0]);
                 shiftContext.DeleteById(shift.ID);
             }
 
@@ -509,13 +512,13 @@ namespace EmployeesManagementSystem
             if (lbEvn_second.ForeColor != Color.DimGray)
             {
 
-                shiftContext.Insert(new Shift(user, false, department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 21, 0, 0), new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), ShiftType.Evening));
+                shiftContext.Insert(new Shift(user, false, department, d, StartTime.evening[1], EndTime.evening[1], ShiftType.Evening));
 
             }
             else
             {
-                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 21, 0, 0));
+
+                Shift shift = shiftContext.GetShiftByDate(d, StartTime.evening[1]);
                 shiftContext.DeleteById(shift.ID);
             }
 
@@ -527,17 +530,18 @@ namespace EmployeesManagementSystem
             DateTime d = DateTime.UtcNow.Date.AddDays(addDays).Date;
             if (lbEvn_third.ForeColor != Color.DimGray)
             {
-                shiftContext.Insert(new Shift(user, false, department, d,
-                    new DateTime(d.Year, d.Month, d.Day, 22, 0, 0), new DateTime(d.Year, d.Month, d.Day, 23, 0, 0), ShiftType.Evening));
+                shiftContext.Insert(new Shift(user, false, department, d, StartTime.evening[2], EndTime.evening[2], ShiftType.Evening));
             }
             else
             {
-                Shift shift = shiftContext.GetShiftByDate(d, new DateTime(d.Year, d.Month, d.Day, 22, 0, 0));
+
+                Shift shift = shiftContext.GetShiftByDate(d, StartTime.evening[2]);
                 shiftContext.DeleteById(shift.ID);
             }
 
             visualizeShifts(DateTime.UtcNow.Date.AddDays(addDays));
         }
+    
         private void btnReset_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtPassword.Text))
@@ -573,7 +577,6 @@ namespace EmployeesManagementSystem
             UploadImg uploadImg = new UploadImg(user.ID, this);
             uploadImg.Show();
         }
-
         public void UpdateImg(int userId)
         {
             Picture img = imageContext.GetImgByUser(userId);

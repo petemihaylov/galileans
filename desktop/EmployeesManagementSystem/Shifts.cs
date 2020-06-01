@@ -112,7 +112,7 @@ namespace EmployeesManagementSystem
 
                             char mark = item.Attended ? attendedMark : ' ';
                            
-                            this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
+                            this.morningList.Items.Add(item.StartTime + "-" + item.EndTime + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
                             morningId.Add(item.ID);
                         }
                     }
@@ -126,7 +126,7 @@ namespace EmployeesManagementSystem
                         {
 
                             char mark = item.Attended ? attendedMark : ' ';
-                            this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
+                            this.eveningList.Items.Add(item.StartTime + "-" + item.EndTime + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
                             eveningId.Add(item.ID);
                         }
                     }
@@ -140,7 +140,7 @@ namespace EmployeesManagementSystem
                         {
 
                             char mark = item.Attended ? attendedMark : ' ';
-                            this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
+                            this.afternoonList.Items.Add(item.StartTime + "-" + item.EndTime + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
                             afternoonId.Add(item.ID);
                         }
                     }
@@ -157,6 +157,8 @@ namespace EmployeesManagementSystem
 
         }
 
+
+        // !!!!! Repeating the same code pattern
         private void showAll(DateTime dateTime)
         {
             // Morning
@@ -168,7 +170,7 @@ namespace EmployeesManagementSystem
             foreach (var item in morning)
             {
                 char mark = item.Attended ? attendedMark : ' '; 
-                this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + controller.GetUser(item.AssignedUser.ID).FullName  + " " + mark);
+                this.morningList.Items.Add(item.StartTime + "-" + item.EndTime + "     " + controller.GetUser(item.AssignedUser.ID).FullName  + " " + mark);
                 morningId.Add(item.ID);
             }
 
@@ -179,7 +181,7 @@ namespace EmployeesManagementSystem
             {
 
                 char mark = item.Attended ? attendedMark : ' ';
-                this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
+                this.eveningList.Items.Add(item.StartTime + "-" + item.EndTime + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
                 eveningId.Add(item.ID);
 
 
@@ -192,7 +194,7 @@ namespace EmployeesManagementSystem
             {
 
                 char mark = item.Attended ? attendedMark : ' ';
-                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
+                this.afternoonList.Items.Add(item.StartTime + "-" + item.EndTime + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
                 afternoonId.Add(item.ID);
 
             }

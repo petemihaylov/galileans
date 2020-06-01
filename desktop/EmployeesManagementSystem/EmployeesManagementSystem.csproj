@@ -147,6 +147,7 @@
     </Compile>
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ShiftController.cs" />
     <Compile Include="CreateDepartment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +220,7 @@
     </Compile>
     <Compile Include="Models\Shift\IShift.cs" />
     <Compile Include="Models\Shift\ShiftType.cs" />
+    <Compile Include="Models\Shift\StartTime.cs" />
     <Compile Include="Models\UserDepartment.cs" />
     <Compile Include="Models\User\Administrator.cs" />
     <Compile Include="Models\Department.cs" />

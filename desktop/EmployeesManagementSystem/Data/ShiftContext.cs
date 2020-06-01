@@ -122,8 +122,8 @@ namespace EmployeesManagementSystem.Data
 
             shift.Availability = (bool)reader["Availability"];
 
-            shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
-            shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
+            shift.StartTime = (string)reader["StartTime"];
+            shift.EndTime = (string)reader["EndTime"];
 
             Enum.TryParse((string)reader["ShiftType"], out ShiftType shiftType);
             shift.Type = shiftType;
@@ -321,7 +321,7 @@ namespace EmployeesManagementSystem.Data
             }
         }
 
-        public Shift GetShiftByDate(DateTime date, DateTime startTime)
+        public Shift GetShiftByDate(DateTime date, string startTime)
         {
             using (var con = new MySqlConnection(connectionString))
             {
