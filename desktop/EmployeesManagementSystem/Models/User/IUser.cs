@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeesManagementSystem.Models.User
+namespace EmployeesManagementSystem.Models
 {
     interface IUser
     {
