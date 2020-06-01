@@ -816,6 +816,7 @@
             // lbMorn_first
             // 
             this.lbMorn_first.AutoSize = true;
+            this.lbMorn_first.Enabled = false;
             this.lbMorn_first.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMorn_first.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lbMorn_first.Location = new System.Drawing.Point(45, 39);
