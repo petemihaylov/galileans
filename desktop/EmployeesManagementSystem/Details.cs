@@ -11,6 +11,10 @@ namespace EmployeesManagementSystem
 {
     public partial class Details : Form
     {
+
+        // Need to be refactored
+
+
         // Variables
         private UserContext userContext = new UserContext();
         private ShiftContext shiftContext = new ShiftContext();

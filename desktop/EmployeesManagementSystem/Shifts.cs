@@ -1,44 +1,47 @@
-﻿using EmployeesManagementSystem.Data;
-using EmployeesManagementSystem.Models;
+﻿using EmployeesManagementSystem.Models;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 using System;
-
+using EmployeesManagementSystem.Controllers;
 
 namespace EmployeesManagementSystem
 {
     public partial class Shifts : Form
     {
-        // Variables
-        private ShiftContext shiftContext = new ShiftContext();
-        private UserContext userContext = new UserContext();
-        private DepartmentContext departmentContext = new DepartmentContext();
-
-        private List<Shift> shifts;
-
+        // Variables        
         private List<int> morningId;
         private List<int> afternoonId;
         private List<int> eveningId;
 
-        private IDictionary<string, int> departmentList;
-        private User loggedUser;
+        private IDictionary<string, int> departmentList;        
         private int addDays = 0;
         private int counter = 0;
         private char attendedMark = '*';
+
+
+        private ShiftController controller = new ShiftController();
+        private User loggedUser;
+
         // Constructor
         public Shifts(User user)
         {
+            
             InitializeComponent();
-            this.shifts = shiftContext.GetAllShifts();
             this.loggedUser = user;
+            
             this.departmentList = new Dictionary<string, int>();
 
             morningId = new List<int>();
             afternoonId = new List<int>();
             eveningId = new List<int>();
+
             this.cbDepartment.Items.Add("All");
-            foreach (Department department in departmentContext.GetAllDepartments())
+
+
+            // Add departments to their place
+            List<Department> departments = controller.GetDepartments();
+            foreach (Department department in departments)
             {
                 this.cbDepartment.Items.Add(department.Name);
                 this.departmentList.Add(department.Name, department.ID);
@@ -90,7 +93,7 @@ namespace EmployeesManagementSystem
         private void displayShifts(DateTime dateTime)
         {
             // Updating the shifts from db
-            this.shifts = shiftContext.GetAllShifts();
+            List<Shift> shifts = this.controller.GetShifts();
             if (this.cbDepartment.SelectedIndex > -1)
             {
                 morningId.Clear();
@@ -100,7 +103,7 @@ namespace EmployeesManagementSystem
                 if (selectedDepartment.ToString() != "All")
                 {
                     // Morning
-                    List<Shift> morning = getMorningShiftsForDate(dateTime);
+                    List<Shift> morning = controller.getMorningShiftsForDate(dateTime);
                     this.morningList.Items.Clear();
                     foreach (var item in morning)
                     {
@@ -109,13 +112,13 @@ namespace EmployeesManagementSystem
 
                             char mark = item.Attended ? attendedMark : ' ';
                            
-                            this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedUser.ID).FullName + " " + mark);
+                            this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
                             morningId.Add(item.ID);
                         }
                     }
 
                     // Evening
-                    List<Shift> evening = getEveningShiftsForDate(dateTime);
+                    List<Shift> evening = controller.getEveningShiftsForDate(dateTime);
                     this.eveningList.Items.Clear();
                     foreach (var item in evening)
                     {
@@ -123,13 +126,13 @@ namespace EmployeesManagementSystem
                         {
 
                             char mark = item.Attended ? attendedMark : ' ';
-                            this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedUser.ID).FullName + " " + mark);
+                            this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
                             eveningId.Add(item.ID);
                         }
                     }
 
                     // Afternoon
-                    List<Shift> afternoon = getAfternoonShiftsForDate(dateTime);
+                    List<Shift> afternoon = controller.getAfternoonShiftsForDate(dateTime);
                     this.afternoonList.Items.Clear();
                     foreach (var item in afternoon)
                     {
@@ -137,7 +140,7 @@ namespace EmployeesManagementSystem
                         {
 
                             char mark = item.Attended ? attendedMark : ' ';
-                            this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedUser.ID).FullName + " " + mark);
+                            this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
                             afternoonId.Add(item.ID);
                         }
                     }
@@ -157,7 +160,7 @@ namespace EmployeesManagementSystem
         private void showAll(DateTime dateTime)
         {
             // Morning
-            List<Shift> morning = getMorningShiftsForDate(dateTime);
+            List<Shift> morning = controller.getMorningShiftsForDate(dateTime);
             morningId.Clear();
             eveningId.Clear();
             afternoonId.Clear();
@@ -165,71 +168,34 @@ namespace EmployeesManagementSystem
             foreach (var item in morning)
             {
                 char mark = item.Attended ? attendedMark : ' '; 
-                this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedUser.ID).FullName  + " " + mark);
+                this.morningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + controller.GetUser(item.AssignedUser.ID).FullName  + " " + mark);
                 morningId.Add(item.ID);
             }
 
             // Evening
-            List<Shift> evening = getEveningShiftsForDate(dateTime);
+            List<Shift> evening = controller.getEveningShiftsForDate(dateTime);
             this.eveningList.Items.Clear();
             foreach (var item in evening)
             {
 
                 char mark = item.Attended ? attendedMark : ' ';
-                this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedUser.ID).FullName + " " + mark);
+                this.eveningList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
                 eveningId.Add(item.ID);
 
 
             }
 
             // Afternoon
-            List<Shift> afternoon = getAfternoonShiftsForDate(dateTime);
+            List<Shift> afternoon = controller.getAfternoonShiftsForDate(dateTime);
             this.afternoonList.Items.Clear();
             foreach (var item in afternoon)
             {
 
                 char mark = item.Attended ? attendedMark : ' ';
-                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + userContext.GetUserByID(item.AssignedUser.ID).FullName + " " + mark);
+                this.afternoonList.Items.Add(item.StartTime.ToString("hh:mm") + "-" + item.EndTime.ToString("hh:mm tt") + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
                 afternoonId.Add(item.ID);
 
             }
-        }
-
-        private List<Shift> getMorningShiftsForDate(DateTime dateTime)
-        {
-            List<Shift> list = new List<Shift>();
-            foreach (var item in shifts)
-            {
-                if(item.Type == ShiftType.Morning && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) ==  0)
-                {
-                    list.Add(item);
-                }
-            }
-            return list;
-        }
-        private List<Shift> getAfternoonShiftsForDate(DateTime dateTime)
-        {
-            List<Shift> list = new List<Shift>();
-            foreach (var item in shifts)
-            {
-                if (item.Type == ShiftType.Afternoon && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) == 0)
-                {
-                    list.Add(item);
-                }
-            }
-            return list;
-        }
-        private List<Shift> getEveningShiftsForDate(DateTime dateTime)
-        {
-            List<Shift> list = new List<Shift>();
-            foreach (var item in shifts)
-            {
-                if (item.Type == ShiftType.Evening && (DateTime.Compare(dateTime.Date, item.ShiftDate.Date)) == 0)
-                {
-                    list.Add(item);
-                }
-            }
-            return list;
         }
 
         // Exit
@@ -455,28 +421,28 @@ namespace EmployeesManagementSystem
             if (morningList.SelectedItem != null)
             {
                 int shiftId = morningId[morningList.SelectedIndex];
-                Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
+                Shift shiftAttended = controller.shiftContext.GetShiftByID(shiftId);
                 shiftAttended.Attended = true;
                 shiftAttended.Cancelled = false;
-                shiftContext.UpdateShift(shiftAttended);
+                controller.shiftContext.UpdateShift(shiftAttended);
             }
 
             if (afternoonList.SelectedItem != null)
             {
                 int shiftId = afternoonId[afternoonList.SelectedIndex];
-                Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
+                Shift shiftAttended = controller.shiftContext.GetShiftByID(shiftId);
                 shiftAttended.Attended = true;
                 shiftAttended.Cancelled = false;
-                shiftContext.UpdateShift(shiftAttended);
+                controller.shiftContext.UpdateShift(shiftAttended);
             }
 
             if (eveningList.SelectedItem != null)
             {
                 int shiftId = eveningId[eveningList.SelectedIndex];
-                Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
+                Shift shiftAttended = controller.shiftContext.GetShiftByID(shiftId);
                 shiftAttended.Attended = true;
                 shiftAttended.Cancelled = false;
-                shiftContext.UpdateShift(shiftAttended);
+                controller.shiftContext.UpdateShift(shiftAttended);
             }
             
             MessageBox.Show("The employee(s) have been marked as present.");
@@ -492,28 +458,28 @@ namespace EmployeesManagementSystem
             if (morningList.SelectedItem != null)
             {
                 int shiftId = morningId[morningList.SelectedIndex];
-                Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
+                Shift shiftAttended = controller.shiftContext.GetShiftByID(shiftId);
                 shiftAttended.Attended = false;
                 shiftAttended.Cancelled = true;
-                shiftContext.UpdateShift(shiftAttended);
+                controller.shiftContext.UpdateShift(shiftAttended);
             }
 
             else if (afternoonList.SelectedItem != null)
             {
                 int shiftId = afternoonId[afternoonList.SelectedIndex];
-                Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
+                Shift shiftAttended = controller.shiftContext.GetShiftByID(shiftId);
                 shiftAttended.Attended = false;
                 shiftAttended.Cancelled = true;
-                shiftContext.UpdateShift(shiftAttended);
+                controller.shiftContext.UpdateShift(shiftAttended);
             }
 
             else if (eveningList.SelectedItem != null)
             {
                 int shiftId = eveningId[eveningList.SelectedIndex];
-                Shift shiftAttended = shiftContext.GetShiftByID(shiftId);
+                Shift shiftAttended = controller.shiftContext.GetShiftByID(shiftId);
                 shiftAttended.Attended = false;
                 shiftAttended.Cancelled = true;
-                shiftContext.UpdateShift(shiftAttended);
+                controller.shiftContext.UpdateShift(shiftAttended);
             }
 
             MessageBox.Show("The employee(s) have been marked as absent.");
