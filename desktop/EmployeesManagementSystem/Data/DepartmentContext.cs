@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using EmployeesManagementSystem.Models;
+using System.Data;
 
 namespace EmployeesManagementSystem.Data
 {
@@ -37,6 +38,49 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+
+        public DataTable GetDepartmentTable()
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    // select statement
+                    command.CommandText = @"SELECT * FROM Department";
+
+                    // executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        DataTable table = new DataTable();
+                        if (reader.Read())
+                        {
+                            table.Load(reader);
+                        }
+
+                        return table;
+                    }
+                }
+            }
+        }
+
+        public Department[] GetAllFilteredDepartments(DataTable table)
+        {
+            List<Department> departments= new List<Department>();
+
+            foreach (DataRow row in table.Rows)
+            {
+                Department department = new Department();
+                department.ID = (int) row["ID"];
+                department.Name = (string) row["Name"];
+                    
+                departments.Add(department);
+            }
+
+            return departments.ToArray();
+        }
+
         public Department[] GetAllDepartments()
         {
             using (var con = new MySqlConnection(connectionString))

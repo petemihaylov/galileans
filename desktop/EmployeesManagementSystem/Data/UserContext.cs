@@ -129,6 +129,7 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+
         public DataTable GetUsersTable()
         {
             using (var con = new MySqlConnection(connectionString))
@@ -155,7 +156,6 @@ namespace EmployeesManagementSystem.Data
             }
         }
 
-        // Should not be here 
         public User[] GetAllFilteredUsers(DataTable table)
         {
             List<User> users = new List<User>();

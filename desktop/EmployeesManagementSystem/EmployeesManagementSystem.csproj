@@ -146,6 +146,7 @@
       <DependentUpon>AdminDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ShiftController.cs" />
     <Compile Include="CreateDepartment.cs">

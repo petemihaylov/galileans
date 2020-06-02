@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using EmployeesManagementSystem.Controllers;
 using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
 
@@ -12,6 +14,7 @@ namespace EmployeesManagementSystem
         // Variables 
         private User loggedUser;
         private DepartmentContext departmentContext = new DepartmentContext();
+        private DepartmentController controller = new DepartmentController();
         private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
         private UserContext userContext = new UserContext();
         private ShiftContext shiftContext = new ShiftContext();
@@ -51,7 +54,7 @@ namespace EmployeesManagementSystem
             try
             {
                 this.departments = departmentContext.GetAllDepartments();
-                showInformation(this.departments);
+                showDepartmentsInformation(this.departments);
             }
             catch (Exception)
             {
@@ -117,10 +120,10 @@ namespace EmployeesManagementSystem
             this.dataGridView.Rows.Clear();
 
             Department[] departments = departmentContext.GetAllDepartments();
-            showInformation(departments);
+            showDepartmentsInformation(departments);
         }
 
-        private void showInformation(Department[] departments)
+        private void showDepartmentsInformation(Department[] departments)
         {
             // Clean the dataGrid
             this.dataGridView.Rows.Clear();
@@ -311,6 +314,36 @@ namespace EmployeesManagementSystem
                 Details details = new Details(id, this.loggedUser, this);
                 details.Show();
             }
+        }
+
+        // Search functionality
+        private void searchField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            DataTable table = controller.GetDepartmentTable();
+
+            // Pressed enter
+            if (e.KeyChar == (char)13)
+            {
+
+                DataView dv = table.DefaultView;
+
+                // Filter the rows
+                dv.RowFilter = string.Format("Name Like '%{0}%'", controller.RemoveWhiteSpaces(this.searchField.Text));
+
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    Department[] departments = controller.GetFilteredDepartments(dv);
+                    showDepartmentsInformation(departments);
+                }
+                else
+                {
+                    Department[] departments = controller.GetDepartments();
+                    showDepartmentsInformation(departments);
+                }
+
+            }
+
         }
     }
 }
