@@ -71,6 +71,8 @@
             this.Reload = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.searchField = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnCreate = new System.Windows.Forms.Panel();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.lbCreate = new System.Windows.Forms.Label();
@@ -81,8 +83,7 @@
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.searchField = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.cbDepartment = new System.Windows.Forms.ComboBox();
             this.panelLeft.SuspendLayout();
             this.settingsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -107,13 +108,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockDataGrid)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.btnCreate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
             this.btnStatistics.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLeft
@@ -592,6 +593,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.cbDepartment);
             this.panel4.Controls.Add(this.searchField);
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.btnCreate);
@@ -601,6 +603,28 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1260, 63);
             this.panel4.TabIndex = 5;
+            // 
+            // searchField
+            // 
+            this.searchField.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchField.Location = new System.Drawing.Point(83, 24);
+            this.searchField.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.searchField.Multiline = true;
+            this.searchField.Name = "searchField";
+            this.searchField.Size = new System.Drawing.Size(349, 22);
+            this.searchField.TabIndex = 14;
+            this.searchField.TextChanged += new System.EventHandler(this.searchField_TextChanged);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_search_black_48dp;
+            this.pictureBox2.Location = new System.Drawing.Point(52, 20);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(36, 28);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
             // 
             // btnCreate
             // 
@@ -721,27 +745,16 @@
             this.pictureBox19.TabIndex = 52;
             this.pictureBox19.TabStop = false;
             // 
-            // searchField
+            // cbDepartment
             // 
-            this.searchField.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.searchField.Location = new System.Drawing.Point(239, 27);
-            this.searchField.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.searchField.Multiline = true;
-            this.searchField.Name = "searchField";
-            this.searchField.Size = new System.Drawing.Size(349, 22);
-            this.searchField.TabIndex = 14;
-            this.searchField.TextChanged += new System.EventHandler(this.searchField_TextChanged);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_search_black_48dp;
-            this.pictureBox2.Location = new System.Drawing.Point(208, 23);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(36, 28);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
+            this.cbDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbDepartment.FormattingEnabled = true;
+            this.cbDepartment.Location = new System.Drawing.Point(567, 25);
+            this.cbDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbDepartment.Name = "cbDepartment";
+            this.cbDepartment.Size = new System.Drawing.Size(225, 24);
+            this.cbDepartment.TabIndex = 67;
+            this.cbDepartment.SelectedIndexChanged += new System.EventHandler(this.cbDepartment_SelectedIndexChanged);
             // 
             // Stocks
             // 
@@ -792,6 +805,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.stockDataGrid)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.btnCreate.ResumeLayout(false);
             this.btnCreate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
@@ -800,7 +814,6 @@
             this.btnStatistics.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -861,5 +874,6 @@
         private System.Windows.Forms.PictureBox pictureBox19;
         private System.Windows.Forms.TextBox searchField;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ComboBox cbDepartment;
     }
 }
