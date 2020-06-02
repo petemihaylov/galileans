@@ -10,11 +10,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 
 // Include config file
-require_once "./includes/config.php";
-require "./models/Shift.php";
+require_once "../includes/config.inc.php";
+require "../models/Shift.php";
 
 // for the pdf
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '../vendor/autoload.php';
 
 function getPDF($arr){
     $mpdf = new \Mpdf\Mpdf();
@@ -156,14 +156,14 @@ FROM Shift WHERE ShiftDate <= ? && StartTime <= ? && AssignedUserID = ? ORDER BY
   
 
     
-    <link rel="stylesheet" href="./css/header-page.css">
-    <link rel="stylesheet" href="./css/welcome-page.css">
+    <link rel="stylesheet" href="../resources/css/header-page.css">
+    <link rel="stylesheet" href="../resources/css/welcome-page.css">
     
     <title>Welcome</title>
 </head>
 <body>
 <!-- Navbar -->
-<?php require('./shared/header.php') ?>
+<?php require('header.php') ?>
 
 
 <div class="container next-shift">
@@ -221,4 +221,4 @@ $(document).ready(function() {
 </script>
 
 <!-- Footer -->
-<?php require('./shared/footer.php') ?>
+<?php require('footer.php') ?>

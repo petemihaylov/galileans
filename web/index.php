@@ -5,12 +5,12 @@ session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("location: welcome.php");
+    header("location: ./views/welcome.php");
     exit;
 }
 
 // Include config file
-require_once "./includes/config.php";
+require_once "./includes/config.inc.php";
 
 // Define variables and initialize with empty values
 $email = $password = "";
@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 $_SESSION["fullname"] = $fullname;
 
                                 // Redirect user to welcome page
-                                header("location: welcome.php");
+                                header("location: ./views/welcome.php");
                             } else {
                                 // Display an error message if password is not valid
                                 $password_err = "* The password you entered was not valid.";
@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
 
-    <link rel="stylesheet" href="./css/index-page.css">
+    <link rel="stylesheet" href="./resources/css/index-page.css">
     <title>Login</title>
 </head>
 
@@ -168,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
 
                 <div class="bottom-text">
-                    Don't have account? <a href="error.php"><i class="fas fa-user-plus"></i></a>
+                    Don't have account? <a href="./views/error.php"><i class="fas fa-user-plus"></i></a>
                 </div>
 
             </form>
@@ -208,7 +208,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     "nb_sides": 5
                 },
                 "image": {
-                    "src": "img/github.svg",
+                    "src": "resources/img/github.svg",
                     "width": 100,
                     "height": 100
                 }
@@ -341,7 +341,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     "nb_sides": 1
                 },
                 "image": {
-                    "src": "img/github.svg",
+                    "src": "resources/img/github.svg",
                     "width": 100,
                     "height": 100
                 }

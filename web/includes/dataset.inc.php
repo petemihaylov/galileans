@@ -6,14 +6,14 @@ session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: index.php");
+    header("location: ./index.php");
     exit;
 }
 
 
 
-require_once "./config.php";
-require_once "../models/Shift.php";
+require_once "./config.inc.php";
+require_once "./models/Shift.php";
 
 $shiftArray = array();
 // Get count of attended shifts for the current employee

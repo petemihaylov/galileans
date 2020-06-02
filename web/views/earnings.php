@@ -4,14 +4,14 @@ session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: index.php");
+    header("location: ../index.php");
     exit;
 }
 
 
 
 // Include config file
-require_once "./includes/config.php";
+require_once "../includes/config.inc.php";
 
 $AttendedCount = 0;
 // Get count of attended shifts for the current employee
@@ -130,13 +130,13 @@ if($stmt = mysqli_prepare($link, $sql)){
         <!-- Ajax for dataset -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-        <link rel="stylesheet" href="./css/header-page.css">
-        <link rel="stylesheet" href="./css/earnings-page.css">
+        <link rel="stylesheet" href="../resources/css/header-page.css">
+        <link rel="stylesheet" href="../resources/css/earnings-page.css">
 </head>
 <body>
 
 <!-- Navbar -->
-<?php require('./shared/header.php') ?>
+<?php require('header.php') ?>
 
 <div class="container earnings-container">
         <div class="total-container">
@@ -171,7 +171,7 @@ if($stmt = mysqli_prepare($link, $sql)){
     document.querySelector('.chart-container').style.display = "none";
     
     $(document).ready(function(){
-        $.post("/includes/dataset.php",
+        $.post("../includes/dataset.inc.php",
         function (data)
         {
             var months = [];

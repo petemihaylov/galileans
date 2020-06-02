@@ -4,14 +4,14 @@ session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: index.php");
+    header("location: ../index.php");
     exit;
 }
 
 // Include config file
-require "./includes/config.php";
-require "./models/User.php";
-require "./models/Shift.php";
+require "../includes/config.inc.php";
+require "../models/User.php";
+require "../models/Shift.php";
 
 
 
@@ -116,15 +116,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       
 
     
-    <link rel="stylesheet" href="./css/header-page.css">
-    <link rel="stylesheet" href="./css/welcome-page.css">
+    <link rel="stylesheet" href="../resources/css/header-page.css">
+    <link rel="stylesheet" href="../resources/css/welcome-page.css">
     
     <title>Details</title>
 </head>
 <body>
 
 
-<?php require('./shared/header.php') ?>
+<?php require('header.php') ?>
 
 <!-- Body -->
 <div class="container details-container">
@@ -171,7 +171,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
                     <div class="form-group" >
                         
-                    <script src="./js/show-hide-password.js"></script>
+                    <script src="./resources/js/show-hide-password.js"></script>
                     <label for="pnm">Password:</label>
                     <div class="input-group" id="show_hide_password">
                         <input class="form-control" name="password" value="<?php echo $password; ?>" type="password"

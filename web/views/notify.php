@@ -4,13 +4,13 @@ session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: index.php");
+    header("location: ../index.php");
     exit;
 }
 
 
 // Include config file
-require_once "./includes/config.php";
+require_once "../includes/config.inc.php";
  
 $fullname = $email = $subject = $message = "";
 $fullname_err = $email_err = $subject_err = $message_err = "";
@@ -73,8 +73,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="./css/notification-page.css">
-    <link rel="stylesheet" href="./css/header-page.css">
+    <link rel="stylesheet" href="../resources/css/notification-page.css">
+    <link rel="stylesheet" href="../resources/css/header-page.css">
     
   
   <title>Notification</title>
@@ -82,7 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
 
 <!-- Navbar -->
-<?php require('./shared/header.php') ?>
+<?php require('header.php') ?>
 
     <main class="main">
         <div class="notification-container">
@@ -163,7 +163,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <!-- Optional JavaScript -->
-<script src="js/notification-page.js"></script>
+<script src="./resources/js/notification-page.js"></script>
  
 </body>
 </html>

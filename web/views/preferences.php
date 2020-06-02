@@ -4,14 +4,14 @@ session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: index.php");
+    header("location: ../index.php");
     exit;
 }
 
 
 // Include config file
-require_once "./includes/config.php";
-require_once "./models/Preference.php";
+require_once "../includes/config.inc.php";
+require_once "../models/Preference.php";
 
 // Getting all of the user's preferences
 $dbArray = array();
@@ -137,8 +137,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <script src="https://code.jquery.com/jquery-3.4.1.js"  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
 
-    <link rel="stylesheet" href="./css/header-page.css">
-    <link rel="stylesheet" href="./css/preferences.css">
+    <link rel="stylesheet" href="../resources/css/header-page.css">
+    <link rel="stylesheet" href="../resources/css/preferences.css">
 
     <title>Preferences</title>
 </head>
@@ -146,7 +146,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!-- Navbar -->
 
 
-<?php require('./shared/header.php') ?>
+<?php require('header.php') ?>
 
 
 
@@ -155,36 +155,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <form method="post">
 <input id="the_clicked_id" type="hidden" name="the_clicked_id" value=""/>
 
-<?php
+    <?php
     for ($i = 0; $i < count($daysArray); $i++) {
         if($daysArray[$i]->get_Availability()){
           $daysArray[$i]->set_Booked(true);
         }else $daysArray[$i]->set_Booked(false);
-      ?>
+    ?>
     <div class="row <?php echo $daysArray[$i]->get_Booked() ? "booked": ""; ?>">
+
       <div class="col-md-1">
         <div class="dayNumber <?php echo $daysArray[$i]->get_Booked() ? "booked-date": ""; ?>">
         <?php echo date('d', $daysArray[$i]->get_Date());?>
         </div>
       </div>
+
       <div class="col-md-1 weekDay">
       <?php echo strtoupper(date('D', $daysArray[$i]->get_Date()));?>
       </div>
+
       <div class="col-md-8">
       <?php echo strtoupper($daysArray[$i]->get_Availability() ? "Booked": "Available");?>
       </div>
-      <div class="col-md-2">
-      
-      <?php
-           $str =  "<button id=\"$i\" class=\"btn btn-outline-info\" name=\"submit_$i\" type=\"submit\"  onclick=\"return myId(this);\">";
-             $res = $daysArray[$i]->get_Booked() ? "<i class=\"fas fa-minus\"></i>": "<i class=\"fas fa-plus\"></i>";
-             echo $str . $res. "</button>" . PHP_EOL;
-      ?>
 
+      <div class="col-md-2">      
+        <?php
+            $str =  "<button id=\"$i\" class=\"btn btn-outline-info\" name=\"submit_$i\" type=\"submit\"  onclick=\"return myId(this);\">";
+              $res = $daysArray[$i]->get_Booked() ? "<i class=\"fas fa-minus\"></i>": "<i class=\"fas fa-plus\"></i>";
+              echo $str . $res. "</button>" . PHP_EOL;
+        ?>
       </div>
-    </div>
 
-  
+    </div>  
   
   <?php
     }
