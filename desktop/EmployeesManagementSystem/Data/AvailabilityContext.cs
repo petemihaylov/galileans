@@ -20,11 +20,13 @@ namespace EmployeesManagementSystem.Data
 
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO Availability (UserID, Date, Available) VALUES( @userID, @date, @available)";
+                    command.CommandText = @"INSERT INTO Availability (UserID, Available, Days, IsWeekly, IsMonthly) VALUES( @userID, @availability, @days, @isWeekly, @isMonthly)";
 
                     command.AddParameter("userID", availability.User.ID);
-                    command.AddParameter("date", availability.Date);
-                    command.AddParameter("available", availability.Available);
+                    command.AddParameter("availability", availability.Available);
+                    command.AddParameter("days", availability.Days);
+                    command.AddParameter("isWeekly", availability.IsWeekly);
+                    command.AddParameter("isMonthly", availability.IsMonthly);
 
                     return command.ExecuteNonQuery() > 0 ? true : false;
                 }
@@ -79,8 +81,10 @@ namespace EmployeesManagementSystem.Data
                             // Mapping the return data to the object
                             Availability availability = new Availability();
                             availability.User.ID = (int)reader["UserID"];
-                            availability.Date = (DateTime)reader["Date"];
-                            availability.Available = (bool)reader["Available"];
+                            availability.Available = (AvailabilityType)reader["Available"];
+                            availability.Days = (DayType) reader["Days"];
+                            availability.IsWeekly = (bool) reader["IsWeekly"];
+                            availability.IsMonthly = (bool) reader["IsMonthly"];
                             availabilities.Add(availability);
                         }
 
@@ -92,7 +96,6 @@ namespace EmployeesManagementSystem.Data
 
         private Availability MapObject(Availability availability, MySqlDataReader reader)
         {
-            
             return availability;
         }
 

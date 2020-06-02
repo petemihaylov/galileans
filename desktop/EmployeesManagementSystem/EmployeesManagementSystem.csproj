@@ -171,7 +171,9 @@
     <Compile Include="Data\UserContext.cs" />
     <Compile Include="Data\UserDepartmentContext.cs" />
     <Compile Include="Data\Conversion\JsonSerializer.cs" />
-    <Compile Include="Models\Availability.cs" />
+    <Compile Include="Models\Availability\Availability.cs" />
+    <Compile Include="Models\Availability\AvailabilityType.cs" />
+    <Compile Include="Models\Availability\DayType.cs" />
     <Compile Include="Models\Cancellation.cs" />
     <Compile Include="Messages.cs">
       <SubType>Form</SubType>

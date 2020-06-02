@@ -60,7 +60,8 @@ namespace EmployeesManagementSystem
 
             foreach (Availability availability in availabilityContext.GetAllAvailabilitiesByID(UserID))
             {
-                listOfAvailabilities.Items.Add(" shift: " + availability.Date.ToString() + " " + userDepartmentContext.GetDepartmentByUser(availability.User.ID).Name + "  " + user.FullName);
+                throw new System.ArgumentException("Created changes in AvailabilityContext", "original");
+                // listOfAvailabilities.Items.Add(" shift: " + availability.Date.ToString() + " " + userDepartmentContext.GetDepartmentByUser(availability.User.ID).Name + "  " + user.FullName);
             }
 
         }
