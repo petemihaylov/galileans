@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Drawing;
-using System.Data;
 using System.Windows.Forms;
 using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
-using System.Data.SqlClient;
+using EmployeesManagementSystem.Controllers;
+using System.Collections.Generic;
 
 namespace EmployeesManagementSystem
 {
     public partial class Stocks : Form
     {
-
         // Variables
+        private IDictionary<string, int> departmentList;
         private Stock[] stocks;
         private User loggedUser;
+        private DepartmentContext departmentContext = new DepartmentContext();
         private StockContext stockContext = new StockContext();
-
+        private ShiftController controller = new ShiftController();
         // Default contructor
         public Stocks()
         {
@@ -27,6 +28,12 @@ namespace EmployeesManagementSystem
         {
             InitializeComponent();
             this.loggedUser = user;
+            this.cbDepartment.Items.Add("All");
+            Department[] departments = departmentContext.GetAllDepartments();
+            foreach (Department department in departments)
+            {
+                this.cbDepartment.Items.Add(department.Name);
+            }
 
         }
 
@@ -101,6 +108,8 @@ namespace EmployeesManagementSystem
 
             foreach (Stock stock in stocks)
             {
+                //MessageBox.Show(stock.Department.Name);
+
                 this.stockDataGrid.Rows.Add(stock.GetInfo());
             }
         }
@@ -304,6 +313,26 @@ namespace EmployeesManagementSystem
                 UpdateStocks();
             }
 
+        }
+
+        private void cbDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Stock[] stocks = stockContext.GetAllStocks();
+
+            string selectedDepartment = cbDepartment.SelectedItem.ToString();
+            if (selectedDepartment != "All")
+            {
+                stockDataGrid.Rows.Clear();
+                foreach (Stock stock in stocks)
+                {
+                    if(stock.Department.ID == departmentContext.GetDepartmentByName(selectedDepartment).ID)
+                        this.stockDataGrid.Rows.Add(stock.GetInfo());
+                }
+            }
+            else
+            {
+                UpdateStocks();
+            }
         }
     }
 }

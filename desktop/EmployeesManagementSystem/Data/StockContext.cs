@@ -167,6 +167,32 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+        public Stock[] StocksByDepID(string name)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"SELECT * FROM Stock WHERE Department = @name";
+                    command.Parameters.AddWithValue("@name", name);
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        List<Stock> stocks = new List<Stock>();
+                        while (reader.Read())
+                        {
+                            // Mapping the return data to the object
+                            Stock stock = new Stock();
+                            MapObject(stock, reader);
+                            stocks.Add(stock);
+                        }
+                        return stocks.ToArray();
+                    }
+                }
+            }
+        }
 
     }
 }
