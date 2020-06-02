@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Drawing;
+using System.Data;
 using System.Windows.Forms;
 using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
+using System.Data.SqlClient;
 
 namespace EmployeesManagementSystem
 {
@@ -12,7 +14,6 @@ namespace EmployeesManagementSystem
         // Variables
         private Stock[] stocks;
         private User loggedUser;
-
         private StockContext stockContext = new StockContext();
 
         // Default contructor
@@ -26,6 +27,7 @@ namespace EmployeesManagementSystem
         {
             InitializeComponent();
             this.loggedUser = user;
+
         }
 
         private void Stocks_Load(object sender, EventArgs e)
@@ -282,6 +284,25 @@ namespace EmployeesManagementSystem
 
         private void btnCreate_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void searchField_TextChanged(object sender, EventArgs e)
+        {
+
+            stockDataGrid.Rows.Clear();
+            Stock[] search = stockContext.SearchByName(searchField.Text);
+            if (search.Length > 0)
+            {
+                foreach (Stock stock in search)
+                {
+                    this.stockDataGrid.Rows.Add(stock.GetInfo());
+                }
+            }
+            else
+            {
+                UpdateStocks();
+            }
 
         }
     }

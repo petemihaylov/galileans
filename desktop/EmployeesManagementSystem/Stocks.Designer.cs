@@ -81,6 +81,8 @@
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
+            this.searchField = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelLeft.SuspendLayout();
             this.settingsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -111,6 +113,7 @@
             this.btnStatistics.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLeft
@@ -589,6 +592,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.searchField);
+            this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.btnCreate);
             this.panel4.Controls.Add(this.btnExit);
             this.panel4.Location = new System.Drawing.Point(244, -9);
@@ -716,6 +721,28 @@
             this.pictureBox19.TabIndex = 52;
             this.pictureBox19.TabStop = false;
             // 
+            // searchField
+            // 
+            this.searchField.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchField.Location = new System.Drawing.Point(239, 27);
+            this.searchField.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.searchField.Multiline = true;
+            this.searchField.Name = "searchField";
+            this.searchField.Size = new System.Drawing.Size(349, 22);
+            this.searchField.TabIndex = 14;
+            this.searchField.TextChanged += new System.EventHandler(this.searchField_TextChanged);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_search_black_48dp;
+            this.pictureBox2.Location = new System.Drawing.Point(208, 23);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(36, 28);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
+            // 
             // Stocks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -764,6 +791,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockDataGrid)).EndInit();
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.btnCreate.ResumeLayout(false);
             this.btnCreate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
@@ -772,6 +800,7 @@
             this.btnStatistics.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -830,5 +859,7 @@
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox19;
+        private System.Windows.Forms.TextBox searchField;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
