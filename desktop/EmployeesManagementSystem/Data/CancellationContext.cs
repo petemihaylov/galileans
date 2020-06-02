@@ -27,6 +27,29 @@ namespace EmployeesManagementSystem.Data
             }
         }
 
+        public bool UpdateCancellation(Cancellation cancellation)
+        {
+
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"UPDATE Cancellation SET Date = @date, State = @state, Subject = @subject, Message = @message, UserID = @userId WHERE ID = @ID";
+                    command.AddParameter("ID", cancellation.ID);
+                    // Executing it 
+                    command.Parameters.AddWithValue("date", cancellation.Date);
+                    command.Parameters.AddWithValue("state", cancellation.State.ToString());
+                    command.Parameters.AddWithValue("subject", cancellation.Subject);
+                    command.Parameters.AddWithValue("message", cancellation.Message);
+                    command.Parameters.AddWithValue("userId", cancellation.Employee.ID);
+
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+            }
+        }
         public Cancellation[] GetCancellations()
         {
             using (var con = new MySqlConnection(connectionString))
@@ -85,7 +108,9 @@ namespace EmployeesManagementSystem.Data
             cancellation.Date = (DateTime)reader["Date"];
             cancellation.Employee.ID = (int)reader["UserID"];
 
-            cancellation.Email = (string)reader["Email"];
+            Enum.TryParse((string)reader["State"], out CState cState);
+            cancellation.State = cState;
+
             cancellation.Subject = (string)reader["Subject"];
             cancellation.Message = (string)reader["Message"];
             return cancellation;

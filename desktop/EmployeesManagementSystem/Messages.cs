@@ -21,6 +21,7 @@ namespace EmployeesManagementSystem
         private void Complaint_Load(object sender, EventArgs e)
         {
             // Roles division
+            // Could be in another class
             if (this.loggedUser.Role == Role.Manager)
             {
                 this.btnEmployees.Enabled = true;
@@ -40,7 +41,7 @@ namespace EmployeesManagementSystem
                 this.btnStatistics.Enabled = false;
             }
 
-            //needs to upload as the program runs in the future
+            // needs to upload as the program runs in the future
             try
             {
                 Cancellation[] cancels = cancellationContext.GetCancellations();
@@ -73,6 +74,7 @@ namespace EmployeesManagementSystem
 
 
         }
+
 
         private void btnShift_Click(object sender, EventArgs e)
         {

@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS UserDepartment (
 CREATE TABLE IF NOT EXISTS Cancellation(
 	ID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	Date date,
-    Email text,
+    State ENUM('Pending', 'Approved', 'Declined'),
     Subject text,
     Message text,
     

@@ -4,8 +4,8 @@ ___
 ### Iteration 3.0:
 
 
-Our [Project plan](https://drive.google.com/file/d/17rOSxpdcZBA5G8GMOrgSdz42MoV644yb/view?usp=sharing). 
-We are currently within the Sprint One.
+Our [Project plan](https://docs.google.com/spreadsheets/d/1Q7QG1HN4pZbpmPv5cUezfERuXW_nN2v-5jcLyMC83bk/edit#gid=2125881360). 
+We are currently within the first sprint. 
 
 
 - [Client interview](https://docs.google.com/document/d/1Lh5lgM4L1ifmWBCn-WfOWO1Lb-dmeCvP-VKaYcRPB1k/edit?usp=sharing)
