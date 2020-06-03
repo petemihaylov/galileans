@@ -9,5 +9,8 @@ namespace EmployeesManagementSystem.Models
     interface IUser
     {
         // Should be implemented
+
+        string[] GetInfo();
+
     }
 }

@@ -102,6 +102,8 @@
             this.bToday = new System.Windows.Forms.Button();
             this.labelAvailability = new System.Windows.Forms.Label();
             this.listOfAvailabilities = new System.Windows.Forms.ListBox();
+            this.tbHw = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
@@ -213,6 +215,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.groupBox1.Controls.Add(this.tbHw);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.btnReset);
@@ -246,7 +250,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(25, 259);
+            this.label5.Location = new System.Drawing.Point(25, 235);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(163, 19);
             this.label5.TabIndex = 35;
@@ -257,7 +261,7 @@
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.txtPassword.Location = new System.Drawing.Point(29, 288);
+            this.txtPassword.Location = new System.Drawing.Point(29, 264);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
@@ -272,7 +276,7 @@
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnReset.Location = new System.Drawing.Point(29, 323);
+            this.btnReset.Location = new System.Drawing.Point(29, 299);
             this.btnReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(350, 28);
@@ -1013,6 +1017,26 @@
             this.listOfAvailabilities.Size = new System.Drawing.Size(719, 112);
             this.listOfAvailabilities.TabIndex = 65;
             // 
+            // tbHw
+            // 
+            this.tbHw.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbHw.Location = new System.Drawing.Point(28, 363);
+            this.tbHw.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbHw.Multiline = true;
+            this.tbHw.Name = "tbHw";
+            this.tbHw.Size = new System.Drawing.Size(349, 22);
+            this.tbHw.TabIndex = 37;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(23, 341);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(109, 19);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "Hourly Wage:";
+            // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1156,5 +1180,7 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label labelAvailability;
         private System.Windows.Forms.ListBox listOfAvailabilities;
+        private System.Windows.Forms.TextBox tbHw;
+        private System.Windows.Forms.Label label7;
     }
 }

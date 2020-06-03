@@ -47,7 +47,7 @@ namespace EmployeesManagementSystem
             this.department = userDepartmentContext.GetDepartmentByUser(user.ID);
             this.tbFullName.Text = user.FullName;
             this.tbEmail.Text = user.Email;
-
+            this.tbHw.Text = user.Wage.ToString();
             this.tbPhoneNumber.Text = user.PhoneNumber;
             this.cbRole.Text = user.Role.ToString();
             foreach (Department d in departmentContext.GetAllDepartments())
@@ -235,7 +235,7 @@ namespace EmployeesManagementSystem
             {
                 u.ID = user.ID;
                 u.FullName = tbFullName.Text;
-
+                u.Wage = Convert.ToDouble(tbHw.Text);
                 u.Email = tbEmail.Text;
                 u.PhoneNumber = tbPhoneNumber.Text;
 

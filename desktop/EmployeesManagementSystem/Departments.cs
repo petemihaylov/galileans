@@ -64,14 +64,30 @@ namespace EmployeesManagementSystem
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int btnDelete = 2;
+            int btnDelete = 3;
+            int btnDetails = 2;
 
             // Check if there are departments in the list
+
             if(this.dataGridView.Rows.Count > 0)
             {
                 // Delete specific Department
-                var btn = this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete);
-                if (btn)
+                var btnDl = this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete);
+                var btnDt = this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDetails);
+
+
+                if (btnDt)
+                {
+                    int index = this.dataGridView.CurrentCell.RowIndex;
+                    int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
+
+                    Department d = departmentContext.GetDepartmentById(id);
+                    d.Name = this.dataGridView.Rows[index].Cells[1].Value.ToString();
+                    this.departmentContext.UpdateDepartmentInfo(d);
+
+
+                }
+                else if (btnDl)
                 {
                     // Local variables
                     int index = this.dataGridView.CurrentCell.RowIndex;

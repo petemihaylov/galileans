@@ -148,6 +148,25 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+        public bool UpdateDepartmentInfo(Department dep)
+        {
+
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"UPDATE Department SET Name = @name WHERE ID = @ID";
+                    command.AddParameter("ID", dep.ID);
+                    // Executing it 
+                    command.Parameters.AddWithValue("name", dep.Name);
+
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+            }
+        }
 
         private Department MapObject(Department department, MySqlDataReader reader)
         {
