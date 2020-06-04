@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using EmployeesManagementSystem.Models;
 
@@ -20,10 +16,10 @@ namespace EmployeesManagementSystem.Data
 
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO Availability (UserID, Available, Days, IsWeekly, IsMonthly) VALUES( @userID, @availability, @days, @isWeekly, @isMonthly)";
+                    command.CommandText = @"INSERT INTO Availability (UserID, State, Days, IsWeekly, IsMonthly) VALUES( @userID, @state, @days, @isWeekly, @isMonthly)";
 
                     command.AddParameter("userID", availability.User.ID);
-                    command.AddParameter("availability", availability.Available);
+                    command.AddParameter("state", availability.State);
                     command.AddParameter("days", availability.Days);
                     command.AddParameter("isWeekly", availability.IsWeekly);
                     command.AddParameter("isMonthly", availability.IsMonthly);
@@ -81,7 +77,7 @@ namespace EmployeesManagementSystem.Data
                             // Mapping the return data to the object
                             Availability availability = new Availability();
                             availability.User.ID = (int)reader["UserID"];
-                            availability.Available = (AvailabilityType)reader["Available"];
+                            availability.State = (AvailabilityType)reader["State"];
                             availability.Days = (DayType) reader["Days"];
                             availability.IsWeekly = (bool) reader["IsWeekly"];
                             availability.IsMonthly = (bool) reader["IsMonthly"];

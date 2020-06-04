@@ -8,7 +8,15 @@ namespace EmployeesManagementSystem.Models
 {
     interface IUser
     {
-        // Should be implemented
+        int ID { get; set; }
+        string FullName { get; set; }
+        string Email { get; set; }
+        string Password { get; set; }
+        string PhoneNumber { get; set; }
+        double Wage { get; set; }
+
+        Role Role { get; set; }
+
 
         string[] GetInfo();
 

@@ -12,7 +12,7 @@ namespace EmployeesManagementSystem.Models
 
         public int ID { get; set; }
         public User User { get { return this.user; } set { this.user = value; } }
-        public AvailabilityType Available { get; set; }
+        public AvailabilityType State { get; set; }
         public DayType Days { get; set; }
         public bool IsWeekly { get; set; }
         public bool IsMonthly { get; set; }
@@ -25,7 +25,7 @@ namespace EmployeesManagementSystem.Models
         public Availability(User user, AvailabilityType availability, DayType days, bool isWeekly, bool isMonthly)
         {
             this.User = user;
-            this.Available = availability;
+            this.State = availability;
             this.Days = days;
             this.IsWeekly = isWeekly;
             this.IsMonthly = isMonthly;

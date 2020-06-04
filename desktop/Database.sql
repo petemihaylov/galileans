@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS Department(
     Name text NOT NULL
 );
 
-CREATE TABLE User(
+CREATE TABLE IF NOT EXISTS User(
     ID int auto_increment PRIMARY KEY,
     FullName varchar(255),
     Email varchar(255) not null UNIQUE,
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS Shift(
 CREATE TABLE IF NOT EXISTS Availability(
 	ID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     UserID int NOT NULL,    
-    Available ENUM('Pendding', 'Approved', 'Declined') DEFAULT 'Declined',
+    State ENUM('Pending', 'Approved', 'Declined') DEFAULT 'Pending',
     Days ENUM('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'),
     IsWeekly int NOT NULL,
     IsMonthly int NOT NULL,
