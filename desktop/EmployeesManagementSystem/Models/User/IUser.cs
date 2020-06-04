@@ -17,7 +17,6 @@ namespace EmployeesManagementSystem.Models
 
         Role Role { get; set; }
 
-
         string[] GetInfo();
 
     }
