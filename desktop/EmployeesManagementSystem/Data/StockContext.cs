@@ -1,6 +1,7 @@
-﻿using EmployeesManagementSystem.Models;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
+using EmployeesManagementSystem.Models;
+using System.Data;
 
 namespace EmployeesManagementSystem.Data
 {
@@ -81,6 +82,32 @@ namespace EmployeesManagementSystem.Data
             }
         }
 
+        public DataTable GetStockTable()
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    // select statement
+                    command.CommandText = @"SELECT * FROM Stock";
+
+                    // executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        DataTable table = new DataTable();
+                        if (reader.Read())
+                        {
+                            table.Load(reader);
+                        }
+
+                        return table;
+                    }
+                }
+            }
+        }
+
         // Doesn't work properly
         public bool UpdateStock(Stock stock)
         {
@@ -128,6 +155,27 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+
+        public Stock[] GetAllFilteredStocks(DataTable table)
+        {
+            List<Stock> stocks = new List<Stock>();
+
+            foreach (DataRow row in table.Rows)
+            {
+                Stock stock = new Stock();
+                stock.ID = (int) row["ID"];
+                stock.Name = (string) row["Name"];
+                stock.Price = (double) row["Price"];
+                stock.Amount = (int) row["Amount"];
+                stock.Availability = (bool) row["Availability"];
+                stock.Department.ID = (int) row["DepartmentID"];
+
+                stocks.Add(stock);
+            }
+
+            return stocks.ToArray();
+        }
+
         private Stock MapObject(Stock stock, MySqlDataReader reader)
         {
 

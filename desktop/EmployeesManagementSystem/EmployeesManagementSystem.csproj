@@ -149,6 +149,7 @@
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ShiftController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
     <Compile Include="CreateDepartment.cs">
       <SubType>Form</SubType>
     </Compile>

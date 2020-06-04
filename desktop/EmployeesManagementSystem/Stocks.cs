@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using EmployeesManagementSystem.Controllers;
 using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
-using EmployeesManagementSystem.Controllers;
-using System.Collections.Generic;
 
 namespace EmployeesManagementSystem
 {
@@ -14,9 +15,11 @@ namespace EmployeesManagementSystem
         private IDictionary<string, int> departmentList;
         private Stock[] stocks;
         private User loggedUser;
+
         private DepartmentContext departmentContext = new DepartmentContext();
         private StockContext stockContext = new StockContext();
-        private ShiftController controller = new ShiftController();
+
+        private StockController controller = new StockController();
         // Default contructor
         public Stocks()
         {
@@ -61,7 +64,7 @@ namespace EmployeesManagementSystem
 
             try
             {
-                this.stocks = stockContext.GetAllStocks();
+                this.stocks = controller.GetStocks();
                 showInformation(this.stocks);
             }
             catch (Exception)
@@ -75,15 +78,17 @@ namespace EmployeesManagementSystem
         public void UpdateStocks()
         {
             this.stockDataGrid.Rows.Clear();
+            DataTable table = controller.GetStockTable();
 
-            Stock[] stock = stockContext.GetAllStocks();
+            this.stocks = controller.GetStocks();
             stockDataGrid.Rows.Clear();
-            showInformation(stock);
+            showInformation(stocks);
         }
         private void stockDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int btnReload = 5;
-            int btnDelete = 6;
+            int btnUpdate = 5;
+            int btnReload = 6;
+            int btnDelete = 7;
 
             int index = stockDataGrid.CurrentCell.RowIndex;
             int stockId = Convert.ToInt32(stockDataGrid.Rows[index].Cells[0].Value);
@@ -98,18 +103,23 @@ namespace EmployeesManagementSystem
                 stockContext.DeleteById(stockId);
                 UpdateStocks();
             }
+            else if (stockDataGrid.CurrentCell.ColumnIndex.Equals(btnUpdate))
+            {
+                Stock s = stockContext.GetStockById(stockId);
+                s.Name = this.stockDataGrid.Rows[index].Cells[1].Value.ToString();
+                s.Price = Convert.ToDouble(this.stockDataGrid.Rows[index].Cells[2].Value);
+                s.Amount = Convert.ToInt32(this.stockDataGrid.Rows[index].Cells[3].Value);
+                s.Availability = Convert.ToBoolean(this.stockDataGrid.Rows[index].Cells[4].Value);
+                this.stockContext.UpdateStock(s);
+            }
         }
 
         private void showInformation(Stock[] stocks)
         {
             // Clean the dataGrid
-
             stockDataGrid.Rows.Clear();
-
             foreach (Stock stock in stocks)
             {
-                //MessageBox.Show(stock.Department.Name);
-
                 this.stockDataGrid.Rows.Add(stock.GetInfo());
             }
         }
@@ -296,25 +306,6 @@ namespace EmployeesManagementSystem
 
         }
 
-        private void searchField_TextChanged(object sender, EventArgs e)
-        {
-
-            stockDataGrid.Rows.Clear();
-            Stock[] search = stockContext.SearchByName(searchField.Text);
-            if (search.Length > 0)
-            {
-                foreach (Stock stock in search)
-                {
-                    this.stockDataGrid.Rows.Add(stock.GetInfo());
-                }
-            }
-            else
-            {
-                UpdateStocks();
-            }
-
-        }
-
         private void cbDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
             Stock[] stocks = stockContext.GetAllStocks();
@@ -333,6 +324,36 @@ namespace EmployeesManagementSystem
             {
                 UpdateStocks();
             }
+        }
+
+        private void searchField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            DataTable table = controller.GetStockTable();
+
+            // Pressed enter
+            if (e.KeyChar == (char)13)
+            {
+
+                DataView dv = table.DefaultView;
+
+                // Filter the rows
+                dv.RowFilter = string.Format("Name Like '%{0}%'", controller.RemoveWhiteSpaces(this.searchField.Text));
+                this.searchField.Text = "";
+
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    Stock[] stocks = controller.GetFilteredStocks(dv);
+                    showInformation(stocks);
+                }
+                else
+                {
+                    Stock[] stocks = controller.GetStocks();
+                    showInformation(stocks);
+                }
+
+            }
+
         }
     }
 }

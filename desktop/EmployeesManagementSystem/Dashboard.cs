@@ -89,7 +89,7 @@ namespace EmployeesManagementSystem
 
                 // Filter the rows
                 dv.RowFilter = string.Format("FullName Like '%{0}%'", controller.RemoveWhiteSpaces(this.searchField.Text));
-                
+                this.searchField.Text = "";
                 if (dv.ToTable().Rows.Count > 0)
                 {
                     User[] users = controller.GetFilteredUsers(dv);

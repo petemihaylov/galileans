@@ -134,7 +134,7 @@ namespace EmployeesManagementSystem
         public void UpdateDepartments()
         {
             this.dataGridView.Rows.Clear();
-
+            DataTable table = controller.GetDepartmentTable();
             Department[] departments = departmentContext.GetAllDepartments();
             showDepartmentsInformation(departments);
         }
@@ -346,7 +346,7 @@ namespace EmployeesManagementSystem
 
                 // Filter the rows
                 dv.RowFilter = string.Format("Name Like '%{0}%'", controller.RemoveWhiteSpaces(this.searchField.Text));
-
+                this.searchField.Text = "";
                 if (dv.ToTable().Rows.Count > 0)
                 {
                     Department[] departments = controller.GetFilteredDepartments(dv);
