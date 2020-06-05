@@ -65,7 +65,7 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Availability where UserID = @id ORDER BY Date ASC";
+                    command.CommandText = @"SELECT * FROM Availability where UserID = @id";
                     command.AddParameter("id", id);
 
                     // Executing it 

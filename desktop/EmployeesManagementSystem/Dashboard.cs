@@ -15,16 +15,16 @@ namespace EmployeesManagementSystem
         private User loggedUser;
         private DashboardController controller = new DashboardController();
 
-        // Default constructor
+        // Constructors
         public Dashboard()
         {}
-
-        // Constructor
         public Dashboard(User user)
         {
             InitializeComponent();
             this.loggedUser = user;
         }
+
+
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
@@ -41,32 +41,41 @@ namespace EmployeesManagementSystem
             }
         }
 
+
         private void RoleDivision()
         {
             // Roles division
             if (this.loggedUser.Role == Models.Role.Manager)
             {
+                this.lbTitle.Text = "Management";
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = true;
+                this.btnCancellations.BackColor = Leave;
                 this.btnDepartments.Enabled = true;
+                
                 this.btnStocks.Enabled = true;
-                this.btnShifts.Enabled = false;
+                this.btnStocks.BackColor = Leave;
                 this.btnStatistics.Enabled = true;
+                this.btnStatistics.BackColor = Leave;
+
+                this.btnShifts.Enabled = false;
+                this.btnShifts.BackColor = Color.White;
+
                 this.btnCreate.Enabled = false;
                 this.btnCreate.Visible = false;
             }
             else if (this.loggedUser.Role == Models.Role.Administrator)
             {
+                this.lbTitle.Text = "Administration";
                 this.btnEmployees.Enabled = true;
-                this.btnCancellations.Enabled = false;
                 this.btnDepartments.Enabled = true;
-                this.btnStocks.Enabled = false;
                 this.btnShifts.Enabled = true;
+                this.btnStocks.Enabled = false;
+                this.btnCancellations.Enabled = false;
                 this.btnStatistics.Enabled = false;
             }
 
         }
-
         public void UpdateDashboard()
         {
             this.dataGridView.Rows.Clear();
@@ -74,6 +83,7 @@ namespace EmployeesManagementSystem
             User[] users = controller.GetUsers();
             showUsersInformation(users);
         }
+
 
         // Search functionality
         private void searchField_KeyPress(object sender, KeyPressEventArgs e)
@@ -105,6 +115,7 @@ namespace EmployeesManagementSystem
 
         }
 
+
         // Update information method
         private void showUsersInformation(User[] users)
         {
@@ -112,6 +123,7 @@ namespace EmployeesManagementSystem
             controller.ShowDataGridInfo(this.dataGridView, users);
             this.searchField.Text = String.Empty;
         }
+
 
         // Data Grid event handling
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -161,8 +173,6 @@ namespace EmployeesManagementSystem
             }
 
         }
-
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -174,6 +184,7 @@ namespace EmployeesManagementSystem
             }
 
         }
+
 
         // Shifts
         private void btnShift_Click(object sender, EventArgs e)
@@ -192,6 +203,7 @@ namespace EmployeesManagementSystem
             CreateAccounts createAccounts = new CreateAccounts(this);
             createAccounts.Show();
         }
+
 
         // Settings
         private void Settings_Click(object sender, EventArgs e)
@@ -215,17 +227,20 @@ namespace EmployeesManagementSystem
             ShowForm(new Messages(this.loggedUser));
         }
 
+
         // Departments
         private void btnDepartments_Click(object sender, EventArgs e)
         {
             ShowForm(new Departments(this.loggedUser));
         }
 
+
         // Stocks
         private void btnStocks_Click(object sender, EventArgs e)
         {
             ShowForm(new Stocks(this.loggedUser));
         }
+
 
         // Statistics
         private void btnStatistics_Click(object sender, EventArgs e)
@@ -243,78 +258,80 @@ namespace EmployeesManagementSystem
         private Color Enter = Color.DarkGray;
         private Color Leave = Color.LightGray;
 
+
         // Hovering onn the the images
         private void btnExit_MouseEnter(object sender, EventArgs e)
         {
-            this.btnExit.BackColor = Color.LightGray;
+            this.btnExit.BackColor = Enter;
         }
         private void btnExit_MouseLeave(object sender, EventArgs e)
         {
             this.btnExit.BackColor = Color.White;
         }
+
         private void btnEmployees_MouseEnter(object sender, EventArgs e)
         {
-            this.btnEmployees.BackColor = Color.DarkGray;
+            this.btnEmployees.BackColor = Enter;
         }
         private void btnEmployees_MouseLeave(object sender, EventArgs e)
         {
-            this.btnEmployees.BackColor = Color.LightGray;
+            this.btnEmployees.BackColor = Leave;
         }
         private void btnShifts_MouseEnter(object sender, EventArgs e)
         {
-            this.btnShifts.BackColor = Color.DarkGray;
+            this.btnShifts.BackColor = Enter;
         }
         private void btnShifts_MouseLeave(object sender, EventArgs e)
         {
-            this.btnShifts.BackColor = Color.LightGray;
+            this.btnShifts.BackColor = Leave;
         }
         private void btnCancellations_MouseEnter(object sender, EventArgs e)
         {
-            this.btnCancellations.BackColor = Color.DarkGray;
+            this.btnCancellations.BackColor = Enter;
         }
         private void btnCancellations_MouseLeave(object sender, EventArgs e)
         {
-            this.btnCancellations.BackColor = Color.LightGray;
+            this.btnCancellations.BackColor = Leave;
         }
         private void btnDepartments_MouseEnter(object sender, EventArgs e)
         {
-            this.btnDepartments.BackColor = Color.DarkGray;
+            this.btnDepartments.BackColor = Enter;
         }
         private void btnDepartments_MouseLeave(object sender, EventArgs e)
         {
-            this.btnDepartments.BackColor = Color.LightGray;
+            this.btnDepartments.BackColor = Leave;
         }
         private void btnStocks_MouseEnter(object sender, EventArgs e)
         {
-            this.btnStocks.BackColor = Color.DarkGray;
+            this.btnStocks.BackColor = Enter;
         }
         private void btnStocks_MouseLeave(object sender, EventArgs e)
         {
-            this.btnStocks.BackColor = Color.LightGray;
+            this.btnStocks.BackColor = Leave;
         }
         private void btnStatistics_MouseEnter(object sender, EventArgs e)
         {
-            this.btnStatistics.BackColor = Color.DarkGray;
+            this.btnStatistics.BackColor = Enter;
         }
         private void btnStatistics_MouseLeave(object sender, EventArgs e)
         {
-            this.btnStatistics.BackColor = Color.LightGray;
+            this.btnStatistics.BackColor = Leave;
         }
         private void btnCreate_MouseEnter(object sender, EventArgs e)
         {
-            this.btnCreate.BackColor = Color.DarkGray;
+            this.btnCreate.BackColor = Enter;
         }
         private void btnCreate_MouseLeave(object sender, EventArgs e)
         {
-            this.btnCreate.BackColor = Color.LightGray;
+            this.btnCreate.BackColor = Leave;
         }
         private void btnSettings_MouseEnter(object sender, EventArgs e)
         {
-            this.btnSettings.BackColor = Color.DarkGray;
+            this.btnSettings.BackColor = Enter;
         }
         private void btnSettings_MouseLeave(object sender, EventArgs e)
         {
-            this.btnSettings.BackColor = Color.LightGray;
+            this.btnSettings.BackColor = Leave;
         }
     }
 }

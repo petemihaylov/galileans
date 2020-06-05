@@ -31,25 +31,7 @@ namespace EmployeesManagementSystem
 
         private void Departments_Load(object sender, EventArgs e)
         {
-            // Roles division
-            if (this.loggedUser.Role == Role.Manager)
-            {
-                this.btnEmployees.Enabled = true;
-                this.btnCancellations.Enabled = true;
-                this.btnDepartments.Enabled = true;
-                this.btnStocks.Enabled = true;
-                this.btnShifts.Enabled = false;
-                this.btnStatistics.Enabled = true;
-            }
-            else if (this.loggedUser.Role == Role.Administrator)
-            {
-                this.btnEmployees.Enabled = true;
-                this.btnCancellations.Enabled = false;
-                this.btnDepartments.Enabled = true;
-                this.btnStocks.Enabled = false;
-                this.btnShifts.Enabled = true;
-                this.btnStatistics.Enabled = false;
-            }
+            RoleDivision();
 
             try
             {
@@ -61,6 +43,43 @@ namespace EmployeesManagementSystem
                 throw new Exception("Can't display info correctly!");
             }
         }
+
+        private Color Enter = Color.DarkGray;
+        private Color Leave = Color.LightGray;
+
+        private void RoleDivision()
+        {
+            // Roles division
+            if (this.loggedUser.Role == Models.Role.Manager)
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnCancellations.Enabled = true;
+                this.btnCancellations.BackColor = Leave;
+                this.btnDepartments.Enabled = true;
+
+                this.btnStocks.Enabled = true;
+                this.btnStocks.BackColor = Leave;
+                this.btnStatistics.Enabled = true;
+                this.btnStatistics.BackColor = Leave;
+
+                this.btnShifts.Enabled = false;
+                this.btnShifts.BackColor = Color.White;
+
+                this.btnCreate.Enabled = false;
+                this.btnCreate.Visible = false;
+            }
+            else if (this.loggedUser.Role == Models.Role.Administrator)
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnDepartments.Enabled = true;
+                this.btnShifts.Enabled = true;
+                this.btnStocks.Enabled = false;
+                this.btnCancellations.Enabled = false;
+                this.btnStatistics.Enabled = false;
+            }
+
+        }
+
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

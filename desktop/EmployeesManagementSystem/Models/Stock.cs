@@ -44,7 +44,7 @@ namespace EmployeesManagementSystem.Models
         public Stock() { }
         public string[] GetInfo()
         {
-            string[] s = { this.ID.ToString(), this.Name, this.Price.ToString(), this.Amount.ToString(), Convert.ToString(Availability), "Reload" };
+            string[] s = { this.ID.ToString(), this.Name, this.Price.ToString(), this.Amount.ToString(), Convert.ToString(Availability)};
             return s;
         }
         public bool SellStock(int amount)

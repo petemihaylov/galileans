@@ -33,21 +33,5 @@ namespace EmployeesManagementSystem.Controllers
         {
             return Regex.Replace(text, @"\s+|\t|\n|\r", String.Empty);
         }
-        /*
-        public void ShowDataGridInfo(DataGridView dataGridView, User[] users)
-        {
-            dataGridView.Rows.Clear();
-
-            foreach (User user in users)
-            {
-                var arr = user.GetInfo();
-                var d = stockContext.GetDepartmentByUser(user.ID);
-
-                if (d != null)
-                    arr[arr.Length - 1] = d.Name;
-
-                dataGridView.Rows.Add(arr);
-            }
-        }*/
     }
 }

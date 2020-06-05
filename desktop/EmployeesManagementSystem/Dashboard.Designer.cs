@@ -65,7 +65,7 @@
             this.btnSettings = new System.Windows.Forms.PictureBox();
             this.panelAccount = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbTitle = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -191,6 +191,7 @@
             this.btnShifts.Controls.Add(this.pictureBox13);
             this.btnShifts.Controls.Add(this.pictureBox14);
             this.btnShifts.Controls.Add(this.label9);
+            this.btnShifts.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnShifts.Location = new System.Drawing.Point(12, 230);
             this.btnShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnShifts.Name = "btnShifts";
@@ -238,6 +239,7 @@
             this.btnStocks.Controls.Add(this.pictureBox3);
             this.btnStocks.Controls.Add(this.pictureBox11);
             this.btnStocks.Controls.Add(this.label2);
+            this.btnStocks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStocks.Location = new System.Drawing.Point(12, 368);
             this.btnStocks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStocks.Name = "btnStocks";
@@ -285,6 +287,7 @@
             this.btnDepartments.Controls.Add(this.pictureBox8);
             this.btnDepartments.Controls.Add(this.pictureBox5);
             this.btnDepartments.Controls.Add(this.label4);
+            this.btnDepartments.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDepartments.Location = new System.Drawing.Point(12, 299);
             this.btnDepartments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDepartments.Name = "btnDepartments";
@@ -332,6 +335,7 @@
             this.btnCancellations.Controls.Add(this.pictureBox7);
             this.btnCancellations.Controls.Add(this.pictureBox4);
             this.btnCancellations.Controls.Add(this.label3);
+            this.btnCancellations.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancellations.Location = new System.Drawing.Point(12, 438);
             this.btnCancellations.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancellations.Name = "btnCancellations";
@@ -380,6 +384,7 @@
             this.btnEmployees.Controls.Add(this.pictureBox6);
             this.btnEmployees.Controls.Add(this.pictureBox12);
             this.btnEmployees.Controls.Add(this.label8);
+            this.btnEmployees.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEmployees.Location = new System.Drawing.Point(12, 168);
             this.btnEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEmployees.Name = "btnEmployees";
@@ -532,7 +537,7 @@
             // 
             this.panelAccount.BackColor = System.Drawing.Color.White;
             this.panelAccount.Controls.Add(this.pictureBox1);
-            this.panelAccount.Controls.Add(this.label1);
+            this.panelAccount.Controls.Add(this.lbTitle);
             this.panelAccount.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelAccount.Location = new System.Drawing.Point(0, 0);
             this.panelAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -551,16 +556,16 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // lbTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.SlateBlue;
-            this.label1.Location = new System.Drawing.Point(81, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "ADMINISTRATION";
+            this.lbTitle.AutoSize = true;
+            this.lbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.ForeColor = System.Drawing.Color.SlateBlue;
+            this.lbTitle.Location = new System.Drawing.Point(81, 30);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(150, 20);
+            this.lbTitle.TabIndex = 2;
+            this.lbTitle.Text = "ADMINISTRATION";
             // 
             // dataGridView
             // 
@@ -577,12 +582,12 @@
             this.Department,
             this.Details,
             this.Delete});
-            this.dataGridView.Location = new System.Drawing.Point(307, 82);
+            this.dataGridView.Location = new System.Drawing.Point(266, 79);
             this.dataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 30;
-            this.dataGridView.Size = new System.Drawing.Size(1156, 716);
+            this.dataGridView.Size = new System.Drawing.Size(1236, 737);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
@@ -706,7 +711,7 @@
             // 
             // pictureCreate
             // 
-            this.pictureCreate.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_box_black_48dp;
+            this.pictureCreate.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_circle_black_48dp;
             this.pictureCreate.Location = new System.Drawing.Point(12, 7);
             this.pictureCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureCreate.Name = "pictureCreate";
@@ -765,13 +770,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gray;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1511, 827);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.panelLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.ImeMode = System.Windows.Forms.ImeMode.On;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -828,7 +834,7 @@
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel panelAccount;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.PictureBox btnSettings;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Panel panel4;
