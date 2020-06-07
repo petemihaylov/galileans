@@ -14,9 +14,10 @@ require_once "../includes/config.inc.php";
 require "../models/Shift.php";
 
 // for the pdf
-require_once __DIR__ . '../vendor/autoload.php';
+require_once  '../vendor/autoload.php';
 
 function getPDF($arr){
+    $data = "";
     $mpdf = new \Mpdf\Mpdf();
     $data .= '<h1>Shift details</h1>';
 

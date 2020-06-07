@@ -18,28 +18,42 @@ namespace EmployeesManagementSystem
             this.loggedUser = user;
         }
 
-        private void Complaint_Load(object sender, EventArgs e)
+        private Color Enter = Color.DarkGray;
+        private Color Leave = Color.LightGray;
+
+        private void RoleDivision()
         {
             // Roles division
-            // Could be in another class
-            if (this.loggedUser.Role == Role.Manager)
+            if (this.loggedUser.Role == Models.Role.Manager)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = true;
+                this.btnCancellations.BackColor = Leave;
                 this.btnDepartments.Enabled = true;
+
                 this.btnStocks.Enabled = true;
-                this.btnShifts.Enabled = false;
+                this.btnStocks.BackColor = Leave;
                 this.btnStatistics.Enabled = true;
+                this.btnStatistics.BackColor = Leave;
+
+                this.btnShifts.Enabled = false;
+                this.btnShifts.BackColor = Color.White;
+
             }
-            else if (this.loggedUser.Role == Role.Administrator)
+            else if (this.loggedUser.Role == Models.Role.Administrator)
             {
                 this.btnEmployees.Enabled = true;
-                this.btnCancellations.Enabled = false;
                 this.btnDepartments.Enabled = true;
-                this.btnStocks.Enabled = false;
                 this.btnShifts.Enabled = true;
+                this.btnStocks.Enabled = false;
+                this.btnCancellations.Enabled = false;
                 this.btnStatistics.Enabled = false;
             }
+
+        }
+        private void Complaint_Load(object sender, EventArgs e)
+        {
+            RoleDivision();
 
             // needs to upload as the program runs in the future
             try

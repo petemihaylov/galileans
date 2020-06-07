@@ -47,7 +47,7 @@ namespace EmployeesManagementSystem
             // Roles division
             if (this.loggedUser.Role == Models.Role.Manager)
             {
-                this.lbTitle.Text = "Management";
+                this.lbTitle.Text = "MANAGEMENT";
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = true;
                 this.btnCancellations.BackColor = Leave;
@@ -66,7 +66,7 @@ namespace EmployeesManagementSystem
             }
             else if (this.loggedUser.Role == Models.Role.Administrator)
             {
-                this.lbTitle.Text = "Administration";
+                this.lbTitle.Text = "ADMINISTRATION";
                 this.btnEmployees.Enabled = true;
                 this.btnDepartments.Enabled = true;
                 this.btnShifts.Enabled = true;
@@ -246,6 +246,7 @@ namespace EmployeesManagementSystem
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             // Show Dashboard
+            this.Hide();
             ShowForm(new Statistic(loggedUser, this));
         }
 
@@ -333,5 +334,7 @@ namespace EmployeesManagementSystem
         {
             this.btnSettings.BackColor = Leave;
         }
+
+       
     }
 }

@@ -67,11 +67,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnExit = new System.Windows.Forms.PictureBox();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.txDescription = new System.Windows.Forms.TextBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +74,11 @@
             this.cancelationMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnExit = new System.Windows.Forms.PictureBox();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.txDescription = new System.Windows.Forms.TextBox();
             this.panelLeft.SuspendLayout();
             this.btnShifts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -125,7 +125,7 @@
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(257, 816);
+            this.panelLeft.Size = new System.Drawing.Size(257, 850);
             this.panelLeft.TabIndex = 6;
             // 
             // btnShifts
@@ -134,6 +134,7 @@
             this.btnShifts.Controls.Add(this.pictureBox12);
             this.btnShifts.Controls.Add(this.pictureBox15);
             this.btnShifts.Controls.Add(this.label9);
+            this.btnShifts.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnShifts.Location = new System.Drawing.Point(11, 211);
             this.btnShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnShifts.Name = "btnShifts";
@@ -328,6 +329,7 @@
             this.btnStocks.Controls.Add(this.pictureBox9);
             this.btnStocks.Controls.Add(this.pictureBox11);
             this.btnStocks.Controls.Add(this.label6);
+            this.btnStocks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStocks.Location = new System.Drawing.Point(10, 342);
             this.btnStocks.Name = "btnStocks";
             this.btnStocks.Size = new System.Drawing.Size(230, 41);
@@ -372,6 +374,7 @@
             this.btnDepartments.Controls.Add(this.pictureBox8);
             this.btnDepartments.Controls.Add(this.pictureBox5);
             this.btnDepartments.Controls.Add(this.label4);
+            this.btnDepartments.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDepartments.Location = new System.Drawing.Point(9, 272);
             this.btnDepartments.Name = "btnDepartments";
             this.btnDepartments.Size = new System.Drawing.Size(230, 41);
@@ -416,6 +419,7 @@
             this.btnCancellations.Controls.Add(this.pictureBox7);
             this.btnCancellations.Controls.Add(this.pictureBox4);
             this.btnCancellations.Controls.Add(this.label3);
+            this.btnCancellations.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancellations.Location = new System.Drawing.Point(10, 411);
             this.btnCancellations.Name = "btnCancellations";
             this.btnCancellations.Size = new System.Drawing.Size(230, 41);
@@ -460,6 +464,7 @@
             this.btnEmployees.Controls.Add(this.pictureBox6);
             this.btnEmployees.Controls.Add(this.pictureBox3);
             this.btnEmployees.Controls.Add(this.label2);
+            this.btnEmployees.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEmployees.Location = new System.Drawing.Point(11, 147);
             this.btnEmployees.Name = "btnEmployees";
             this.btnEmployees.Size = new System.Drawing.Size(230, 41);
@@ -552,63 +557,13 @@
             this.cancelationMessage,
             this.State,
             this.Delete});
-            this.dataGridView.Location = new System.Drawing.Point(263, 59);
+            this.dataGridView.Location = new System.Drawing.Point(286, 59);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 30;
-            this.dataGridView.Size = new System.Drawing.Size(1156, 480);
+            this.dataGridView.Size = new System.Drawing.Size(1243, 480);
             this.dataGridView.TabIndex = 7;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.btnExit);
-            this.panel4.Location = new System.Drawing.Point(252, 1);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1203, 52);
-            this.panel4.TabIndex = 8;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
-            this.btnExit.Location = new System.Drawing.Point(1152, 8);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(39, 35);
-            this.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnExit.TabIndex = 2;
-            this.btnExit.TabStop = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            this.btnExit.MouseEnter += new System.EventHandler(this.btnExit_MouseEnter);
-            this.btnExit.MouseLeave += new System.EventHandler(this.btnExit_MouseLeave);
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewImageColumn2.HeaderText = "Delete";
-            this.dataGridViewImageColumn2.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_delete_forever_black_48dp;
-            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn2.MinimumWidth = 6;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.Width = 125;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewImageColumn1.HeaderText = "Details";
-            this.dataGridViewImageColumn1.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_info_black_48dp;
-            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn1.MinimumWidth = 6;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Width = 125;
-            // 
-            // txDescription
-            // 
-            this.txDescription.Location = new System.Drawing.Point(263, 577);
-            this.txDescription.Multiline = true;
-            this.txDescription.Name = "txDescription";
-            this.txDescription.Size = new System.Drawing.Size(1156, 199);
-            this.txDescription.TabIndex = 9;
             // 
             // ID
             // 
@@ -664,11 +619,61 @@
             this.Delete.Name = "Delete";
             this.Delete.Width = 55;
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.btnExit);
+            this.panel4.Location = new System.Drawing.Point(252, 1);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1301, 52);
+            this.panel4.TabIndex = 8;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
+            this.btnExit.Location = new System.Drawing.Point(1238, 11);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(39, 35);
+            this.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnExit.TabIndex = 2;
+            this.btnExit.TabStop = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.MouseEnter += new System.EventHandler(this.btnExit_MouseEnter);
+            this.btnExit.MouseLeave += new System.EventHandler(this.btnExit_MouseLeave);
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewImageColumn2.HeaderText = "Delete";
+            this.dataGridViewImageColumn2.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_delete_forever_black_48dp;
+            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn2.MinimumWidth = 6;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.Width = 125;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewImageColumn1.HeaderText = "Details";
+            this.dataGridViewImageColumn1.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_info_black_48dp;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.MinimumWidth = 6;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 125;
+            // 
+            // txDescription
+            // 
+            this.txDescription.Location = new System.Drawing.Point(286, 571);
+            this.txDescription.Multiline = true;
+            this.txDescription.Name = "txDescription";
+            this.txDescription.Size = new System.Drawing.Size(1243, 199);
+            this.txDescription.TabIndex = 9;
+            // 
             // Messages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1455, 816);
+            this.ClientSize = new System.Drawing.Size(1550, 850);
             this.Controls.Add(this.txDescription);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.dataGridView);

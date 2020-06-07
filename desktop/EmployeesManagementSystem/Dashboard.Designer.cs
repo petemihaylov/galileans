@@ -134,7 +134,7 @@
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(257, 827);
+            this.panelLeft.Size = new System.Drawing.Size(257, 850);
             this.panelLeft.TabIndex = 0;
             // 
             // btnStatistics
@@ -444,7 +444,7 @@
             this.settingsPanel.Controls.Add(this.editAccount);
             this.settingsPanel.Controls.Add(this.pictureBox2);
             this.settingsPanel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.settingsPanel.Location = new System.Drawing.Point(43, 688);
+            this.settingsPanel.Location = new System.Drawing.Point(43, 727);
             this.settingsPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.settingsPanel.Name = "settingsPanel";
             this.settingsPanel.Size = new System.Drawing.Size(191, 76);
@@ -511,7 +511,7 @@
             this.lbSettings.AutoSize = true;
             this.lbSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSettings.Location = new System.Drawing.Point(57, 779);
+            this.lbSettings.Location = new System.Drawing.Point(57, 818);
             this.lbSettings.Name = "lbSettings";
             this.lbSettings.Size = new System.Drawing.Size(70, 20);
             this.lbSettings.TabIndex = 3;
@@ -522,7 +522,7 @@
             // 
             this.btnSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSettings.Image = global::EmployeesManagementSystem.Properties.Resources.settings;
-            this.btnSettings.Location = new System.Drawing.Point(12, 770);
+            this.btnSettings.Location = new System.Drawing.Point(12, 809);
             this.btnSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(39, 34);
@@ -587,7 +587,7 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 30;
-            this.dataGridView.Size = new System.Drawing.Size(1236, 737);
+            this.dataGridView.Size = new System.Drawing.Size(1272, 700);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
@@ -651,6 +651,7 @@
             // 
             // panel4
             // 
+            this.panel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.searchField);
             this.panel4.Controls.Add(this.panel6);
@@ -660,7 +661,7 @@
             this.panel4.Location = new System.Drawing.Point(255, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1260, 63);
+            this.panel4.Size = new System.Drawing.Size(1295, 63);
             this.panel4.TabIndex = 2;
             // 
             // searchField
@@ -670,7 +671,7 @@
             this.searchField.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.searchField.Multiline = true;
             this.searchField.Name = "searchField";
-            this.searchField.Size = new System.Drawing.Size(349, 22);
+            this.searchField.Size = new System.Drawing.Size(407, 22);
             this.searchField.TabIndex = 9;
             this.searchField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchField_KeyPress);
             // 
@@ -700,7 +701,7 @@
             this.btnCreate.Controls.Add(this.pictureCreate);
             this.btnCreate.Controls.Add(this.lbCreate);
             this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCreate.Location = new System.Drawing.Point(884, 12);
+            this.btnCreate.Location = new System.Drawing.Point(824, 15);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(181, 38);
@@ -735,7 +736,7 @@
             // 
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
-            this.btnExit.Location = new System.Drawing.Point(1184, 15);
+            this.btnExit.Location = new System.Drawing.Point(1244, 13);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(39, 34);
@@ -770,8 +771,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1511, 827);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(1550, 850);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.panelLeft);
@@ -779,9 +782,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.ImeMode = System.Windows.Forms.ImeMode.On;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(1636, 867);
+            this.MinimumSize = new System.Drawing.Size(1400, 800);
             this.Name = "Dashboard";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "+";
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
 using SeriesCollection = LiveCharts.SeriesCollection;
+using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem
 {
@@ -27,6 +28,7 @@ namespace EmployeesManagementSystem
         List<string> months = new List<string>();
         List<User> users = new List<User>();
 
+
         Dictionary<string, List< KeyValuePair<string, int> >> shiftDictionary
                  = new Dictionary<string, List< KeyValuePair<string, int> >>();
 
@@ -36,14 +38,18 @@ namespace EmployeesManagementSystem
         Dictionary<string, List<KeyValuePair<string, int>>> cancelledShifts
                  = new Dictionary<string, List<KeyValuePair<string, int>>>();
 
+
+
         private User user;
         private Form previousForm;
+
 
         public Statistic(User loggedUser, Form previousForm)
         {
             InitializeComponent();
             this.user = loggedUser;
             this.previousForm = previousForm;
+            
 
             departments = departmentContext.GetAllDepartments().OfType<Department>().ToList();
             users = userContext.GetAllUsers().OfType<User>().ToList();
@@ -53,6 +59,7 @@ namespace EmployeesManagementSystem
             {
                 months.Add(DateTime.Now.AddMonths(-i).ToString("MMM"));
             }
+
             // Preload shiftDictionary data into a structure
             foreach (var m in months)
             {
@@ -65,6 +72,7 @@ namespace EmployeesManagementSystem
 
                 shiftDictionary.Add(m, list);
             }
+
 
             // Preload attendedShifts data into a structure
             foreach (var u in users)
@@ -84,6 +92,42 @@ namespace EmployeesManagementSystem
                 cancelledShifts.Add(u.Email, cancelledList);
             }
         }
+
+
+        private async Task<Dictionary<string, List<KeyValuePair<string, int>>>> preloadShifts()
+        {
+
+            Dictionary<string, List<KeyValuePair<string, int>>> dictionary
+                     = new Dictionary<string, List<KeyValuePair<string, int>>>();
+
+            // Preload shiftDictionary data into a structure
+            foreach (var m in months)
+            {
+                var list = await Task.Run(() => getShiftPerDepartmentForSpecificDate(m));
+                dictionary.Add(m, list);
+            }
+
+            return dictionary;
+        }
+
+        private List<KeyValuePair<string, int>> getShiftPerDepartmentForSpecificDate(string m)
+        {
+            var list = new List<KeyValuePair<string, int>>();
+
+            DateTime date = DateTime.ParseExact(m, "MMM", CultureInfo.InvariantCulture);
+            departments.ForEach(
+                d => list.Add(new KeyValuePair<string, int>(d.Name, shiftContext.GetShiftsByDateAndDepartment(date, d.ID).Count))
+            );
+
+            return list;
+        }
+
+
+
+
+
+
+
         private void Statistic_Load(object sender, EventArgs e)
         {
             LoadUsers();
@@ -91,7 +135,6 @@ namespace EmployeesManagementSystem
             DisplayPieChart(DateTime.Now.ToString("MMM"));
             DisplayCartesianChart(users[0].FullName);
         }
-
         private void LoadUsers()
         {
             users.ForEach(u => cbUsers.Items.Add(u.FullName));
@@ -192,11 +235,11 @@ namespace EmployeesManagementSystem
         }
         private void picBack_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
             // Show previous form
             previousForm.Closed += (s, args) => this.Close();
             previousForm.Show();
-            this.Hide();
+            
         }
         private void exit_Click(object sender, EventArgs e)
         {

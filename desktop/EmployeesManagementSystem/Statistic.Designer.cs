@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Statistic));
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lbBack = new System.Windows.Forms.Label();
-            this.picBack = new System.Windows.Forms.PictureBox();
             this.exit = new System.Windows.Forms.PictureBox();
             this.lbMoneyMadeMonth = new System.Windows.Forms.Label();
             this.pieChart = new LiveCharts.WinForms.PieChart();
@@ -44,10 +42,8 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.csvbtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.cartesianChart = new LiveCharts.WinForms.CartesianChart();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -55,41 +51,19 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.lbBack);
-            this.panel4.Controls.Add(this.picBack);
             this.panel4.Controls.Add(this.exit);
             this.panel4.Controls.Add(this.lbMoneyMadeMonth);
+            this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1636, 63);
             this.panel4.TabIndex = 4;
             // 
-            // lbBack
-            // 
-            this.lbBack.AutoSize = true;
-            this.lbBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBack.Location = new System.Drawing.Point(78, 25);
-            this.lbBack.Name = "lbBack";
-            this.lbBack.Size = new System.Drawing.Size(47, 20);
-            this.lbBack.TabIndex = 4;
-            this.lbBack.Text = "Back";
-            // 
-            // picBack
-            // 
-            this.picBack.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_arrow_back_ios_black_48dp;
-            this.picBack.Location = new System.Drawing.Point(26, 15);
-            this.picBack.Name = "picBack";
-            this.picBack.Size = new System.Drawing.Size(39, 35);
-            this.picBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picBack.TabIndex = 3;
-            this.picBack.TabStop = false;
-            this.picBack.Click += new System.EventHandler(this.picBack_Click);
-            // 
             // exit
             // 
             this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
-            this.exit.Location = new System.Drawing.Point(1542, 15);
+            this.exit.Location = new System.Drawing.Point(1566, 17);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(39, 35);
             this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -104,7 +78,7 @@
             this.lbMoneyMadeMonth.AutoSize = true;
             this.lbMoneyMadeMonth.Font = new System.Drawing.Font("Arial", 12F);
             this.lbMoneyMadeMonth.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lbMoneyMadeMonth.Location = new System.Drawing.Point(709, 22);
+            this.lbMoneyMadeMonth.Location = new System.Drawing.Point(98, 23);
             this.lbMoneyMadeMonth.Name = "lbMoneyMadeMonth";
             this.lbMoneyMadeMonth.Size = new System.Drawing.Size(122, 23);
             this.lbMoneyMadeMonth.TabIndex = 67;
@@ -112,6 +86,7 @@
             // 
             // pieChart
             // 
+            this.pieChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.pieChart.Location = new System.Drawing.Point(43, 130);
             this.pieChart.Name = "pieChart";
             this.pieChart.Size = new System.Drawing.Size(436, 403);
@@ -206,22 +181,13 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EmployeesManagementSystem.Properties.Resources.stock_icon_png_12;
-            this.pictureBox1.Location = new System.Drawing.Point(27, 792);
+            this.pictureBox1.Location = new System.Drawing.Point(30, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(53, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(49, 41);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 72;
             this.pictureBox1.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(86, 819);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 17);
-            this.label5.TabIndex = 73;
-            this.label5.Text = "EXPORT DATA";
             // 
             // cartesianChart
             // 
@@ -233,13 +199,13 @@
             // 
             // Statistic
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(1511, 827);
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1636, 867);
+            this.ControlBox = false;
             this.Controls.Add(this.cartesianChart);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.csvbtn);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label4);
@@ -253,14 +219,16 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1640, 900);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1636, 867);
             this.Name = "Statistic";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Statistic";
             this.Load += new System.EventHandler(this.Statistic_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -270,8 +238,6 @@
 
         #endregion
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label lbBack;
-        private System.Windows.Forms.PictureBox picBack;
         private System.Windows.Forms.PictureBox exit;
         private System.Windows.Forms.Label lbMoneyMadeMonth;
         private LiveCharts.WinForms.PieChart pieChart;
@@ -284,7 +250,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button csvbtn;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label5;
         private LiveCharts.WinForms.CartesianChart cartesianChart;
     }
 }

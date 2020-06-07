@@ -329,7 +329,7 @@ namespace EmployeesManagementSystem
         }
         private void btnCreate_MouseLeave(object sender, EventArgs e)
         {
-            this.btnCreate.BackColor = Color.LightGray;
+            this.btnCreate.BackColor = Color.Gray;
         }
         private void btnSettings_MouseEnter(object sender, EventArgs e)
         {
