@@ -148,6 +148,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RfidController.cs" />
     <Compile Include="Controllers\ShiftController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="CreateDepartment.cs">
@@ -168,6 +169,7 @@
     <Compile Include="Data\Conversion\DataConverterCSV.cs" />
     <Compile Include="Data\DepartmentContext.cs" />
     <Compile Include="Data\ImageContext.cs" />
+    <Compile Include="Data\RfidContext.cs" />
     <Compile Include="Data\ShiftContext.cs" />
     <Compile Include="Data\StockContext.cs" />
     <Compile Include="Data\UserContext.cs" />
@@ -222,6 +224,7 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Rfid.cs" />
     <Compile Include="Models\Shift\IShift.cs" />
     <Compile Include="Models\Shift\ShiftType.cs" />
     <Compile Include="Models\Shift\StartTime.cs" />
@@ -275,6 +278,12 @@
     </Compile>
     <Compile Include="UploadImg.Designer.cs">
       <DependentUpon>UploadImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserRfidTag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserRfidTag.Designer.cs">
+      <DependentUpon>UserRfidTag.cs</DependentUpon>
     </Compile>
     <Compile Include="Warning.cs">
       <SubType>Form</SubType>
@@ -339,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UploadImg.resx">
       <DependentUpon>UploadImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserRfidTag.resx">
+      <DependentUpon>UserRfidTag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warning.resx">
       <DependentUpon>Warning.cs</DependentUpon>
