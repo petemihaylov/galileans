@@ -10,7 +10,7 @@ $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
  
 // Check connection
 if($link === false){
-    header("Location: ./views/error.php");
+    header("Location: error.php");
     die();
 }
 ?>

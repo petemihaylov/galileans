@@ -245,6 +245,7 @@
     <Compile Include="ReloadStock.Designer.cs">
       <DependentUpon>ReloadStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShiftAutomationManager.cs" />
     <Compile Include="Shifts.cs">
       <SubType>Form</SubType>
     </Compile>
