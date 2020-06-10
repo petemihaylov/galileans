@@ -45,21 +45,21 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
-        public bool DeleteUserByEmail(string email)
+       public bool DeleteUserByEmail(string email)
         {
             using (var con = new MySqlConnection(connectionString))
-            {
-                con.Open();
+           {
+               con.Open();
 
-                using (var command = con.CreateCommand())
-                {
-                    command.CommandText = @"DELETE FROM User WHERE Email = @email";
-                    command.AddParameter("email", email);
+               using (var command = con.CreateCommand())
+               {
+                   command.CommandText = @"DELETE FROM User WHERE Email = @email";
+                   command.AddParameter("email", email);
 
-                    // Check if you have deleted the shifts of this user!
-                    return command.ExecuteNonQuery() > 0 ? true : false;
-                }
-            }
+                   // Check if you have deleted the shifts of this user!
+                   return command.ExecuteNonQuery() > 0 ? true : false;
+               }
+           }
         }
 
         public bool UpdateUserInfo(User user)

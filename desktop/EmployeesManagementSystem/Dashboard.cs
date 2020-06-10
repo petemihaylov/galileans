@@ -55,11 +55,15 @@ namespace EmployeesManagementSystem
                 
                 this.btnStocks.Enabled = true;
                 this.btnStocks.BackColor = Leave;
+
                 this.btnStatistics.Enabled = true;
                 this.btnStatistics.BackColor = Leave;
 
                 this.btnShifts.Enabled = false;
                 this.btnShifts.BackColor = Color.White;
+
+                this.btnTimetable.Enabled = false;
+                this.btnTimetable.BackColor = Color.White;
 
                 this.btnCreate.Enabled = false;
                 this.btnCreate.Visible = false;
@@ -70,6 +74,8 @@ namespace EmployeesManagementSystem
                 this.btnEmployees.Enabled = true;
                 this.btnDepartments.Enabled = true;
                 this.btnShifts.Enabled = true;
+                this.btnTimetable.Enabled = true;
+
                 this.btnStocks.Enabled = false;
                 this.btnCancellations.Enabled = false;
                 this.btnStatistics.Enabled = false;
@@ -219,7 +225,10 @@ namespace EmployeesManagementSystem
             // Show Log In
             ShowForm(new Login());
         }
-
+        private void btnTimetable_Click(object sender, EventArgs e)
+        {
+            ShowForm(new TimeTable(this.loggedUser));
+        }
 
         // Cancellations
         private void btnCancellations_Click(object sender, EventArgs e)
@@ -335,6 +344,14 @@ namespace EmployeesManagementSystem
             this.btnSettings.BackColor = Leave;
         }
 
-       
+        private void btnTimetable_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnTimetable.BackColor = Enter;
+        }
+
+        private void btnTimetable_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnTimetable.BackColor = Leave;
+        }
     }
 }
