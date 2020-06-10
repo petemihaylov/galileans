@@ -42,6 +42,7 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+
         public bool DeleteByUser(int id)
         {
             using (var con = new MySqlConnection(connectionString))

@@ -55,6 +55,7 @@
             this.btnDecline = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cbEmployees = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -62,7 +63,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.cbEmployees = new System.Windows.Forms.ComboBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lbBack = new System.Windows.Forms.Label();
+            this.picBack = new System.Windows.Forms.PictureBox();
+            this.exit = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.arrowLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -71,6 +75,9 @@
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             this.SuspendLayout();
             // 
             // lbMonday
@@ -317,7 +324,7 @@
             this.groupBox5.Controls.Add(this.groupBox3);
             this.groupBox5.Controls.Add(this.groupBox1);
             this.groupBox5.Controls.Add(this.groupBox2);
-            this.groupBox5.Location = new System.Drawing.Point(12, 12);
+            this.groupBox5.Location = new System.Drawing.Point(11, 86);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -348,7 +355,7 @@
             this.lbRequested.ItemHeight = 16;
             this.lbRequested.Items.AddRange(new object[] {
             ""});
-            this.lbRequested.Location = new System.Drawing.Point(1139, 39);
+            this.lbRequested.Location = new System.Drawing.Point(1138, 113);
             this.lbRequested.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbRequested.Name = "lbRequested";
             this.lbRequested.ScrollAlwaysVisible = true;
@@ -361,7 +368,7 @@
             this.btnAccept.FlatAppearance.BorderSize = 0;
             this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccept.ForeColor = System.Drawing.Color.White;
-            this.btnAccept.Location = new System.Drawing.Point(1336, 472);
+            this.btnAccept.Location = new System.Drawing.Point(1335, 546);
             this.btnAccept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(151, 26);
@@ -376,7 +383,7 @@
             this.btnDecline.FlatAppearance.BorderSize = 0;
             this.btnDecline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDecline.ForeColor = System.Drawing.Color.White;
-            this.btnDecline.Location = new System.Drawing.Point(1141, 472);
+            this.btnDecline.Location = new System.Drawing.Point(1140, 546);
             this.btnDecline.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDecline.Name = "btnDecline";
             this.btnDecline.Size = new System.Drawing.Size(151, 26);
@@ -388,7 +395,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1138, 14);
+            this.label7.Location = new System.Drawing.Point(1137, 88);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 17);
@@ -405,7 +412,7 @@
             this.groupBox6.Controls.Add(this.label9);
             this.groupBox6.Controls.Add(this.dateTimePicker1);
             this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Location = new System.Drawing.Point(1141, 533);
+            this.groupBox6.Location = new System.Drawing.Point(1140, 607);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
@@ -413,6 +420,14 @@
             this.groupBox6.TabIndex = 75;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Settings";
+            // 
+            // cbEmployees
+            // 
+            this.cbEmployees.FormattingEnabled = true;
+            this.cbEmployees.Location = new System.Drawing.Point(169, 79);
+            this.cbEmployees.Name = "cbEmployees";
+            this.cbEmployees.Size = new System.Drawing.Size(172, 24);
+            this.cbEmployees.TabIndex = 84;
             // 
             // button4
             // 
@@ -492,26 +507,65 @@
             this.label8.TabIndex = 76;
             this.label8.Text = "Data:";
             // 
-            // cbEmployees
+            // panel4
             // 
-            this.cbEmployees.FormattingEnabled = true;
-            this.cbEmployees.Location = new System.Drawing.Point(169, 79);
-            this.cbEmployees.Name = "cbEmployees";
-            this.cbEmployees.Size = new System.Drawing.Size(172, 24);
-            this.cbEmployees.TabIndex = 84;
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.lbBack);
+            this.panel4.Controls.Add(this.picBack);
+            this.panel4.Controls.Add(this.exit);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1549, 63);
+            this.panel4.TabIndex = 76;
+            // 
+            // lbBack
+            // 
+            this.lbBack.AutoSize = true;
+            this.lbBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBack.Location = new System.Drawing.Point(77, 25);
+            this.lbBack.Name = "lbBack";
+            this.lbBack.Size = new System.Drawing.Size(47, 20);
+            this.lbBack.TabIndex = 4;
+            this.lbBack.Text = "Back";
+            // 
+            // picBack
+            // 
+            this.picBack.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_arrow_back_ios_black_48dp;
+            this.picBack.Location = new System.Drawing.Point(28, 18);
+            this.picBack.Margin = new System.Windows.Forms.Padding(4);
+            this.picBack.Name = "picBack";
+            this.picBack.Size = new System.Drawing.Size(37, 32);
+            this.picBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBack.TabIndex = 3;
+            this.picBack.TabStop = false;
+            this.picBack.Click += new System.EventHandler(this.picBack_Click);
+            // 
+            // exit
+            // 
+            this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
+            this.exit.Location = new System.Drawing.Point(1928, 18);
+            this.exit.Margin = new System.Windows.Forms.Padding(4);
+            this.exit.Name = "exit";
+            this.exit.Size = new System.Drawing.Size(52, 43);
+            this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.exit.TabIndex = 2;
+            this.exit.TabStop = false;
             // 
             // TimeTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1532, 803);
+            this.ClientSize = new System.Drawing.Size(1549, 850);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnDecline);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.lbRequested);
             this.Controls.Add(this.groupBox5);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TimeTable";
@@ -529,6 +583,10 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -570,5 +628,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbEmployees;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lbBack;
+        private System.Windows.Forms.PictureBox picBack;
+        private System.Windows.Forms.PictureBox exit;
     }
 }

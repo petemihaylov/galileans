@@ -77,7 +77,7 @@ namespace EmployeesManagementSystem
                 this.btnTimetable.Enabled = true;
 
                 this.btnStocks.Enabled = false;
-                this.btnCancellations.Enabled = true;
+                this.btnCancellations.Enabled = false;
                 this.btnStatistics.Enabled = false;
             }
 

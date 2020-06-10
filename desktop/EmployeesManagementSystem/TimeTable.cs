@@ -16,35 +16,32 @@ namespace EmployeesManagementSystem
     public partial class TimeTable : Form
     {
         private User loggedUser;
-
-
+        private Form previousForm;
         private AvailabilityContext availabilityContext = new AvailabilityContext();
         private TimeTableManager manager = new TimeTableManager();
-
         private UserContext userContext = new UserContext();
         private List<Availability> reqAvas = new List<Availability>();
         public TimeTable(User user)
         {
             InitializeComponent();
             this.loggedUser = user;
+            this.previousForm = previousForm;
+
+
+            foreach (User u in userContext.GetAllUsers())
+            {
+                cbEmployees.Items.Add(u.FullName);
+            }
+
 
             foreach (Availability av in availabilityContext.GetAllAvailabilities())
             {
                 if (av.State.ToString() == "Pendding")
                 {
-
-                    Availability avs = new Availability();
-                    avs.User = av.User;
-                    avs.IsMonthly = av.IsMonthly;
-                    avs.IsWeekly = av.IsWeekly;
-                    avs.State = av.State;
-                    avs.Days = av.Days;
-   
-                    reqAvas.Add(avs);
-                    lbRequested.Items.Add(avs.GetInfo());
+                    reqAvas.Add(av);
+                    lbRequested.Items.Add(av.GetInfo());
 
                 }
-
             }
         }
 
@@ -63,38 +60,22 @@ namespace EmployeesManagementSystem
 
         private void btnDecline_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int index = lbRequested.SelectedIndex;
-                Availability av = new Availability();
-                av = reqAvas[index];
-                av.State = AvailabilityType.Declined;
-                availabilityContext.UpdateAvailabilityInfo(av);
-                UpdateList();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Please select a pendding preference");
-            }
+            int index = lbRequested.SelectedIndex;
+            Availability av = new Availability();
+            av = reqAvas[index];
+            av.State = AvailabilityType.Declined;
+            availabilityContext.UpdateAvailabilityInfo(av);
+            UpdateList();
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int index = lbRequested.SelectedIndex;
-                Availability av = new Availability();
-                av = reqAvas[index];
-                av.State = AvailabilityType.Declined;
-                availabilityContext.UpdateAvailabilityInfo(av);
-                UpdateList();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Please select a pendding preference");
-            }
+            int index = lbRequested.SelectedIndex;
+            Availability av = new Availability();
+            av = reqAvas[index];
+            av.State = AvailabilityType.Declined;
+            availabilityContext.UpdateAvailabilityInfo(av);
+            UpdateList();
         }
         public void UpdateList()
         {
@@ -106,21 +87,20 @@ namespace EmployeesManagementSystem
                 if (av.State.ToString() == "Pendding")
                 {
                     lbRequested.Items.Add(av.GetInfo());
-
-                    Availability avs = new Availability();
-                    avs.User = av.User;
-                    avs.IsMonthly = av.IsMonthly;
-                    avs.IsWeekly = av.IsWeekly;
-                    avs.State = av.State;
-                    avs.Days = av.Days;
-
-                    reqAvas.Add(avs);
+                    reqAvas.Add(av);
                 }
 
             }
  
         }
 
+        private void picBack_Click(object sender, EventArgs e)
+        {
+            // Show previous form
+            previousForm.Closed += (s, args) => this.Close();
+            previousForm.Show();
+            this.Hide();
+        }
     }
 
     public class TimeTableManager
