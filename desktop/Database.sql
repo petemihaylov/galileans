@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS Availability(
 	ID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     UserID int NOT NULL,    
     State ENUM('Pending', 'Approved', 'Declined') DEFAULT 'Pending',
-    Days ENUM('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'),
+    Days text,
     IsWeekly int NOT NULL,
     IsMonthly int NOT NULL,
     

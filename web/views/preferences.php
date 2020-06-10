@@ -17,25 +17,25 @@ require_once "../models/Preference.php";
 
 
 // Gets all preferences of the current user
-$dbArray = array();
-$sql = "SELECT ID, Date, Available FROM Availability where UserID = ?";
+
+$sql = "SELECT ID, UserID, State, Days, IsWeekly, IsMonthly FROM Availability Where UserID = ?";
+$pref = null;
 if ($stmt = mysqli_prepare($link, $sql)) {
 
   mysqli_stmt_bind_param($stmt, "s", $_SESSION['id']);
-
+  
   // Attempt to execute the prepared statement
   if (!mysqli_stmt_execute($stmt)) {
     echo "Oops! Something went wrong. Please try again later.";
   } else {
 
     /* bind result variables */
-    $stmt->bind_result($id, $date, $available);
+    $stmt->bind_result($id, $userID, $state, $days, $isWeekly, $isMonthly);
 
     /* fetch values */
     while ($stmt->fetch()) {
-      # echo $id . " " . $date . " " . $available . "<br>";
-      $pref = new Preference($id, $date, $_SESSION['id'], $available);
-      array_push($dbArray, $pref);
+      // echo $id . " ". $userID . " " . $state . " " . $days .  " " . $isWeekly. " " . $isMonthly . "<br>"; 
+       $pref = new Preference($id, $userID, $state, explode(",",$days), $isWeekly, $isMonthly);
     }
   }
 
@@ -46,6 +46,15 @@ if ($stmt = mysqli_prepare($link, $sql)) {
 // Creating showable objects 
 $daysArray = array();
 
+// Generate 7 days from Monday
+$date = new DateTime("Monday", new DateTimeZone('Europe/Amsterdam'));
+$date = strtotime($date->format('D'));
+for ($i = 0; $i < 7; $i++) {
+  $d = strtotime("+$i day", $date);
+  array_push($daysArray, date('D', $d));
+}
+
+
 function checkIfDateExists($date, $arr)
 {
   for ($i = 0; $i < count($arr); $i++) {
@@ -55,87 +64,82 @@ function checkIfDateExists($date, $arr)
   return false;
 }
 
-$date = new DateTime("now", new DateTimeZone('Europe/Amsterdam'));
-$date = strtotime($date->format('Y-m-d H:i:s'));
-for ($i = 0; $i < 7; $i++) {
 
-  $d = strtotime("+$i day", $date);
 
-  if (checkIfDateExists(date('Y-m-d', $d), $dbArray)) {
-    $pref = new Preference($i, $d, $_SESSION['id'], true);
-  } else {
-    $pref = new Preference($i, $d, $_SESSION['id'], false);
-  }
-
-  array_push($daysArray, $pref);
-}
+$success_message = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  $selected =  $daysArray[$_POST["the_clicked_id"]];
+ $days = "";
+ $monthly = $weekly = 0;
+ if(isset($_POST['monthly'])) 
+    $monthly = 1;
 
-  $dayTime = date('Y-m-d', $selected->get_Date());
+ if(isset($_POST['weekly'])) 
+   $weekly = 1;
 
-  if (checkIfDateExists($dayTime, $dbArray)) {
-    $sqlDelete = "DELETE FROM Availability WHERE Date = ?";
+    for ($i=0; $i < 7; $i++) { 
+      if(isset($_POST[$i])){
+        
+        $date = new DateTime("Monday", new DateTimeZone('Europe/Amsterdam'));
+        $date = strtotime($date->format('D'));
+        $d = strtotime("+$i day", $date);
+        
+          $days .= (date('D', $d) . ',');
+      }
+    }
+    $days = substr($days, 0, -1);
+
+
+    // Delete previous ticks of the user
+    $sqlDelete = "DELETE FROM Availability WHERE UserID = ?";
     if ($stmt = mysqli_prepare($link, $sqlDelete)) {
 
-      mysqli_stmt_bind_param($stmt, "s", $dayTime);
+      mysqli_stmt_bind_param($stmt, "s", $_SESSION['id']);
       if (!mysqli_stmt_execute($stmt)) {
         echo "Oops! Something went wrong. Please try again later.";
       }
     }
-    $selected->set_Availability(false);
-  } else {
-
-    $selected->set_Availability(true);
 
 
-    // Prepare a select statement
-    $sql = "INSERT INTO Availability(UserID, Date, Available) values(?,?,?);";
+        // Prepare a select statement
+    $sql = "INSERT INTO Availability(UserID, Days, isWeekly, isMonthly) values(?,?,?,?);";
 
     if ($stmt = mysqli_prepare($link, $sql)) {
 
       // Bind variables to the prepared statement as parameters
-      $d = date('Y-m-d', $selected->get_Date());
-      $a = $selected->get_Availability() ? 1 : 0;
+      
+      mysqli_stmt_bind_param($stmt, "ssss", $_SESSION['id'], $days, $weekly, $monthly);
 
-      mysqli_stmt_bind_param($stmt, "sss", $_SESSION['id'], $d, $a);
+      $success_message = "Success! Your preferences has been saved!";
+      $pref = new Preference('', $_SESSION['id'], 'Pending', explode(",",$days), $weekly, $monthly);
 
       // Attempt to execute the prepared statement
       if (!mysqli_stmt_execute($stmt)) {
         echo "Oops! Something went wrong. Please try again later.";
+        $success_message = "";
       }
+      
     }
     // Closes the statement
     mysqli_stmt_close($stmt);
 
     // Closes the config DB connection
     mysqli_close($link);
-  }
+
 }
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap 4.0 CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-  <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/03cf08f72f.js" crossorigin="anonymous"></script>
-
-  <!-- JQuery 3.4.1 CDN -->
-  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-
+  <!-- Links -->
+  <?php require './layouts/links.inc.php'; ?>
 
   <link rel="stylesheet" href="../resources/css/header-page.css">
   <link rel="stylesheet" href="../resources/css/preferences.css">
@@ -144,65 +148,103 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+
   <!-- Navbar -->
-
-
   <?php require('header.php') ?>
-
-
 
   <div class="container preferences">
 
+    <h3></h3>
+    <span class="success"><?php echo $success_message; ?></span>
+
+    <h3> Choose your desired days to work:</h3>
     <form method="post">
-      <input id="the_clicked_id" type="hidden" name="the_clicked_id" value="" />
+      <div class="pick-group" id="group_id">
 
-      <?php
-      for ($i = 0; $i < count($daysArray); $i++) {
-        if ($daysArray[$i]->get_Availability()) {
-          $daysArray[$i]->set_Booked(true);
-        } else $daysArray[$i]->set_Booked(false);
-      ?>
-        <div class="row <?php echo $daysArray[$i]->get_Booked() ? "booked" : ""; ?>">
+        <?php for ($i = 0; $i < count($daysArray); $i++) { ?>
 
-          <div class="col-md-1">
-            <div class="dayNumber <?php echo $daysArray[$i]->get_Booked() ? "booked-date" : ""; ?>">
-              <?php echo date('d', $daysArray[$i]->get_Date()); ?>
+          <div 
+          
+            <?php 
+              echo "id=\"$i\""; 
+            
+              if($pref != null){
+                if(in_array($daysArray[$i] ,$pref->Days))
+                  echo "class=\"box selected\"";
+                  else  echo "class=\"box\"";
+              }else  echo "class=\"box\"";
+            
+          ?> >
+            <div class="title">
+              <span><?php echo $daysArray[$i]; ?></span>
             </div>
-          </div>
 
-          <div class="col-md-1 weekDay">
-            <?php echo strtoupper(date('D', $daysArray[$i]->get_Date())); ?>
-          </div>
-
-          <div class="col-md-8">
-            <?php echo strtoupper($daysArray[$i]->get_Availability() ? "Booked" : "Available"); ?>
-          </div>
-
-          <div class="col-md-2">
-            <?php
-            $str =  "<button id=\"$i\" class=\"btn btn-outline-info\" name=\"submit_$i\" type=\"submit\"  onclick=\"return myId(this);\">";
-            $res = $daysArray[$i]->get_Booked() ? "<i class=\"fas fa-minus\"></i>" : "<i class=\"fas fa-plus\"></i>";
-            echo $str . $res . "</button>" . PHP_EOL;
+            <?php 
+            if($pref != null){
+              if(in_array($daysArray[$i] ,$pref->Days))
+                echo '<input id="'. $daysArray[$i] .'"  type="hidden" name="' . $i .'" value="" />';
+            }
             ?>
           </div>
 
+        <?php } ?>
+      </div>
+
+      <h3> Repeating: </h3>
+
+      <div class="pick-group-switch">
+        <div class="switch-group">
+          <div class="switch">
+            <input id="switch-1" type="checkbox" name="monthly" class="switch-input" <?php if($pref->IsMonthly != null)  echo "checked";  ?> />
+            <label for="switch-1" class="switch-label">Switch</label>
+          </div>
+            Monthly
         </div>
 
-      <?php
-      }
-      ?>
-
+        <div class="switch-group">
+          <div class="switch">
+            <input id="switch-2" type="checkbox" name="weekly" class="switch-input2"  <?php if($pref->IsWeekly != null)  echo "checked"; ?> />
+            <label for="switch-2" class="switch-label2">Switch</label>
+          </div>
+            Weekly
+        </div>
+    
+      </div>
+    
+      <h3></h3>
+      <button  class="btn submit-btn"  type="submit"> Save your choice</button>
+      
     </form>
 
+
+
+
+    <!-- Chosing clickable event -->
+    <script>
+      var children = document.getElementById('group_id').childNodes;
+      children.forEach(element => {
+        if (element.id != undefined) {
+
+          element.addEventListener('click', function() {
+          
+            $(element).toggleClass("selected");
+            
+            let $content;
+            let day = element.childNodes[1].childNodes[1].textContent;   
+            if(element.className == 'box selected'){
+              let newElement=' <input id="'+ day +'"  type="hidden" name="' + element.id +'" value="" />';
+              $content =  $(newElement).appendTo(element);
+
+            }else{
+              document.getElementById(day).remove();
+            }
+          });
+        }
+      });
+
+    </script>
+
   </div>
-
-  <script>
-    myId = function(element) {
-      document.getElementById('the_clicked_id').value = element.id;
-      return true;
-    }
-  </script>
-
 
 </body>
 
