@@ -142,15 +142,15 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"UPDATE Availability SET UserID = @userID, State = @state, Days = @days, IsWeekly = @isWeekly, IsMonthly = @isMonthly WHERE ID = @ID";
-                    command.AddParameter("ID", availability.ID);
-                    // Executing it 
+                    command.CommandText = @"UPDATE Availability SET State = @state, Days = @days, IsWeekly = @isWeekly, IsMonthly = @isMonthly WHERE UserID = @userID";
+                   
 
                     command.Parameters.AddWithValue("userID", availability.User.ID);
-                    command.Parameters.AddWithValue("state", availability.State);
+                    command.Parameters.AddWithValue("state", availability.State.ToString());
                     command.Parameters.AddWithValue("days", availability.GetDays());
                     command.Parameters.AddWithValue("isWeekly", availability.IsWeekly);
                     command.Parameters.AddWithValue("isMonthly", availability.IsMonthly);
+                    // Executing it 
                     return command.ExecuteNonQuery() > 0 ? true : false;
                 }
             }

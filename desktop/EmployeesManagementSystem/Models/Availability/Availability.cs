@@ -37,7 +37,9 @@ namespace EmployeesManagementSystem.Models
                 return  this.GetDays() + ", weekly";
             else if (this.IsMonthly)
                 return  this.GetDays() + ", monthly";
-            else return null;
+             
+            
+            return this.GetDays() + ", once";
         }
     }
 }

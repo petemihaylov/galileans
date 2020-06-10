@@ -11,36 +11,44 @@ namespace EmployeesManagementSystem
     {
         private User loggedUser;
         private Form previousForm;
-        private AvailabilityContext availabilityContext = new AvailabilityContext();
-     
+            
+        // For automation part
         private TimeTableManager manager = new TimeTableManager();
+
+        private AvailabilityContext availabilityContext = new AvailabilityContext();
         private UserContext userContext = new UserContext();
         private List<Availability> reqAvas = new List<Availability>();
+
         public TimeTable(User user, Form previousForm)
         {
             InitializeComponent();
             this.loggedUser = user;
             this.previousForm = previousForm;
 
+            DisplayList();            
+        }
 
-            foreach (User u in userContext.GetAllUsers())
-            {
-                cbEmployees.Items.Add(u.FullName);
-            }
+        private void DisplayList()
+        {
+            lbRequested.Items.Clear();
+            lbAccepted.Items.Clear();
+            reqAvas.Clear();
 
-          
             foreach (Availability av in availabilityContext.GetAllAvailabilities())
             {
+
+                string name = userContext.GetUserByID(av.User.ID).FullName;
                 if (av.State.ToString() == "Pendding")
                 {
                     reqAvas.Add(av);
-                    string name = userContext.GetUserByID(av.User.ID).FullName;
                     lbRequested.Items.Add(name + " " + av.GetInfo());
+                }
+                else if (av.State.ToString() == "Approved")
+                {
+                    lbAccepted.Items.Add(name + " " + av.GetInfo());
                 }
             }
         }
-
-
 
         // Hovering
         private void lbMonday_MouseEnter(object sender, EventArgs e)
@@ -60,33 +68,21 @@ namespace EmployeesManagementSystem
             av = reqAvas[index];
             av.State = AvailabilityType.Declined;
             availabilityContext.UpdateAvailabilityInfo(av);
-            UpdateList();
+            DisplayList(); // change the name if you want
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
             int index = lbRequested.SelectedIndex;
             Availability av = new Availability();
+
+            if(reqAvas.Count > index) // small validation
             av = reqAvas[index];
-            av.State = AvailabilityType.Declined;
+            
+            av.State = AvailabilityType.Approved;
             availabilityContext.UpdateAvailabilityInfo(av);
-            UpdateList();
-        }
-        public void UpdateList()
-        {
-            lbRequested.Items.Clear();
-            reqAvas.Clear();
 
-            foreach (Availability av in availabilityContext.GetAllAvailabilities())
-            {
-                if (av.State.ToString() == "Pendding")
-                {
-                    lbRequested.Items.Add(av.GetInfo());
-                    reqAvas.Add(av);
-                }
-
-            }
- 
+            DisplayList(); // one reusable function
         }
 
         private void picBack_Click(object sender, EventArgs e)
@@ -95,6 +91,21 @@ namespace EmployeesManagementSystem
             previousForm.Closed += (s, args) => this.Close();
             previousForm.Show();
             this.Hide();
+        }
+
+        private void lbAccepted_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            int index = lbAccepted.SelectedIndex;
+            Availability av = new Availability();
+            av = reqAvas[index];
+
+            txtEmployee.Text = userContext.GetUserByID(av.User.ID).FullName;
+
+            if (av.IsMonthly) rbMonthly.Checked = true;
+            if (av.IsWeekly) rbWeekly.Checked = true;
+            if (!av.IsMonthly && !av.IsWeekly) rbOnce.Checked = true;
+
         }
     }
 
