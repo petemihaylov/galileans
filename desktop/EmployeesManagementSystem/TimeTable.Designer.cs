@@ -60,9 +60,9 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
+            this.cbEmployees = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.arrowLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrowRight)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -397,12 +397,12 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.cbEmployees);
             this.groupBox6.Controls.Add(this.button4);
             this.groupBox6.Controls.Add(this.radioButton3);
             this.groupBox6.Controls.Add(this.radioButton2);
             this.groupBox6.Controls.Add(this.radioButton1);
             this.groupBox6.Controls.Add(this.label9);
-            this.groupBox6.Controls.Add(this.textBox1);
             this.groupBox6.Controls.Add(this.dateTimePicker1);
             this.groupBox6.Controls.Add(this.label8);
             this.groupBox6.Location = new System.Drawing.Point(1141, 533);
@@ -474,14 +474,6 @@
             this.label9.TabIndex = 79;
             this.label9.Text = "Employee :";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(209, 82);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 22);
-            this.textBox1.TabIndex = 78;
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(76, 33);
@@ -499,6 +491,14 @@
             this.label8.Size = new System.Drawing.Size(42, 17);
             this.label8.TabIndex = 76;
             this.label8.Text = "Data:";
+            // 
+            // cbEmployees
+            // 
+            this.cbEmployees.FormattingEnabled = true;
+            this.cbEmployees.Location = new System.Drawing.Point(169, 79);
+            this.cbEmployees.Name = "cbEmployees";
+            this.cbEmployees.Size = new System.Drawing.Size(172, 24);
+            this.cbEmployees.TabIndex = 84;
             // 
             // TimeTable
             // 
@@ -567,8 +567,8 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbEmployees;
     }
 }

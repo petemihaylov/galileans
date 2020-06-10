@@ -21,6 +21,7 @@ namespace EmployeesManagementSystem
         private AvailabilityContext availabilityContext = new AvailabilityContext();
         private TimeTableManager manager = new TimeTableManager();
 
+        private UserContext userContext = new UserContext();
         private List<Availability> reqAvas = new List<Availability>();
         public TimeTable(User user)
         {
