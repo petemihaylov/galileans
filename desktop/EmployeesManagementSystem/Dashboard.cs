@@ -227,7 +227,7 @@ namespace EmployeesManagementSystem
         }
         private void btnTimetable_Click(object sender, EventArgs e)
         {
-            ShowForm(new TimeTable(this.loggedUser));
+            ShowForm(new TimeTable(this.loggedUser, this));
         }
 
         // Cancellations

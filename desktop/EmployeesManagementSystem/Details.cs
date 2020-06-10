@@ -58,11 +58,11 @@ namespace EmployeesManagementSystem
                 this.cbDepartment.Text = department.Name;
 
 
-            foreach (Availability availability in availabilityContext.GetAllAvailabilitiesByID(UserID))
-            {
-                throw new System.ArgumentException("Created changes in AvailabilityContext", "original");
-                // listOfAvailabilities.Items.Add(" shift: " + availability.Date.ToString() + " " + userDepartmentContext.GetDepartmentByUser(availability.User.ID).Name + "  " + user.FullName);
-            }
+            //foreach (Availability availability in availabilityContext.GetAllAvailabilitiesByID(UserID))
+            //{
+            //    throw new System.ArgumentException("Created changes in AvailabilityContext", "original");
+            //    // listOfAvailabilities.Items.Add(" shift: " + availability.Date.ToString() + " " + userDepartmentContext.GetDepartmentByUser(availability.User.ID).Name + "  " + user.FullName);
+            //}
 
         }
         public void DashoboardUpdate(Dashboard dashboard)

@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using EmployeesManagementSystem.Data;
-using System.Text.RegularExpressions;
 using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem
@@ -18,10 +12,11 @@ namespace EmployeesManagementSystem
         private User loggedUser;
         private Form previousForm;
         private AvailabilityContext availabilityContext = new AvailabilityContext();
+     
         private TimeTableManager manager = new TimeTableManager();
         private UserContext userContext = new UserContext();
         private List<Availability> reqAvas = new List<Availability>();
-        public TimeTable(User user)
+        public TimeTable(User user, Form previousForm)
         {
             InitializeComponent();
             this.loggedUser = user;
@@ -33,14 +28,14 @@ namespace EmployeesManagementSystem
                 cbEmployees.Items.Add(u.FullName);
             }
 
-
+          
             foreach (Availability av in availabilityContext.GetAllAvailabilities())
             {
                 if (av.State.ToString() == "Pendding")
                 {
                     reqAvas.Add(av);
-                    lbRequested.Items.Add(av.GetInfo());
-
+                    string name = userContext.GetUserByID(av.User.ID).FullName;
+                    lbRequested.Items.Add(name + " " + av.GetInfo());
                 }
             }
         }

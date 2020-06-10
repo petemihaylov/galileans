@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace EmployeesManagementSystem.Models
 {
@@ -13,7 +9,7 @@ namespace EmployeesManagementSystem.Models
         public int ID { get; set; }
         public User User { get { return this.user; } set { this.user = value; } }
         public AvailabilityType State { get; set; }
-        public DayType Days { get; set; }
+        public List<DayType> Days { get; set; }
         public bool IsWeekly { get; set; }
         public bool IsMonthly { get; set; }
 
@@ -22,7 +18,7 @@ namespace EmployeesManagementSystem.Models
 
         }
 
-        public Availability(User user, AvailabilityType availability, DayType days, bool isWeekly, bool isMonthly)
+        public Availability(User user, AvailabilityType availability, List<DayType> days, bool isWeekly, bool isMonthly)
         {
             this.User = user;
             this.State = availability;
@@ -30,12 +26,17 @@ namespace EmployeesManagementSystem.Models
             this.IsWeekly = isWeekly;
             this.IsMonthly = isMonthly;
         }
+
+        public string GetDays()
+        {
+            return string.Join(", ", this.Days.ToArray());
+        }
         public string GetInfo()
         {
             if (this.IsWeekly)
-                return this.User.FullName + " " + this.Days.ToString() + ", weekly";
+                return  this.GetDays() + ", weekly";
             else if (this.IsMonthly)
-                return this.User.FullName + " " + this.Days.ToString() + ", monthly";
+                return  this.GetDays() + ", monthly";
             else return null;
         }
     }

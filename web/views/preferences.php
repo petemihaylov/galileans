@@ -195,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="pick-group-switch">
         <div class="switch-group">
           <div class="switch">
-            <input id="switch-1" type="checkbox" name="monthly" class="switch-input" <?php if($pref->IsMonthly != null)  echo "checked";  ?> />
+            <input id="switch-1" type="checkbox" name="monthly" class="switch-input" <?php  if($pref != null)if($pref->IsMonthly != null)  echo "checked";  ?> />
             <label for="switch-1" class="switch-label">Switch</label>
           </div>
             Monthly
@@ -203,7 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div class="switch-group">
           <div class="switch">
-            <input id="switch-2" type="checkbox" name="weekly" class="switch-input2"  <?php if($pref->IsWeekly != null)  echo "checked"; ?> />
+            <input id="switch-2" type="checkbox" name="weekly" class="switch-input2"  <?php if($pref != null)if($pref->IsWeekly != null)  echo "checked"; ?> />
             <label for="switch-2" class="switch-label2">Switch</label>
           </div>
             Weekly

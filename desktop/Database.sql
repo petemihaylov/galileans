@@ -55,8 +55,8 @@ CREATE TABLE IF NOT EXISTS Availability(
     UserID int NOT NULL,    
     State ENUM('Pending', 'Approved', 'Declined') DEFAULT 'Pending',
     Days text,
-    IsWeekly int NOT NULL,
-    IsMonthly int NOT NULL,
+    IsWeekly bool NOT NULL,
+    IsMonthly bool NOT NULL,
     
     FOREIGN KEY (UserID) REFERENCES User(ID)
 );

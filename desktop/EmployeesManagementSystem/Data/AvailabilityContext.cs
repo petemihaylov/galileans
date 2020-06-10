@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using EmployeesManagementSystem.Models;
+using System.Linq;
+using System;
 
 namespace EmployeesManagementSystem.Data
 {
@@ -20,7 +22,7 @@ namespace EmployeesManagementSystem.Data
 
                     command.AddParameter("userID", availability.User.ID);
                     command.AddParameter("state", availability.State);
-                    command.AddParameter("days", availability.Days);
+                    command.AddParameter("days", availability.GetDays());
                     command.AddParameter("isWeekly", availability.IsWeekly);
                     command.AddParameter("isMonthly", availability.IsMonthly);
 
@@ -79,7 +81,19 @@ namespace EmployeesManagementSystem.Data
                             Availability availability = new Availability();
                             availability.User.ID = (int)reader["UserID"];
                             availability.State = (AvailabilityType)reader["State"];
-                            availability.Days = (DayType) reader["Days"];
+
+                            string text = (string)reader["Days"];
+
+                            // Converting all of the day names to DayType
+                            List<string> days = text.Split(',').ToList<string>();
+                            List<DayType> res = new List<DayType>();
+                            foreach (var item in days)
+                            {
+                                Enum.TryParse(item, out DayType d);
+                                res.Add(d);
+                            }
+
+                            availability.Days = res;
                             availability.IsWeekly = (bool) reader["IsWeekly"];
                             availability.IsMonthly = (bool) reader["IsMonthly"];
                             availabilities.Add(availability);
@@ -134,7 +148,7 @@ namespace EmployeesManagementSystem.Data
 
                     command.Parameters.AddWithValue("userID", availability.User.ID);
                     command.Parameters.AddWithValue("state", availability.State);
-                    command.Parameters.AddWithValue("days", availability.Days);
+                    command.Parameters.AddWithValue("days", availability.GetDays());
                     command.Parameters.AddWithValue("isWeekly", availability.IsWeekly);
                     command.Parameters.AddWithValue("isMonthly", availability.IsMonthly);
                     return command.ExecuteNonQuery() > 0 ? true : false;
@@ -143,8 +157,30 @@ namespace EmployeesManagementSystem.Data
         }
         private Availability MapObject(Availability availability, MySqlDataReader reader)
         {
+            // Mapping the return data to the object
+            availability.User.ID = (int)reader["UserID"];
+
+            Enum.TryParse((string)reader["State"], out AvailabilityType state);
+            availability.State = state;
+        
+            string text = (string)reader["Days"];
+
+            // Converting all of the day names to DayType
+            List<string> days = text.Split(',').ToList<string>();
+            List<DayType> res = new List<DayType>();
+            foreach (var item in days)
+            {
+                Enum.TryParse(item, out DayType d);
+                res.Add(d);
+            }
+
+            availability.Days = res;
+            availability.IsWeekly = (bool)reader["IsWeekly"];
+            availability.IsMonthly = (bool)reader["IsMonthly"];
+
             return availability;
         }
 
     }
 }
+
