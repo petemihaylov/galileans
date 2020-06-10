@@ -1,7 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using EmployeesManagementSystem.Data;
+using System.Text.RegularExpressions;
 using EmployeesManagementSystem.Models;
 
 
@@ -11,6 +18,7 @@ namespace EmployeesManagementSystem
     {
         private CancellationContext cancellationContext = new CancellationContext();
         private User loggedUser;
+        private List <Cancellation> req = new List<Cancellation>();
 
         public Messages(User user)
         {
@@ -62,7 +70,9 @@ namespace EmployeesManagementSystem
                 foreach (Cancellation cancel in cancels)
                 {
                     dataGridView.Rows.Add(cancel.GetInfo());
+                    req.Add(cancel);
                 }
+
             }
             catch (Exception ex)
             {
@@ -74,7 +84,7 @@ namespace EmployeesManagementSystem
         // datagrid cell click needs a refactoring
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (!dataGridView.CurrentCell.ColumnIndex.Equals(6) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
+            if (!dataGridView.CurrentCell.ColumnIndex.Equals(4) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
                 txDescription.Text = "Message: \n" + dataGridView.CurrentCell.Value.ToString();
             }
@@ -84,12 +94,47 @@ namespace EmployeesManagementSystem
                 int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
                 cancellationContext.DeleteById(id);
                 dataGridView.Rows.Remove(dataGridView.Rows[index]);
+
             }
 
 
         }
 
+        private void btnReject_Click(object sender, EventArgs e)
+        {
+            int index = dataGridView.CurrentCell.RowIndex;
+            int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
+            Cancellation c = cancellationContext.GetCancellationByID(id);
+            c.State = CState.Declined;
+            cancellationContext.UpdateCancellation(c);
+            MessageBox.Show("The cancellation request has been denied. The employee has been notified.");
+            UpdateGrid();
 
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            int index = dataGridView.CurrentCell.RowIndex;
+            int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
+            Cancellation c = cancellationContext.GetCancellationByID(id);
+            c.State = CState.Approved;
+            cancellationContext.UpdateCancellation(c);
+            MessageBox.Show("The cancellation request has been approved. The employee has been notified.");
+            UpdateGrid();
+        }
+        private void UpdateGrid()
+        {
+            dataGridView.Rows.Clear();
+            req.Clear();
+            Cancellation[] cancels = cancellationContext.GetCancellations();
+            foreach (Cancellation cancel in cancels)
+            {
+                dataGridView.Rows.Add(cancel.GetInfo());
+                req.Add(cancel);
+            }
+
+
+        }
         private void btnShift_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -236,5 +281,7 @@ namespace EmployeesManagementSystem
         {
             this.btnSettings.BackColor = Color.LightGray;
         }
+
+        
     }
 }

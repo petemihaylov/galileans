@@ -15,12 +15,13 @@ namespace EmployeesManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            
+            Application.Run(new Login());
+            /*
             new UserRfidTag().Show();
             new TimeTable().Show();
             new Login().Show();
             Application.Run();
-
+            */
             // ConversionManager.Run();
         }
     }

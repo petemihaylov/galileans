@@ -30,6 +30,13 @@ namespace EmployeesManagementSystem.Models
             this.IsWeekly = isWeekly;
             this.IsMonthly = isMonthly;
         }
-
+        public string GetInfo()
+        {
+            if (this.IsWeekly)
+                return this.User.FullName + " " + this.Days.ToString() + ", weekly";
+            else if (this.IsMonthly)
+                return this.User.FullName + " " + this.Days.ToString() + ", monthly";
+            else return null;
+        }
     }
 }

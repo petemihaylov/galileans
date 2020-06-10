@@ -11,7 +11,25 @@ namespace EmployeesManagementSystem.Data
         // Not required method
         public override bool Insert(object obj)
         {
-            throw new NotImplementedException();
+            Cancellation cancel = (Cancellation)obj;
+
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"INSERT INTO Cancellation (Date, State, Subject, Message, UserID) VALUES( @date, @state, @subject, @message, @userId)";
+
+                    command.AddParameter("date", cancel.Date);
+                    command.AddParameter("state", cancel.State.ToString());
+                    command.AddParameter("subject", cancel.Subject);
+                    command.AddParameter("message", cancel.Message);
+                    command.AddParameter("userId", cancel.Employee.ID);
+
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+            }
         }
         public override bool DeleteById(int id)
         {
