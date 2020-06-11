@@ -12,7 +12,7 @@
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
-        {
+            {
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -33,10 +33,10 @@
             this.btnApply = new System.Windows.Forms.Button();
             this.btnDecline = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cbDaysOfWeek = new System.Windows.Forms.ComboBox();
             this.numUpDown = new System.Windows.Forms.NumericUpDown();
             this.btnRun = new System.Windows.Forms.Button();
             this.txtWeekdays = new System.Windows.Forms.TextBox();
-            this.upDownDaysOfWeek = new System.Windows.Forms.DomainUpDown();
             this.txtEmployee = new System.Windows.Forms.TextBox();
             this.rbOnce = new System.Windows.Forms.RadioButton();
             this.rbWeekly = new System.Windows.Forms.RadioButton();
@@ -79,7 +79,7 @@
             this.btnApply.FlatAppearance.BorderSize = 0;
             this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApply.ForeColor = System.Drawing.Color.White;
-            this.btnApply.Location = new System.Drawing.Point(572, 741);
+            this.btnApply.Location = new System.Drawing.Point(572, 727);
             this.btnApply.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(172, 46);
@@ -103,10 +103,10 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.cbDaysOfWeek);
             this.groupBox6.Controls.Add(this.numUpDown);
             this.groupBox6.Controls.Add(this.btnRun);
             this.groupBox6.Controls.Add(this.txtWeekdays);
-            this.groupBox6.Controls.Add(this.upDownDaysOfWeek);
             this.groupBox6.Controls.Add(this.txtEmployee);
             this.groupBox6.Controls.Add(this.rbOnce);
             this.groupBox6.Controls.Add(this.rbWeekly);
@@ -121,6 +121,16 @@
             this.groupBox6.TabIndex = 75;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Settings";
+            // 
+            // cbDaysOfWeek
+            // 
+            this.cbDaysOfWeek.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbDaysOfWeek.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbDaysOfWeek.FormattingEnabled = true;
+            this.cbDaysOfWeek.Location = new System.Drawing.Point(125, 82);
+            this.cbDaysOfWeek.Name = "cbDaysOfWeek";
+            this.cbDaysOfWeek.Size = new System.Drawing.Size(215, 24);
+            this.cbDaysOfWeek.TabIndex = 79;
             // 
             // numUpDown
             // 
@@ -151,26 +161,9 @@
             this.txtWeekdays.Size = new System.Drawing.Size(650, 22);
             this.txtWeekdays.TabIndex = 85;
             // 
-            // upDownDaysOfWeek
-            // 
-            this.upDownDaysOfWeek.AllowDrop = true;
-            this.upDownDaysOfWeek.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.upDownDaysOfWeek.InterceptArrowKeys = false;
-            this.upDownDaysOfWeek.Items.Add("Monday");
-            this.upDownDaysOfWeek.Items.Add("Tuesday");
-            this.upDownDaysOfWeek.Items.Add("Wednesday");
-            this.upDownDaysOfWeek.Items.Add("Thursday");
-            this.upDownDaysOfWeek.Items.Add("Friday");
-            this.upDownDaysOfWeek.Items.Add("Saturday");
-            this.upDownDaysOfWeek.Items.Add("Sunday");
-            this.upDownDaysOfWeek.Location = new System.Drawing.Point(125, 80);
-            this.upDownDaysOfWeek.Name = "upDownDaysOfWeek";
-            this.upDownDaysOfWeek.Size = new System.Drawing.Size(215, 22);
-            this.upDownDaysOfWeek.TabIndex = 84;
-            this.upDownDaysOfWeek.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // txtEmployee
             // 
+            this.txtEmployee.Enabled = false;
             this.txtEmployee.Location = new System.Drawing.Point(125, 124);
             this.txtEmployee.Name = "txtEmployee";
             this.txtEmployee.Size = new System.Drawing.Size(215, 22);
@@ -242,14 +235,14 @@
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1391, 49);
+            this.panel4.Size = new System.Drawing.Size(1394, 49);
             this.panel4.TabIndex = 76;
             // 
             // lbBack
             // 
             this.lbBack.AutoSize = true;
             this.lbBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBack.Location = new System.Drawing.Point(62, 9);
+            this.lbBack.Location = new System.Drawing.Point(60, 14);
             this.lbBack.Name = "lbBack";
             this.lbBack.Size = new System.Drawing.Size(47, 20);
             this.lbBack.TabIndex = 4;
@@ -258,7 +251,7 @@
             // picBack
             // 
             this.picBack.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_arrow_back_ios_black_48dp;
-            this.picBack.Location = new System.Drawing.Point(13, 2);
+            this.picBack.Location = new System.Drawing.Point(15, 8);
             this.picBack.Margin = new System.Windows.Forms.Padding(4);
             this.picBack.Name = "picBack";
             this.picBack.Size = new System.Drawing.Size(37, 32);
@@ -308,13 +301,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1391, 850);
+            this.ClientSize = new System.Drawing.Size(1394, 798);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lbFoundResults);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.btnApply);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TimeTable";
@@ -350,7 +343,7 @@
         private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.NumericUpDown numUpDown;
         private System.Windows.Forms.TextBox txtWeekdays;
-        private System.Windows.Forms.DomainUpDown upDownDaysOfWeek;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cbDaysOfWeek;
     }
 }

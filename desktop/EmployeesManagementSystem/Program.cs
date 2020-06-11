@@ -16,7 +16,7 @@ namespace EmployeesManagementSystem
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Don't use it for production. Only for testing purposes
-            Application.Run(new TimeTable(new User(), new Dashboard()));
+            Application.Run(new Login());
             
             
             

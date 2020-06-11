@@ -2,7 +2,7 @@
 
 namespace EmployeesManagementSystem.Models
 {
-    public class Shift : IShift
+    public class Shift : IShift, IComparable<Shift>
     {
         public int ID { get; set; }
         public bool Availability { get; set; }
@@ -35,6 +35,18 @@ namespace EmployeesManagementSystem.Models
             this.StartTime = startTime;
             this.EndTime = endTime;
             this.Type = type;
+        }
+
+        public override string ToString()
+        {
+            return $"Available: {ShiftDate.Day, 20}/{ShiftDate.Month,5}/{ShiftDate.Year,5}  {StartTime, 15}  to  {EndTime, -15}   {("Type " + Type), - 20}";
+        }
+        public int CompareTo(Shift other)
+        {
+            if (other == null) return 1;
+
+            return this.ShiftDate.CompareTo(other.ShiftDate);
+
         }
     }
 }

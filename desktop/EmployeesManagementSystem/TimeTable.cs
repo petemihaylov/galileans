@@ -11,7 +11,7 @@ namespace EmployeesManagementSystem
     {
         private User loggedUser;
         private Form previousForm;
-            
+
         // For automation part
         private TimeTableManager manager = new TimeTableManager();
 
@@ -20,6 +20,8 @@ namespace EmployeesManagementSystem
 
         // List of all the availabilities from DB
         private List<Availability> reqAvas = new List<Availability>();
+        // I need it for RUN
+        private Availability availability;
 
         public TimeTable(User user, Form previousForm)
         {
@@ -27,8 +29,9 @@ namespace EmployeesManagementSystem
             this.loggedUser = user;
             this.previousForm = previousForm;
 
-            DisplayList();            
+            DisplayList();
         }
+
 
         private void DisplayList()
         {
@@ -41,15 +44,15 @@ namespace EmployeesManagementSystem
                 if (av.State.ToString() == "Pendding")
                 {
                     reqAvas.Add(av);
-                    lbRequested.Items.Add(name + " " + av.GetInfo());
+                    lbRequested.Items.Add(name + "  -  " + av.GetInfo());
                 }
-                
+
             }
         }
 
         // Hovering
-        
-        
+
+
         private void picBack_Click(object sender, EventArgs e)
         {
             // Show previous form
@@ -58,35 +61,48 @@ namespace EmployeesManagementSystem
             this.Hide();
         }
 
-        
+
 
         private void lbRequested_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = lbRequested.SelectedIndex;
 
             // List validation
-            if(selectedIndex < reqAvas.Count)
-            {
-                Availability availability = this.reqAvas[selectedIndex];
-                txtWeekdays.Text = availability.GetDays();
-                txtEmployee.Text = userContext.GetUserByID(availability.User.ID).FullName;
 
-                if (availability.IsMonthly) rbMonthly.Checked = true;
-                if (availability.IsWeekly) rbWeekly.Checked = true;
-                if (!availability.IsMonthly && !availability.IsWeekly) rbOnce.Checked = true;
+            try
+            {
+                availability = this.reqAvas[selectedIndex];
             }
+            catch (Exception) { return; }
+
+            List<string> days = availability.GetFormatedDays();
+            txtWeekdays.Text = string.Join(", ", days.ToArray());
+            txtEmployee.Text = userContext.GetUserByID(availability.User.ID).FullName;
+
+            cbDaysOfWeek.Items.Clear();
+            days.ForEach(i => cbDaysOfWeek.Items.Add(i));
+
+            if (availability.IsMonthly) rbMonthly.Checked = true;
+            if (availability.IsWeekly) rbWeekly.Checked = true;
+            if (!availability.IsMonthly && !availability.IsWeekly) rbOnce.Checked = true;
+
         }
 
         private void btnRun_Click(object sender, EventArgs e)
         {
             int repeatitions = (int)numUpDown.Value;
-            string dayOfWeek = upDownDaysOfWeek.Text;
+            string dayOfWeek = cbDaysOfWeek.Text;
 
-            var result = ShiftAutomationManager.Run(repeatitions, dayOfWeek);
+            var result = new List<Shift>();
+            if (availability != null)
+            {
+                result = ShiftAutomationManager.Run(repeatitions, dayOfWeek, availability.User);
+
+            }
 
             lbFoundResults.Items.Clear();
             result.ForEach(r => lbFoundResults.Items.Add(r.ToString()));
-            
+
         }
     }
 

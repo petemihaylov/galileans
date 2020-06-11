@@ -29,14 +29,41 @@ namespace EmployeesManagementSystem.Models
 
         public string GetDays()
         {
-            return string.Join("    ", this.Days.ToArray());
+            return string.Join(", ", this.Days.ToArray());
+        }
+
+        public List<string> GetFormatedDays()
+        {
+            List<string> result = new List<string>();
+            Days.ForEach(d => result.Add(GetFormatedName(d)));
+            return result;
+        }
+        private string GetFormatedName(DayType day)
+        {
+            switch (day)
+            {
+                case DayType.Mon:
+                    return "Monday";
+                case DayType.Tue:
+                    return "Tuesday";
+                case DayType.Wed:
+                    return "Wednesday";
+                case DayType.Thu:
+                    return "Thursday"; 
+                case DayType.Fri:
+                    return "Friday";
+                case DayType.Sat:
+                    return "Saturday";
+                default:
+                    return "Sunday";
+            }
         }
         public string GetInfo()
         {
             if (this.IsWeekly)
-                return  this.GetDays() + ", weekly";
+                return  this.GetDays() + "  -  Weekly";
             else if (this.IsMonthly)
-                return  this.GetDays() + ", monthly";
+                return  this.GetDays() + "  -  Monthly";
              
             
             return this.GetDays() + ", once";
