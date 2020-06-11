@@ -67,6 +67,10 @@ namespace EmployeesManagementSystem
 
         }
 
+        public static void DeleteShiftFromCurrentDate(User user)
+        {
+            new ShiftContext().DeleteShiftsFromDate(DateTime.Now, user.ID);
+        }
         private static bool ShiftExists(DateTime date, out ShiftType shiftType)
         {
             shiftType = ShiftType.Morning; // Default value

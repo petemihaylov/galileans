@@ -8,7 +8,7 @@ namespace EmployeesManagementSystem.Models
 { 
     public enum AvailabilityType
     {
-        Pendding,
+        Pending,
         Approved, 
         Declined
     }

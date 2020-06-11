@@ -20,8 +20,10 @@ namespace EmployeesManagementSystem
 
         // List of all the availabilities from DB
         private List<Availability> reqAvas = new List<Availability>();
+        private List<Availability> reqApprovedAvas = new List<Availability>();
         // I need it for RUN
         private Availability availability;
+        private List<Shift> result = null;
 
         public TimeTable(User user, Form previousForm)
         {
@@ -30,8 +32,8 @@ namespace EmployeesManagementSystem
             this.previousForm = previousForm;
 
             DisplayList();
+            DisplayListOfApproved();
         }
-
 
         private void DisplayList()
         {
@@ -41,7 +43,7 @@ namespace EmployeesManagementSystem
             foreach (Availability av in availabilityContext.GetAllAvailabilities())
             {
                 string name = userContext.GetUserByID(av.User.ID).FullName;
-                if (av.State.ToString() == "Pendding")
+                if (av.State.ToString() == "Pending")
                 {
                     reqAvas.Add(av);
                     lbRequested.Items.Add(name + "  -  " + av.GetInfo());
@@ -50,9 +52,24 @@ namespace EmployeesManagementSystem
             }
         }
 
+        private void DisplayListOfApproved()
+        {
+            lbAcceptedRequests.Items.Clear();
+
+            foreach (Availability av in availabilityContext.GetAllAvailabilities())
+            {
+                string name = userContext.GetUserByID(av.User.ID).FullName;
+                if (av.State.ToString() == "Approved")
+                {
+
+                    reqApprovedAvas.Add(av);
+                    lbAcceptedRequests.Items.Add(name + "  -  " + av.GetInfo());
+                }
+
+            }
+        }
+
         // Hovering
-
-
         private void picBack_Click(object sender, EventArgs e)
         {
             // Show previous form
@@ -93,22 +110,85 @@ namespace EmployeesManagementSystem
             int repeatitions = (int)numUpDown.Value;
             string dayOfWeek = cbDaysOfWeek.Text;
 
-            var result = new List<Shift>();
             if (availability != null)
             {
                 result = ShiftAutomationManager.Run(repeatitions, dayOfWeek, availability.User);
 
             }
+            DisplayFoundResults(result);
+
+        }
+
+        private void DisplayFoundResults(List<Shift> result)
+        {
 
             lbFoundResults.Items.Clear();
             result.ForEach(r => lbFoundResults.Items.Add(r.ToString()));
+        }
 
+        private void picDelete_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(result != null && result.Count > 0)
+            {
+                if(lbFoundResults.SelectedItem != null)
+                {
+                    result.RemoveAt(lbFoundResults.SelectedIndex);
+                    DisplayFoundResults(result);
+                }
+            }
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            // Deleting all the shifts for the employee from the current
+            if(availability != null)
+            {
+                User u = userContext.GetUserByID(availability.User.ID);
+                ShiftAutomationManager.DeleteShiftFromCurrentDate(u);
+            }
+
+            if(result != null)
+            {
+                // Execution 
+                ShiftContext shiftContext = new ShiftContext();
+                result.ForEach(shift => shiftContext.Insert(shift));
+
+                // Message
+                lbFoundResults.Items.Clear();
+                lbFoundResults.Items.Add("Successfully applied!");
+
+                // Sets the states of availability and updates it
+                availability.State = AvailabilityType.Approved;
+                new AvailabilityContext().UpdateAvailabilityInfo(availability);
+
+                //Updates view
+                DisplayList();
+                DisplayListOfApproved();
+            }
+
+        }
+
+        private void lbAcceptedRequests_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = lbAcceptedRequests.SelectedIndex;
+                var request = reqApprovedAvas[lbAcceptedRequests.SelectedIndex];
+                request.State = AvailabilityType.Pending;
+
+                new AvailabilityContext().UpdateAvailabilityInfo(request);
+
+                //Updates view
+                DisplayList();
+                DisplayListOfApproved();
+
+            }
+            catch (Exception) { return; }
         }
     }
 
     public class TimeTableManager
     {
-
         private Color hoverColor = Color.Gray;
         private Color textColor = Color.LightGray;
         public void ItemSetStyle(ListBox lb)

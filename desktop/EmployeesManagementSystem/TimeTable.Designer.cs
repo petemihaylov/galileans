@@ -44,17 +44,23 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbBack = new System.Windows.Forms.Label();
             this.picBack = new System.Windows.Forms.PictureBox();
             this.exit = new System.Windows.Forms.PictureBox();
             this.lbFoundResults = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbAcceptedRequests = new System.Windows.Forms.ListBox();
+            this.picDelete = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picDelete)).BeginInit();
             this.SuspendLayout();
             // 
             // lbRequested
@@ -75,28 +81,31 @@
             // 
             // btnApply
             // 
-            this.btnApply.BackColor = System.Drawing.Color.DarkGray;
+            this.btnApply.BackColor = System.Drawing.Color.DimGray;
             this.btnApply.FlatAppearance.BorderSize = 0;
             this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnApply.ForeColor = System.Drawing.Color.White;
-            this.btnApply.Location = new System.Drawing.Point(572, 727);
+            this.btnApply.Location = new System.Drawing.Point(562, 711);
             this.btnApply.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(172, 46);
+            this.btnApply.Size = new System.Drawing.Size(187, 37);
             this.btnApply.TabIndex = 72;
-            this.btnApply.Text = "Apply";
+            this.btnApply.Text = "APPLY";
             this.btnApply.UseVisualStyleBackColor = false;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // btnDecline
             // 
             this.btnDecline.BackColor = System.Drawing.Color.DarkGray;
             this.btnDecline.FlatAppearance.BorderSize = 0;
             this.btnDecline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDecline.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnDecline.ForeColor = System.Drawing.Color.White;
-            this.btnDecline.Location = new System.Drawing.Point(27, 554);
+            this.btnDecline.Location = new System.Drawing.Point(27, 547);
             this.btnDecline.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDecline.Name = "btnDecline";
-            this.btnDecline.Size = new System.Drawing.Size(151, 46);
+            this.btnDecline.Size = new System.Drawing.Size(151, 29);
             this.btnDecline.TabIndex = 73;
             this.btnDecline.Text = "Decline";
             this.btnDecline.UseVisualStyleBackColor = false;
@@ -113,11 +122,11 @@
             this.groupBox6.Controls.Add(this.rbMonthly);
             this.groupBox6.Controls.Add(this.label9);
             this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Location = new System.Drawing.Point(66, 86);
+            this.groupBox6.Location = new System.Drawing.Point(30, 70);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox6.Size = new System.Drawing.Size(708, 225);
+            this.groupBox6.Size = new System.Drawing.Size(719, 255);
             this.groupBox6.TabIndex = 75;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Settings";
@@ -127,52 +136,62 @@
             this.cbDaysOfWeek.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbDaysOfWeek.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbDaysOfWeek.FormattingEnabled = true;
-            this.cbDaysOfWeek.Location = new System.Drawing.Point(125, 82);
+            this.cbDaysOfWeek.Location = new System.Drawing.Point(90, 75);
             this.cbDaysOfWeek.Name = "cbDaysOfWeek";
-            this.cbDaysOfWeek.Size = new System.Drawing.Size(215, 24);
+            this.cbDaysOfWeek.Size = new System.Drawing.Size(300, 24);
             this.cbDaysOfWeek.TabIndex = 79;
             // 
             // numUpDown
             // 
-            this.numUpDown.Location = new System.Drawing.Point(450, 80);
+            this.numUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numUpDown.InterceptArrowKeys = false;
+            this.numUpDown.Location = new System.Drawing.Point(337, 129);
             this.numUpDown.Name = "numUpDown";
-            this.numUpDown.Size = new System.Drawing.Size(228, 22);
+            this.numUpDown.Size = new System.Drawing.Size(53, 22);
             this.numUpDown.TabIndex = 86;
+            this.numUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // btnRun
             // 
-            this.btnRun.BackColor = System.Drawing.Color.Gray;
+            this.btnRun.BackColor = System.Drawing.Color.Silver;
             this.btnRun.FlatAppearance.BorderSize = 0;
             this.btnRun.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnRun.ForeColor = System.Drawing.Color.White;
-            this.btnRun.Location = new System.Drawing.Point(506, 149);
+            this.btnRun.Location = new System.Drawing.Point(9, 197);
             this.btnRun.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(172, 46);
+            this.btnRun.Size = new System.Drawing.Size(700, 42);
             this.btnRun.TabIndex = 78;
-            this.btnRun.Text = "Run";
+            this.btnRun.Text = "RUN SCRIPT";
             this.btnRun.UseVisualStyleBackColor = false;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // txtWeekdays
             // 
-            this.txtWeekdays.Location = new System.Drawing.Point(28, 34);
+            this.txtWeekdays.Enabled = false;
+            this.txtWeekdays.Location = new System.Drawing.Point(324, 35);
             this.txtWeekdays.Name = "txtWeekdays";
-            this.txtWeekdays.Size = new System.Drawing.Size(650, 22);
+            this.txtWeekdays.Size = new System.Drawing.Size(388, 22);
             this.txtWeekdays.TabIndex = 85;
             // 
             // txtEmployee
             // 
             this.txtEmployee.Enabled = false;
-            this.txtEmployee.Location = new System.Drawing.Point(125, 124);
+            this.txtEmployee.Location = new System.Drawing.Point(90, 35);
             this.txtEmployee.Name = "txtEmployee";
-            this.txtEmployee.Size = new System.Drawing.Size(215, 22);
+            this.txtEmployee.Size = new System.Drawing.Size(218, 22);
             this.txtEmployee.TabIndex = 83;
             // 
             // rbOnce
             // 
             this.rbOnce.AutoSize = true;
-            this.rbOnce.Location = new System.Drawing.Point(260, 174);
+            this.rbOnce.Location = new System.Drawing.Point(12, 128);
             this.rbOnce.Margin = new System.Windows.Forms.Padding(4);
             this.rbOnce.Name = "rbOnce";
             this.rbOnce.Size = new System.Drawing.Size(63, 21);
@@ -184,7 +203,7 @@
             // rbWeekly
             // 
             this.rbWeekly.AutoSize = true;
-            this.rbWeekly.Location = new System.Drawing.Point(138, 174);
+            this.rbWeekly.Location = new System.Drawing.Point(224, 129);
             this.rbWeekly.Margin = new System.Windows.Forms.Padding(4);
             this.rbWeekly.Name = "rbWeekly";
             this.rbWeekly.Size = new System.Drawing.Size(75, 21);
@@ -196,7 +215,7 @@
             // rbMonthly
             // 
             this.rbMonthly.AutoSize = true;
-            this.rbMonthly.Location = new System.Drawing.Point(28, 174);
+            this.rbMonthly.Location = new System.Drawing.Point(109, 128);
             this.rbMonthly.Margin = new System.Windows.Forms.Padding(4);
             this.rbMonthly.Name = "rbMonthly";
             this.rbMonthly.Size = new System.Drawing.Size(78, 21);
@@ -208,7 +227,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 127);
+            this.label9.Location = new System.Drawing.Point(6, 38);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(78, 17);
@@ -218,7 +237,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(24, 82);
+            this.label8.Location = new System.Drawing.Point(8, 82);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 17);
@@ -228,6 +247,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Controls.Add(this.lbBack);
             this.panel4.Controls.Add(this.picBack);
             this.panel4.Controls.Add(this.exit);
@@ -237,6 +257,17 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1394, 49);
             this.panel4.TabIndex = 76;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EmployeesManagementSystem.Properties.Resources.download;
+            this.pictureBox1.Location = new System.Drawing.Point(1313, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // lbBack
             // 
@@ -279,29 +310,73 @@
             this.lbFoundResults.ItemHeight = 16;
             this.lbFoundResults.Items.AddRange(new object[] {
             ""});
-            this.lbFoundResults.Location = new System.Drawing.Point(66, 397);
+            this.lbFoundResults.Location = new System.Drawing.Point(30, 386);
             this.lbFoundResults.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbFoundResults.Name = "lbFoundResults";
             this.lbFoundResults.ScrollAlwaysVisible = true;
-            this.lbFoundResults.Size = new System.Drawing.Size(727, 304);
+            this.lbFoundResults.Size = new System.Drawing.Size(742, 304);
             this.lbFoundResults.TabIndex = 77;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lbAcceptedRequests);
             this.groupBox1.Controls.Add(this.lbRequested);
             this.groupBox1.Controls.Add(this.btnDecline);
-            this.groupBox1.Location = new System.Drawing.Point(936, 86);
+            this.groupBox1.Location = new System.Drawing.Point(936, 70);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(419, 615);
+            this.groupBox1.Size = new System.Drawing.Size(419, 606);
             this.groupBox1.TabIndex = 78;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Requested Shifts";
+            // 
+            // lbAcceptedRequests
+            // 
+            this.lbAcceptedRequests.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbAcceptedRequests.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbAcceptedRequests.FormattingEnabled = true;
+            this.lbAcceptedRequests.ItemHeight = 16;
+            this.lbAcceptedRequests.Items.AddRange(new object[] {
+            ""});
+            this.lbAcceptedRequests.Location = new System.Drawing.Point(27, 419);
+            this.lbAcceptedRequests.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lbAcceptedRequests.Name = "lbAcceptedRequests";
+            this.lbAcceptedRequests.ScrollAlwaysVisible = true;
+            this.lbAcceptedRequests.Size = new System.Drawing.Size(381, 112);
+            this.lbAcceptedRequests.TabIndex = 74;
+            this.lbAcceptedRequests.SelectedIndexChanged += new System.EventHandler(this.lbAcceptedRequests_SelectedIndexChanged);
+            // 
+            // picDelete
+            // 
+            this.picDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picDelete.Image = global::EmployeesManagementSystem.Properties.Resources.taken1;
+            this.picDelete.Location = new System.Drawing.Point(30, 711);
+            this.picDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.picDelete.Name = "picDelete";
+            this.picDelete.Size = new System.Drawing.Size(22, 23);
+            this.picDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picDelete.TabIndex = 6;
+            this.picDelete.TabStop = false;
+            this.picDelete.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picDelete_MouseClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F);
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(32, 395);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 17);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Approved";
             // 
             // TimeTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1394, 798);
+            this.Controls.Add(this.picDelete);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lbFoundResults);
             this.Controls.Add(this.panel4);
@@ -317,9 +392,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picDelete)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -345,5 +423,9 @@
         private System.Windows.Forms.TextBox txtWeekdays;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cbDaysOfWeek;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picDelete;
+        private System.Windows.Forms.ListBox lbAcceptedRequests;
+        private System.Windows.Forms.Label label1;
     }
 }

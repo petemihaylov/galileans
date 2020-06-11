@@ -82,6 +82,21 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+        public  bool DeleteShiftsFromDate(DateTime dateTime, int userID)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"DELETE FROM Shift WHERE AssignedUserID = @userID and ShiftDate >= @shiftDate";
+                    command.AddParameter("userID", userID);
+                    command.AddParameter("shiftDate", dateTime);
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+
+            }
+        }
         public bool UpdateShift(Shift shift)
         {
             using (var con = new MySqlConnection(connectionString))
