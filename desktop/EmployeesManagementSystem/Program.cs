@@ -15,14 +15,11 @@ namespace EmployeesManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new Login());
+            // Don't use it for production. Only for testing purposes
+            Application.Run(new TimeTable(new User(), new Dashboard()));
             
-            //new UserRfidTag().Show();
-            //new TimeTable().Show();
-            //new Login().Show();
-            //Application.Run();
             
-            // ConversionManager.Run();
+            
         }
     }
 }

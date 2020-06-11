@@ -29,7 +29,7 @@ namespace EmployeesManagementSystem.Models
 
         public string GetDays()
         {
-            return string.Join(", ", this.Days.ToArray());
+            return string.Join("    ", this.Days.ToArray());
         }
         public string GetInfo()
         {
