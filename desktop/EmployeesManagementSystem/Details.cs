@@ -16,6 +16,8 @@ namespace EmployeesManagementSystem
 
 
         // Variables
+        private List<Availability> reqAvas = new List<Availability>();
+
         private UserContext userContext = new UserContext();
         private ShiftContext shiftContext = new ShiftContext();
         private ImageContext imageContext = new ImageContext();
@@ -58,11 +60,16 @@ namespace EmployeesManagementSystem
                 this.cbDepartment.Text = department.Name;
 
 
-            //foreach (Availability availability in availabilityContext.GetAllAvailabilitiesByID(UserID))
-            //{
-            //    throw new System.ArgumentException("Created changes in AvailabilityContext", "original");
-            //    // listOfAvailabilities.Items.Add(" shift: " + availability.Date.ToString() + " " + userDepartmentContext.GetDepartmentByUser(availability.User.ID).Name + "  " + user.FullName);
-            //}
+            foreach (Availability av in availabilityContext.GetAllAvailabilitiesByID(this.id))
+            {
+                string name = userContext.GetUserByID(av.User.ID).FullName;
+                if (av.State.ToString() != "Pending")
+                {
+                    reqAvas.Add(av);
+                    listOfAvailabilities.Items.Add(name + "  -  " + av.GetInfo());
+                }
+
+            }
 
         }
         public void DashoboardUpdate(Dashboard dashboard)
