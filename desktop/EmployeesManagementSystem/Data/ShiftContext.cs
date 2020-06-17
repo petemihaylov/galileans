@@ -174,6 +174,7 @@ namespace EmployeesManagementSystem.Data
             }
 
         }
+       
         public List<Shift> GetShiftsByUserId(int userId)
         {
             using (var con = new MySqlConnection(connectionString))
@@ -417,6 +418,31 @@ namespace EmployeesManagementSystem.Data
                 }
 
             }
+        }
+        public Shift[] GetShifts()
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = new MySqlCommand("SELECT * FROM Shift", con))
+                {
+
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        List<Shift> shifts = new List<Shift>();
+                        while (reader.Read())
+                        {
+                            // Mapping the return data to the object
+                            Shift shift = new Shift();
+                            MapObject(shift, reader);
+                            shifts.Add(shift);
+                        }
+                        return shifts.ToArray();
+                    }
+                }
+            }
+
         }
 
     }

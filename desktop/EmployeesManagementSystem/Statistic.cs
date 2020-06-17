@@ -251,24 +251,76 @@ namespace EmployeesManagementSystem
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            // Declare JsonSerializer
-            JsonSerializer serializer = new JsonSerializer("users.json");
-            // Get data from the Context
-            UserContext userContext = new UserContext();
-            User[] users = userContext.GetAllUsers();
-            // Write to users.json
-            serializer.Write(users);
-            MessageBox.Show(@"Users info is stored in ' Users.JSON ' file!");
+            string choice = cbExport.Text;
+            if (choice == "Users")
+            {
+                // Declare JsonSerializer
+                JsonSerializer serializer = new JsonSerializer("users.json");
+                // Get data from the Context
+                UserContext userContext = new UserContext();
+                User[] users = userContext.GetAllUsers();
+                // Write to users.json
+                serializer.Write(users);
+                MessageBox.Show(@"Users info is stored in ' Users.JSON ' file!");
+            }
+            else if (choice == "Shifts")
+            {
+                // Declare JsonSerializer
+                JsonSerializer serializer = new JsonSerializer("shifts.json");
+                // Get data from the Context
+                ShiftContext shiftContext = new ShiftContext();
+                Shift[] shifts = shiftContext.GetShifts();
+                // Write to users.json
+                serializer.Write(shifts);
+                MessageBox.Show(@"Shifts info is stored in ' shifts.JSON ' file!");
+
+            }
+            else if (choice == "Cancellations")
+            {
+                // Declare JsonSerializer
+                JsonSerializer serializer = new JsonSerializer("cancellations.json");
+                // Get data from the Context
+                CancellationContext cancellationsContext = new CancellationContext();
+                Cancellation[] c = cancellationsContext.GetCancellations();
+                // Write to users.json
+                serializer.Write(c);
+                MessageBox.Show(@"Cancellations info is stored in ' cancellations.JSON ' file!");
+            }
         }
         private void csvbtn_Click(object sender, EventArgs e)
         {
-            DataConverterCSV dataConverterCSV = new DataConverterCSV("users");
-            UserContext userContext = new UserContext();
-            User[] users = userContext.GetAllUsers();
+            string choice = cbExport.Text;
+            if (choice == "Users")
+            {
+                DataConverterCSV dataConverterCSV = new DataConverterCSV("users");
+                UserContext userContext = new UserContext();
+                User[] users = userContext.GetAllUsers();
 
-            dataConverterCSV.CSVFileWrite(users.OfType<User>().ToList());
+                dataConverterCSV.CSVFileWrite(users.OfType<User>().ToList());
 
-            MessageBox.Show(@"Users info is stored in ' User.CSV ' file!");
+                MessageBox.Show(@"Users info is stored in ' User.CSV ' file!");
+            }
+            else if (choice == "Shifts")
+            {
+                DataConverterCSV dataConverterCSV = new DataConverterCSV("shifts");
+                ShiftContext shiftContext = new ShiftContext();
+                Shift[] shifts = shiftContext.GetShifts();
+
+                dataConverterCSV.CSVFileWrite(shifts.OfType<Shift>().ToList());
+
+                MessageBox.Show(@"Shifts info is stored in ' Shifts.CSV ' file!");
+
+            }
+            else if (choice == "Cancellations")
+            {
+                DataConverterCSV dataConverterCSV = new DataConverterCSV("cancellations");
+                CancellationContext cancellationsContext = new CancellationContext();
+                Cancellation[] c = cancellationsContext.GetCancellations();
+
+                dataConverterCSV.CSVFileWrite(c.OfType<Cancellation>().ToList());
+
+                MessageBox.Show(@"Cancellations info is stored in ' cancellations.CSV ' file!");
+            }
         }
 
 
@@ -284,6 +336,7 @@ namespace EmployeesManagementSystem
             string fullname = cbUsers.SelectedItem.ToString();
             DisplayCartesianChart(fullname);
         }
+
     }
 
     public class DateModel
