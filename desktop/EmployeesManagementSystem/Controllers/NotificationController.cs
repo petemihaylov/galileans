@@ -3,7 +3,7 @@ using EmployeesManagementSystem.Models;
 
 namespace EmployeesManagementSystem.Controllers
 {
-    class NotificationController
+   public class NotificationController
     {
         private NotificationContext notificationContext = new NotificationContext();
         private UserContext userContext = new UserContext();

@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
+using EmployeesManagementSystem.Controllers;
 
 namespace EmployeesManagementSystem
 {
@@ -19,6 +20,7 @@ namespace EmployeesManagementSystem
 
         private AvailabilityContext availabilityContext = new AvailabilityContext();
         private UserContext userContext = new UserContext();
+        private NotificationController notificationController = new NotificationController();
 
         // List of all the availabilities from DB
         private List<Availability> reqAvas = new List<Availability>();
@@ -209,6 +211,27 @@ namespace EmployeesManagementSystem
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.Send(message);
 
+        }
+
+        private void btnDecline_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                int index = lbRequested.SelectedIndex;
+                var request = reqAvas[index];
+                request.State = AvailabilityType.Declined;
+
+                notificationController.AddMessage("Your request has been declined", request.User.ID);
+
+                new AvailabilityContext().UpdateAvailabilityInfo(request);
+
+                //Updates view
+                DisplayList();
+                DisplayListOfApproved();
+
+            }
+            catch (Exception) { return; }
         }
     }
 

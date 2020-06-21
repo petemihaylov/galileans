@@ -157,6 +157,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\RfidController.cs" />
     <Compile Include="Controllers\ShiftController.cs" />
     <Compile Include="Controllers\StockController.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Data\Conversion\DataConverterCSV.cs" />
     <Compile Include="Data\DepartmentContext.cs" />
     <Compile Include="Data\ImageContext.cs" />
+    <Compile Include="Data\NotificationContext.cs" />
     <Compile Include="Data\RfidContext.cs" />
     <Compile Include="Data\ShiftContext.cs" />
     <Compile Include="Data\StockContext.cs" />
@@ -233,6 +235,7 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Rfid.cs" />
     <Compile Include="Models\Shift\IShift.cs" />
     <Compile Include="Models\Shift\ShiftType.cs" />

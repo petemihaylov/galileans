@@ -50,9 +50,9 @@
             this.exit = new System.Windows.Forms.PictureBox();
             this.lbFoundResults = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lbAcceptedRequests = new System.Windows.Forms.ListBox();
             this.picDelete = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown)).BeginInit();
             this.panel4.SuspendLayout();
@@ -109,6 +109,7 @@
             this.btnDecline.TabIndex = 73;
             this.btnDecline.Text = "Decline";
             this.btnDecline.UseVisualStyleBackColor = false;
+            this.btnDecline.Click += new System.EventHandler(this.btnDecline_Click);
             // 
             // groupBox6
             // 
@@ -330,6 +331,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Requested Shifts";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F);
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(32, 395);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 17);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Approved";
+            // 
             // lbAcceptedRequests
             // 
             this.lbAcceptedRequests.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -358,18 +371,6 @@
             this.picDelete.TabIndex = 6;
             this.picDelete.TabStop = false;
             this.picDelete.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picDelete_MouseClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.2F);
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(32, 395);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 17);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Approved";
             // 
             // TimeTable
             // 
