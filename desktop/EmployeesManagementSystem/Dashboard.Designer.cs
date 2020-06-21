@@ -152,7 +152,7 @@
             // 
             // btnTimetable
             // 
-            this.btnTimetable.BackColor = System.Drawing.Color.LightGray;
+            this.btnTimetable.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnTimetable.Controls.Add(this.pictureBox15);
             this.btnTimetable.Controls.Add(this.label1);
             this.btnTimetable.Controls.Add(this.pictureBox16);

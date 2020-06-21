@@ -41,11 +41,15 @@ namespace EmployeesManagementSystem
 
                 this.btnStocks.Enabled = true;
                 this.btnStocks.BackColor = Leave;
+
                 this.btnStatistics.Enabled = true;
                 this.btnStatistics.BackColor = Leave;
 
                 this.btnShifts.Enabled = false;
-                this.btnShifts.BackColor = Color.White;
+                this.btnShifts.BackColor = Leave;
+
+                this.btnTimetable.Enabled = true;
+                this.btnTimetable.BackColor = Leave;
 
             }
             else if (this.loggedUser.Role == Models.Role.Administrator)
@@ -53,12 +57,16 @@ namespace EmployeesManagementSystem
                 this.btnEmployees.Enabled = true;
                 this.btnDepartments.Enabled = true;
                 this.btnShifts.Enabled = true;
+
                 this.btnStocks.Enabled = false;
                 this.btnCancellations.Enabled = false;
+                this.btnTimetable.Enabled = false;
                 this.btnStatistics.Enabled = false;
             }
 
         }
+
+
         private void Complaint_Load(object sender, EventArgs e)
         {
             RoleDivision();

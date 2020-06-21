@@ -56,22 +56,27 @@ namespace EmployeesManagementSystem
 
                 this.btnStocks.Enabled = true;
                 this.btnStocks.BackColor = Leave;
+
                 this.btnStatistics.Enabled = true;
                 this.btnStatistics.BackColor = Leave;
 
                 this.btnShifts.Enabled = false;
                 this.btnShifts.BackColor = Color.White;
 
-                this.btnCreate.Enabled = false;
-                this.btnCreate.Visible = false;
+                this.btnTimetable.Enabled = true;
+                this.btnTimetable.BackColor = Leave;
+
             }
             else if (this.loggedUser.Role == Models.Role.Administrator)
             {
                 this.btnEmployees.Enabled = true;
                 this.btnDepartments.Enabled = true;
                 this.btnShifts.Enabled = true;
+
                 this.btnStocks.Enabled = false;
                 this.btnCancellations.Enabled = false;
+                this.btnTimetable.Enabled = false;
+                this.btnTimetable.BackColor = Color.White;
                 this.btnStatistics.Enabled = false;
             }
 

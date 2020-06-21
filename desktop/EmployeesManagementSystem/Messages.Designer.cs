@@ -84,6 +84,10 @@
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnReject = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTimetable = new System.Windows.Forms.Panel();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.panelLeft.SuspendLayout();
             this.btnShifts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -113,11 +117,15 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.btnTimetable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.White;
+            this.panelLeft.Controls.Add(this.btnTimetable);
             this.panelLeft.Controls.Add(this.btnShifts);
             this.panelLeft.Controls.Add(this.btnStatistics);
             this.panelLeft.Controls.Add(this.settingsPanel);
@@ -189,7 +197,7 @@
             this.btnStatistics.Controls.Add(this.label5);
             this.btnStatistics.Controls.Add(this.pictureBox19);
             this.btnStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStatistics.Location = new System.Drawing.Point(11, 476);
+            this.btnStatistics.Location = new System.Drawing.Point(10, 530);
             this.btnStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStatistics.Name = "btnStatistics";
             this.btnStatistics.Size = new System.Drawing.Size(229, 41);
@@ -336,7 +344,7 @@
             this.btnStocks.Controls.Add(this.pictureBox11);
             this.btnStocks.Controls.Add(this.label6);
             this.btnStocks.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStocks.Location = new System.Drawing.Point(10, 342);
+            this.btnStocks.Location = new System.Drawing.Point(9, 396);
             this.btnStocks.Name = "btnStocks";
             this.btnStocks.Size = new System.Drawing.Size(230, 41);
             this.btnStocks.TabIndex = 6;
@@ -426,7 +434,7 @@
             this.btnCancellations.Controls.Add(this.pictureBox4);
             this.btnCancellations.Controls.Add(this.label3);
             this.btnCancellations.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancellations.Location = new System.Drawing.Point(10, 411);
+            this.btnCancellations.Location = new System.Drawing.Point(9, 465);
             this.btnCancellations.Name = "btnCancellations";
             this.btnCancellations.Size = new System.Drawing.Size(230, 41);
             this.btnCancellations.TabIndex = 4;
@@ -736,6 +744,51 @@
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             // 
+            // btnTimetable
+            // 
+            this.btnTimetable.BackColor = System.Drawing.Color.LightGray;
+            this.btnTimetable.Controls.Add(this.pictureBox17);
+            this.btnTimetable.Controls.Add(this.label11);
+            this.btnTimetable.Controls.Add(this.pictureBox18);
+            this.btnTimetable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTimetable.Location = new System.Drawing.Point(9, 334);
+            this.btnTimetable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTimetable.Name = "btnTimetable";
+            this.btnTimetable.Size = new System.Drawing.Size(229, 41);
+            this.btnTimetable.TabIndex = 56;
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
+            this.pictureBox17.Location = new System.Drawing.Point(191, 6);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox17.TabIndex = 3;
+            this.pictureBox17.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(44, 11);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 20);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Timetable";
+            // 
+            // pictureBox18
+            // 
+            this.pictureBox18.Image = global::EmployeesManagementSystem.Properties.Resources.download;
+            this.pictureBox18.Location = new System.Drawing.Point(4, 6);
+            this.pictureBox18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox18.Name = "pictureBox18";
+            this.pictureBox18.Size = new System.Drawing.Size(36, 30);
+            this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox18.TabIndex = 52;
+            this.pictureBox18.TabStop = false;
+            // 
             // Messages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -792,6 +845,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.btnTimetable.ResumeLayout(false);
+            this.btnTimetable.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -854,5 +911,9 @@
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnReject;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel btnTimetable;
+        private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox pictureBox18;
     }
 }

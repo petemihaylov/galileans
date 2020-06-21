@@ -102,8 +102,13 @@
             this.cbDepartment = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.btnDisplay = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnScan = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnTimetable = new System.Windows.Forms.Panel();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
             this.panelLeft.SuspendLayout();
@@ -140,6 +145,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnArrowRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnArrowLeft)).BeginInit();
+            this.btnScan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.btnTimetable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -181,6 +191,7 @@
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.White;
+            this.panelLeft.Controls.Add(this.btnTimetable);
             this.panelLeft.Controls.Add(this.btnStatistics);
             this.panelLeft.Controls.Add(this.settingsPanel);
             this.panelLeft.Controls.Add(this.btnShifts);
@@ -205,7 +216,7 @@
             this.btnStatistics.Controls.Add(this.label10);
             this.btnStatistics.Controls.Add(this.pictureBox22);
             this.btnStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStatistics.Location = new System.Drawing.Point(12, 522);
+            this.btnStatistics.Location = new System.Drawing.Point(12, 583);
             this.btnStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStatistics.Name = "btnStatistics";
             this.btnStatistics.Size = new System.Drawing.Size(229, 41);
@@ -372,7 +383,7 @@
             this.btnStocks.Controls.Add(this.pictureBox11);
             this.btnStocks.Controls.Add(this.label2);
             this.btnStocks.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStocks.Location = new System.Drawing.Point(12, 386);
+            this.btnStocks.Location = new System.Drawing.Point(12, 447);
             this.btnStocks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStocks.Name = "btnStocks";
             this.btnStocks.Size = new System.Drawing.Size(229, 41);
@@ -468,7 +479,7 @@
             this.btnCancellations.Controls.Add(this.pictureBox4);
             this.btnCancellations.Controls.Add(this.label3);
             this.btnCancellations.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancellations.Location = new System.Drawing.Point(12, 456);
+            this.btnCancellations.Location = new System.Drawing.Point(12, 517);
             this.btnCancellations.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancellations.Name = "btnCancellations";
             this.btnCancellations.Size = new System.Drawing.Size(229, 41);
@@ -922,7 +933,7 @@
             this.btnToday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnToday.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnToday.Location = new System.Drawing.Point(1262, 343);
+            this.btnToday.Location = new System.Drawing.Point(1262, 345);
             this.btnToday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnToday.Name = "btnToday";
             this.btnToday.Size = new System.Drawing.Size(109, 30);
@@ -950,7 +961,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(300, 1);
             this.panel3.TabIndex = 51;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // dataGridViewImageColumn1
             // 
@@ -1005,7 +1015,7 @@
             this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDisplay.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnDisplay.Location = new System.Drawing.Point(543, 379);
+            this.btnDisplay.Location = new System.Drawing.Point(674, 345);
             this.btnDisplay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.Size = new System.Drawing.Size(109, 30);
@@ -1016,37 +1026,85 @@
             this.btnDisplay.MouseEnter += new System.EventHandler(this.btnDisplay_MouseEnter);
             this.btnDisplay.MouseLeave += new System.EventHandler(this.btnDisplay_MouseLeave);
             // 
-            // button1
+            // btnScan
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.Location = new System.Drawing.Point(759, 344);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 30);
-            this.button1.TabIndex = 69;
-            this.button1.Text = "ATTENDED";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnAttended_Click);
+            this.btnScan.BackColor = System.Drawing.Color.Gray;
+            this.btnScan.Controls.Add(this.pictureBox2);
+            this.btnScan.Controls.Add(this.label11);
+            this.btnScan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnScan.Location = new System.Drawing.Point(912, 339);
+            this.btnScan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnScan.Name = "btnScan";
+            this.btnScan.Size = new System.Drawing.Size(181, 36);
+            this.btnScan.TabIndex = 69;
+            this.btnScan.Paint += new System.Windows.Forms.PaintEventHandler(this.btnScan_Paint);
             // 
-            // button2
+            // label11
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button2.Location = new System.Drawing.Point(922, 344);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 30);
-            this.button2.TabIndex = 70;
-            this.button2.Text = "MISSED";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.btnMissed_Click);
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(41, 8);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(117, 20);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "USERS SCAN";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_dashboard_black_48dp;
+            this.pictureBox2.Location = new System.Drawing.Point(11, -1);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(22, 35);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnTimetable
+            // 
+            this.btnTimetable.BackColor = System.Drawing.Color.LightGray;
+            this.btnTimetable.Controls.Add(this.pictureBox15);
+            this.btnTimetable.Controls.Add(this.label15);
+            this.btnTimetable.Controls.Add(this.pictureBox10);
+            this.btnTimetable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTimetable.Location = new System.Drawing.Point(12, 385);
+            this.btnTimetable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTimetable.Name = "btnTimetable";
+            this.btnTimetable.Size = new System.Drawing.Size(229, 41);
+            this.btnTimetable.TabIndex = 55;
+            // 
+            // pictureBox15
+            // 
+            this.pictureBox15.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
+            this.pictureBox15.Location = new System.Drawing.Point(191, 6);
+            this.pictureBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox15.TabIndex = 3;
+            this.pictureBox15.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(44, 11);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(82, 20);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Timetable";
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = global::EmployeesManagementSystem.Properties.Resources.download;
+            this.pictureBox10.Location = new System.Drawing.Point(4, 6);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(36, 30);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 52;
+            this.pictureBox10.TabStop = false;
             // 
             // Shifts
             // 
@@ -1054,8 +1112,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1550, 850);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnScan);
             this.Controls.Add(this.btnDisplay);
             this.Controls.Add(this.cbDepartment);
             this.Controls.Add(this.label29);
@@ -1129,6 +1186,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnArrowRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnArrowLeft)).EndInit();
+            this.btnScan.ResumeLayout(false);
+            this.btnScan.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.btnTimetable.ResumeLayout(false);
+            this.btnTimetable.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1208,7 +1272,12 @@
         private System.Windows.Forms.ComboBox cbDepartment;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Button btnDisplay;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel btnScan;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel btnTimetable;
+        private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.PictureBox pictureBox10;
     }
 }

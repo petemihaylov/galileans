@@ -60,10 +60,10 @@ namespace EmployeesManagementSystem
                 this.btnStatistics.BackColor = Leave;
 
                 this.btnShifts.Enabled = false;
-                this.btnShifts.BackColor = Color.White;
+                this.btnShifts.BackColor = Leave;
 
-                this.btnTimetable.Enabled = false;
-                this.btnTimetable.BackColor = Color.White;
+                this.btnTimetable.Enabled = true;
+                this.btnTimetable.BackColor = Leave;
 
                 this.btnCreate.Enabled = false;
                 this.btnCreate.Visible = false;
@@ -74,10 +74,10 @@ namespace EmployeesManagementSystem
                 this.btnEmployees.Enabled = true;
                 this.btnDepartments.Enabled = true;
                 this.btnShifts.Enabled = true;
-                this.btnTimetable.Enabled = true;
 
                 this.btnStocks.Enabled = false;
                 this.btnCancellations.Enabled = false;
+                this.btnTimetable.Enabled = false;
                 this.btnStatistics.Enabled = false;
             }
 
@@ -337,11 +337,11 @@ namespace EmployeesManagementSystem
         }
         private void btnScan_MouseEnter(object sender, EventArgs e)
         {
-            this.btnScan.BackColor = Color.SlateBlue;
+            this.btnScan.BackColor = Enter;
         }
         private void btnScan_MouseLeave(object sender, EventArgs e)
         {
-            this.btnScan.BackColor = Color.MediumPurple;
+            this.btnScan.BackColor = Leave;
         }
         private void btnCreate_MouseEnter(object sender, EventArgs e)
         {

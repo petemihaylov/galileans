@@ -14,7 +14,7 @@ namespace EmployeesManagementSystem
         private List<int> afternoonId;
         private List<int> eveningId;
 
-        private IDictionary<string, int> departmentList;        
+        private IDictionary<string, int> departmentList;
         private int addDays = 0;
         private int counter = 0;
         private char attendedMark = '*';
@@ -26,10 +26,10 @@ namespace EmployeesManagementSystem
         // Constructor
         public Shifts(User user)
         {
-            
+
             InitializeComponent();
             this.loggedUser = user;
-            
+
             this.departmentList = new Dictionary<string, int>();
 
             morningId = new List<int>();
@@ -64,11 +64,15 @@ namespace EmployeesManagementSystem
 
                 this.btnStocks.Enabled = true;
                 this.btnStocks.BackColor = Leave;
+
                 this.btnStatistics.Enabled = true;
                 this.btnStatistics.BackColor = Leave;
 
                 this.btnShifts.Enabled = false;
-                this.btnShifts.BackColor = Color.White;
+                this.btnShifts.BackColor = Leave;
+
+                this.btnTimetable.Enabled = true;
+                this.btnTimetable.BackColor = Leave;
 
             }
             else if (this.loggedUser.Role == Models.Role.Administrator)
@@ -76,8 +80,11 @@ namespace EmployeesManagementSystem
                 this.btnEmployees.Enabled = true;
                 this.btnDepartments.Enabled = true;
                 this.btnShifts.Enabled = true;
+
                 this.btnStocks.Enabled = false;
                 this.btnCancellations.Enabled = false;
+                this.btnTimetable.Enabled = false;
+                this.btnTimetable.BackColor = Leave;
                 this.btnStatistics.Enabled = false;
             }
 
@@ -126,7 +133,7 @@ namespace EmployeesManagementSystem
                         {
 
                             char mark = item.Attended ? attendedMark : ' ';
-                           
+
                             this.morningList.Items.Add(item.StartTime + "-" + item.EndTime + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
                             morningId.Add(item.ID);
                         }
@@ -165,7 +172,7 @@ namespace EmployeesManagementSystem
                     showAll(dateTime);
                 }
             }
-            else 
+            else
             {
                 showAll(dateTime);
             }
@@ -183,8 +190,8 @@ namespace EmployeesManagementSystem
             this.morningList.Items.Clear();
             foreach (var item in morning)
             {
-                char mark = item.Attended ? attendedMark : ' '; 
-                this.morningList.Items.Add(item.StartTime + "-" + item.EndTime + "     " + controller.GetUser(item.AssignedUser.ID).FullName  + " " + mark);
+                char mark = item.Attended ? attendedMark : ' ';
+                this.morningList.Items.Add(item.StartTime + "-" + item.EndTime + "     " + controller.GetUser(item.AssignedUser.ID).FullName + " " + mark);
                 morningId.Add(item.ID);
             }
 
@@ -282,7 +289,7 @@ namespace EmployeesManagementSystem
             dep.Closed += (s, args) => this.Close();
             dep.Show();
         }
-        
+
         // Cancellations
         private void btnCancellations_Click(object sender, EventArgs e)
         {
@@ -460,7 +467,7 @@ namespace EmployeesManagementSystem
                 shiftAttended.Cancelled = false;
                 controller.shiftContext.UpdateShift(shiftAttended);
             }
-            
+
             MessageBox.Show("The employee(s) have been marked as present.");
 
 
@@ -519,9 +526,10 @@ namespace EmployeesManagementSystem
 
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void btnScan_Paint(object sender, PaintEventArgs e)
         {
-
+            UserRfidTag userRfid = new UserRfidTag();
+            userRfid.Show();
         }
     }
 }
