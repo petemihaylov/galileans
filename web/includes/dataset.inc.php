@@ -13,8 +13,8 @@
 
 
 
-    require_once "./config.inc.php";
-    require_once "./models/Shift.php";
+    require_once "config.inc.php";
+    require_once "models/Shift.php";
 
     $shiftArray = array();
     // Get count of attended shifts for the current employee

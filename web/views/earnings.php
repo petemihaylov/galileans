@@ -93,8 +93,6 @@ if($stmt = mysqli_prepare($link, $sql)){
         mysqli_stmt_close($stmt);
 }
 
-   // Close connection
-    mysqli_close($link);
 ?>
 
 
@@ -142,7 +140,7 @@ if($stmt = mysqli_prepare($link, $sql)){
         <div class="total-container">
             <div class="money tracking-in-expand">
                 <h4> € </h4>
-                <h2 ><?php echo ($Wage* $AttendedCount);?></h2>
+                <h2 ><?php echo number_format(($Wage* $AttendedCount), 2, '.', '');?></h2>
                 <h3>00 </h3>
             </div>
             <div class="money-label text-focus-in">

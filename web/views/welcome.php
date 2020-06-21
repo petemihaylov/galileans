@@ -27,9 +27,6 @@ require '../includes/closest.inc.php';
 // Download a PDF file on POST request
 require '../includes/PDFhandler.inc.php';
 
-// Closes the DB connection
-mysqli_close($link);
-
 ?>
 
 <!DOCTYPE html>

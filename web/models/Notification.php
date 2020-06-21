@@ -1,6 +1,6 @@
 <?php
 
-class Shift{
+class Notification{
 
     private $ID;
     private $message;
