@@ -5,193 +5,69 @@
     <Language>CSharp</Language>
     <Entities>
       <Entity type="Class">
-        <Name>User</Name>
+        <Name>Employee</Name>
         <Access>Public</Access>
-        <Location left="837" top="365" />
-        <Size width="562" height="332" />
+        <Location left="440" top="193" />
+        <Size width="237" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">string name</Member>
         <Member type="Field">string email</Member>
         <Member type="Field">int phoneNumber</Member>
         <Member type="Field">string password</Member>
         <Member type="Field">int hourlyWage</Member>
-        <Member type="Field">Role role</Member>
-        <Member type="Field">Availability availability</Member>
-        <Member type="Property">public string Name { get; set; }</Member>
-        <Member type="Property">public string Email { get; set; }</Member>
-        <Member type="Property">public string Password { get; set; }</Member>
-        <Member type="Property">public string PhoneNumber { get; set; }</Member>
-        <Member type="Property">public double Wage { get; set; }</Member>
-        <Member type="Constructor">public User(int id, string fullName, string email, string phoneNumber, string password, Role role, double wage)</Member>
+        <Member type="Field">string address</Member>
         <Member type="Method">public void CancelShift(string reason, Shift shift)</Member>
-        <Member type="Method">private bool isEmailValid(string email)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Administrator</Name>
         <Access>Public</Access>
-        <Location left="10" top="442" />
-        <Size width="551" height="128" />
+        <Location left="57" top="193" />
+        <Size width="226" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public void HireEmployee(string name, string email, int phoneNumber, int wage, string address)</Member>
         <Member type="Method">public void FireEmployee(string email)</Member>
-        <Member type="Constructor">public Administrator(int id, string fullName, string email, string phoneNumber, string password, double wage)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Manager</Name>
         <Access>Public</Access>
-        <Location left="472" top="997" />
-        <Size width="528" height="128" />
+        <Location left="428" top="487" />
+        <Size width="231" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public void AssignShift(Shift s, Employee e)</Member>
         <Member type="Method">public void CreateShift(DateTime startTime, DateTime endTime)</Member>
-        <Member type="Constructor">public Manager(int id, string fullName, string email, string phoneNumber, string password, double wage)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Shift</Name>
         <Access>Public</Access>
-        <Location left="1771" top="726" />
-        <Size width="592" height="672" />
+        <Location left="834" top="426" />
+        <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">string startTime</Member>
-        <Member type="Field">DateTime shiftDate</Member>
-        <Member type="Field">ShiftType type</Member>
-        <Member type="Field">bool attended</Member>
-        <Member type="Field">bool cancelled</Member>
-        <Member type="Field">string endTime</Member>
-        <Member type="Field">bool availability</Member>
-        <Member type="Property">public int ID { get; set; }</Member>
-        <Member type="Property">public Department Department { get; set; }</Member>
-        <Member type="Property">public User AssignedUser { get; set; }</Member>
-        <Member type="Property">public bool Availability { get; set; }</Member>
-        <Member type="Property">public DateTime ShiftDate { get; set; }</Member>
-        <Member type="Property">public ShiftType Type { get; set; }</Member>
-        <Member type="Property">public bool Attended { get; set; }</Member>
-        <Member type="Property">public bool Cancelled { get; set; }</Member>
-        <Member type="Constructor">public Shift(User aU, bool av, Department dep, DateTime shiftDate, string startTime, string endTime, ShiftType type)</Member>
-        <Member type="Method">public override string ToString()</Member>
-        <Member type="Method">public int CompareTo(Shift other)</Member>
-        <Member type="Method">public override bool Insert(object obj)</Member>
-        <Member type="Method">public override bool DeleteById(int id)</Member>
-        <Member type="Method">public bool DeleteByDepartment(int id)</Member>
-        <Member type="Method">public bool DeleteShiftsByUser(int id)</Member>
-        <Member type="Method">public bool DeleteShiftsFromDate(DateTime dateTime, int userID)</Member>
-        <Member type="Method">public bool UpdateShift(Shift shift)</Member>
-        <Member type="Method">private Shift MapObject(Shift shift, MySqlDataReader reader)</Member>
-        <Member type="Method">public List&lt;Shift&gt; GetAllShifts()</Member>
-        <Member type="Method">public List&lt;Shift&gt; GetShiftsByUserId(int userId)</Member>
-        <Member type="Method">public List&lt;Shift&gt; GetShiftsByDepartment(int id)</Member>
-        <Member type="Method">public List&lt;Shift&gt; GetShiftsByDateAndDepartment(DateTime date, int id)</Member>
-        <Member type="Method">public List&lt;Shift&gt; GetShiftsByDateAndUser(DateTime date, int id)</Member>
-        <Member type="Method">public List&lt;Shift&gt; GetCancelledShiftsByDateAndUser(DateTime date, int id)</Member>
-        <Member type="Method">public Shift GetShiftByDate(DateTime date, string startTime)</Member>
-        <Member type="Method">public Shift GetShiftByUser(int id)</Member>
-        <Member type="Method">public Shift GetShiftByID(int id)</Member>
-        <Member type="Method">public Shift[] GetShifts()</Member>
+        <Member type="Field">DateTime startTime</Member>
+        <Member type="Field">DateTime endTime</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Stock</Name>
         <Access>Public</Access>
-        <Location left="216" top="1256" />
-        <Size width="471" height="468" />
+        <Location left="388" top="779" />
+        <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">string name</Member>
         <Member type="Field">int amount</Member>
         <Member type="Field">double price</Member>
         <Member type="Field">bool inStock</Member>
-        <Member type="Field">Department department</Member>
-        <Member type="Property">public string Name { get; set; }</Member>
-        <Member type="Property">public double Price { get; set; }</Member>
-        <Member type="Property">public int Availability { get; set; }</Member>
-        <Member type="Property">public Department Department { get; set; }</Member>
-        <Member type="Constructor">public Stock(string name, int amount, double price, bool availability, Department department)</Member>
-        <Member type="Method">public string[] GetInfo()</Member>
-        <Member type="Method">public bool SellStock(int amount)</Member>
-        <Member type="Method">public override bool DeleteById(int id)</Member>
-        <Member type="Method">public bool DeleteByDepartment(int id)</Member>
-        <Member type="Method">public Stock[] GetAllStocks()</Member>
-        <Member type="Method">public DataTable GetStockTable()</Member>
-        <Member type="Method">public bool UpdateStock(Stock stock)</Member>
-        <Member type="Method">public Stock GetStockById(int id)</Member>
-        <Member type="Method">public Stock[] GetAllFilteredStocks(DataTable table)</Member>
-        <Member type="Method">private Stock MapObject(Stock stock, MySqlDataReader reader)</Member>
-        <Member type="Method">public Stock[] SearchByName(string name)</Member>
-        <Member type="Method">public Stock[] StocksByDepID(string name)</Member>
-        <Member type="Method">public override bool Insert(object obj)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Department</Name>
         <Access>Public</Access>
-        <Location left="1009" top="1256" />
-        <Size width="321" height="298" />
+        <Location left="694" top="779" />
+        <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">string name</Member>
-        <Member type="Property">public string Name { get; set; }</Member>
-        <Member type="Constructor">public Department()</Member>
-        <Member type="Constructor">public Department(string name)</Member>
-        <Member type="Method">public string[] GetInfo()</Member>
-        <Member type="Method">public bool UpdateDepartmentInfo(Department dep)</Member>
-        <Member type="Method">public Department GetDepartmentById(int id)</Member>
-        <Member type="Method">public Department GetDepartmentByName(string name)</Member>
-        <Member type="Method">public Department[] GetAllDepartments()</Member>
-        <Member type="Method">public Department[] GetAllFilteredDepartments(DataTable table)</Member>
-        <Member type="Method">public DataTable GetDepartmentTable()</Member>
-        <Member type="Method">public override bool DeleteById(int id)</Member>
-        <Member type="Method">public override bool Insert(object obj)</Member>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>Cancellations</Name>
-        <Access>Public</Access>
-        <Location left="1771" top="281" />
-        <Size width="523" height="298" />
-        <Collapsed>False</Collapsed>
-        <Member type="Field">DateTime data</Member>
-        <Member type="Field">string subject</Member>
-        <Member type="Field">Cstate state</Member>
-        <Member type="Property">public DataTime Data { get; set; }</Member>
-        <Member type="Property">public string Subject { get; set; }</Member>
-        <Member type="Property">public Cstate State { get; set; }</Member>
-        <Member type="Constructor">public Cancellations(int id, DateTime date, string subject, string message, User employee, CState state)</Member>
-        <Member type="Method">public string[] GetInfo()</Member>
-        <Member type="Method">public override bool DeleteById(int id)</Member>
-        <Member type="Method">public bool UpdateCancellation(Cancellation cancellation)</Member>
-        <Member type="Method">public Cancellation[] GetCancellations()</Member>
-        <Member type="Method">public Cancellation GetCancellationByID(int id)</Member>
-        <Member type="Method">private Cancellation MapObject(Cancellation cancellation, MySqlDataReader reader)</Member>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Enum">
-        <Name>Role</Name>
-        <Access>Public</Access>
-        <Location left="864" top="114" />
-        <Size width="163" height="112" />
-        <Collapsed>False</Collapsed>
-        <Value>Administrator</Value>
-        <Value>Manager</Value>
-        <Value>Employee</Value>
-      </Entity>
-      <Entity type="Enum">
-        <Name>Cstate</Name>
-        <Access>Public</Access>
-        <Location left="2415" top="354" />
-        <Size width="163" height="112" />
-        <Collapsed>False</Collapsed>
-        <Value>Pending</Value>
-        <Value>Approved</Value>
-        <Value>Declined</Value>
-      </Entity>
-      <Entity type="Class">
-        <Name>Employee</Name>
-        <Access>Public</Access>
-        <Location left="10" top="245" />
-        <Size width="533" height="94" />
-        <Collapsed>False</Collapsed>
-        <Member type="Constructor">public Employee(int id, string fullName, string email, string phoneNumber, string password, double wage)</Member>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
@@ -200,16 +76,16 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>586</X>
-          <Y>563</Y>
+          <X>308</X>
+          <Y>314</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="2" second="0">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>875</X>
-          <Y>936</Y>
+          <X>487</X>
+          <Y>458</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Association" first="0" second="3">
@@ -217,8 +93,8 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>1741</X>
-          <Y>753</Y>
+          <X>803</X>
+          <Y>481</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -238,10 +114,6 @@
         <Label>manages</Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>550</X>
-          <Y>1153</Y>
-        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <EndRole>- stocks</EndRole>
@@ -252,8 +124,8 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>977</X>
-          <Y>1170</Y>
+          <X>636</X>
+          <Y>728</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -274,23 +146,19 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>977</X>
-          <Y>929</Y>
+          <X>590</X>
+          <Y>462</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="3" second="5">
         <Label>is for</Label>
-        <StartOrientation>Horizontal</StartOrientation>
+        <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>1727</X>
-          <Y>1368</Y>
-        </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1405</X>
-          <Y>1367</Y>
+          <X>931</X>
+          <Y>890</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -302,49 +170,13 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>586</X>
-          <Y>516</Y>
+          <X>308</X>
+          <Y>267</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <EndRole>- employees</EndRole>
         <EndMultiplicity>0..*</EndMultiplicity>
-      </Relationship>
-      <Relationship type="Dependency" first="0" second="7">
-        <Label>
-        </Label>
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Association" first="0" second="6">
-        <Label>
-        </Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>1428</X>
-          <Y>432</Y>
-        </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-      </Relationship>
-      <Relationship type="Dependency" first="6" second="8">
-        <Label>
-        </Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-      </Relationship>
-      <Relationship type="Generalization" first="9" second="0">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>574</X>
-          <Y>299</Y>
-        </BendPoint>
-        <BendPoint relativeToStartShape="False">
-          <X>868</X>
-          <Y>340</Y>
-        </BendPoint>
       </Relationship>
     </Relationships>
   </ProjectItem>
