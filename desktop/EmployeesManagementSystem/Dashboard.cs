@@ -265,6 +265,7 @@ namespace EmployeesManagementSystem
             form.Closed += (s, args) => this.Close();
             form.Show();
         }
+
         private Color Enter = Color.DarkGray;
         private Color Leave = Color.LightGray;
 

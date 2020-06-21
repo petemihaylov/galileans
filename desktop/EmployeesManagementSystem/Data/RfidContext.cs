@@ -47,7 +47,21 @@ namespace EmployeesManagementSystem.Data
 
             }
         }
+        public bool DeleteById(string id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
 
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"DELETE FROM RfidUser WHERE Rfid = @Id;";
+                    command.AddParameter("Id", id);
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+
+            }
+        }
         public bool DeleteAllRows()
         {
             using (var con = new MySqlConnection(connectionString))
@@ -62,8 +76,58 @@ namespace EmployeesManagementSystem.Data
 
             }
         }
+        public Rfid GetRfid(string id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
 
-        
+                Rfid rfid = new Rfid();
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"SELECT * FROM RfidUser WHERE Rfid = @Id;";
+                    command.AddParameter("Id", id);
+
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            MapObject(rfid, reader);
+                           
+                        }
+
+                    }
+
+                  
+                }
+                return rfid;
+            }
+        }
+
+        public bool UpdateRfid(Rfid rfid)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"UPDATE RfidUser SET UserID = @userId, EnteredAt = @enteredAt, LeftAt = @leftAt WHERE Rfid = @rfidTag";
+
+                    command.AddParameter("rfidTag", rfid.RfidTag);
+                    command.AddParameter("userId", rfid.UserID);
+                    command.AddParameter("enteredAt", rfid.EnteredAt);
+                    command.AddParameter("leftAt", rfid.LeftAt);
+
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+
+                }
+            }
+
+
+        }
         public List<Rfid> GetAllRfids()
         {
             using (var con = new MySqlConnection(connectionString))

@@ -337,6 +337,34 @@ namespace EmployeesManagementSystem.Data
             }
         }
 
+        public Shift GetShiftByDate(DateTime date, User user)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"SELECT * FROM Shift WHERE  ShiftDate = @shiftDate and AssignedUserID = @userID";
+                    command.AddParameter("shiftDate", date);
+                    command.AddParameter("userID", user.ID);
+
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        Shift shift = new Shift();
+                        if (reader.Read())
+                        {
+                            MapObject(shift, reader);
+                        }
+                        else { return null; }
+
+                        return shift;
+                    }
+                }
+
+            }
+        }
         public Shift GetShiftByDate(DateTime date, string startTime)
         {
             using (var con = new MySqlConnection(connectionString))

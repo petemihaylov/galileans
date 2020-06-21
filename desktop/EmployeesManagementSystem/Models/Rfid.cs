@@ -22,6 +22,11 @@ namespace EmployeesManagementSystem.Models
             this.EnteredAt = entered;
             this.LeftAt = left;
         }
+        public Rfid(string rfidTag, int userID)
+        {
+            this.RfidTag = rfidTag;
+            this.UserID = userID;
+        }
         public Rfid() { }
     }
 }
