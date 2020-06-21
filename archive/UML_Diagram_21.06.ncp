@@ -8,7 +8,7 @@
         <Name>User</Name>
         <Access>Public</Access>
         <Location left="837" top="365" />
-        <Size width="562" height="332" />
+        <Size width="562" height="519" />
         <Collapsed>False</Collapsed>
         <Member type="Field">string name</Member>
         <Member type="Field">string email</Member>
@@ -23,8 +23,19 @@
         <Member type="Property">public string PhoneNumber { get; set; }</Member>
         <Member type="Property">public double Wage { get; set; }</Member>
         <Member type="Constructor">public User(int id, string fullName, string email, string phoneNumber, string password, Role role, double wage)</Member>
-        <Member type="Method">public void CancelShift(string reason, Shift shift)</Member>
         <Member type="Method">private bool isEmailValid(string email)</Member>
+        <Member type="Method">public override bool Insert(object obj)</Member>
+        <Member type="Method">public override bool DeleteById(int id)</Member>
+        <Member type="Method">public bool DeleteUserByEmail(string email)</Member>
+        <Member type="Method">public bool UpdateUserInfo(User user)</Member>
+        <Member type="Method">public bool UpdatePassword(int userId, string password)</Member>
+        <Member type="Method">public User[] GetAllUsers()</Member>
+        <Member type="Method">public DataTable GetUsersTable()</Member>
+        <Member type="Method">public User[] GetAllFilteredUsers(DataTable table)</Member>
+        <Member type="Method">public User GetUserByID(int ID)</Member>
+        <Member type="Method">public User GetUserByFullname(string username)</Member>
+        <Member type="Method">public User GetUserByEmail(string email)</Member>
+        <Member type="Method">private User MapObject(User user, MySqlDataReader reader)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -33,8 +44,6 @@
         <Location left="10" top="442" />
         <Size width="551" height="128" />
         <Collapsed>False</Collapsed>
-        <Member type="Method">public void HireEmployee(string name, string email, int phoneNumber, int wage, string address)</Member>
-        <Member type="Method">public void FireEmployee(string email)</Member>
         <Member type="Constructor">public Administrator(int id, string fullName, string email, string phoneNumber, string password, double wage)</Member>
         <Modifier>None</Modifier>
       </Entity>
@@ -44,8 +53,6 @@
         <Location left="472" top="997" />
         <Size width="528" height="128" />
         <Collapsed>False</Collapsed>
-        <Member type="Method">public void AssignShift(Shift s, Employee e)</Member>
-        <Member type="Method">public void CreateShift(DateTime startTime, DateTime endTime)</Member>
         <Member type="Constructor">public Manager(int id, string fullName, string email, string phoneNumber, string password, double wage)</Member>
         <Modifier>None</Modifier>
       </Entity>
@@ -189,9 +196,63 @@
         <Name>Employee</Name>
         <Access>Public</Access>
         <Location left="10" top="245" />
-        <Size width="533" height="94" />
+        <Size width="533" height="111" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public Employee(int id, string fullName, string email, string phoneNumber, string password, double wage)</Member>
+        <Member type="Method">public void CancelShift(string reason, Shift shift)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>ShiftType</Name>
+        <Access>Public</Access>
+        <Location left="2561" top="851" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Value>Morning</Value>
+        <Value>Aternoon</Value>
+        <Value>Evening</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>Rfid</Name>
+        <Access>Public</Access>
+        <Location left="52" top="621" />
+        <Size width="358" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">string rfidTag</Member>
+        <Member type="Field">int userID</Member>
+        <Member type="Field">DateTime enteredAt</Member>
+        <Member type="Field">DateTime leftAt</Member>
+        <Member type="Constructor">public Rfid(string rfidTag, int userID, DateTime entered, DateTime left)</Member>
+        <Member type="Property">public string RfidTag { get; set; }</Member>
+        <Member type="Property">public int UserID { get; set; }</Member>
+        <Member type="Property">public DateTime EnteredAt { get; set; }</Member>
+        <Member type="Property">public DateTime LeftAt { get; set; }</Member>
+        <Member type="Method">public override bool Insert(object obj)</Member>
+        <Member type="Method">public override bool DeleteById(int id)</Member>
+        <Member type="Method">public bool DeleteAllRows()</Member>
+        <Member type="Method">public List&lt;Rfid&gt; GetAllRfids()</Member>
+        <Member type="Method">public bool Apply(List&lt;Rfid&gt; rfids)</Member>
+        <Member type="Method">private Rfid MapObject(Rfid rfid, MySqlDataReader reader)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Picture</Name>
+        <Access>Public</Access>
+        <Location left="1306" top="16" />
+        <Size width="338" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int id</Member>
+        <Member type="Field">string urlPath</Member>
+        <Member type="Field">User user</Member>
+        <Member type="Constructor">public Picture(User user, string path)</Member>
+        <Member type="Property">public int ID { get; set; }</Member>
+        <Member type="Property">public string UrlPath { get; set; }</Member>
+        <Member type="Property">public User User { get; set; }</Member>
+        <Member type="Method">public override bool Insert(object obj)</Member>
+        <Member type="Method">public override bool DeleteById(int id)</Member>
+        <Member type="Method">public Picture GetImgByUser(int id)</Member>
+        <Member type="Method">public bool DeleteImgByUserId(int id)</Member>
+        <Member type="Method">private Picture MapObject(Picture picture, MySqlDataReader reader)</Member>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
@@ -269,17 +330,6 @@
         <EndRole>- stocks</EndRole>
         <EndMultiplicity>0..*</EndMultiplicity>
       </Relationship>
-      <Relationship type="Association" first="2" second="0">
-        <Label>assigns Shifts to</Label>
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>977</X>
-          <Y>929</Y>
-        </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-      </Relationship>
       <Relationship type="Association" first="3" second="5">
         <Label>is for</Label>
         <StartOrientation>Horizontal</StartOrientation>
@@ -311,14 +361,11 @@
         <EndMultiplicity>0..*</EndMultiplicity>
       </Relationship>
       <Relationship type="Dependency" first="0" second="7">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="0" second="6">
-        <Label>
-        </Label>
+        <Label>creates</Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -327,10 +374,9 @@
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
+        <EndMultiplicity>0..*</EndMultiplicity>
       </Relationship>
       <Relationship type="Dependency" first="6" second="8">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
       </Relationship>
@@ -345,6 +391,49 @@
           <X>868</X>
           <Y>340</Y>
         </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="3" second="10">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="0" second="11">
+        <Label>has</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="12">
+        <Label>has</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="3" second="6">
+        <Label>has</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>0..1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="5">
+        <Label>works in</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1257</X>
+          <Y>916</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1..*</EndMultiplicity>
       </Relationship>
     </Relationships>
   </ProjectItem>
