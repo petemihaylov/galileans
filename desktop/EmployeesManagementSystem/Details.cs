@@ -337,7 +337,7 @@ namespace EmployeesManagementSystem
                 message.Subject = "New Shift @mediaBazaar";
                 message.IsBodyHtml = true; //to make message body as html  
                 message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.morning[0] + " and " + EndTime.morning[0] + " in the  " + ShiftType.Morning;
+                    "A new shift has been created for you! It takes place between " + StartTime.morning[0] + " and " + EndTime.morning[0] + " in the  " + ShiftType.Morning + " on " + d.ToString("yyyy-MM-dd");
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com"; //for gmail host  
                 smtp.EnableSsl = true;
@@ -371,7 +371,7 @@ namespace EmployeesManagementSystem
                 message.Subject = "New Shift @mediaBazaar";
                 message.IsBodyHtml = true; //to make message body as html  
                 message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.morning[1] + " and " + EndTime.morning[1] + " in the  " + ShiftType.Morning;
+                    "A new shift has been created for you! It takes place between " + StartTime.morning[1] + " and " + EndTime.morning[1] + " in the  " + ShiftType.Morning + " on " + d.ToString("yyyy-MM-dd");
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com"; //for gmail host  
                 smtp.EnableSsl = true;
@@ -404,7 +404,7 @@ namespace EmployeesManagementSystem
                 message.Subject = "New Shift @mediaBazaar";
                 message.IsBodyHtml = true; //to make message body as html  
                 message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.morning[2] + " and " + EndTime.morning[2] + " in the  " + ShiftType.Morning;
+                    "A new shift has been created for you! It takes place between " + StartTime.morning[2] + " and " + EndTime.morning[2] + " in the  " + ShiftType.Morning + " on " + d.ToString("yyyy-MM-dd");
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com"; //for gmail host  
                 smtp.EnableSsl = true;
@@ -437,8 +437,7 @@ namespace EmployeesManagementSystem
                 message.Subject = "New Shift @mediaBazaar";
                 message.IsBodyHtml = true; //to make message body as html  
                 message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.afternoon[0] + " and " + EndTime.afternoon[0] + " in the  " + ShiftType.Afternoon;
-                smtp.Port = 587;
+                    "A new shift has been created for you! It takes place between " + StartTime.afternoon[0] + " and " + EndTime.afternoon[0] + " in the  " + ShiftType.Afternoon + " on " + d.ToString("yyyy-MM-dd");
                 smtp.Host = "smtp.gmail.com"; //for gmail host  
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
@@ -466,7 +465,7 @@ namespace EmployeesManagementSystem
                 message.Subject = "New Shift @mediaBazaar";
                 message.IsBodyHtml = true; //to make message body as html  
                 message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.afternoon[1] + " and " + EndTime.afternoon[1] + " in the  " + ShiftType.Afternoon;
+                    "A new shift has been created for you! It takes place between " + StartTime.afternoon[1] + " and " + EndTime.afternoon[1] + " in the  " + ShiftType.Afternoon + " on " + d.ToString("yyyy-MM-dd");
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com"; //for gmail host  
                 smtp.EnableSsl = true;
@@ -497,7 +496,7 @@ namespace EmployeesManagementSystem
                 message.Subject = "New Shift @mediaBazaar";
                 message.IsBodyHtml = true; //to make message body as html  
                 message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.afternoon[2] + " and " + EndTime.afternoon[2] + " in the  " + ShiftType.Afternoon;
+                    "A new shift has been created for you! It takes place between " + StartTime.afternoon[2] + " and " + EndTime.afternoon[2] + " in the  " + ShiftType.Afternoon + " on " + d.ToString("yyyy-MM-dd");
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com"; //for gmail host  
                 smtp.EnableSsl = true;
@@ -531,7 +530,7 @@ namespace EmployeesManagementSystem
                 message.Subject = "New Shift @mediaBazaar";
                 message.IsBodyHtml = true; //to make message body as html  
                 message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.evening[0] + " and " + EndTime.evening[0] + " in the  " + ShiftType.Evening;
+                    "A new shift has been created for you! It takes place between " + StartTime.evening[0] + " and " + EndTime.evening[0] + " in the  " + ShiftType.Evening + " on " + d.ToString("yyyy-MM-dd");
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com"; //for gmail host  
                 smtp.EnableSsl = true;
@@ -563,7 +562,7 @@ namespace EmployeesManagementSystem
                 message.Subject = "New Shift @mediaBazaar";
                 message.IsBodyHtml = true; //to make message body as html  
                 message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.evening[1] + " and " + EndTime.evening[1] + " in the  " + ShiftType.Evening;
+                    "A new shift has been created for you! It takes place between " + StartTime.evening[1] + " and " + EndTime.evening[1] + " in the  " + ShiftType.Evening + " on " + d.ToString("yyyy-MM-dd");
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com"; //for gmail host  
                 smtp.EnableSsl = true;
@@ -595,7 +594,7 @@ namespace EmployeesManagementSystem
                 message.Subject = "New Shift @mediaBazaar";
                 message.IsBodyHtml = true; //to make message body as html  
                 message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.evening[1] + " and " + EndTime.evening[1] + " in the  " + ShiftType.Evening;
+                    "A new shift has been created for you! It takes place between " + StartTime.evening[1] + " and " + EndTime.evening[1] + " in the  " + ShiftType.Evening + " on " + d.ToString("yyyy-MM-dd");
                 smtp.Port = 587;
                 smtp.Host = "smtp.gmail.com"; //for gmail host  
                 smtp.EnableSsl = true;
