@@ -7,7 +7,7 @@
       <Entity type="Class">
         <Name>User</Name>
         <Access>Public</Access>
-        <Location left="837" top="365" />
+        <Location left="863" top="656" />
         <Size width="562" height="519" />
         <Collapsed>False</Collapsed>
         <Member type="Field">string name</Member>
@@ -36,12 +36,12 @@
         <Member type="Method">public User GetUserByFullname(string username)</Member>
         <Member type="Method">public User GetUserByEmail(string email)</Member>
         <Member type="Method">private User MapObject(User user, MySqlDataReader reader)</Member>
-        <Modifier>None</Modifier>
+        <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Administrator</Name>
         <Access>Public</Access>
-        <Location left="10" top="442" />
+        <Location left="36" top="778" />
         <Size width="551" height="128" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public Administrator(int id, string fullName, string email, string phoneNumber, string password, double wage)</Member>
@@ -50,7 +50,7 @@
       <Entity type="Class">
         <Name>Manager</Name>
         <Access>Public</Access>
-        <Location left="472" top="997" />
+        <Location left="498" top="1288" />
         <Size width="528" height="128" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public Manager(int id, string fullName, string email, string phoneNumber, string password, double wage)</Member>
@@ -59,7 +59,7 @@
       <Entity type="Class">
         <Name>Shift</Name>
         <Access>Public</Access>
-        <Location left="1771" top="726" />
+        <Location left="1797" top="1017" />
         <Size width="592" height="672" />
         <Collapsed>False</Collapsed>
         <Member type="Field">string startTime</Member>
@@ -102,7 +102,7 @@
       <Entity type="Class">
         <Name>Stock</Name>
         <Access>Public</Access>
-        <Location left="216" top="1256" />
+        <Location left="242" top="1547" />
         <Size width="471" height="468" />
         <Collapsed>False</Collapsed>
         <Member type="Field">string name</Member>
@@ -133,7 +133,7 @@
       <Entity type="Class">
         <Name>Department</Name>
         <Access>Public</Access>
-        <Location left="1009" top="1256" />
+        <Location left="1035" top="1547" />
         <Size width="321" height="298" />
         <Collapsed>False</Collapsed>
         <Member type="Field">string name</Member>
@@ -154,7 +154,7 @@
       <Entity type="Class">
         <Name>Cancellations</Name>
         <Access>Public</Access>
-        <Location left="1771" top="281" />
+        <Location left="1797" top="572" />
         <Size width="523" height="298" />
         <Collapsed>False</Collapsed>
         <Member type="Field">DateTime data</Member>
@@ -175,7 +175,7 @@
       <Entity type="Enum">
         <Name>Role</Name>
         <Access>Public</Access>
-        <Location left="864" top="114" />
+        <Location left="1006" top="404" />
         <Size width="163" height="112" />
         <Collapsed>False</Collapsed>
         <Value>Administrator</Value>
@@ -185,7 +185,7 @@
       <Entity type="Enum">
         <Name>Cstate</Name>
         <Access>Public</Access>
-        <Location left="2415" top="354" />
+        <Location left="2441" top="645" />
         <Size width="163" height="112" />
         <Collapsed>False</Collapsed>
         <Value>Pending</Value>
@@ -195,7 +195,7 @@
       <Entity type="Class">
         <Name>Employee</Name>
         <Access>Public</Access>
-        <Location left="10" top="245" />
+        <Location left="36" top="626" />
         <Size width="533" height="111" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public Employee(int id, string fullName, string email, string phoneNumber, string password, double wage)</Member>
@@ -205,7 +205,7 @@
       <Entity type="Enum">
         <Name>ShiftType</Name>
         <Access>Public</Access>
-        <Location left="2561" top="851" />
+        <Location left="2587" top="1142" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Value>Morning</Value>
@@ -215,7 +215,7 @@
       <Entity type="Class">
         <Name>Rfid</Name>
         <Access>Public</Access>
-        <Location left="52" top="621" />
+        <Location left="76" top="944" />
         <Size width="358" height="332" />
         <Collapsed>False</Collapsed>
         <Member type="Field">string rfidTag</Member>
@@ -238,7 +238,7 @@
       <Entity type="Class">
         <Name>Picture</Name>
         <Access>Public</Access>
-        <Location left="1306" top="16" />
+        <Location left="1332" top="307" />
         <Size width="338" height="281" />
         <Collapsed>False</Collapsed>
         <Member type="Field">int id</Member>
@@ -255,22 +255,71 @@
         <Member type="Method">private Picture MapObject(Picture picture, MySqlDataReader reader)</Member>
         <Modifier>None</Modifier>
       </Entity>
+      <Entity type="Class">
+        <Name>Availability</Name>
+        <Access>Public</Access>
+        <Location left="365" top="148" />
+        <Size width="547" height="366" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public int ID { get; set; }</Member>
+        <Member type="Property">public User User { get; set; }</Member>
+        <Member type="Property">public AvailabilityType State { get; set; }</Member>
+        <Member type="Property">public List&lt;DayType&gt; Days { get; set; }</Member>
+        <Member type="Property">public bool IsMonthly { get; set; }</Member>
+        <Member type="Constructor">public Availability(User user, AvailabilityType availability, List&lt;DayType&gt; days, bool isWeekly, bool isMonthly)</Member>
+        <Member type="Method">public string GetDays()</Member>
+        <Member type="Method">public List&lt;string&gt; GetFormatedDays()</Member>
+        <Member type="Method">private string GetFormatedName(DayType day)</Member>
+        <Member type="Method">public string GetInfo()</Member>
+        <Member type="Method">public override bool Insert(object obj)</Member>
+        <Member type="Method">public override bool DeleteById(int id)</Member>
+        <Member type="Method">public bool DeleteByUser(int id)</Member>
+        <Member type="Method">public Availability[] GetAllAvailabilitiesByID(int id)</Member>
+        <Member type="Method">public Availability[] GetAllAvailabilities()</Member>
+        <Member type="Method">public bool UpdateAvailabilityInfo(Availability availability)</Member>
+        <Member type="Method">private Availability MapObject(Availability availability, MySqlDataReader reader)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>AvailabilityType</Name>
+        <Access>Public</Access>
+        <Location left="23" top="370" />
+        <Size width="163" height="112" />
+        <Collapsed>False</Collapsed>
+        <Value>Pending</Value>
+        <Value>Approved</Value>
+        <Value>Declined</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>DayType</Name>
+        <Access>Public</Access>
+        <Location left="36" top="148" />
+        <Size width="163" height="180" />
+        <Collapsed>False</Collapsed>
+        <Value>Mon</Value>
+        <Value>Tue</Value>
+        <Value>Wed</Value>
+        <Value>Thu</Value>
+        <Value>Fri</Value>
+        <Value>Sat</Value>
+        <Value>Sun</Value>
+      </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Generalization" first="1" second="0">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>586</X>
-          <Y>563</Y>
+          <X>612</X>
+          <Y>899</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="2" second="0">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>875</X>
-          <Y>936</Y>
+          <X>901</X>
+          <Y>1227</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Association" first="0" second="3">
@@ -278,8 +327,8 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>1741</X>
-          <Y>753</Y>
+          <X>1767</X>
+          <Y>1044</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -300,8 +349,8 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>550</X>
-          <Y>1153</Y>
+          <X>576</X>
+          <Y>1444</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -313,8 +362,8 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>977</X>
-          <Y>1170</Y>
+          <X>1003</X>
+          <Y>1461</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -335,12 +384,12 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1727</X>
-          <Y>1368</Y>
+          <X>1753</X>
+          <Y>1659</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1405</X>
-          <Y>1367</Y>
+          <X>1431</X>
+          <Y>1658</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -352,8 +401,8 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>586</X>
-          <Y>516</Y>
+          <X>612</X>
+          <Y>852</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -369,8 +418,8 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1428</X>
-          <Y>432</Y>
+          <X>1454</X>
+          <Y>723</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -382,14 +431,14 @@
       </Relationship>
       <Relationship type="Generalization" first="9" second="0">
         <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>574</X>
-          <Y>299</Y>
+          <X>600</X>
+          <Y>680</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>868</X>
-          <Y>340</Y>
+          <X>838</X>
+          <Y>680</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="3" second="10">
@@ -428,12 +477,40 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1257</X>
-          <Y>916</Y>
+          <X>1283</X>
+          <Y>1207</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="0" second="13">
+        <Label>has</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>927</X>
+          <Y>631</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Dependency" first="13" second="14">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>330</X>
+          <Y>365</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="13" second="15">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
       </Relationship>
     </Relationships>
   </ProjectItem>
