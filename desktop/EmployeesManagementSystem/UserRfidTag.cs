@@ -16,12 +16,15 @@ namespace EmployeesManagementSystem
     public partial class UserRfidTag : Form
     {
         RfidController rfidController = new RfidController();
+        private Form previousForm;
 
         public UserRfidTag()
         {
             InitializeComponent();
             updateDataGrid();
             updateComboBox();
+            this.previousForm = previousForm;
+
         }
 
         private void updateDataGrid()
@@ -180,6 +183,30 @@ namespace EmployeesManagementSystem
             {
                 MessageBox.Show("You successfully updated the table!");
             }
+        }
+
+        private void picBack_Click(object sender, EventArgs e)
+        {
+            // Show previous form
+            previousForm.Closed += (s, args) => this.Close();
+            previousForm.Show();
+            this.Hide();
+        }
+
+        private void UserRfidTag_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbBack_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
         }
     }
 }

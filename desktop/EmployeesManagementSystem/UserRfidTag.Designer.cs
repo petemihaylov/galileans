@@ -37,17 +37,19 @@
             this.txtRfid = new System.Windows.Forms.TextBox();
             this.btnCheckIn = new System.Windows.Forms.Button();
             this.dataGridRfid = new System.Windows.Forms.DataGridView();
-            this.comboUsers = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnClearSelected = new System.Windows.Forms.Button();
-            this.btnApply = new System.Windows.Forms.Button();
             this.Rfid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnteredAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LeftAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboUsers = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnClearSelected = new System.Windows.Forms.Button();
+            this.btnApply = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRfid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -69,6 +71,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.panel4.Controls.Add(this.btnExit);
             this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -169,6 +172,34 @@
             this.dataGridRfid.Size = new System.Drawing.Size(659, 292);
             this.dataGridRfid.TabIndex = 58;
             // 
+            // Rfid
+            // 
+            this.Rfid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Rfid.HeaderText = "Rfid";
+            this.Rfid.MinimumWidth = 6;
+            this.Rfid.Name = "Rfid";
+            // 
+            // UserName
+            // 
+            this.UserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.UserName.HeaderText = "UserName";
+            this.UserName.MinimumWidth = 6;
+            this.UserName.Name = "UserName";
+            // 
+            // EnteredAt
+            // 
+            this.EnteredAt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EnteredAt.HeaderText = "EnteredAt";
+            this.EnteredAt.MinimumWidth = 6;
+            this.EnteredAt.Name = "EnteredAt";
+            // 
+            // LeftAt
+            // 
+            this.LeftAt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LeftAt.HeaderText = "LeftAt";
+            this.LeftAt.MinimumWidth = 6;
+            this.LeftAt.Name = "LeftAt";
+            // 
             // comboUsers
             // 
             this.comboUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.1F);
@@ -222,33 +253,18 @@
             this.btnApply.UseVisualStyleBackColor = false;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
-            // Rfid
+            // btnExit
             // 
-            this.Rfid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Rfid.HeaderText = "Rfid";
-            this.Rfid.MinimumWidth = 6;
-            this.Rfid.Name = "Rfid";
-            // 
-            // UserName
-            // 
-            this.UserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.UserName.HeaderText = "UserName";
-            this.UserName.MinimumWidth = 6;
-            this.UserName.Name = "UserName";
-            // 
-            // EnteredAt
-            // 
-            this.EnteredAt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.EnteredAt.HeaderText = "EnteredAt";
-            this.EnteredAt.MinimumWidth = 6;
-            this.EnteredAt.Name = "EnteredAt";
-            // 
-            // LeftAt
-            // 
-            this.LeftAt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LeftAt.HeaderText = "LeftAt";
-            this.LeftAt.MinimumWidth = 6;
-            this.LeftAt.Name = "LeftAt";
+            this.btnExit.BackColor = System.Drawing.Color.Transparent;
+            this.btnExit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
+            this.btnExit.Location = new System.Drawing.Point(1064, 7);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(39, 34);
+            this.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnExit.TabIndex = 5;
+            this.btnExit.TabStop = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // UserRfidTag
             // 
@@ -269,11 +285,13 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UserRfidTag";
+            this.Load += new System.EventHandler(this.UserRfidTag_Load);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRfid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,5 +316,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn EnteredAt;
         private System.Windows.Forms.DataGridViewTextBoxColumn LeftAt;
+        private System.Windows.Forms.PictureBox btnExit;
     }
 }

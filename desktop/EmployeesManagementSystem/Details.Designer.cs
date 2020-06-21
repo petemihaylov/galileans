@@ -103,6 +103,8 @@
             this.bToday = new System.Windows.Forms.Button();
             this.labelAvailability = new System.Windows.Forms.Label();
             this.listOfAvailabilities = new System.Windows.Forms.ListBox();
+            this.lbChecks = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exit)).BeginInit();
@@ -163,7 +165,7 @@
             // 
             this.picBack.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_arrow_back_ios_black_48dp;
             this.picBack.Location = new System.Drawing.Point(28, 18);
-            this.picBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picBack.Margin = new System.Windows.Forms.Padding(4);
             this.picBack.Name = "picBack";
             this.picBack.Size = new System.Drawing.Size(37, 32);
             this.picBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -175,7 +177,7 @@
             // 
             this.exit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
             this.exit.Location = new System.Drawing.Point(1928, 18);
-            this.exit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.exit.Margin = new System.Windows.Forms.Padding(4);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(52, 43);
             this.exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -303,7 +305,7 @@
             // 
             this.pictureBox3.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_create_black_48dp;
             this.pictureBox3.Location = new System.Drawing.Point(13, 0);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(29, 25);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -414,7 +416,7 @@
             // 
             this.profilePic.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_account_circle_black_48dp;
             this.profilePic.Location = new System.Drawing.Point(164, 21);
-            this.profilePic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.profilePic.Margin = new System.Windows.Forms.Padding(4);
             this.profilePic.Name = "profilePic";
             this.profilePic.Size = new System.Drawing.Size(97, 90);
             this.profilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -551,7 +553,7 @@
             // 
             this.picEvn_first.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
             this.picEvn_first.Location = new System.Drawing.Point(8, 34);
-            this.picEvn_first.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picEvn_first.Margin = new System.Windows.Forms.Padding(4);
             this.picEvn_first.Name = "picEvn_first";
             this.picEvn_first.Size = new System.Drawing.Size(28, 30);
             this.picEvn_first.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -563,7 +565,7 @@
             // 
             this.picEvn_second.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp1;
             this.picEvn_second.Location = new System.Drawing.Point(7, 68);
-            this.picEvn_second.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picEvn_second.Margin = new System.Windows.Forms.Padding(4);
             this.picEvn_second.Name = "picEvn_second";
             this.picEvn_second.Size = new System.Drawing.Size(28, 26);
             this.picEvn_second.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -575,7 +577,7 @@
             // 
             this.picEvn_third.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
             this.picEvn_third.Location = new System.Drawing.Point(7, 100);
-            this.picEvn_third.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picEvn_third.Margin = new System.Windows.Forms.Padding(4);
             this.picEvn_third.Name = "picEvn_third";
             this.picEvn_third.Size = new System.Drawing.Size(28, 33);
             this.picEvn_third.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -635,7 +637,7 @@
             // 
             this.pictureBox16.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
             this.pictureBox16.Location = new System.Drawing.Point(39, 84);
-            this.pictureBox16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox16.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(41, 32);
             this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -703,7 +705,7 @@
             // 
             this.pictureBox17.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
             this.pictureBox17.Location = new System.Drawing.Point(39, 84);
-            this.pictureBox17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(41, 32);
             this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -761,7 +763,7 @@
             // 
             this.pictureBox1.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp;
             this.pictureBox1.Location = new System.Drawing.Point(40, 84);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(41, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -802,7 +804,7 @@
             // 
             this.arrowLeft.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp1;
             this.arrowLeft.Location = new System.Drawing.Point(27, 57);
-            this.arrowLeft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.arrowLeft.Margin = new System.Windows.Forms.Padding(4);
             this.arrowLeft.Name = "arrowLeft";
             this.arrowLeft.Size = new System.Drawing.Size(80, 103);
             this.arrowLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -867,7 +869,7 @@
             // 
             this.picMor_first.Image = global::EmployeesManagementSystem.Properties.Resources.btnAdd;
             this.picMor_first.Location = new System.Drawing.Point(7, 34);
-            this.picMor_first.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picMor_first.Margin = new System.Windows.Forms.Padding(4);
             this.picMor_first.Name = "picMor_first";
             this.picMor_first.Size = new System.Drawing.Size(31, 26);
             this.picMor_first.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -879,7 +881,7 @@
             // 
             this.picMor_second.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp1;
             this.picMor_second.Location = new System.Drawing.Point(7, 68);
-            this.picMor_second.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picMor_second.Margin = new System.Windows.Forms.Padding(4);
             this.picMor_second.Name = "picMor_second";
             this.picMor_second.Size = new System.Drawing.Size(31, 26);
             this.picMor_second.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -891,7 +893,7 @@
             // 
             this.picMor_third.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_add_circle_outline_black_48dp;
             this.picMor_third.Location = new System.Drawing.Point(7, 100);
-            this.picMor_third.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picMor_third.Margin = new System.Windows.Forms.Padding(4);
             this.picMor_third.Name = "picMor_third";
             this.picMor_third.Size = new System.Drawing.Size(31, 26);
             this.picMor_third.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -995,7 +997,7 @@
             this.btnToday.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnToday.Location = new System.Drawing.Point(1788, 412);
-            this.btnToday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnToday.Margin = new System.Windows.Forms.Padding(4);
             this.btnToday.Name = "btnToday";
             this.btnToday.Size = new System.Drawing.Size(147, 36);
             this.btnToday.TabIndex = 61;
@@ -1021,32 +1023,64 @@
             // labelAvailability
             // 
             this.labelAvailability.AutoSize = true;
-            this.labelAvailability.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAvailability.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.labelAvailability.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelAvailability.Location = new System.Drawing.Point(632, 677);
+            this.labelAvailability.Location = new System.Drawing.Point(530, 665);
             this.labelAvailability.Name = "labelAvailability";
-            this.labelAvailability.Size = new System.Drawing.Size(158, 18);
+            this.labelAvailability.Size = new System.Drawing.Size(198, 24);
             this.labelAvailability.TabIndex = 64;
             this.labelAvailability.Text = "History of preferences:";
             // 
             // listOfAvailabilities
             // 
             this.listOfAvailabilities.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.listOfAvailabilities.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listOfAvailabilities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listOfAvailabilities.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.listOfAvailabilities.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.listOfAvailabilities.FormattingEnabled = true;
-            this.listOfAvailabilities.ItemHeight = 18;
-            this.listOfAvailabilities.Location = new System.Drawing.Point(635, 703);
+            this.listOfAvailabilities.ItemHeight = 22;
+            this.listOfAvailabilities.Location = new System.Drawing.Point(533, 691);
             this.listOfAvailabilities.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listOfAvailabilities.MultiColumn = true;
             this.listOfAvailabilities.Name = "listOfAvailabilities";
-            this.listOfAvailabilities.Size = new System.Drawing.Size(719, 130);
+            this.listOfAvailabilities.ScrollAlwaysVisible = true;
+            this.listOfAvailabilities.Size = new System.Drawing.Size(454, 112);
             this.listOfAvailabilities.TabIndex = 65;
+            // 
+            // lbChecks
+            // 
+            this.lbChecks.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lbChecks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbChecks.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lbChecks.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lbChecks.FormattingEnabled = true;
+            this.lbChecks.ItemHeight = 22;
+            this.lbChecks.Location = new System.Drawing.Point(1027, 691);
+            this.lbChecks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lbChecks.MultiColumn = true;
+            this.lbChecks.Name = "lbChecks";
+            this.lbChecks.ScrollAlwaysVisible = true;
+            this.lbChecks.Size = new System.Drawing.Size(454, 112);
+            this.lbChecks.TabIndex = 67;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label9.Location = new System.Drawing.Point(1024, 665);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(190, 24);
+            this.label9.TabIndex = 66;
+            this.label9.Text = "History of attendance:";
             // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1549, 850);
+            this.Controls.Add(this.lbChecks);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.listOfAvailabilities);
             this.Controls.Add(this.labelAvailability);
             this.Controls.Add(this.bToday);
@@ -1188,5 +1222,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox lbChecks;
+        private System.Windows.Forms.Label label9;
     }
 }

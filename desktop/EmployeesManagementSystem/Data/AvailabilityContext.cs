@@ -74,32 +74,16 @@ namespace EmployeesManagementSystem.Data
                     // Executing it 
                     using (var reader = command.ExecuteReader())
                     {
-                        List<Availability> availabilities = new List<Availability>();
+                        List<Availability> avs = new List<Availability>();
                         while (reader.Read())
                         {
                             // Mapping the return data to the object
-                            Availability availability = new Availability();
-                            availability.User.ID = (int)reader["UserID"];
-                            availability.State = (AvailabilityType)reader["State"];
-
-                            string text = (string)reader["Days"];
-
-                            // Converting all of the day names to DayType
-                            List<string> days = text.Split(',').ToList<string>();
-                            List<DayType> res = new List<DayType>();
-                            foreach (var item in days)
-                            {
-                                Enum.TryParse(item, out DayType d);
-                                res.Add(d);
-                            }
-
-                            availability.Days = res;
-                            availability.IsWeekly = (bool) reader["IsWeekly"];
-                            availability.IsMonthly = (bool) reader["IsMonthly"];
-                            availabilities.Add(availability);
+                            // Mapping the return data to the object
+                            Availability a = new Availability();
+                            MapObject(a, reader);
+                            avs.Add(a);
                         }
-
-                        return availabilities.ToArray();
+                        return avs.ToArray();
                     }
                 }
             }

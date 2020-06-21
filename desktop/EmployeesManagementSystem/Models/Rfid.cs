@@ -23,5 +23,6 @@ namespace EmployeesManagementSystem.Models
             this.LeftAt = left;
         }
         public Rfid() { }
+
     }
 }

@@ -15,11 +15,11 @@ namespace EmployeesManagementSystem
 
         // Need to be refactored
 
-
         // Variables
         private UserContext userContext = new UserContext();
         private ShiftContext shiftContext = new ShiftContext();
         private ImageContext imageContext = new ImageContext();
+        private RfidContext rfidContext = new RfidContext();
         private AvailabilityContext availabilityContext = new AvailabilityContext();
         private DepartmentContext departmentContext = new DepartmentContext();
         private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
@@ -32,6 +32,7 @@ namespace EmployeesManagementSystem
 
         private User user;
         private User loggedUser;
+        private List<Availability> avs;
         private List<Shift> shifts;
         private Dashboard dashboard = null;
 
@@ -58,12 +59,25 @@ namespace EmployeesManagementSystem
             if (department != null)
                 this.cbDepartment.Text = department.Name;
 
+            listOfAvailabilities.Items.Clear();
+            if (availabilityContext.GetAllAvailabilitiesByID(UserID).Length > 0)
+            {
+                foreach (Availability av in availabilityContext.GetAllAvailabilitiesByID(UserID))
+                {
+                    listOfAvailabilities.Items.Add(av.GetInfo());
+                }
+            }
+            else
+            {
+                listOfAvailabilities.Items.Add("No preferance set");
+            }
 
-            //foreach (Availability availability in availabilityContext.GetAllAvailabilitiesByID(UserID))
-            //{
-            //    throw new System.ArgumentException("Created changes in AvailabilityContext", "original");
-            //    // listOfAvailabilities.Items.Add(" shift: " + availability.Date.ToString() + " " + userDepartmentContext.GetDepartmentByUser(availability.User.ID).Name + "  " + user.FullName);
-            //}
+            lbChecks.Items.Clear();
+            foreach (Rfid rfid in rfidContext.GetAllRfidsByUserId(UserID))
+            {
+                lbChecks.Items.Add("Checked in: " +  rfid.EnteredAt);
+                lbChecks.Items.Add("Checked out: " + rfid.LeftAt);
+            }
 
         }
         public void DashoboardUpdate(Dashboard dashboard)

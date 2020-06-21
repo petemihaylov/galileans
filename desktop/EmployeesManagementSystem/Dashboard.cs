@@ -204,6 +204,14 @@ namespace EmployeesManagementSystem
             CreateAccounts createAccounts = new CreateAccounts(this);
             createAccounts.Show();
         }
+
+        //Scanner
+        private void btnScan_Click(object sender, EventArgs e)
+        {
+            UserRfidTag userRfid = new UserRfidTag();
+            userRfid.Show();
+        }
+
         private void lbCreate_Click(object sender, EventArgs e)
         {
             CreateAccounts createAccounts = new CreateAccounts(this);
@@ -249,7 +257,6 @@ namespace EmployeesManagementSystem
         {
             ShowForm(new Stocks(this.loggedUser));
         }
-
 
         // Statistics
         private void btnStatistics_Click(object sender, EventArgs e)
@@ -327,6 +334,14 @@ namespace EmployeesManagementSystem
         {
             this.btnStatistics.BackColor = Leave;
         }
+        private void btnScan_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnScan.BackColor = Color.SlateBlue;
+        }
+        private void btnScan_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnScan.BackColor = Color.MediumPurple;
+        }
         private void btnCreate_MouseEnter(object sender, EventArgs e)
         {
             this.btnCreate.BackColor = Enter;
@@ -353,5 +368,12 @@ namespace EmployeesManagementSystem
         {
             this.btnTimetable.BackColor = Leave;
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
