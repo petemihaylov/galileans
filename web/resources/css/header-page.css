@@ -70,3 +70,33 @@
 .faa-parent.animated-hover:hover > .faa-spin.faa-slow {
 	animation: spin 2.2s linear infinite;
 }
+
+.userDrop{
+	cursor: pointer;
+}
+.prompt {
+	display: none;
+	top: 6vh;
+	right: 0%;
+	width: 350px;
+	background-color: #F8F9FA;
+	position: absolute;
+	color: gray;
+	z-index: 100;
+	padding: 20px;
+	border-bottom: 1px solid rgba(138, 138, 138, 0.109);
+	border-left: 1px solid rgba(138, 138, 138, 0.105);
+}
+.prompt ul{
+	list-style: none;
+}
+.prompt li, a {
+	text-decoration: none;
+	cursor: pointer;
+	color: gray;
+	font-size: rem-calc(12px);
+}
+.show{
+	display: block;
+}
+
