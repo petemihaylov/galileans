@@ -119,7 +119,7 @@
             this.btnCheckOut.FlatAppearance.BorderSize = 0;
             this.btnCheckOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCheckOut.ForeColor = System.Drawing.Color.White;
             this.btnCheckOut.Location = new System.Drawing.Point(647, 405);
             this.btnCheckOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCheckOut.Name = "btnCheckOut";
@@ -143,7 +143,7 @@
             this.btnCheckIn.FlatAppearance.BorderSize = 0;
             this.btnCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCheckIn.ForeColor = System.Drawing.Color.White;
             this.btnCheckIn.Location = new System.Drawing.Point(448, 405);
             this.btnCheckIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCheckIn.Name = "btnCheckIn";
@@ -196,7 +196,7 @@
             this.btnClearSelected.FlatAppearance.BorderSize = 0;
             this.btnClearSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearSelected.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnClearSelected.ForeColor = System.Drawing.Color.White;
             this.btnClearSelected.Location = new System.Drawing.Point(933, 405);
             this.btnClearSelected.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClearSelected.Name = "btnClearSelected";
@@ -224,31 +224,31 @@
             // 
             // Rfid
             // 
+            this.Rfid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Rfid.HeaderText = "Rfid";
             this.Rfid.MinimumWidth = 6;
             this.Rfid.Name = "Rfid";
-            this.Rfid.Width = 90;
             // 
             // UserName
             // 
+            this.UserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.UserName.HeaderText = "UserName";
             this.UserName.MinimumWidth = 6;
             this.UserName.Name = "UserName";
-            this.UserName.Width = 90;
             // 
             // EnteredAt
             // 
+            this.EnteredAt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.EnteredAt.HeaderText = "EnteredAt";
             this.EnteredAt.MinimumWidth = 6;
             this.EnteredAt.Name = "EnteredAt";
-            this.EnteredAt.Width = 125;
             // 
             // LeftAt
             // 
+            this.LeftAt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.LeftAt.HeaderText = "LeftAt";
             this.LeftAt.MinimumWidth = 6;
             this.LeftAt.Name = "LeftAt";
-            this.LeftAt.Width = 125;
             // 
             // UserRfidTag
             // 
