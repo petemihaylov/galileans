@@ -78,6 +78,7 @@ namespace EmployeesManagementSystem.Data
                         while (reader.Read())
                         {
                             // Mapping the return data to the object
+                            // Mapping the return data to the object
                             Availability a = new Availability();
                             MapObject(a, reader);
                             avs.Add(a);

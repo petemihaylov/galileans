@@ -205,36 +205,7 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
-
-        public User GetUserByFullname(string username)
-        {
-            using (var con = new MySqlConnection(connectionString))
-            {
-                con.Open();
-                using (var command = con.CreateCommand())
-                {
-                    // Select statement
-                    command.CommandText = @"SELECT * FROM User WHERE Fullname = @Fullname";
-                    command.AddParameter("Fullname", username);
-
-                    // Ececuting it 
-                    using (var reader = command.ExecuteReader())
-                    {
-                        User user = new User();
-
-                        if (reader.Read())
-                        {
-                            MapObject(user, reader);
-                        }
-                        else { return null; }
-
-                        // getting the actual user
-                        return user;
-                    }
-                }
-            }
-        }
-
+        
         public User GetUserByFullName(string fullname)
         {
             using (var con = new MySqlConnection(connectionString))

@@ -28,5 +28,6 @@ namespace EmployeesManagementSystem.Models
             this.UserID = userID;
         }
         public Rfid() { }
+
     }
 }

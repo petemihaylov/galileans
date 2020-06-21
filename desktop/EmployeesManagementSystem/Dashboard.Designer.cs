@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.btnTimetable = new System.Windows.Forms.Panel();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.btnStatistics = new System.Windows.Forms.Panel();
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -84,11 +88,13 @@
             this.btnExit = new System.Windows.Forms.PictureBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnTimetable = new System.Windows.Forms.Panel();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.btnScan = new System.Windows.Forms.Panel();
             this.panelLeft.SuspendLayout();
+            this.btnTimetable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             this.btnStatistics.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
@@ -119,9 +125,8 @@
             this.btnCreate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCreate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
-            this.btnTimetable.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            this.btnScan.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelLeft
@@ -144,6 +149,54 @@
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(257, 850);
             this.panelLeft.TabIndex = 0;
+            // 
+            // btnTimetable
+            // 
+            this.btnTimetable.BackColor = System.Drawing.Color.LightGray;
+            this.btnTimetable.Controls.Add(this.pictureBox15);
+            this.btnTimetable.Controls.Add(this.label1);
+            this.btnTimetable.Controls.Add(this.pictureBox16);
+            this.btnTimetable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTimetable.Location = new System.Drawing.Point(12, 359);
+            this.btnTimetable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTimetable.Name = "btnTimetable";
+            this.btnTimetable.Size = new System.Drawing.Size(229, 41);
+            this.btnTimetable.TabIndex = 54;
+            this.btnTimetable.Click += new System.EventHandler(this.btnTimetable_Click);
+            this.btnTimetable.MouseEnter += new System.EventHandler(this.btnTimetable_MouseEnter);
+            this.btnTimetable.MouseLeave += new System.EventHandler(this.btnTimetable_MouseLeave);
+            // 
+            // pictureBox15
+            // 
+            this.pictureBox15.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
+            this.pictureBox15.Location = new System.Drawing.Point(191, 6);
+            this.pictureBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox15.TabIndex = 3;
+            this.pictureBox15.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(44, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 20);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Timetable";
+            // 
+            // pictureBox16
+            // 
+            this.pictureBox16.Image = global::EmployeesManagementSystem.Properties.Resources.download;
+            this.pictureBox16.Location = new System.Drawing.Point(4, 6);
+            this.pictureBox16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(36, 30);
+            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox16.TabIndex = 52;
+            this.pictureBox16.TabStop = false;
             // 
             // btnStatistics
             // 
@@ -661,6 +714,7 @@
             // 
             this.panel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.btnScan);
             this.panel4.Controls.Add(this.searchField);
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.pictureBox10);
@@ -709,7 +763,7 @@
             this.btnCreate.Controls.Add(this.pictureCreate);
             this.btnCreate.Controls.Add(this.lbCreate);
             this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCreate.Location = new System.Drawing.Point(824, 15);
+            this.btnCreate.Location = new System.Drawing.Point(775, 13);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(181, 38);
@@ -775,53 +829,43 @@
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.Width = 125;
             // 
-            // btnTimetable
+            // label5
             // 
-            this.btnTimetable.BackColor = System.Drawing.Color.LightGray;
-            this.btnTimetable.Controls.Add(this.pictureBox15);
-            this.btnTimetable.Controls.Add(this.label1);
-            this.btnTimetable.Controls.Add(this.pictureBox16);
-            this.btnTimetable.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTimetable.Location = new System.Drawing.Point(12, 359);
-            this.btnTimetable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTimetable.Name = "btnTimetable";
-            this.btnTimetable.Size = new System.Drawing.Size(229, 41);
-            this.btnTimetable.TabIndex = 54;
-            this.btnTimetable.Click += new System.EventHandler(this.btnTimetable_Click);
-            this.btnTimetable.MouseEnter += new System.EventHandler(this.btnTimetable_MouseEnter);
-            this.btnTimetable.MouseLeave += new System.EventHandler(this.btnTimetable_MouseLeave);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(61, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(55, 20);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "SCAN";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // pictureBox15
+            // pictureBox17
             // 
-            this.pictureBox15.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
-            this.pictureBox15.Location = new System.Drawing.Point(191, 6);
-            this.pictureBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox15.TabIndex = 3;
-            this.pictureBox15.TabStop = false;
+            this.pictureBox17.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_dashboard_black_48dp;
+            this.pictureBox17.Location = new System.Drawing.Point(16, 7);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(30, 25);
+            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox17.TabIndex = 3;
+            this.pictureBox17.TabStop = false;
             // 
-            // label1
+            // btnScan
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(44, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Timetable";
-            // 
-            // pictureBox16
-            // 
-            this.pictureBox16.Image = global::EmployeesManagementSystem.Properties.Resources.download;
-            this.pictureBox16.Location = new System.Drawing.Point(4, 6);
-            this.pictureBox16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(36, 30);
-            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox16.TabIndex = 52;
-            this.pictureBox16.TabStop = false;
+            this.btnScan.BackColor = System.Drawing.Color.Silver;
+            this.btnScan.Controls.Add(this.pictureBox17);
+            this.btnScan.Controls.Add(this.label5);
+            this.btnScan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnScan.Location = new System.Drawing.Point(997, 13);
+            this.btnScan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnScan.Name = "btnScan";
+            this.btnScan.Size = new System.Drawing.Size(181, 38);
+            this.btnScan.TabIndex = 5;
+            this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
+            this.btnScan.MouseEnter += new System.EventHandler(this.btnScan_MouseEnter);
+            this.btnScan.MouseLeave += new System.EventHandler(this.btnScan_MouseLeave);
             // 
             // Dashboard
             // 
@@ -846,6 +890,10 @@
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
+            this.btnTimetable.ResumeLayout(false);
+            this.btnTimetable.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             this.btnStatistics.ResumeLayout(false);
             this.btnStatistics.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
@@ -886,10 +934,9 @@
             this.btnCreate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCreate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
-            this.btnTimetable.ResumeLayout(false);
-            this.btnTimetable.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            this.btnScan.ResumeLayout(false);
+            this.btnScan.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -955,6 +1002,9 @@
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox16;
+        private System.Windows.Forms.Panel btnScan;
+        private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.Label label5;
     }
 }
 

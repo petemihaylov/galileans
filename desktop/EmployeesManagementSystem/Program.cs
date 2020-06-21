@@ -16,7 +16,7 @@ namespace EmployeesManagementSystem
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Don't use it for production. Only for testing purposes
-            Application.Run(new UserRfidTag());
+            Application.Run(new Login());
             
             
         }

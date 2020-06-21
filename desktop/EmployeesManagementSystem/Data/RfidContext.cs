@@ -155,6 +155,36 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+        public List<Rfid> GetAllRfidsByUserId(int id)
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"SELECT * FROM RfidUser WHERE UserID = @id;";
+                    command.AddParameter("id", id);
+
+
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        List<Rfid> rfids = new List<Rfid>();
+                        while (reader.Read())
+                        {
+                            Rfid rfid = new Rfid();
+                            MapObject(rfid, reader);
+
+                            rfids.Add(rfid);
+                        }
+
+                        return rfids;
+                    }
+                }
+            }
+        }
+
 
         public bool Apply(List<Rfid> rfids)
         {

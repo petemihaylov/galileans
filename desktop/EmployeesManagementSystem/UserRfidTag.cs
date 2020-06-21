@@ -16,6 +16,7 @@ namespace EmployeesManagementSystem
     public partial class UserRfidTag : Form
     {
         RfidController rfidController = new RfidController();
+        private Form previousForm;
 
         public UserRfidTag()
         {
@@ -58,38 +59,7 @@ namespace EmployeesManagementSystem
             this.cbUsers.Items.AddRange(comboUsers.Items.OfType<string>().ToArray());
             this.cbUsers.Text = "All";
         }
-        //
-        private void btnCheckIn_Click(object sender, EventArgs e)
-        {
-
-            // Checks if there is selected user 
-            try
-            {
-                string name = this.comboUsers.SelectedItem.ToString();
-
-                User user = rfidController.GetUserByFullname(name);
-
-                rfidController.CanCheckIn(user, DateTime.Now);
-
-                Dictionary<User, int> rfids = rfidController.GetUsers();
-                var rfidTag = rfids[user];
-
-                Rfid r = new Rfid(rfidTag.ToString(), user.ID);
-                r.EnteredAt = DateTime.Now;
-                rfidController.Insert(r);
-
-                MessageBox.Show("Successfully saved the changes");
-                updateDataGrid();
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Please select a user!");
-            }
-
-
-        }
+        
         //
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
@@ -165,6 +135,60 @@ namespace EmployeesManagementSystem
             {
                 updateDataGrid();
             }
+        }
+
+        private void picBack_Click(object sender, EventArgs e)
+        {
+            // Show previous form
+            previousForm.Closed += (s, args) => this.Close();
+            previousForm.Show();
+            this.Hide();
+        }
+
+        private void UserRfidTag_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbBack_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private void buttonCheckIn_Click(object sender, EventArgs e)
+        {
+            // Checks if there is selected user 
+            try
+            {
+                string name = this.comboUsers.SelectedItem.ToString();
+
+                User user = rfidController.GetUserByFullname(name);
+
+                rfidController.CanCheckIn(user, DateTime.Now);
+
+                Dictionary<User, int> rfids = rfidController.GetUsers();
+                var rfidTag = rfids[user];
+
+                Rfid r = new Rfid(rfidTag.ToString(), user.ID);
+                r.EnteredAt = DateTime.Now;
+                rfidController.Insert(r);
+
+                MessageBox.Show("Successfully saved the changes");
+                updateDataGrid();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please select a user!");
+            }
+
         }
     }
 }

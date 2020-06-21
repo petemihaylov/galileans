@@ -42,6 +42,7 @@
             this.picDelete = new System.Windows.Forms.PictureBox();
             this.cbUsers = new System.Windows.Forms.ComboBox();
             this.btnSort = new System.Windows.Forms.Button();
+            this.buttonCheckIn = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRfid)).BeginInit();
@@ -91,15 +92,14 @@
             this.btnCheckIn.FlatAppearance.BorderSize = 0;
             this.btnCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCheckIn.Location = new System.Drawing.Point(24, 155);
+            this.btnCheckIn.ForeColor = System.Drawing.Color.White;
+            this.btnCheckIn.Location = new System.Drawing.Point(448, 405);
             this.btnCheckIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(171, 33);
             this.btnCheckIn.TabIndex = 57;
             this.btnCheckIn.Text = "CheckIn";
             this.btnCheckIn.UseVisualStyleBackColor = false;
-            this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
             // 
             // dataGridRfid
             // 
@@ -119,17 +119,17 @@
             // 
             // Rfid
             // 
+            this.Rfid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Rfid.HeaderText = "Rfid";
             this.Rfid.MinimumWidth = 6;
             this.Rfid.Name = "Rfid";
-            this.Rfid.Width = 90;
             // 
             // UserName
             // 
+            this.UserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.UserName.HeaderText = "UserName";
             this.UserName.MinimumWidth = 6;
             this.UserName.Name = "UserName";
-            this.UserName.Width = 90;
             // 
             // EnteredAt
             // 
@@ -150,8 +150,9 @@
             this.comboUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.1F);
             this.comboUsers.FormattingEnabled = true;
             this.comboUsers.Items.AddRange(new object[] {
+            "Admin",
             "Admin"});
-            this.comboUsers.Location = new System.Drawing.Point(100, 83);
+            this.comboUsers.Location = new System.Drawing.Point(102, 96);
             this.comboUsers.Name = "comboUsers";
             this.comboUsers.Size = new System.Drawing.Size(294, 26);
             this.comboUsers.TabIndex = 59;
@@ -160,7 +161,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 85);
+            this.label2.Location = new System.Drawing.Point(23, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 20);
             this.label2.TabIndex = 60;
@@ -205,12 +206,29 @@
             this.btnSort.UseVisualStyleBackColor = false;
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
+            // buttonCheckIn
+            // 
+            this.buttonCheckIn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonCheckIn.FlatAppearance.BorderSize = 0;
+            this.buttonCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCheckIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonCheckIn.Location = new System.Drawing.Point(12, 155);
+            this.buttonCheckIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonCheckIn.Name = "buttonCheckIn";
+            this.buttonCheckIn.Size = new System.Drawing.Size(171, 33);
+            this.buttonCheckIn.TabIndex = 63;
+            this.buttonCheckIn.Text = "CheckIn";
+            this.buttonCheckIn.UseVisualStyleBackColor = false;
+            this.buttonCheckIn.Click += new System.EventHandler(this.buttonCheckIn_Click);
+            // 
             // UserRfidTag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1130, 535);
+            this.Controls.Add(this.buttonCheckIn);
             this.Controls.Add(this.btnSort);
             this.Controls.Add(this.cbUsers);
             this.Controls.Add(this.picDelete);
@@ -223,6 +241,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "UserRfidTag";
+            this.Load += new System.EventHandler(this.UserRfidTag_Load);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRfid)).EndInit();
@@ -247,5 +266,6 @@
         private System.Windows.Forms.PictureBox picDelete;
         private System.Windows.Forms.ComboBox cbUsers;
         private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.Button buttonCheckIn;
     }
 }
