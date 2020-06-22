@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem.Models
 {
-    class Notification : INotification
+    public class Notification : INotification
     {
         public int ID { get; set; }
         public string Message { get; set; }

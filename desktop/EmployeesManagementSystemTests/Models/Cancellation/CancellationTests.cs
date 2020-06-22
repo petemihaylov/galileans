@@ -1,12 +1,32 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EmployeesManagementSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeesManagementSystemTests.Models.Cancellation
+namespace EmployeesManagementSystem.Models.Tests
 {
-    class CancellationTests
+    [TestClass()]
+    public class CancellationTests
     {
+        [TestMethod()]
+        public void CancellationTest()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void CancellationTest1()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void GetInfoTest()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

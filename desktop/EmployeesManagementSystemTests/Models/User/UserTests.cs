@@ -1,12 +1,32 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EmployeesManagementSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeesManagementSystemTests.Models.User
+namespace EmployeesManagementSystem.Models.Tests
 {
-    class UserTests
+    [TestClass()]
+    public class UserTests
     {
+        [TestMethod()]
+        public void UserTest()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void UserTest1()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void GetInfoTest()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

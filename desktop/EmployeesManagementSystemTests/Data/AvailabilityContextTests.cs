@@ -1,36 +1,48 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EmployeesManagementSystem.Models;
+using EmployeesManagementSystem.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeesManagementSystem.Models.Tests
+namespace EmployeesManagementSystem.Data.Tests
 {
     [TestClass()]
-    public class ShiftTests
+    public class AvailabilityContextTests
     {
         [TestMethod()]
-        public void ShiftTest()
+        public void InsertTest()
         {
             throw new NotImplementedException();
         }
 
         [TestMethod()]
-        public void ShiftTest1()
+        public void DeleteByIdTest()
         {
             throw new NotImplementedException();
         }
 
         [TestMethod()]
-        public void ToStringTest()
+        public void DeleteByUserTest()
         {
             throw new NotImplementedException();
         }
 
         [TestMethod()]
-        public void CompareToTest()
+        public void GetAllAvailabilitiesByIDTest()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void GetAllAvailabilitiesTest()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void UpdateAvailabilityInfoTest()
         {
             throw new NotImplementedException();
         }
