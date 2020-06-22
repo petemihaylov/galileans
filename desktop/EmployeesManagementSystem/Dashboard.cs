@@ -251,7 +251,6 @@ namespace EmployeesManagementSystem
             ShowForm(new Departments(this.loggedUser));
         }
 
-
         // Stocks
         private void btnStocks_Click(object sender, EventArgs e)
         {
