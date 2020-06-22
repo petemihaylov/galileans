@@ -4,10 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeesManagementSystem.Models.Stock
+namespace EmployeesManagementSystem.Models
 {
     interface IStock
     {
-        // TO-DO
+        int ID { get; set; }
+        string Name { get; set; }
+        double Price { get; set; }
+        int Amount { get; set; }
+        bool Availability { get; set; }
+        Department Department { get; set; }
     }
 }

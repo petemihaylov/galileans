@@ -8,6 +8,10 @@ namespace EmployeesManagementSystem.Models.Concellation
 {
     interface ICancellation
     {
-        // TO-DO
+        int ID { get; set; }
+        DateTime Date { get; set; }
+        string Subject { get; set; }
+        string Message { get; set; }
+        User Employee { get; set; }
     }
 }

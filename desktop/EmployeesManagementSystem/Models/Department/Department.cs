@@ -2,7 +2,7 @@
 
 namespace EmployeesManagementSystem.Models
 {
-    public class Department
+    public class Department : IDepartment
     {
         public int ID { get; set; }
         public string Name { get; set; }
