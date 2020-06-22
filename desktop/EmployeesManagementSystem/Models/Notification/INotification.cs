@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeesManagementSystem.Models.Notification
+namespace EmployeesManagementSystem.Models
 {
     interface INotification
     {
-        // TO-DO
+        int ID { get; set; }
+        string Message { get; set; }
+        User User { get; set; }
     }
 }
