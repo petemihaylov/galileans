@@ -27,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net-Next, Version=3.2.1.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
@@ -178,6 +180,7 @@
     <Compile Include="Data\CancellationContext.cs" />
     <Compile Include="Data\Conversion\DataConverterCSV.cs" />
     <Compile Include="Data\DepartmentContext.cs" />
+    <Compile Include="Data\IDBContext.cs" />
     <Compile Include="Data\ImageContext.cs" />
     <Compile Include="Data\NotificationContext.cs" />
     <Compile Include="Data\RfidContext.cs" />
@@ -189,7 +192,8 @@
     <Compile Include="Models\Availability\Availability.cs" />
     <Compile Include="Models\Availability\AvailabilityType.cs" />
     <Compile Include="Models\Availability\DayType.cs" />
-    <Compile Include="Models\Cancellation.cs" />
+    <Compile Include="Models\Availability\IAvailability.cs" />
+    <Compile Include="Models\Cancellation\Cancellation.cs" />
     <Compile Include="Messages.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,14 +239,18 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\Cancellation\ICancellation.cs" />
+    <Compile Include="Models\Department\IDepartment.cs" />
+    <Compile Include="Models\Notification\INotification.cs" />
+    <Compile Include="Models\Notification\Notification.cs" />
     <Compile Include="Models\Rfid.cs" />
     <Compile Include="Models\Shift\IShift.cs" />
     <Compile Include="Models\Shift\ShiftType.cs" />
     <Compile Include="Models\Shift\StartTime.cs" />
+    <Compile Include="Models\Stock\IStock.cs" />
     <Compile Include="Models\UserDepartment.cs" />
     <Compile Include="Models\User\Administrator.cs" />
-    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Department\Department.cs" />
     <Compile Include="Models\User\Employee.cs" />
     <Compile Include="Models\ErrorMessage.cs" />
     <Compile Include="Models\Picture.cs" />
@@ -250,7 +258,7 @@
     <Compile Include="Models\User\Manager.cs" />
     <Compile Include="Models\User\Role.cs" />
     <Compile Include="Models\Shift\Shift.cs" />
-    <Compile Include="Models\Stock.cs" />
+    <Compile Include="Models\Stock\Stock.cs" />
     <Compile Include="Models\User\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -524,6 +532,7 @@
   <ItemGroup>
     <None Include="Resources\download1.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
