@@ -23,6 +23,11 @@ namespace EmployeesManagementSystem
             }
         }
 
+        public DbContext(string connection)
+        {
+            this.ConnectionString = connection;
+        } 
+
         public abstract bool Insert(object obj);
         public abstract bool DeleteById(int id);
 
