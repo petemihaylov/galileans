@@ -60,7 +60,6 @@ namespace EmployeesManagementSystem
             this.cbUsers.Text = "All";
         }
         
-        //
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedCellCollection cells = this.dataGridRfid.SelectedCells;
@@ -86,7 +85,7 @@ namespace EmployeesManagementSystem
 
 
         }
-        //
+        
         private void picDelete_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedCellCollection cells = this.dataGridRfid.SelectedCells;
