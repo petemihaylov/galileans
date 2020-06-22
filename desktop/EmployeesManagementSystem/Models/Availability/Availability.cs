@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 
 namespace EmployeesManagementSystem.Models
 {
-    public class Availability
+    public class Availability : IAvailability
     {
         private User user = new User();
 
