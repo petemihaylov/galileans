@@ -4,25 +4,37 @@ using System.Data;
 
 namespace EmployeesManagementSystem
 {
-    public abstract class DbContext
+    public abstract class DbContext : Data.IDBContext
     {
-        protected string connectionString;
+        private string connectionString;
+
+        protected string ConnectionString { get => connectionString; set => connectionString = value; }
+
         public DbContext()
         {
             // Change the connection string in the App.config file
             try
             {
-                connectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
+                ConnectionString = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
             }
             catch (Exception)
             {
-                connectionString = "Server=remotemysql.com;Uid=Crj2OTSNvh;Database=Crj2OTSNvh;Pwd=3bNXrfEhiw;";
+                ConnectionString = "Server=remotemysql.com;Uid=Crj2OTSNvh;Database=Crj2OTSNvh;Pwd=3bNXrfEhiw;";
             }
         }
 
         public abstract bool Insert(object obj);
         public abstract bool DeleteById(int id);
 
+        public string GetConnectionString()
+        {
+            return this.ConnectionString;
+        }
+
+        public void SetConnectionString(string connection)
+        {
+            this.ConnectionString = connection;
+        }
     }
 
     //

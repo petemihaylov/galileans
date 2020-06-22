@@ -8,7 +8,7 @@ namespace EmployeesManagementSystem.Data
         public override bool Insert(object obj)
         {
             Picture image = (Picture)obj;
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -25,7 +25,7 @@ namespace EmployeesManagementSystem.Data
         }
         public override bool DeleteById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -40,7 +40,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Picture GetImgByUser(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -68,7 +68,7 @@ namespace EmployeesManagementSystem.Data
         }
         public bool DeleteImgByUserId(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 

@@ -15,7 +15,7 @@ namespace EmployeesManagementSystem.Data
         {
             Notification notification = (Notification)obj;
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 using (var command = con.CreateCommand())
                 {

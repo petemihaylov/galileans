@@ -13,7 +13,7 @@ namespace EmployeesManagementSystem.Data
         {
             Shift shift = (Shift)obj;
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 using (var command = con.CreateCommand())
                 {
@@ -42,7 +42,7 @@ namespace EmployeesManagementSystem.Data
 
         public override bool DeleteById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -56,7 +56,7 @@ namespace EmployeesManagementSystem.Data
         }
         public bool DeleteByDepartment(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -70,7 +70,7 @@ namespace EmployeesManagementSystem.Data
         }
         public bool DeleteShiftsByUser(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
 
                 con.Open();
@@ -84,7 +84,7 @@ namespace EmployeesManagementSystem.Data
         }
         public  bool DeleteShiftsFromDate(DateTime dateTime, int userID)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -99,7 +99,7 @@ namespace EmployeesManagementSystem.Data
         }
         public bool UpdateShift(Shift shift)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -151,7 +151,7 @@ namespace EmployeesManagementSystem.Data
 
         public List<Shift> GetAllShifts()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = new MySqlCommand("SELECT * FROM Shift", con))
@@ -177,7 +177,7 @@ namespace EmployeesManagementSystem.Data
        
         public List<Shift> GetShiftsByUserId(int userId)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -206,7 +206,7 @@ namespace EmployeesManagementSystem.Data
         }
         public List<Shift> GetShiftsByDepartment(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -238,7 +238,7 @@ namespace EmployeesManagementSystem.Data
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -272,7 +272,7 @@ namespace EmployeesManagementSystem.Data
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -307,7 +307,7 @@ namespace EmployeesManagementSystem.Data
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -339,7 +339,7 @@ namespace EmployeesManagementSystem.Data
 
         public Shift GetShiftByDate(DateTime date, User user)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -367,7 +367,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Shift GetShiftByDate(DateTime date, string startTime)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -395,7 +395,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Shift GetShiftByUser(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -423,7 +423,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Shift GetShiftByID(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -449,7 +449,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Shift[] GetShifts()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = new MySqlCommand("SELECT * FROM Shift", con))

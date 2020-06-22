@@ -13,7 +13,7 @@ namespace EmployeesManagementSystem.Data
         public override bool Insert(object obj)
         {
             Rfid rfid = (Rfid)obj;
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -34,7 +34,7 @@ namespace EmployeesManagementSystem.Data
 
         public override bool DeleteById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -49,7 +49,7 @@ namespace EmployeesManagementSystem.Data
         }
         public bool DeleteById(string id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -64,7 +64,7 @@ namespace EmployeesManagementSystem.Data
         }
         public bool DeleteAllRows()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -78,7 +78,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Rfid GetRfid(string id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
 
                 Rfid rfid = new Rfid();
@@ -108,7 +108,7 @@ namespace EmployeesManagementSystem.Data
 
         public bool UpdateRfid(Rfid rfid)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -130,7 +130,7 @@ namespace EmployeesManagementSystem.Data
         }
         public List<Rfid> GetAllRfids()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -157,7 +157,7 @@ namespace EmployeesManagementSystem.Data
         }
         public List<Rfid> GetAllRfidsByUserId(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())

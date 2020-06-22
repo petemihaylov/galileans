@@ -13,7 +13,7 @@ namespace EmployeesManagementSystem.Data
         {
             Cancellation cancel = (Cancellation)obj;
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -33,7 +33,7 @@ namespace EmployeesManagementSystem.Data
         }
         public override bool DeleteById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -48,7 +48,7 @@ namespace EmployeesManagementSystem.Data
         public bool UpdateCancellation(Cancellation cancellation)
         {
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -70,7 +70,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Cancellation[] GetCancellations()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 using (var command = con.CreateCommand())
                 {
@@ -96,7 +96,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Cancellation GetCancellationByID(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())

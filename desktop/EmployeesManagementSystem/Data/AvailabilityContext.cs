@@ -12,7 +12,7 @@ namespace EmployeesManagementSystem.Data
         {
             Availability availability = (Availability)obj;
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -33,7 +33,7 @@ namespace EmployeesManagementSystem.Data
 
         public override bool DeleteById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -47,7 +47,7 @@ namespace EmployeesManagementSystem.Data
 
         public bool DeleteByUser(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -61,7 +61,7 @@ namespace EmployeesManagementSystem.Data
        
         public Availability[] GetAllAvailabilitiesByID(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -91,7 +91,7 @@ namespace EmployeesManagementSystem.Data
 
         public Availability[] GetAllAvailabilities()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 using (var command = con.CreateCommand())
                 {
@@ -119,7 +119,7 @@ namespace EmployeesManagementSystem.Data
         public bool UpdateAvailabilityInfo(Availability availability)
         {
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 

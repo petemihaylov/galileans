@@ -11,7 +11,7 @@ namespace EmployeesManagementSystem.Data
         {
             Stock stock = (Stock)obj;
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -32,7 +32,7 @@ namespace EmployeesManagementSystem.Data
         }
         public override bool DeleteById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -45,7 +45,7 @@ namespace EmployeesManagementSystem.Data
         }
         public bool DeleteByDepartment(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -58,7 +58,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Stock[] GetAllStocks()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -84,7 +84,7 @@ namespace EmployeesManagementSystem.Data
 
         public DataTable GetStockTable()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -111,7 +111,7 @@ namespace EmployeesManagementSystem.Data
         // Doesn't work properly
         public bool UpdateStock(Stock stock)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -131,7 +131,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Stock GetStockById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -191,7 +191,7 @@ namespace EmployeesManagementSystem.Data
 
         public Stock[] SearchByName(string name)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -217,7 +217,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Stock[] StocksByDepID(string name)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 

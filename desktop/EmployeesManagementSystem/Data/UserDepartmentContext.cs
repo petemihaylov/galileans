@@ -12,7 +12,7 @@ namespace EmployeesManagementSystem.Data
         {
             UserDepartment userDepartment = (UserDepartment)obj;
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -30,7 +30,7 @@ namespace EmployeesManagementSystem.Data
         }
         public UserDepartment[] GetAll()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -63,7 +63,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Department GetDepartmentByUser(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -99,7 +99,7 @@ namespace EmployeesManagementSystem.Data
 
         public User GetUserByDepartment(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -142,7 +142,7 @@ namespace EmployeesManagementSystem.Data
 
         public override bool DeleteById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -157,7 +157,7 @@ namespace EmployeesManagementSystem.Data
         }
         public bool DeleteByUser(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -172,7 +172,7 @@ namespace EmployeesManagementSystem.Data
         }
         public bool DeleteByDepartment(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -188,7 +188,7 @@ namespace EmployeesManagementSystem.Data
         public bool UpdateInfo(int userID, int departmentID)
         {
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
