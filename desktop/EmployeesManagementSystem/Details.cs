@@ -477,16 +477,18 @@ namespace EmployeesManagementSystem
                 message.From = new MailAddress("media.bazaar.cb05.gr01@gmail.com");
                 message.To.Add(new MailAddress(this.user.Email));
                 message.Subject = "New Shift @mediaBazaar";
-                message.IsBodyHtml = true; //to make message body as html  
+                message.IsBodyHtml = true; // to make message body as html  
                 message.Body = "Hello! " +
                     "A new shift has been created for you! It takes place between " + StartTime.afternoon[1] + " and " + EndTime.afternoon[1] + " in the  " + ShiftType.Afternoon + " on " + d.ToString("yyyy-MM-dd");
                 smtp.Port = 587;
-                smtp.Host = "smtp.gmail.com"; //for gmail host  
+                smtp.Host = "smtp.gmail.com"; // for gmail host  
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new NetworkCredential("media.bazaar.cb05.gr01@gmail.com", "CB05GR01");
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.Send(message);
+
+                // System.Net.Mail.SmtpException: 'The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Authentication Required. Learn more at'
+                // smtp.Send(message);
             }
             else
             {
