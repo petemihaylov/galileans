@@ -9,12 +9,29 @@ using System.Threading.Tasks;
 namespace EmployeesManagementSystem.Models.Tests
 {
     [TestClass()]
+
     public class AvailabilityTests
     {
+        #region Initialize some test data
+        
+        public AvailabilityTests()
+        {
+        }
+        #endregion
+
         [TestMethod()]
         public void AvailabilityTest()
         {
-            throw new NotImplementedException();
+            List<DayType> days = new List<DayType>();
+            days.Add(DayType.Fri);
+            User user = new User(-2, "test", "test@mail.com", "0123456789", "fontys123.", Role.Employee, 20);
+            Availability a = new Availability(user, AvailabilityType.Approved, days, false, true);
+
+            Assert.AreEqual(AvailabilityType.Approved, a.State);
+            Assert.AreEqual(days,a.Days);
+            Assert.AreEqual(false, a.IsWeekly);
+            Assert.AreEqual(true, a.IsMonthly);
+            Assert.AreEqual(user, a.User);
         }
 
         [TestMethod()]
@@ -38,7 +55,24 @@ namespace EmployeesManagementSystem.Models.Tests
         [TestMethod()]
         public void GetInfoTest()
         {
-            throw new NotImplementedException();
+            List<DayType> days = new List<DayType>();
+            days.Add(DayType.Fri);
+            User user = new User(-2, "test", "test@mail.com", "0123456789", "fontys123.", Role.Employee, 20);
+            Availability a = new Availability(user, AvailabilityType.Approved, days, false, true);
+
+            Assert.AreEqual(AvailabilityType.Approved, a.State);
+            Assert.AreEqual(days, a.Days);
+            Assert.AreEqual(false, a.IsWeekly);
+            Assert.AreEqual(true, a.IsMonthly);
+            Assert.AreEqual(user, a.User);
+            string s;
+            if (a.IsWeekly)
+                s = a.GetDays() + "  -  Weekly";
+            else if (a.IsMonthly)
+                s = a.GetDays() + "  -  Monthly";
+            else s = a.GetDays() + ", once";
+
+            Assert.AreEqual(s, a.GetInfo());
         }
     }
 }

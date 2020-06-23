@@ -11,22 +11,34 @@ namespace EmployeesManagementSystem.Models.Tests
     [TestClass()]
     public class DepartmentTests
     {
+        #region Initialize some test data
+        private string name;
+        public DepartmentTests()
+        {
+            this.name = "test";
+        }
+        #endregion
         [TestMethod()]
         public void DepartmentTest()
         {
-            throw new NotImplementedException();
+            Department d = new Department(this.name);
+            Assert.AreEqual(this.name, d.Name);
         }
 
         [TestMethod()]
+        [ExpectedException(typeof(ArgumentException))]
         public void DepartmentTest1()
         {
-            throw new NotImplementedException();
+            Department dep = new Department("");
         }
 
         [TestMethod()]
         public void GetInfoTest()
         {
-            throw new NotImplementedException();
+            Department d = new Department(this.name);
+            string[] output = { d.ID.ToString(), this.name };
+            CollectionAssert.AreEqual(output, d.GetInfo());
+
         }
     }
 }
