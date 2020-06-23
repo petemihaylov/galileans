@@ -17,7 +17,7 @@ namespace EmployeesManagementSystem
 
         // Constructors
         public Dashboard()
-        {}
+        { }
         public Dashboard(User user)
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace EmployeesManagementSystem
         private void Dashboard_Load(object sender, EventArgs e)
         {
             RoleDivision();
-  
+
             try
             {
                 User[] users = controller.GetUsers();
@@ -52,7 +52,7 @@ namespace EmployeesManagementSystem
                 this.btnCancellations.Enabled = true;
                 this.btnCancellations.BackColor = Leave;
                 this.btnDepartments.Enabled = true;
-                
+
                 this.btnStocks.Enabled = true;
                 this.btnStocks.BackColor = Leave;
 
@@ -95,7 +95,7 @@ namespace EmployeesManagementSystem
         private void searchField_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-           DataTable table = controller.GetUsersTable();
+            DataTable table = controller.GetUsersTable();
 
             // Pressed enter
             if (e.KeyChar == (char)13)
@@ -150,7 +150,7 @@ namespace EmployeesManagementSystem
 
             if (dataGridView.CurrentCell.ColumnIndex.Equals(Delete))
             {
-                
+
                 // Ask if you want to delete and proccess
                 int index = dataGridView.CurrentCell.RowIndex;
 
@@ -195,7 +195,7 @@ namespace EmployeesManagementSystem
         // Shifts
         private void btnShift_Click(object sender, EventArgs e)
         {
-            ShowForm(new Shifts(this.loggedUser));   
+            ShowForm(new Shifts(this.loggedUser));
         }
 
         // Create Accounts
@@ -226,7 +226,7 @@ namespace EmployeesManagementSystem
         }
         private void editAccount_Click(object sender, EventArgs e)
         {
-            ShowForm( new AdminDetails(this.loggedUser, this));   
+            ShowForm(new AdminDetails(this.loggedUser, this));
         }
         private void LogOut_Click(object sender, EventArgs e)
         {
@@ -268,8 +268,16 @@ namespace EmployeesManagementSystem
         private void ShowForm(Form form)
         {
             this.Hide();
-            form.Closed += (s, args) => this.Close();
-            form.Show();
+            try
+            {
+                form.Closed += (s, args) => this.Close();
+                form.Show();
+            }
+            catch (Exception)
+            {
+                this.Close();   
+                return;
+            }
         }
 
         private Color Enter = Color.DarkGray;
@@ -374,6 +382,6 @@ namespace EmployeesManagementSystem
 
         }
 
-       
+
     }
 }

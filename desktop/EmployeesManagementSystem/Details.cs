@@ -187,6 +187,28 @@ namespace EmployeesManagementSystem
         }
 
 
+        // Send mail functionality
+        private void sendMail(string startTime, string endTime, string day, ShiftType type)
+        {
+
+            MailMessage message = new MailMessage();
+            SmtpClient smtp = new SmtpClient();
+            message.From = new MailAddress("media.bazaar.cb05.gr01@gmail.com");
+            message.To.Add(new MailAddress(this.user.Email));
+            message.Subject = "New Shift @mediaBazaar";
+            message.IsBodyHtml = true; //to make message body as html  
+            message.Body = "Hello! " +
+                "A new shift has been created for you! It takes place between " + startTime + " and " + endTime + " in the  " + type + " on " + day;
+            smtp.Port = 587;
+            smtp.Host = "smtp.gmail.com"; //for gmail host  
+            smtp.EnableSsl = true;
+            // Turn on the Access for less secure apps
+            // Even when UseDefaultCredentials are set to false it is not working properly.
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential("media.bazaar.cb05.gr01@gmail.com", "CB05GR01");
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Send(message);
+        }
 
         private List<Shift> getMorningShiftsForDate(DateTime dateTime)
         {
@@ -344,21 +366,9 @@ namespace EmployeesManagementSystem
             if (lbMorn_first.ForeColor != Color.DimGray)
             {
                 shiftContext.Insert(new Shift(user, false, this.department, d, StartTime.morning[0], EndTime.morning[0], ShiftType.Morning));
-                MailMessage message = new MailMessage();
-                SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("media.bazaar.cb05.gr01@gmail.com");
-                message.To.Add(new MailAddress(this.user.Email));
-                message.Subject = "New Shift @mediaBazaar";
-                message.IsBodyHtml = true; //to make message body as html  
-                message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.morning[0] + " and " + EndTime.morning[0] + " in the  " + ShiftType.Morning + " on " + d.ToString("yyyy-MM-dd");
-                smtp.Port = 587;
-                smtp.Host = "smtp.gmail.com"; //for gmail host  
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("media.bazaar.cb05.gr01@gmail.com", "CB05GR01");
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.Send(message);
+               
+                // one function 
+                sendMail(StartTime.morning[0], EndTime.morning[0], d.ToString("yyyy-MM-dd"), ShiftType.Morning);
             }
             else
             {
@@ -378,21 +388,9 @@ namespace EmployeesManagementSystem
             {
 
                 shiftContext.Insert(new Shift(user, false, department, d, StartTime.morning[1], EndTime.morning[1], ShiftType.Morning));
-                MailMessage message = new MailMessage();
-                SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("media.bazaar.cb05.gr01@gmail.com");
-                message.To.Add(new MailAddress(this.user.Email));
-                message.Subject = "New Shift @mediaBazaar";
-                message.IsBodyHtml = true; //to make message body as html  
-                message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.morning[1] + " and " + EndTime.morning[1] + " in the  " + ShiftType.Morning + " on " + d.ToString("yyyy-MM-dd");
-                smtp.Port = 587;
-                smtp.Host = "smtp.gmail.com"; //for gmail host  
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("media.bazaar.cb05.gr01@gmail.com", "CB05GR01");
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.Send(message);
+
+                sendMail(StartTime.morning[1], EndTime.morning[1], d.ToString("yyyy-MM-dd"), ShiftType.Morning);
+
 
             }
             else
@@ -411,21 +409,8 @@ namespace EmployeesManagementSystem
             {
 
                 shiftContext.Insert(new Shift(user, false, department, d, StartTime.morning[2], EndTime.morning[2], ShiftType.Morning));
-                MailMessage message = new MailMessage();
-                SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("media.bazaar.cb05.gr01@gmail.com");
-                message.To.Add(new MailAddress(this.user.Email));
-                message.Subject = "New Shift @mediaBazaar";
-                message.IsBodyHtml = true; //to make message body as html  
-                message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.morning[2] + " and " + EndTime.morning[2] + " in the  " + ShiftType.Morning + " on " + d.ToString("yyyy-MM-dd");
-                smtp.Port = 587;
-                smtp.Host = "smtp.gmail.com"; //for gmail host  
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("media.bazaar.cb05.gr01@gmail.com", "CB05GR01");
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.Send(message);
+                sendMail(StartTime.morning[2], EndTime.morning[2], d.ToString("yyyy-MM-dd"), ShiftType.Morning);
+
             }
             else
             {
@@ -444,20 +429,8 @@ namespace EmployeesManagementSystem
             if (lbAft_first.ForeColor != Color.DimGray)
             {
                 shiftContext.Insert(new Shift(user, false, department, d, StartTime.afternoon[0], EndTime.afternoon[0], ShiftType.Afternoon));
-                MailMessage message = new MailMessage();
-                SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("media.bazaar.cb05.gr01@gmail.com");
-                message.To.Add(new MailAddress(this.user.Email));
-                message.Subject = "New Shift @mediaBazaar";
-                message.IsBodyHtml = true; //to make message body as html  
-                message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.afternoon[0] + " and " + EndTime.afternoon[0] + " in the  " + ShiftType.Afternoon + " on " + d.ToString("yyyy-MM-dd");
-                smtp.Host = "smtp.gmail.com"; //for gmail host  
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("media.bazaar.cb05.gr01@gmail.com", "CB05GR01");
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.Send(message);
+                sendMail(StartTime.afternoon[0], EndTime.afternoon[0], d.ToString("yyyy-MM-dd"), ShiftType.Afternoon);
+
             }
             else
             {
@@ -472,23 +445,8 @@ namespace EmployeesManagementSystem
             if (lbAft_second.ForeColor != Color.DimGray)
             {
                 shiftContext.Insert(new Shift(user, false, department, d, StartTime.afternoon[1], EndTime.afternoon[1], ShiftType.Afternoon));
-                MailMessage message = new MailMessage();
-                SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("media.bazaar.cb05.gr01@gmail.com");
-                message.To.Add(new MailAddress(this.user.Email));
-                message.Subject = "New Shift @mediaBazaar";
-                message.IsBodyHtml = true; // to make message body as html  
-                message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.afternoon[1] + " and " + EndTime.afternoon[1] + " in the  " + ShiftType.Afternoon + " on " + d.ToString("yyyy-MM-dd");
-                smtp.Port = 587;
-                smtp.Host = "smtp.gmail.com"; // for gmail host  
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("media.bazaar.cb05.gr01@gmail.com", "CB05GR01");
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                sendMail(StartTime.afternoon[1], EndTime.afternoon[1], d.ToString("yyyy-MM-dd"), ShiftType.Afternoon);
 
-                // System.Net.Mail.SmtpException: 'The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Authentication Required. Learn more at'
-                // smtp.Send(message);
             }
             else
             {
@@ -505,21 +463,8 @@ namespace EmployeesManagementSystem
             if (lbAft_third.ForeColor != Color.DimGray)
             {
                 shiftContext.Insert(new Shift(user, false, department, d, StartTime.afternoon[2], EndTime.afternoon[2], ShiftType.Afternoon));
-                MailMessage message = new MailMessage();
-                SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("media.bazaar.cb05.gr01@gmail.com");
-                message.To.Add(new MailAddress(this.user.Email));
-                message.Subject = "New Shift @mediaBazaar";
-                message.IsBodyHtml = true; //to make message body as html  
-                message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.afternoon[2] + " and " + EndTime.afternoon[2] + " in the  " + ShiftType.Afternoon + " on " + d.ToString("yyyy-MM-dd");
-                smtp.Port = 587;
-                smtp.Host = "smtp.gmail.com"; //for gmail host  
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("media.bazaar.cb05.gr01@gmail.com", "CB05GR01");
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.Send(message);
+                sendMail(StartTime.afternoon[2], EndTime.afternoon[2], d.ToString("yyyy-MM-dd"), ShiftType.Afternoon);
+
             }
             else
             {
@@ -539,21 +484,8 @@ namespace EmployeesManagementSystem
             if (lbEvn_first.ForeColor != Color.DimGray)
             {
                 shiftContext.Insert(new Shift(user, false, department, d, StartTime.evening[0], EndTime.evening[0], ShiftType.Evening));
-                MailMessage message = new MailMessage();
-                SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("media.bazaar.cb05.gr01@gmail.com");
-                message.To.Add(new MailAddress(this.user.Email));
-                message.Subject = "New Shift @mediaBazaar";
-                message.IsBodyHtml = true; //to make message body as html  
-                message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.evening[0] + " and " + EndTime.evening[0] + " in the  " + ShiftType.Evening + " on " + d.ToString("yyyy-MM-dd");
-                smtp.Port = 587;
-                smtp.Host = "smtp.gmail.com"; //for gmail host  
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("media.bazaar.cb05.gr01@gmail.com", "CB05GR01");
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.Send(message);
+                sendMail(StartTime.evening[0], EndTime.evening[0], d.ToString("yyyy-MM-dd"), ShiftType.Evening);
+
             }
             else
             {
@@ -571,21 +503,8 @@ namespace EmployeesManagementSystem
             {
 
                 shiftContext.Insert(new Shift(user, false, department, d, StartTime.evening[1], EndTime.evening[1], ShiftType.Evening));
-                MailMessage message = new MailMessage();
-                SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("media.bazaar.cb05.gr01@gmail.com");
-                message.To.Add(new MailAddress(this.user.Email));
-                message.Subject = "New Shift @mediaBazaar";
-                message.IsBodyHtml = true; //to make message body as html  
-                message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.evening[1] + " and " + EndTime.evening[1] + " in the  " + ShiftType.Evening + " on " + d.ToString("yyyy-MM-dd");
-                smtp.Port = 587;
-                smtp.Host = "smtp.gmail.com"; //for gmail host  
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("media.bazaar.cb05.gr01@gmail.com", "CB05GR01");
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.Send(message);
+                sendMail(StartTime.evening[1], EndTime.evening[1], d.ToString("yyyy-MM-dd"), ShiftType.Evening);
+
             }
             else
             {
@@ -603,21 +522,7 @@ namespace EmployeesManagementSystem
             if (lbEvn_third.ForeColor != Color.DimGray)
             {
                 shiftContext.Insert(new Shift(user, false, department, d, StartTime.evening[2], EndTime.evening[2], ShiftType.Evening));
-                MailMessage message = new MailMessage();
-                SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("media.bazaar.cb05.gr01@gmail.com");
-                message.To.Add(new MailAddress(this.user.Email));
-                message.Subject = "New Shift @mediaBazaar";
-                message.IsBodyHtml = true; //to make message body as html  
-                message.Body = "Hello! " +
-                    "A new shift has been created for you! It takes place between " + StartTime.evening[1] + " and " + EndTime.evening[1] + " in the  " + ShiftType.Evening + " on " + d.ToString("yyyy-MM-dd");
-                smtp.Port = 587;
-                smtp.Host = "smtp.gmail.com"; //for gmail host  
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("media.bazaar.cb05.gr01@gmail.com", "CB05GR01");
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.Send(message);
+                sendMail(StartTime.evening[2], EndTime.evening[2], d.ToString("yyyy-MM-dd"), ShiftType.Evening);
             }
             else
             {
