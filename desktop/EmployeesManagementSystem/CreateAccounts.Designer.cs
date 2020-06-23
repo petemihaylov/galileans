@@ -66,7 +66,7 @@
             this.btnCreateAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreateAccount.Name = "btnCreateAccount";
             this.btnCreateAccount.Size = new System.Drawing.Size(179, 38);
-            this.btnCreateAccount.TabIndex = 25;
+            this.btnCreateAccount.TabIndex = 9;
             this.btnCreateAccount.Text = "Create Account";
             this.btnCreateAccount.UseVisualStyleBackColor = false;
             this.btnCreateAccount.Click += new System.EventHandler(this.btnCreateAccount_Click);
@@ -236,7 +236,7 @@
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(300, 25);
-            this.tbPassword.TabIndex = 37;
+            this.tbPassword.TabIndex = 5;
             this.tbPassword.UseSystemPasswordChar = true;
             // 
             // label4
@@ -260,7 +260,7 @@
             this.tbConfirmationPassword.Name = "tbConfirmationPassword";
             this.tbConfirmationPassword.PasswordChar = '*';
             this.tbConfirmationPassword.Size = new System.Drawing.Size(300, 25);
-            this.tbConfirmationPassword.TabIndex = 37;
+            this.tbConfirmationPassword.TabIndex = 6;
             this.tbConfirmationPassword.UseSystemPasswordChar = true;
             // 
             // lblRole
@@ -287,7 +287,7 @@
             this.cbRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(299, 32);
-            this.cbRole.TabIndex = 44;
+            this.cbRole.TabIndex = 7;
             this.cbRole.Text = "Employee";
             // 
             // cbDepartments
@@ -299,7 +299,7 @@
             this.cbDepartments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbDepartments.Name = "cbDepartments";
             this.cbDepartments.Size = new System.Drawing.Size(299, 32);
-            this.cbDepartments.TabIndex = 45;
+            this.cbDepartments.TabIndex = 8;
             // 
             // label7
             // 

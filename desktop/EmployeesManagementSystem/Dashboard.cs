@@ -11,6 +11,9 @@ namespace EmployeesManagementSystem
 {
     public partial class Dashboard : Form
     {
+        private Color Enter = Color.DarkGray;
+        private Color Leave = Color.LightGray;
+
         // Keeps track of the current logged user
         private User loggedUser;
         private DashboardController controller = new DashboardController();
@@ -23,8 +26,6 @@ namespace EmployeesManagementSystem
             InitializeComponent();
             this.loggedUser = user;
         }
-
-
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
@@ -280,10 +281,7 @@ namespace EmployeesManagementSystem
             }
         }
 
-        private Color Enter = Color.DarkGray;
-        private Color Leave = Color.LightGray;
-
-
+     
         // Hovering onn the the images
         private void btnExit_MouseEnter(object sender, EventArgs e)
         {
@@ -376,12 +374,6 @@ namespace EmployeesManagementSystem
         {
             this.btnTimetable.BackColor = Leave;
         }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
+        
     }
 }

@@ -16,6 +16,9 @@ namespace EmployeesManagementSystem
 {
     public partial class Messages : Form
     {
+        private Color Enter = Color.DarkGray;
+        private Color Leave = Color.LightGray;
+
         private CancellationContext cancellationContext = new CancellationContext();
         private User loggedUser;
         private List <Cancellation> req = new List<Cancellation>();
@@ -26,9 +29,7 @@ namespace EmployeesManagementSystem
             this.loggedUser = user;
         }
 
-        private Color Enter = Color.DarkGray;
-        private Color Leave = Color.LightGray;
-
+        
         private void RoleDivision()
         {
             // Roles division
@@ -36,20 +37,20 @@ namespace EmployeesManagementSystem
             {
                 this.btnEmployees.Enabled = true;
                 this.btnCancellations.Enabled = true;
-                this.btnCancellations.BackColor = Leave;
+                this.btnCancellations.BackColor = Enter;
                 this.btnDepartments.Enabled = true;
 
                 this.btnStocks.Enabled = true;
-                this.btnStocks.BackColor = Leave;
+                this.btnStocks.BackColor = Enter;
 
                 this.btnStatistics.Enabled = true;
-                this.btnStatistics.BackColor = Leave;
+                this.btnStatistics.BackColor = Enter;
 
                 this.btnShifts.Enabled = false;
                 this.btnShifts.BackColor = Leave;
 
                 this.btnTimetable.Enabled = true;
-                this.btnTimetable.BackColor = Leave;
+                this.btnTimetable.BackColor = Enter;
 
             }
             else if (this.loggedUser.Role == Models.Role.Administrator)

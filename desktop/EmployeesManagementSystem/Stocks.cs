@@ -16,6 +16,9 @@ namespace EmployeesManagementSystem
         private Stock[] stocks;
         private User loggedUser;
 
+        private Color Enter = Color.DarkGray;
+        private Color Leave = Color.LightGray;
+
         private DepartmentContext departmentContext = new DepartmentContext();
         private StockContext stockContext = new StockContext();
 
@@ -41,8 +44,6 @@ namespace EmployeesManagementSystem
             RoleDivision();
 
         }
-        private Color Enter = Color.DarkGray;
-        private Color Leave = Color.LightGray;
 
         private void RoleDivision()
         {

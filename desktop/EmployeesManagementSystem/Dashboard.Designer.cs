@@ -839,7 +839,6 @@
             this.label5.Size = new System.Drawing.Size(55, 20);
             this.label5.TabIndex = 3;
             this.label5.Text = "SCAN";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // pictureBox17
             // 
