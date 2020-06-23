@@ -1041,7 +1041,6 @@
             this.listOfAvailabilities.ItemHeight = 22;
             this.listOfAvailabilities.Location = new System.Drawing.Point(533, 691);
             this.listOfAvailabilities.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listOfAvailabilities.MultiColumn = true;
             this.listOfAvailabilities.Name = "listOfAvailabilities";
             this.listOfAvailabilities.ScrollAlwaysVisible = true;
             this.listOfAvailabilities.Size = new System.Drawing.Size(454, 112);
@@ -1057,7 +1056,6 @@
             this.lbChecks.ItemHeight = 22;
             this.lbChecks.Location = new System.Drawing.Point(1027, 691);
             this.lbChecks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lbChecks.MultiColumn = true;
             this.lbChecks.Name = "lbChecks";
             this.lbChecks.ScrollAlwaysVisible = true;
             this.lbChecks.Size = new System.Drawing.Size(454, 112);
