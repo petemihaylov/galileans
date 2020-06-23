@@ -14,7 +14,12 @@ namespace EmployeesManagementSystem.Models.Tests
         [TestMethod()]
         public void NotificationTest()
         {
-            throw new NotImplementedException();
+            User user = new User(-2, "test", "test@mail.com", "0123456789", "fontys123.", Role.Employee, 20);
+
+            Notification n = new Notification("test test test test", user);
+
+            Assert.AreEqual("test test test test", n.Message);
+            Assert.AreEqual(user, n.User);
         }
     }
 }

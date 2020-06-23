@@ -43,7 +43,13 @@ namespace EmployeesManagementSystem.Models.Tests
         [TestMethod()]
         public void GetDaysTest()
         {
-            throw new NotImplementedException();
+            List<DayType> days = new List<DayType>();
+            days.Add(DayType.Fri);
+            User user = new User(-2, "test", "test@mail.com", "0123456789", "fontys123.", Role.Employee, 20);
+            Availability a = new Availability(user, AvailabilityType.Approved, days, false, true);
+
+            string s = string.Join(", ", days.ToArray());
+            Assert.AreEqual(s, a.GetDays());
         }
 
         [TestMethod()]
