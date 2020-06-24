@@ -100,3 +100,12 @@
 	display: block;
 }
 
+.fa-times{
+	font-size: 18px;
+	margin-left: 50%;
+	color: black;
+}
+
+ul .list-items{
+	color: rgb(120, 155, 230);
+}

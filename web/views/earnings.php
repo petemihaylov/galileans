@@ -169,6 +169,7 @@ if($stmt = mysqli_prepare($link, $sql)){
     document.querySelector('.chart-container').style.display = "none";
     
     $(document).ready(function(){
+        
         $.post("../includes/dataset.inc.php",
         function (data)
         {

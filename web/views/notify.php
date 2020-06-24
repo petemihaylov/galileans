@@ -56,8 +56,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Close statement
             mysqli_stmt_close($stmt);
     }
-    // Close connection
-    mysqli_close($link);
 
 
 }

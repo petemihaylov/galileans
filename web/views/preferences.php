@@ -125,8 +125,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Closes the statement
     mysqli_stmt_close($stmt);
 
-    // Closes the config DB connection
-    mysqli_close($link);
 
 }
 

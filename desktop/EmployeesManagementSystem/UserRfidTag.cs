@@ -24,6 +24,7 @@ namespace EmployeesManagementSystem
             updateDataGrid();
             fillComboBox();
         }
+        
         //
         private void updateDataGrid()
         {
@@ -45,6 +46,7 @@ namespace EmployeesManagementSystem
                 this.dataGridRfid.Rows.Add(rfid.RfidTag.ToString(), user.FullName.ToString(), rfid.EnteredAt.ToString(), leftAt);
             }
         }
+        
         //
         private void fillComboBox()
         {

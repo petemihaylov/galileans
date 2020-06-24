@@ -345,8 +345,8 @@ namespace EmployeesManagementSystem.Data
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Shift WHERE  ShiftDate = @shiftDate and AssignedUserID = @userID";
-                    command.AddParameter("shiftDate", date);
+                    command.CommandText = @"SELECT * FROM Shift WHERE  ShiftDate = @shiftDate and AssignedUserID = @userID and Attended = false";
+                    command.AddParameter("shiftDate", date.ToString("yyyy-MM-dd"));
                     command.AddParameter("userID", user.ID);
 
                     // Executing it 

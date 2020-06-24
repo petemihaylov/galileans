@@ -42,13 +42,14 @@ mysqli_close($link);
 ?>
 
 <div class="prompt">
-    <h4>Messages</h4>
+    <h4>Messages <i id="delete" class="fas fa-times"></i></h4>
 
     <ul>
     <?php for ($i = 0; $i < count($notificationArray); $i++) {
-        $item = $notificationArray[$i];?>
-        <li><?php echo $item->get_Message(); ?></li>
-    <?php } ?>
+        $item = $notificationArray[$i];
+        echo '<li class="list-items"> '. $item->get_Message() .'</li>';
+     } ?>
+
     </ul>
 </div>
 
@@ -56,4 +57,29 @@ mysqli_close($link);
 $(".userDrop").click(function () {
 			$(".prompt").slideToggle( "show");
 });
+
+$('#delete').click(function () {
+
+            $.ajax({
+                type: 'POST',
+                url: "../includes/delete-notifications.php",
+                data: '',
+                dataType: 'json',
+                cache: false,
+                timeout: 800000,
+                success: function(data) {
+                    console.log("success");
+                    $(".prompt").slideToggle( "show");
+
+                },
+                error: function(e) {
+                    console.log(e.Message);
+                }
+
+            });
+
+            
+			$(".prompt").slideToggle( "show");
+});
+
 </script>
