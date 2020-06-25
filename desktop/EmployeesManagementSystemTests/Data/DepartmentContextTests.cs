@@ -21,5 +21,46 @@ namespace EmployeesManagementSystem.Data.Tests
             Assert.IsTrue(departmentContext.Insert(department));
         }
 
+        [TestMethod()]
+        public void DeleteByIdTest()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void GetDepartmentTableTest()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void GetAllFilteredDepartmentsTest()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void GetAllDepartmentsTest()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void GetDepartmentByNameTest()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void GetDepartmentByIdTest()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod()]
+        public void UpdateDepartmentInfoTest()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

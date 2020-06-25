@@ -5,7 +5,6 @@ using EmployeesManagementSystem.Data;
 using System.Text.RegularExpressions;
 using EmployeesManagementSystem.Models;
 
-
 namespace EmployeesManagementSystem
 {
     public partial class CreateAccounts : Form
@@ -129,13 +128,13 @@ namespace EmployeesManagementSystem
 
             if (string.IsNullOrWhiteSpace(removeWhiteSpaces(hourlyRate)))
             {
-                MessageBox.Show("Change the HourlyRate field");
+                MessageBox.Show("Change the Hourly Rate field");
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(removeWhiteSpaces(phone)))
             {
-                MessageBox.Show("Change the Phone field");
+                MessageBox.Show("Change the Phone Number field");
                 return false;
             }
 
@@ -171,7 +170,7 @@ namespace EmployeesManagementSystem
         {
             if (userContext.GetUserByEmail(email) != null)
             {
-                MessageBox.Show("The Email is not unique!");
+                MessageBox.Show("The Email inserted is not unique!");
                 return false;
             }
 
@@ -230,7 +229,7 @@ namespace EmployeesManagementSystem
         {
             if (hourlyRate <= 0.0)
             {
-                MessageBox.Show("The Wage is invalid! (wage > 0)");
+                MessageBox.Show("The Wage is invalid! The wage inserted needs to be greater than 0)");
                 return false;
             }
 

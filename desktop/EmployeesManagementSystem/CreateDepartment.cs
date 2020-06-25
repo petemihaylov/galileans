@@ -14,7 +14,6 @@ namespace EmployeesManagementSystem
         {
             InitializeComponent();
             this.departments = form;
-
         }
 
         private void btnCreate_Click(object sender, EventArgs e)

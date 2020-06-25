@@ -12,7 +12,7 @@ namespace EmployeesManagementSystem.Data
         {
             User user = (User)obj;
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -33,7 +33,7 @@ namespace EmployeesManagementSystem.Data
         }
         public override bool DeleteById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -45,27 +45,27 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
-        public bool DeleteUserByEmail(string email)
+       public bool DeleteUserByEmail(string email)
         {
-            using (var con = new MySqlConnection(connectionString))
-            {
-                con.Open();
+            using (var con = new MySqlConnection(ConnectionString))
+           {
+               con.Open();
 
-                using (var command = con.CreateCommand())
-                {
-                    command.CommandText = @"DELETE FROM User WHERE Email = @email";
-                    command.AddParameter("email", email);
+               using (var command = con.CreateCommand())
+               {
+                   command.CommandText = @"DELETE FROM User WHERE Email = @email";
+                   command.AddParameter("email", email);
 
-                    // Check if you have deleted the shifts of this user!
-                    return command.ExecuteNonQuery() > 0 ? true : false;
-                }
-            }
+                   // Check if you have deleted the shifts of this user!
+                   return command.ExecuteNonQuery() > 0 ? true : false;
+               }
+           }
         }
 
         public bool UpdateUserInfo(User user)
         {
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -86,7 +86,7 @@ namespace EmployeesManagementSystem.Data
         }
         public bool UpdatePassword(int userId, string password)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -104,7 +104,7 @@ namespace EmployeesManagementSystem.Data
 
         public User[] GetAllUsers()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -129,9 +129,10 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+
         public DataTable GetUsersTable()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -155,7 +156,6 @@ namespace EmployeesManagementSystem.Data
             }
         }
 
-        // Should not be here 
         public User[] GetAllFilteredUsers(DataTable table)
         {
             List<User> users = new List<User>();
@@ -179,7 +179,7 @@ namespace EmployeesManagementSystem.Data
         
         public User GetUserByID(int ID)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -205,9 +205,10 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+        
         public User GetUserByFullName(string fullname)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -236,7 +237,7 @@ namespace EmployeesManagementSystem.Data
         }
         public User GetUserByEmail(string email)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 

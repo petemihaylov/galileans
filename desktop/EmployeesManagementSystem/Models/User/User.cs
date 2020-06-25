@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem.Models
 {
-    public class User
+    public class User : IUser
     {
         public int ID { get; set; }
-
         private string fullname;
         public string FullName
         {
@@ -51,8 +50,9 @@ namespace EmployeesManagementSystem.Models
             }
         }
 
-        public User() { }
 
+
+        public User() { }
         public User(int id, string fullName, string email, string phoneNumber, string password, Role role, double wage)
         {
             this.ID = id;
@@ -65,12 +65,12 @@ namespace EmployeesManagementSystem.Models
         }
 
 
-        public string[] GetInfo()
+
+        public virtual string[] GetInfo()
         {
             string[] s = { this.ID.ToString(), this.FullName, this.Email, this.Role.ToString(), "" };
             return s;
         }
-
         private bool isEmailValid(string email)
         {
             try

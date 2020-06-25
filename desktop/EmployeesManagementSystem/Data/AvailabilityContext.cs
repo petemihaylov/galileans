@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using EmployeesManagementSystem.Models;
+using System.Linq;
+using System;
 
 namespace EmployeesManagementSystem.Data
 {
@@ -14,17 +12,19 @@ namespace EmployeesManagementSystem.Data
         {
             Availability availability = (Availability)obj;
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
                 using (var command = con.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO Availability (UserID, Date, Available) VALUES( @userID, @date, @available)";
+                    command.CommandText = @"INSERT INTO Availability (UserID, State, Days, IsWeekly, IsMonthly) VALUES( @userID, @state, @days, @isWeekly, @isMonthly)";
 
                     command.AddParameter("userID", availability.User.ID);
-                    command.AddParameter("date", availability.Date);
-                    command.AddParameter("available", availability.Available);
+                    command.AddParameter("state", availability.State);
+                    command.AddParameter("days", availability.GetDays());
+                    command.AddParameter("isWeekly", availability.IsWeekly);
+                    command.AddParameter("isMonthly", availability.IsMonthly);
 
                     return command.ExecuteNonQuery() > 0 ? true : false;
                 }
@@ -33,7 +33,7 @@ namespace EmployeesManagementSystem.Data
 
         public override bool DeleteById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -44,9 +44,10 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+
         public bool DeleteByUser(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -60,41 +61,110 @@ namespace EmployeesManagementSystem.Data
        
         public Availability[] GetAllAvailabilitiesByID(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
                 using (var command = con.CreateCommand())
                 {
                     // Select statement
-                    command.CommandText = @"SELECT * FROM Availability where UserID = @id ORDER BY Date ASC";
+                    command.CommandText = @"SELECT * FROM Availability where UserID = @id";
                     command.AddParameter("id", id);
 
                     // Executing it 
                     using (var reader = command.ExecuteReader())
                     {
-                        List<Availability> availabilities = new List<Availability>();
+                        List<Availability> avs = new List<Availability>();
                         while (reader.Read())
                         {
                             // Mapping the return data to the object
-                            Availability availability = new Availability();
-                            availability.User.ID = (int)reader["UserID"];
-                            availability.Date = (DateTime)reader["Date"];
-                            availability.Available = (bool)reader["Available"];
-                            availabilities.Add(availability);
+                            // Mapping the return data to the object
+                            Availability a = new Availability();
+                            MapObject(a, reader);
+                            avs.Add(a);
                         }
-
-                        return availabilities.ToArray();
+                        return avs.ToArray();
                     }
                 }
             }
         }
 
+        public Availability[] GetAllAvailabilities()
+        {
+            using (var con = new MySqlConnection(ConnectionString))
+            {
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"SELECT * FROM Availability";
+
+                    con.Open();
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        List<Availability> avs = new List<Availability>();
+                        while (reader.Read())
+                        {
+                            // Mapping the return data to the object
+                            Availability a = new Availability();
+                            MapObject(a, reader);
+                            avs.Add(a);
+                        }
+                        return avs.ToArray();
+                    }
+                }
+            }
+        }
+
+        public bool UpdateAvailabilityInfo(Availability availability)
+        {
+
+            using (var con = new MySqlConnection(ConnectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"UPDATE Availability SET State = @state, Days = @days, IsWeekly = @isWeekly, IsMonthly = @isMonthly WHERE UserID = @userID";
+                   
+
+                    command.Parameters.AddWithValue("userID", availability.User.ID);
+                    command.Parameters.AddWithValue("state", availability.State.ToString());
+                    command.Parameters.AddWithValue("days", availability.GetDays());
+                    command.Parameters.AddWithValue("isWeekly", availability.IsWeekly);
+                    command.Parameters.AddWithValue("isMonthly", availability.IsMonthly);
+                    // Executing it 
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+            }
+        }
         private Availability MapObject(Availability availability, MySqlDataReader reader)
         {
-            
+            // Mapping the return data to the object
+            availability.User.ID = (int)reader["UserID"];
+
+            Enum.TryParse((string)reader["State"], out AvailabilityType state);
+            availability.State = state;
+        
+            string text = (string)reader["Days"];
+
+            // Converting all of the day names to DayType
+            List<string> days = text.Split(',').ToList<string>();
+            List<DayType> res = new List<DayType>();
+            foreach (var item in days)
+            {
+                Enum.TryParse(item, out DayType d);
+                res.Add(d);
+            }
+
+            availability.Days = res;
+            availability.IsWeekly = (bool)reader["IsWeekly"];
+            availability.IsMonthly = (bool)reader["IsMonthly"];
+
             return availability;
         }
 
     }
 }
+

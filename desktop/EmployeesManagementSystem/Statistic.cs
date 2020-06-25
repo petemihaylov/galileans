@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
 using SeriesCollection = LiveCharts.SeriesCollection;
+using System.Threading.Tasks;
 
 namespace EmployeesManagementSystem
 {
@@ -27,6 +28,7 @@ namespace EmployeesManagementSystem
         List<string> months = new List<string>();
         List<User> users = new List<User>();
 
+
         Dictionary<string, List< KeyValuePair<string, int> >> shiftDictionary
                  = new Dictionary<string, List< KeyValuePair<string, int> >>();
 
@@ -36,14 +38,18 @@ namespace EmployeesManagementSystem
         Dictionary<string, List<KeyValuePair<string, int>>> cancelledShifts
                  = new Dictionary<string, List<KeyValuePair<string, int>>>();
 
+
+
         private User user;
         private Form previousForm;
+
 
         public Statistic(User loggedUser, Form previousForm)
         {
             InitializeComponent();
             this.user = loggedUser;
             this.previousForm = previousForm;
+            
 
             departments = departmentContext.GetAllDepartments().OfType<Department>().ToList();
             users = userContext.GetAllUsers().OfType<User>().ToList();
@@ -53,6 +59,7 @@ namespace EmployeesManagementSystem
             {
                 months.Add(DateTime.Now.AddMonths(-i).ToString("MMM"));
             }
+
             // Preload shiftDictionary data into a structure
             foreach (var m in months)
             {
@@ -65,6 +72,7 @@ namespace EmployeesManagementSystem
 
                 shiftDictionary.Add(m, list);
             }
+
 
             // Preload attendedShifts data into a structure
             foreach (var u in users)
@@ -84,6 +92,42 @@ namespace EmployeesManagementSystem
                 cancelledShifts.Add(u.Email, cancelledList);
             }
         }
+
+
+        private async Task<Dictionary<string, List<KeyValuePair<string, int>>>> preloadShifts()
+        {
+
+            Dictionary<string, List<KeyValuePair<string, int>>> dictionary
+                     = new Dictionary<string, List<KeyValuePair<string, int>>>();
+
+            // Preload shiftDictionary data into a structure
+            foreach (var m in months)
+            {
+                var list = await Task.Run(() => getShiftPerDepartmentForSpecificDate(m));
+                dictionary.Add(m, list);
+            }
+
+            return dictionary;
+        }
+
+        private List<KeyValuePair<string, int>> getShiftPerDepartmentForSpecificDate(string m)
+        {
+            var list = new List<KeyValuePair<string, int>>();
+
+            DateTime date = DateTime.ParseExact(m, "MMM", CultureInfo.InvariantCulture);
+            departments.ForEach(
+                d => list.Add(new KeyValuePair<string, int>(d.Name, shiftContext.GetShiftsByDateAndDepartment(date, d.ID).Count))
+            );
+
+            return list;
+        }
+
+
+
+
+
+
+
         private void Statistic_Load(object sender, EventArgs e)
         {
             LoadUsers();
@@ -91,7 +135,6 @@ namespace EmployeesManagementSystem
             DisplayPieChart(DateTime.Now.ToString("MMM"));
             DisplayCartesianChart(users[0].FullName);
         }
-
         private void LoadUsers()
         {
             users.ForEach(u => cbUsers.Items.Add(u.FullName));
@@ -192,11 +235,11 @@ namespace EmployeesManagementSystem
         }
         private void picBack_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
             // Show previous form
             previousForm.Closed += (s, args) => this.Close();
             previousForm.Show();
-            this.Hide();
+            
         }
         private void exit_Click(object sender, EventArgs e)
         {
@@ -208,24 +251,76 @@ namespace EmployeesManagementSystem
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            // Declare JsonSerializer
-            JsonSerializer serializer = new JsonSerializer("users.json");
-            // Get data from the Context
-            UserContext userContext = new UserContext();
-            User[] users = userContext.GetAllUsers();
-            // Write to users.json
-            serializer.Write(users);
-            MessageBox.Show(@"Users info is stored in ' Users.JSON ' file!");
+            string choice = cbExport.Text;
+            if (choice == "Users")
+            {
+                // Declare JsonSerializer
+                JsonSerializer serializer = new JsonSerializer("users.json");
+                // Get data from the Context
+                UserContext userContext = new UserContext();
+                User[] users = userContext.GetAllUsers();
+                // Write to users.json
+                serializer.Write(users);
+                MessageBox.Show(@"Users info is stored in ' Users.JSON ' file!");
+            }
+            else if (choice == "Shifts")
+            {
+                // Declare JsonSerializer
+                JsonSerializer serializer = new JsonSerializer("shifts.json");
+                // Get data from the Context
+                ShiftContext shiftContext = new ShiftContext();
+                Shift[] shifts = shiftContext.GetShifts();
+                // Write to users.json
+                serializer.Write(shifts);
+                MessageBox.Show(@"Shifts info is stored in ' shifts.JSON ' file!");
+
+            }
+            else if (choice == "Cancellations")
+            {
+                // Declare JsonSerializer
+                JsonSerializer serializer = new JsonSerializer("cancellations.json");
+                // Get data from the Context
+                CancellationContext cancellationsContext = new CancellationContext();
+                Cancellation[] c = cancellationsContext.GetCancellations();
+                // Write to users.json
+                serializer.Write(c);
+                MessageBox.Show(@"Cancellations info is stored in ' cancellations.JSON ' file!");
+            }
         }
         private void csvbtn_Click(object sender, EventArgs e)
         {
-            DataConverterCSV dataConverterCSV = new DataConverterCSV("users");
-            UserContext userContext = new UserContext();
-            User[] users = userContext.GetAllUsers();
+            string choice = cbExport.Text;
+            if (choice == "Users")
+            {
+                DataConverterCSV dataConverterCSV = new DataConverterCSV("users");
+                UserContext userContext = new UserContext();
+                User[] users = userContext.GetAllUsers();
 
-            dataConverterCSV.CSVFileWrite(users.OfType<User>().ToList());
+                dataConverterCSV.CSVFileWrite(users.OfType<User>().ToList());
 
-            MessageBox.Show(@"Users info is stored in ' User.CSV ' file!");
+                MessageBox.Show(@"Users info is stored in ' User.CSV ' file!");
+            }
+            else if (choice == "Shifts")
+            {
+                DataConverterCSV dataConverterCSV = new DataConverterCSV("shifts");
+                ShiftContext shiftContext = new ShiftContext();
+                Shift[] shifts = shiftContext.GetShifts();
+
+                dataConverterCSV.CSVFileWrite(shifts.OfType<Shift>().ToList());
+
+                MessageBox.Show(@"Shifts info is stored in ' Shifts.CSV ' file!");
+
+            }
+            else if (choice == "Cancellations")
+            {
+                DataConverterCSV dataConverterCSV = new DataConverterCSV("cancellations");
+                CancellationContext cancellationsContext = new CancellationContext();
+                Cancellation[] c = cancellationsContext.GetCancellations();
+
+                dataConverterCSV.CSVFileWrite(c.OfType<Cancellation>().ToList());
+
+                MessageBox.Show(@"Cancellations info is stored in ' cancellations.CSV ' file!");
+            }
         }
 
 
@@ -241,6 +336,7 @@ namespace EmployeesManagementSystem
             string fullname = cbUsers.SelectedItem.ToString();
             DisplayCartesianChart(fullname);
         }
+
     }
 
     public class DateModel

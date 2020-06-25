@@ -153,11 +153,11 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Calibri Light", 36F);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(111, 79);
+            this.label3.Location = new System.Drawing.Point(118, 53);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(225, 73);
+            this.label3.Size = new System.Drawing.Size(225, 146);
             this.label3.TabIndex = 0;
-            this.label3.Text = "BAZAAR";
+            this.label3.Text = "MEDIA\r\nBAZAAR";
             // 
             // Login
             // 

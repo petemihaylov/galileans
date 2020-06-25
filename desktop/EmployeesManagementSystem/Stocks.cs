@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using EmployeesManagementSystem.Controllers;
 using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
 
@@ -8,13 +11,18 @@ namespace EmployeesManagementSystem
 {
     public partial class Stocks : Form
     {
-
         // Variables
+        private IDictionary<string, int> departmentList;
         private Stock[] stocks;
         private User loggedUser;
 
+        private Color Enter = Color.DarkGray;
+        private Color Leave = Color.LightGray;
+
+        private DepartmentContext departmentContext = new DepartmentContext();
         private StockContext stockContext = new StockContext();
 
+        private StockController controller = new StockController();
         // Default contructor
         public Stocks()
         {
@@ -26,6 +34,53 @@ namespace EmployeesManagementSystem
         {
             InitializeComponent();
             this.loggedUser = user;
+            this.cbDepartment.Items.Add("All");
+            Department[] departments = departmentContext.GetAllDepartments();
+            foreach (Department department in departments)
+            {
+                this.cbDepartment.Items.Add(department.Name);
+            }
+
+            RoleDivision();
+
+        }
+
+        private void RoleDivision()
+        {
+            // Roles division
+            if (this.loggedUser.Role == Models.Role.Manager)
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnCancellations.Enabled = true;
+                this.btnCancellations.BackColor = Leave;
+                this.btnDepartments.Enabled = true;
+
+                this.btnStocks.Enabled = true;
+                this.btnStocks.BackColor = Leave;
+
+                this.btnStatistics.Enabled = true;
+                this.btnStatistics.BackColor = Leave;
+
+                this.btnShifts.Enabled = false;
+                this.btnShifts.BackColor = Color.White;
+
+                this.btnTimetable.Enabled = true;
+                this.btnTimetable.BackColor = Leave;
+
+            }
+            else if (this.loggedUser.Role == Models.Role.Administrator)
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnDepartments.Enabled = true;
+                this.btnShifts.Enabled = true;
+
+                this.btnStocks.Enabled = false;
+                this.btnCancellations.Enabled = false;
+                this.btnTimetable.Enabled = false;
+                this.btnTimetable.BackColor = Color.White;
+                this.btnStatistics.Enabled = false;
+            }
+
         }
 
         private void Stocks_Load(object sender, EventArgs e)
@@ -52,7 +107,7 @@ namespace EmployeesManagementSystem
 
             try
             {
-                this.stocks = stockContext.GetAllStocks();
+                this.stocks = controller.GetStocks();
                 showInformation(this.stocks);
             }
             catch (Exception)
@@ -61,20 +116,21 @@ namespace EmployeesManagementSystem
             }
         }
 
-       
 
         public void UpdateStocks()
         {
             this.stockDataGrid.Rows.Clear();
+            DataTable table = controller.GetStockTable();
 
-            Stock[] stock = stockContext.GetAllStocks();
+            this.stocks = controller.GetStocks();
             stockDataGrid.Rows.Clear();
-            showInformation(stock);
+            showInformation(stocks);
         }
         private void stockDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int btnReload = 5;
-            int btnDelete = 6;
+            int btnUpdate = 5;
+            int btnReload = 6;
+            int btnDelete = 7;
 
             int index = stockDataGrid.CurrentCell.RowIndex;
             int stockId = Convert.ToInt32(stockDataGrid.Rows[index].Cells[0].Value);
@@ -89,14 +145,21 @@ namespace EmployeesManagementSystem
                 stockContext.DeleteById(stockId);
                 UpdateStocks();
             }
+            else if (stockDataGrid.CurrentCell.ColumnIndex.Equals(btnUpdate))
+            {
+                Stock s = stockContext.GetStockById(stockId);
+                s.Name = this.stockDataGrid.Rows[index].Cells[1].Value.ToString();
+                s.Price = Convert.ToDouble(this.stockDataGrid.Rows[index].Cells[2].Value);
+                s.Amount = Convert.ToInt32(this.stockDataGrid.Rows[index].Cells[3].Value);
+                s.Availability = Convert.ToBoolean(this.stockDataGrid.Rows[index].Cells[4].Value);
+                this.stockContext.UpdateStock(s);
+            }
         }
 
         private void showInformation(Stock[] stocks)
         {
             // Clean the dataGrid
-
             stockDataGrid.Rows.Clear();
-
             foreach (Stock stock in stocks)
             {
                 this.stockDataGrid.Rows.Add(stock.GetInfo());
@@ -282,6 +345,56 @@ namespace EmployeesManagementSystem
 
         private void btnCreate_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void cbDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Stock[] stocks = stockContext.GetAllStocks();
+
+            string selectedDepartment = cbDepartment.SelectedItem.ToString();
+            if (selectedDepartment != "All")
+            {
+                stockDataGrid.Rows.Clear();
+                foreach (Stock stock in stocks)
+                {
+                    if(stock.Department.ID == departmentContext.GetDepartmentByName(selectedDepartment).ID)
+                        this.stockDataGrid.Rows.Add(stock.GetInfo());
+                }
+            }
+            else
+            {
+                UpdateStocks();
+            }
+        }
+
+        private void searchField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            DataTable table = controller.GetStockTable();
+
+            // Pressed enter
+            if (e.KeyChar == (char)13)
+            {
+
+                DataView dv = table.DefaultView;
+
+                // Filter the rows
+                dv.RowFilter = string.Format("Name Like '%{0}%'", controller.RemoveWhiteSpaces(this.searchField.Text));
+                this.searchField.Text = "";
+
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    Stock[] stocks = controller.GetFilteredStocks(dv);
+                    showInformation(stocks);
+                }
+                else
+                {
+                    Stock[] stocks = controller.GetStocks();
+                    showInformation(stocks);
+                }
+
+            }
 
         }
     }

@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS Department(
     Name text NOT NULL
 );
 
-CREATE TABLE User(
+CREATE TABLE IF NOT EXISTS User(
     ID int auto_increment PRIMARY KEY,
     FullName varchar(255),
     Email varchar(255) not null UNIQUE,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS UserDepartment (
 CREATE TABLE IF NOT EXISTS Cancellation(
 	ID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	Date date,
-    Email text,
+    State ENUM('Pending', 'Approved', 'Declined'),
     Subject text,
     Message text,
     
@@ -38,8 +38,8 @@ CREATE TABLE IF NOT EXISTS Shift(
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	Availability boolean,
     ShiftDate Date not null,
-    StartTime Time not null,
-    EndTime Time not null,
+    StartTime varchar(100) not null,
+    EndTime varchar(100) not null,
 	ShiftType ENUM('Morning', 'Afternoon', 'Evening'),
     Attended tinyint(1) default FALSE,
     Cancelled tinyint(1) default FALSE,
@@ -80,3 +80,10 @@ CREATE TABLE IF NOT EXISTS Stock(
     FOREIGN KEY (DepartmentID) REFERENCES Department(ID)
 );
 
+
+CREATE TABLE IF NOT EXISTS Notification (
+	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Message text,
+    UserID INT NOT NULL,
+    FOREIGN KEY (UserID) REFERENCES User(ID)
+);

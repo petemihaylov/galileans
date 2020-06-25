@@ -30,6 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Messages));
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.btnTimetable = new System.Windows.Forms.Panel();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.pictureBox18 = new System.Windows.Forms.PictureBox();
+            this.btnShifts = new System.Windows.Forms.Panel();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.btnStatistics = new System.Windows.Forms.Panel();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -66,20 +74,27 @@
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cancelationMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.PictureBox();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnShifts = new System.Windows.Forms.Panel();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.txDescription = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnAccept = new System.Windows.Forms.Button();
+            this.btnReject = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelLeft.SuspendLayout();
+            this.btnTimetable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
+            this.btnShifts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             this.btnStatistics.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
@@ -104,14 +119,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
-            this.btnShifts.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.White;
+            this.panelLeft.Controls.Add(this.btnTimetable);
             this.panelLeft.Controls.Add(this.btnShifts);
             this.panelLeft.Controls.Add(this.btnStatistics);
             this.panelLeft.Controls.Add(this.settingsPanel);
@@ -125,8 +139,101 @@
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(257, 816);
+            this.panelLeft.Size = new System.Drawing.Size(257, 850);
             this.panelLeft.TabIndex = 6;
+            // 
+            // btnTimetable
+            // 
+            this.btnTimetable.BackColor = System.Drawing.Color.LightGray;
+            this.btnTimetable.Controls.Add(this.pictureBox17);
+            this.btnTimetable.Controls.Add(this.label11);
+            this.btnTimetable.Controls.Add(this.pictureBox18);
+            this.btnTimetable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTimetable.Location = new System.Drawing.Point(9, 334);
+            this.btnTimetable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTimetable.Name = "btnTimetable";
+            this.btnTimetable.Size = new System.Drawing.Size(229, 41);
+            this.btnTimetable.TabIndex = 56;
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
+            this.pictureBox17.Location = new System.Drawing.Point(191, 6);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox17.TabIndex = 3;
+            this.pictureBox17.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(44, 11);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 20);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Timetable";
+            // 
+            // pictureBox18
+            // 
+            this.pictureBox18.Image = global::EmployeesManagementSystem.Properties.Resources.download;
+            this.pictureBox18.Location = new System.Drawing.Point(4, 6);
+            this.pictureBox18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox18.Name = "pictureBox18";
+            this.pictureBox18.Size = new System.Drawing.Size(36, 30);
+            this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox18.TabIndex = 52;
+            this.pictureBox18.TabStop = false;
+            // 
+            // btnShifts
+            // 
+            this.btnShifts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnShifts.Controls.Add(this.pictureBox12);
+            this.btnShifts.Controls.Add(this.pictureBox15);
+            this.btnShifts.Controls.Add(this.label9);
+            this.btnShifts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnShifts.Location = new System.Drawing.Point(11, 211);
+            this.btnShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnShifts.Name = "btnShifts";
+            this.btnShifts.Size = new System.Drawing.Size(229, 41);
+            this.btnShifts.TabIndex = 14;
+            this.btnShifts.Click += new System.EventHandler(this.btnShift_Click);
+            this.btnShifts.MouseEnter += new System.EventHandler(this.btnShifts_MouseEnter);
+            this.btnShifts.MouseLeave += new System.EventHandler(this.btnShifts_MouseLeave);
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp1;
+            this.pictureBox12.Location = new System.Drawing.Point(4, 5);
+            this.pictureBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(35, 32);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox12.TabIndex = 5;
+            this.pictureBox12.TabStop = false;
+            // 
+            // pictureBox15
+            // 
+            this.pictureBox15.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
+            this.pictureBox15.Location = new System.Drawing.Point(191, 6);
+            this.pictureBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox15.TabIndex = 3;
+            this.pictureBox15.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(44, 11);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 20);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Shifts";
             // 
             // btnStatistics
             // 
@@ -135,7 +242,7 @@
             this.btnStatistics.Controls.Add(this.label5);
             this.btnStatistics.Controls.Add(this.pictureBox19);
             this.btnStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStatistics.Location = new System.Drawing.Point(11, 476);
+            this.btnStatistics.Location = new System.Drawing.Point(10, 530);
             this.btnStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStatistics.Name = "btnStatistics";
             this.btnStatistics.Size = new System.Drawing.Size(229, 41);
@@ -281,7 +388,8 @@
             this.btnStocks.Controls.Add(this.pictureBox9);
             this.btnStocks.Controls.Add(this.pictureBox11);
             this.btnStocks.Controls.Add(this.label6);
-            this.btnStocks.Location = new System.Drawing.Point(10, 342);
+            this.btnStocks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStocks.Location = new System.Drawing.Point(9, 396);
             this.btnStocks.Name = "btnStocks";
             this.btnStocks.Size = new System.Drawing.Size(230, 41);
             this.btnStocks.TabIndex = 6;
@@ -325,6 +433,7 @@
             this.btnDepartments.Controls.Add(this.pictureBox8);
             this.btnDepartments.Controls.Add(this.pictureBox5);
             this.btnDepartments.Controls.Add(this.label4);
+            this.btnDepartments.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDepartments.Location = new System.Drawing.Point(9, 272);
             this.btnDepartments.Name = "btnDepartments";
             this.btnDepartments.Size = new System.Drawing.Size(230, 41);
@@ -369,7 +478,8 @@
             this.btnCancellations.Controls.Add(this.pictureBox7);
             this.btnCancellations.Controls.Add(this.pictureBox4);
             this.btnCancellations.Controls.Add(this.label3);
-            this.btnCancellations.Location = new System.Drawing.Point(10, 411);
+            this.btnCancellations.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancellations.Location = new System.Drawing.Point(9, 465);
             this.btnCancellations.Name = "btnCancellations";
             this.btnCancellations.Size = new System.Drawing.Size(230, 41);
             this.btnCancellations.TabIndex = 4;
@@ -413,6 +523,7 @@
             this.btnEmployees.Controls.Add(this.pictureBox6);
             this.btnEmployees.Controls.Add(this.pictureBox3);
             this.btnEmployees.Controls.Add(this.label2);
+            this.btnEmployees.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEmployees.Location = new System.Drawing.Point(11, 147);
             this.btnEmployees.Name = "btnEmployees";
             this.btnEmployees.Size = new System.Drawing.Size(230, 41);
@@ -501,15 +612,15 @@
             this.ID,
             this.date,
             this.Employee,
-            this.Email,
             this.subject,
             this.cancelationMessage,
+            this.State,
             this.Delete});
-            this.dataGridView.Location = new System.Drawing.Point(263, 59);
+            this.dataGridView.Location = new System.Drawing.Point(286, 59);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 30;
-            this.dataGridView.Size = new System.Drawing.Size(1156, 480);
+            this.dataGridView.Size = new System.Drawing.Size(1243, 350);
             this.dataGridView.TabIndex = 7;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
@@ -535,13 +646,6 @@
             this.Employee.MinimumWidth = 6;
             this.Employee.Name = "Employee";
             // 
-            // Email
-            // 
-            this.Email.HeaderText = "Email";
-            this.Email.MinimumWidth = 6;
-            this.Email.Name = "Email";
-            this.Email.Width = 125;
-            // 
             // subject
             // 
             this.subject.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -559,6 +663,13 @@
             this.cancelationMessage.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.cancelationMessage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // State
+            // 
+            this.State.HeaderText = "State";
+            this.State.MinimumWidth = 6;
+            this.State.Name = "State";
+            this.State.Width = 125;
+            // 
             // Delete
             // 
             this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -573,13 +684,13 @@
             this.panel4.Controls.Add(this.btnExit);
             this.panel4.Location = new System.Drawing.Point(252, 1);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1203, 52);
+            this.panel4.Size = new System.Drawing.Size(1301, 52);
             this.panel4.TabIndex = 8;
             // 
             // btnExit
             // 
             this.btnExit.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_clear_black_48dp;
-            this.btnExit.Location = new System.Drawing.Point(1152, 8);
+            this.btnExit.Location = new System.Drawing.Point(1238, 11);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(39, 35);
             this.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -609,66 +720,85 @@
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.Width = 125;
             // 
-            // btnShifts
-            // 
-            this.btnShifts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnShifts.Controls.Add(this.pictureBox12);
-            this.btnShifts.Controls.Add(this.pictureBox15);
-            this.btnShifts.Controls.Add(this.label9);
-            this.btnShifts.Location = new System.Drawing.Point(11, 211);
-            this.btnShifts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnShifts.Name = "btnShifts";
-            this.btnShifts.Size = new System.Drawing.Size(229, 41);
-            this.btnShifts.TabIndex = 14;
-            this.btnShifts.Click += new System.EventHandler(this.btnShift_Click);
-            this.btnShifts.MouseEnter += new System.EventHandler(this.btnShifts_MouseEnter);
-            this.btnShifts.MouseLeave += new System.EventHandler(this.btnShifts_MouseLeave);
-            // 
-            // pictureBox12
-            // 
-            this.pictureBox12.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_event_black_48dp1;
-            this.pictureBox12.Location = new System.Drawing.Point(4, 5);
-            this.pictureBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(35, 32);
-            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox12.TabIndex = 5;
-            this.pictureBox12.TabStop = false;
-            // 
-            // pictureBox15
-            // 
-            this.pictureBox15.Image = global::EmployeesManagementSystem.Properties.Resources.baseline_keyboard_arrow_right_black_48dp;
-            this.pictureBox15.Location = new System.Drawing.Point(191, 6);
-            this.pictureBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox15.TabIndex = 3;
-            this.pictureBox15.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(44, 11);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 20);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Shifts";
-            // 
             // txDescription
             // 
-            this.txDescription.Location = new System.Drawing.Point(263, 577);
+            this.txDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txDescription.Location = new System.Drawing.Point(295, 482);
             this.txDescription.Multiline = true;
             this.txDescription.Name = "txDescription";
-            this.txDescription.Size = new System.Drawing.Size(1156, 199);
+            this.txDescription.Size = new System.Drawing.Size(717, 272);
             this.txDescription.TabIndex = 9;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(290, 443);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(99, 25);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Message:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(20, 33);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(282, 20);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Change the state of the cancellation:";
+            // 
+            // btnAccept
+            // 
+            this.btnAccept.BackColor = System.Drawing.Color.Gray;
+            this.btnAccept.FlatAppearance.BorderSize = 0;
+            this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccept.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAccept.Location = new System.Drawing.Point(23, 91);
+            this.btnAccept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(159, 28);
+            this.btnAccept.TabIndex = 34;
+            this.btnAccept.Text = "Accept";
+            this.btnAccept.UseVisualStyleBackColor = false;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            // 
+            // btnReject
+            // 
+            this.btnReject.BackColor = System.Drawing.Color.Gray;
+            this.btnReject.FlatAppearance.BorderSize = 0;
+            this.btnReject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReject.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReject.Location = new System.Drawing.Point(238, 91);
+            this.btnReject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnReject.Name = "btnReject";
+            this.btnReject.Size = new System.Drawing.Size(159, 28);
+            this.btnReject.TabIndex = 35;
+            this.btnReject.Text = "Reject";
+            this.btnReject.UseVisualStyleBackColor = false;
+            this.btnReject.Click += new System.EventHandler(this.btnReject_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.btnReject);
+            this.groupBox1.Controls.Add(this.btnAccept);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(1059, 482);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(461, 143);
+            this.groupBox1.TabIndex = 36;
+            this.groupBox1.TabStop = false;
             // 
             // Messages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1455, 816);
+            this.ClientSize = new System.Drawing.Size(1550, 850);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.txDescription);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.dataGridView);
@@ -681,6 +811,14 @@
             this.Load += new System.EventHandler(this.Complaint_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
+            this.btnTimetable.ResumeLayout(false);
+            this.btnTimetable.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
+            this.btnShifts.ResumeLayout(false);
+            this.btnShifts.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             this.btnStatistics.ResumeLayout(false);
             this.btnStatistics.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
@@ -712,10 +850,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
-            this.btnShifts.ResumeLayout(false);
-            this.btnShifts.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -769,9 +905,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Employee;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn subject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cancelationMessage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn State;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.Button btnReject;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel btnTimetable;
+        private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox pictureBox18;
     }
 }

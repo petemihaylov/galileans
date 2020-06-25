@@ -30,7 +30,8 @@ namespace EmployeesManagementSystem
 
             stock.Amount += getValidAmount();
 
-            stockContext.UpdateStock( new Stock(stock.Name, stock.Amount, stock.Price, true, stock.Department));
+            // stockContext.UpdateStock(new Stock(stock.Name, stock.Amount, stock.Price, true, stock.Department));
+            stockContext.UpdateStock(stock);
             stocksForm.UpdateStocks();
 
             this.Close();

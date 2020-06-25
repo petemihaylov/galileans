@@ -27,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net-Next, Version=3.2.1.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
@@ -43,6 +45,12 @@
     </Reference>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentEmail.Core, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentEmail.Core.2.8.0\lib\netstandard2.0\FluentEmail.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentEmail.Smtp, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentEmail.Smtp.2.8.0\lib\netstandard2.0\FluentEmail.Smtp.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
@@ -55,6 +63,9 @@
     </Reference>
     <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.4.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.4\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=8.0.19.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.19\lib\net452\MySql.Data.dll</HintPath>
@@ -146,7 +157,12 @@
       <DependentUpon>AdminDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\RfidController.cs" />
+    <Compile Include="Controllers\ShiftController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
     <Compile Include="CreateDepartment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,14 +180,20 @@
     <Compile Include="Data\CancellationContext.cs" />
     <Compile Include="Data\Conversion\DataConverterCSV.cs" />
     <Compile Include="Data\DepartmentContext.cs" />
+    <Compile Include="Data\IDBContext.cs" />
     <Compile Include="Data\ImageContext.cs" />
+    <Compile Include="Data\NotificationContext.cs" />
+    <Compile Include="Data\RfidContext.cs" />
     <Compile Include="Data\ShiftContext.cs" />
     <Compile Include="Data\StockContext.cs" />
     <Compile Include="Data\UserContext.cs" />
     <Compile Include="Data\UserDepartmentContext.cs" />
     <Compile Include="Data\Conversion\JsonSerializer.cs" />
-    <Compile Include="Models\Availability.cs" />
-    <Compile Include="Models\Cancellation.cs" />
+    <Compile Include="Models\Availability\Availability.cs" />
+    <Compile Include="Models\Availability\AvailabilityType.cs" />
+    <Compile Include="Models\Availability\DayType.cs" />
+    <Compile Include="Models\Availability\IAvailability.cs" />
+    <Compile Include="Models\Cancellation\Cancellation.cs" />
     <Compile Include="Messages.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,11 +239,18 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cancellation\ICancellation.cs" />
+    <Compile Include="Models\Department\IDepartment.cs" />
+    <Compile Include="Models\Notification\INotification.cs" />
+    <Compile Include="Models\Notification\Notification.cs" />
+    <Compile Include="Models\Rfid.cs" />
     <Compile Include="Models\Shift\IShift.cs" />
     <Compile Include="Models\Shift\ShiftType.cs" />
+    <Compile Include="Models\Shift\StartTime.cs" />
+    <Compile Include="Models\Stock\IStock.cs" />
     <Compile Include="Models\UserDepartment.cs" />
     <Compile Include="Models\User\Administrator.cs" />
-    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Department\Department.cs" />
     <Compile Include="Models\User\Employee.cs" />
     <Compile Include="Models\ErrorMessage.cs" />
     <Compile Include="Models\Picture.cs" />
@@ -229,7 +258,7 @@
     <Compile Include="Models\User\Manager.cs" />
     <Compile Include="Models\User\Role.cs" />
     <Compile Include="Models\Shift\Shift.cs" />
-    <Compile Include="Models\Stock.cs" />
+    <Compile Include="Models\Stock\Stock.cs" />
     <Compile Include="Models\User\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -239,6 +268,7 @@
     <Compile Include="ReloadStock.Designer.cs">
       <DependentUpon>ReloadStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShiftAutomationManager.cs" />
     <Compile Include="Shifts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,11 +287,23 @@
     <Compile Include="Stocks.Designer.cs">
       <DependentUpon>Stocks.cs</DependentUpon>
     </Compile>
+    <Compile Include="TimeTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeTable.Designer.cs">
+      <DependentUpon>TimeTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="UploadImg.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UploadImg.Designer.cs">
       <DependentUpon>UploadImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserRfidTag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserRfidTag.Designer.cs">
+      <DependentUpon>UserRfidTag.cs</DependentUpon>
     </Compile>
     <Compile Include="Warning.cs">
       <SubType>Form</SubType>
@@ -321,8 +363,14 @@
     <EmbeddedResource Include="Stocks.resx">
       <DependentUpon>Stocks.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TimeTable.resx">
+      <DependentUpon>TimeTable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UploadImg.resx">
       <DependentUpon>UploadImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserRfidTag.resx">
+      <DependentUpon>UserRfidTag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warning.resx">
       <DependentUpon>Warning.cs</DependentUpon>
@@ -471,6 +519,18 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diskette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download1.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

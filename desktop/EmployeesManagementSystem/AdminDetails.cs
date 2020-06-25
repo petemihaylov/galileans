@@ -36,6 +36,8 @@ namespace EmployeesManagementSystem
             tbFullName.Text = this.user.FullName;
             tbPhoneNumber.Text = this.user.PhoneNumber;
             tbEmail.Text = this.user.Email;
+            tbHw.Text = this.user.Wage.ToString();
+
 
             Department d = userDepartmentContext.GetDepartmentByUser(this.user.ID);
             if (d != null)
@@ -52,11 +54,12 @@ namespace EmployeesManagementSystem
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             // basic validation
-            if (ifEmptyOrNull(tbFullName.Text, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text))
+            if (ifEmptyOrNull(tbFullName.Text, tbEmail.Text, tbPhoneNumber.Text, cbRole.Text, Convert.ToDouble(tbHw.Text)))
             {
                 User u = new User();
                 u.ID = this.user.ID;
                 u.FullName = removeWhiteSpaces(this.tbFullName.Text);
+                u.Wage = Convert.ToDouble(tbHw.Text);
                 u.Email = tbEmail.Text;
                 u.PhoneNumber = tbPhoneNumber.Text;
                 u.Role = (Role)cbRole.SelectedIndex;
@@ -83,7 +86,7 @@ namespace EmployeesManagementSystem
         }
 
 
-        private bool ifEmptyOrNull(string fullName, string email, string phone, string role)
+        private bool ifEmptyOrNull(string fullName, string email, string phone, string role, double wage)
         {
 
             if (string.IsNullOrWhiteSpace(removeWhiteSpaces(fullName)))
@@ -102,6 +105,12 @@ namespace EmployeesManagementSystem
             if (string.IsNullOrWhiteSpace(removeWhiteSpaces(email)))
             {
                 MessageBox.Show("Change the Email field");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(removeWhiteSpaces(wage.ToString())))
+            {
+                MessageBox.Show("Change the Wage field");
                 return false;
             }
 
