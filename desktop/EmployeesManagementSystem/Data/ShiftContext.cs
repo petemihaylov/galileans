@@ -13,7 +13,7 @@ namespace EmployeesManagementSystem.Data
         {
             Shift shift = (Shift)obj;
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 using (var command = con.CreateCommand())
                 {
@@ -42,7 +42,7 @@ namespace EmployeesManagementSystem.Data
 
         public override bool DeleteById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -56,7 +56,7 @@ namespace EmployeesManagementSystem.Data
         }
         public bool DeleteByDepartment(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -70,7 +70,7 @@ namespace EmployeesManagementSystem.Data
         }
         public bool DeleteShiftsByUser(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
 
                 con.Open();
@@ -82,9 +82,24 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+        public  bool DeleteShiftsFromDate(DateTime dateTime, int userID)
+        {
+            using (var con = new MySqlConnection(ConnectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"DELETE FROM Shift WHERE AssignedUserID = @userID and ShiftDate >= @shiftDate";
+                    command.AddParameter("userID", userID);
+                    command.AddParameter("shiftDate", dateTime);
+                    return command.ExecuteNonQuery() > 0 ? true : false;
+                }
+
+            }
+        }
         public bool UpdateShift(Shift shift)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -122,8 +137,8 @@ namespace EmployeesManagementSystem.Data
 
             shift.Availability = (bool)reader["Availability"];
 
-            shift.StartTime = Convert.ToDateTime(((TimeSpan)reader["StartTime"]).ToString());
-            shift.EndTime = Convert.ToDateTime(((TimeSpan)reader["EndTime"]).ToString());
+            shift.StartTime = (string)reader["StartTime"];
+            shift.EndTime = (string)reader["EndTime"];
 
             Enum.TryParse((string)reader["ShiftType"], out ShiftType shiftType);
             shift.Type = shiftType;
@@ -136,7 +151,7 @@ namespace EmployeesManagementSystem.Data
 
         public List<Shift> GetAllShifts()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = new MySqlCommand("SELECT * FROM Shift", con))
@@ -159,9 +174,10 @@ namespace EmployeesManagementSystem.Data
             }
 
         }
+       
         public List<Shift> GetShiftsByUserId(int userId)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -190,7 +206,7 @@ namespace EmployeesManagementSystem.Data
         }
         public List<Shift> GetShiftsByDepartment(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -222,7 +238,7 @@ namespace EmployeesManagementSystem.Data
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -256,7 +272,7 @@ namespace EmployeesManagementSystem.Data
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -291,7 +307,7 @@ namespace EmployeesManagementSystem.Data
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -321,9 +337,37 @@ namespace EmployeesManagementSystem.Data
             }
         }
 
-        public Shift GetShiftByDate(DateTime date, DateTime startTime)
+        public Shift GetShiftByDate(DateTime date, User user)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
+            {
+                con.Open();
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"SELECT * FROM Shift WHERE  ShiftDate = @shiftDate and AssignedUserID = @userID and Attended = false";
+                    command.AddParameter("shiftDate", date.ToString("yyyy-MM-dd"));
+                    command.AddParameter("userID", user.ID);
+
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        Shift shift = new Shift();
+                        if (reader.Read())
+                        {
+                            MapObject(shift, reader);
+                        }
+                        else { return null; }
+
+                        return shift;
+                    }
+                }
+
+            }
+        }
+        public Shift GetShiftByDate(DateTime date, string startTime)
+        {
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -351,7 +395,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Shift GetShiftByUser(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -379,7 +423,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Shift GetShiftByID(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -402,6 +446,31 @@ namespace EmployeesManagementSystem.Data
                 }
 
             }
+        }
+        public Shift[] GetShifts()
+        {
+            using (var con = new MySqlConnection(ConnectionString))
+            {
+                con.Open();
+                using (var command = new MySqlCommand("SELECT * FROM Shift", con))
+                {
+
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        List<Shift> shifts = new List<Shift>();
+                        while (reader.Read())
+                        {
+                            // Mapping the return data to the object
+                            Shift shift = new Shift();
+                            MapObject(shift, reader);
+                            shifts.Add(shift);
+                        }
+                        return shifts.ToArray();
+                    }
+                }
+            }
+
         }
 
     }

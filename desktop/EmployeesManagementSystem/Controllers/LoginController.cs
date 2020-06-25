@@ -11,6 +11,7 @@ namespace EmployeesManagementSystem.Controllers
         private UserContext userContext = new UserContext();
         private ShiftContext shiftContext = new ShiftContext();
         private ImageContext imageContext = new ImageContext();
+        private CancellationContext cancellationContext = new CancellationContext();
         private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
 
 
@@ -24,7 +25,9 @@ namespace EmployeesManagementSystem.Controllers
                 shiftContext.DeleteShiftsByUser(adminID);
                 imageContext.DeleteImgByUserId(adminID);
                 userDepartmentContext.DeleteByUser(adminID);
+                
                 userContext.DeleteUserByEmail("admin@mail.com");
+
             }
             userContext.Insert(new Administrator(-1, "admin", "admin@mail.com", "+31 6430 2303", Hashing.HashPassword("admin"), 0));
 

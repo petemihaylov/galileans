@@ -1,6 +1,7 @@
-﻿using EmployeesManagementSystem.Models;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
+using EmployeesManagementSystem.Models;
+using System.Data;
 
 namespace EmployeesManagementSystem.Data
 {
@@ -10,7 +11,7 @@ namespace EmployeesManagementSystem.Data
         {
             Stock stock = (Stock)obj;
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -31,7 +32,7 @@ namespace EmployeesManagementSystem.Data
         }
         public override bool DeleteById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -44,7 +45,7 @@ namespace EmployeesManagementSystem.Data
         }
         public bool DeleteByDepartment(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -57,7 +58,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Stock[] GetAllStocks()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -81,10 +82,36 @@ namespace EmployeesManagementSystem.Data
             }
         }
 
+        public DataTable GetStockTable()
+        {
+            using (var con = new MySqlConnection(ConnectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    // select statement
+                    command.CommandText = @"SELECT * FROM Stock";
+
+                    // executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        DataTable table = new DataTable();
+                        if (reader.Read())
+                        {
+                            table.Load(reader);
+                        }
+
+                        return table;
+                    }
+                }
+            }
+        }
+
         // Doesn't work properly
         public bool UpdateStock(Stock stock)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -104,7 +131,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Stock GetStockById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -128,6 +155,27 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+
+        public Stock[] GetAllFilteredStocks(DataTable table)
+        {
+            List<Stock> stocks = new List<Stock>();
+
+            foreach (DataRow row in table.Rows)
+            {
+                Stock stock = new Stock();
+                stock.ID = (int) row["ID"];
+                stock.Name = (string) row["Name"];
+                stock.Price = (double) row["Price"];
+                stock.Amount = (int) row["Amount"];
+                stock.Availability = (bool) row["Availability"];
+                stock.Department.ID = (int) row["DepartmentID"];
+
+                stocks.Add(stock);
+            }
+
+            return stocks.ToArray();
+        }
+
         private Stock MapObject(Stock stock, MySqlDataReader reader)
         {
 
@@ -139,6 +187,59 @@ namespace EmployeesManagementSystem.Data
             stock.Department.ID = (int)reader["DepartmentID"];
 
             return stock;
+        }
+
+        public Stock[] SearchByName(string name)
+        {
+            using (var con = new MySqlConnection(ConnectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"SELECT * FROM Stock WHERE Name LIKE @name";
+                    command.Parameters.AddWithValue("@name", name + "%");
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        List<Stock> stocks = new List<Stock>();
+                        while (reader.Read())
+                        {
+                            // Mapping the return data to the object
+                            Stock stock = new Stock();
+                            MapObject(stock, reader);
+                            stocks.Add(stock);
+                        }
+                        return stocks.ToArray();
+                    }
+                }
+            }
+        }
+        public Stock[] StocksByDepID(string name)
+        {
+            using (var con = new MySqlConnection(ConnectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    command.CommandText = @"SELECT * FROM Stock WHERE Department = @name";
+                    command.Parameters.AddWithValue("@name", name);
+                    // Executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        List<Stock> stocks = new List<Stock>();
+                        while (reader.Read())
+                        {
+                            // Mapping the return data to the object
+                            Stock stock = new Stock();
+                            MapObject(stock, reader);
+                            stocks.Add(stock);
+                        }
+                        return stocks.ToArray();
+                    }
+                }
+            }
         }
 
     }

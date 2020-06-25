@@ -1,0 +1,111 @@
+.navbar-nav{
+    justify-content: space-around;
+}
+.navbar-nav .nav-link{
+    margin-right: 60px;
+}
+#header-username{
+    text-transform: uppercase;
+    font-size: 14px;
+    color: rgb(227, 228, 230);
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+	color: rgb(88, 92, 167);
+	transition: 0.2s ease-in-out;
+}
+
+
+@keyframes wrench {
+	0%{transform:rotate(-12deg)}
+	8%{transform:rotate(12deg)}
+	10%{transform:rotate(24deg)}
+	18%{transform:rotate(-24deg)}
+	20%{transform:rotate(-24deg)}
+	28%{transform:rotate(24deg)}
+	30%{transform:rotate(24deg)}
+	38%{transform:rotate(-24deg)}
+	40%{transform:rotate(-24deg)}
+	48%{transform:rotate(24deg)}
+	50%{transform:rotate(24deg)}
+	58%{transform:rotate(-24deg)}
+	60%{transform:rotate(-24deg)}
+	68%{transform:rotate(24deg)}
+	75%,100%{transform:rotate(0deg)}
+}
+.faa-wrench.animated,
+.faa-wrench.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-wrench {
+	animation: wrench 2.5s ease infinite;
+	transform-origin-x: 90%;
+	transform-origin-y: 35%;
+	transform-origin-z: initial;
+}
+.faa-wrench.animated.faa-fast,
+.faa-wrench.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-wrench.faa-fast {
+	animation: wrench 1.2s ease infinite;
+}
+.faa-wrench.animated.faa-slow,
+.faa-wrench.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-wrench.faa-slow {
+	animation: wrench 3.7s ease infinite;
+}
+
+@keyframes spin{
+	0%{transform:rotate(0deg)}
+	100%{transform:rotate(359deg)}
+}
+.faa-spin.animated,
+.faa-spin.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-spin {
+	animation: spin 1.5s linear infinite;
+}
+.faa-spin.animated.faa-fast,
+.faa-spin.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-spin.faa-fast {
+	animation: spin 0.7s linear infinite;
+}
+.faa-spin.animated.faa-slow,
+.faa-spin.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-spin.faa-slow {
+	animation: spin 2.2s linear infinite;
+}
+
+.userDrop{
+	cursor: pointer;
+}
+.prompt {
+	display: none;
+	top: 6vh;
+	right: 0%;
+	width: 350px;
+	background-color: #F8F9FA;
+	position: absolute;
+	color: gray;
+	z-index: 100;
+	padding: 20px;
+	border-bottom: 1px solid rgba(138, 138, 138, 0.109);
+	border-left: 1px solid rgba(138, 138, 138, 0.105);
+}
+.prompt ul{
+	list-style: none;
+}
+.prompt li, a {
+	text-decoration: none;
+	cursor: pointer;
+	color: gray;
+	font-size: rem-calc(12px);
+}
+.show{
+	display: block;
+}
+
+.fa-times{
+	font-size: 18px;
+	margin-left: 50%;
+	color: black;
+}
+
+ul .list-items{
+	color: rgb(120, 155, 230);
+}

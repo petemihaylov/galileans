@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using EmployeesManagementSystem.Controllers;
 using EmployeesManagementSystem.Data;
 using EmployeesManagementSystem.Models;
 
@@ -12,6 +14,7 @@ namespace EmployeesManagementSystem
         // Variables 
         private User loggedUser;
         private DepartmentContext departmentContext = new DepartmentContext();
+        private DepartmentController controller = new DepartmentController();
         private UserDepartmentContext userDepartmentContext = new UserDepartmentContext();
         private UserContext userContext = new UserContext();
         private ShiftContext shiftContext = new ShiftContext();
@@ -28,30 +31,12 @@ namespace EmployeesManagementSystem
 
         private void Departments_Load(object sender, EventArgs e)
         {
-            // Roles division
-            if (this.loggedUser.Role == Role.Manager)
-            {
-                this.btnEmployees.Enabled = true;
-                this.btnCancellations.Enabled = true;
-                this.btnDepartments.Enabled = true;
-                this.btnStocks.Enabled = true;
-                this.btnShifts.Enabled = false;
-                this.btnStatistics.Enabled = true;
-            }
-            else if (this.loggedUser.Role == Role.Administrator)
-            {
-                this.btnEmployees.Enabled = true;
-                this.btnCancellations.Enabled = false;
-                this.btnDepartments.Enabled = true;
-                this.btnStocks.Enabled = false;
-                this.btnShifts.Enabled = true;
-                this.btnStatistics.Enabled = false;
-            }
+            RoleDivision();
 
             try
             {
                 this.departments = departmentContext.GetAllDepartments();
-                showInformation(this.departments);
+                showDepartmentsInformation(this.departments);
             }
             catch (Exception)
             {
@@ -59,16 +44,72 @@ namespace EmployeesManagementSystem
             }
         }
 
+        private Color Enter = Color.DarkGray;
+        private Color Leave = Color.LightGray;
+
+        private void RoleDivision()
+        {
+            // Roles division
+            if (this.loggedUser.Role == Models.Role.Manager)
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnCancellations.Enabled = true;
+                this.btnCancellations.BackColor = Leave;
+                this.btnDepartments.Enabled = true;
+
+                this.btnStocks.Enabled = true;
+                this.btnStocks.BackColor = Leave;
+
+                this.btnStatistics.Enabled = true;
+                this.btnStatistics.BackColor = Leave;
+
+                this.btnShifts.Enabled = false;
+                this.btnShifts.BackColor = Leave;
+
+                this.btnTimetable.Enabled = true;
+                this.btnTimetable.BackColor = Leave;
+
+            }
+            else if (this.loggedUser.Role == Models.Role.Administrator)
+            {
+                this.btnEmployees.Enabled = true;
+                this.btnDepartments.Enabled = true;
+                this.btnShifts.Enabled = true;
+
+                this.btnStocks.Enabled = false;
+                this.btnCancellations.Enabled = false;
+                this.btnTimetable.Enabled = false;
+                this.btnStatistics.Enabled = false;
+            }
+
+        }
+
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int btnDelete = 2;
+            int btnDelete = 3;
+            int btnDetails = 2;
 
             // Check if there are departments in the list
+
             if(this.dataGridView.Rows.Count > 0)
             {
                 // Delete specific Department
-                var btn = this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete);
-                if (btn)
+                var btnDl = this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDelete);
+                var btnDt = this.dataGridView.CurrentCell.ColumnIndex.Equals(btnDetails);
+
+
+                if (btnDt)
+                {
+                    int index = this.dataGridView.CurrentCell.RowIndex;
+                    int id = Convert.ToInt32(this.dataGridView.Rows[index].Cells[0].Value);
+
+                    Department d = departmentContext.GetDepartmentById(id);
+                    d.Name = this.dataGridView.Rows[index].Cells[1].Value.ToString();
+                    this.departmentContext.UpdateDepartmentInfo(d);
+
+
+                }
+                else if (btnDl)
                 {
                     // Local variables
                     int index = this.dataGridView.CurrentCell.RowIndex;
@@ -115,12 +156,12 @@ namespace EmployeesManagementSystem
         public void UpdateDepartments()
         {
             this.dataGridView.Rows.Clear();
-
+            DataTable table = controller.GetDepartmentTable();
             Department[] departments = departmentContext.GetAllDepartments();
-            showInformation(departments);
+            showDepartmentsInformation(departments);
         }
 
-        private void showInformation(Department[] departments)
+        private void showDepartmentsInformation(Department[] departments)
         {
             // Clean the dataGrid
             this.dataGridView.Rows.Clear();
@@ -291,7 +332,7 @@ namespace EmployeesManagementSystem
         }
         private void btnCreate_MouseLeave(object sender, EventArgs e)
         {
-            this.btnCreate.BackColor = Color.LightGray;
+            this.btnCreate.BackColor = Color.Gray;
         }
         private void btnSettings_MouseEnter(object sender, EventArgs e)
         {
@@ -311,6 +352,36 @@ namespace EmployeesManagementSystem
                 Details details = new Details(id, this.loggedUser, this);
                 details.Show();
             }
+        }
+
+        // Search functionality
+        private void searchField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            DataTable table = controller.GetDepartmentTable();
+
+            // Pressed enter
+            if (e.KeyChar == (char)13)
+            {
+
+                DataView dv = table.DefaultView;
+
+                // Filter the rows
+                dv.RowFilter = string.Format("Name Like '%{0}%'", controller.RemoveWhiteSpaces(this.searchField.Text));
+                this.searchField.Text = "";
+                if (dv.ToTable().Rows.Count > 0)
+                {
+                    Department[] departments = controller.GetFilteredDepartments(dv);
+                    showDepartmentsInformation(departments);
+                }
+                else
+                {
+                    Department[] departments = controller.GetDepartments();
+                    showDepartmentsInformation(departments);
+                }
+
+            }
+
         }
     }
 }

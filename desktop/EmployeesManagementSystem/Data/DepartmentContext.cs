@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using EmployeesManagementSystem.Models;
+using System.Data;
 
 namespace EmployeesManagementSystem.Data
 {
@@ -10,7 +11,7 @@ namespace EmployeesManagementSystem.Data
         {
             Department department = (Department)obj;
 
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
 
@@ -26,7 +27,7 @@ namespace EmployeesManagementSystem.Data
         }
         public override bool DeleteById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -37,9 +38,52 @@ namespace EmployeesManagementSystem.Data
                 }
             }
         }
+
+        public DataTable GetDepartmentTable()
+        {
+            using (var con = new MySqlConnection(ConnectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    // select statement
+                    command.CommandText = @"SELECT * FROM Department";
+
+                    // executing it 
+                    using (var reader = command.ExecuteReader())
+                    {
+                        DataTable table = new DataTable();
+                        if (reader.Read())
+                        {
+                            table.Load(reader);
+                        }
+
+                        return table;
+                    }
+                }
+            }
+        }
+
+        public Department[] GetAllFilteredDepartments(DataTable table)
+        {
+            List<Department> departments= new List<Department>();
+
+            foreach (DataRow row in table.Rows)
+            {
+                Department department = new Department();
+                department.ID = (int) row["ID"];
+                department.Name = (string) row["Name"];
+                    
+                departments.Add(department);
+            }
+
+            return departments.ToArray();
+        }
+
         public Department[] GetAllDepartments()
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = new MySqlCommand("SELECT * FROM Department", con))
@@ -62,7 +106,7 @@ namespace EmployeesManagementSystem.Data
         }
         public Department GetDepartmentByName(string name)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -83,7 +127,7 @@ namespace EmployeesManagementSystem.Data
 
         public Department GetDepartmentById(int id)
         {
-            using (var con = new MySqlConnection(connectionString))
+            using (var con = new MySqlConnection(ConnectionString))
             {
                 con.Open();
                 using (var command = con.CreateCommand())
@@ -101,6 +145,25 @@ namespace EmployeesManagementSystem.Data
                         }
                         return null;
                     }
+                }
+            }
+        }
+        public bool UpdateDepartmentInfo(Department dep)
+        {
+
+            using (var con = new MySqlConnection(ConnectionString))
+            {
+                con.Open();
+
+                using (var command = con.CreateCommand())
+                {
+                    // Select statement
+                    command.CommandText = @"UPDATE Department SET Name = @name WHERE ID = @ID";
+                    command.AddParameter("ID", dep.ID);
+                    // Executing it 
+                    command.Parameters.AddWithValue("name", dep.Name);
+
+                    return command.ExecuteNonQuery() > 0 ? true : false;
                 }
             }
         }

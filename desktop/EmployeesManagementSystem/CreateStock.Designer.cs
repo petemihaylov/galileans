@@ -138,7 +138,7 @@
             this.tbName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(300, 25);
-            this.tbName.TabIndex = 36;
+            this.tbName.TabIndex = 1;
             // 
             // btnCreateStock
             // 
@@ -151,7 +151,7 @@
             this.btnCreateStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCreateStock.Name = "btnCreateStock";
             this.btnCreateStock.Size = new System.Drawing.Size(302, 39);
-            this.btnCreateStock.TabIndex = 46;
+            this.btnCreateStock.TabIndex = 5;
             this.btnCreateStock.Text = "CREATE";
             this.btnCreateStock.UseVisualStyleBackColor = false;
             this.btnCreateStock.Click += new System.EventHandler(this.btnCreateStock_Click);
@@ -188,7 +188,7 @@
             this.tbAmount.Location = new System.Drawing.Point(72, 434);
             this.tbAmount.Name = "tbAmount";
             this.tbAmount.Size = new System.Drawing.Size(302, 32);
-            this.tbAmount.TabIndex = 47;
+            this.tbAmount.TabIndex = 3;
             // 
             // tbPrice
             // 
@@ -204,7 +204,7 @@
             this.tbPrice.Location = new System.Drawing.Point(72, 360);
             this.tbPrice.Name = "tbPrice";
             this.tbPrice.Size = new System.Drawing.Size(302, 32);
-            this.tbPrice.TabIndex = 48;
+            this.tbPrice.TabIndex = 2;
             // 
             // label7
             // 
@@ -226,7 +226,7 @@
             this.cbDepartments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbDepartments.Name = "cbDepartments";
             this.cbDepartments.Size = new System.Drawing.Size(299, 32);
-            this.cbDepartments.TabIndex = 49;
+            this.cbDepartments.TabIndex = 4;
             // 
             // CreateStock
             // 

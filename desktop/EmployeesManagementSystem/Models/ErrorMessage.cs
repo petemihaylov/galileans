@@ -10,20 +10,25 @@ namespace EmployeesManagementSystem.Models
     {
         public static string InvalidWage()
         {
-            return "Wage could not be less than a zero.";
+            throw new System.ArgumentException("Wage could not be less than a zero.");
+            //return "Wage could not be less than a zero.";
         } 
         public static string EmptyFullName()
         {
-            return "Empty Fullname property.";
+            throw new System.ArgumentException("Empty Fullname property.");
+            //return "Empty Fullname property.";
+
         }
 
         public static string InvalidEmail()
         {
-            return "Format Exception! Invalid Email address.";
+            throw new System.ArgumentException("Format Exception! Invalid Email address.");
+            //return "Format Exception! Invalid Email address.";
         }
         public static string NegativePrice()
         {
-            return "Stock could not have a negative price.";
+            throw new System.ArgumentException("Stock could not have a negative price.");
+            //return "Stock could not have a negative price.";
         }
     }
 }

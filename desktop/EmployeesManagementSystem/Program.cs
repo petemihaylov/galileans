@@ -15,9 +15,10 @@ namespace EmployeesManagementSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            // Don't use it for production. Only for testing purposes
             Application.Run(new Login());
-
-           // ConversionManager.Run();
+            
+            
         }
     }
 }

@@ -39,6 +39,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentEmail.Core, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentEmail.Core.2.8.0\lib\netstandard2.0\FluentEmail.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentEmail.Smtp, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentEmail.Smtp.2.8.0\lib\netstandard2.0\FluentEmail.Smtp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.4.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.4\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -56,8 +65,20 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Data\AvailabilityContextTests.cs" />
+    <Compile Include="Data\CancellationContextTests.cs" />
     <Compile Include="Data\DepartmentContextTests.cs" />
+    <Compile Include="Data\NotificationContextTests.cs" />
+    <Compile Include="Data\ShiftContextTests.cs" />
+    <Compile Include="Data\StockContextTests.cs" />
     <Compile Include="Data\UserContextTests.cs" />
+    <Compile Include="Models\Availability\AvailabilityTests.cs" />
+    <Compile Include="Models\Cancellation\CancellationTests.cs" />
+    <Compile Include="Models\Department\DepartmentTests.cs" />
+    <Compile Include="Models\Notification\NotificationTests.cs" />
+    <Compile Include="Models\Shift\ShiftTests.cs" />
+    <Compile Include="Models\Stock\StockTests.cs" />
+    <Compile Include="Models\User\UserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -3,29 +3,27 @@
 class Preference{
 
     private $ID;
-    private $Date;
     private $UserID;
-    private $Availability;
-    private $bookedColor;
+    private $State;
+    public $Days = array();
+    public $IsWeekly = 0;
+    public $IsMonthly = 0;
 
-
-    function __construct($id, $date, $userID,  $availability){
+    function __construct($id, $userID, $state, $days, $isWeekly, $isMonthly){
         $this->ID = $id;
-        $this->Date = $date;
         $this->UserID = $userID;
-        $this->Availability = $availability;
+        $this->State = $state;
+        $this->Days = $days;
+        $this->IsWeekly = $isWeekly;
+        $this->IsMonthly = $isMonthly;
     }
 
     function get_ID(){
         return $this->ID;
     }
 
-    function get_Booked(){
-        return $this->bookedColor;
-    }
-
-    function get_Date(){
-        return $this->Date;
+    function get_State(){
+        return $this->State;
     }
 
     function get_UserID(){
@@ -33,14 +31,15 @@ class Preference{
     }
 
 
-    function get_Availability(){
-        return $this->Availability;
-    }
-    function set_Booked($bool){
-        $this->bookedColor = $bool;
+    function get_Days(){
+        return $this->Days;
     }
 
-    function set_Availability($bool){
-        $this->Availability = $bool;
+    function get_IsWeekly(){
+        return $this->IsWeekly;
+    }
+
+    function get_IsMonthly(){
+        return $this->IsWeekly;
     }
 }
