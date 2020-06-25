@@ -4,11 +4,13 @@ using System.Linq;
 using System.Data;
 using System.Text;
 using System.Threading.Tasks;
+using EmployeesManagementSystem.Data;
 
 namespace EmployeesManagementSystem.Models
 {
     public class Cancellation : ICancellation
     {
+        UserContext userContext = new UserContext();
         public int ID { get; set; }
         public DateTime Date { get; set; }
         public string Subject { get; set; }
@@ -30,10 +32,10 @@ namespace EmployeesManagementSystem.Models
         }
         public string[] GetInfo()
         {
-            string[] s = { this.ID.ToString() , this.Date.ToString() , "Name", this.Subject, this.Message, this.State.ToString(), "Delete" };
+            string[] s = { this.ID.ToString() , this.Date.ToString() , userContext.GetUserByID( this.Employee.ID).FullName, this.Subject, this.Message, this.State.ToString(), "Delete" };
             return s;
-        }
 
+        }
     }
 
     public enum CState

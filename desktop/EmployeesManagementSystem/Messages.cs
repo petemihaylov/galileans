@@ -19,6 +19,7 @@ namespace EmployeesManagementSystem
         private Color Enter = Color.DarkGray;
         private Color Leave = Color.LightGray;
 
+        private NotificationContext notificationContext = new NotificationContext();
         private CancellationContext cancellationContext = new CancellationContext();
         private User loggedUser;
         private List <Cancellation> req = new List<Cancellation>();
@@ -93,7 +94,7 @@ namespace EmployeesManagementSystem
         // datagrid cell click needs a refactoring
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (!dataGridView.CurrentCell.ColumnIndex.Equals(4) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
+            if (dataGridView.CurrentCell.ColumnIndex.Equals(4) && e.RowIndex != -1 && dataGridView.CurrentCell != null)
             {
                 txDescription.Text = "Message: \n" + dataGridView.CurrentCell.Value.ToString();
             }
@@ -103,7 +104,6 @@ namespace EmployeesManagementSystem
                 int id = Convert.ToInt32(dataGridView.Rows[index].Cells[0].Value);
                 cancellationContext.DeleteById(id);
                 dataGridView.Rows.Remove(dataGridView.Rows[index]);
-
             }
 
 
@@ -118,6 +118,9 @@ namespace EmployeesManagementSystem
             cancellationContext.UpdateCancellation(c);
             MessageBox.Show("The cancellation request has been denied. The employee has been notified.");
             UpdateGrid();
+            Notification n = new Notification("Your cancellation request has been rejected!", c.Employee);
+
+            notificationContext.Insert(n);
 
         }
 
@@ -130,6 +133,9 @@ namespace EmployeesManagementSystem
             cancellationContext.UpdateCancellation(c);
             MessageBox.Show("The cancellation request has been approved. The employee has been notified.");
             UpdateGrid();
+
+            Notification n = new Notification("Your cancellation request has been accepted!", c.Employee);
+            notificationContext.Insert(n);
         }
         private void UpdateGrid()
         {
