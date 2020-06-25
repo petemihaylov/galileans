@@ -53,10 +53,10 @@ CREATE TABLE IF NOT EXISTS Shift(
 CREATE TABLE IF NOT EXISTS Availability(
 	ID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     UserID int NOT NULL,    
-    State ENUM('Pending', 'Approved', 'Declined') DEFAULT 'Pending',
-    Days text,
-    IsWeekly bool NOT NULL,
-    IsMonthly bool NOT NULL,
+    Available ENUM('Pendding', 'Approved', 'Declined') DEFAULT 'Declined',
+    Days ENUM('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'),
+    IsWeekly int NOT NULL,
+    IsMonthly int NOT NULL,
     
     FOREIGN KEY (UserID) REFERENCES User(ID)
 );

@@ -17,6 +17,9 @@ We are currently within the first sprint.
 
 - [Gantt chart](https://docs.google.com/spreadsheets/d/1OqAIR3D_CxyY9jhFixvhBq2QALu-zkkJ2-MjmzFsiwk/edit?usp=sharing)
 - [Split tasks](https://docs.google.com/spreadsheets/d/1gMgkB5s4m_LCoQPB1QEo6_S4VVPor7YApmS4SGWi20c/edit?usp=sharing)
+- [Split tasks Last iteration](https://docs.google.com/spreadsheets/d/1Q7QG1HN4pZbpmPv5cUezfERuXW_nN2v-5jcLyMC83bk/edit?usp=sharing)
+
+
 - [Functional requirements and Use cases](https://drive.google.com/file/d/104FG6vKGbOVmfkGowI0NWHgORzE3kSkR/view?usp=sharing)
 - [User reqiurements structure](https://docs.google.com/document/d/1ohwEnu2-mQLMnskQPNYxnIEvKF7_dmJj/edit?dls=true)
 
